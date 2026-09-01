@@ -1,23 +1,49 @@
 {
   "site_name": "Arafat Rahaman",
-  "tagline": "Reporting on institutions, policy, power and people.",
-  "role": "Reporter, Print / Digital",
+  "title": "Staff Reporter",
   "organisation": "The Daily Star",
   "location": "Dhaka, Bangladesh",
-  "contact_email": "",
-  "publisher_profile": "https://www.thedailystar.net/author/arafat-rahaman",
+  "site_url": "https://arafat-247.github.io/arafat-portfolio",
+  "description": "Arafat Rahaman is a Staff Reporter at The Daily Star, covering education, governance, human rights, social welfare and public institutions in Bangladesh.",
+  "email": "arafat.mcj@yahoo.com",
+  "areas": [
+    "Education",
+    "Governance",
+    "Human Rights",
+    "Social Welfare",
+    "Public Institutions"
+  ],
+  "social": {
+    "daily_star": "https://www.thedailystar.net/author/arafat-rahaman",
+    "muck_rack": "https://muckrack.com/arafat-rahaman",
+    "linkedin": "https://bd.linkedin.com/in/arafat-rahaman",
+    "facebook": "https://www.facebook.com/araafat.rahaman/",
+    "instagram": "https://www.instagram.com/araafat.rahaman/",
+    "flickr": "https://www.flickr.com/photos/arafat-rahaman/"
+  },
+  "recognition": [
+    {
+      "year": "2024",
+      "title": "Youth of the Year Award",
+      "organisation": "The Daily Star"
+    },
+    {
+      "year": "2024",
+      "title": "Dhaka Road Traffic Safety Project Fellowship",
+      "organisation": "Dhaka Metropolitan Police and JICA"
+    },
+    {
+      "year": "2018",
+      "title": "Best Photographer of the Year",
+      "organisation": "Photography recognition for coverage of the quota-reform movement"
+    }
+  ],
   "pinned_story_urls": [],
-  "featured_investigation_urls": [],
-  "awards": [
-    {"year":"2025","title":"Year of the Youth Award","organisation":"The Daily Star"},
-    {"year":"2024","title":"Youth of the Year","organisation":""}
-  ],
-  "publications": [
-    {"name":"The Daily Star","url":"https://www.thedailystar.net/author/arafat-rahaman","note":"Reporter, Print / Digital"}
-  ],
-  "cv": {
-    "profile": "Journalist covering public institutions, education, governance, politics and public-interest issues in Bangladesh.",
-    "skills": ["News reporting","Policy and governance coverage","Interviewing","Data-led reporting","Long-form and analytical writing","Breaking news"],
-    "beats": ["Education","Public institutions","Politics and governance","Rights and accountability"]
+  "analytics": {
+    "provider": "goatcounter",
+    "site_code": ""
+  },
+  "theme": {
+    "dark_mode": true
   }
 }

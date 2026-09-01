@@ -1,0 +1,9 @@
+{
+  "_instructions": {
+    "purpose": "Optional story-specific editorial art and grounded interactives. Keys are exact Daily Star source URLs.",
+    "hero": "Use base without extension, e.g. assets/story-covers/example. Upload matching .webp and optionally .avif files.",
+    "inline": "Modules can be inserted after a specific paragraph with after_paragraph. Supported: pullquote, explainer, timeline, chart, table.",
+    "documents": "Optional source-document links shown in the Evidence & Context sidebar block.",
+    "rule": "Only add facts, figures, dates and quotations supported by the story or a verified source."
+  }
+}
