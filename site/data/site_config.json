@@ -1,0 +1,23 @@
+{
+  "site_name": "Arafat Rahaman",
+  "tagline": "Reporting on institutions, policy, power and people.",
+  "role": "Reporter, Print / Digital",
+  "organisation": "The Daily Star",
+  "location": "Dhaka, Bangladesh",
+  "contact_email": "",
+  "publisher_profile": "https://www.thedailystar.net/author/arafat-rahaman",
+  "pinned_story_urls": [],
+  "featured_investigation_urls": [],
+  "awards": [
+    {"year":"2025","title":"Year of the Youth Award","organisation":"The Daily Star"},
+    {"year":"2024","title":"Youth of the Year","organisation":""}
+  ],
+  "publications": [
+    {"name":"The Daily Star","url":"https://www.thedailystar.net/author/arafat-rahaman","note":"Reporter, Print / Digital"}
+  ],
+  "cv": {
+    "profile": "Journalist covering public institutions, education, governance, politics and public-interest issues in Bangladesh.",
+    "skills": ["News reporting","Policy and governance coverage","Interviewing","Data-led reporting","Long-form and analytical writing","Breaking news"],
+    "beats": ["Education","Public institutions","Politics and governance","Rights and accountability"]
+  }
+}

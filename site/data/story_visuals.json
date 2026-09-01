@@ -1,0 +1,8 @@
+{
+  "_instructions": {
+    "purpose": "Optional hand-curated visual modules for individual stories.",
+    "key": "Use the Daily Star source URL as the key.",
+    "supported": ["chart","timeline","map","quote","explainer"],
+    "note": "If a story is absent, V6 still provides original cover art, reading metrics, related stories and grounded number/quote extraction."
+  }
+}
