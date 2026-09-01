@@ -1,16 +1,10 @@
 (() => {
-  const latestSlot = document.querySelector("#latest-story");
-  const focusGrid = document.querySelector("#focus-grid");
-  const leadSlot = document.querySelector("#lead-story");
-  const selectedGrid = document.querySelector("#selected-grid");
-
   const esc = (v = "") => String(v)
     .replaceAll("&", "&amp;").replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;").replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-  const storyHref = a => a.local_url || a.url || "#";
-  const externalAttrs = a => a.local_url ? "" : ' target="_blank" rel="noopener"';
+  const localHref = a => a.local_url || "#";
 
   const fmtDate = value => {
     if (!value) return "";
@@ -21,120 +15,114 @@
     }).format(d);
   };
 
-  const fmtMonthYear = value => {
-    if (!value) return "—";
-    const d = new Date(value + (value.length === 10 ? "T00:00:00Z" : ""));
-    if (Number.isNaN(d.getTime())) return "—";
-    return new Intl.DateTimeFormat("en-GB", {
-      month: "short", year: "numeric", timeZone: "UTC"
-    }).format(d);
-  };
-
-  function latestStory(a) {
-    if (!a) return;
-    latestSlot.innerHTML = `
-      <a class="latest-link" href="${esc(storyHref(a))}"${externalAttrs(a)}>
-        <div class="latest-meta"><span>${esc(a.section || "Reporting")}</span>${a.date ? `<span>·</span><time>${esc(fmtDate(a.date))}</time>` : ""}</div>
-        <h2>${esc(a.title)}</h2>
-        ${a.excerpt ? `<p>${esc(a.excerpt)}</p>` : ""}
-        <span class="latest-read">Read story <strong>→</strong></span>
-      </a>`;
+  function excerpt(text, max = 180) {
+    const value = String(text || "").trim();
+    if (!value) return "";
+    return value.length > max ? value.slice(0, max).trimEnd() + "…" : value;
   }
 
-  function focusCards(articles) {
+  function renderFeatured(articles) {
+    const slot = document.querySelector("#featured-layout");
+    const picks = articles.slice(0, 5);
+    if (!picks.length) {
+      slot.innerHTML = `<div class="loading-card">No verified stories are available yet.</div>`;
+      return;
+    }
+
+    const lead = picks[0];
+    const side = picks.slice(1);
+
+    slot.innerHTML = `
+      <a class="feature-main" href="${esc(localHref(lead))}">
+        <div class="feature-number">01</div>
+        <div class="feature-meta">
+          <span>${esc(lead.section || "Reporting")}</span>
+          ${lead.date ? `<time>${esc(fmtDate(lead.date))}</time>` : ""}
+        </div>
+        <h3>${esc(lead.title)}</h3>
+        ${lead.excerpt ? `<p>${esc(excerpt(lead.excerpt, 260))}</p>` : ""}
+        <div class="feature-footer"><span>Read in portfolio</span><strong>→</strong></div>
+      </a>
+
+      <div class="feature-side">
+        ${side.map((a, i) => `
+          <a class="feature-mini" href="${esc(localHref(a))}">
+            <div class="feature-mini-index">0${i + 2}</div>
+            <div>
+              <div class="feature-meta">
+                <span>${esc(a.section || "Reporting")}</span>
+                ${a.date ? `<time>${esc(fmtDate(a.date))}</time>` : ""}
+              </div>
+              <h3>${esc(a.title)}</h3>
+              ${a.excerpt ? `<p>${esc(excerpt(a.excerpt, 115))}</p>` : ""}
+            </div>
+            <span class="mini-arrow">↗</span>
+          </a>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderBeats(articles) {
     const counts = new Map();
     articles.forEach(a => {
       const section = a.section || "Other";
       counts.set(section, (counts.get(section) || 0) + 1);
     });
 
-    const top = [...counts.entries()]
+    const beats = [...counts.entries()]
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 4);
+      .slice(0, 6);
 
-    focusGrid.innerHTML = top.map(([section, count], i) => `
-      <a class="focus-card" href="archive.html?section=${encodeURIComponent(section)}">
-        <span class="focus-number">0${i + 1}</span>
-        <div>
-          <h3>${esc(section)}</h3>
-          <p>${count} ${count === 1 ? "story" : "stories"} in the archive</p>
-        </div>
-        <span class="focus-arrow">↗</span>
+    document.querySelector("#beat-grid").innerHTML = beats.map(([name, count], i) => `
+      <a class="beat-card beat-${(i % 3) + 1}" href="archive.html?section=${encodeURIComponent(name)}">
+        <span class="beat-count">${count}</span>
+        <h3>${esc(name)}</h3>
+        <span class="beat-note">${count === 1 ? "story" : "stories"} →</span>
       </a>
     `).join("");
   }
 
-  function selectedWork(articles) {
-    const lead = articles[0];
-    const selected = articles.slice(1, 5);
+  function renderStats(articles, updatedAt) {
+    document.querySelector("#story-count").textContent = articles.length;
 
-    if (lead) {
-      leadSlot.innerHTML = `
-        <a class="front-lead" href="${esc(storyHref(lead))}"${externalAttrs(lead)}>
-          <div class="front-lead-label">
-            <span>FEATURED</span>
-            <strong>01</strong>
-          </div>
-          <div class="front-lead-copy">
-            <div class="story-meta">
-              <span>${esc(lead.section || "Reporting")}</span>
-              ${lead.date ? `<span>•</span><time>${esc(fmtDate(lead.date))}</time>` : ""}
-            </div>
-            <h3>${esc(lead.title)}</h3>
-            ${lead.excerpt ? `<p>${esc(lead.excerpt)}</p>` : ""}
-          </div>
-          <span class="front-lead-arrow">→</span>
-        </a>`;
+    const years = articles
+      .map(a => String(a.date || "").slice(0, 4))
+      .filter(y => /^\d{4}$/.test(y))
+      .map(Number);
+
+    document.querySelector("#year-span").textContent = years.length
+      ? `${Math.min(...years)}–${Math.max(...years)}`
+      : "Growing";
+
+    if (updatedAt) {
+      const d = new Date(updatedAt);
+      if (!Number.isNaN(d.getTime())) {
+        document.querySelector("#last-updated").textContent =
+          "UPDATED " + new Intl.DateTimeFormat("en-GB", {
+            day: "numeric", month: "short", year: "numeric", timeZone: "UTC"
+          }).format(d).toUpperCase();
+      }
     }
-
-    selectedGrid.innerHTML = selected.map((a, idx) => `
-      <a class="selected-card" href="${esc(storyHref(a))}"${externalAttrs(a)}>
-        <div class="selected-card-top">
-          <span class="card-index">0${idx + 2}</span>
-          <span class="selected-arrow">↗</span>
-        </div>
-        <div class="story-meta">
-          <span>${esc(a.section || "Reporting")}</span>
-          ${a.date ? `<span>•</span><time>${esc(fmtDate(a.date))}</time>` : ""}
-        </div>
-        <h3>${esc(a.title)}</h3>
-        ${a.excerpt ? `<p>${esc(a.excerpt)}</p>` : ""}
-      </a>
-    `).join("");
-  }
-
-  function stats(articles) {
-    const sections = new Set(articles.map(a => a.section || "Other"));
-    const dated = articles.filter(a => /^\d{4}-\d{2}-\d{2}$/.test(a.date || ""));
-    const newest = dated[0]?.date || "";
-    const oldest = dated[dated.length - 1]?.date || "";
-    const newYear = newest ? newest.slice(0, 4) : "";
-    const oldYear = oldest ? oldest.slice(0, 4) : "";
-
-    document.querySelector("#stat-count").textContent = articles.length;
-    document.querySelector("#stat-sections").textContent = sections.size;
-    document.querySelector("#stat-range").textContent =
-      oldYear && newYear ? (oldYear === newYear ? newYear : `${oldYear}–${newYear}`) : "Growing";
-
-    document.querySelector("#archive-description").textContent =
-      `Search ${articles.length} indexed stories by headline or coverage area, then open each story inside the portfolio.`;
   }
 
   async function init() {
     try {
-      const r = await fetch("data/articles.json", { cache: "no-store" });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const payload = await r.json();
-      const articles = Array.isArray(payload.articles) ? payload.articles : [];
-      articles.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+      const response = await fetch("data/articles.json", { cache: "no-store" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const payload = await response.json();
 
-      latestStory(articles[0]);
-      focusCards(articles);
-      selectedWork(articles);
-      stats(articles);
-    } catch (err) {
-      latestSlot.innerHTML = `<p class="loading-copy">The latest story could not be loaded. <a href="archive.html">Open the archive →</a></p>`;
-      console.error(err);
+      const articles = (Array.isArray(payload.articles) ? payload.articles : [])
+        .filter(a => a.verified_author === true && a.local_url)
+        .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+
+      renderFeatured(articles);
+      renderBeats(articles);
+      renderStats(articles, payload.updated_at);
+    } catch (error) {
+      document.querySelector("#featured-layout").innerHTML =
+        `<div class="loading-card">The verified archive could not be loaded.</div>`;
+      console.error(error);
     }
   }
 
