@@ -8,16 +8,23 @@ on:
     - cron: "17 */6 * * *"
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout
+      - name: Checkout latest main
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -26,10 +33,45 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: python -m pip install -r requirements.txt
 
-      - name: Refresh articles
-        run: python scripts/update_articles.py --limit 40
+      - name: Build verified author archive
+        run: python scripts/update_articles.py --pages 60
+
+      - name: Verify clean local archive
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("site/data/articles.json").read_text(encoding="utf-8"))
+          articles = data.get("articles", [])
+
+          if not articles:
+              raise SystemExit("No stories in generated archive.")
+
+          bad = [a.get("title","") for a in articles if a.get("verified_author") is not True]
+          if bad:
+              raise SystemExit(f"Unverified stories present: {bad[:5]}")
+
+          external_cards = [a.get("title","") for a in articles if not a.get("local_url")]
+          if external_cards:
+              raise SystemExit(f"Stories missing local URLs: {external_cards[:5]}")
+
+          missing = []
+          for a in articles:
+              page = Path("site") / a["local_url"] / "index.html"
+              if not page.exists():
+                  missing.append(str(page))
+
+          if missing:
+              raise SystemExit("Missing local story pages:\n" + "\n".join(missing[:10]))
+
+          print(
+              f"Verified clean build: {len(articles)} author stories; "
+              f"{data.get('non_author_urls_rejected', 0)} unrelated candidates rejected."
+          )
+          PY
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -40,4 +82,5 @@ jobs:
           path: site
 
       - name: Deploy
+        id: deployment
         uses: actions/deploy-pages@v4
