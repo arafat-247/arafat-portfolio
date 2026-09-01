@@ -1,0 +1,60 @@
+ARAFAT PORTFOLIO V6
+
+V6 adds:
+- Latest Articles instead of Selected Work
+- newest-to-oldest ordering everywhere
+- only two article types: Reporting and Opinion / Analysis
+- separate topic browsing
+- pinned stories support
+- In Focus homepage module
+- this-week / this-month output counts
+- About page
+- CV / Resume page with Print / Save PDF
+- Contact page
+- Featured Investigations / Depth Reporting page
+- awards and publications sections
+- improved weighted search
+- related stories
+- original procedural article cover art (no Daily Star image copying)
+- homepage header artwork and visual footer artwork
+- automatic grounded "Numbers mentioned" cards
+- automatic quote card where a real quote is available
+- optional curated charts, timelines, maps, quotes and explainers
+- local story footer and related-story modules
+
+VISUAL SAFEGUARD
+Charts, maps and timelines are not invented. Put manually verified modules in:
+site/data/story_visuals.json
+
+PIN STORIES
+Put Daily Star source URLs in site/data/site_config.json under pinned_story_urls.
+
+FEATURED INVESTIGATIONS
+Put verified source URLs under featured_investigation_urls.
+
+CONTACT EMAIL
+Add your preferred public email under contact_email.
+
+UPLOAD PATHS
+Keep these exact paths:
+.github/workflows/deploy.yml
+requirements.txt
+scripts/update_articles.py
+site/index.html
+site/archive.html
+site/about.html
+site/cv.html
+site/contact.html
+site/investigations.html
+site/common.js
+site/app.js
+site/archive.js
+site/story.js
+site/visuals.js
+site/styles.css
+site/assets/header-editorial.svg
+site/assets/footer-editorial.svg
+site/data/site_config.json
+site/data/story_visuals.json
+
+Do NOT replace site/data/articles.json manually. The workflow regenerates it.

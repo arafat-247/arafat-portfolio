@@ -326,6 +326,32 @@ def local_url(story: dict) -> str:
     return f"stories/{story_id(story['url'])}-{slugify(story['title'])}/"
 
 
+def simplify_story_type(url: str, section: str) -> str:
+    text = f"{url} {section}".lower()
+    if any(x in text for x in ("/opinion/", "/views/", "/analysis/", "opinion", "analysis")):
+        return "Opinion / Analysis"
+    return "Reporting"
+
+
+def topic_from_story(url: str, section: str, title: str) -> str:
+    text = f"{url} {section} {title}".lower()
+    rules = [
+        (("education","school","university","ssc","hsc","ugc","nctb","teacher","student"), "Education"),
+        (("politic","parliament","government","cabinet","bnp","jamaat","election"), "Politics & Governance"),
+        (("rights","disappear","police","law and order","court","justice","mob"), "Rights & Justice"),
+        (("health","dengue","hospital","medical"), "Health"),
+        (("environment","climate","pollution","noise"), "Environment"),
+        (("business","budget","economy","inflation","fertiliser","agriculture"), "Economy & Livelihoods"),
+        (("sports","football","cricket","messi"), "Sport"),
+    ]
+    for needles, label in rules:
+        if any(n in text for n in needles):
+            return label
+    if section and section.lower() not in {"news","bangladesh"}:
+        return section
+    return "Public Affairs"
+
+
 def extract_story(session: requests.Session, url: str) -> dict | None:
     r = session.get(url, timeout=40)
     r.raise_for_status()
@@ -392,15 +418,19 @@ def extract_story(session: requests.Session, url: str) -> dict | None:
     if not title:
         return None
 
+    body_text_final = clean(BeautifulSoup(body_html, "html.parser").get_text(" ", strip=True))
     story = {
         "title": title,
         "date": parse_date(raw_date),
         "section": section,
+        "story_type": simplify_story_type(url, section),
+        "topic": topic_from_story(url, section, title),
         "excerpt": excerpt,
         "url": canonical_source(url),
         "authors": extract_authors(soup),
         "image": image,
         "body_html": body_html,
+        "word_count": len(body_text_final.split()),
         "verified_author": True,
         "scraped_at": datetime.now(timezone.utc).isoformat(),
     }
@@ -419,11 +449,13 @@ def display_date(value: str) -> str:
 def generate_story_page(story: dict) -> str:
     title = html_lib.escape(story.get("title", "Story"))
     excerpt = html_lib.escape(story.get("excerpt", ""))
-    section = html_lib.escape(story.get("section", "Reporting"))
+    category = html_lib.escape(story.get("story_type", "Reporting"))
+    topic = html_lib.escape(story.get("topic", "Public Affairs"))
     date = html_lib.escape(display_date(story.get("date", "")))
     source = html_lib.escape(story.get("url", ""), quote=True)
     authors = html_lib.escape(", ".join(story.get("authors") or [AUTHOR_NAME]))
     body = story.get("body_html", "").strip()
+    sid = story_id(story.get("url", ""))
 
     if not body:
         body = (
@@ -435,52 +467,11 @@ def generate_story_page(story: dict) -> str:
     standfirst = f'<p class="story-standfirst">{excerpt}</p>' if excerpt else ""
 
     return f"""<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="{source}">
-  <meta name="description" content="{excerpt}">
-  <title>{title} — Arafat Rahaman</title>
-  <link rel="stylesheet" href="../../styles.css">
-</head>
-<body class="story-page">
-  <header class="topbar">
-    <div class="shell topbar-inner">
-      <a class="wordmark" href="../../"><span class="monogram">AR</span><span>Arafat Rahaman</span></a>
-      <nav>
-        <a href="../../">Home</a>
-        <a href="../../archive.html">Archive</a>
-        <a class="publisher-link" href="{source}" target="_blank" rel="noopener">Original ↗</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="story-shell">
-    <a class="story-back" href="../../archive.html">← Back to archive</a>
-    <div class="story-layout">
-      <aside class="story-rail">
-        <span class="rail-section">{section}</span>
-        <time class="rail-date">{date}</time>
-        <p class="rail-byline">By <strong>{authors}</strong><br>Originally published by <em>The Daily Star</em>.</p>
-        <a class="rail-source" href="{source}" target="_blank" rel="noopener">Original source ↗</a>
-      </aside>
-
-      <article class="story-article">
-        <h1>{title}</h1>
-        {standfirst}
-        <div class="story-body">{body}</div>
-        <div class="story-end">
-          <a href="../../archive.html">← More reporting</a>
-          <a href="{source}" target="_blank" rel="noopener">View original at The Daily Star ↗</a>
-        </div>
-      </article>
-    </div>
-  </main>
-</body>
-</html>
-"""
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><link rel="canonical" href="{source}"><meta name="description" content="{excerpt}"><title>{title} — Arafat Rahaman</title><link rel="stylesheet" href="../../styles.css"></head>
+<body class="story-page" data-source-url="{source}" data-story-id="{sid}">
+<header class="topbar"><div class="shell topbar-inner"><a class="wordmark" href="../../"><span class="monogram">AR</span><span>Arafat Rahaman</span></a><nav><a href="../../">Home</a><a href="../../archive.html">Archive</a><a href="../../about.html">About</a><a class="publisher-link" href="{source}" target="_blank" rel="noopener">Original ↗</a></nav></div></header>
+<main class="story-v6 shell"><a class="story-back" href="../../archive.html">← Back to archive</a><section class="story-v6-head"><div class="story-v6-meta"><span>{category}</span><span>{topic}</span><time>{date}</time></div><h1>{title}</h1>{standfirst}<div class="story-byline-line"><span>By <strong>{authors}</strong></span><span id="story-reading-time"></span></div></section><section class="story-cover-v6"><div class="story-cover-copy"><span>{topic}</span><strong>AR</strong><small>{category}</small></div><div class="story-cover-rings"></div></section><div class="story-content-grid"><aside class="story-side"><p>Originally published by <em>The Daily Star</em>.</p><a href="{source}" target="_blank" rel="noopener">Original source ↗</a><div class="story-side-nav"><a href="../../archive.html">Archive</a><a href="../../about.html">About</a><a href="../../contact.html">Contact</a></div></aside><article class="story-body-card"><div class="story-body">{body}</div></article></div><section id="story-numbers" class="story-visual-section" hidden></section><section id="story-quote" class="story-quote-card" hidden></section><div id="curated-visuals"></div><section id="related-stories" class="related-section"></section></main>
+<footer class="visual-footer"><div class="footer-art shell"><img src="../../assets/footer-editorial.svg" alt=""></div><div class="shell footer-links"><a href="../../">Home</a><a href="../../archive.html">Archive</a><a href="../../about.html">About</a><a href="{source}" target="_blank" rel="noopener">Original source ↗</a></div></footer><script src="../../common.js"></script><script src="../../story.js"></script><script src="../../visuals.js"></script></body></html>"""
 
 
 def write_story_pages(stories: list[dict]) -> None:
