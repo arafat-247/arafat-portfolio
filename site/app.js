@@ -1,1 +1,71 @@
-(()=>{let all=[],config={},type="All";const within=(d,n)=>{if(!d)return false;const x=new Date(d+"T00:00:00Z"),now=new Date();return !Number.isNaN(x.getTime())&&now-x>=0&&now-x<=n*86400000};function stats(){week.textContent=all.filter(a=>within(a.date,7)).length;month.textContent=all.filter(a=>within(a.date,31)).length;total.textContent=all.length}function card(a){return `<a class="latest-card" href="${AR.esc(a.local_url)}"><div class="card-cover">${AR.coverSVG(a,true)}</div><div class="card-meta"><span>${AR.esc(AR.category(a))}</span><time>${AR.esc(AR.fmtDate(a.date))}</time></div><h3>${AR.esc(a.title)}</h3>${a.excerpt?`<p>${AR.esc(AR.excerpt(a.excerpt,145))}</p>`:""}<span class="read-label">Read in portfolio →</span></a>`}function pins(){const set=new Set(config.pinned_story_urls||[]),p=all.filter(a=>set.has(a.url)).slice(0,3);pinnedWrap.hidden=!p.length;if(p.length)pinnedGrid.innerHTML=p.map(card).join("")}function focus(list){const map=new Map;list.slice(0,20).forEach(a=>map.set(AR.topic(a),(map.get(AR.topic(a))||0)+1));const top=[...map.entries()].sort((a,b)=>b[1]-a[1])[0];if(!top){inFocus.innerHTML="";return}const [t,c]=top,stories=list.filter(a=>AR.topic(a)===t).slice(0,3);inFocus.innerHTML=`<p class="kicker light-kicker">IN FOCUS</p><h3>${AR.esc(t)}</h3><p class="focus-count">${c} recent ${c===1?"story":"stories"}</p><div class="focus-list">${stories.map(a=>`<a href="${AR.esc(a.local_url)}">${AR.esc(a.title)} <span>↗</span></a>`).join("")}</div><a class="focus-more" href="archive.html?topic=${encodeURIComponent(t)}">Follow this topic →</a>`}function latest(){const list=type==="All"?all:all.filter(a=>AR.category(a)===type),lead=list[0],rest=list.slice(1,7);latestMain.innerHTML=lead?`<a class="latest-lead" href="${AR.esc(lead.local_url)}"><div class="lead-art">${AR.coverSVG(lead)}</div><div class="lead-copy"><div class="card-meta"><span>${AR.esc(AR.category(lead))}</span><time>${AR.esc(AR.fmtDate(lead.date))}</time></div><h3>${AR.esc(lead.title)}</h3>${lead.excerpt?`<p>${AR.esc(AR.excerpt(lead.excerpt,230))}</p>`:""}<span class="read-label">Read latest →</span></div></a>`:`<div class="empty-card">No stories.</div>`;latestGrid.innerHTML=rest.map(card).join("");focus(list)}function topics(){const m=new Map;all.forEach(a=>m.set(AR.topic(a),(m.get(AR.topic(a))||0)+1));topicGrid.innerHTML=[...m.entries()].sort((a,b)=>b[1]-a[1]).slice(0,8).map(([t,c],i)=>`<a class="topic-card topic-${i%4+1}" href="archive.html?topic=${encodeURIComponent(t)}"><strong>${c}</strong><h3>${AR.esc(t)}</h3><span>Browse topic →</span></a>`).join("")}const week=document.querySelector("#week-count"),month=document.querySelector("#month-count"),total=document.querySelector("#total-count"),pinnedWrap=document.querySelector("#pinned-wrap"),pinnedGrid=document.querySelector("#pinned-grid"),latestMain=document.querySelector("#latest-main"),latestGrid=document.querySelector("#latest-grid"),inFocus=document.querySelector("#in-focus"),topicGrid=document.querySelector("#topic-grid");AR.load().then(x=>{all=x.articles;config=x.config;stats();pins();latest();topics();document.querySelectorAll(".type-filter").forEach(b=>b.addEventListener("click",()=>{type=b.dataset.type;document.querySelectorAll(".type-filter").forEach(x=>x.classList.toggle("active",x===b));latest()}))}).catch(console.error)})();
+(() => {
+  let articles = [], config = {}, enhancements = {};
+
+  function meta(story) {
+    return `<div class="story-meta-line">
+      <a href="${AR.categoryURL(story)}">${AR.esc(AR.category(story))}</a>
+      <time datetime="${AR.esc(AR.storyDate(story))}">${AR.esc(AR.fmtDate(AR.storyDate(story)))}</time>
+    </div>`;
+  }
+
+  function heroFor(story) {
+    const e = enhancements[story.url] || {};
+    if (!e.hero?.base) return "";
+    return AR.picture(e.hero.base, e.hero.alt || `Editorial illustration for ${story.title}`, "latest-lead-media", "eager");
+  }
+
+  function renderLatest() {
+    const host = document.querySelector("#latest-work");
+    if (!host) return;
+    const latest = articles.slice(0, 7);
+    if (!latest.length) {
+      host.innerHTML = `<p class="empty-state">The verified archive is being refreshed.</p>`;
+      return;
+    }
+    const lead = latest[0], rest = latest.slice(1);
+    const image = heroFor(lead);
+    host.innerHTML = `
+      <article class="latest-lead ${image ? "has-media" : "text-only"}">
+        <div class="latest-lead-copy">
+          ${meta(lead)}
+          <h3><a href="${AR.esc(lead.local_url)}">${AR.esc(lead.title)}</a></h3>
+          ${lead.excerpt ? `<p>${AR.esc(AR.excerpt(lead.excerpt, 260))}</p>` : ""}
+          <a class="text-link" href="${AR.esc(lead.local_url)}">Read article <span>→</span></a>
+        </div>
+        ${image}
+      </article>
+      <div class="latest-list">
+        ${rest.map(story => `<article class="latest-row">
+          <div class="latest-row-meta">${meta(story)}</div>
+          <h3><a href="${AR.esc(story.local_url)}">${AR.esc(story.title)}</a></h3>
+          <a class="row-go" aria-label="Read ${AR.esc(story.title)}" href="${AR.esc(story.local_url)}">↗</a>
+        </article>`).join("")}
+      </div>`;
+  }
+
+  function renderPinned() {
+    const wrap = document.querySelector("#notable-section");
+    const host = document.querySelector("#notable-work");
+    const pins = new Set(config.pinned_story_urls || []);
+    const pinned = articles.filter(a => pins.has(a.url)).slice(0, 4);
+    if (!wrap || !host || !pinned.length) { if (wrap) wrap.hidden = true; return; }
+    wrap.hidden = false;
+    host.innerHTML = pinned.map((story, i) => `<article class="notable-item">
+      <span class="notable-no">0${i+1}</span>
+      <div>${meta(story)}<h3><a href="${AR.esc(story.local_url)}">${AR.esc(story.title)}</a></h3></div>
+    </article>`).join("");
+  }
+
+  async function init() {
+    try {
+      ({articles, config, enhancements} = await AR.load());
+      renderLatest(); renderPinned();
+      const social = document.querySelector("#home-social");
+      if (social) social.innerHTML = AR.socialLinks(config, true);
+    } catch (e) {
+      console.error(e);
+      document.querySelector("#latest-work").innerHTML = `<p class="empty-state">The archive could not be loaded.</p>`;
+    }
+  }
+  init();
+})();

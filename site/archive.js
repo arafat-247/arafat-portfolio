@@ -1,1 +1,86 @@
-(()=>{const PER=15;let all=[],page=1,type="All",topic="";const q=()=>search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);function score(a,ts){if(!ts.length)return 1;const title=(a.title||"").toLowerCase(),ex=(a.excerpt||"").toLowerCase(),tp=AR.topic(a).toLowerCase(),cat=AR.category(a).toLowerCase(),date=(a.date||"").toLowerCase();return ts.reduce((s,t)=>s+(title.includes(t)?8:0)+(tp.includes(t)?5:0)+(cat.includes(t)?4:0)+(ex.includes(t)?2:0)+(date.includes(t)?1:0),0)}function filtered(){const ts=q();return all.filter(a=>type==="All"||AR.category(a)===type).filter(a=>!topic||AR.topic(a)===topic).map(a=>({a,s:score(a,ts)})).filter(x=>!ts.length||x.s>0).sort((x,y)=>ts.length?y.s-x.s||String(y.a.date).localeCompare(String(x.a.date)):String(y.a.date).localeCompare(String(x.a.date))).map(x=>x.a)}function topics(){const vals=[...new Set(all.map(AR.topic))].sort();topicSelect.innerHTML='<option value="">All topics</option>'+vals.map(t=>`<option value="${AR.esc(t)}">${AR.esc(t)}</option>`).join("");if(topic)topicSelect.value=topic}function renderPages(n){if(n<=1){pagination.innerHTML="";return}let h=`<button data-p="${page-1}" ${page===1?"disabled":""}>←</button>`,s=Math.max(1,page-2),e=Math.min(n,page+2);if(s>1)h+=`<button data-p="1">1</button>${s>2?"<span>…</span>":""}`;for(let p=s;p<=e;p++)h+=`<button data-p="${p}" class="${p===page?"active":""}">${p}</button>`;if(e<n)h+=`${e<n-1?"<span>…</span>":""}<button data-p="${n}">${n}</button>`;h+=`<button data-p="${page+1}" ${page===n?"disabled":""}>→</button>`;pagination.innerHTML=h;pagination.querySelectorAll("button[data-p]").forEach(b=>b.addEventListener("click",()=>{const p=+b.dataset.p;if(p<1||p>n)return;page=p;render();window.scrollTo({top:results.offsetTop-90,behavior:"smooth"})}))}function render(){const list=filtered(),pages=Math.max(1,Math.ceil(list.length/PER));page=Math.min(page,pages);const start=(page-1)*PER,vis=list.slice(start,start+PER);count.textContent=`${list.length} verified ${list.length===1?"story":"stories"}`;clear.hidden=type==="All"&&!topic&&!q().length;empty.hidden=list.length!==0;grid.innerHTML=vis.map((a,i)=>`<a class="archive-row" href="${AR.esc(a.local_url)}"><div class="archive-row-index">${String(start+i+1).padStart(2,"0")}</div><div class="archive-row-art">${AR.coverSVG(a,true)}</div><div class="archive-row-copy"><div class="card-meta"><span>${AR.esc(AR.category(a))}</span><span>${AR.esc(AR.topic(a))}</span><time>${AR.esc(AR.fmtDate(a.date))}</time></div><h2>${AR.esc(a.title)}</h2>${a.excerpt?`<p>${AR.esc(AR.excerpt(a.excerpt,155))}</p>`:""}</div><span class="row-arrow">↗</span></a>`).join("");renderPages(list.length?Math.ceil(list.length/PER):0)}function url(){const u=new URL(location.href);type==="All"?u.searchParams.delete("type"):u.searchParams.set("type",type);topic?u.searchParams.set("topic",topic):u.searchParams.delete("topic");search.value.trim()?u.searchParams.set("q",search.value.trim()):u.searchParams.delete("q");history.replaceState(null,"",u)}const search=document.querySelector("#archive-search"),topicSelect=document.querySelector("#topic-select"),grid=document.querySelector("#archive-grid"),count=document.querySelector("#result-count"),clear=document.querySelector("#clear-all"),empty=document.querySelector("#archive-empty"),pagination=document.querySelector("#pagination"),results=document.querySelector(".archive-results");AR.load().then(x=>{all=x.articles;const p=new URLSearchParams(location.search);type=p.get("type")||"All";topic=p.get("topic")||"";search.value=p.get("q")||"";topics();document.querySelectorAll(".archive-type").forEach(b=>{b.classList.toggle("active",b.dataset.type===type);b.addEventListener("click",()=>{type=b.dataset.type;page=1;document.querySelectorAll(".archive-type").forEach(x=>x.classList.toggle("active",x===b));url();render()})});topicSelect.addEventListener("change",e=>{topic=e.target.value;page=1;url();render()});search.addEventListener("input",()=>{page=1;url();render()});clear.addEventListener("click",()=>{type="All";topic="";search.value="";topicSelect.value="";page=1;document.querySelectorAll(".archive-type").forEach(b=>b.classList.toggle("active",b.dataset.type==="All"));url();render()});window.addEventListener("keydown",e=>{if(e.key==="/"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();search.focus()}});render()}).catch(console.error)})();
+(() => {
+  const PER_PAGE = 20;
+  let articles = [], page = 1, activeType = "All", activeTopic = "", activeYear = "", order = "new";
+
+  const input = () => document.querySelector("#archive-search");
+  const terms = () => input().value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+
+  function score(story, q) {
+    if (!q.length) return 1;
+    const fields = {
+      title: String(story.title || "").toLowerCase(),
+      excerpt: String(story.excerpt || "").toLowerCase(),
+      topic: String(AR.topic(story)).toLowerCase(),
+      type: String(AR.category(story)).toLowerCase(),
+      date: String(AR.storyDate(story)).toLowerCase()
+    };
+    return q.reduce((sum,t) => sum + (fields.title.includes(t)?10:0) + (fields.topic.includes(t)?6:0) + (fields.type.includes(t)?5:0) + (fields.excerpt.includes(t)?2:0) + (fields.date.includes(t)?1:0), 0);
+  }
+
+  function filtered() {
+    const q = terms();
+    const list = articles.filter(a => activeType === "All" || AR.category(a) === activeType)
+      .filter(a => !activeTopic || AR.topic(a) === activeTopic)
+      .filter(a => !activeYear || String(AR.storyDate(a)).startsWith(activeYear))
+      .map(a => ({a, score:score(a,q)})).filter(x => !q.length || x.score > 0);
+    list.sort((x,y) => q.length ? (y.score - x.score || Number(y.a.published_sort||0)-Number(x.a.published_sort||0)) : (order === "new" ? Number(y.a.published_sort||0)-Number(x.a.published_sort||0) : Number(x.a.published_sort||0)-Number(y.a.published_sort||0)));
+    return list.map(x=>x.a);
+  }
+
+  function meta(story) {
+    return `<div class="story-meta-line"><a href="?type=${encodeURIComponent(AR.category(story))}">${AR.esc(AR.category(story))}</a><a href="?topic=${encodeURIComponent(AR.topic(story))}">${AR.esc(AR.topic(story))}</a><time>${AR.esc(AR.fmtDate(AR.storyDate(story)))}</time></div>`;
+  }
+
+  function render() {
+    const list = filtered(), pages = Math.max(1, Math.ceil(list.length/PER_PAGE)); page = Math.min(page,pages);
+    const start = (page-1)*PER_PAGE, visible = list.slice(start,start+PER_PAGE);
+    document.querySelector("#result-count").textContent = `${list.length} ${list.length===1?"article":"articles"}`;
+    document.querySelector("#archive-results").innerHTML = visible.map((story,i)=>`<article class="archive-item">
+      <span class="archive-index">${String(start+i+1).padStart(2,"0")}</span>
+      <div class="archive-copy">${meta(story)}<h2><a href="${AR.esc(story.local_url)}">${AR.esc(story.title)}</a></h2>${story.excerpt?`<p>${AR.esc(AR.excerpt(story.excerpt,175))}</p>`:""}</div>
+      <a class="archive-arrow" href="${AR.esc(story.local_url)}" aria-label="Read ${AR.esc(story.title)}">↗</a>
+    </article>`).join("");
+    document.querySelector("#archive-empty").hidden = !!list.length;
+    renderPagination(pages); updateURL();
+  }
+
+  function renderPagination(pages) {
+    const host = document.querySelector("#pagination");
+    if (pages <= 1) { host.innerHTML = ""; return; }
+    const nums = new Set([1,pages,page-1,page,page+1].filter(n=>n>=1&&n<=pages));
+    let last=0, html=`<button ${page===1?"disabled":""} data-page="${page-1}">←</button>`;
+    [...nums].sort((a,b)=>a-b).forEach(n=>{ if(last && n-last>1) html += `<span>…</span>`; html += `<button class="${n===page?"active":""}" data-page="${n}">${n}</button>`; last=n; });
+    html += `<button ${page===pages?"disabled":""} data-page="${page+1}">→</button>`;
+    host.innerHTML=html;
+    host.querySelectorAll("button[data-page]").forEach(b=>b.addEventListener("click",()=>{const n=Number(b.dataset.page); if(n<1||n>pages)return; page=n; render(); scrollTo({top:document.querySelector(".archive-controls").offsetTop-90, behavior:"smooth"});}));
+  }
+
+  function populateFilters() {
+    const topics=[...new Set(articles.map(AR.topic))].sort();
+    const years=[...new Set(articles.map(a=>String(AR.storyDate(a)).slice(0,4)).filter(Boolean))].sort().reverse();
+    document.querySelector("#topic-filter").innerHTML=`<option value="">All topics</option>`+topics.map(t=>`<option value="${AR.esc(t)}">${AR.esc(t)}</option>`).join("");
+    document.querySelector("#year-filter").innerHTML=`<option value="">All years</option>`+years.map(y=>`<option value="${y}">${y}</option>`).join("");
+  }
+
+  function readURL() {
+    const u=new URL(location.href); activeType=u.searchParams.get("type")||"All"; activeTopic=u.searchParams.get("topic")||""; activeYear=u.searchParams.get("year")||""; order=u.searchParams.get("order")==="old"?"old":"new"; input().value=u.searchParams.get("q")||"";
+  }
+  function updateURL() {
+    const u=new URL(location.href); const q=input().value.trim();
+    activeType==="All"?u.searchParams.delete("type"):u.searchParams.set("type",activeType);
+    activeTopic?u.searchParams.set("topic",activeTopic):u.searchParams.delete("topic"); activeYear?u.searchParams.set("year",activeYear):u.searchParams.delete("year"); order==="old"?u.searchParams.set("order","old"):u.searchParams.delete("order"); q?u.searchParams.set("q",q):u.searchParams.delete("q"); history.replaceState(null,"",u);
+  }
+
+  async function init(){
+    ({articles}=await AR.load()); readURL(); populateFilters();
+    document.querySelector("#topic-filter").value=activeTopic; document.querySelector("#year-filter").value=activeYear; document.querySelector("#sort-filter").value=order;
+    document.querySelectorAll("[data-type]").forEach(b=>{b.classList.toggle("active",b.dataset.type===activeType); b.addEventListener("click",()=>{activeType=b.dataset.type; page=1; document.querySelectorAll("[data-type]").forEach(x=>x.classList.toggle("active",x===b)); render();});});
+    input().addEventListener("input",()=>{page=1;render();});
+    document.querySelector("#topic-filter").addEventListener("change",e=>{activeTopic=e.target.value;page=1;render();});
+    document.querySelector("#year-filter").addEventListener("change",e=>{activeYear=e.target.value;page=1;render();});
+    document.querySelector("#sort-filter").addEventListener("change",e=>{order=e.target.value;page=1;render();});
+    addEventListener("keydown",e=>{if(e.key==="/"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();input().focus();}});
+    render();
+  }
+  init().catch(console.error);
+})();
