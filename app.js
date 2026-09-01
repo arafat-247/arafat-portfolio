@@ -1,148 +1,139 @@
 (() => {
-  const grid = document.querySelector("#story-grid");
-  const featuredSlot = document.querySelector("#featured");
-  const filters = document.querySelector("#filters");
-  const searchInput = document.querySelector("#search-input");
-  const emptyState = document.querySelector("#empty-state");
+  const latestSlot = document.querySelector("#latest-story");
+  const focusGrid = document.querySelector("#focus-grid");
+  const leadSlot = document.querySelector("#lead-story");
+  const selectedGrid = document.querySelector("#selected-grid");
 
-  let articles = [];
-  let activeSection = "All";
-
-  const esc = (value = "") => String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
+  const esc = (v = "") => String(v)
+    .replaceAll("&", "&amp;").replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;").replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-  const prettyDate = (dateString) => {
-    if (!dateString) return "";
-    const d = new Date(dateString + (dateString.length === 10 ? "T00:00:00Z" : ""));
-    if (Number.isNaN(d.getTime())) return dateString;
+  const storyHref = a => a.local_url || a.url || "#";
+  const externalAttrs = a => a.local_url ? "" : ' target="_blank" rel="noopener"';
+
+  const fmtDate = value => {
+    if (!value) return "";
+    const d = new Date(value + (value.length === 10 ? "T00:00:00Z" : ""));
+    if (Number.isNaN(d.getTime())) return "";
     return new Intl.DateTimeFormat("en-GB", {
       day: "numeric", month: "short", year: "numeric", timeZone: "UTC"
     }).format(d);
   };
 
-  const monthYear = (dateString) => {
-    if (!dateString) return "—";
-    const d = new Date(dateString + (dateString.length === 10 ? "T00:00:00Z" : ""));
+  const fmtMonthYear = value => {
+    if (!value) return "—";
+    const d = new Date(value + (value.length === 10 ? "T00:00:00Z" : ""));
     if (Number.isNaN(d.getTime())) return "—";
     return new Intl.DateTimeFormat("en-GB", {
       month: "short", year: "numeric", timeZone: "UTC"
     }).format(d);
   };
 
-  function storyLink(article) {
-    const href = article.local_url || article.url || "#";
-    const external = !article.local_url;
-    return {
-      href,
-      attrs: external ? ' target="_blank" rel="noopener"' : ""
-    };
-  }
-
-  function renderFilters() {
-    const sections = ["All", ...new Set(articles.map(a => a.section || "Other"))];
-    filters.innerHTML = sections.map(section =>
-      `<button type="button" class="filter-btn ${section === activeSection ? "active" : ""}" data-section="${esc(section)}">${esc(section)}</button>`
-    ).join("");
-
-    filters.querySelectorAll("button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        activeSection = btn.dataset.section;
-        renderFilters();
-        renderStories();
-      });
-    });
-  }
-
-  function matches(article) {
-    const q = searchInput.value.trim().toLowerCase();
-    const sectionOk = activeSection === "All" || (article.section || "Other") === activeSection;
-    if (!sectionOk) return false;
-    if (!q) return true;
-    return [article.title, article.excerpt, article.section, ...(article.authors || [])]
-      .some(v => String(v || "").toLowerCase().includes(q));
-  }
-
-  function renderFeatured(article) {
-    if (!article) {
-      featuredSlot.innerHTML = "";
-      return;
-    }
-    const link = storyLink(article);
-    featuredSlot.innerHTML = `
-      <a class="featured-card" href="${esc(link.href)}"${link.attrs}>
-        <div class="featured-number">01</div>
-        <div>
-          <div class="story-meta">
-            <span>${esc(article.section || "Reporting")}</span>
-            ${article.date ? `<span>•</span><time>${esc(prettyDate(article.date))}</time>` : ""}
-          </div>
-          <h3>${esc(article.title)}</h3>
-          ${article.excerpt ? `<p>${esc(article.excerpt)}</p>` : ""}
-        </div>
-        <div class="read-arrow" aria-hidden="true">→</div>
+  function latestStory(a) {
+    if (!a) return;
+    latestSlot.innerHTML = `
+      <a class="latest-link" href="${esc(storyHref(a))}"${externalAttrs(a)}>
+        <div class="latest-meta"><span>${esc(a.section || "Reporting")}</span>${a.date ? `<span>·</span><time>${esc(fmtDate(a.date))}</time>` : ""}</div>
+        <h2>${esc(a.title)}</h2>
+        ${a.excerpt ? `<p>${esc(a.excerpt)}</p>` : ""}
+        <span class="latest-read">Read story <strong>→</strong></span>
       </a>`;
   }
 
-  function renderStories() {
-    const visible = articles.filter(matches);
-    const featured = activeSection === "All" && !searchInput.value.trim() ? visible[0] : null;
-    renderFeatured(featured);
+  function focusCards(articles) {
+    const counts = new Map();
+    articles.forEach(a => {
+      const section = a.section || "Other";
+      counts.set(section, (counts.get(section) || 0) + 1);
+    });
 
-    const rest = featured ? visible.slice(1) : visible;
-    grid.innerHTML = rest.map((article) => {
-      const link = storyLink(article);
-      return `
-        <a class="story-card" href="${esc(link.href)}"${link.attrs}>
-          <div class="story-meta">
-            <span>${esc(article.section || "Reporting")}</span>
-            ${article.date ? `<span>•</span><time>${esc(prettyDate(article.date))}</time>` : ""}
-          </div>
-          <h3>${esc(article.title)}</h3>
-          ${article.excerpt ? `<p>${esc(article.excerpt)}</p>` : ""}
-          <div class="card-footer">
-            <span>${article.local_url ? "Read story" : "Original story"}</span>
-            <span class="arrow" aria-hidden="true">↗</span>
-          </div>
-        </a>
-      `;
-    }).join("");
+    const top = [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 4);
 
-    emptyState.hidden = visible.length !== 0;
+    focusGrid.innerHTML = top.map(([section, count], i) => `
+      <a class="focus-card" href="archive.html?section=${encodeURIComponent(section)}">
+        <span class="focus-number">0${i + 1}</span>
+        <div>
+          <h3>${esc(section)}</h3>
+          <p>${count} ${count === 1 ? "story" : "stories"} in the archive</p>
+        </div>
+        <span class="focus-arrow">↗</span>
+      </a>
+    `).join("");
+  }
+
+  function selectedWork(articles) {
+    const lead = articles[0];
+    const selected = articles.slice(1, 5);
+
+    if (lead) {
+      leadSlot.innerHTML = `
+        <a class="front-lead" href="${esc(storyHref(lead))}"${externalAttrs(lead)}>
+          <div class="front-lead-label">
+            <span>FEATURED</span>
+            <strong>01</strong>
+          </div>
+          <div class="front-lead-copy">
+            <div class="story-meta">
+              <span>${esc(lead.section || "Reporting")}</span>
+              ${lead.date ? `<span>•</span><time>${esc(fmtDate(lead.date))}</time>` : ""}
+            </div>
+            <h3>${esc(lead.title)}</h3>
+            ${lead.excerpt ? `<p>${esc(lead.excerpt)}</p>` : ""}
+          </div>
+          <span class="front-lead-arrow">→</span>
+        </a>`;
+    }
+
+    selectedGrid.innerHTML = selected.map((a, idx) => `
+      <a class="selected-card" href="${esc(storyHref(a))}"${externalAttrs(a)}>
+        <div class="selected-card-top">
+          <span class="card-index">0${idx + 2}</span>
+          <span class="selected-arrow">↗</span>
+        </div>
+        <div class="story-meta">
+          <span>${esc(a.section || "Reporting")}</span>
+          ${a.date ? `<span>•</span><time>${esc(fmtDate(a.date))}</time>` : ""}
+        </div>
+        <h3>${esc(a.title)}</h3>
+        ${a.excerpt ? `<p>${esc(a.excerpt)}</p>` : ""}
+      </a>
+    `).join("");
+  }
+
+  function stats(articles) {
+    const sections = new Set(articles.map(a => a.section || "Other"));
+    const dated = articles.filter(a => /^\d{4}-\d{2}-\d{2}$/.test(a.date || ""));
+    const newest = dated[0]?.date || "";
+    const oldest = dated[dated.length - 1]?.date || "";
+    const newYear = newest ? newest.slice(0, 4) : "";
+    const oldYear = oldest ? oldest.slice(0, 4) : "";
+
+    document.querySelector("#stat-count").textContent = articles.length;
+    document.querySelector("#stat-sections").textContent = sections.size;
+    document.querySelector("#stat-range").textContent =
+      oldYear && newYear ? (oldYear === newYear ? newYear : `${oldYear}–${newYear}`) : "Growing";
+
+    document.querySelector("#archive-description").textContent =
+      `Search ${articles.length} indexed stories by headline or coverage area, then open each story inside the portfolio.`;
   }
 
   async function init() {
     try {
-      const response = await fetch("data/articles.json", { cache: "no-store" });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const payload = await response.json();
-      articles = Array.isArray(payload.articles) ? payload.articles : [];
+      const r = await fetch("data/articles.json", { cache: "no-store" });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const payload = await r.json();
+      const articles = Array.isArray(payload.articles) ? payload.articles : [];
       articles.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
 
-      const sections = new Set(articles.map(a => a.section || "Other"));
-      document.querySelector("#stat-count").textContent = articles.length;
-      document.querySelector("#stat-sections").textContent = sections.size;
-      document.querySelector("#stat-latest").textContent =
-        articles.length ? monthYear(articles[0].date) : "—";
-
-      if (payload.updated_at) {
-        const updated = new Date(payload.updated_at);
-        if (!Number.isNaN(updated.getTime())) {
-          document.querySelector("#last-updated").textContent =
-            "UPDATED " + new Intl.DateTimeFormat("en-GB", {
-              day:"numeric", month:"short", year:"numeric", timeZone:"UTC"
-            }).format(updated).toUpperCase();
-        }
-      }
-
-      renderFilters();
-      renderStories();
-      searchInput.addEventListener("input", renderStories);
+      latestStory(articles[0]);
+      focusCards(articles);
+      selectedWork(articles);
+      stats(articles);
     } catch (err) {
-      grid.innerHTML = `<p class="empty-state">The archive could not be loaded. Please use the Daily Star author-page link above.</p>`;
+      latestSlot.innerHTML = `<p class="loading-copy">The latest story could not be loaded. <a href="archive.html">Open the archive →</a></p>`;
       console.error(err);
     }
   }

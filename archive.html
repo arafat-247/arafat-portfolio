@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Searchable reporting archive of Arafat Rahaman.">
+  <meta name="theme-color" content="#f2efe7">
+  <title>Reporting Archive — Arafat Rahaman</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="archive-page">
+  <a class="skip-link" href="#archive-grid">Skip to stories</a>
+
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html" aria-label="Arafat Rahaman home">
+        <span class="brand-mark">AR</span>
+        <span class="brand-text">Arafat Rahaman</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="index.html#work">Selected work</a>
+        <a class="active-nav" href="archive.html">Archive</a>
+        <a href="index.html#about">About</a>
+        <a class="nav-source" href="https://www.thedailystar.net/author/arafat-rahaman" target="_blank" rel="noopener">Daily Star ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="archive-hero wrap">
+      <div>
+        <p class="eyebrow">COMPLETE REPORTING ARCHIVE</p>
+        <h1>Find the story<br>you’re looking for.</h1>
+      </div>
+      <div class="archive-hero-copy">
+        <p>Search headlines and descriptions, filter by coverage area, and browse the reporting chronologically.</p>
+        <div class="archive-meta">
+          <span><strong id="archive-total">—</strong> stories</span>
+          <span><strong id="archive-range">—</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="archive-tools-wrap">
+      <div class="wrap archive-tools">
+        <label class="archive-search">
+          <span class="sr-only">Search archive</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.1-5.4a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+          <input id="archive-search" type="search" placeholder="Search reporting">
+        </label>
+        <div id="archive-filters" class="archive-filters" aria-label="Filter by section"></div>
+      </div>
+    </section>
+
+    <section class="archive-results wrap">
+      <div class="results-bar">
+        <p id="results-count">Loading stories…</p>
+        <button id="clear-filters" class="clear-filter" type="button" hidden>Clear filters</button>
+      </div>
+
+      <div id="archive-grid" class="archive-grid" aria-live="polite"></div>
+      <p id="archive-empty" class="archive-empty" hidden>No stories match those filters.</p>
+      <nav id="pagination" class="pagination" aria-label="Archive pages"></nav>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="brand footer-brand"><span class="brand-mark">AR</span><span class="brand-text">Arafat Rahaman</span></div>
+      <p>Reporting portfolio · Original publication remains the source of record.</p>
+      <a href="index.html">Home ↑</a>
+    </div>
+  </footer>
+
+  <script src="archive.js" defer></script>
+</body>
+</html>
