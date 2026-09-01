@@ -1,0 +1,34 @@
+ARAFAT PORTFOLIO V8 — FULL REBUILD
+
+V8 replaces the V7 homepage and fixes the data architecture.
+
+VISIBLE CHANGES
+- Completely new warm/light homepage, designed as a personal professional portfolio.
+- Portrait integrated into the hero; no A/R square logo.
+- Latest Work is a five-story editorial composition, not a newspaper-style headline stream.
+- Designed contact/profile tiles.
+- Designed Send a News Tip block.
+- New header and footer.
+- Light mode is the default; dark mode is optional.
+- About, Contact, Archive, Photography and 404 use the new visual system.
+
+STORY CHANGES
+- Full original byline is retained, including co-authors.
+- Published date has author-page fallback when article metadata is absent.
+- Generic Public Affairs label is hidden on story pages.
+- Every story receives a contextual editorial SVG based on its subject if no hand-curated illustration exists.
+- Hand-curated images in story_enhancements.json still override automatic illustrations.
+- Story body begins immediately after the visual; no empty rail before the article.
+- Designed sidebar blocks, sticky sharing, print/PDF, related stories, previous/next.
+- Interactive HTML tables retain search, sorting and CSV download.
+
+PERFORMANCE / ARCHIVE
+- Home, Archive and related-story logic load lightweight data/archive-index.json.
+- Full articles.json remains build data but is no longer downloaded by normal browsing.
+- Strict newest-to-oldest sorting uses real publication timestamps.
+- Deployment fails if a story is missing a publication date.
+
+UPLOAD
+Use the site-only package for site/.
+Use the backend-only package for .github/workflows/, scripts/ and requirements.txt.
+Do not upload articles.json or archive-index.json manually; GitHub Actions creates them.
