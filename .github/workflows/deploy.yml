@@ -58,6 +58,10 @@ jobs:
           if external_cards:
               raise SystemExit(f"Stories missing local URLs: {external_cards[:5]}")
 
+          bad_types = [a.get("title","") for a in articles if a.get("story_type") not in {"Reporting", "Opinion / Analysis"}]
+          if bad_types:
+              raise SystemExit(f"Stories missing simplified type: {bad_types[:5]}")
+
           missing = []
           for a in articles:
               page = Path("site") / a["local_url"] / "index.html"
