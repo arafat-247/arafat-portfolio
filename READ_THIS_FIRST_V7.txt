@@ -1,0 +1,135 @@
+ARAFAT RAHAMAN PORTFOLIO — V7
+
+V7 is a clean redesign. It is not a V6 visual patch.
+
+MAIN NAVIGATION
+Home · Archive · Photography · About · Contact
+There is no CV page and no Investigations page.
+
+WHAT V7 CHANGES
+- Designed responsive masthead and HTML footer.
+- Homepage uses Arafat Rahaman's portrait rather than generic AR artwork.
+- Homepage is personal/portfolio-led rather than newspaper-style.
+- Latest work is strictly ordered by datePublished, newest to older.
+- Every visible article card shows publication date.
+- Only two main article types: Reporting and Opinion / Analysis.
+- Article type and topic labels are clickable.
+- Story pages have compact openings with no generic hero placeholder and no large dead space.
+- A story-specific hero appears ONLY when a custom image is configured.
+- Story-specific illustrations can be added without using The Daily Star's original image.
+- Sidebar uses designed Source, Share, Explore, and optional Evidence & Context blocks.
+- Sticky desktop sidebar and mobile share bar.
+- Print / Save PDF on every story.
+- Pull quotes and data modules are inserted INSIDE the article only when configured.
+- Existing story tables automatically become searchable/sortable interactive tables with CSV download.
+- Curated chart, table, timeline, map, explainer and pull-quote modules are supported.
+- Previous/newer story navigation and topic-based related stories.
+- Reading-progress bar only for long stories.
+- About page uses a professional portrait and professional bio/recognition.
+- Contact page includes a professional contact block and Send a News Tip block.
+- Photography page is ready for curated work and links to the public Flickr archive.
+- Email: arafat.mcj@yahoo.com
+- Social/profile links: The Daily Star, Muck Rack, LinkedIn, Facebook, Instagram, Flickr.
+- Optional dark mode with system preference and manual toggle.
+- SEO: canonical URLs, descriptions, Open Graph, Person/Article JSON-LD, sitemap.xml, robots.txt.
+- RSS feed generated automatically.
+- Designed 404 page.
+- Privacy-friendly analytics hook. It is disabled until a GoatCounter site code is supplied.
+- AVIF/WebP portrait assets and automatic optimisation support for future story art / photographs.
+- Accessibility: skip links, keyboard controls, visible focus, semantic labels, contrast, reduced-motion support.
+- Performance budget is checked before deployment.
+- Search-friendly story URLs, with redirects from the old V5/V6 ID-based story URLs.
+- Clear Daily Star source attribution and local pages remain noindex with the original Daily Star story as canonical.
+
+IMPORTANT — DO NOT UPLOAD articles.json
+V7 does NOT include site/data/articles.json.
+The GitHub Action rebuilds it from verified Daily Star stories during deployment.
+
+UPLOAD THESE FRONTEND FILES/FOLDERS INTO site/
+site/index.html
+site/archive.html
+site/photography.html
+site/about.html
+site/contact.html
+site/404.html
+site/common.js
+site/app.js
+site/archive.js
+site/story.js
+site/photography.js
+site/styles.css
+site/.nojekyll
+site/assets/
+site/data/site_config.json
+site/data/story_enhancements.json
+site/data/photography.json
+
+UPLOAD THESE BACKEND FILES TO THEIR EXACT PATHS
+requirements.txt
+scripts/update_articles.py
+scripts/build_static.py
+scripts/optimise_images.py
+scripts/check_budget.py
+.github/workflows/deploy.yml
+
+OLD V6 FILES
+You may delete site/cv.html, site/investigations.html, site/visuals.js,
+site/data/story_visuals.json, site/assets/header-editorial.svg and
+site/assets/footer-editorial.svg. The V7 build also removes them from the
+published artifact automatically if they remain in the repository.
+
+STORY-SPECIFIC IMAGE WORKFLOW
+V7 deliberately does NOT show a generic AR image when no story artwork exists.
+For a custom editorial illustration:
+1. Create an illustration based on the actual article.
+2. Put the JPG/PNG source in site/assets/story-covers-src/ — for example:
+   site/assets/story-covers-src/republic-strings.jpg
+3. In site/data/story_enhancements.json add the exact Daily Star source URL:
+
+"https://www.thedailystar.net/...": {
+  "hero": {
+    "base": "assets/story-covers/republic-strings",
+    "alt": "Editorial illustration describing the story",
+    "caption": "Original editorial illustration",
+    "credit": "Arafat Rahaman portfolio"
+  }
+}
+
+The workflow automatically creates WebP and AVIF versions.
+
+INLINE EDITORIAL MODULES
+Add an "inline" array to the same story entry. Each module uses after_paragraph.
+Supported types: pullquote, explainer, timeline, chart, table, map.
+Only add information supported by the article or a verified external source.
+
+INTERACTIVE TABLES
+Any real HTML table extracted from a Daily Star story is enhanced automatically:
+search, column sorting, responsive scrolling and CSV download.
+For data-heavy stories without an extracted table, add a verified table/chart in
+story_enhancements.json.
+
+PHOTOGRAPHY
+site/data/photography.json is intentionally empty until photographs are curated.
+Add selected photographs only when captions/credits are verified.
+
+ANALYTICS
+V7 includes an optional GoatCounter loader because GitHub Pages has no private
+server-side analytics of its own. To activate it, create a GoatCounter site and
+put only the site code in site/data/site_config.json:
+
+"analytics": {
+  "provider": "goatcounter",
+  "site_code": "YOUR_CODE"
+}
+
+Leave site_code empty to load no analytics script at all.
+
+CUSTOM DOMAIN LATER
+Change site_url in site/data/site_config.json. The deployment build rewrites
+canonical/static URLs and regenerates sitemap.xml/robots.txt/feed.xml.
+
+DEPLOYMENT
+After all V7 files are committed, do not manually click Run workflow repeatedly.
+The push triggers the workflow automatically. V7 uses cancel-in-progress=true,
+so a newer commit replaces an older running deployment instead of building a
+long queue of stale runs.
