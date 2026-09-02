@@ -1,4 +1,41 @@
 {
-  "photos": [],
-  "note": "Add selected photographs here after curation. The Photography page links to the public Flickr archive in the meantime."
+  "photos": [
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (1).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "Rajshahi University at night.",
+      "location": "Rajshahi University, Rajshahi",
+      "wide": true
+    },
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (2).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "Rajshahi University after dark.",
+      "location": "Rajshahi University, Rajshahi"
+    },
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (3).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "Night at Rajshahi University.",
+      "location": "Rajshahi University, Rajshahi"
+    },
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (4).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "Rajshahi University after sunset.",
+      "location": "Rajshahi University, Rajshahi"
+    },
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (5).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "A night view of Rajshahi University.",
+      "location": "Rajshahi University, Rajshahi"
+    },
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (6).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "Rajshahi University by night.",
+      "location": "Rajshahi University, Rajshahi"
+    }
+  ]
 }
