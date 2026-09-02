@@ -1,0 +1,90 @@
+name: Refresh portfolio and deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Restore verified article cache
+        uses: actions/cache@v4
+        with:
+          path: .portfolio-cache
+          key: portfolio-v10-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            portfolio-v10-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Prepare static pages and images
+        run: |
+          python scripts/build_static.py
+          python scripts/optimise_images.py
+
+      - name: Build verified author archive
+        run: python scripts/update_articles.py --pages 60
+
+      - name: Verify chronology, local pages and article types
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('site/data/articles.json').read_text(encoding='utf-8'))
+          articles=data.get('articles',[])
+          if not articles: raise SystemExit('No stories in generated archive.')
+          if any(a.get('verified_author') is not True for a in articles): raise SystemExit('Unverified story in archive.')
+          if any(a.get('story_type') not in {'Reporting','Opinion / Analysis'} for a in articles): raise SystemExit('Invalid article type.')
+          if any(not a.get('date_published') or not int(a.get('published_sort') or 0) for a in articles): raise SystemExit('One or more stories are missing publication dates.')
+          stamps=[int(a.get('published_sort') or 0) for a in articles]
+          if stamps != sorted(stamps,reverse=True): raise SystemExit('Archive is not latest-to-oldest.')
+          missing=[]
+          for a in articles:
+              p=Path('site')/a['local_url']/'index.html'
+              if not p.exists(): missing.append(str(p))
+          if missing: raise SystemExit('Missing local story pages: '+', '.join(missing[:5]))
+          index=json.loads(Path('site/data/archive-index.json').read_text(encoding='utf-8'))
+          if len(index.get('articles',[])) != len(articles): raise SystemExit('Archive index count mismatch.')
+          print(f"Verified V10: {len(articles)} stories in publication-date order; lightweight archive index built; {data.get('non_author_urls_rejected',0)} unrelated candidates rejected.")
+          PY
+
+      - name: Check performance budget
+        run: python scripts/check_budget.py
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,51 @@
+ARAFAT RAHAMAN PORTFOLIO — V10
+
+V10 is a full front-end reset while retaining the verified Daily Star scraper and GitHub Pages deployment pipeline.
+
+VISIBLE SITE
+- Home: new portrait-led personal portfolio layout.
+- Work: searchable chronological archive with Reporting / Opinion & Analysis filters.
+- Photography: curated-gallery framework plus Flickr archive link.
+- About: professional profile, experience, coverage, recognition and factual portfolio numbers.
+- Contact: professional contact, profile links and Send a News Tip section.
+
+STORY PAGES
+- No forced generic hero image.
+- A story image appears only when it has been deliberately configured in site/data/story_enhancements.json.
+- Small Arafat Rahaman headshot appears with the full original byline.
+- Complete co-bylines are preserved.
+- Published date and reading time are visible.
+- Slim share/print rail on desktop; compact share bar on mobile.
+- Pull quotes, charts, timelines, tables and other modules are inserted inside the article only when curated.
+- Real tables become searchable/sortable and can be downloaded as CSV.
+- Original Daily Star attribution appears at the end.
+- Related coverage can appear at the end.
+- Newer/older story navigation has been removed.
+
+IMPORTANT UPLOAD RULES
+1. Upload/replace everything in the V10 site-only package inside your GitHub site/ folder.
+2. Upload/replace all backend files at their exact paths:
+   .github/workflows/deploy.yml
+   scripts/update_articles.py
+   scripts/build_static.py
+   scripts/optimise_images.py
+   scripts/check_budget.py
+   requirements.txt
+3. DO NOT manually upload or create:
+   site/data/articles.json
+   site/data/archive-index.json
+   site/data/story_art_queue.json
+   The workflow generates these.
+4. V10 uses ?v=10 on CSS/JS links to reduce stale-browser-cache problems during deployment.
+
+PORTRAITS
+- Home: seated black portrait supplied by Arafat Rahaman.
+- About: formal green portrait supplied by Arafat Rahaman.
+- Contact: outdoor smiling portrait supplied by Arafat Rahaman.
+- Story byline: cropped monochrome portrait supplied by Arafat Rahaman.
+
+STORY IMAGES
+V10 deliberately does not invent a generic image for every article. Add a curated story image by placing optimised files in site/assets/story-covers/ and adding the exact Daily Star URL to site/data/story_enhancements.json.
+
+PHOTOGRAPHY
+The gallery is ready but is not filled with invented images. Add curated photographs to site/assets/photography/ and entries to site/data/photography.json.
