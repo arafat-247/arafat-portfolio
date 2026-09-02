@@ -44,7 +44,7 @@
     "site_code": ""
   },
   "theme": {
-    "dark_mode": false,
-    "default": "light"
+    "default": "light",
+    "dark_mode": false
   }
 }
