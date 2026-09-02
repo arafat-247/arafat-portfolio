@@ -36,9 +36,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .portfolio-cache
-          key: portfolio-v9-${{ runner.os }}-${{ github.run_id }}
+          key: portfolio-v10-${{ runner.os }}-${{ github.run_id }}
           restore-keys: |
-            portfolio-v9-${{ runner.os }}-
+            portfolio-v10-${{ runner.os }}-
 
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
@@ -71,7 +71,7 @@ jobs:
           if missing: raise SystemExit('Missing local story pages: '+', '.join(missing[:5]))
           index=json.loads(Path('site/data/archive-index.json').read_text(encoding='utf-8'))
           if len(index.get('articles',[])) != len(articles): raise SystemExit('Archive index count mismatch.')
-          print(f"Verified V9: {len(articles)} stories in publication-date order; lightweight archive index built; {data.get('non_author_urls_rejected',0)} unrelated candidates rejected.")
+          print(f"Verified V10: {len(articles)} stories in publication-date order; lightweight archive index built; {data.get('non_author_urls_rejected',0)} unrelated candidates rejected.")
           PY
 
       - name: Check performance budget
