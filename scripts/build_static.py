@@ -17,3 +17,8 @@ for name in ('header-editorial.svg','footer-editorial.svg'):
 legacy_data=SITE/'data'/'story_visuals.json'
 if legacy_data.exists(): legacy_data.unlink()
 print('Static pages prepared for',site_url)
+
+legacy_art=SITE/'assets'/'story-art'
+if legacy_art.exists():
+    import shutil
+    shutil.rmtree(legacy_art)
