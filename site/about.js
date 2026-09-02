@@ -1,0 +1,1 @@
+AR.load().then(({articles})=>{const el=document.querySelector('#portfolio-count');if(el)el.textContent=articles.length.toLocaleString('en-GB')}).catch(()=>{});
