@@ -44,7 +44,12 @@
     "site_code": ""
   },
   "theme": {
-    "default": "light",
-    "dark_mode": false
+    "default": "default",
+    "options": ["default", "light", "dark"]
+  },
+  "publishing": {
+    "repository": "arafat-247/arafat-portfolio",
+    "branch": "main",
+    "studio_path": "admin/"
   }
 }
