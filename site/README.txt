@@ -1,19 +1,17 @@
-V11.1 — JOURNAL + PUBLISHED WORK NAMING PATCH
+ARAFAT RAHAMAN — V13
 
-Upload all files in this package into the site/ folder, replacing files when GitHub asks.
+The deployable website is this site/ directory.
 
-Primary homepage destinations:
-1. Work — all journalism and writing
-2. Journal — personal writing, essays and independent pieces
-3. Published Work — journalism published by media outlets
-4. Photography — visual work
-
-New pages:
-- journal.html
+Public pages:
+- index.html
 - published-work.html
+- journal.html
+- journal-story.html
+- photography.html
+- about.html
+- contact.html
 
-Compatibility:
-- originals.html now redirects to journal.html
-- daily-star.html now redirects to published-work.html
+Private publishing interface:
+- admin/index.html
 
-Published Work currently uses the existing verified Daily Star archive data and archive.js. The wording is intentionally publication-neutral so other media outlets can be added later without redesigning the homepage.
+The repository-root README.md contains deployment and publishing instructions.
