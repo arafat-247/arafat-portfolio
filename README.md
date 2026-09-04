@@ -1,62 +1,86 @@
-# Arafat Rahaman — reporting portfolio
+# Arafat Rahaman — V13
 
-A free, static reporting portfolio designed for GitHub Pages.
+A complete personal journalism archive and publishing site for GitHub Pages.
 
-## What is included
+## Included
 
-- Responsive one-page portfolio.
-- Search and section filters.
-- Seed archive based on Arafat Rahaman's public Daily Star author page.
-- Automatic index refresh every six hours through GitHub Actions.
-- GitHub Pages deployment workflow.
-- No database and no paid server required.
+- Distinct desktop and mobile home designs.
+- Published Work, Journal, Photography, About and Contact pages.
+- Permanent local reading pages for verified work from The Daily Star.
+- Automatic archive refresh every six hours.
+- Default, Light and Dark appearance controls.
+- Editorial display type for story headlines and a reading serif for body copy.
+- Search, topic, type, year and chronology controls.
+- Source labels, original links, RSS, sitemap, print/PDF and sharing tools.
+- A browser-based publishing studio at `/admin/` for Journal stories and photography.
+- Responsive layouts, keyboard navigation and reduced-motion support.
 
-The automated index stores only discovery metadata: headline, date, section,
-short description, optional Open Graph image URL and the original Daily Star link.
-Full stories remain on the publisher's website.
+## Deploy the complete site
 
-## Free deployment
+1. Open the `arafat-247/arafat-portfolio` repository on GitHub.
+2. Back up the current repository or create a release before replacing files.
+3. Upload everything inside this package to the repository root. Keep the supplied folder structure and allow GitHub to replace matching files.
+4. In **Settings → Pages**, set **Source** to **GitHub Actions**.
+5. Open **Actions → Refresh portfolio and deploy → Run workflow**.
+6. The workflow optimises photographs, refreshes the verified archive, checks the build and deploys the `site/` folder.
 
-1. Create a new **public** GitHub repository, for example `arafat-portfolio`.
-2. Upload the contents of this folder to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment → Source**, choose **GitHub Actions**.
-5. Open **Actions** and run `Refresh portfolio and deploy`, or push any commit.
-6. When the workflow finishes, GitHub shows the public Pages URL.
+The public site is configured for `https://arafat-247.github.io/arafat-portfolio/`.
 
-For a repository called `arafat-portfolio`, the usual project-site form is:
+## Use the private publishing studio
 
-    https://YOUR-GITHUB-USERNAME.github.io/arafat-portfolio/
+Open `https://arafat-247.github.io/arafat-portfolio/admin/`.
 
-If you later create a repository named exactly `YOUR-GITHUB-USERNAME.github.io`,
-the site can instead live at the account root.
+Create a fine-grained GitHub personal access token restricted to this repository with **Contents: Read and write** permission. Paste it into the studio when you need to publish. The token is kept only in the browser tab when the checkbox is selected; it is never committed to the repository.
+
+The studio can:
+
+- create and edit Journal stories;
+- save drafts or publish;
+- add a cover photograph;
+- upload multiple gallery photographs;
+- compress uploads to WebP;
+- update the underlying JSON through GitHub commits.
+
+Every studio commit triggers the deployment workflow. GitHub Pages updates after that workflow completes.
 
 ## Local preview
 
-From the repository root:
+Run from the repository root:
 
-    python -m http.server 8000 --directory site
+```bash
+python -m pip install -r requirements.txt
+python scripts/optimise_images.py
+python -m http.server 8000 --directory site
+```
 
-Then open:
+Then open `http://localhost:8000`. Do not open `site/index.html` directly because browsers can block JSON loading from `file://` URLs.
 
-    http://localhost:8000
+## Content locations
 
-## Refresh locally
+- `site/data/journal-index.json` — original Journal stories.
+- `site/data/photography.json` — photography gallery.
+- `site/data/articles.json` — full verified Published Work archive after refresh.
+- `site/data/archive-index.json` — lightweight catalogue generated from the archive.
+- `site/assets/uploads/` — images sent through the studio.
+- `site/assets/photography-src/` — original gallery source photographs added manually.
+- `site/data/story_enhancements.json` — optional story modules and source documents.
 
-    python -m pip install -r requirements.txt
-    python scripts/update_articles.py --limit 40
+## Archive behaviour
 
-## Files
+The archive script verifies Arafat Rahaman's byline before saving a story. It generates a permanent local reading page, preserves the source URL and publication date, and marks the copy as `noindex` with the original article as canonical. Review publication rights and newsroom policy before publicly reproducing full articles.
 
-- `site/index.html` — page structure
-- `site/styles.css` — visual design
-- `site/app.js` — archive rendering, search and filters
-- `site/data/articles.json` — portfolio data
-- `scripts/update_articles.py` — Daily Star indexer
-- `.github/workflows/deploy.yml` — automatic refresh and Pages deployment
+## Security
 
-## Important
+- Never commit a GitHub token, password or private key.
+- Use a fine-grained token limited to this repository.
+- Revoke the token if a shared device was used.
+- The `/admin/` page contains no credentials; publishing access depends on GitHub authentication.
 
-The Daily Star author page carries a notice against unauthorised commercial
-reproduction. This build therefore functions as a portfolio index and sends
-readers to the original story rather than mirroring full article text.
+## Main files
+
+- `site/index.html` and `site/styles.css` — V13 design.
+- `site/common.js` — theme, navigation and shared data handling.
+- `site/admin/` — publishing studio.
+- `scripts/update_articles.py` — verified Daily Star archive builder.
+- `scripts/optimise_images.py` — photograph optimisation.
+- `.github/workflows/deploy.yml` — refresh, checks and deployment.

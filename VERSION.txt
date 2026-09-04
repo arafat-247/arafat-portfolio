@@ -1,0 +1,8 @@
+ARAFAT RAHAMAN PORTFOLIO
+Version: 13.0.0
+Build date: 4 September 2026
+
+Desktop: full-screen documentary homepage with three archive pillars.
+Mobile: fixed dark personal-archive homepage with Published Work, Journal and Photography cards.
+Publishing: GitHub-backed Journal and Photography studio at /admin/.
+Archive: verified Daily Star ingestion with permanent local reading pages.
