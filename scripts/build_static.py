@@ -8,7 +8,7 @@ for p in SITE.glob('*.html'):
     text=p.read_text(encoding='utf-8').replace('__SITE_URL__',site_url)
     p.write_text(text,encoding='utf-8')
 # Legacy V6 pages should not be deployed if they remain in the repository.
-for name in ('cv.html','investigations.html','visuals.js'):
+for name in ('cv.html','investigations.html','visuals.js','home-v11.js','home-v11.css','notes.html'):
     legacy=SITE/name
     if legacy.exists(): legacy.unlink()
 for name in ('header-editorial.svg','footer-editorial.svg'):
