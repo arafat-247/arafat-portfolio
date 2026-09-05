@@ -5,7 +5,8 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: "17 */6 * * *"
+    # Hourly recent-first refresh; GitHub may start scheduled jobs a few minutes late.
+    - cron: "17 * * * *"
 
 permissions:
   contents: read
@@ -48,8 +49,8 @@ jobs:
           python scripts/build_static.py
           python scripts/optimise_images.py
 
-      - name: Build verified author archive
-        run: python scripts/update_articles.py --pages 60
+      - name: Refresh the complete author archive
+        run: python scripts/update_articles.py --pages 60 --delay 0.20
 
       - name: Verify chronology, local pages and article types
         run: |
