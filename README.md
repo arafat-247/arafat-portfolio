@@ -1,15 +1,14 @@
-# Arafat Rahaman — V13
+# Arafat Rahaman — V14
 
 A complete personal journalism archive and publishing site for GitHub Pages.
 
 ## Included
 
-- Distinct desktop and mobile home designs.
+- One responsive, playful personal homepage with an organised mobile grid.
 - Published Work, Journal, Photography, About and Contact pages.
 - Permanent local reading pages for verified work from The Daily Star.
-- Automatic archive refresh every six hours.
-- Default, Light and Dark appearance controls.
-- Editorial display type for story headlines and a reading serif for body copy.
+- Automatic recent-first archive refresh every hour.
+- Compact, colourful layouts with restrained type and spacing across every page.
 - Search, topic, type, year and chronology controls.
 - Source labels, original links, RSS, sitemap, print/PDF and sharing tools.
 - A browser-based publishing studio at `/admin/` for Journal stories and photography.
@@ -67,7 +66,7 @@ Then open `http://localhost:8000`. Do not open `site/index.html` directly becaus
 
 ## Archive behaviour
 
-The archive script verifies Arafat Rahaman's byline before saving a story. It generates a permanent local reading page, preserves the source URL and publication date, and marks the copy as `noindex` with the original article as canonical. Review publication rights and newsroom policy before publicly reproducing full articles.
+The hourly archive job scans up to 60 author pages, enough for roughly 1,000 or more listing entries, and merges the result into the verified permanent archive. Work from the last 21 days is rechecked after 45 minutes; older cached stories are rechecked after seven days. Cached stories do not incur the per-request delay, so later hourly runs remain efficient. The builder generates a permanent local reading page, preserves the source URL and publication date, and marks the copy as `noindex` with the original article as canonical. Review publication rights and newsroom policy before publicly reproducing full articles.
 
 ## Security
 
@@ -78,7 +77,7 @@ The archive script verifies Arafat Rahaman's byline before saving a story. It ge
 
 ## Main files
 
-- `site/index.html` and `site/styles.css` — V13 design.
+- `site/index.html` and `site/styles.css` — V14 design.
 - `site/common.js` — theme, navigation and shared data handling.
 - `site/admin/` — publishing studio.
 - `scripts/update_articles.py` — verified Daily Star archive builder.
