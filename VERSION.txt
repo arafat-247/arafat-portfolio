@@ -1,1 +1,1 @@
-15.0 — approved portfolio design, permanent archive and GitHub publishing studio
+15.2 — responsive redesign, complete author-card discovery and automatic permanent publishing

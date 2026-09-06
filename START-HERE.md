@@ -1,4 +1,4 @@
-# Arafat Rahaman Portfolio V15
+# Arafat Rahaman Portfolio V15.2
 
 This is the complete GitHub Pages repository package, not a CSS patch or a concept board. The approved monochrome identity panel, photographic home categories, compact mobile menu and minimal footer are carried into the public pages.
 
@@ -6,7 +6,7 @@ This is the complete GitHub Pages repository package, not a CSS patch or a conce
 
 Download a backup of your current GitHub repository. Keep it until the new version has deployed successfully. This package has a new `content/` directory: it is the permanent source of stories, photographs, settings and import history. Never replace it with an older package after you start publishing.
 
-The packaged archive contains only articles successfully fetched and checked during preparation. It is not a claim that all 950-plus stories have already been collected. The first and subsequent refreshes build the remaining archive progressively. Review the included VALIDATION.md for the exact packaged count and testing limits.
+The packaged archive is only the starting point. The first and subsequent refreshes collect every valid article listed across the configured Daily Star author pages, with no publication-review queue. The process saves its position and continues automatically until the listing is complete.
 
 ## 2. Upload the whole repository structure
 
@@ -72,23 +72,23 @@ Choose Import a link:
 
 1. Paste the article's public HTTPS address.
 2. State your contribution, such as reporting, co-reporting, interview or research.
-3. Confirm that you contributed and have permission to republish the text and image.
-4. Queue the link. A deployment run imports it into the permanent archive in **review** status.
-5. After the run completes, use Manage stories → Reload latest, then review the imported article. Check its text, date, title, category and source attribution. Set Published and save.
+3. Choose a Reporting category: Event & Roundtable Coverage, Collaborative Reporting, Interview & Research Contribution or Other Reporting Contribution.
+4. Confirm that you contributed and have permission to republish the text.
+5. Queue the link. A deployment run imports it into the permanent archive and publishes it under Reporting. Manage stories can later correct its category, title, date or visibility.
 
 A generic original byline such as Staff Correspondent is retained. Your contribution is displayed separately as “Portfolio contribution: Arafat Rahaman”. Another person's byline is not silently replaced with yours. This is especially important for collaborative and non-byline work.
 
-The importer supports common structured article metadata and article-body markup, not every website. It does not bypass paywalls, logins, blocked requests or anti-bot restrictions. Failed and incomplete imports are reported in the queue. Missing dates require review. Some websites need a source-specific parser. If necessary, use text you are authorised to republish, retaining the source and original attribution.
+The importer supports common structured article metadata and article-body markup, not every website. It does not bypass paywalls, logins, blocked requests or anti-bot restrictions. Failed and incomplete imports are reported in the status panel and are not published. Some websites need a source-specific parser. If necessary, use text you are authorised to republish, retaining the source and original attribution.
 
 ## 8. Automatic Daily Star updates and permanence
 
 - Scheduled checks are requested at minutes 17, 37 and 57 each hour. This is polling, not a push feed or guaranteed real-time service.
 - A deeper discovery scan is requested daily at 02:43 UTC. Refresh now and Deep archive scan are available in the studio.
-- Recent listings are examined first. Incremental runs also explore older listing pages, with progress saved between runs. Deep scans examine up to 120 pages, stopping on empty or repeated results. A normal run fetches up to 80 due articles; a deep run up to 120. Later runs continue the backlog. Increase these limits only after checking run time and source behaviour.
+- Recent listings are examined first. The collector reads every story card on each author-listing page and explores up to 180 pages, stopping on an empty or repeated page. A normal run saves up to 60 due articles; a deep run up to 180. Later scheduled runs continue the backlog automatically.
 - Existing successful records are retained if an article disappears, a request fails, a byline changes or extraction becomes suspiciously shorter.
-- Article bodies, source metadata, downloaded covers and progress are committed to the repository **before** deployment. They are not dependent on an Actions cache.
+- Article bodies, source metadata and progress are committed to the repository **before** deployment. They are not dependent on an Actions cache. Publisher cover images are deliberately omitted for speed and a cleaner archive.
 - Changed saved content creates a revision file; Git history also retains committed versions. The public site uses the current accepted copy.
-- Imported covers are downloaded when permitted and accessible. Failed covers are not represented as successfully saved. Inline source graphics, embeds, video and interactive elements are not mirrored; the archive primarily preserves article text, basic formatting and its cover.
+- Inline source graphics, publisher covers, embeds, video and interactive elements are not mirrored; the archive preserves article text, basic formatting, attribution and the original-source link.
 
 GitHub can delay or drop scheduled jobs during heavy load, and public-repository schedules may be disabled after inactivity. The Daily Star may also serve cached listings. Use the studio's timestamps, queue and deployment status to see what actually happened. Do not interpret a scheduled time as a guaranteed publication deadline.
 
