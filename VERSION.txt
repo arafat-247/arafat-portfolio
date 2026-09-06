@@ -1,1 +1,1 @@
-15.2 — responsive redesign, complete author-card discovery and automatic permanent publishing
+15.2.2 — restored mobile homepage identity panel, archive fix and cache-safe assets
