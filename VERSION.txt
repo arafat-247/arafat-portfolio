@@ -1,1 +1,1 @@
-15.2.2 — restored mobile homepage identity panel, archive fix and cache-safe assets
+15.2.3 — previous-style mobile identity with reliable tile, story, menu and filter touch targets
