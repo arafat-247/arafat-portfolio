@@ -1,5 +1,6 @@
 """Recent-first DS sync and approved manual links. No cache is authoritative."""
 import argparse, hashlib, json, re, time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin, urlsplit
@@ -9,13 +10,16 @@ def discover(url):
     data,typ,final=fetch(url)
     if typ not in ('text/html','application/xhtml+xml'): raise ValueError('Author page is not HTML.')
     doc=Document(data.decode('utf-8',errors='replace')); result=[]
-    scope=next((n for n in doc.nodes('article') if 'article-author' in n.attrs.get('class','').split()),None)
-    if scope is None: raise ValueError('Author listing structure changed; discovery paused instead of scanning unrelated site links.')
-    for n in scope.walk():
-        if n.tag!='a':continue
-        link=canonical(urljoin(url,n.attrs.get('href','')))
-        if urlsplit(link).hostname=='www.thedailystar.net' and re.search(r'-\d{5,}/?$',urlsplit(link).path):
-            if link not in result: result.append(link)
+    scopes=[n for n in doc.nodes('article') if 'article-author' in n.attrs.get('class','').split()]
+    if not scopes: raise ValueError('Author listing structure changed; discovery paused instead of scanning unrelated site links.')
+    # Every story card is a separate article-author block. V15 accidentally
+    # walked only the first card, which is why just one story appeared.
+    for scope in scopes:
+        for n in scope.walk():
+            if n.tag!='a':continue
+            link=canonical(urljoin(url,n.attrs.get('href','')))
+            if urlsplit(link).hostname=='www.thedailystar.net' and re.search(r'-\d{5,}/?$',urlsplit(link).path):
+                if link not in result: result.append(link)
     return result
 
 def store_article(item, old=None):
@@ -52,6 +56,13 @@ def run(args):
     # Manual links are explicit claims of contribution and republication permission.
     requests_by_url={canonical(x['url']):x for x in manual if x.get('rights_confirmed') and x.get('contribution_confirmed') and x.get('status')!='cancelled'}
     for u in requests_by_url: sources.setdefault(u,{'discovered_at':now()})
+    # Records carried over from V15 were originally discovered through the
+    # configured author listing, before that provenance flag was stored.
+    for u,status in sources.items():
+        if u not in requests_by_url and status.get('discovered_at') and urlsplit(u).hostname in ('www.thedailystar.net','thedailystar.net'):
+            status['author_listing']=True
+            if status.get('status')=='author_unverified':
+                status.pop('last_checked',None);status['status']='discovered';status['error']=''
     try:
         pages=list(range(args.pages)) if args.full else list(range(3))
         # Incremental backfill continues across runs instead of assuming 12 pages is a complete archive.
@@ -62,14 +73,20 @@ def run(args):
         previous=set()
         for page in pages:
             found=discover(AUTHOR if page==0 else AUTHOR+'?page='+str(page))
-            if not found: break
+            if not found:
+                state['listing_complete']=True
+                state['archive_cursor']=3
+                break
             unique=set(found)-previous
             if not unique and args.full:
                 errors.append('Author pagination repeated earlier results; discovery stopped. This is not proof of archive completeness.')
                 break
             previous.update(found)
             for u in found:
-                sources.setdefault(u,{'discovered_at':now()})
+                entry=sources.setdefault(u,{'discovered_at':now()})
+                entry['author_listing']=True
+                if entry.get('status')=='author_unverified':
+                    entry.pop('last_checked',None);entry['status']='discovered';entry['error']=''
                 if page<3: fresh.append(u)
             time.sleep(args.delay)
         state['last_discovery_success']=now()
@@ -85,34 +102,41 @@ def run(args):
     recent=[u for u in dict.fromkeys(fresh) if due(u)]
     queue=list(dict.fromkeys([u for u in requests_by_url if due(u)]+recent[:30]+pending+recent+[u for u in sources if due(u)]))
     saved=0
-    for u in queue[:args.limit]:
-        status=sources[u]; status['last_checked']=now(); old=read(CONTENT/'articles'/f'{identity(u)}.json')
-        request=requests_by_url.get(u)
+    selected=queue[:args.limit]
+    def extract(u):
+        status=sources[u];old=read(CONTENT/'articles'/f'{identity(u)}.json');request=requests_by_url.get(u)
         try:
             data,typ,final=fetch(u)
             if typ not in ('text/html','application/xhtml+xml'): raise ValueError('URL is not an HTML article.')
-            item=article(data.decode('utf-8',errors='replace'),u,manual=bool(request))
+            item=article(data.decode('utf-8',errors='replace'),u,manual=bool(request),author_listing=bool(status.get('author_listing')))
             item['resolved_source_url']=final
+            if not item.get('date_published'):raise ValueError('Publication date could not be extracted.')
             if request:
                 item['manual_import']=True; item['contribution']=request.get('contribution','Reporting contribution')
-                item['rights_confirmed']=True
-                item['status']=(old or {}).get('status','review')
-            else: item['status']='published' if item['date_published'] else 'review'
-            try: archive_image(item)
-            except (HTTPError,URLError,ValueError,OSError) as exc: item['image_warning']=str(exc)[:180]
-            store_article(item,old)
-            status.update(status='saved',last_success=now(),failures=0,error='',article_id=item['id'],title=item['title']); saved+=1
+                item['rights_confirmed']=True;item['stream']='reporting'
+                item['category']=request.get('category') or 'Event & Roundtable Coverage'
+            item['status']='published'
+            return item,old,None
         except (HTTPError,URLError,ValueError,OSError) as exc:
-            message=str(exc)[:260]
-            status.update(status='author_unverified' if message.startswith('Author not verified') else 'failed',error=message,failures=status.get('failures',0)+1)
-            errors.append(message)
-        write(CONTENT/'sync-state.json',state)
-        time.sleep(args.delay)
+            return None,old,str(exc)[:260]
+    for u in selected:sources[u]['last_checked']=now()
+    workers=max(1,min(int(getattr(args,'workers',3)),4))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        future_map={pool.submit(extract,u):u for u in selected}
+        for future in as_completed(future_map):
+            u=future_map[future];status=sources[u]
+            try:item,old,error=future.result()
+            except Exception as exc:item,old,error=None,None,str(exc)[:260]
+            if error:
+                status.update(status='failed',error=error,failures=status.get('failures',0)+1);errors.append(error)
+            else:
+                store_article(item,old);status.update(status='saved',last_success=now(),failures=0,error='',article_id=item['id'],title=item['title']);saved+=1
+            write(CONTENT/'sync-state.json',state)
     state.update(last_completed=now(),saved_this_run=saved,known_sources=len(sources),pending=sum(not x.get('last_success') and x.get('status')!='author_unverified' for x in sources.values()),errors=errors[:30])
     write(CONTENT/'sync-state.json',state)
     print(f'Saved {saved}; known URLs {len(sources)}; pending {state["pending"]}. Existing articles were not removed.')
     if errors: print('Warnings:', '\n'.join(errors[:5]))
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(); p.add_argument('--full',action='store_true'); p.add_argument('--pages',type=int,default=120); p.add_argument('--limit',type=int,default=80); p.add_argument('--delay',type=float,default=.65)
+    p=argparse.ArgumentParser(); p.add_argument('--full',action='store_true'); p.add_argument('--pages',type=int,default=180); p.add_argument('--limit',type=int,default=60); p.add_argument('--delay',type=float,default=.35);p.add_argument('--workers',type=int,default=4)
     run(p.parse_args())

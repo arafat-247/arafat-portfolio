@@ -13,7 +13,7 @@ SITE = ROOT / 'site'
 OUT = ROOT / 'dist'
 NAME = 'Arafat Rahaman'
 AUTHOR = 'https://www.thedailystar.net/author/arafat-rahaman'
-UA = 'ArafatPortfolio/15.0 (+https://arafat-247.github.io/arafat-portfolio/contact.html)'
+UA = 'ArafatPortfolio/15.2 (+https://arafat-247.github.io/arafat-portfolio/contact.html)'
 
 def now(): return datetime.now(timezone.utc).isoformat()
 def read(path, default=None):
@@ -135,7 +135,7 @@ def objects(value):
     elif isinstance(value,list):
         for item in value: yield from objects(item)
 
-def article(source,url,manual=False):
+def article(source,url,manual=False,author_listing=False):
     doc=Document(source); candidates=[]
     for n in doc.nodes('script'):
         if n.attrs.get('type')!='application/ld+json': continue
@@ -156,7 +156,7 @@ def article(source,url,manual=False):
         authors=[n.text() for n in doc.root.walk() if n.attrs.get('rel')=='author' or re.search(r'(^|\s)(byline|author-name)(\s|$)',n.attrs.get('class',''))]
         authors=[a for a in authors if a and len(a)<180]
     verified=any(NAME.casefold()==a.casefold() or NAME.casefold() in [x.strip().casefold() for x in re.split(r',| and | & ',a)] for a in authors)
-    if not verified and not manual: raise ValueError('Author not verified; retained in the discovery log, not published.')
+    if not verified and not manual and not author_listing: raise ValueError('Author not verified; retained in the discovery log, not published.')
     if not title: raise ValueError('Article title could not be extracted.')
     if ld.get('isAccessibleForFree') in (False,'False','false'): raise ValueError('Source marks this article as restricted. Add authorised text manually.')
     body=ld.get('articleBody','')
@@ -179,7 +179,7 @@ def article(source,url,manual=False):
         body=max(ranked,default=(0,''))[1]
     body=sanitise(body,url)
     text=Document(body).root.text()
-    if len(text)<180: raise ValueError('Too little article text found; manual review required.')
+    if len(text)<180: raise ValueError('Too little article text found; extraction rejected and logged.')
     section=clean(ld.get('articleSection') or doc.meta('article:section') or 'News')
     stream='opinion' if re.search(r'/opinion/|/views/|/analysis/|opinion|analysis',url+' '+section,re.I) else 'reporting'
     published=date(ld.get('datePublished') or doc.meta('article:published_time') or doc.meta('pubdate'))
@@ -207,4 +207,4 @@ def article(source,url,manual=False):
     if isinstance(image,dict): image=image.get('url','')
     publisher=ld.get('publisher',{})
     publisher=publisher.get('name','') if isinstance(publisher,dict) else str(publisher)
-    return {'id':identity(url),'title':title,'excerpt':clean(ld.get('description') or doc.meta('og:description') or doc.meta('description')),'source_url':canonical(url),'source_name':publisher or ('The Daily Star' if urlsplit(url).hostname in ('www.thedailystar.net','thedailystar.net') else urlsplit(url).hostname),'original_authors':authors,'verified_author':verified,'stream':stream,'category':section,'date_published':published,'date_modified':modified,'body_html':body,'source_image':urljoin(url,image) if isinstance(image,str) and image else '', 'word_count':len(text.split()),'fetched_at':now()}
+    return {'id':identity(url),'title':title,'excerpt':clean(ld.get('description') or doc.meta('og:description') or doc.meta('description')),'source_url':canonical(url),'source_name':publisher or ('The Daily Star' if urlsplit(url).hostname in ('www.thedailystar.net','thedailystar.net') else urlsplit(url).hostname),'original_authors':authors,'verified_author':verified,'author_listing_verified':author_listing,'stream':stream,'category':section,'date_published':published,'date_modified':modified,'body_html':body,'source_image':'','cover_image':'','word_count':len(text.split()),'fetched_at':now()}
