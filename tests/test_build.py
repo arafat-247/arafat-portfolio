@@ -7,6 +7,14 @@ from types import SimpleNamespace
 from urllib.error import HTTPError
 
 class BuildTests(unittest.TestCase):
+    def test_discovery_reads_every_author_card(self):
+        source=b'''<article class="article-author"><a href="/news/first-12345">One</a></article>
+        <article class="article-author featured"><a href="https://www.thedailystar.net/news/second-67890">Two</a></article>'''
+        with patch('sync.fetch',return_value=(source,'text/html','https://www.thedailystar.net/author/arafat-rahaman')):
+            self.assertEqual(sync.discover('https://www.thedailystar.net/author/arafat-rahaman'),[
+                'https://www.thedailystar.net/news/first-12345',
+                'https://www.thedailystar.net/news/second-67890'])
+
     def test_drafts_and_attribution(self):
         with tempfile.TemporaryDirectory() as tmp:
             base=Path(tmp); content=base/'content'; site=base/'site'; out=base/'dist'

@@ -15,6 +15,9 @@ class ContentTests(unittest.TestCase):
         self.assertTrue(a['verified_author']);self.assertTrue(a['date_published']);self.assertGreater(a['word_count'],50)
     def test_non_author_rejected(self):
         with self.assertRaises(ValueError):core.article(sample('Someone Else'),'https://example.com/news/story-12345')
+    def test_author_listing_accepts_original_byline(self):
+        a=core.article(sample('Staff Correspondent'),'https://example.com/news/story-12345',author_listing=True)
+        self.assertEqual(a['original_authors'],['Staff Correspondent']);self.assertTrue(a['author_listing_verified'])
     def test_manual_retains_byline(self):
         a=core.article(sample('Staff Correspondent'),'https://example.com/news/story-12345',manual=True)
         self.assertEqual(a['original_authors'],['Staff Correspondent']);self.assertFalse(a['verified_author'])
