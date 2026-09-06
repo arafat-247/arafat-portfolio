@@ -1,0 +1,73 @@
+name: Refresh portfolio and deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'site/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/deploy.yml'
+      - 'requirements.txt'
+  workflow_dispatch:
+    inputs:
+      deep_scan:
+        description: 'Scan the full author listing (remaining fetches continue next run)'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '17,37,57 * * * *'
+    - cron: '43 2 * * *'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: portfolio-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preserve older content and prepare current structure
+        run: python scripts/migrate.py
+      - name: Test content safety and archive preservation
+        run: python -m unittest discover -s tests -p 'test_*.py'
+      - name: Refresh sources when requested
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+          DEEP_SCAN: ${{ inputs.deep_scan }}
+        run: python scripts/run_refresh.py
+      - name: Build and validate before saving
+        run: |
+          python scripts/build.py
+          python scripts/validate.py
+      - name: Commit durable article bodies, photographs and sync progress
+        run: python scripts/persist.py
+      - name: Rebuild the final merged repository version
+        run: |
+          python scripts/build.py
+          python scripts/validate.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy public portfolio
+        id: deployment
+        uses: actions/deploy-pages@v4
