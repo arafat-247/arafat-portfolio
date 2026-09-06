@@ -1,1 +1,1 @@
-15.2.3 — previous-style mobile identity with reliable tile, story, menu and filter touch targets
+16.0.0 — approved responsive mobile portfolio, compact interactive drawer, theme switch and scroll motion
