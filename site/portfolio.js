@@ -53,7 +53,7 @@ updateTheme();
 
 let revealObserver;
 function observeReveals(scope=document){
- const items=[...scope.querySelectorAll('.homeprofile,.homeintro,.tile,.homecontact,.workitem,.aboutlead,.coverage,.recognition li,.contactgrid>*,.photogrid figure')];
+ const items=[...scope.querySelectorAll('.homeprofile,.homeintro,.tile,.homecontact,.workitem,.aboutlead,.aboutfacts>*,.coverage,.profiledetails>div,.membership,.recognition li,.contactgrid>*,.photogrid figure')];
  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver'in window)){items.forEach(x=>x.classList.add('in'));return}
  revealObserver||=(new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');revealObserver.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -24px'}));
  items.forEach((item,index)=>{if(item.classList.contains('reveal'))return;item.classList.add('reveal');item.style.setProperty('--reveal-delay',`${Math.min(index%4,3)*55}ms`);revealObserver.observe(item)});

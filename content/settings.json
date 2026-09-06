@@ -5,14 +5,48 @@
   "location": "Dhaka, Bangladesh",
   "site_url": "https://arafat-247.github.io/arafat-portfolio",
   "description": "Journalist at The Daily Star, reporting on education, governance, rights, social policy and public accountability.",
+  "biography": "Arafat Rahaman is a staff reporter at The Daily Star. Since 2017, he has reported on education, governance, youth, social justice and civic life from Dhaka and Rajshahi. His work combines field reporting, interviews, public records, data and visual storytelling, with a focus on how policy decisions affect people and institutions.\n\nHe has published more than 300 stories and holds bachelor's and master's degrees in Mass Communication and Journalism from the University of Rajshahi. His reporting and photography have been recognised by The Daily Star, JICA, DW Akademie and Investigative Reporters & Editors.",
   "email": "arafat.mcj@yahoo.com",
   "areas": [
     "Education",
-    "Governance",
-    "Human Rights",
-    "Social Welfare",
-    "Public Institutions"
+    "Governance and Public Institutions",
+    "Human Rights and Social Justice",
+    "Youth and Civic Movements",
+    "Investigative and Data Journalism"
   ],
+  "career": [
+    {
+      "years": "2022-present",
+      "role": "Staff Reporter",
+      "organisation": "The Daily Star",
+      "location": "Dhaka"
+    },
+    {
+      "years": "2017-2022",
+      "role": "Reporter",
+      "organisation": "The Daily Star",
+      "location": "Rajshahi"
+    }
+  ],
+  "education": [
+    {
+      "year": "2022",
+      "degree": "Master of Social Science",
+      "subject": "Mass Communication and Journalism",
+      "institution": "University of Rajshahi"
+    },
+    {
+      "year": "2020",
+      "degree": "Bachelor of Social Science",
+      "subject": "Mass Communication and Journalism",
+      "institution": "University of Rajshahi"
+    }
+  ],
+  "membership": {
+    "since": "2025",
+    "name": "Investigative Reporters & Editors",
+    "detail": "Member following selection for the AccessFest 2025 fellowship"
+  },
   "social": {
     "daily_star": "https://www.thedailystar.net/author/arafat-rahaman",
     "muck_rack": "https://muckrack.com/arafat-rahaman",
@@ -23,6 +57,11 @@
   },
   "recognition": [
     {
+      "year": "2025",
+      "title": "AccessFest Fellowship",
+      "organisation": "Investigative Reporters & Editors"
+    },
+    {
       "year": "2024",
       "title": "Youth of the Year Award",
       "organisation": "The Daily Star"
@@ -30,12 +69,17 @@
     {
       "year": "2024",
       "title": "Dhaka Road Traffic Safety Project Fellowship",
-      "organisation": "Dhaka Metropolitan Police and JICA"
+      "organisation": "JICA and Dhaka Metropolitan Police"
+    },
+    {
+      "year": "2019",
+      "title": "Media Tech Challenge Bootcamp winner",
+      "organisation": "DW Akademie"
     },
     {
       "year": "2018",
-      "title": "Best Photographer of the Year",
-      "organisation": "Photography recognition for coverage of the quota-reform movement"
+      "title": "Most Talked About Photograph",
+      "organisation": "The Daily Star"
     }
   ],
   "pinned_story_urls": [],
@@ -59,8 +103,8 @@
   "portrait": "assets/identity/asset0.webp",
   "home_images": [
     "assets/identity/asset1.webp",
-    "assets/identity/asset2.webp",
     "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (2).webp",
+    "assets/identity/asset2.webp",
     "assets/identity/asset3.webp"
   ]
 }

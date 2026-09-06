@@ -1,1 +1,1 @@
-16.0.0 — approved responsive mobile portfolio, compact interactive drawer, theme switch and scroll motion
+16.1.0 — richer About profile with career, education, reporting areas and verified recognition
