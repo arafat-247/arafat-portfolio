@@ -1,5 +1,9 @@
 (()=>{'use strict';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],root=document.body.dataset.root||'';
+if(document.body.classList.contains('home')&&!location.hash){
+ history.scrollRestoration='manual';
+ window.scrollTo(0,0);
+}
 const menu=$('#mobile-menu'),toggle=$('.menutoggle'),backdrop=$('.menubackdrop'),drawerClose=$('.drawerclose');let closeTimer;
 function openMenu(){clearTimeout(closeTimer);menu.hidden=false;backdrop.hidden=false;requestAnimationFrame(()=>{menu.classList.add('is-open');backdrop.classList.add('is-open')});toggle.setAttribute('aria-expanded','true');document.body.classList.add('menu-open');drawerClose.focus()}
 function closeMenu(refocus=false){if(!menu)return;menu.classList.remove('is-open');backdrop.classList.remove('is-open');toggle?.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open');closeTimer=setTimeout(()=>{menu.hidden=true;backdrop.hidden=true},260);if(refocus)toggle?.focus()}
