@@ -6,3 +6,15 @@
 @media(max-width:720px){.home .identity{position:relative;inset:auto;display:flex;width:100%;min-height:470px;padding:30px 22px 27px;overflow:visible;background:linear-gradient(164deg,#777a77 0 24%,var(--rail) 24% 100%)}.home .identity .portrait{width:128px;height:128px}.home .identity .social{margin:13px 0 16px}.home .identity .name{font-size:28px}.home .identity>p{margin:12px 0 15px}.home .identity nav{width:min(100%,240px);gap:1px}.home .identity nav a{padding:6px}.home .mobilehead{display:none}.home .homecontent{padding-top:24px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 @media print{.identity,.mobilehead,.mobilemenu,.menubackdrop,footer,.storyactions,.back{display:none!important}.right{margin:0}.page{padding:0}.bodycopy{max-width:none}.sourcebox{break-inside:avoid}}
+
+/* V15.2.3 touch reliability: preserve the design while making the complete
+   visual item—not only its text—a dependable tap target. */
+a,button{touch-action:manipulation}
+.tile{z-index:0;cursor:pointer;pointer-events:auto}
+.tile img,.tile:after,.tile span{pointer-events:none}
+.workitem{position:relative;cursor:pointer}
+.workcopy h2 a:after{content:"";position:absolute;inset:0;z-index:1}
+.workitem>.read{position:relative;z-index:2}
+@media(max-width:720px){
+  .mobilemenu[hidden],.menubackdrop[hidden]{display:none!important}
+}
