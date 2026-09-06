@@ -1,0 +1,2 @@
+# V15 build, importer and tests use Python 3.12+ standard library only.
+# No pip installation is required.
