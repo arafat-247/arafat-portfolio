@@ -1,0 +1,301 @@
+{
+  "sources": {
+    "https://www.thedailystar.net/news/education/news/teacher-shortages-strain-government-primary-schools-4242536": {
+      "discovered_at": "2026-09-06T04:40:01.520035+00:00"
+    },
+    "https://www.thedailystar.net/supplements/25th-oa-level-awards/news/honouring-trailblazer-4232666": {
+      "discovered_at": "2026-09-06T04:40:01.520088+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/admission-class-1-heavy-loads-tender-shoulders-4228761": {
+      "discovered_at": "2026-09-06T04:40:01.520108+00:00"
+    },
+    "https://www.thedailystar.net/sports/sports-special/fifa-world-cup-2026/news/when-calling-messi-goat-no-longer-enough-4226046": {
+      "discovered_at": "2026-09-06T04:40:01.520122+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/ugc-track-15-years-university-research-funding-4223251": {
+      "discovered_at": "2026-09-06T04:40:01.520137+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/draft-guidelines-signal-new-direction-primary-curriculum-4222576": {
+      "discovered_at": "2026-09-06T04:40:01.520149+00:00"
+    },
+    "https://www.thedailystar.net/business/bangladesh-budget-2026-27/news/education-outlay-rises-sharply-4196751": {
+      "discovered_at": "2026-09-06T04:40:01.520161+00:00"
+    },
+    "https://www.thedailystar.net/business/bangladesh-budget-2026-27/news/education-health-outlay-rise-63-4195931": {
+      "discovered_at": "2026-09-06T04:40:01.520173+00:00"
+    },
+    "https://www.thedailystar.net/star-multimedia/news/floods-earthquakes-heatwaves-4-devastating-natural-disasters-2026-4263726": {
+      "discovered_at": "2026-09-06T04:56:31.649097+00:00",
+      "last_checked": "2026-09-06T04:57:21.739605+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
+    },
+    "https://www.thedailystar.net/star-multimedia/news/25-years-transforming-lives-char-areas-ramon-magsaysay-winner-runa-khan-4263716": {
+      "discovered_at": "2026-09-06T04:56:31.649126+00:00",
+      "last_checked": "2026-09-06T04:57:37.371848+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
+    },
+    "https://www.thedailystar.net/star-multimedia/news/coxs-bazar-asian-games-fatema-and-mannan-set-represent-bangladesh-4263711": {
+      "discovered_at": "2026-09-06T04:56:31.649128+00:00",
+      "last_checked": "2026-09-06T04:57:53.274310+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
+    },
+    "https://www.thedailystar.net/news/education/news/why-girls-continue-outpace-boys-ssc-results-4265056": {
+      "discovered_at": "2026-09-06T04:56:31.649130+00:00",
+      "last_checked": "2026-09-06T04:58:08.648171+00:00",
+      "status": "saved",
+      "last_success": "2026-09-06T04:58:37.922789+00:00",
+      "failures": 0,
+      "error": "",
+      "article_id": "8150d29e3b2f46ee7b91",
+      "title": "Why girls continue to outpace boys in SSC results"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/3-public-universities-vcs-greetings-bnp-leaders-raise-ethical-questions-4264541": {
+      "discovered_at": "2026-09-06T04:56:31.649131+00:00",
+      "article_id": "5d7f4c97a6f6de5833aa",
+      "title": "3 Public Universities: VCs’ greetings to BNP leaders raise ethical questions"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/reform-missteps-behind-ssc-result-swings-experts-4254486": {
+      "discovered_at": "2026-09-06T04:56:31.649133+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/health-education-spending-reach-5-gdp-2031-4253681": {
+      "discovered_at": "2026-09-06T04:56:31.649134+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/ssc-pass-rate-hits-19-year-low-4244971": {
+      "discovered_at": "2026-09-06T04:56:31.649135+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/dakhil-pass-rate-lowest-23-years-4244851": {
+      "discovered_at": "2026-09-06T04:56:31.649136+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/government-fix-learning-standards-pry-schools-4216951": {
+      "discovered_at": "2026-09-06T04:56:31.649145+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/govt-asks-pry-schools-keep-zia-khaleda-tarique-books-4217626": {
+      "discovered_at": "2026-09-06T04:56:31.649146+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/govt-asks-pry-schools-keep-zia-khaleda-tarique-books-4216891": {
+      "discovered_at": "2026-09-06T04:56:31.649148+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/what-does-success-mean-if-it-cannot-care-mother-4188941": {
+      "discovered_at": "2026-09-06T04:56:31.649151+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/govt-plans-big-edn-execution-doubts-remain-4185701": {
+      "discovered_at": "2026-09-06T04:56:31.649152+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/when-will-these-painful-stories-end-4185576": {
+      "discovered_at": "2026-09-06T04:56:31.649154+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/rights/news/why-must-workers-wait-eid-dues-every-year-4185051": {
+      "discovered_at": "2026-09-06T04:56:31.649155+00:00"
+    },
+    "https://www.thedailystar.net/news/crime-justice/news/we-called-her-victim-she-was-child-4180431": {
+      "discovered_at": "2026-09-06T04:56:31.649157+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/dcs-seek-pms-intervention-drug-menace-4167076": {
+      "discovered_at": "2026-09-06T04:56:31.649158+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/can-playing-historic-speech-justify-repeated-bail-denials-4160571": {
+      "discovered_at": "2026-09-06T04:56:31.649159+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/when-mobile-journalism-crosses-the-line-public-shaming-4155666": {
+      "discovered_at": "2026-09-06T04:56:31.649160+00:00"
+    },
+    "https://www.thedailystar.net/news/news/the-promised-end-mob-culture-has-yet-arrive-4153706": {
+      "discovered_at": "2026-09-06T04:56:31.649161+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/the-cost-politicising-vc-appointment-4132061": {
+      "discovered_at": "2026-09-06T04:56:31.649162+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/ex-kuet-vc-accused-fund-misuse-illegal-appointments-4111061": {
+      "discovered_at": "2026-09-06T04:56:31.649164+00:00"
+    },
+    "https://www.thedailystar.net/news/national-election-2026/news/ncp-eyes-bigger-role-after-bagging-6-seats-debut-4105646": {
+      "discovered_at": "2026-09-06T04:56:47.491435+00:00"
+    },
+    "https://www.thedailystar.net/news/national-election-2026/news/yes-wins-4105586": {
+      "discovered_at": "2026-09-06T04:56:47.491437+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/limit-ssc-exams-5-core-subjects-4103416": {
+      "discovered_at": "2026-09-06T04:56:47.491438+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/public-exams-cut-five-subjects-under-proposed-secondary-reforms-4102611": {
+      "discovered_at": "2026-09-06T04:56:47.491440+00:00"
+    },
+    "https://www.thedailystar.net/campus/education/news/harassment-teachers-stalks-public-univs-4096281": {
+      "discovered_at": "2026-09-06T04:56:47.491441+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/govt-issues-draft-ordinances-broadcast-media-commissions-4093076": {
+      "discovered_at": "2026-09-06T04:56:47.491442+00:00"
+    },
+    "https://www.thedailystar.net/news/national-election-2026/news/safety-freedom-and-job-young-voters-mind-4091266": {
+      "discovered_at": "2026-09-06T04:56:47.491443+00:00"
+    },
+    "https://www.thedailystar.net/news/news/commit-equity-quality-education-4089621": {
+      "discovered_at": "2026-09-06T04:56:47.491444+00:00"
+    },
+    "https://www.thedailystar.net/news/dhaka-central-university-govt-backtracks-merger-plan-4086491": {
+      "discovered_at": "2026-09-06T04:56:47.491445+00:00"
+    },
+    "https://www.thedailystar.net/news/2-uap-teachers-terminated-amid-student-protests-4086461": {
+      "discovered_at": "2026-09-06T04:56:47.491446+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/politics/news/ncp-struggles-steady-ship-ahead-polls-4075071": {
+      "discovered_at": "2026-09-06T04:56:47.491447+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/politics/news/ncp-aims-40-seats-jamaat-4073466": {
+      "discovered_at": "2026-09-06T04:56:47.491449+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/pry-students-get-books-first-day-yr-4071201": {
+      "discovered_at": "2026-09-06T04:56:47.491451+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/ncp-becoming-what-it-once-rejected-4068136": {
+      "discovered_at": "2026-09-06T04:56:47.491452+00:00"
+    },
+    "https://www.thedailystar.net/news/news/party-new-hope-looks-old-guard-4067706": {
+      "discovered_at": "2026-09-06T04:56:47.491453+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/education-2025-year-strikes-setbacks-and-disruptions-4066821": {
+      "discovered_at": "2026-09-06T04:56:47.491454+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/dipus-ashes-dhaka-mymensingh-highway-are-gone-stain-our-souls-remains-4065561": {
+      "discovered_at": "2026-09-06T04:56:47.491456+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/selective-amnesia-price-new-bangladesh-4068486": {
+      "discovered_at": "2026-09-06T04:56:47.491457+00:00"
+    },
+    "https://www.thedailystar.net/supplements/human-rights-day-2025/news/put-rights-issues-heart-polls-pledges-4054731": {
+      "discovered_at": "2026-09-06T04:56:47.491458+00:00"
+    },
+    "https://www.thedailystar.net/supplements/human-rights-day-2025/news/only-political-will-can-break-cycle-violence-4054736": {
+      "discovered_at": "2026-09-06T04:57:04.185983+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/theres-no-neutral-observer-digital-violence-4049931": {
+      "discovered_at": "2026-09-06T04:57:04.185984+00:00"
+    },
+    "https://www.thedailystar.net/opinion/news/have-you-seen-my-babies-4049861": {
+      "discovered_at": "2026-09-06T04:57:04.185985+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/we-need-climate-solution-built-people-not-projects-4042226": {
+      "discovered_at": "2026-09-06T04:57:04.185986+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/what-price-are-we-paying-progress-4020991": {
+      "discovered_at": "2026-09-06T04:57:04.185987+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/inside-colleges-where-no-one-passed-4015931": {
+      "discovered_at": "2026-09-06T04:57:04.185989+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/politics/student-union-election/news/rucsu-too-goes-shibir-4012626": {
+      "discovered_at": "2026-09-06T04:57:04.185990+00:00"
+    },
+    "https://www.thedailystar.net/supplements/world-teachers-day-2025/news/teachers-no-schools-go-4001791": {
+      "discovered_at": "2026-09-06T04:57:04.185991+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/rucsu-chains-how-university-scripted-its-own-crisis-3994316": {
+      "discovered_at": "2026-09-06T04:57:04.185992+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/total-literacy-elusive-after-tk-4000cr-spent-3981391": {
+      "discovered_at": "2026-09-06T04:57:04.185997+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/how-weaponising-murder-cases-shielding-real-perpetrators-3976136": {
+      "discovered_at": "2026-09-06T04:57:04.185999+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/education-left-behind-3959881": {
+      "discovered_at": "2026-09-06T04:57:04.186000+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/uprising-unravelling-3951556": {
+      "discovered_at": "2026-09-06T04:57:04.186001+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/july-uprising-movement-united-campuses-and-classrooms-3950961": {
+      "discovered_at": "2026-09-06T04:57:04.186002+00:00"
+    },
+    "https://www.thedailystar.net/campus/news/student-union-election-du-ju-set-sept-polls-other-univs-lag-behind-3943756": {
+      "discovered_at": "2026-09-06T04:57:04.186003+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/ssc-pass-rate-plunges-16-year-low-3936891": {
+      "discovered_at": "2026-09-06T04:57:04.186004+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/when-did-we-stop-being-human-pursuit-headline-3930656": {
+      "discovered_at": "2026-09-06T04:57:04.186005+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/appointment-allegiance-3930021": {
+      "discovered_at": "2026-09-06T04:57:04.186006+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/technical-education-hit-teacher-shortage-falling-enrolment-3927201": {
+      "discovered_at": "2026-09-06T04:57:21.039307+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/crime-justice/news/mob-violence-now-alarmingly-routine-3924961": {
+      "discovered_at": "2026-09-06T04:57:21.039308+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/mahmuduls-arrest-message-3922811": {
+      "discovered_at": "2026-09-06T04:57:21.039309+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/are-we-hurtling-towards-mob-journalism-3917391": {
+      "discovered_at": "2026-09-06T04:57:21.039310+00:00"
+    },
+    "https://www.thedailystar.net/opinion/news/july-warriors-patients-who-refuse-be-just-patients-3916001": {
+      "discovered_at": "2026-09-06T04:57:21.039312+00:00"
+    },
+    "https://www.thedailystar.net/sports/football/news/streets-stands-football-reclaims-bangladeshi-hearts-3914241": {
+      "discovered_at": "2026-09-06T04:57:21.039313+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/recurring-script-enough-prove-pattern-3913001": {
+      "discovered_at": "2026-09-06T04:57:21.039314+00:00"
+    },
+    "https://www.thedailystar.net/opinion/news/who-world-holds-strings-republic-3911431": {
+      "discovered_at": "2026-09-06T04:57:21.039315+00:00"
+    },
+    "https://www.thedailystar.net/business/bangladesh-budget-2025-26/news/education-health-outlays-see-slight-rise-3909861": {
+      "discovered_at": "2026-09-06T04:57:21.039316+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/cowardice-plain-and-simple-3906376": {
+      "discovered_at": "2026-09-06T04:57:21.039317+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/lets-mope-3905696": {
+      "discovered_at": "2026-09-06T04:57:21.039318+00:00"
+    },
+    "https://www.thedailystar.net/opinion/views/news/when-protest-turns-mob-3899741": {
+      "discovered_at": "2026-09-06T04:57:21.039319+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/search-committee-formed-after-posts-already-filled-3898191": {
+      "discovered_at": "2026-09-06T04:57:21.039320+00:00"
+    },
+    "https://www.thedailystar.net/health/healthcare/news/place-hope-healing-cancer-patients-3897226": {
+      "discovered_at": "2026-09-06T04:57:21.039321+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/concerns-genuine-reforms-need-planning-3882571": {
+      "discovered_at": "2026-09-06T04:57:21.039322+00:00"
+    },
+    "https://www.thedailystar.net/supplements-0/news/milestone-treasure-3880931": {
+      "discovered_at": "2026-09-06T04:57:21.039323+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/pry-secondary-schools-millions-students-still-without-textbooks-3840731": {
+      "discovered_at": "2026-09-06T04:57:21.039324+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/july-uprising-al-govt-oppositions-used-children-pawns-3830786": {
+      "discovered_at": "2026-09-06T04:57:21.039325+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/mohammadpur-gunfight-follows-disturbingly-similar-script-3830041": {
+      "discovered_at": "2026-09-06T04:57:21.039329+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/are-they-even-trying-or-have-they-decided-not-act-3827296": {
+      "discovered_at": "2026-09-06T04:57:21.039330+00:00"
+    }
+  },
+  "archive_cursor": 3,
+  "last_attempt": "2026-09-06T04:56:15.119310+00:00",
+  "last_discovery_success": "2026-09-06T04:57:21.739478+00:00",
+  "last_completed": "2026-09-06T04:58:38.625747+00:00",
+  "saved_this_run": 1,
+  "known_sources": 88,
+  "pending": 84,
+  "errors": [
+    "Author not verified; retained in the discovery log, not published.",
+    "Author not verified; retained in the discovery log, not published.",
+    "Author not verified; retained in the discovery log, not published."
+  ]
+}

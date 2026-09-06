@@ -1,0 +1,53 @@
+{
+  "photos": [
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (1).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "Rajshahi University at night.",
+      "location": "Rajshahi University, Rajshahi",
+      "wide": true,
+      "id": "legacy-0",
+      "status": "published"
+    },
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (2).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "Rajshahi University after dark.",
+      "location": "Rajshahi University, Rajshahi",
+      "id": "legacy-1",
+      "status": "published"
+    },
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (3).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "Night at Rajshahi University.",
+      "location": "Rajshahi University, Rajshahi",
+      "id": "legacy-2",
+      "status": "published"
+    },
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (4).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "Rajshahi University after sunset.",
+      "location": "Rajshahi University, Rajshahi",
+      "id": "legacy-3",
+      "status": "published"
+    },
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (5).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "A night view of Rajshahi University.",
+      "location": "Rajshahi University, Rajshahi",
+      "id": "legacy-4",
+      "status": "published"
+    },
+    {
+      "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (6).webp",
+      "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
+      "caption": "Rajshahi University by night.",
+      "location": "Rajshahi University, Rajshahi",
+      "id": "legacy-5",
+      "status": "published"
+    }
+  ]
+}
