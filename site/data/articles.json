@@ -1,0 +1,77 @@
+{
+  "updated_at": "2026-09-01T00:00:00Z",
+  "articles": [
+    {
+      "title": "Teacher shortages strain government primary schools",
+      "date": "2026-08-08",
+      "section": "Education",
+      "excerpt": "Government primary schools across Bangladesh are struggling to keep lessons on track as headteacher posts remain vacant in more than half of the institutions while thousands of assistant-teacher positions also remain unfilled.",
+      "url": "https://www.thedailystar.net/news/education/news/teacher-shortages-strain-government-primary-schools-4242536",
+      "image": "",
+      "featured": true
+    },
+    {
+      "title": "Honouring a trailblazer",
+      "date": "2026-07-26",
+      "section": "Education",
+      "excerpt": "More than five decades ago, Niloufer Manzur set out to establish a school that would provide children with a strong academic foundation while developing their conscience and sense of responsibility towards their country.",
+      "url": "https://www.thedailystar.net/supplements/25th-oa-level-awards/news/honouring-trailblazer-4232666",
+      "image": "",
+      "featured": false
+    },
+    {
+      "title": "Admission test woes of first graders",
+      "date": "2026-07-21",
+      "section": "Education",
+      "excerpt": "The government's move to reintroduce written admission tests for class-1 from the next academic year has sparked concern among parents, with many turning to coaching centres and private tutors.",
+      "url": "https://www.thedailystar.net/news/bangladesh/education/news/admission-class-1-heavy-loads-tender-shoulders-4228761",
+      "image": "",
+      "featured": false
+    },
+    {
+      "title": "When calling Messi GOAT is no longer enough",
+      "date": "2026-07-17",
+      "section": "Sports",
+      "excerpt": "Until the 85th minute of Thursday's semifinal, Argentina were trailing England by a goal, and a spot in the final seemed to be slipping away.",
+      "url": "https://www.thedailystar.net/sports/sports-special/fifa-world-cup-2026/news/when-calling-messi-goat-no-longer-enough-4226046",
+      "image": "",
+      "featured": false
+    },
+    {
+      "title": "UGC to track 15 years of university research funding",
+      "date": "2026-07-14",
+      "section": "Education",
+      "excerpt": "The University Grants Commission is preparing a research repository to track how university research funds were spent and what they produced over the past 15 years.",
+      "url": "https://www.thedailystar.net/news/bangladesh/news/ugc-track-15-years-university-research-funding-4223251",
+      "image": "",
+      "featured": false
+    },
+    {
+      "title": "Draft guidelines signal new direction for primary curriculum",
+      "date": "2026-07-13",
+      "section": "Education",
+      "excerpt": "Draft guidelines for updating the primary curriculum suggest defining what children should know and the skills and competencies they should attain by the end of class-5.",
+      "url": "https://www.thedailystar.net/news/bangladesh/education/news/draft-guidelines-signal-new-direction-primary-curriculum-4222576",
+      "image": "",
+      "featured": false
+    },
+    {
+      "title": "Education outlay rises sharply",
+      "date": "2026-06-12",
+      "section": "Budget",
+      "excerpt": "The new budget proposed a sharp increase in education spending, while experts cautioned that a larger allocation would matter only if it translated into better learning outcomes.",
+      "url": "https://www.thedailystar.net/business/bangladesh-budget-2026-27/news/education-outlay-rises-sharply-4196751",
+      "image": "",
+      "featured": false
+    },
+    {
+      "title": "Education, health outlay to rise 63%",
+      "date": "2026-06-11",
+      "section": "Budget",
+      "excerpt": "The government is set to place education and health at the centre of its spending plan, with the combined allocation for the two sectors likely to rise sharply.",
+      "url": "https://www.thedailystar.net/business/bangladesh-budget-2026-27/news/education-health-outlay-rise-63-4195931",
+      "image": "",
+      "featured": false
+    }
+  ]
+}
