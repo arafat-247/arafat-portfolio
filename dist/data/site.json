@@ -1,0 +1,8 @@
+{
+  "publishing": {
+    "repository": "arafat-247/arafat-portfolio",
+    "branch": "main",
+    "studio_path": "admin/"
+  },
+  "site_url": "https://arafat-247.github.io/arafat-portfolio"
+}

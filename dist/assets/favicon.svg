@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Arafat Rahaman favicon</title>
+  <desc id="desc">A geometric white letter A with a muted coral dot on a graphite square.</desc>
+  <rect width="64" height="64" rx="14" fill="#242424"/>
+  <path d="M0 46V16L64 0v22L0 46Z" fill="#737373" opacity=".55"/>
+  <path fill="#fff" fill-rule="evenodd" d="M15 49 29 15h6l14 34h-8l-3.4-8.7H26.2L22.8 49H15Zm13.8-15.5H35L31.9 25l-3.1 8.5Z"/>
+  <circle cx="52" cy="50" r="5" fill="#d47b63"/>
+</svg>

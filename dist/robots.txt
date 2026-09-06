@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /arafat-portfolio/admin/
+Sitemap: https://arafat-247.github.io/arafat-portfolio/sitemap.xml
