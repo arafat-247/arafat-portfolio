@@ -1,4 +1,0 @@
-requests>=2.32.0
-beautifulsoup4>=4.12.0
-trafilatura>=1.12.0
-Pillow>=11.3.0
