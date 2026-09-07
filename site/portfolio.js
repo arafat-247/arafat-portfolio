@@ -32,10 +32,10 @@ document.addEventListener('keydown',event=>{
  if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
 });
 
-const page=document.body.dataset.page;
+const page=document.body.dataset.page,currentSection=location.pathname.split('/').filter(Boolean)[0]||'home';
 $$('.identity nav a,.drawernav a').forEach(a=>{
- const href=(a.getAttribute('href')||'').split('#')[0].split('/').pop();
- if((page==='index-html'&&href==='index.html')||(page==='about-html'&&href==='about.html')||(page==='contact-html'&&href==='contact.html'))a.setAttribute('aria-current','page');
+ const target=new URL(a.href,location.href).pathname.split('/').filter(Boolean)[0]||'home';
+ if(target===currentSection)a.setAttribute('aria-current','page');
 });
 
 function updateTheme(){
@@ -75,7 +75,7 @@ if(archive){const filterToggle=$('.filtertoggle');filterToggle?.addEventListener
  [...new Set(all.map(a=>a.category).filter(Boolean))].sort().forEach(v=>cat.add(new Option(v,v)));[...new Set(all.map(a=>a.date_published?.slice(0,4)).filter(Boolean))].sort().reverse().forEach(v=>year.add(new Option(v,v)));
  const params=new URLSearchParams(location.search);q.value=params.get('q')||'';cat.value=params.get('category')||'';year.value=params.get('year')||'';if(credit)credit.value=params.get('credit')||'';
  function draw(){const term=q.value.trim().toLocaleLowerCase();const found=all.filter(a=>(!cat.value||a.category===cat.value)&&(!year.value||a.date_published.startsWith(year.value))&&(!credit||!credit.value||a.credit_type===credit.value)&&[a.title,a.excerpt,a.category,a.source_name,a.contribution].join(' ').toLocaleLowerCase().includes(term));const pages=Math.max(1,Math.ceil(found.length/12));page=Math.min(page,pages);$('.count').textContent=found.length+' '+(found.length===1?'entry':'entries');
- $('.work-list').innerHTML=found.slice((page-1)*12,page*12).map(a=>{const url=/^(stories|thoughts)\/[a-zA-Z0-9_-]+\/$/.test(a.local_url)?root+a.local_url:root+'reporting.html',creditLabel=a.credit_type==='contribution'?'Non-byline contribution':'Bylined story';return `<article class="workitem"><div class="workmeta"><span>${html(formatDate(a.date_published))}</span><span>${html(a.category||'Reporting')}</span><span>${html(a.source_name||'Arafat Rahaman')}</span><span class="credit credit-${html(a.credit_type||'author-page')}">${creditLabel}</span></div><div class="workcopy"><h2><a href="${html(url)}">${html(a.title)}</a></h2><p>${html(a.excerpt)}</p></div><a class="read" href="${html(url)}" aria-label="Read ${html(a.title)}"><span>Read</span> →</a></article>`}).join('')||'<p class="empty">No matches. Try another search or filter.</p>';
+ $('.work-list').innerHTML=found.slice((page-1)*12,page*12).map(a=>{const url=/^(stories|thoughts)\/[a-zA-Z0-9_-]+\/$/.test(a.local_url)?root+a.local_url:root+'reporting/',creditLabel=a.credit_type==='contribution'?'Non-byline contribution':'Bylined story';return `<article class="workitem"><div class="workmeta"><span>${html(formatDate(a.date_published))}</span><span>${html(a.category||'Reporting')}</span><span>${html(a.source_name||'Arafat Rahaman')}</span><span class="credit credit-${html(a.credit_type||'author-page')}">${creditLabel}</span></div><div class="workcopy"><h2><a href="${html(url)}">${html(a.title)}</a></h2><p>${html(a.excerpt)}</p></div><a class="read" href="${html(url)}" aria-label="Read ${html(a.title)}"><span>Read</span> →</a></article>`}).join('')||'<p class="empty">No matches. Try another search or filter.</p>';
  $('.pagination [data-page]').textContent=`Page ${page} of ${pages}`;$('[data-prev]').disabled=page<=1;$('[data-next]').disabled=page>=pages;const state=new URLSearchParams();if(q.value)state.set('q',q.value);if(cat.value)state.set('category',cat.value);if(year.value)state.set('year',year.value);if(credit?.value)state.set('credit',credit.value);history.replaceState(null,'',location.pathname+(state.size?'?'+state:''));observeReveals($('.work-list'));
  }
  $('.tools').onsubmit=e=>{e.preventDefault();page=1;draw()};q.oninput=()=>{page=1;draw()};cat.onchange=year.onchange=()=>{page=1;draw()};if(credit)credit.onchange=()=>{page=1;draw()};$('[data-prev]').onclick=()=>{page--;draw();archive.scrollIntoView({behavior:'smooth'})};$('[data-next]').onclick=()=>{page++;draw();archive.scrollIntoView({behavior:'smooth'})};draw();
@@ -126,5 +126,9 @@ $('[data-copy-share]')?.addEventListener('click',async()=>{
   shareStatus.textContent='Link copied.';
  }catch(error){shareStatus.textContent='Could not copy automatically. Select the address in your browser.'}
 });
-let opener;const dialog=$('#photo-dialog');$$('[data-photo]').forEach(button=>button.onclick=()=>{opener=button;dialog.querySelector('img').src=root+button.dataset.photo;dialog.querySelector('img').alt=button.querySelector('img').alt;dialog.showModal()});$('[data-close-photo]')?.addEventListener('click',()=>dialog.close());dialog?.addEventListener('close',()=>opener?.focus());
+let opener,photoIndex=0,touchPhotoX=null;const dialog=$('#photo-dialog'),photoButtons=$$('[data-photo]');
+function showPhoto(index){if(!dialog||!photoButtons.length)return;photoIndex=(index+photoButtons.length)%photoButtons.length;const button=photoButtons[photoIndex],img=dialog.querySelector('img');img.src=root+button.dataset.photo;img.alt=button.querySelector('img').alt;$('[data-photo-caption]').textContent=button.dataset.caption||'';$('[data-photo-location]').textContent=button.dataset.location||'';$('[data-photo-count]').textContent=`${photoIndex+1} / ${photoButtons.length}`}
+photoButtons.forEach((button,index)=>button.onclick=()=>{opener=button;showPhoto(index);dialog.showModal()});
+$('[data-close-photo]')?.addEventListener('click',()=>dialog.close());$('[data-photo-prev]')?.addEventListener('click',()=>showPhoto(photoIndex-1));$('[data-photo-next]')?.addEventListener('click',()=>showPhoto(photoIndex+1));
+dialog?.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});dialog?.addEventListener('close',()=>opener?.focus());dialog?.addEventListener('keydown',event=>{if(event.key==='ArrowLeft')showPhoto(photoIndex-1);if(event.key==='ArrowRight')showPhoto(photoIndex+1)});dialog?.addEventListener('touchstart',event=>{touchPhotoX=event.touches[0]?.clientX??null},{passive:true});dialog?.addEventListener('touchend',event=>{if(touchPhotoX===null)return;const distance=(event.changedTouches[0]?.clientX??touchPhotoX)-touchPhotoX;if(Math.abs(distance)>50)showPhoto(photoIndex+(distance<0?1:-1));touchPhotoX=null},{passive:true});
 })();

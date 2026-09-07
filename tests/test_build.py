@@ -49,7 +49,7 @@ class BuildTests(unittest.TestCase):
             self.assertIn('data-share-service="facebook"',story)
             self.assertIn('data-copy-share',story)
             self.assertIn('https://arafatrahaman.com/stories/a-shared-report/',story)
-            reporting=(out/'reporting.html').read_text()
+            reporting=(out/'reporting/index.html').read_text()
             self.assertIn('<strong>0</strong><span>bylined stories</span>',reporting)
             self.assertIn('<strong>1</strong><span>non-byline contributions</span>',reporting)
             self.assertIn('name="credit"',reporting)
@@ -62,7 +62,9 @@ class BuildTests(unittest.TestCase):
             self.assertIn('id="import-stream"',admin)
             self.assertIn('id="import-credit"',admin)
             self.assertIn('Reports &amp; Features',admin)
-            self.assertNotIn('id="import-category"',admin)
+            self.assertIn('id="import-category"',admin)
+            self.assertIn('id="import-urls"',admin)
+            self.assertIn('id="photo-batch"',admin)
             admin_js=(out/'admin/admin.js').read_text()
             self.assertIn('data-review-credit',admin_js)
             self.assertIn('credit_type_override',admin_js)
@@ -73,6 +75,12 @@ class BuildTests(unittest.TestCase):
             self.assertEqual(home.count('googletagmanager.com/gtag/js?id=G-MHCDNYZYP9'),1)
             self.assertIn("gtag('config','G-MHCDNYZYP9')",home)
             self.assertNotIn('googletagmanager.com',(out/'admin/index.html').read_text())
+            self.assertIn('href="reporting/"',home)
+            self.assertTrue((out/'about/index.html').is_file())
+            self.assertTrue((out/'photography/index.html').is_file())
+            self.assertIn('More photographs on Flickr', (out/'photography/index.html').read_text())
+            self.assertIn('data-photo-next', (out/'photography/index.html').read_text())
+            self.assertIn('/reporting/',(out/'reporting.html').read_text())
             redirect=(out/'stories/abc123-report/index.html').read_text()
             self.assertIn('noindex,follow',redirect);self.assertIn('/stories/a-shared-report/',redirect)
             self.assertEqual((out/'CNAME').read_text(),'arafatrahaman.com\n')
@@ -88,6 +96,17 @@ class BuildTests(unittest.TestCase):
                 sync.run(SimpleNamespace(full=True,pages=1,limit=1,delay=0))
             self.assertEqual(core.read(root/'articles'/f'{key}.json'),old)
             self.assertEqual(core.read(root/'sync-state.json')['sources'][u]['status'],'failed')
+
+    def test_repeated_short_multimedia_extract_leaves_pending_queue(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);u='https://www.thedailystar.net/star-multimedia/news/example-12345'
+            core.write(root/'sync-state.json',{'sources':{u:{'status':'failed','failures':3,'error':'Too little article text found; extraction rejected and logged.','last_checked':'2026-09-07T00:00:00+00:00'}},'listing_complete':True})
+            with patch('sync.CONTENT',root),patch('sync.discover',return_value=[]),contextlib.redirect_stdout(io.StringIO()):
+                sync.run(SimpleNamespace(full=True,pages=1,limit=1,delay=0,workers=1))
+            state=core.read(root/'sync-state.json')
+            self.assertEqual(state['sources'][u]['status'],'unsupported')
+            self.assertEqual(state['pending'],0)
+            self.assertEqual(state['unsupported'],1)
 
     def test_manual_import_respects_selected_professional_section(self):
         with tempfile.TemporaryDirectory() as tmp:

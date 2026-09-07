@@ -1,1 +1,1 @@
-16.7.1 — permission-safe manual refresh, editable article classification, abstract section art, social cards, and Google Analytics
+16.8.0 — bulk importing and photography, clearer archive status, interactive gallery, and clean public routes

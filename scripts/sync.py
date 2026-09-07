@@ -55,6 +55,9 @@ def archive_image(item):
 def run(args):
     state=read(CONTENT/'sync-state.json',{'sources':{},'archive_cursor':0})
     state['last_attempt']=now(); sources=state['sources']; errors=[]; fresh=[]
+    for status in sources.values():
+        if status.get('status')=='failed' and status.get('failures',0)>=3 and 'Too little article text' in status.get('error',''):
+            status['status']='unsupported'
     manual=read(CONTENT/'imports.json',{'imports':[]})['imports']
     # Manual links are explicit claims of contribution and republication permission.
     requests_by_url={canonical(x['url']):x for x in manual if x.get('rights_confirmed') and x.get('contribution_confirmed') and x.get('status')!='cancelled'}
@@ -96,6 +99,7 @@ def run(args):
     except (HTTPError,URLError,ValueError,OSError) as exc: errors.append('Discovery: '+str(exc)[:220])
     def due(u):
         s=sources[u]; last=s.get('last_checked','')
+        if s.get('status')=='unsupported': return False
         if not last: return True
         age=(datetime.now(timezone.utc)-datetime.fromisoformat(last)).total_seconds()
         if s.get('status')=='author_unverified': return age>7*86400
@@ -139,7 +143,7 @@ def run(args):
             else:
                 store_article(item,old);status.update(status='saved',last_success=now(),failures=0,error='',article_id=item['id'],title=item['title']);saved+=1
             write(CONTENT/'sync-state.json',state)
-    state.update(last_completed=now(),saved_this_run=saved,known_sources=len(sources),pending=sum(not x.get('last_success') and x.get('status')!='author_unverified' for x in sources.values()),errors=errors[:30])
+    state.update(last_completed=now(),saved_this_run=saved,known_sources=len(sources),pending=sum(not x.get('last_success') and x.get('status') not in ('author_unverified','unsupported') for x in sources.values()),unsupported=sum(x.get('status')=='unsupported' for x in sources.values()),errors=errors[:30])
     write(CONTENT/'sync-state.json',state)
     print(f'Saved {saved}; known URLs {len(sources)}; pending {state["pending"]}. Existing articles were not removed.')
     if errors: print('Warnings:', '\n'.join(errors[:5]))
