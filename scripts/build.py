@@ -6,7 +6,7 @@ from core import *
 
 STREAMS={'reporting':('Reporting','News reports, interviews and reported features.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting.html','opinion':'opinion.html','thoughts':'thoughts.html'}
-ASSET_VERSION='16.1.0'
+ASSET_VERSION='16.2.0'
 
 def text_body(value):
     result=[]

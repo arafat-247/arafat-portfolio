@@ -1,1 +1,1 @@
-16.1.0 — richer About profile with career, education, reporting areas and verified recognition
+16.2.0 — use the approved mobile hero portrait on the desktop homepage
