@@ -1,1 +1,1 @@
-16.7.0 — editable article classification, abstract homepage section art, individual social cards, and Google Analytics
+16.7.1 — permission-safe manual refresh, editable article classification, abstract section art, social cards, and Google Analytics

@@ -12,7 +12,8 @@ test('A rejected branch update does not advance local state',async()=>{
  globalThis.fetch=async(url)=>url.includes('/git/refs/')?{ok:false,status:422,json:async()=>({message:'Not a fast forward'})}:{ok:true,status:201,json:async()=>({sha:'new-sha'})};
  const api=new GitHub('owner/repo','main','test-token');api.head='old';api.tree='tree';await assert.rejects(()=>api.commit([{path:'content/posts.json',data:{}}],'Save'));assert.equal(api.head,'old');
 });
-test('Dispatch sends bounded boolean input and authorisation',async()=>{
- let body;globalThis.fetch=async(url,opt)=>{assert.ok(url.endsWith('/actions/workflows/deploy.yml/dispatches'));assert.equal(opt.headers.Authorization,'Bearer test-token');body=JSON.parse(opt.body);return{ok:true,status:204}};
- await new GitHub('owner/repo','main','test-token').dispatch(true);assert.deepEqual(body,{ref:'main',inputs:{deep_scan:'true'}});
+test('Refresh request uses a normal content commit instead of Actions permission',async()=>{
+ const calls=[];globalThis.fetch=async(url,options)=>{calls.push({url,body:options.body?JSON.parse(options.body):null});return{ok:true,status:201,json:async()=>({sha:url.endsWith('/git/trees')?'refresh-tree':'refresh-commit'})}};
+ const api=new GitHub('owner/repo','main','test-token');api.head='old-commit';api.tree='old-tree';await api.dispatch(true);
+ assert.equal(calls[0].url.endsWith('/git/trees'),true);assert.equal(calls[0].body.tree[0].path,'content/refresh-request.json');assert.equal(JSON.parse(calls[0].body.tree[0].content).deep_scan,true);assert.equal(calls[2].body.force,false);
 });
