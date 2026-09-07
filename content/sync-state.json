@@ -3123,10 +3123,10 @@
       "failures": 1
     }
   },
-  "archive_cursor": 117,
-  "last_attempt": "2026-09-07T22:25:20.374903+00:00",
-  "last_discovery_success": "2026-09-07T22:25:30.086764+00:00",
-  "last_completed": "2026-09-07T22:25:30.087473+00:00",
+  "archive_cursor": 120,
+  "last_attempt": "2026-09-07T22:27:27.288957+00:00",
+  "last_discovery_success": "2026-09-07T22:27:34.283998+00:00",
+  "last_completed": "2026-09-07T22:27:34.284928+00:00",
   "saved_this_run": 0,
   "known_sources": 285,
   "pending": 1,
