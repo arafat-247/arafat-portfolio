@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:33.430121+00:00",
   "resolved_source_url": "https://www.thedailystar.net/frontpage/news/reports-malpractices-recruitment-ru-halted-2011405",
   "status": "published",
-  "local_url": "stories/2ff2b7d7e46056f0ebed-reports-of-malpractices-recruitment-at-ru-halted/",
+  "local_url": "stories/reports-of-malpractices-recruitment-at-ru-halted/",
   "first_archived_at": "2026-09-06T12:27:33.430318+00:00",
-  "content_hash": "1cbfa5ae1f4c2710c521b4623c9e893ec016f4a2d785770e784570fac7763d15"
+  "content_hash": "1cbfa5ae1f4c2710c521b4623c9e893ec016f4a2d785770e784570fac7763d15",
+  "legacy_urls": [
+    "stories/2ff2b7d7e46056f0ebed-reports-of-malpractices-recruitment-at-ru-halted/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:35.112674+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/ru-student-orgs-continue-hold-events-ignoring-ban-1708354",
   "status": "published",
-  "local_url": "stories/46198aad58ab6fa6b0bb-ru-student-orgs-continue-to-hold-events-ignoring-ban/",
+  "local_url": "stories/ru-student-orgs-continue-to-hold-events-ignoring-ban/",
   "first_archived_at": "2026-09-06T12:27:35.113227+00:00",
-  "content_hash": "b9c40792c1636d086b12486973f296dd3cad312e37cb50b590f4dea6340849c7"
+  "content_hash": "b9c40792c1636d086b12486973f296dd3cad312e37cb50b590f4dea6340849c7",
+  "legacy_urls": [
+    "stories/46198aad58ab6fa6b0bb-ru-student-orgs-continue-to-hold-events-ignoring-ban/"
+  ]
 }

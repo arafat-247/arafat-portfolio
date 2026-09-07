@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:42.370780+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/new-curriculum-same-old-craze-guidebooks-3647566",
   "status": "published",
-  "local_url": "stories/e735e3d6f421db99a009-new-curriculum-same-old-craze-for-guidebooks/",
+  "local_url": "stories/new-curriculum-same-old-craze-for-guidebooks/",
   "first_archived_at": "2026-09-06T11:16:42.370938+00:00",
-  "content_hash": "0a1cd2aad11a88a6c22cf1eb285b9772290cbe416951a2283ccc77e903a1c4e7"
+  "content_hash": "0a1cd2aad11a88a6c22cf1eb285b9772290cbe416951a2283ccc77e903a1c4e7",
+  "legacy_urls": [
+    "stories/e735e3d6f421db99a009-new-curriculum-same-old-craze-for-guidebooks/"
+  ]
 }

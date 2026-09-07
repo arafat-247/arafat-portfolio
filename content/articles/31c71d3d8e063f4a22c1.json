@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:00.053215+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/good-initiative-still-long-way-go-3206061",
   "status": "published",
-  "local_url": "stories/31c71d3d8e063f4a22c1-a-good-initiative-but-still-a-long-way-to-go/",
+  "local_url": "stories/a-good-initiative-but-still-a-long-way-to-go/",
   "first_archived_at": "2026-09-06T12:12:00.053404+00:00",
-  "content_hash": "b13f893d663f3a174a3e4911e565b2a0dbf5ba7041bdad29acec2db244cb941d"
+  "content_hash": "b13f893d663f3a174a3e4911e565b2a0dbf5ba7041bdad29acec2db244cb941d",
+  "legacy_urls": [
+    "stories/31c71d3d8e063f4a22c1-a-good-initiative-but-still-a-long-way-to-go/"
+  ]
 }

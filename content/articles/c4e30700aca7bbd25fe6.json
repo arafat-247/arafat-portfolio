@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:48.301956+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/crime-justice/news/mob-violence-now-alarmingly-routine-3924961",
   "status": "published",
-  "local_url": "stories/c4e30700aca7bbd25fe6-mob-violence-now-alarmingly-routine/",
+  "local_url": "stories/mob-violence-now-alarmingly-routine/",
   "first_archived_at": "2026-09-06T10:58:48.302159+00:00",
-  "content_hash": "fdfdefe6dbfb3700fd949cb6675482793643c40e5fe9de96bf0f6a08b8025b19"
+  "content_hash": "fdfdefe6dbfb3700fd949cb6675482793643c40e5fe9de96bf0f6a08b8025b19",
+  "legacy_urls": [
+    "stories/c4e30700aca7bbd25fe6-mob-violence-now-alarmingly-routine/"
+  ]
 }

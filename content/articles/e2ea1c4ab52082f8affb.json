@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:29.908874+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/govt-again-moves-extend-primary-education-class-viii-3602826",
   "status": "published",
-  "local_url": "stories/e2ea1c4ab52082f8affb-govt-again-moves-to-extend-primary-education-up-to-class-viii/",
+  "local_url": "stories/govt-again-moves-to-extend-primary-education-up-to-class-viii/",
   "first_archived_at": "2026-09-06T11:17:29.909153+00:00",
-  "content_hash": "3b1239cf67231700010a720b4696d46b2de9b5436516b0a2163e81edec14d811"
+  "content_hash": "3b1239cf67231700010a720b4696d46b2de9b5436516b0a2163e81edec14d811",
+  "legacy_urls": [
+    "stories/e2ea1c4ab52082f8affb-govt-again-moves-to-extend-primary-education-up-to-class-viii/"
+  ]
 }

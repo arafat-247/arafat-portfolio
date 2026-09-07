@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 491,
-  "fetched_at": "2026-09-07T06:28:54.907593+00:00",
+  "fetched_at": "2026-09-07T07:26:27.077926+00:00",
   "resolved_source_url": "https://www.thedailystar.net/supplements/25th-oa-level-awards/news/honouring-trailblazer-4232666",
   "status": "published",
-  "local_url": "stories/85d5792701ec5eaa8a25-honouring-a-trailblazer/",
+  "local_url": "stories/honouring-a-trailblazer/",
+  "legacy_urls": [
+    "stories/85d5792701ec5eaa8a25-honouring-a-trailblazer/"
+  ],
   "first_archived_at": "2026-09-06T10:57:47.734703+00:00",
   "content_hash": "4159da3b68cc85d2b6eefa7b43899aacfafc8dbeeaf2846c219f0034e23abd47"
 }

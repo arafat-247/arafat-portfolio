@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:05.920094+00:00",
   "resolved_source_url": "https://www.thedailystar.net/youth/education/campus/news/bcl-committees-3-public-univs-rogues-rewarded-3112961",
   "status": "published",
-  "local_url": "stories/40814ea8c277711c587d-bcl-committees-at-3-public-univs-rogues-rewarded/",
+  "local_url": "stories/bcl-committees-at-3-public-univs-rogues-rewarded/",
   "first_archived_at": "2026-09-06T12:12:05.920211+00:00",
-  "content_hash": "99e0fef0df15395ddc222a5f4b4f77e621a4d378802f59564d06e7eec823a2de"
+  "content_hash": "99e0fef0df15395ddc222a5f4b4f77e621a4d378802f59564d06e7eec823a2de",
+  "legacy_urls": [
+    "stories/40814ea8c277711c587d-bcl-committees-at-3-public-univs-rogues-rewarded/"
+  ]
 }

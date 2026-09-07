@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:58.283990+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/the-tale-holiday-sufferings-3303796",
   "status": "published",
-  "local_url": "stories/52dd64ff15b0fbf51556-the-tale-of-holiday-sufferings/",
+  "local_url": "stories/the-tale-of-holiday-sufferings/",
   "first_archived_at": "2026-09-06T12:10:58.284094+00:00",
-  "content_hash": "fc5e09463b542e8558af4d4508e455a2f725e7bc7e7a50556acf2aed031421f2"
+  "content_hash": "fc5e09463b542e8558af4d4508e455a2f725e7bc7e7a50556acf2aed031421f2",
+  "legacy_urls": [
+    "stories/52dd64ff15b0fbf51556-the-tale-of-holiday-sufferings/"
+  ]
 }

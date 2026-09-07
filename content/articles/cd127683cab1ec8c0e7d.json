@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:56.991787+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/ru-bus-crisis-drags-1370086",
   "status": "published",
-  "local_url": "stories/cd127683cab1ec8c0e7d-ru-bus-crisis-drags-on/",
+  "local_url": "stories/ru-bus-crisis-drags-on/",
   "first_archived_at": "2026-09-06T12:45:56.992472+00:00",
-  "content_hash": "aa154beb156795fbf1ed5ba5ccd9a398ce4f5d1c9a9ee036a3f70b86177bc9c8"
+  "content_hash": "aa154beb156795fbf1ed5ba5ccd9a398ce4f5d1c9a9ee036a3f70b86177bc9c8",
+  "legacy_urls": [
+    "stories/cd127683cab1ec8c0e7d-ru-bus-crisis-drags-on/"
+  ]
 }

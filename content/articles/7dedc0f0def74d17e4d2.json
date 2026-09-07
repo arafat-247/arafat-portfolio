@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:31.107328+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/schools-colleges-reopening-defies-heatwave-and-logic-too-3597686",
   "status": "published",
-  "local_url": "stories/7dedc0f0def74d17e4d2-schools-colleges-a-reopening-that-defies-heatwave-and-logic/",
+  "local_url": "stories/schools-colleges-a-reopening-that-defies-heatwave-and-logic/",
   "first_archived_at": "2026-09-06T11:17:31.107543+00:00",
-  "content_hash": "46a730c1dae38dc137517db4bed4f4187cd7442d9c56ba2e2f84785a3ee9bd3a"
+  "content_hash": "46a730c1dae38dc137517db4bed4f4187cd7442d9c56ba2e2f84785a3ee9bd3a",
+  "legacy_urls": [
+    "stories/7dedc0f0def74d17e4d2-schools-colleges-a-reopening-that-defies-heatwave-and-logic/"
+  ]
 }

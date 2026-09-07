@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 810,
-  "fetched_at": "2026-09-07T06:29:07.777073+00:00",
+  "fetched_at": "2026-09-07T07:26:39.516310+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/education-2025-year-strikes-setbacks-and-disruptions-4066821",
   "status": "published",
-  "local_url": "stories/493998fff8a0bd0b750f-education-in-2025-a-year-of-strikes-setbacks-and-disruptions/",
+  "local_url": "stories/education-in-2025-a-year-of-strikes-setbacks-and-disruptions/",
+  "legacy_urls": [
+    "stories/493998fff8a0bd0b750f-education-in-2025-a-year-of-strikes-setbacks-and-disruptions/"
+  ],
   "first_archived_at": "2026-09-06T10:58:01.894460+00:00",
   "content_hash": "e2371190af40b4d1d79295943df6f1a6de482a8f473ff26076c7dd2548e1f24f"
 }

@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 1399,
-  "fetched_at": "2026-09-07T06:29:03.361259+00:00",
+  "fetched_at": "2026-09-07T07:26:35.876945+00:00",
   "resolved_source_url": "https://www.thedailystar.net/campus/education/news/harassment-teachers-stalks-public-univs-4096281",
   "status": "published",
-  "local_url": "stories/20c5a360f002aaaa7f75-harassment-of-teachers-stalks-public-univs/",
+  "local_url": "stories/harassment-of-teachers-stalks-public-univs/",
+  "legacy_urls": [
+    "stories/20c5a360f002aaaa7f75-harassment-of-teachers-stalks-public-univs/"
+  ],
   "first_archived_at": "2026-09-06T10:57:56.882126+00:00",
   "content_hash": "33f77d104e668373a16c538c5ac5ee3c80a4a070a572737b9c3b465020128e5f"
 }

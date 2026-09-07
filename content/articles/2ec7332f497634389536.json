@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:35.661961+00:00",
   "resolved_source_url": "https://www.thedailystar.net/sports/bangladesh-cricket/news/series-set-bangladesh-womens-teams-1766962",
   "status": "published",
-  "local_url": "stories/2ec7332f497634389536-series-set-for-bangladesh-women-s-teams/",
+  "local_url": "stories/series-set-for-bangladesh-women-s-teams/",
   "first_archived_at": "2026-09-06T12:27:35.662165+00:00",
-  "content_hash": "178fccc0ffe66b5baae0fab2b1533f1a3c216694380c8e6880c891c37f7d560e"
+  "content_hash": "178fccc0ffe66b5baae0fab2b1533f1a3c216694380c8e6880c891c37f7d560e",
+  "legacy_urls": [
+    "stories/2ec7332f497634389536-series-set-for-bangladesh-women-s-teams/"
+  ]
 }

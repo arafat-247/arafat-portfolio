@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:34.049899+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/assault-polytech-principal-police-identify-12-bcl-men-who-were-directly-involved-1823167",
   "status": "published",
-  "local_url": "stories/e093cb5830cea3a5ab1a-assault-on-polytech-institute-principal-police-identify-12-bcl-men-who-were/",
+  "local_url": "stories/assault-on-polytech-institute-principal-police-identify-12-bcl-men-who/",
   "first_archived_at": "2026-09-06T12:27:34.050084+00:00",
-  "content_hash": "e29009dc824af110702c0e2926c20383133e3e41037ec80cac0f508b94ededb3"
+  "content_hash": "e29009dc824af110702c0e2926c20383133e3e41037ec80cac0f508b94ededb3",
+  "legacy_urls": [
+    "stories/e093cb5830cea3a5ab1a-assault-on-polytech-institute-principal-police-identify-12-bcl-men-who-were/"
+  ]
 }

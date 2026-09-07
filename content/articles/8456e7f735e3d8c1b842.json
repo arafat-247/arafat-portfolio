@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 644,
-  "fetched_at": "2026-09-07T06:29:06.187276+00:00",
+  "fetched_at": "2026-09-07T07:26:39.020938+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/pry-students-get-books-first-day-yr-4071201",
   "status": "published",
-  "local_url": "stories/8456e7f735e3d8c1b842-pry-students-get-books-on-first-day-of-yr/",
+  "local_url": "stories/pry-students-get-books-on-first-day-of-yr/",
+  "legacy_urls": [
+    "stories/8456e7f735e3d8c1b842-pry-students-get-books-on-first-day-of-yr/"
+  ],
   "first_archived_at": "2026-09-06T10:58:00.760974+00:00",
   "content_hash": "9746fdc3837379c47175d7d802df0552f6a16e39ff301d700582d62931a6e50f"
 }

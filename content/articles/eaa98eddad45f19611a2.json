@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:05.110380+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/when-students-become-guinea-pigs-3795426",
   "status": "published",
-  "local_url": "stories/eaa98eddad45f19611a2-when-students-become-guinea-pigs/",
+  "local_url": "stories/when-students-become-guinea-pigs/",
   "first_archived_at": "2026-09-06T10:59:05.110897+00:00",
-  "content_hash": "fa317eea217c761244924ed8ed1cf28099a55b599b2092e052852ae4142f6a76"
+  "content_hash": "fa317eea217c761244924ed8ed1cf28099a55b599b2092e052852ae4142f6a76",
+  "legacy_urls": [
+    "stories/eaa98eddad45f19611a2-when-students-become-guinea-pigs/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:26.242625+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/desperation-over-accommodation-2191006",
   "status": "published",
-  "local_url": "stories/018770b51878f30d2f57-desperation-over-accommodation/",
+  "local_url": "stories/desperation-over-accommodation/",
   "first_archived_at": "2026-09-06T12:27:26.242823+00:00",
-  "content_hash": "7da43dac6ea886fd603f4c0acd517983cb2b5db82fd7e0d9a5a9e0641fe2fb55"
+  "content_hash": "7da43dac6ea886fd603f4c0acd517983cb2b5db82fd7e0d9a5a9e0641fe2fb55",
+  "legacy_urls": [
+    "stories/018770b51878f30d2f57-desperation-over-accommodation/"
+  ]
 }

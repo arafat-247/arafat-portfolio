@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:24.334851+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/accidents-fires/news/road-crash-tragedies-stalk-his-family-2953101",
   "status": "published",
-  "local_url": "stories/9cc826d0605eae2c386f-road-crash-tragedies-stalk-his-family/",
+  "local_url": "stories/road-crash-tragedies-stalk-his-family/",
   "first_archived_at": "2026-09-06T12:27:24.335056+00:00",
-  "content_hash": "3f9a4b59b841eba0421bf78465d7ee688b77a33f5ea17a1faf772b389fbb9b7d"
+  "content_hash": "3f9a4b59b841eba0421bf78465d7ee688b77a33f5ea17a1faf772b389fbb9b7d",
+  "legacy_urls": [
+    "stories/9cc826d0605eae2c386f-road-crash-tragedies-stalk-his-family/"
+  ]
 }

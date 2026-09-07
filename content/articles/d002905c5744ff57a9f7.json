@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:53.396307+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/al-activists-police-take-over-some-bnp-sit-ins-3381571",
   "status": "published",
-  "local_url": "stories/d002905c5744ff57a9f7-al-activists-police-take-over-some-bnp-sit-ins/",
+  "local_url": "stories/al-activists-police-take-over-some-bnp-sit-ins/",
   "first_archived_at": "2026-09-06T12:10:53.396578+00:00",
-  "content_hash": "cb172a7ca45e8857ac3863ef6b5c220a03e97e1898235f8ec3f1c97f767bd10d"
+  "content_hash": "cb172a7ca45e8857ac3863ef6b5c220a03e97e1898235f8ec3f1c97f767bd10d",
+  "legacy_urls": [
+    "stories/d002905c5744ff57a9f7-al-activists-police-take-over-some-bnp-sit-ins/"
+  ]
 }

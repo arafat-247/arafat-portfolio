@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 1072,
-  "fetched_at": "2026-09-07T06:29:00.499863+00:00",
+  "fetched_at": "2026-09-07T07:26:32.703294+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/views/news/can-playing-historic-speech-justify-repeated-bail-denials-4160571",
   "status": "published",
-  "local_url": "stories/d80c1b0532d940ce0ffe-can-playing-a-historic-speech-justify-repeated-bail-denials/",
+  "local_url": "stories/can-playing-a-historic-speech-justify-repeated-bail-denials/",
+  "legacy_urls": [
+    "stories/d80c1b0532d940ce0ffe-can-playing-a-historic-speech-justify-repeated-bail-denials/"
+  ],
   "first_archived_at": "2026-09-06T10:57:53.712069+00:00",
   "content_hash": "8ef33ec313c674ddb18af5f56d69afa518c856d04f903baa0a45f05bc69c4f88"
 }

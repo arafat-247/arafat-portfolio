@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:49.376520+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/news/july-warriors-patients-who-refuse-be-just-patients-3916001",
   "status": "published",
-  "local_url": "stories/3eab0b3efc6161ab90e8-july-warriors-patients-who-refuse-to-be-just-patients/",
+  "local_url": "stories/july-warriors-patients-who-refuse-to-be-just-patients/",
   "first_archived_at": "2026-09-06T10:58:49.376726+00:00",
-  "content_hash": "f7b85f85d1878b89461c70e40f864f20ed5f073720e225c1d1d58909f8470b04"
+  "content_hash": "f7b85f85d1878b89461c70e40f864f20ed5f073720e225c1d1d58909f8470b04",
+  "legacy_urls": [
+    "stories/3eab0b3efc6161ab90e8-july-warriors-patients-who-refuse-to-be-just-patients/"
+  ]
 }

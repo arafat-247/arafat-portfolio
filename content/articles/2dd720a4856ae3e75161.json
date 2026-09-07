@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:59.059691+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/ru-convocation-reg-fee-too-high-1312381",
   "status": "published",
-  "local_url": "stories/2dd720a4856ae3e75161-ru-convocation-reg-fee-too-high/",
+  "local_url": "stories/ru-convocation-reg-fee-too-high/",
   "first_archived_at": "2026-09-06T12:45:59.059896+00:00",
-  "content_hash": "be22e2e42be4603758c628d5455a82612c5b09a343b5230467e58b255581dfc3"
+  "content_hash": "be22e2e42be4603758c628d5455a82612c5b09a343b5230467e58b255581dfc3",
+  "legacy_urls": [
+    "stories/2dd720a4856ae3e75161-ru-convocation-reg-fee-too-high/"
+  ]
 }

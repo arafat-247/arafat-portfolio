@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:47.816051+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/technical-education-hit-teacher-shortage-falling-enrolment-3927201",
   "status": "published",
-  "local_url": "stories/f825412cb90136803457-technical-education-hit-by-teacher-shortage-falling-enrolment/",
+  "local_url": "stories/technical-education-hit-by-teacher-shortage-falling-enrolment/",
   "first_archived_at": "2026-09-06T10:58:47.816252+00:00",
-  "content_hash": "690e2dd133a5a6c006bea2ed7cc831e0caf630a614b71b78f3c088980c8d60ae"
+  "content_hash": "690e2dd133a5a6c006bea2ed7cc831e0caf630a614b71b78f3c088980c8d60ae",
+  "legacy_urls": [
+    "stories/f825412cb90136803457-technical-education-hit-by-teacher-shortage-falling-enrolment/"
+  ]
 }

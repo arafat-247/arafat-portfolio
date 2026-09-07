@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:08.422235+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/accidents-fires/news/driver-fatigue-political-barriers-whats-making-the-roads-deadlier-3764896",
   "status": "published",
-  "local_url": "stories/ab936f8fd0f26e1f7dbf-from-driver-fatigue-to-political-barriers-what-s-making-the-roads-deadlier/",
+  "local_url": "stories/from-driver-fatigue-to-political-barriers-what-s-making-the-roads-deadlier/",
   "first_archived_at": "2026-09-06T10:59:08.422425+00:00",
-  "content_hash": "2b301c20f708aad7b90209a36021d4331a5bdbcbf90beb68a400716c0201e03e"
+  "content_hash": "2b301c20f708aad7b90209a36021d4331a5bdbcbf90beb68a400716c0201e03e",
+  "legacy_urls": [
+    "stories/ab936f8fd0f26e1f7dbf-from-driver-fatigue-to-political-barriers-what-s-making-the-roads-deadlier/"
+  ]
 }

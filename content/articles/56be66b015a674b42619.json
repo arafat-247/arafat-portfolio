@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:57.787517+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/primary-education-pece-similar-tests-should-be-scrapped-3821311",
   "status": "published",
-  "local_url": "stories/56be66b015a674b42619-primary-education-pece-similar-tests-should-be-scrapped/",
+  "local_url": "stories/primary-education-pece-similar-tests-should-be-scrapped/",
   "first_archived_at": "2026-09-06T10:58:57.787706+00:00",
-  "content_hash": "70420d057e65a201f7c99af348fd9341074ae3da0fa1df425d47c78150f97e09"
+  "content_hash": "70420d057e65a201f7c99af348fd9341074ae3da0fa1df425d47c78150f97e09",
+  "legacy_urls": [
+    "stories/56be66b015a674b42619-primary-education-pece-similar-tests-should-be-scrapped/"
+  ]
 }

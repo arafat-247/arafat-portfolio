@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:26.433436+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/where-will-all-the-students-stay-2186456",
   "status": "published",
-  "local_url": "stories/d2be924de9d20e038c11-where-will-all-the-students-stay/",
+  "local_url": "stories/where-will-all-the-students-stay/",
   "first_archived_at": "2026-09-06T12:27:26.433629+00:00",
-  "content_hash": "ec60ce41b591a4eba7c6a6b037ced06e296d94a6c0c2aa7584a928b9eedb2819"
+  "content_hash": "ec60ce41b591a4eba7c6a6b037ced06e296d94a6c0c2aa7584a928b9eedb2819",
+  "legacy_urls": [
+    "stories/d2be924de9d20e038c11-where-will-all-the-students-stay/"
+  ]
 }

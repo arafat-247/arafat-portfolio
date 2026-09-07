@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:06.682449+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/transport/news/ride-sharing-riders-trouble-3089546",
   "status": "published",
-  "local_url": "stories/ad6857917717eb36b0df-ride-sharing-riders-in-trouble/",
+  "local_url": "stories/ride-sharing-riders-in-trouble/",
   "first_archived_at": "2026-09-06T12:12:06.682543+00:00",
-  "content_hash": "7470e578ea2ade77f00fcbd9321952c9f1992c07ca1b1abb0609123f5f483c1c"
+  "content_hash": "7470e578ea2ade77f00fcbd9321952c9f1992c07ca1b1abb0609123f5f483c1c",
+  "legacy_urls": [
+    "stories/ad6857917717eb36b0df-ride-sharing-riders-in-trouble/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:41.024878+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/falgun-fever-captures-ekushey-boi-mela-3543191",
   "status": "published",
-  "local_url": "stories/b89b42481c65c23a9f28-falgun-fever-captures-ekushey-boi-mela/",
+  "local_url": "stories/falgun-fever-captures-ekushey-boi-mela/",
   "first_archived_at": "2026-09-06T11:17:41.025052+00:00",
-  "content_hash": "647f5978c4f3ba93287a5de8aa0384c8e18798e65a7d14e01276a4ffe486c844"
+  "content_hash": "647f5978c4f3ba93287a5de8aa0384c8e18798e65a7d14e01276a4ffe486c844",
+  "legacy_urls": [
+    "stories/b89b42481c65c23a9f28-falgun-fever-captures-ekushey-boi-mela/"
+  ]
 }

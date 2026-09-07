@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:53.430657+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/academic-activities-peril-3404871",
   "status": "published",
-  "local_url": "stories/41381b962c2cf9b080e1-academic-activities-in-peril/",
+  "local_url": "stories/academic-activities-in-peril/",
   "first_archived_at": "2026-09-06T12:10:53.431215+00:00",
-  "content_hash": "f53c61c8f5d809fdc334f8eb717f6eb109c13b84235a803786ed41082c4f091a"
+  "content_hash": "f53c61c8f5d809fdc334f8eb717f6eb109c13b84235a803786ed41082c4f091a",
+  "legacy_urls": [
+    "stories/41381b962c2cf9b080e1-academic-activities-in-peril/"
+  ]
 }

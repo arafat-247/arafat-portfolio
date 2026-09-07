@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:02.417756+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/govts-decision-release-top-criminals-proving-costly-3805531",
   "status": "published",
-  "local_url": "stories/65b03c36b33d49a92481-govt-s-decision-to-release-top-criminals-proving-costly/",
+  "local_url": "stories/govt-s-decision-to-release-top-criminals-proving-costly/",
   "first_archived_at": "2026-09-06T10:59:02.417989+00:00",
-  "content_hash": "4d1dacdfae2dfa7b10de212c15ba9f81495a5b5929dff97301634795022212cd"
+  "content_hash": "4d1dacdfae2dfa7b10de212c15ba9f81495a5b5929dff97301634795022212cd",
+  "legacy_urls": [
+    "stories/65b03c36b33d49a92481-govt-s-decision-to-release-top-criminals-proving-costly/"
+  ]
 }

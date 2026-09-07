@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:28.395604+00:00",
   "resolved_source_url": "https://www.thedailystar.net/frontpage/news/all-money-2089501",
   "status": "published",
-  "local_url": "stories/3c1b30526a6996f804d8-all-for-money/",
+  "local_url": "stories/all-for-money/",
   "first_archived_at": "2026-09-06T12:27:28.395768+00:00",
-  "content_hash": "b56574bbb456543b9bfe8f9e1dc4479c6ee07e8f8e3b7534e2f430e3bc22490e"
+  "content_hash": "b56574bbb456543b9bfe8f9e1dc4479c6ee07e8f8e3b7534e2f430e3bc22490e",
+  "legacy_urls": [
+    "stories/3c1b30526a6996f804d8-all-for-money/"
+  ]
 }

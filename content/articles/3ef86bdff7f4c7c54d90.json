@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:53.356231+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/concerns-genuine-reforms-need-planning-3882571",
   "status": "published",
-  "local_url": "stories/3ef86bdff7f4c7c54d90-concerns-genuine-but-reforms-need-planning/",
+  "local_url": "stories/concerns-genuine-but-reforms-need-planning/",
   "first_archived_at": "2026-09-06T10:58:53.356395+00:00",
-  "content_hash": "60688230a7ec7c89218cfc4b8633a937e9a28ed2a4521d0da53ed5a742bd73c7"
+  "content_hash": "60688230a7ec7c89218cfc4b8633a937e9a28ed2a4521d0da53ed5a742bd73c7",
+  "legacy_urls": [
+    "stories/3ef86bdff7f4c7c54d90-concerns-genuine-but-reforms-need-planning/"
+  ]
 }

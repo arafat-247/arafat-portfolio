@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:00.000136+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/study-abroad-students-suffer-banks-reluctant-open-files-3194636",
   "status": "published",
-  "local_url": "stories/683b7f3fb1f02105037b-study-abroad-students-suffer-as-banks-reluctant-to-open-files/",
+  "local_url": "stories/study-abroad-students-suffer-as-banks-reluctant-to-open-files/",
   "first_archived_at": "2026-09-06T12:12:00.000338+00:00",
-  "content_hash": "8298452632fa25bd52f71f4d1cc0916bf8cab124dd14c22671545b50bd6f6531"
+  "content_hash": "8298452632fa25bd52f71f4d1cc0916bf8cab124dd14c22671545b50bd6f6531",
+  "legacy_urls": [
+    "stories/683b7f3fb1f02105037b-study-abroad-students-suffer-as-banks-reluctant-to-open-files/"
+  ]
 }

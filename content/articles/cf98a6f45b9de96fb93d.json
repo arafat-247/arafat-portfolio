@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:06.276192+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/wait-textbooks-gets-longer-3789866",
   "status": "published",
-  "local_url": "stories/cf98a6f45b9de96fb93d-wait-for-textbooks-gets-longer/",
+  "local_url": "stories/wait-for-textbooks-gets-longer/",
   "first_archived_at": "2026-09-06T10:59:06.276388+00:00",
-  "content_hash": "55249d91648aa2cfa55861d4acf6cf2eadd0aa650424ac83fc6a20cc4cf650fa"
+  "content_hash": "55249d91648aa2cfa55861d4acf6cf2eadd0aa650424ac83fc6a20cc4cf650fa",
+  "legacy_urls": [
+    "stories/cf98a6f45b9de96fb93d-wait-for-textbooks-gets-longer/"
+  ]
 }

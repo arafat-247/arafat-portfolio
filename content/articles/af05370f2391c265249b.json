@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:57.835655+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/ru-sees-more-intl-students-1362859",
   "status": "published",
-  "local_url": "stories/af05370f2391c265249b-ru-sees-more-int-l-students/",
+  "local_url": "stories/ru-sees-more-int-l-students/",
   "first_archived_at": "2026-09-06T12:45:57.835910+00:00",
-  "content_hash": "ff41e6064fe6434b5d61ab77f0080a39e9160acf91f6afd2d27d314c55a6fe56"
+  "content_hash": "ff41e6064fe6434b5d61ab77f0080a39e9160acf91f6afd2d27d314c55a6fe56",
+  "legacy_urls": [
+    "stories/af05370f2391c265249b-ru-sees-more-int-l-students/"
+  ]
 }

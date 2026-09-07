@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:48.131370+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/views/news/mahmuduls-arrest-message-3922811",
   "status": "published",
-  "local_url": "stories/2ba0cee54ab5c94b25f0-is-mahmudul-s-arrest-a-message/",
+  "local_url": "stories/is-mahmudul-s-arrest-a-message/",
   "first_archived_at": "2026-09-06T10:58:48.131573+00:00",
-  "content_hash": "2a63704a03cd321984492cad3f15c90da84981e6045feb3f8ef3fd50ad243915"
+  "content_hash": "2a63704a03cd321984492cad3f15c90da84981e6045feb3f8ef3fd50ad243915",
+  "legacy_urls": [
+    "stories/2ba0cee54ab5c94b25f0-is-mahmudul-s-arrest-a-message/"
+  ]
 }

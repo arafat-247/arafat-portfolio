@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:41.476702+00:00",
   "resolved_source_url": "https://www.thedailystar.net/weekend-read/news/palace-the-river-3540396",
   "status": "published",
-  "local_url": "stories/ee439619b5145b6b8aa8-a-palace-by-the-river/",
+  "local_url": "stories/a-palace-by-the-river/",
   "first_archived_at": "2026-09-06T11:17:41.476887+00:00",
-  "content_hash": "bc9d574717c60ba0f636b60e9815d7094ccf0d7e5180ce172bc96fd354c0d514"
+  "content_hash": "bc9d574717c60ba0f636b60e9815d7094ccf0d7e5180ce172bc96fd354c0d514",
+  "legacy_urls": [
+    "stories/ee439619b5145b6b8aa8-a-palace-by-the-river/"
+  ]
 }

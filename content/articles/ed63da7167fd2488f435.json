@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:07.547181+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/textbook-distribution-runs-snag-3785411",
   "status": "published",
-  "local_url": "stories/ed63da7167fd2488f435-textbook-distribution-runs-into-a-snag/",
+  "local_url": "stories/textbook-distribution-runs-into-a-snag/",
   "first_archived_at": "2026-09-06T10:59:07.547391+00:00",
-  "content_hash": "4f91776b59fd03dbd6277c9a9848a57bb46c13bd662fa4c30af6fa5a1656fc15"
+  "content_hash": "4f91776b59fd03dbd6277c9a9848a57bb46c13bd662fa4c30af6fa5a1656fc15",
+  "legacy_urls": [
+    "stories/ed63da7167fd2488f435-textbook-distribution-runs-into-a-snag/"
+  ]
 }

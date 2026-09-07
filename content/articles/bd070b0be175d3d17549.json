@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:53.068482+00:00",
   "resolved_source_url": "https://www.thedailystar.net/arts-entertainment/theatre/circus-circus-staged-ru-auditorium-1560883",
   "status": "published",
-  "local_url": "stories/bd070b0be175d3d17549-circus-circus-staged-at-ru-auditorium/",
+  "local_url": "stories/circus-circus-staged-at-ru-auditorium/",
   "first_archived_at": "2026-09-06T12:45:53.068656+00:00",
-  "content_hash": "a64eed76306839da82e7ce5221526513934b78aaecc635f2f87de1a05b20d1cc"
+  "content_hash": "a64eed76306839da82e7ce5221526513934b78aaecc635f2f87de1a05b20d1cc",
+  "legacy_urls": [
+    "stories/bd070b0be175d3d17549-circus-circus-staged-at-ru-auditorium/"
+  ]
 }

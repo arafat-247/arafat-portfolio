@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:36.835275+00:00",
   "resolved_source_url": "https://www.thedailystar.net/business/news/walk-down-perfume-lane-3562341",
   "status": "published",
-  "local_url": "stories/8ede73e66c34b7f56dbc-a-walk-down-perfume-lane/",
+  "local_url": "stories/a-walk-down-perfume-lane/",
   "first_archived_at": "2026-09-06T11:17:36.835480+00:00",
-  "content_hash": "c8f871decfd6fcc39a84c11fffc7cb000371ae2dcc9a9ddd4848ef4e23f1624e"
+  "content_hash": "c8f871decfd6fcc39a84c11fffc7cb000371ae2dcc9a9ddd4848ef4e23f1624e",
+  "legacy_urls": [
+    "stories/8ede73e66c34b7f56dbc-a-walk-down-perfume-lane/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:57.837520+00:00",
   "resolved_source_url": "https://www.thedailystar.net/special-events/dhaka-metro-rail-opening/news/ill-pass-story-my-children-3207551",
   "status": "published",
-  "local_url": "stories/928418106ff159acfc8e-i-ll-pass-this-story-to-my-children/",
+  "local_url": "stories/i-ll-pass-this-story-to-my-children/",
   "first_archived_at": "2026-09-06T12:11:57.837731+00:00",
-  "content_hash": "a071e9692b42ff7881e9c451e34c23df12bfdf42ca086b6d2f89d2149ddba020"
+  "content_hash": "a071e9692b42ff7881e9c451e34c23df12bfdf42ca086b6d2f89d2149ddba020",
+  "legacy_urls": [
+    "stories/928418106ff159acfc8e-i-ll-pass-this-story-to-my-children/"
+  ]
 }

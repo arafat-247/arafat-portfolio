@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:42.967813+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/one-generation-next-humayun-ahmed-lives-3538136",
   "status": "published",
-  "local_url": "stories/b9e245dcb02fffd7ff32-one-generation-to-next-humayun-ahmed-lives-on/",
+  "local_url": "stories/one-generation-to-next-humayun-ahmed-lives-on/",
   "first_archived_at": "2026-09-06T11:17:42.967997+00:00",
-  "content_hash": "f0b3e4f2ed0a66c5aff59827535e62fc1c45b74025dc72f1dbd3467f808ba9b9"
+  "content_hash": "f0b3e4f2ed0a66c5aff59827535e62fc1c45b74025dc72f1dbd3467f808ba9b9",
+  "legacy_urls": [
+    "stories/b9e245dcb02fffd7ff32-one-generation-to-next-humayun-ahmed-lives-on/"
+  ]
 }

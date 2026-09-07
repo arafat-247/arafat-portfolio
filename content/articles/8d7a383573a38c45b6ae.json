@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:36.319026+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/physical-education-limping-ru-1692925",
   "status": "published",
-  "local_url": "stories/8d7a383573a38c45b6ae-physical-education-limping-at-ru/",
+  "local_url": "stories/physical-education-limping-at-ru/",
   "first_archived_at": "2026-09-06T12:27:36.319127+00:00",
-  "content_hash": "d2cabdfe152bcfb9b18da20d96aa2fdecb0e8d3615c094fd4765c3a7cce3d727"
+  "content_hash": "d2cabdfe152bcfb9b18da20d96aa2fdecb0e8d3615c094fd4765c3a7cce3d727",
+  "legacy_urls": [
+    "stories/8d7a383573a38c45b6ae-physical-education-limping-at-ru/"
+  ]
 }

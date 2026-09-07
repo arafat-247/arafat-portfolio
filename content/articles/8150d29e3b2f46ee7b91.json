@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "assets/imported/86d9a260c8c6f37d384e7d9c.jpg",
   "word_count": 726,
-  "fetched_at": "2026-09-07T06:28:52.074550+00:00",
+  "fetched_at": "2026-09-07T07:26:24.326560+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/education/news/why-girls-continue-outpace-boys-ssc-results-4265056",
   "status": "published",
-  "local_url": "stories/8150d29e3b2f46ee7b91-why-girls-continue-to-outpace-boys-in-ssc-results/",
+  "local_url": "stories/why-girls-continue-to-outpace-boys-in-ssc-results/",
+  "legacy_urls": [
+    "stories/8150d29e3b2f46ee7b91-why-girls-continue-to-outpace-boys-in-ssc-results/"
+  ],
   "first_archived_at": "2026-09-06T04:58:37.920537+00:00",
   "content_hash": "7e5bf54be4ece069c8188009243df9fbadae4700a860dd1e66d35b316ce8c311"
 }

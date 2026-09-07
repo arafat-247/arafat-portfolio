@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:05.068125+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/removal-word-adivasi-indigenous-group-attacked-nctb-20-hurt-3799851",
   "status": "published",
-  "local_url": "stories/4d0b85be00e8ab566d7b-removal-of-word-adivasi-indigenous-group-attacked-at-nctb-20-hurt/",
+  "local_url": "stories/removal-of-word-adivasi-indigenous-group-attacked-at-nctb-20-hurt/",
   "first_archived_at": "2026-09-06T10:59:05.068302+00:00",
-  "content_hash": "541e96dd9c21891df9d7067730b87bfc52e97dccc48decb8963dbe0731658d8a"
+  "content_hash": "541e96dd9c21891df9d7067730b87bfc52e97dccc48decb8963dbe0731658d8a",
+  "legacy_urls": [
+    "stories/4d0b85be00e8ab566d7b-removal-of-word-adivasi-indigenous-group-attacked-at-nctb-20-hurt/"
+  ]
 }

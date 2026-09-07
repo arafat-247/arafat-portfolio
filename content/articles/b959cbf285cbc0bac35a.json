@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:00.096325+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/many-suffer-police-checkpoints-city-3192871",
   "status": "published",
-  "local_url": "stories/b959cbf285cbc0bac35a-many-suffer-at-police-checkpoints-in-city/",
+  "local_url": "stories/many-suffer-at-police-checkpoints-in-city/",
   "first_archived_at": "2026-09-06T12:12:00.096953+00:00",
-  "content_hash": "6a1fe60d7e268f1bb0abdf0f80d3f8b9a6b3b579e6c659cfd48bf03888948ffc"
+  "content_hash": "6a1fe60d7e268f1bb0abdf0f80d3f8b9a6b3b579e6c659cfd48bf03888948ffc",
+  "legacy_urls": [
+    "stories/b959cbf285cbc0bac35a-many-suffer-at-police-checkpoints-in-city/"
+  ]
 }

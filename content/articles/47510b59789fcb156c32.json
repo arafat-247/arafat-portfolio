@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:56.094219+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/set-waiting-list-system-recruit-teachers-3826751",
   "status": "published",
-  "local_url": "stories/47510b59789fcb156c32-set-up-waiting-list-system-to-recruit-teachers/",
+  "local_url": "stories/set-up-waiting-list-system-to-recruit-teachers/",
   "first_archived_at": "2026-09-06T10:58:56.094430+00:00",
-  "content_hash": "83a89c98d6f078d6624c33faa833d63262db1e536648f6dba8733c677126db56"
+  "content_hash": "83a89c98d6f078d6624c33faa833d63262db1e536648f6dba8733c677126db56",
+  "legacy_urls": [
+    "stories/47510b59789fcb156c32-set-up-waiting-list-system-to-recruit-teachers/"
+  ]
 }

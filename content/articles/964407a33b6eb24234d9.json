@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:10.859010+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/leading-univs-withdrawing-cluster-system-3760831",
   "status": "published",
-  "local_url": "stories/964407a33b6eb24234d9-leading-univs-withdrawing-from-cluster-system/",
+  "local_url": "stories/leading-univs-withdrawing-from-cluster-system/",
   "first_archived_at": "2026-09-06T10:59:10.859222+00:00",
-  "content_hash": "b452b7bdf10ceb947a42d09479179dee8e94d1e4dfad3a9e07add335a8214f71"
+  "content_hash": "b452b7bdf10ceb947a42d09479179dee8e94d1e4dfad3a9e07add335a8214f71",
+  "legacy_urls": [
+    "stories/964407a33b6eb24234d9-leading-univs-withdrawing-from-cluster-system/"
+  ]
 }

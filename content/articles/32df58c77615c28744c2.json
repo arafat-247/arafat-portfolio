@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:29.505081+00:00",
   "resolved_source_url": "https://www.thedailystar.net/backpage/news/recruitment-suspension-ru-will-want-know-why-2012009",
   "status": "published",
-  "local_url": "stories/32df58c77615c28744c2-recruitment-suspension-ru-will-want-to-know-why/",
+  "local_url": "stories/recruitment-suspension-ru-will-want-to-know-why/",
   "first_archived_at": "2026-09-06T12:27:29.505261+00:00",
-  "content_hash": "50c88ab235be39cbda3c712a9e8e3049c2a36885add62b8478863bff4ccc9cdd"
+  "content_hash": "50c88ab235be39cbda3c712a9e8e3049c2a36885add62b8478863bff4ccc9cdd",
+  "legacy_urls": [
+    "stories/32df58c77615c28744c2-recruitment-suspension-ru-will-want-to-know-why/"
+  ]
 }

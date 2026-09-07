@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 681,
-  "fetched_at": "2026-09-07T06:28:59.730114+00:00",
+  "fetched_at": "2026-09-07T07:26:32.193635+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/crime-justice/news/we-called-her-victim-she-was-child-4180431",
   "status": "published",
-  "local_url": "stories/ea006161917860b8f98e-before-we-called-her-a-victim-she-was-a-child/",
+  "local_url": "stories/before-we-called-her-a-victim-she-was-a-child/",
+  "legacy_urls": [
+    "stories/ea006161917860b8f98e-before-we-called-her-a-victim-she-was-a-child/"
+  ],
   "first_archived_at": "2026-09-06T10:57:52.285306+00:00",
   "content_hash": "c9d523ff2fcd93a4d66a79843a66afea35a6b021ba627d4d190247025727186f"
 }

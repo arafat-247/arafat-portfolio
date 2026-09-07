@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:57.245569+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/july-uprising-state-forces-al-perpetrated-gender-based-violence-3825011",
   "status": "published",
-  "local_url": "stories/cca05fe6cd8fdcd5aa59-july-uprising-state-forces-al-perpetrated-gender-based-violence/",
+  "local_url": "stories/july-uprising-state-forces-al-perpetrated-gender-based-violence/",
   "first_archived_at": "2026-09-06T10:58:57.245737+00:00",
-  "content_hash": "b9ba2b4ae600efdbf5cc201f16cfa1cc8494322c8cb746292c80259b7a3ccefe"
+  "content_hash": "b9ba2b4ae600efdbf5cc201f16cfa1cc8494322c8cb746292c80259b7a3ccefe",
+  "legacy_urls": [
+    "stories/cca05fe6cd8fdcd5aa59-july-uprising-state-forces-al-perpetrated-gender-based-violence/"
+  ]
 }

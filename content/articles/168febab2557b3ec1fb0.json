@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:02.456902+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/oms-queues-and-desperation-3183961",
   "status": "published",
-  "local_url": "stories/168febab2557b3ec1fb0-of-oms-queues-and-desperation/",
+  "local_url": "stories/of-oms-queues-and-desperation/",
   "first_archived_at": "2026-09-06T12:12:02.457118+00:00",
-  "content_hash": "d64e7c6030537ebd2cd2096ef69cfe1f35757274e9ffd2c6990229446eeae03e"
+  "content_hash": "d64e7c6030537ebd2cd2096ef69cfe1f35757274e9ffd2c6990229446eeae03e",
+  "legacy_urls": [
+    "stories/168febab2557b3ec1fb0-of-oms-queues-and-desperation/"
+  ]
 }

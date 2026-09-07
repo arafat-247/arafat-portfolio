@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:46.681226+00:00",
   "resolved_source_url": "https://www.thedailystar.net/election-2024/news/news/du-bcl-president-poses-ballot-paper-vote-boat-3513161",
   "status": "published",
-  "local_url": "stories/03574cbbd4f1b8bcfddd-du-bcl-president-poses-with-ballot-paper-with-vote-for-boat/",
+  "local_url": "stories/du-bcl-president-poses-with-ballot-paper-with-vote-for-boat/",
   "first_archived_at": "2026-09-06T12:10:46.681404+00:00",
-  "content_hash": "10f3cc12a7add30df8d6d2a42db08fb5be044a07c54c092b7530a33dddce4d21"
+  "content_hash": "10f3cc12a7add30df8d6d2a42db08fb5be044a07c54c092b7530a33dddce4d21",
+  "legacy_urls": [
+    "stories/03574cbbd4f1b8bcfddd-du-bcl-president-poses-with-ballot-paper-with-vote-for-boat/"
+  ]
 }

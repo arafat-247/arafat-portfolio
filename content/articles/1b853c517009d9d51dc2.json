@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 715,
-  "fetched_at": "2026-09-07T06:29:06.685952+00:00",
+  "fetched_at": "2026-09-07T07:26:39.679020+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/news/party-new-hope-looks-old-guard-4067706",
   "status": "published",
-  "local_url": "stories/1b853c517009d9d51dc2-a-party-of-new-hope-looks-like-the-old-guard/",
+  "local_url": "stories/a-party-of-new-hope-looks-like-the-old-guard/",
+  "legacy_urls": [
+    "stories/1b853c517009d9d51dc2-a-party-of-new-hope-looks-like-the-old-guard/"
+  ],
   "first_archived_at": "2026-09-06T10:58:01.916123+00:00",
   "content_hash": "a6b460579402ad1396286842a2c957b5b61389b6f5e8f13a4f797989894e3484"
 }

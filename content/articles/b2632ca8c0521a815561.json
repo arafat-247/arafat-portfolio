@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:33.266801+00:00",
   "resolved_source_url": "https://www.thedailystar.net/backpage/news/ru-teachers-demand-registrars-removal-2013177",
   "status": "published",
-  "local_url": "stories/b2632ca8c0521a815561-ru-teachers-demand-registrar-s-removal/",
+  "local_url": "stories/ru-teachers-demand-registrar-s-removal/",
   "first_archived_at": "2026-09-06T12:27:33.267322+00:00",
-  "content_hash": "ecfdb2f2e6fe40afd763363307df4a669d7a3ecdea0ee701d31291ffd4cc3626"
+  "content_hash": "ecfdb2f2e6fe40afd763363307df4a669d7a3ecdea0ee701d31291ffd4cc3626",
+  "legacy_urls": [
+    "stories/b2632ca8c0521a815561-ru-teachers-demand-registrar-s-removal/"
+  ]
 }

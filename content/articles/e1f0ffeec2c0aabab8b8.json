@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 634,
-  "fetched_at": "2026-09-07T06:28:52.158717+00:00",
+  "fetched_at": "2026-09-07T07:26:24.093805+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/news/when-did-offensive-speech-become-terrorism-4265931",
   "status": "published",
-  "local_url": "stories/e1f0ffeec2c0aabab8b8-when-did-offensive-speech-become-terrorism/",
+  "local_url": "stories/when-did-offensive-speech-become-terrorism/",
+  "legacy_urls": [
+    "stories/e1f0ffeec2c0aabab8b8-when-did-offensive-speech-become-terrorism/"
+  ],
   "first_archived_at": "2026-09-06T20:34:11.151776+00:00",
   "content_hash": "40179f397f78144bd793bf3885147b71a4d1f4f20b01b503e35d7cab4ac4b6d5"
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:32.132633+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/parents-worried-schools-reopen-amid-heat-alert-3596886",
   "status": "published",
-  "local_url": "stories/dd1c19c35bc87359398d-parents-worried-as-schools-reopen-amid-heat-alert/",
+  "local_url": "stories/parents-worried-as-schools-reopen-amid-heat-alert/",
   "first_archived_at": "2026-09-06T11:17:32.132851+00:00",
-  "content_hash": "33bfd9f2566db6623c4d0291f04ef0bc7a69de3ba684446376cfaadceda01f7d"
+  "content_hash": "33bfd9f2566db6623c4d0291f04ef0bc7a69de3ba684446376cfaadceda01f7d",
+  "legacy_urls": [
+    "stories/dd1c19c35bc87359398d-parents-worried-as-schools-reopen-amid-heat-alert/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:53.168989+00:00",
   "resolved_source_url": "https://www.thedailystar.net/health/healthcare/news/place-hope-healing-cancer-patients-3897226",
   "status": "published",
-  "local_url": "stories/78c4e2a6966fc61f37c9-a-place-of-hope-healing-for-cancer-patients/",
+  "local_url": "stories/a-place-of-hope-healing-for-cancer-patients/",
   "first_archived_at": "2026-09-06T10:58:53.169161+00:00",
-  "content_hash": "26f03677960d0bf0f1c109e787fe6e461ee58a527d964e9139d662272d125281"
+  "content_hash": "26f03677960d0bf0f1c109e787fe6e461ee58a527d964e9139d662272d125281",
+  "legacy_urls": [
+    "stories/78c4e2a6966fc61f37c9-a-place-of-hope-healing-for-cancer-patients/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:37.381967+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/7-injured-bcl-attacks-protesters-1668049",
   "status": "published",
-  "local_url": "stories/968b1efb76a372a8dbdf-7-hurt-as-bcl-men-attack-ru-protesters/",
+  "local_url": "stories/7-hurt-as-bcl-men-attack-ru-protesters/",
   "first_archived_at": "2026-09-06T12:27:37.382053+00:00",
-  "content_hash": "93303c1f0660e437b9384eb465c30d0d3c42a62a54e44a12a554b61bb55a1522"
+  "content_hash": "93303c1f0660e437b9384eb465c30d0d3c42a62a54e44a12a554b61bb55a1522",
+  "legacy_urls": [
+    "stories/968b1efb76a372a8dbdf-7-hurt-as-bcl-men-attack-ru-protesters/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:05.058544+00:00",
   "resolved_source_url": "https://www.thedailystar.net/youth/education/news/now-school-supplies-get-pricier-too-3113691",
   "status": "published",
-  "local_url": "stories/9890707e7dbd8811d704-now-school-supplies-get-pricier/",
+  "local_url": "stories/now-school-supplies-get-pricier/",
   "first_archived_at": "2026-09-06T12:12:05.058680+00:00",
-  "content_hash": "bc8b5f7021b4530e7592dcd03c10b2641ee51433358006687a1fef59fb6e3087"
+  "content_hash": "bc8b5f7021b4530e7592dcd03c10b2641ee51433358006687a1fef59fb6e3087",
+  "legacy_urls": [
+    "stories/9890707e7dbd8811d704-now-school-supplies-get-pricier/"
+  ]
 }

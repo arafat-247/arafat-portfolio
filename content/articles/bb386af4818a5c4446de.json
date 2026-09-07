@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:01.437092+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/ugc-considers-july-36-univ-seven-govt-colleges-3812296",
   "status": "published",
-  "local_url": "stories/bb386af4818a5c4446de-ugc-considers-july-36-univ-for-seven-govt-colleges/",
+  "local_url": "stories/ugc-considers-july-36-univ-for-seven-govt-colleges/",
   "first_archived_at": "2026-09-06T10:59:01.437293+00:00",
-  "content_hash": "a329f2fec9d1ed170311ffd2047d7d04ef2a0e7357c1c41a5a90cfaadce22f30"
+  "content_hash": "a329f2fec9d1ed170311ffd2047d7d04ef2a0e7357c1c41a5a90cfaadce22f30",
+  "legacy_urls": [
+    "stories/bb386af4818a5c4446de-ugc-considers-july-36-univ-for-seven-govt-colleges/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:38.244210+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/public-univs-reopen-today-3679731",
   "status": "published",
-  "local_url": "stories/2c5a367ff2fbb82f27dd-public-univs-reopen-today/",
+  "local_url": "stories/public-univs-reopen-today/",
   "first_archived_at": "2026-09-06T11:16:38.244727+00:00",
-  "content_hash": "73bb8ff90b105f637a24f76bcb30992677521cb78ac41c021a12c4cdbfdd7f22"
+  "content_hash": "73bb8ff90b105f637a24f76bcb30992677521cb78ac41c021a12c4cdbfdd7f22",
+  "legacy_urls": [
+    "stories/2c5a367ff2fbb82f27dd-public-univs-reopen-today/"
+  ]
 }

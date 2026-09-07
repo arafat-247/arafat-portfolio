@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 330,
-  "fetched_at": "2026-09-07T06:28:54.240688+00:00",
+  "fetched_at": "2026-09-07T07:26:25.857973+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/dakhil-pass-rate-lowest-23-years-4244851",
   "status": "published",
-  "local_url": "stories/939e921489d42c92d14f-dakhil-pass-rate-lowest-in-23-years/",
+  "local_url": "stories/dakhil-pass-rate-lowest-in-23-years/",
+  "legacy_urls": [
+    "stories/939e921489d42c92d14f-dakhil-pass-rate-lowest-in-23-years/"
+  ],
   "first_archived_at": "2026-09-06T10:57:47.504515+00:00",
   "content_hash": "93eaa81cbbdf128e84c53b37a15bdccc11e3d53505cf825534a79d2f5ab8a7bf"
 }

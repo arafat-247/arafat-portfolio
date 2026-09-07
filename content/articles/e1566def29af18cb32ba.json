@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:59.038538+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/patients-find-strength-shared-devotion-3286326",
   "status": "published",
-  "local_url": "stories/e1566def29af18cb32ba-patients-find-strength-in-shared-devotion/",
+  "local_url": "stories/patients-find-strength-in-shared-devotion/",
   "first_archived_at": "2026-09-06T12:10:59.038631+00:00",
-  "content_hash": "ab9a0c4289e39a2f8b7d44dec6f6921b1bd6fee8bf0f7adc7133bb867d1ff8f8"
+  "content_hash": "ab9a0c4289e39a2f8b7d44dec6f6921b1bd6fee8bf0f7adc7133bb867d1ff8f8",
+  "legacy_urls": [
+    "stories/e1566def29af18cb32ba-patients-find-strength-in-shared-devotion/"
+  ]
 }

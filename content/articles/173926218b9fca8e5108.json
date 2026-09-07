@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:41.829607+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/audiobooks-when-stories-come-alive-3541121",
   "status": "published",
-  "local_url": "stories/173926218b9fca8e5108-audiobooks-when-stories-come-alive/",
+  "local_url": "stories/audiobooks-when-stories-come-alive/",
   "first_archived_at": "2026-09-06T11:17:41.829803+00:00",
-  "content_hash": "7aef8f5bd96cf91a763778ca214be10fcf7c4cb6cb0760b33967feaf68a321fe"
+  "content_hash": "7aef8f5bd96cf91a763778ca214be10fcf7c4cb6cb0760b33967feaf68a321fe",
+  "legacy_urls": [
+    "stories/173926218b9fca8e5108-audiobooks-when-stories-come-alive/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:28.015096+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/reckless-recruitment-racks-ru-budget-2096093",
   "status": "published",
-  "local_url": "stories/dd7b445d9f92ac7c25cd-reckless-recruitment-racks-up-ru-budget/",
+  "local_url": "stories/reckless-recruitment-racks-up-ru-budget/",
   "first_archived_at": "2026-09-06T12:27:28.015304+00:00",
-  "content_hash": "7e2fbaaad1bab21bcf2dd4863867d102cc3e12cc7968dde117cfd96df47d595b"
+  "content_hash": "7e2fbaaad1bab21bcf2dd4863867d102cc3e12cc7968dde117cfd96df47d595b",
+  "legacy_urls": [
+    "stories/dd7b445d9f92ac7c25cd-reckless-recruitment-racks-up-ru-budget/"
+  ]
 }

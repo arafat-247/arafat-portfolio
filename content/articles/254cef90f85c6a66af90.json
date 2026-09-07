@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-07T06:36:55.091297+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/ssc-pass-rate-plunges-16-year-low-3936891",
   "status": "published",
-  "local_url": "stories/254cef90f85c6a66af90-ssc-pass-rate-plunges-to-a-16-year-low/",
+  "local_url": "stories/ssc-pass-rate-plunges-to-a-16-year-low/",
   "first_archived_at": "2026-09-06T10:58:46.607159+00:00",
-  "content_hash": "5a0d333212aed003a95f079d413c70444e3feeaad98a6e8ba66e02214b229a27"
+  "content_hash": "5a0d333212aed003a95f079d413c70444e3feeaad98a6e8ba66e02214b229a27",
+  "legacy_urls": [
+    "stories/254cef90f85c6a66af90-ssc-pass-rate-plunges-to-a-16-year-low/"
+  ]
 }

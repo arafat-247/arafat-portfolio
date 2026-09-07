@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 937,
-  "fetched_at": "2026-09-07T06:29:00.627892+00:00",
+  "fetched_at": "2026-09-07T07:26:33.914273+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/news/the-promised-end-mob-culture-has-yet-arrive-4153706",
   "status": "published",
-  "local_url": "stories/207e3866bb0b16e0b34a-the-promised-end-of-mob-culture-has-yet-to-arrive/",
+  "local_url": "stories/the-promised-end-of-mob-culture-has-yet-to-arrive/",
+  "legacy_urls": [
+    "stories/207e3866bb0b16e0b34a-the-promised-end-of-mob-culture-has-yet-to-arrive/"
+  ],
   "first_archived_at": "2026-09-06T10:57:54.305783+00:00",
   "content_hash": "7ae38558c1b89d6dfe8f77244c7e0a48cfa4fb9314ebc4c924dfbb2f1bda27c2"
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:38.423163+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/accidents-fires/bailey-road-fire/news/thanks-them-i-am-alive-today-3556406",
   "status": "published",
-  "local_url": "stories/b0bc9a1e2ccf31e548ad-thanks-to-them-i-am-alive-today/",
+  "local_url": "stories/thanks-to-them-i-am-alive-today/",
   "first_archived_at": "2026-09-06T11:17:38.423367+00:00",
-  "content_hash": "b487aeb7d3ba6e22c20ac1db5b320a1bfff0c0f85db7275b56ccc65b9633818b"
+  "content_hash": "b487aeb7d3ba6e22c20ac1db5b320a1bfff0c0f85db7275b56ccc65b9633818b",
+  "legacy_urls": [
+    "stories/b0bc9a1e2ccf31e548ad-thanks-to-them-i-am-alive-today/"
+  ]
 }

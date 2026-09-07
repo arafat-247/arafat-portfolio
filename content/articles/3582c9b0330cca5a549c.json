@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:42.473545+00:00",
   "resolved_source_url": "https://www.thedailystar.net/campus/news/vc-teachers-feud-cou-stalemate-leaves-students-limbo-3626896",
   "status": "published",
-  "local_url": "stories/3582c9b0330cca5a549c-vc-teachers-feud-at-cou-stalemate-leaves-students-in-limbo/",
+  "local_url": "stories/vc-teachers-feud-at-cou-stalemate-leaves-students-in-limbo/",
   "first_archived_at": "2026-09-06T11:16:42.473694+00:00",
-  "content_hash": "aee40d28ae8cdc4f99c7281121e485f11b4e6be6887fdfd5c4cbbb16fc6b6faf"
+  "content_hash": "aee40d28ae8cdc4f99c7281121e485f11b4e6be6887fdfd5c4cbbb16fc6b6faf",
+  "legacy_urls": [
+    "stories/3582c9b0330cca5a549c-vc-teachers-feud-at-cou-stalemate-leaves-students-in-limbo/"
+  ]
 }

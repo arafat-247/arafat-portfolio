@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 1062,
-  "fetched_at": "2026-09-07T06:29:12.554520+00:00",
+  "fetched_at": "2026-09-07T07:26:46.187004+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/education-left-behind-3959881",
   "status": "published",
-  "local_url": "stories/ede91d544565009f7d74-education-left-behind/",
+  "local_url": "stories/education-left-behind/",
+  "legacy_urls": [
+    "stories/ede91d544565009f7d74-education-left-behind/"
+  ],
   "first_archived_at": "2026-09-06T10:58:45.421146+00:00",
   "content_hash": "5077ce42bcd45d2749dc0aa1a44bb924b20f97b7b61d214fa5dec735173a5035"
 }

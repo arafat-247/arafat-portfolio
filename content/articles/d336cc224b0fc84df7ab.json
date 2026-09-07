@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:54.807147+00:00",
   "resolved_source_url": "https://www.thedailystar.net/weekend-read/news/where-basic-amenities-remain-elusive-3250946",
   "status": "published",
-  "local_url": "stories/d336cc224b0fc84df7ab-where-basic-amenities-remain-elusive/",
+  "local_url": "stories/where-basic-amenities-remain-elusive/",
   "first_archived_at": "2026-09-06T12:11:54.807327+00:00",
-  "content_hash": "7a94c695245d1462b5cef4f32a4e32cc0a20af928710635ad90f53c31a87b887"
+  "content_hash": "7a94c695245d1462b5cef4f32a4e32cc0a20af928710635ad90f53c31a87b887",
+  "legacy_urls": [
+    "stories/d336cc224b0fc84df7ab-where-basic-amenities-remain-elusive/"
+  ]
 }

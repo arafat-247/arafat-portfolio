@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 1081,
-  "fetched_at": "2026-09-07T06:28:53.590581+00:00",
+  "fetched_at": "2026-09-07T07:26:25.597036+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/health-education-spending-reach-5-gdp-2031-4253681",
   "status": "published",
-  "local_url": "stories/f101fb344ef72916c43f-health-education-spending-to-reach-5-of-gdp-by-2031/",
+  "local_url": "stories/health-education-spending-to-reach-5-of-gdp-by-2031/",
+  "legacy_urls": [
+    "stories/f101fb344ef72916c43f-health-education-spending-to-reach-5-of-gdp-by-2031/"
+  ],
   "first_archived_at": "2026-09-06T10:57:46.280084+00:00",
   "content_hash": "aa2fc949777d494545257e19a5fd5a8afcdaef74e779bcb44d4d4358a3899e35"
 }

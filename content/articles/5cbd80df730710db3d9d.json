@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:42.215082+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/school-exam-marks-65pc-written-part-35pc-practical-3646706",
   "status": "published",
-  "local_url": "stories/5cbd80df730710db3d9d-school-exam-marks-65pc-for-written-part-35pc-for-practical/",
+  "local_url": "stories/school-exam-marks-65pc-for-written-part-35pc-for-practical/",
   "first_archived_at": "2026-09-06T11:16:42.215251+00:00",
-  "content_hash": "614d532c6492eb85e1a930e72f5b74461a33a50ba01346edf3954ffae0f105df"
+  "content_hash": "614d532c6492eb85e1a930e72f5b74461a33a50ba01346edf3954ffae0f105df",
+  "legacy_urls": [
+    "stories/5cbd80df730710db3d9d-school-exam-marks-65pc-for-written-part-35pc-for-practical/"
+  ]
 }

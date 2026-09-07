@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:46.900224+00:00",
   "resolved_source_url": "https://www.thedailystar.net/election-2024/news/news/ballot-stuffing-attempt-2-star-reporters-cornered-bearing-witness-3513841",
   "status": "published",
-  "local_url": "stories/bc7ba7fce2dc9f2ae33e-ballot-stuffing-attempt-2-star-reporters-cornered-for-bearing-witness/",
+  "local_url": "stories/ballot-stuffing-attempt-2-star-reporters-cornered-for-bearing-witness/",
   "first_archived_at": "2026-09-06T12:10:46.900391+00:00",
-  "content_hash": "7c1331884ec87776ac1bfc5279d9f7ad44bb6236bae8f930850c3e9cf3f9664e"
+  "content_hash": "7c1331884ec87776ac1bfc5279d9f7ad44bb6236bae8f930850c3e9cf3f9664e",
+  "legacy_urls": [
+    "stories/bc7ba7fce2dc9f2ae33e-ballot-stuffing-attempt-2-star-reporters-cornered-for-bearing-witness/"
+  ]
 }

@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 606,
-  "fetched_at": "2026-09-07T06:28:59.692800+00:00",
+  "fetched_at": "2026-09-07T07:26:32.169709+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/dcs-seek-pms-intervention-drug-menace-4167076",
   "status": "published",
-  "local_url": "stories/1f3935448e32aa583fe1-dcs-seek-pm-s-intervention-on-drug-menace/",
+  "local_url": "stories/dcs-seek-pm-s-intervention-on-drug-menace/",
+  "legacy_urls": [
+    "stories/1f3935448e32aa583fe1-dcs-seek-pm-s-intervention-on-drug-menace/"
+  ],
   "first_archived_at": "2026-09-06T10:57:52.951342+00:00",
   "content_hash": "16982cda441363c2cb8ff0dc1842f412751fac086daf59ae977ae04075cb421b"
 }

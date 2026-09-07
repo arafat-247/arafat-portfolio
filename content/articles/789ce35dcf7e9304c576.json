@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:45.323034+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/transport/news/metro-night-3524431",
   "status": "published",
-  "local_url": "stories/789ce35dcf7e9304c576-metro-at-night/",
+  "local_url": "stories/metro-at-night/",
   "first_archived_at": "2026-09-06T12:10:45.323201+00:00",
-  "content_hash": "a3ab61a17ff5b2d3a36e5e4a0ce782c68ebe9eb840a03b158d028daa4744aa05"
+  "content_hash": "a3ab61a17ff5b2d3a36e5e4a0ce782c68ebe9eb840a03b158d028daa4744aa05",
+  "legacy_urls": [
+    "stories/789ce35dcf7e9304c576-metro-at-night/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:39.997084+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/closure-schools-universities-academic-calendars-total-disarray-3666661",
   "status": "published",
-  "local_url": "stories/272b7fb0948fc870826b-closure-of-schools-universities-academic-calendars-in-total-disarray/",
+  "local_url": "stories/closure-of-schools-universities-academic-calendars-in-total-disarray/",
   "first_archived_at": "2026-09-06T11:16:39.997682+00:00",
-  "content_hash": "5d72ee62fb082888a205572bed342c4ed272ffca88a20102f20f9e2731956a50"
+  "content_hash": "5d72ee62fb082888a205572bed342c4ed272ffca88a20102f20f9e2731956a50",
+  "legacy_urls": [
+    "stories/272b7fb0948fc870826b-closure-of-schools-universities-academic-calendars-in-total-disarray/"
+  ]
 }

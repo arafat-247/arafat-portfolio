@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:44.914409+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/spice-prices-shoot-20-percent-3612596",
   "status": "published",
-  "local_url": "stories/800ff5453b45b61f7b43-spice-prices-shoot-up-by-20-percent/",
+  "local_url": "stories/spice-prices-shoot-up-by-20-percent/",
   "first_archived_at": "2026-09-06T11:16:44.914868+00:00",
-  "content_hash": "5f236231ffd2f0bc376192f165e215994781929392b8e16a95125dec1669b00f"
+  "content_hash": "5f236231ffd2f0bc376192f165e215994781929392b8e16a95125dec1669b00f",
+  "legacy_urls": [
+    "stories/800ff5453b45b61f7b43-spice-prices-shoot-up-by-20-percent/"
+  ]
 }

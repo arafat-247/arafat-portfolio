@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:57.990051+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/radio-silence-bangladesh-betars-external-service-inoperative-three-years-3221291",
   "status": "published",
-  "local_url": "stories/744b061ba119c2d84cbc-radio-silence-bangladesh-betar-s-external-service-inoperative-for-three-yea/",
+  "local_url": "stories/radio-silence-bangladesh-betar-s-external-service-inoperative-for-three/",
   "first_archived_at": "2026-09-06T12:11:57.990251+00:00",
-  "content_hash": "57cf0c992096db1f76a7082ad3fa76128eb2534881d22ff38fb2502bcffe158b"
+  "content_hash": "57cf0c992096db1f76a7082ad3fa76128eb2534881d22ff38fb2502bcffe158b",
+  "legacy_urls": [
+    "stories/744b061ba119c2d84cbc-radio-silence-bangladesh-betar-s-external-service-inoperative-for-three-yea/"
+  ]
 }

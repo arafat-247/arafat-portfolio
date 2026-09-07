@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:37.568068+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/accidents-fires/news/we-are-alive-thanks-them-3556851",
   "status": "published",
-  "local_url": "stories/42ca5e718b52b06dd884-we-are-alive-thanks-to-them/",
+  "local_url": "stories/we-are-alive-thanks-to-them/",
   "first_archived_at": "2026-09-06T11:17:37.568235+00:00",
-  "content_hash": "690a2bebe57affc80e5ad698b4d7bcea5ab7344c7e03c38e2e607ac99fb6deb2"
+  "content_hash": "690a2bebe57affc80e5ad698b4d7bcea5ab7344c7e03c38e2e607ac99fb6deb2",
+  "legacy_urls": [
+    "stories/42ca5e718b52b06dd884-we-are-alive-thanks-to-them/"
+  ]
 }

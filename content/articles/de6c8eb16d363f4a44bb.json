@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:42.294085+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/gazette-delay-leaves-candidates-limbo-3648426",
   "status": "published",
-  "local_url": "stories/de6c8eb16d363f4a44bb-gazette-delay-leaves-candidates-in-limbo/",
+  "local_url": "stories/gazette-delay-leaves-candidates-in-limbo/",
   "first_archived_at": "2026-09-06T11:16:42.294241+00:00",
-  "content_hash": "e669bc4dfc3351f7fe87f27e9196d342ee1dde1575ecb474d9414b4dbde047c6"
+  "content_hash": "e669bc4dfc3351f7fe87f27e9196d342ee1dde1575ecb474d9414b4dbde047c6",
+  "legacy_urls": [
+    "stories/de6c8eb16d363f4a44bb-gazette-delay-leaves-candidates-in-limbo/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:44.363856+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/they-needed-sanction-someone-and-picked-me-3615866",
   "status": "published",
-  "local_url": "stories/65a173acd102a7c35dc9-they-needed-to-sanction-someone-and-picked-me/",
+  "local_url": "stories/they-needed-to-sanction-someone-and-picked-me/",
   "first_archived_at": "2026-09-06T11:16:44.364422+00:00",
-  "content_hash": "7df120bbf52db20e9cf827410a3e08a3401ec766c1eeb0c5b609d75a5c91cdee"
+  "content_hash": "7df120bbf52db20e9cf827410a3e08a3401ec766c1eeb0c5b609d75a5c91cdee",
+  "legacy_urls": [
+    "stories/65a173acd102a7c35dc9-they-needed-to-sanction-someone-and-picked-me/"
+  ]
 }

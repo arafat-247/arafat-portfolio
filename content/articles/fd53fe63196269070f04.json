@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:52.684150+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/students-colleagues-seek-fair-probe-1631641",
   "status": "published",
-  "local_url": "stories/fd53fe63196269070f04-students-colleagues-seek-fair-probe/",
+  "local_url": "stories/students-colleagues-seek-fair-probe/",
   "first_archived_at": "2026-09-06T12:45:52.684324+00:00",
-  "content_hash": "0bd4bb73e2bf4094e80d2d96b9e7ddcc81701714453636a3c5c492c8d671ed5d"
+  "content_hash": "0bd4bb73e2bf4094e80d2d96b9e7ddcc81701714453636a3c5c492c8d671ed5d",
+  "legacy_urls": [
+    "stories/fd53fe63196269070f04-students-colleagues-seek-fair-probe/"
+  ]
 }

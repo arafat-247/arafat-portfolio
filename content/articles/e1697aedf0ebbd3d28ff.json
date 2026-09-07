@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:51.660199+00:00",
   "resolved_source_url": "https://www.thedailystar.net/business/bangladesh-budget-2025-26/news/education-health-outlays-see-slight-rise-3909861",
   "status": "published",
-  "local_url": "stories/e1697aedf0ebbd3d28ff-education-health-outlays-see-slight-rise/",
+  "local_url": "stories/education-health-outlays-see-slight-rise/",
   "first_archived_at": "2026-09-06T10:58:51.660367+00:00",
-  "content_hash": "96dbd55df105c836e2f207f4889673750742e26e7a2bb2ab110f26fbcbf8faa3"
+  "content_hash": "96dbd55df105c836e2f207f4889673750742e26e7a2bb2ab110f26fbcbf8faa3",
+  "legacy_urls": [
+    "stories/e1697aedf0ebbd3d28ff-education-health-outlays-see-slight-rise/"
+  ]
 }

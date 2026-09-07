@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:57.655244+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/under-the-dirty-water-theres-ward-3228981",
   "status": "published",
-  "local_url": "stories/88cabc444368f4ddea07-under-the-dirty-water-there-s-a-ward/",
+  "local_url": "stories/under-the-dirty-water-there-s-a-ward/",
   "first_archived_at": "2026-09-06T12:11:57.655456+00:00",
-  "content_hash": "ec492c0593951bbbfa80f32e9eec63d1becd4ceac22785314aab2c5ab1a100ee"
+  "content_hash": "ec492c0593951bbbfa80f32e9eec63d1becd4ceac22785314aab2c5ab1a100ee",
+  "legacy_urls": [
+    "stories/88cabc444368f4ddea07-under-the-dirty-water-there-s-a-ward/"
+  ]
 }

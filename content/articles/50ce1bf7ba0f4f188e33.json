@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:54.418483+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/ssc-equivalent-exams-pass-rate-hits-13-year-low-3381011",
   "status": "published",
-  "local_url": "stories/50ce1bf7ba0f4f188e33-ssc-equivalent-exams-pass-rate-hits-13-year-low/",
+  "local_url": "stories/ssc-equivalent-exams-pass-rate-hits-13-year-low/",
   "first_archived_at": "2026-09-06T12:10:54.418630+00:00",
-  "content_hash": "2a1ec05f30674fdf857091fdafa42d9cebecb69831617951ff5a5ae0d4c40c5d"
+  "content_hash": "2a1ec05f30674fdf857091fdafa42d9cebecb69831617951ff5a5ae0d4c40c5d",
+  "legacy_urls": [
+    "stories/50ce1bf7ba0f4f188e33-ssc-equivalent-exams-pass-rate-hits-13-year-low/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:39.088849+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/students-step-fill-the-vacuum-3671906",
   "status": "published",
-  "local_url": "stories/e3597ec9d66e88e0efaa-students-step-up-to-fill-the-vacuum/",
+  "local_url": "stories/students-step-up-to-fill-the-vacuum/",
   "first_archived_at": "2026-09-06T11:16:39.089020+00:00",
-  "content_hash": "c0d833b6993c02f0b815ad0ede1a7131e27507a9b7bb42bf014a9b13fa6338f8"
+  "content_hash": "c0d833b6993c02f0b815ad0ede1a7131e27507a9b7bb42bf014a9b13fa6338f8",
+  "legacy_urls": [
+    "stories/e3597ec9d66e88e0efaa-students-step-up-to-fill-the-vacuum/"
+  ]
 }

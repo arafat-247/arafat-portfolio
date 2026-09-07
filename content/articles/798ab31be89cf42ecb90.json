@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:11.944787+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/dmp-launches-app-identify-accident-hotspots-3744821",
   "status": "published",
-  "local_url": "stories/798ab31be89cf42ecb90-dmp-launches-app-to-identify-accident-hotspots/",
+  "local_url": "stories/dmp-launches-app-to-identify-accident-hotspots/",
   "first_archived_at": "2026-09-06T10:59:11.944903+00:00",
-  "content_hash": "cd0d2d6a5843e2ed26ade96f75ab5658583fc2f32b95495bff13a2d49605771b"
+  "content_hash": "cd0d2d6a5843e2ed26ade96f75ab5658583fc2f32b95495bff13a2d49605771b",
+  "legacy_urls": [
+    "stories/798ab31be89cf42ecb90-dmp-launches-app-to-identify-accident-hotspots/"
+  ]
 }

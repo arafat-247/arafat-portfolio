@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:35.264476+00:00",
   "resolved_source_url": "https://www.thedailystar.net/business/news/mitfords-fragrance-fading-3562336",
   "status": "published",
-  "local_url": "stories/e7e97fcc45be99f5be77-is-mitford-s-fragrance-fading/",
+  "local_url": "stories/is-mitford-s-fragrance-fading/",
   "first_archived_at": "2026-09-06T11:17:35.265189+00:00",
-  "content_hash": "76048b52cc99027fc2819b992ee01ff2e4b3a691c8ef438a1254132c5cbe490b"
+  "content_hash": "76048b52cc99027fc2819b992ee01ff2e4b3a691c8ef438a1254132c5cbe490b",
+  "legacy_urls": [
+    "stories/e7e97fcc45be99f5be77-is-mitford-s-fragrance-fading/"
+  ]
 }

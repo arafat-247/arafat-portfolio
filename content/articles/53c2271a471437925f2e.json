@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 472,
-  "fetched_at": "2026-09-07T06:29:07.940850+00:00",
+  "fetched_at": "2026-09-07T07:26:40.526707+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/dipus-ashes-dhaka-mymensingh-highway-are-gone-stain-our-souls-remains-4065561",
   "status": "published",
-  "local_url": "stories/53c2271a471437925f2e-dipu-s-ashes-on-dhaka-mymensingh-highway-are-gone-the-stain-on-our-souls-re/",
+  "local_url": "stories/dipu-s-ashes-on-dhaka-mymensingh-highway-are-gone-the-stain-on-our-souls/",
+  "legacy_urls": [
+    "stories/53c2271a471437925f2e-dipu-s-ashes-on-dhaka-mymensingh-highway-are-gone-the-stain-on-our-souls-re/"
+  ],
   "first_archived_at": "2026-09-06T10:58:02.287490+00:00",
   "content_hash": "6c26cc8cc174bce4525dae45385312ac2fd1db840439046bf2fe295be36c0c76"
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:35.732139+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/no-dormitories-ru-iba-students-1705732",
   "status": "published",
-  "local_url": "stories/665f943ad259dd15699d-no-dormitories-for-ru-iba-students/",
+  "local_url": "stories/no-dormitories-for-ru-iba-students/",
   "first_archived_at": "2026-09-06T12:27:35.732329+00:00",
-  "content_hash": "a6445e80a9bc926fb7d4c5c4db2bbd48ef9474647fd74418e71ba41520a45885"
+  "content_hash": "a6445e80a9bc926fb7d4c5c4db2bbd48ef9474647fd74418e71ba41520a45885",
+  "legacy_urls": [
+    "stories/665f943ad259dd15699d-no-dormitories-for-ru-iba-students/"
+  ]
 }

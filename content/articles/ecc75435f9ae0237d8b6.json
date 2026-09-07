@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:47.252731+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/lowest-number-gpa-5-12-years-3608666",
   "status": "published",
-  "local_url": "stories/ecc75435f9ae0237d8b6-lowest-number-of-gpa-5-in-12-years/",
+  "local_url": "stories/lowest-number-of-gpa-5-in-12-years/",
   "first_archived_at": "2026-09-06T11:16:47.253012+00:00",
-  "content_hash": "39ce5dc287528a9e5a3758fce48177347413f0b81e9e95c397faf8c87930b877"
+  "content_hash": "39ce5dc287528a9e5a3758fce48177347413f0b81e9e95c397faf8c87930b877",
+  "legacy_urls": [
+    "stories/ecc75435f9ae0237d8b6-lowest-number-of-gpa-5-in-12-years/"
+  ]
 }

@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 490,
-  "fetched_at": "2026-09-07T06:29:06.970452+00:00",
+  "fetched_at": "2026-09-07T07:26:38.416373+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/politics/news/ncp-aims-40-seats-jamaat-4073466",
   "status": "published",
-  "local_url": "stories/7a86697bd6a85e9727f2-ncp-aims-for-40-seats-from-jamaat/",
+  "local_url": "stories/ncp-aims-for-40-seats-from-jamaat/",
+  "legacy_urls": [
+    "stories/7a86697bd6a85e9727f2-ncp-aims-for-40-seats-from-jamaat/"
+  ],
   "first_archived_at": "2026-09-06T10:58:00.531718+00:00",
   "content_hash": "771577d8275616967f2ad9a788e26086e3826fb4d32466bb861a60f7c40793fd"
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:48.137434+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/revisiting-memories-struggle-and-sacrifice-3282476",
   "status": "published",
-  "local_url": "stories/913639db361f09cd6f7b-revisiting-memories-of-struggle-and-sacrifice/",
+  "local_url": "stories/revisiting-memories-of-struggle-and-sacrifice/",
   "first_archived_at": "2026-09-06T12:11:48.138235+00:00",
-  "content_hash": "e665b1643c94a885a1c2ba8a07e33cbe8d46942bf7ad6e4b2a9216848ef149ab"
+  "content_hash": "e665b1643c94a885a1c2ba8a07e33cbe8d46942bf7ad6e4b2a9216848ef149ab",
+  "legacy_urls": [
+    "stories/913639db361f09cd6f7b-revisiting-memories-of-struggle-and-sacrifice/"
+  ]
 }

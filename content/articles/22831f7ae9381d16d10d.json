@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:03.526436+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/students-suffer-nctb-fails-deliver-books-3801771",
   "status": "published",
-  "local_url": "stories/22831f7ae9381d16d10d-students-suffer-as-nctb-fails-to-deliver-books/",
+  "local_url": "stories/students-suffer-as-nctb-fails-to-deliver-books/",
   "first_archived_at": "2026-09-06T10:59:03.526641+00:00",
-  "content_hash": "6ea4b8df395fd0c1788410680568e5b926b7e5d21b413ff648fd834f2548f02c"
+  "content_hash": "6ea4b8df395fd0c1788410680568e5b926b7e5d21b413ff648fd834f2548f02c",
+  "legacy_urls": [
+    "stories/22831f7ae9381d16d10d-students-suffer-as-nctb-fails-to-deliver-books/"
+  ]
 }

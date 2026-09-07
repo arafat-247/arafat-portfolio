@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:26.827401+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/lockdown-leaves-students-hanging-2111917",
   "status": "published",
-  "local_url": "stories/0bf7cad30d53c07f9034-lockdown-leaves-students-hanging/",
+  "local_url": "stories/lockdown-leaves-students-hanging/",
   "first_archived_at": "2026-09-06T12:27:26.827588+00:00",
-  "content_hash": "df9d20c4539d8ce74db7801b330d72197187b4159c130ce34e9386840e3d6cd1"
+  "content_hash": "df9d20c4539d8ce74db7801b330d72197187b4159c130ce34e9386840e3d6cd1",
+  "legacy_urls": [
+    "stories/0bf7cad30d53c07f9034-lockdown-leaves-students-hanging/"
+  ]
 }

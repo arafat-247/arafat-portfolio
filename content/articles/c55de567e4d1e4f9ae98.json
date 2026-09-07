@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:55.568009+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/mohammadpur-gunfight-follows-disturbingly-similar-script-3830041",
   "status": "published",
-  "local_url": "stories/c55de567e4d1e4f9ae98-mohammadpur-gunfight-follows-a-disturbingly-similar-script/",
+  "local_url": "stories/mohammadpur-gunfight-follows-a-disturbingly-similar-script/",
   "first_archived_at": "2026-09-06T10:58:55.568188+00:00",
-  "content_hash": "493cd399e0b1e542b6a7f029b8f9d8e26f33b22cc0777fc0672c8cca6e7d11eb"
+  "content_hash": "493cd399e0b1e542b6a7f029b8f9d8e26f33b22cc0777fc0672c8cca6e7d11eb",
+  "legacy_urls": [
+    "stories/c55de567e4d1e4f9ae98-mohammadpur-gunfight-follows-a-disturbingly-similar-script/"
+  ]
 }

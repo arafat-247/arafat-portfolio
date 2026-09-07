@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:38.695771+00:00",
   "resolved_source_url": "https://www.thedailystar.net/campus/news/three-vcs-public-universities-resign-3671786",
   "status": "published",
-  "local_url": "stories/41fbf773987f22328dd2-three-vcs-of-public-universities-resign/",
+  "local_url": "stories/three-vcs-of-public-universities-resign/",
   "first_archived_at": "2026-09-06T11:16:38.695955+00:00",
-  "content_hash": "e5e6276d6e91cd0818720c077f0daafac7d79e2e41f1bd977e5e37e55d90b9f0"
+  "content_hash": "e5e6276d6e91cd0818720c077f0daafac7d79e2e41f1bd977e5e37e55d90b9f0",
+  "legacy_urls": [
+    "stories/41fbf773987f22328dd2-three-vcs-of-public-universities-resign/"
+  ]
 }

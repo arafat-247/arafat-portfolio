@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:33.236685+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/keep-dorms-open-during-exams-2017397",
   "status": "published",
-  "local_url": "stories/62ca6db1d8c353ec695a-keep-dorms-open-during-exams/",
+  "local_url": "stories/keep-dorms-open-during-exams/",
   "first_archived_at": "2026-09-06T12:27:33.237205+00:00",
-  "content_hash": "b6bba3160a4cef7584628feaeb7972152f0e77f55725f8720bcd0583588bc6e5"
+  "content_hash": "b6bba3160a4cef7584628feaeb7972152f0e77f55725f8720bcd0583588bc6e5",
+  "legacy_urls": [
+    "stories/62ca6db1d8c353ec695a-keep-dorms-open-during-exams/"
+  ]
 }

@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 819,
-  "fetched_at": "2026-09-07T06:29:04.487406+00:00",
+  "fetched_at": "2026-09-07T07:26:36.661609+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/news/commit-equity-quality-education-4089621",
   "status": "published",
-  "local_url": "stories/0d8900388ebd46a452ed-commit-to-equity-quality-in-education/",
+  "local_url": "stories/commit-to-equity-quality-in-education/",
+  "legacy_urls": [
+    "stories/0d8900388ebd46a452ed-commit-to-equity-quality-in-education/"
+  ],
   "first_archived_at": "2026-09-06T10:57:59.141107+00:00",
   "content_hash": "ba322f1c23420939e03ab6ab862dc51cc906ac06f08596b1808e65dd4223b01a"
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:54.058548+00:00",
   "resolved_source_url": "https://www.thedailystar.net/weekend-read/news/watching-planes-their-only-entertainment-3238456",
   "status": "published",
-  "local_url": "stories/af4fbc08671802826c82-watching-planes-their-only-entertainment/",
+  "local_url": "stories/watching-planes-their-only-entertainment/",
   "first_archived_at": "2026-09-06T12:11:54.058725+00:00",
-  "content_hash": "5845f3ae09ca5a49b9177c36e790a8cd7c6f256e89fd8f02da8619bc5fafcf76"
+  "content_hash": "5845f3ae09ca5a49b9177c36e790a8cd7c6f256e89fd8f02da8619bc5fafcf76",
+  "legacy_urls": [
+    "stories/af4fbc08671802826c82-watching-planes-their-only-entertainment/"
+  ]
 }

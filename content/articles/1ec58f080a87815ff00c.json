@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:47.499214+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/views/news/appointment-allegiance-3930021",
   "status": "published",
-  "local_url": "stories/1ec58f080a87815ff00c-appointment-by-allegiance/",
+  "local_url": "stories/appointment-by-allegiance/",
   "first_archived_at": "2026-09-06T10:58:47.499412+00:00",
-  "content_hash": "3e1fc466148fff665907da67c1f8c60a4534a2aa0a3ce663819fc9212fb9a15d"
+  "content_hash": "3e1fc466148fff665907da67c1f8c60a4534a2aa0a3ce663819fc9212fb9a15d",
+  "legacy_urls": [
+    "stories/1ec58f080a87815ff00c-appointment-by-allegiance/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:50.901006+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/ugc-member-urges-teachers-ensure-80pc-turnout-polls-3467581",
   "status": "published",
-  "local_url": "stories/32c91fed518dd89a64e8-ugc-member-urges-teachers-to-ensure-80pc-turnout-in-polls/",
+  "local_url": "stories/ugc-member-urges-teachers-to-ensure-80pc-turnout-in-polls/",
   "first_archived_at": "2026-09-06T12:10:50.901183+00:00",
-  "content_hash": "a3b0c8f8ba895b087688b95bf004becc1100060d513b6b2c5cbbce92ad0a1f94"
+  "content_hash": "a3b0c8f8ba895b087688b95bf004becc1100060d513b6b2c5cbbce92ad0a1f94",
+  "legacy_urls": [
+    "stories/32c91fed518dd89a64e8-ugc-member-urges-teachers-to-ensure-80pc-turnout-in-polls/"
+  ]
 }

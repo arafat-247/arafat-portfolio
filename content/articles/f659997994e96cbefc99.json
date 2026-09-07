@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 1161,
-  "fetched_at": "2026-09-07T06:29:09.504691+00:00",
+  "fetched_at": "2026-09-07T07:26:42.344088+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/views/news/theres-no-neutral-observer-digital-violence-4049931",
   "status": "published",
-  "local_url": "stories/f659997994e96cbefc99-there-s-no-neutral-observer-in-digital-violence/",
+  "local_url": "stories/there-s-no-neutral-observer-in-digital-violence/",
+  "legacy_urls": [
+    "stories/f659997994e96cbefc99-there-s-no-neutral-observer-in-digital-violence/"
+  ],
   "first_archived_at": "2026-09-06T10:58:03.922042+00:00",
   "content_hash": "34b4a5afc0e95c238c69e91ea96204fd4f78f786eff1da7ca528e28c4da3a657"
 }

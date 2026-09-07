@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:00.361424+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/you-promised-change-where-it-3812826",
   "status": "published",
-  "local_url": "stories/f54c25846d350d0ace0c-you-promised-change-where-is-it/",
+  "local_url": "stories/you-promised-change-where-is-it/",
   "first_archived_at": "2026-09-06T10:59:00.361635+00:00",
-  "content_hash": "928246e1affe368e4b0d9f3f5053341f3f7df63d9bcb9d67c43cb9f2cbbb0926"
+  "content_hash": "928246e1affe368e4b0d9f3f5053341f3f7df63d9bcb9d67c43cb9f2cbbb0926",
+  "legacy_urls": [
+    "stories/f54c25846d350d0ace0c-you-promised-change-where-is-it/"
+  ]
 }

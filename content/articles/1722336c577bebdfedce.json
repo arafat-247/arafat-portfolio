@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:34.676237+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/madrasa-board-tops-results-9340pc-pass-rate-3728306",
   "status": "published",
-  "local_url": "stories/1722336c577bebdfedce-madrasa-board-tops-results-with-93-40pc-pass-rate/",
+  "local_url": "stories/madrasa-board-tops-results-with-93-40pc-pass-rate/",
   "first_archived_at": "2026-09-06T11:16:34.676388+00:00",
-  "content_hash": "049ca94c512012b49b74a0c36fd87b73229263275a7064f1d1d425cb865958bc"
+  "content_hash": "049ca94c512012b49b74a0c36fd87b73229263275a7064f1d1d425cb865958bc",
+  "legacy_urls": [
+    "stories/1722336c577bebdfedce-madrasa-board-tops-results-with-93-40pc-pass-rate/"
+  ]
 }

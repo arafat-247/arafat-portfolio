@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 615,
-  "fetched_at": "2026-09-07T06:28:56.617521+00:00",
+  "fetched_at": "2026-09-07T07:26:28.820899+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/govt-asks-pry-schools-keep-zia-khaleda-tarique-books-4217626",
   "status": "published",
-  "local_url": "stories/2a5e039934d815310d4c-govt-asks-pry-schools-to-keep-zia-khaleda-tarique-books/",
+  "local_url": "stories/govt-asks-pry-schools-to-keep-zia-khaleda-tarique-books/",
+  "legacy_urls": [
+    "stories/2a5e039934d815310d4c-govt-asks-pry-schools-to-keep-zia-khaleda-tarique-books/"
+  ],
   "first_archived_at": "2026-09-06T10:57:49.892488+00:00",
   "content_hash": "04ba1ff50ee652ac89055e9b8eaf80df962872f1cee4b95ea535348be2a38c70"
 }

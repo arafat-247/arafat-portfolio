@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:49.751163+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/recurring-script-enough-prove-pattern-3913001",
   "status": "published",
-  "local_url": "stories/b96d3e55995526e97261-a-recurring-script-is-enough-to-prove-the-pattern/",
+  "local_url": "stories/a-recurring-script-is-enough-to-prove-the-pattern/",
   "first_archived_at": "2026-09-06T10:58:49.751389+00:00",
-  "content_hash": "cbf7cbbebba8765b180ee56721e0182dc119f00672f42175f960d79eba0d55e5"
+  "content_hash": "cbf7cbbebba8765b180ee56721e0182dc119f00672f42175f960d79eba0d55e5",
+  "legacy_urls": [
+    "stories/b96d3e55995526e97261-a-recurring-script-is-enough-to-prove-the-pattern/"
+  ]
 }

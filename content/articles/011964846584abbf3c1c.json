@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:33.109111+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/non-payment-tax-nbr-freezes-bank-accounts-12-pvt-univs-3579976",
   "status": "published",
-  "local_url": "stories/011964846584abbf3c1c-non-payment-of-tax-nbr-freezes-bank-accounts-of-12-pvt-univs/",
+  "local_url": "stories/non-payment-of-tax-nbr-freezes-bank-accounts-of-12-pvt-univs/",
   "first_archived_at": "2026-09-06T11:17:33.109631+00:00",
-  "content_hash": "46525c2fbca417662ce01f3c17ca3f86b658861bb731d142b2a4eb48d9c1ac73"
+  "content_hash": "46525c2fbca417662ce01f3c17ca3f86b658861bb731d142b2a4eb48d9c1ac73",
+  "legacy_urls": [
+    "stories/011964846584abbf3c1c-non-payment-of-tax-nbr-freezes-bank-accounts-of-12-pvt-univs/"
+  ]
 }

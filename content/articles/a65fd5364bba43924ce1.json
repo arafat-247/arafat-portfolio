@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:51.472775+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/politics/hartalrallies/news/three-day-blockade-low-turnout-schools-3458516",
   "status": "published",
-  "local_url": "stories/a65fd5364bba43924ce1-three-day-blockade-low-turnout-at-schools/",
+  "local_url": "stories/three-day-blockade-low-turnout-at-schools/",
   "first_archived_at": "2026-09-06T12:10:51.472954+00:00",
-  "content_hash": "64275bede0d81ad8ce32404c009a6bc81bce45745acfd076dc3653e425b585e3"
+  "content_hash": "64275bede0d81ad8ce32404c009a6bc81bce45745acfd076dc3653e425b585e3",
+  "legacy_urls": [
+    "stories/a65fd5364bba43924ce1-three-day-blockade-low-turnout-at-schools/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:57.426334+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/nctb-textbooks-never-ending-cycle-controversies-3224766",
   "status": "published",
-  "local_url": "stories/65528f66fc5a65f811dc-nctb-textbooks-never-ending-cycle-of-controversies/",
+  "local_url": "stories/nctb-textbooks-never-ending-cycle-of-controversies/",
   "first_archived_at": "2026-09-06T12:11:57.426522+00:00",
-  "content_hash": "13e5bc4f4161985209937a395c80da8d257645595cc6c0926127d17b3c226625"
+  "content_hash": "13e5bc4f4161985209937a395c80da8d257645595cc6c0926127d17b3c226625",
+  "legacy_urls": [
+    "stories/65528f66fc5a65f811dc-nctb-textbooks-never-ending-cycle-of-controversies/"
+  ]
 }

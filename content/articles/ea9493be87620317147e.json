@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:43.309039+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/tapestry-colours-and-cultures-3535716",
   "status": "published",
-  "local_url": "stories/ea9493be87620317147e-a-tapestry-of-colours-and-cultures/",
+  "local_url": "stories/a-tapestry-of-colours-and-cultures/",
   "first_archived_at": "2026-09-06T11:17:43.309160+00:00",
-  "content_hash": "aa1d4fb5b6d44d163644c5d4bf57a645cfb3d48e4ae792902d6482b8cb98bce8"
+  "content_hash": "aa1d4fb5b6d44d163644c5d4bf57a645cfb3d48e4ae792902d6482b8cb98bce8",
+  "legacy_urls": [
+    "stories/ea9493be87620317147e-a-tapestry-of-colours-and-cultures/"
+  ]
 }

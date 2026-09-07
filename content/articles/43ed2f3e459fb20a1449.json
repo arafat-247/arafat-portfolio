@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:55.675321+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/ru-student-returns-lost-cash-owner-1387588",
   "status": "published",
-  "local_url": "stories/43ed2f3e459fb20a1449-ru-student-returns-lost-cash-to-owner/",
+  "local_url": "stories/ru-student-returns-lost-cash-to-owner/",
   "first_archived_at": "2026-09-06T12:45:55.675475+00:00",
-  "content_hash": "7638048320261069b622d45dfea15f94fde8ccf601264581006d8b51c796ee7e"
+  "content_hash": "7638048320261069b622d45dfea15f94fde8ccf601264581006d8b51c796ee7e",
+  "legacy_urls": [
+    "stories/43ed2f3e459fb20a1449-ru-student-returns-lost-cash-to-owner/"
+  ]
 }

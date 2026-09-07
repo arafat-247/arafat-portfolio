@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-07T06:36:54.865508+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/july-uprising-movement-united-campuses-and-classrooms-3950961",
   "status": "published",
-  "local_url": "stories/1d94835c78dafa1ba238-july-uprising-a-movement-that-united-campuses-and-classrooms/",
+  "local_url": "stories/july-uprising-a-movement-that-united-campuses-and-classrooms/",
   "first_archived_at": "2026-09-06T10:58:46.557385+00:00",
-  "content_hash": "f9854014f771302925c92ddb010661ce9bab2a29b466f8fbceab6bcc68f28812"
+  "content_hash": "f9854014f771302925c92ddb010661ce9bab2a29b466f8fbceab6bcc68f28812",
+  "legacy_urls": [
+    "stories/1d94835c78dafa1ba238-july-uprising-a-movement-that-united-campuses-and-classrooms/"
+  ]
 }

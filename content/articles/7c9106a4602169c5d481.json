@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:48.631457+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/journey-through-bangladeshs-struggle-independence-3280726",
   "status": "published",
-  "local_url": "stories/7c9106a4602169c5d481-a-journey-through-bangladesh-s-struggle-for-independence/",
+  "local_url": "stories/a-journey-through-bangladesh-s-struggle-for-independence/",
   "first_archived_at": "2026-09-06T12:11:48.632062+00:00",
-  "content_hash": "9778022a2f657a478b2b7ad19190b8263a6c63f50ea5aac1a76dc2445a945dd7"
+  "content_hash": "9778022a2f657a478b2b7ad19190b8263a6c63f50ea5aac1a76dc2445a945dd7",
+  "legacy_urls": [
+    "stories/7c9106a4602169c5d481-a-journey-through-bangladesh-s-struggle-for-independence/"
+  ]
 }

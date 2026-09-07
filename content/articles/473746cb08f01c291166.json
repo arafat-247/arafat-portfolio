@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:59.604626+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/satrasta-tejgaon-road-will-it-finally-be-free-congestion-3206891",
   "status": "published",
-  "local_url": "stories/473746cb08f01c291166-satrasta-tejgaon-road-will-it-finally-be-free-of-congestion/",
+  "local_url": "stories/satrasta-tejgaon-road-will-it-finally-be-free-of-congestion/",
   "first_archived_at": "2026-09-06T12:11:59.604814+00:00",
-  "content_hash": "8edf6723620ba8621df1384d37ff632296657ec64105609bdbfa1e8c958a3fbb"
+  "content_hash": "8edf6723620ba8621df1384d37ff632296657ec64105609bdbfa1e8c958a3fbb",
+  "legacy_urls": [
+    "stories/473746cb08f01c291166-satrasta-tejgaon-road-will-it-finally-be-free-of-congestion/"
+  ]
 }

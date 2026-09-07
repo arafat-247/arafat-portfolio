@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:40.022869+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/univ-teachers-carry-strike-today-3656126",
   "status": "published",
-  "local_url": "stories/edecc027f5f36506c2e3-univ-teachers-to-carry-on-strike-today/",
+  "local_url": "stories/univ-teachers-to-carry-on-strike-today/",
   "first_archived_at": "2026-09-06T11:16:40.023316+00:00",
-  "content_hash": "87e005a93d8c7d77838ffbe09d7d83044c2df65a5ff538d373774153fd4a015d"
+  "content_hash": "87e005a93d8c7d77838ffbe09d7d83044c2df65a5ff538d373774153fd4a015d",
+  "legacy_urls": [
+    "stories/edecc027f5f36506c2e3-univ-teachers-to-carry-on-strike-today/"
+  ]
 }

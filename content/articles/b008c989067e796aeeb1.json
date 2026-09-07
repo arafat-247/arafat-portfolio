@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:46.690278+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/girls-ace-ssc-again-3608516",
   "status": "published",
-  "local_url": "stories/b008c989067e796aeeb1-girls-ace-ssc-again/",
+  "local_url": "stories/girls-ace-ssc-again/",
   "first_archived_at": "2026-09-06T11:16:46.690505+00:00",
-  "content_hash": "ea84e497c22ad39d3f863328272867eb0f99e0e7bbf094c2fdbf41ee665ed051"
+  "content_hash": "ea84e497c22ad39d3f863328272867eb0f99e0e7bbf094c2fdbf41ee665ed051",
+  "legacy_urls": [
+    "stories/b008c989067e796aeeb1-girls-ace-ssc-again/"
+  ]
 }

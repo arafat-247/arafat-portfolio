@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:12.423271+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/76-job-seekers-still-await-approval-3737481",
   "status": "published",
-  "local_url": "stories/d473195447e15ea608c1-76-job-seekers-still-await-approval/",
+  "local_url": "stories/76-job-seekers-still-await-approval/",
   "first_archived_at": "2026-09-06T10:59:12.423357+00:00",
-  "content_hash": "126d92ce4519b57163a74bd6cdb893b00cd7b65c99d6ed061c47a3a2f96fbb1c"
+  "content_hash": "126d92ce4519b57163a74bd6cdb893b00cd7b65c99d6ed061c47a3a2f96fbb1c",
+  "legacy_urls": [
+    "stories/d473195447e15ea608c1-76-job-seekers-still-await-approval/"
+  ]
 }

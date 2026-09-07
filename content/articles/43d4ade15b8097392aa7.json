@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:10.635112+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/university-admission-cluster-systems-fate-hangs-balance-3763336",
   "status": "published",
-  "local_url": "stories/43d4ade15b8097392aa7-university-admission-cluster-system-s-fate-hangs-in-balance/",
+  "local_url": "stories/university-admission-cluster-system-s-fate-hangs-in-balance/",
   "first_archived_at": "2026-09-06T10:59:10.635295+00:00",
-  "content_hash": "bc5939ab60e979bde53b18b60d4e819f81c161111516a6a72f3bedc78e78664f"
+  "content_hash": "bc5939ab60e979bde53b18b60d4e819f81c161111516a6a72f3bedc78e78664f",
+  "legacy_urls": [
+    "stories/43d4ade15b8097392aa7-university-admission-cluster-system-s-fate-hangs-in-balance/"
+  ]
 }

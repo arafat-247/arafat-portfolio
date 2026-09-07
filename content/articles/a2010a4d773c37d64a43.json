@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:04.366883+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/tough-day-dhaka-dwellers-3118751",
   "status": "published",
-  "local_url": "stories/a2010a4d773c37d64a43-tough-day-for-dhaka-dwellers/",
+  "local_url": "stories/tough-day-for-dhaka-dwellers/",
   "first_archived_at": "2026-09-06T12:12:04.367057+00:00",
-  "content_hash": "8727912e95d71038dcab2499cc4a1e0f80c1c21dd117fe2c9130b6fa84c37120"
+  "content_hash": "8727912e95d71038dcab2499cc4a1e0f80c1c21dd117fe2c9130b6fa84c37120",
+  "legacy_urls": [
+    "stories/a2010a4d773c37d64a43-tough-day-for-dhaka-dwellers/"
+  ]
 }

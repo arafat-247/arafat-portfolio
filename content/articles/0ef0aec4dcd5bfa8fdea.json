@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:02.615185+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/public-universities-admission-woes-deepen-students-3808361",
   "status": "published",
-  "local_url": "stories/0ef0aec4dcd5bfa8fdea-public-universities-admission-woes-deepen-for-students/",
+  "local_url": "stories/public-universities-admission-woes-deepen-for-students/",
   "first_archived_at": "2026-09-06T10:59:02.615355+00:00",
-  "content_hash": "d0448606bc6eec7285b2b7400462911dcc7da9beb4024183195d37041fc5ccdc"
+  "content_hash": "d0448606bc6eec7285b2b7400462911dcc7da9beb4024183195d37041fc5ccdc",
+  "legacy_urls": [
+    "stories/0ef0aec4dcd5bfa8fdea-public-universities-admission-woes-deepen-for-students/"
+  ]
 }

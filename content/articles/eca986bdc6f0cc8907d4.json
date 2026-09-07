@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:30.685360+00:00",
   "resolved_source_url": "https://www.thedailystar.net/backpage/news/innocent-ru-student-jail-2-months-1859215",
   "status": "published",
-  "local_url": "stories/eca986bdc6f0cc8907d4-innocent-ru-student-in-jail-for-2-months/",
+  "local_url": "stories/innocent-ru-student-in-jail-for-2-months/",
   "first_archived_at": "2026-09-06T12:27:30.685535+00:00",
-  "content_hash": "f6bbb7ff22f8040c4e96bdfff77f9f7e74be5b3008775f6f27996d784d013597"
+  "content_hash": "f6bbb7ff22f8040c4e96bdfff77f9f7e74be5b3008775f6f27996d784d013597",
+  "legacy_urls": [
+    "stories/eca986bdc6f0cc8907d4-innocent-ru-student-in-jail-for-2-months/"
+  ]
 }

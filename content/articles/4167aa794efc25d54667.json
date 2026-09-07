@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:24.698425+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/crime-justice/news/roni-calls-protest-now-3079701",
   "status": "published",
-  "local_url": "stories/4167aa794efc25d54667-roni-calls-off-protest-for-now/",
+  "local_url": "stories/roni-calls-off-protest-for-now/",
   "first_archived_at": "2026-09-06T12:27:24.698601+00:00",
-  "content_hash": "5b5b98450f3082c34a4987bd50c69e3d125573ad4a8523be4c91935ef6e88b1a"
+  "content_hash": "5b5b98450f3082c34a4987bd50c69e3d125573ad4a8523be4c91935ef6e88b1a",
+  "legacy_urls": [
+    "stories/4167aa794efc25d54667-roni-calls-off-protest-for-now/"
+  ]
 }

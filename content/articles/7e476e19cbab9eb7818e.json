@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:55.613263+00:00",
   "resolved_source_url": "https://www.thedailystar.net/weekend-read/news/village-crabs-dhaka-3238506",
   "status": "published",
-  "local_url": "stories/7e476e19cbab9eb7818e-a-village-of-crabs-in-dhaka/",
+  "local_url": "stories/a-village-of-crabs-in-dhaka/",
   "first_archived_at": "2026-09-06T12:11:55.613462+00:00",
-  "content_hash": "8e4f1e1d3e85f03e9f776f9b596760483003daa1807455c6637e8fa6c78eda77"
+  "content_hash": "8e4f1e1d3e85f03e9f776f9b596760483003daa1807455c6637e8fa6c78eda77",
+  "legacy_urls": [
+    "stories/7e476e19cbab9eb7818e-a-village-of-crabs-in-dhaka/"
+  ]
 }

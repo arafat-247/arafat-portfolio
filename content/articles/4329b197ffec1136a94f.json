@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:33.571766+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/crime-justice/news/when-speaking-crime-3569231",
   "status": "published",
-  "local_url": "stories/4329b197ffec1136a94f-when-speaking-up-is-a-crime/",
+  "local_url": "stories/when-speaking-up-is-a-crime/",
   "first_archived_at": "2026-09-06T11:17:33.571943+00:00",
-  "content_hash": "cfbec517aece072239832eab9b2f4643253d495549f5ac9a969aa17d7eecf855"
+  "content_hash": "cfbec517aece072239832eab9b2f4643253d495549f5ac9a969aa17d7eecf855",
+  "legacy_urls": [
+    "stories/4329b197ffec1136a94f-when-speaking-up-is-a-crime/"
+  ]
 }

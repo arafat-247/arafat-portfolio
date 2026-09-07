@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:44.916438+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/restoring-dhakas-lost-past-dhaka-gate-3527741",
   "status": "published",
-  "local_url": "stories/af0d5b18bcb24fda7779-restoring-dhaka-s-lost-past-with-dhaka-gate/",
+  "local_url": "stories/restoring-dhaka-s-lost-past-with-dhaka-gate/",
   "first_archived_at": "2026-09-06T12:10:44.916746+00:00",
-  "content_hash": "8194f9ec24b8ef74820bd4eb71d0dafc33c78f2b2ea1cd3f2528efe95b181d99"
+  "content_hash": "8194f9ec24b8ef74820bd4eb71d0dafc33c78f2b2ea1cd3f2528efe95b181d99",
+  "legacy_urls": [
+    "stories/af0d5b18bcb24fda7779-restoring-dhaka-s-lost-past-with-dhaka-gate/"
+  ]
 }

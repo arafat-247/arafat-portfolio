@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:33.724054+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/hsc-pass-rate-drops-number-gpa-5-rises-3728516",
   "status": "published",
-  "local_url": "stories/f410ff92aa3a029a50e9-hsc-pass-rate-drops-number-of-gpa-5-rises/",
+  "local_url": "stories/hsc-pass-rate-drops-number-of-gpa-5-rises/",
   "first_archived_at": "2026-09-06T11:16:33.724267+00:00",
-  "content_hash": "0796f291dc5ee3ef5db6a6b276d593ee6bb907c69221f4cb26ec2dde83f73bb1"
+  "content_hash": "0796f291dc5ee3ef5db6a6b276d593ee6bb907c69221f4cb26ec2dde83f73bb1",
+  "legacy_urls": [
+    "stories/f410ff92aa3a029a50e9-hsc-pass-rate-drops-number-of-gpa-5-rises/"
+  ]
 }

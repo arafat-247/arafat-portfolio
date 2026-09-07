@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:31.438865+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/women-protected-women-3585366",
   "status": "published",
-  "local_url": "stories/c4c87db15856c6681940-women-protected-by-women/",
+  "local_url": "stories/women-protected-by-women/",
   "first_archived_at": "2026-09-06T11:17:31.439510+00:00",
-  "content_hash": "4721aefd918fc952898c7fde41060f925b5af41a9f680882e4ebfda532937f69"
+  "content_hash": "4721aefd918fc952898c7fde41060f925b5af41a9f680882e4ebfda532937f69",
+  "legacy_urls": [
+    "stories/c4c87db15856c6681940-women-protected-by-women/"
+  ]
 }

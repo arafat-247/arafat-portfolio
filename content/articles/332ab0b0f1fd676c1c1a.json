@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:37.354978+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/hope-rucsu-polls-year-getting-stronger-1689619",
   "status": "published",
-  "local_url": "stories/332ab0b0f1fd676c1c1a-hope-of-rucsu-polls-this-year-getting-stronger/",
+  "local_url": "stories/hope-of-rucsu-polls-this-year-getting-stronger/",
   "first_archived_at": "2026-09-06T12:27:37.355338+00:00",
-  "content_hash": "59b1607aa7d1f36b768ae36b78f6d03bb54a6810713a68945025ff187e33ac83"
+  "content_hash": "59b1607aa7d1f36b768ae36b78f6d03bb54a6810713a68945025ff187e33ac83",
+  "legacy_urls": [
+    "stories/332ab0b0f1fd676c1c1a-hope-of-rucsu-polls-this-year-getting-stronger/"
+  ]
 }

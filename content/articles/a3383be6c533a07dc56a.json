@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:12.625888+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/free-textbook-distribution-race-against-the-clock-govt-3739261",
   "status": "published",
-  "local_url": "stories/a3383be6c533a07dc56a-free-textbook-distribution-race-against-the-clock-for-govt/",
+  "local_url": "stories/free-textbook-distribution-race-against-the-clock-for-govt/",
   "first_archived_at": "2026-09-06T10:59:12.626005+00:00",
-  "content_hash": "270aa53863f297660adbcace39b5fa30a0d146b14616dbb37cd838b446f757cf"
+  "content_hash": "270aa53863f297660adbcace39b5fa30a0d146b14616dbb37cd838b446f757cf",
+  "legacy_urls": [
+    "stories/a3383be6c533a07dc56a-free-textbook-distribution-race-against-the-clock-for-govt/"
+  ]
 }

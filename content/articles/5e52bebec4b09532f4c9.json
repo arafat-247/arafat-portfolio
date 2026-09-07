@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:02.248326+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/politics/news/allegations-mount-against-rajshahi-bcl-top-brass-3120646",
   "status": "published",
-  "local_url": "stories/5e52bebec4b09532f4c9-allegations-mount-against-rajshahi-bcl-top-brass/",
+  "local_url": "stories/allegations-mount-against-rajshahi-bcl-top-brass/",
   "first_archived_at": "2026-09-06T12:12:02.248513+00:00",
-  "content_hash": "dd3f92831af05a6082df5b8dc14d7f5f38713e34de5793b850b8fafe9d283741"
+  "content_hash": "dd3f92831af05a6082df5b8dc14d7f5f38713e34de5793b850b8fafe9d283741",
+  "legacy_urls": [
+    "stories/5e52bebec4b09532f4c9-allegations-mount-against-rajshahi-bcl-top-brass/"
+  ]
 }

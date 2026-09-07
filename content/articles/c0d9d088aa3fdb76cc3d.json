@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 749,
-  "fetched_at": "2026-09-07T06:29:12.090809+00:00",
+  "fetched_at": "2026-09-07T07:26:45.528314+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/total-literacy-elusive-after-tk-4000cr-spent-3981391",
   "status": "published",
-  "local_url": "stories/c0d9d088aa3fdb76cc3d-total-literacy-elusive-after-tk-4-000cr-spent/",
+  "local_url": "stories/total-literacy-elusive-after-tk-4-000cr-spent/",
+  "legacy_urls": [
+    "stories/c0d9d088aa3fdb76cc3d-total-literacy-elusive-after-tk-4-000cr-spent/"
+  ],
   "first_archived_at": "2026-09-06T10:58:45.015767+00:00",
   "content_hash": "8a66ca1a36c31840f4835c49deebfe95990a04bac30ccd682477c2ced6c423f2"
 }

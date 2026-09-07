@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:28.196767+00:00",
   "resolved_source_url": "https://www.thedailystar.net/frontpage/news/ex-ru-vcs-tenure-recruitment-rules-violated-freely-2090005",
   "status": "published",
-  "local_url": "stories/4f5f0b8186e2fc0dbea5-ex-ru-vc-s-tenure-recruitment-rules-violated-freely/",
+  "local_url": "stories/ex-ru-vc-s-tenure-recruitment-rules-violated-freely/",
   "first_archived_at": "2026-09-06T12:27:28.196965+00:00",
-  "content_hash": "196788f257d6f9e128c620da6021648c22ac6aa5aaca134b0309d93153db4bc3"
+  "content_hash": "196788f257d6f9e128c620da6021648c22ac6aa5aaca134b0309d93153db4bc3",
+  "legacy_urls": [
+    "stories/4f5f0b8186e2fc0dbea5-ex-ru-vc-s-tenure-recruitment-rules-violated-freely/"
+  ]
 }

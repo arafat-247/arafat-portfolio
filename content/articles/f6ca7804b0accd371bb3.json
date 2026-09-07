@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:48.833859+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/elections/news/memes-more-just-laugh-3498591",
   "status": "published",
-  "local_url": "stories/f6ca7804b0accd371bb3-memes-more-than-just-a-laugh/",
+  "local_url": "stories/memes-more-than-just-a-laugh/",
   "first_archived_at": "2026-09-06T12:10:48.834032+00:00",
-  "content_hash": "dfc3ff24056dfdeb6ab20a157cfd975fd8acbb28e150d42e7a1e5492ff3d9b4e"
+  "content_hash": "dfc3ff24056dfdeb6ab20a157cfd975fd8acbb28e150d42e7a1e5492ff3d9b4e",
+  "legacy_urls": [
+    "stories/f6ca7804b0accd371bb3-memes-more-than-just-a-laugh/"
+  ]
 }

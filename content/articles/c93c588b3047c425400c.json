@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:37.538490+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/administrative-vacuum-universities-struggle-restart-classes-3680681",
   "status": "published",
-  "local_url": "stories/c93c588b3047c425400c-administrative-vacuum-universities-struggle-to-restart-classes/",
+  "local_url": "stories/administrative-vacuum-universities-struggle-to-restart-classes/",
   "first_archived_at": "2026-09-06T11:16:37.538828+00:00",
-  "content_hash": "80e59b7a3ec29fda4df6f45b50882d9aef9673dae83584c69b742d5de42ffd36"
+  "content_hash": "80e59b7a3ec29fda4df6f45b50882d9aef9673dae83584c69b742d5de42ffd36",
+  "legacy_urls": [
+    "stories/c93c588b3047c425400c-administrative-vacuum-universities-struggle-to-restart-classes/"
+  ]
 }

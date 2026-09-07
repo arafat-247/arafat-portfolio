@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:56.014920+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/ru-administrative-works-standstill-1388887",
   "status": "published",
-  "local_url": "stories/64194878022937d8bc50-ru-administrative-work-at-a-standstill/",
+  "local_url": "stories/ru-administrative-work-at-a-standstill/",
   "first_archived_at": "2026-09-06T12:45:56.015491+00:00",
-  "content_hash": "63be3f4709697c7a1ca2d1fb6f04335a7fa579ff6c02ddd672496ab77eb8f491"
+  "content_hash": "63be3f4709697c7a1ca2d1fb6f04335a7fa579ff6c02ddd672496ab77eb8f491",
+  "legacy_urls": [
+    "stories/64194878022937d8bc50-ru-administrative-work-at-a-standstill/"
+  ]
 }

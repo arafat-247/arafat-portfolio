@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:51.146905+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/views/news/cowardice-plain-and-simple-3906376",
   "status": "published",
-  "local_url": "stories/c1b02c2cc6a9770ca126-cowardice-plain-and-simple/",
+  "local_url": "stories/cowardice-plain-and-simple/",
   "first_archived_at": "2026-09-06T10:58:51.147076+00:00",
-  "content_hash": "24af56762cde637462551ff70ede6503c94944b06d4d45a46c760c81d258f91c"
+  "content_hash": "24af56762cde637462551ff70ede6503c94944b06d4d45a46c760c81d258f91c",
+  "legacy_urls": [
+    "stories/c1b02c2cc6a9770ca126-cowardice-plain-and-simple/"
+  ]
 }

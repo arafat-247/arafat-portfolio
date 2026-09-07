@@ -163,3 +163,15 @@ a,button{touch-action:manipulation}
   .drawernav a:hover{padding-left:10px;background:rgb(255 255 255 / 6%)}
   .drawernav a:hover:after{opacity:1;transform:none}
 }
+
+/* V16.3 publishing and responsive polish. */
+.identity .portrait{filter:none}
+:where(a,button,input,select):focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.bodycopy{overflow-wrap:anywhere}
+.storyactions{flex-wrap:wrap}
+.eyebrow,.storylabel a,.tools label,.workmeta,.archive-total span{font-size:12px}
+@media(max-width:390px){
+  .tiles{grid-template-columns:1fr}
+  .tile,.tile:first-child,.tile:last-child,.tile-reporting,.tile-opinion,.tile-thoughts,.tile-photos{grid-column:auto;min-height:168px}
+  .tile-opinion strong,.tile-thoughts strong{max-width:none}
+}

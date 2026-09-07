@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:49.374092+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/technical-edu-board-outperforms-others-3479766",
   "status": "published",
-  "local_url": "stories/478d8977b93ae7634c78-technical-edu-board-outperforms-others/",
+  "local_url": "stories/technical-edu-board-outperforms-others/",
   "first_archived_at": "2026-09-06T12:10:49.374288+00:00",
-  "content_hash": "4c9b6823696159d97dc40913953dd98b6a0c9cd76620a566899e15b0d7b47b60"
+  "content_hash": "4c9b6823696159d97dc40913953dd98b6a0c9cd76620a566899e15b0d7b47b60",
+  "legacy_urls": [
+    "stories/478d8977b93ae7634c78-technical-edu-board-outperforms-others/"
+  ]
 }

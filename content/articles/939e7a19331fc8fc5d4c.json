@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 547,
-  "fetched_at": "2026-09-07T06:29:09.254788+00:00",
+  "fetched_at": "2026-09-07T07:26:41.156625+00:00",
   "resolved_source_url": "https://www.thedailystar.net/supplements/human-rights-day-2025/news/only-political-will-can-break-cycle-violence-4054736",
   "status": "published",
-  "local_url": "stories/939e7a19331fc8fc5d4c-only-political-will-can-break-cycle-of-violence/",
+  "local_url": "stories/only-political-will-can-break-cycle-of-violence/",
+  "legacy_urls": [
+    "stories/939e7a19331fc8fc5d4c-only-political-will-can-break-cycle-of-violence/"
+  ],
   "first_archived_at": "2026-09-06T10:58:03.409630+00:00",
   "content_hash": "659568592462150f05c41f0be2d7e967c4f6b4a6d0eedd75b3de7a086950b032"
 }

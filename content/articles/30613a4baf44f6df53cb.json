@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:54.717264+00:00",
   "resolved_source_url": "https://www.thedailystar.net/youth/education/news/hsc-pass-rate-falls-3242756",
   "status": "published",
-  "local_url": "stories/30613a4baf44f6df53cb-hsc-pass-rate-falls/",
+  "local_url": "stories/hsc-pass-rate-falls/",
   "first_archived_at": "2026-09-06T12:11:54.717457+00:00",
-  "content_hash": "15b602d9d252f51396c2b878e1ed12ab91481fa562cb5ab5482c9cef8315b998"
+  "content_hash": "15b602d9d252f51396c2b878e1ed12ab91481fa562cb5ab5482c9cef8315b998",
+  "legacy_urls": [
+    "stories/30613a4baf44f6df53cb-hsc-pass-rate-falls/"
+  ]
 }

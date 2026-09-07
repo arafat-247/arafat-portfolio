@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:46.827082+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/secondary-mpo-schools-must-pay-admission-fees-govt-3610986",
   "status": "published",
-  "local_url": "stories/20a66a22dba3e9823704-secondary-mpo-schools-must-pay-admission-fees-to-govt/",
+  "local_url": "stories/secondary-mpo-schools-must-pay-admission-fees-to-govt/",
   "first_archived_at": "2026-09-06T11:16:46.827172+00:00",
-  "content_hash": "de915f8e9163d6d979ed92b0801d5f974f802b8048e72e6a1b45a6931cdaa9ef"
+  "content_hash": "de915f8e9163d6d979ed92b0801d5f974f802b8048e72e6a1b45a6931cdaa9ef",
+  "legacy_urls": [
+    "stories/20a66a22dba3e9823704-secondary-mpo-schools-must-pay-admission-fees-to-govt/"
+  ]
 }

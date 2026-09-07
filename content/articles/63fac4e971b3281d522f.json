@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:35.123483+00:00",
   "resolved_source_url": "https://www.thedailystar.net/weekend-read/news/durga-puja-festival-faith-and-togetherness-3725536",
   "status": "published",
-  "local_url": "stories/63fac4e971b3281d522f-durga-puja-a-festival-of-faith-and-togetherness/",
+  "local_url": "stories/durga-puja-a-festival-of-faith-and-togetherness/",
   "first_archived_at": "2026-09-06T11:16:35.124098+00:00",
-  "content_hash": "72d29411654ef586625011fe0d4b95c2fde308e47ce1fa8a87926e9ee17d71db"
+  "content_hash": "72d29411654ef586625011fe0d4b95c2fde308e47ce1fa8a87926e9ee17d71db",
+  "legacy_urls": [
+    "stories/63fac4e971b3281d522f-durga-puja-a-festival-of-faith-and-togetherness/"
+  ]
 }

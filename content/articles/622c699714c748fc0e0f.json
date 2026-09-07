@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:02.353897+00:00",
   "resolved_source_url": "https://www.thedailystar.net/analysis/news/arresting-scapegoats-will-hardly-make-difference-3802066",
   "status": "published",
-  "local_url": "stories/622c699714c748fc0e0f-arresting-scapegoats-will-hardly-make-a-difference/",
+  "local_url": "stories/arresting-scapegoats-will-hardly-make-a-difference/",
   "first_archived_at": "2026-09-06T10:59:02.354128+00:00",
-  "content_hash": "65bb069fbe86a3c160a9e483d473f547f54d29182ab6f08fd717397047c2a827"
+  "content_hash": "65bb069fbe86a3c160a9e483d473f547f54d29182ab6f08fd717397047c2a827",
+  "legacy_urls": [
+    "stories/622c699714c748fc0e0f-arresting-scapegoats-will-hardly-make-a-difference/"
+  ]
 }

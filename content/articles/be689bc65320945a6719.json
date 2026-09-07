@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:40.112300+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/love-resides-here-3544006",
   "status": "published",
-  "local_url": "stories/be689bc65320945a6719-love-resides-here/",
+  "local_url": "stories/love-resides-here/",
   "first_archived_at": "2026-09-06T11:17:40.112505+00:00",
-  "content_hash": "b0fdb0169f5d4273b728f190b862e7993a950aac62298c24ea063bafc900c573"
+  "content_hash": "b0fdb0169f5d4273b728f190b862e7993a950aac62298c24ea063bafc900c573",
+  "legacy_urls": [
+    "stories/be689bc65320945a6719-love-resides-here/"
+  ]
 }

@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 995,
-  "fetched_at": "2026-09-07T06:29:00.798707+00:00",
+  "fetched_at": "2026-09-07T07:26:33.743449+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/views/news/the-cost-politicising-vc-appointment-4132061",
   "status": "published",
-  "local_url": "stories/be71240c730c0d079630-the-cost-of-politicising-vc-appointment/",
+  "local_url": "stories/the-cost-of-politicising-vc-appointment/",
+  "legacy_urls": [
+    "stories/be71240c730c0d079630-the-cost-of-politicising-vc-appointment/"
+  ],
   "first_archived_at": "2026-09-06T10:57:54.545222+00:00",
   "content_hash": "c9e2f8c142516fc6e8bc62e39bae286099771497a3cd0ee9f4af59214b0e42bf"
 }

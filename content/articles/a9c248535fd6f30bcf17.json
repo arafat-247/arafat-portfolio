@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 996,
-  "fetched_at": "2026-09-07T06:29:12.394470+00:00",
+  "fetched_at": "2026-09-07T07:26:45.691471+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/how-weaponising-murder-cases-shielding-real-perpetrators-3976136",
   "status": "published",
-  "local_url": "stories/a9c248535fd6f30bcf17-how-weaponising-murder-cases-is-shielding-real-perpetrators/",
+  "local_url": "stories/how-weaponising-murder-cases-is-shielding-real-perpetrators/",
+  "legacy_urls": [
+    "stories/a9c248535fd6f30bcf17-how-weaponising-murder-cases-is-shielding-real-perpetrators/"
+  ],
   "first_archived_at": "2026-09-06T10:58:44.978816+00:00",
   "content_hash": "e406f3fd3845e42dca8b2af81cdffeb6682dada48ce60459eafde4fe81d2404c"
 }

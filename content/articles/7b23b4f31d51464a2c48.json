@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:52.568565+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/search-committee-formed-after-posts-already-filled-3898191",
   "status": "published",
-  "local_url": "stories/7b23b4f31d51464a2c48-search-committee-formed-after-posts-already-filled/",
+  "local_url": "stories/search-committee-formed-after-posts-already-filled/",
   "first_archived_at": "2026-09-06T10:58:52.568745+00:00",
-  "content_hash": "8f35ffae12dc6c77d13dafb0bcc638e8fa2da709e8e3fa171525d2434eca519b"
+  "content_hash": "8f35ffae12dc6c77d13dafb0bcc638e8fa2da709e8e3fa171525d2434eca519b",
+  "legacy_urls": [
+    "stories/7b23b4f31d51464a2c48-search-committee-formed-after-posts-already-filled/"
+  ]
 }

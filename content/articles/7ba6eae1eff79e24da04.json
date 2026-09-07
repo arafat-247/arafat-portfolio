@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:01.215871+00:00",
   "resolved_source_url": "https://www.thedailystar.net/analysis-1/news/will-the-mob-decide-bangladeshs-future-3811371",
   "status": "published",
-  "local_url": "stories/7ba6eae1eff79e24da04-will-the-mob-decide-bangladesh-s-future/",
+  "local_url": "stories/will-the-mob-decide-bangladesh-s-future/",
   "first_archived_at": "2026-09-06T10:59:01.216037+00:00",
-  "content_hash": "ed70e9622f89cabc425b264015a6f794c422b82ccc40fdf96938e88d666276c1"
+  "content_hash": "ed70e9622f89cabc425b264015a6f794c422b82ccc40fdf96938e88d666276c1",
+  "legacy_urls": [
+    "stories/7ba6eae1eff79e24da04-will-the-mob-decide-bangladesh-s-future/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:52.378134+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/fuelling-creativity-1637323",
   "status": "published",
-  "local_url": "stories/48782d2cbab099c52fca-fuelling-creativity/",
+  "local_url": "stories/fuelling-creativity/",
   "first_archived_at": "2026-09-06T12:45:52.378275+00:00",
-  "content_hash": "32eba02d860f3acd0629e93efdc3e74c5d0787bf424b6fb695f3fb353babf1a6"
+  "content_hash": "32eba02d860f3acd0629e93efdc3e74c5d0787bf424b6fb695f3fb353babf1a6",
+  "legacy_urls": [
+    "stories/48782d2cbab099c52fca-fuelling-creativity/"
+  ]
 }

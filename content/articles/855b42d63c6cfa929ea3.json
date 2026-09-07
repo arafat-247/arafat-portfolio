@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:45.179468+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/parties-parliament-second-lowest-1991-3519366",
   "status": "published",
-  "local_url": "stories/855b42d63c6cfa929ea3-parties-in-parliament-second-lowest-since-1991/",
+  "local_url": "stories/parties-in-parliament-second-lowest-since-1991/",
   "first_archived_at": "2026-09-06T12:10:45.179673+00:00",
-  "content_hash": "968569a0cc338a0305d7efbbee7dedcf978840c552d128222ef7c44b25c4e615"
+  "content_hash": "968569a0cc338a0305d7efbbee7dedcf978840c552d128222ef7c44b25c4e615",
+  "legacy_urls": [
+    "stories/855b42d63c6cfa929ea3-parties-in-parliament-second-lowest-since-1991/"
+  ]
 }

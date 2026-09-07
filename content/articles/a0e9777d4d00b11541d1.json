@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-07T06:36:55.948093+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/views/news/when-did-we-stop-being-human-pursuit-headline-3930656",
   "status": "published",
-  "local_url": "stories/a0e9777d4d00b11541d1-when-did-we-stop-being-human-in-the-pursuit-of-a-headline/",
+  "local_url": "stories/when-did-we-stop-being-human-in-the-pursuit-of-a-headline/",
   "first_archived_at": "2026-09-06T10:58:46.266193+00:00",
-  "content_hash": "9d5b59526c8bbfb2780cb58a43297aa038a023be9be98f9a7f2201a23b1a2e83"
+  "content_hash": "9d5b59526c8bbfb2780cb58a43297aa038a023be9be98f9a7f2201a23b1a2e83",
+  "legacy_urls": [
+    "stories/a0e9777d4d00b11541d1-when-did-we-stop-being-human-in-the-pursuit-of-a-headline/"
+  ]
 }

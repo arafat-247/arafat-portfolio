@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:54.035780+00:00",
   "resolved_source_url": "https://www.thedailystar.net/backpage/mcq-blunder-ru-punishes-two-teachers-1501855",
   "status": "published",
-  "local_url": "stories/3ab16b5948cadda9286e-mcq-blunder-ru-to-punish-two-teachers/",
+  "local_url": "stories/mcq-blunder-ru-to-punish-two-teachers/",
   "first_archived_at": "2026-09-06T12:45:54.036198+00:00",
-  "content_hash": "c196a6863044b61218c3f4496d721ffa6fceadbcb427eeb6fba05712e6a1828b"
+  "content_hash": "c196a6863044b61218c3f4496d721ffa6fceadbcb427eeb6fba05712e6a1828b",
+  "legacy_urls": [
+    "stories/3ab16b5948cadda9286e-mcq-blunder-ru-to-punish-two-teachers/"
+  ]
 }

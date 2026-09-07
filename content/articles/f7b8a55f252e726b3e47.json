@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:36.802557+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/hope-revived-student-union-polls-1696216",
   "status": "published",
-  "local_url": "stories/f7b8a55f252e726b3e47-hope-revived-for-student-union-polls/",
+  "local_url": "stories/hope-revived-for-student-union-polls/",
   "first_archived_at": "2026-09-06T12:27:36.802649+00:00",
-  "content_hash": "ed9b3ba73fbe0eaad0631535e6a3c4f9186ec67893b9f21b068f4bf95187869f"
+  "content_hash": "ed9b3ba73fbe0eaad0631535e6a3c4f9186ec67893b9f21b068f4bf95187869f",
+  "legacy_urls": [
+    "stories/f7b8a55f252e726b3e47-hope-revived-for-student-union-polls/"
+  ]
 }

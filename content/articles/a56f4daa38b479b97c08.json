@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:35.070503+00:00",
   "resolved_source_url": "https://www.thedailystar.net/frontpage/news/assault-polytech-principal-bcl-men-wanted-pass-without-examination-1822801",
   "status": "published",
-  "local_url": "stories/a56f4daa38b479b97c08-assault-on-polytech-principal-bcl-men-wanted-to-pass-without-examination/",
+  "local_url": "stories/assault-on-polytech-principal-bcl-men-wanted-to-pass-without-examination/",
   "first_archived_at": "2026-09-06T12:27:35.070716+00:00",
-  "content_hash": "5a498304fc3b0125e765094cb9666cb921d86e297f4d99d685bb4d8ae8d7b010"
+  "content_hash": "5a498304fc3b0125e765094cb9666cb921d86e297f4d99d685bb4d8ae8d7b010",
+  "legacy_urls": [
+    "stories/a56f4daa38b479b97c08-assault-on-polytech-principal-bcl-men-wanted-to-pass-without-examination/"
+  ]
 }

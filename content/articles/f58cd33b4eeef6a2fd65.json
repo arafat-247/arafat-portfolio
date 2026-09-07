@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 684,
-  "fetched_at": "2026-09-07T06:29:10.938368+00:00",
+  "fetched_at": "2026-09-07T07:26:44.125712+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/politics/student-union-election/news/rucsu-too-goes-shibir-4012626",
   "status": "published",
-  "local_url": "stories/f58cd33b4eeef6a2fd65-rucsu-too-goes-to-shibir/",
+  "local_url": "stories/rucsu-too-goes-to-shibir/",
+  "legacy_urls": [
+    "stories/f58cd33b4eeef6a2fd65-rucsu-too-goes-to-shibir/"
+  ],
   "first_archived_at": "2026-09-06T10:58:04.945106+00:00",
   "content_hash": "c9efceb580e559a48805f2966ebc8a0ad7ac7c253f1dbc6f3dd61963b849182a"
 }

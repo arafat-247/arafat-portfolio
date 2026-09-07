@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 416,
-  "fetched_at": "2026-09-07T06:29:09.569161+00:00",
+  "fetched_at": "2026-09-07T07:26:42.688125+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/news/have-you-seen-my-babies-4049861",
   "status": "published",
-  "local_url": "stories/c5562344967a9f154821-have-you-seen-my-babies/",
+  "local_url": "stories/have-you-seen-my-babies/",
+  "legacy_urls": [
+    "stories/c5562344967a9f154821-have-you-seen-my-babies/"
+  ],
   "first_archived_at": "2026-09-06T10:58:04.160586+00:00",
   "content_hash": "07dfbe99f47ba3e70e93e0c214a1402f9a790c2050a70704872c5d56dcb87a21"
 }

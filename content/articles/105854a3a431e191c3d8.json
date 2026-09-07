@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:56.472837+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/braving-scorching-heat-the-line-duty-3340786",
   "status": "published",
-  "local_url": "stories/105854a3a431e191c3d8-braving-scorching-heat-in-the-line-of-duty/",
+  "local_url": "stories/braving-scorching-heat-in-the-line-of-duty/",
   "first_archived_at": "2026-09-06T12:10:56.472989+00:00",
-  "content_hash": "c860f9c17e3e180987eb006069a3a339e71d70a311f2ef59d41848d0345b1197"
+  "content_hash": "c860f9c17e3e180987eb006069a3a339e71d70a311f2ef59d41848d0345b1197",
+  "legacy_urls": [
+    "stories/105854a3a431e191c3d8-braving-scorching-heat-in-the-line-of-duty/"
+  ]
 }

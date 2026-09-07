@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:44.797668+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/ugc-bans-future-recruitment-cmu-3626131",
   "status": "published",
-  "local_url": "stories/a88aeeb8e91786dfb113-ugc-bans-future-recruitment-at-cmu/",
+  "local_url": "stories/ugc-bans-future-recruitment-at-cmu/",
   "first_archived_at": "2026-09-06T11:16:44.797824+00:00",
-  "content_hash": "8b50b373a16c567558807225b9cbe7e6fddc9dc624bf22951075ce424ba61b18"
+  "content_hash": "8b50b373a16c567558807225b9cbe7e6fddc9dc624bf22951075ce424ba61b18",
+  "legacy_urls": [
+    "stories/a88aeeb8e91786dfb113-ugc-bans-future-recruitment-at-cmu/"
+  ]
 }

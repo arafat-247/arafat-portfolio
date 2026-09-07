@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:47.354792+00:00",
   "resolved_source_url": "https://www.thedailystar.net/election-2024/news/news/bcl-men-enter-polling-booths-du-centre-food-agents-3513126",
   "status": "published",
-  "local_url": "stories/9ed3472fb150c6e4d26c-bcl-men-enter-polling-booths-in-du-centre-with-food-for-agents/",
+  "local_url": "stories/bcl-men-enter-polling-booths-in-du-centre-with-food-for-agents/",
   "first_archived_at": "2026-09-06T12:10:47.354968+00:00",
-  "content_hash": "d24ffe7f4d62aedf39befb8433e3e84f68a2890988faa73fec8728ebd502c64f"
+  "content_hash": "d24ffe7f4d62aedf39befb8433e3e84f68a2890988faa73fec8728ebd502c64f",
+  "legacy_urls": [
+    "stories/9ed3472fb150c6e4d26c-bcl-men-enter-polling-booths-in-du-centre-with-food-for-agents/"
+  ]
 }

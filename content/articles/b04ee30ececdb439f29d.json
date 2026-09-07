@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:51.300658+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/empowering-mothers-gaibandha-3431516",
   "status": "published",
-  "local_url": "stories/b04ee30ececdb439f29d-empowering-mothers-in-gaibandha/",
+  "local_url": "stories/empowering-mothers-in-gaibandha/",
   "first_archived_at": "2026-09-06T12:10:51.300833+00:00",
-  "content_hash": "03a85054e92afd4b48ddf4982ccd9994868f2bcca7cc15ce91a8e1d8a3b82f11"
+  "content_hash": "03a85054e92afd4b48ddf4982ccd9994868f2bcca7cc15ce91a8e1d8a3b82f11",
+  "legacy_urls": [
+    "stories/b04ee30ececdb439f29d-empowering-mothers-in-gaibandha/"
+  ]
 }

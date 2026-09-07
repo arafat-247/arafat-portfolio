@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:54.093702+00:00",
   "resolved_source_url": "https://www.thedailystar.net/supplements-0/news/milestone-treasure-3880931",
   "status": "published",
-  "local_url": "stories/eb885c74ec8fa42c84fb-a-milestone-to-treasure/",
+  "local_url": "stories/a-milestone-to-treasure/",
   "first_archived_at": "2026-09-06T10:58:54.093867+00:00",
-  "content_hash": "cf780f8b5fefe39763cdb168715372772d59dd4b69347f741f2242a7d744dea7"
+  "content_hash": "cf780f8b5fefe39763cdb168715372772d59dd4b69347f741f2242a7d744dea7",
+  "legacy_urls": [
+    "stories/eb885c74ec8fa42c84fb-a-milestone-to-treasure/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:02.421404+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/no-one-should-face-such-horrible-fate-3186771",
   "status": "published",
-  "local_url": "stories/ea1b6909210a2bc51a82-no-one-should-face-such-a-horrible-fate/",
+  "local_url": "stories/no-one-should-face-such-a-horrible-fate/",
   "first_archived_at": "2026-09-06T12:12:02.421582+00:00",
-  "content_hash": "aff35f5c6e43b0b119cad2885348402c806ecc7fc02b61c8573bf5e9ab92509a"
+  "content_hash": "aff35f5c6e43b0b119cad2885348402c806ecc7fc02b61c8573bf5e9ab92509a",
+  "legacy_urls": [
+    "stories/ea1b6909210a2bc51a82-no-one-should-face-such-a-horrible-fate/"
+  ]
 }

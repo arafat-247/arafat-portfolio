@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:53.948954+00:00",
   "resolved_source_url": "https://www.thedailystar.net/weekend-read/news/cultivating-reading-habits-2001-3250911",
   "status": "published",
-  "local_url": "stories/c79aef02d31238dfa316-cultivating-reading-habits-since-2001/",
+  "local_url": "stories/cultivating-reading-habits-since-2001/",
   "first_archived_at": "2026-09-06T12:11:53.949143+00:00",
-  "content_hash": "f2aae1bbd57cc825ce6de098e36793f95ac8012eade17d79c719ca2345c27398"
+  "content_hash": "f2aae1bbd57cc825ce6de098e36793f95ac8012eade17d79c719ca2345c27398",
+  "legacy_urls": [
+    "stories/c79aef02d31238dfa316-cultivating-reading-habits-since-2001/"
+  ]
 }

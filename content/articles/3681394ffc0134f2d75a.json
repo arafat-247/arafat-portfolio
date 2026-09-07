@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:37.516394+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/ugc-chair-five-new-vcs-appointed-3695651",
   "status": "published",
-  "local_url": "stories/3681394ffc0134f2d75a-ugc-chair-five-new-vcs-appointed/",
+  "local_url": "stories/ugc-chair-five-new-vcs-appointed/",
   "first_archived_at": "2026-09-06T11:16:37.516995+00:00",
-  "content_hash": "2c1bee178852ab167ada46363d1a7faf23a616c6a5afc5fcdd4275e5ee7d2b99"
+  "content_hash": "2c1bee178852ab167ada46363d1a7faf23a616c6a5afc5fcdd4275e5ee7d2b99",
+  "legacy_urls": [
+    "stories/3681394ffc0134f2d75a-ugc-chair-five-new-vcs-appointed/"
+  ]
 }

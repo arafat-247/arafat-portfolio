@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:58.514972+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/public-univ-admission-single-entry-exam-next-year-3287946",
   "status": "published",
-  "local_url": "stories/1202924f246338ca6ce5-public-univ-admission-single-entry-exam-from-next-year/",
+  "local_url": "stories/public-univ-admission-single-entry-exam-from-next-year/",
   "first_archived_at": "2026-09-06T12:10:58.515079+00:00",
-  "content_hash": "849a7e87efb3b7af8ad5f86e59f0f54c6ece39a4f6491d4ae8df68819bc5aaa5"
+  "content_hash": "849a7e87efb3b7af8ad5f86e59f0f54c6ece39a4f6491d4ae8df68819bc5aaa5",
+  "legacy_urls": [
+    "stories/1202924f246338ca6ce5-public-univ-admission-single-entry-exam-from-next-year/"
+  ]
 }

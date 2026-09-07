@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 978,
-  "fetched_at": "2026-09-07T06:29:03.630038+00:00",
+  "fetched_at": "2026-09-07T07:26:36.764150+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/govt-issues-draft-ordinances-broadcast-media-commissions-4093076",
   "status": "published",
-  "local_url": "stories/a79dc707aa7e7b732826-govt-issues-draft-ordinances-for-broadcast-media-commissions/",
+  "local_url": "stories/govt-issues-draft-ordinances-for-broadcast-media-commissions/",
+  "legacy_urls": [
+    "stories/a79dc707aa7e7b732826-govt-issues-draft-ordinances-for-broadcast-media-commissions/"
+  ],
   "first_archived_at": "2026-09-06T10:57:57.036474+00:00",
   "content_hash": "dad9a97dc78de4555bbc784a189862692b9e4920031714c4c595b0884749b1f3"
 }

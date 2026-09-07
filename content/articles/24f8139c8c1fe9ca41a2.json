@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 689,
-  "fetched_at": "2026-09-07T06:29:09.621780+00:00",
+  "fetched_at": "2026-09-07T07:26:42.925689+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/we-need-climate-solution-built-people-not-projects-4042226",
   "status": "published",
-  "local_url": "stories/24f8139c8c1fe9ca41a2-we-need-a-climate-solution-built-on-people-not-projects/",
+  "local_url": "stories/we-need-a-climate-solution-built-on-people-not-projects/",
+  "legacy_urls": [
+    "stories/24f8139c8c1fe9ca41a2-we-need-a-climate-solution-built-on-people-not-projects/"
+  ],
   "first_archived_at": "2026-09-06T10:58:04.105779+00:00",
   "content_hash": "1daf00a26e4a3408a67dc1a405cc0ae65265f7dfdb85c6b71d83896a7122feb7"
 }

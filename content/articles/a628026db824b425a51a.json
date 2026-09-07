@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:51.916417+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/lets-mope-3905696",
   "status": "published",
-  "local_url": "stories/a628026db824b425a51a-let-s-mope/",
+  "local_url": "stories/let-s-mope/",
   "first_archived_at": "2026-09-06T10:58:51.916630+00:00",
-  "content_hash": "3de209d546fa1570b6c3ef73bd7767e08e969ee25b3589efacadbcd5fe6e09af"
+  "content_hash": "3de209d546fa1570b6c3ef73bd7767e08e969ee25b3589efacadbcd5fe6e09af",
+  "legacy_urls": [
+    "stories/a628026db824b425a51a-let-s-mope/"
+  ]
 }

@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 491,
-  "fetched_at": "2026-09-07T06:28:55.605929+00:00",
+  "fetched_at": "2026-09-07T07:26:27.416041+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/ugc-track-15-years-university-research-funding-4223251",
   "status": "published",
-  "local_url": "stories/73dd7bd180912bd97576-ugc-to-track-15-years-of-university-research-funding/",
+  "local_url": "stories/ugc-to-track-15-years-of-university-research-funding/",
+  "legacy_urls": [
+    "stories/73dd7bd180912bd97576-ugc-to-track-15-years-of-university-research-funding/"
+  ],
   "first_archived_at": "2026-09-06T10:57:49.096369+00:00",
   "content_hash": "5d13fca34529ce315fddc8586db064c07e47d6e64d8f831e5c4e0b231f51e1ae"
 }

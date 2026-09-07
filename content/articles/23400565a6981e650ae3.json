@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:53.708215+00:00",
   "resolved_source_url": "https://www.thedailystar.net/arts-entertainment/theatre/sampan-naiya-and-putulnatya-staged-ru-1559122",
   "status": "published",
-  "local_url": "stories/23400565a6981e650ae3-sampan-naiya-and-putulnatya-staged-at-ru/",
+  "local_url": "stories/sampan-naiya-and-putulnatya-staged-at-ru/",
   "first_archived_at": "2026-09-06T12:45:53.708367+00:00",
-  "content_hash": "53c76b35b890d7ce7c5da2ef27465e3371e5988cd6b27214db59eebb29b854d3"
+  "content_hash": "53c76b35b890d7ce7c5da2ef27465e3371e5988cd6b27214db59eebb29b854d3",
+  "legacy_urls": [
+    "stories/23400565a6981e650ae3-sampan-naiya-and-putulnatya-staged-at-ru/"
+  ]
 }

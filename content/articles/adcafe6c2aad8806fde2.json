@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:10.821114+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/textbooks-feature-july-uprising-3753216",
   "status": "published",
-  "local_url": "stories/adcafe6c2aad8806fde2-textbooks-to-feature-july-uprising/",
+  "local_url": "stories/textbooks-to-feature-july-uprising/",
   "first_archived_at": "2026-09-06T10:59:10.821308+00:00",
-  "content_hash": "3459e9f0e1b55257e5a3478ca30dbb11ba4f1beabb3bc43f33e6497cacf3c70d"
+  "content_hash": "3459e9f0e1b55257e5a3478ca30dbb11ba4f1beabb3bc43f33e6497cacf3c70d",
+  "legacy_urls": [
+    "stories/adcafe6c2aad8806fde2-textbooks-to-feature-july-uprising/"
+  ]
 }

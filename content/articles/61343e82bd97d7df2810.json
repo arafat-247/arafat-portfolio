@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:49.179994+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/views/news/are-we-hurtling-towards-mob-journalism-3917391",
   "status": "published",
-  "local_url": "stories/61343e82bd97d7df2810-are-we-hurtling-towards-mob-journalism/",
+  "local_url": "stories/are-we-hurtling-towards-mob-journalism/",
   "first_archived_at": "2026-09-06T10:58:49.180173+00:00",
-  "content_hash": "d55f3dce6ffc036fe004758e8992c79413960454f337e97c25e541995a4bf224"
+  "content_hash": "d55f3dce6ffc036fe004758e8992c79413960454f337e97c25e541995a4bf224",
+  "legacy_urls": [
+    "stories/61343e82bd97d7df2810-are-we-hurtling-towards-mob-journalism/"
+  ]
 }

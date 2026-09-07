@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:32.659476+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/years-hsc-examinees-have-tough-times-ahead-3731476",
   "status": "published",
-  "local_url": "stories/ded467ad148d8038bde9-this-year-s-hsc-examinees-have-tough-times-ahead/",
+  "local_url": "stories/this-year-s-hsc-examinees-have-tough-times-ahead/",
   "first_archived_at": "2026-09-06T11:16:32.659719+00:00",
-  "content_hash": "178e040f211ef2cab901fd1d5f872192207840e017c7d82fd1c1ee16f02898fa"
+  "content_hash": "178e040f211ef2cab901fd1d5f872192207840e017c7d82fd1c1ee16f02898fa",
+  "legacy_urls": [
+    "stories/ded467ad148d8038bde9-this-year-s-hsc-examinees-have-tough-times-ahead/"
+  ]
 }

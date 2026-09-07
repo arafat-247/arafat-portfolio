@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 906,
-  "fetched_at": "2026-09-07T06:28:56.284383+00:00",
+  "fetched_at": "2026-09-07T07:26:28.636457+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/draft-guidelines-signal-new-direction-primary-curriculum-4222576",
   "status": "published",
-  "local_url": "stories/b48dbcc7102ceaf7e505-draft-guidelines-signal-new-direction-for-primary-curriculum/",
+  "local_url": "stories/draft-guidelines-signal-new-direction-for-primary-curriculum/",
+  "legacy_urls": [
+    "stories/b48dbcc7102ceaf7e505-draft-guidelines-signal-new-direction-for-primary-curriculum/"
+  ],
   "first_archived_at": "2026-09-06T10:57:49.272337+00:00",
   "content_hash": "93604473c0cdc0a20f931506dd50b116c84fe4d707d9811c353f93c74c6a665e"
 }

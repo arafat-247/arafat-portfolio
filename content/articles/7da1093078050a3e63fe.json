@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:52.455932+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/views/news/when-protest-turns-mob-3899741",
   "status": "published",
-  "local_url": "stories/7da1093078050a3e63fe-when-protest-turns-into-a-mob/",
+  "local_url": "stories/when-protest-turns-into-a-mob/",
   "first_archived_at": "2026-09-06T10:58:52.456105+00:00",
-  "content_hash": "9a4215c8158cbee403662e72c2322054f4220ad28ee18dc9d4ec08da50664d44"
+  "content_hash": "9a4215c8158cbee403662e72c2322054f4220ad28ee18dc9d4ec08da50664d44",
+  "legacy_urls": [
+    "stories/7da1093078050a3e63fe-when-protest-turns-into-a-mob/"
+  ]
 }

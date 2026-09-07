@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 892,
-  "fetched_at": "2026-09-07T06:28:53.519862+00:00",
+  "fetched_at": "2026-09-07T07:26:25.813274+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/ssc-pass-rate-hits-19-year-low-4244971",
   "status": "published",
-  "local_url": "stories/1e5213a093c35a5e37c5-ssc-pass-rate-hits-19-year-low/",
+  "local_url": "stories/ssc-pass-rate-hits-19-year-low/",
+  "legacy_urls": [
+    "stories/1e5213a093c35a5e37c5-ssc-pass-rate-hits-19-year-low/"
+  ],
   "first_archived_at": "2026-09-06T10:57:47.140755+00:00",
   "content_hash": "046d36d6bcd710da39c49b4bfa544759571afff16883201556cf110a8f38285c"
 }

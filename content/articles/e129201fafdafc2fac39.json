@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 775,
-  "fetched_at": "2026-09-07T06:28:57.944868+00:00",
+  "fetched_at": "2026-09-07T07:26:30.432453+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/what-does-success-mean-if-it-cannot-care-mother-4188941",
   "status": "published",
-  "local_url": "stories/e129201fafdafc2fac39-what-does-success-mean-if-it-cannot-care-for-a-mother/",
+  "local_url": "stories/what-does-success-mean-if-it-cannot-care-for-a-mother/",
+  "legacy_urls": [
+    "stories/e129201fafdafc2fac39-what-does-success-mean-if-it-cannot-care-for-a-mother/"
+  ],
   "first_archived_at": "2026-09-06T10:57:51.364100+00:00",
   "content_hash": "801f040bd00ed8e2171662cd016286eb412c0d87600d6d814da9f9b71e6645e6"
 }

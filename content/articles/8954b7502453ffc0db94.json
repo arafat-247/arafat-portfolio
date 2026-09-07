@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:01.604953+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/the-checkpoint-chronicle-continues-3191921",
   "status": "published",
-  "local_url": "stories/8954b7502453ffc0db94-the-checkpoint-chronicle-continues/",
+  "local_url": "stories/the-checkpoint-chronicle-continues/",
   "first_archived_at": "2026-09-06T12:12:01.605128+00:00",
-  "content_hash": "334fff6db40201e422734f8cc709d8f6b812f1751dc537d66bab19cf552e3763"
+  "content_hash": "334fff6db40201e422734f8cc709d8f6b812f1751dc537d66bab19cf552e3763",
+  "legacy_urls": [
+    "stories/8954b7502453ffc0db94-the-checkpoint-chronicle-continues/"
+  ]
 }

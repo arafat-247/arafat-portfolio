@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:11:48.667438+00:00",
   "resolved_source_url": "https://www.thedailystar.net/weekend-read/news/village-mosques-3250881",
   "status": "published",
-  "local_url": "stories/b3507af3f59ad2b2302f-a-village-of-mosques/",
+  "local_url": "stories/a-village-of-mosques/",
   "first_archived_at": "2026-09-06T12:11:48.667644+00:00",
-  "content_hash": "57ed8b6ead1aa3798068076277d27409b9e9ffa70dbc2e1194d66c673c668c5b"
+  "content_hash": "57ed8b6ead1aa3798068076277d27409b9e9ffa70dbc2e1194d66c673c668c5b",
+  "legacy_urls": [
+    "stories/b3507af3f59ad2b2302f-a-village-of-mosques/"
+  ]
 }

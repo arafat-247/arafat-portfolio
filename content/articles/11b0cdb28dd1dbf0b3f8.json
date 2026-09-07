@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:57.375659+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/pace-investigation-frustrates-family-1349023",
   "status": "published",
-  "local_url": "stories/11b0cdb28dd1dbf0b3f8-pace-of-investigation-frustrates-family/",
+  "local_url": "stories/pace-of-investigation-frustrates-family/",
   "first_archived_at": "2026-09-06T12:45:57.375899+00:00",
-  "content_hash": "cc9154efe991a02e651f33d5a2efab9204a9b81c43ee6c117ab0a142085a869c"
+  "content_hash": "cc9154efe991a02e651f33d5a2efab9204a9b81c43ee6c117ab0a142085a869c",
+  "legacy_urls": [
+    "stories/11b0cdb28dd1dbf0b3f8-pace-of-investigation-frustrates-family/"
+  ]
 }

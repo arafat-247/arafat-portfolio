@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:55.534805+00:00",
   "resolved_source_url": "https://www.thedailystar.net/country/traffic-jam-shatters-dreams-hundreds-rajshahi-university-ru-admission-seekers-bangladesh-1480204",
   "status": "published",
-  "local_url": "stories/09f61a3402ce065d556e-traffic-jam-shatters-dreams-of-hundreds-of-ru-admission-seekers/",
+  "local_url": "stories/traffic-jam-shatters-dreams-of-hundreds-of-ru-admission-seekers/",
   "first_archived_at": "2026-09-06T12:45:55.534966+00:00",
-  "content_hash": "978016185c88e585b7dee529e2cdaf2e7b33546d433cdc5f4b948918a18467aa"
+  "content_hash": "978016185c88e585b7dee529e2cdaf2e7b33546d433cdc5f4b948918a18467aa",
+  "legacy_urls": [
+    "stories/09f61a3402ce065d556e-traffic-jam-shatters-dreams-of-hundreds-of-ru-admission-seekers/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:54.162880+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/ru-website-expectations-vs-reality-1549720",
   "status": "published",
-  "local_url": "stories/e914eb9def5819de6a88-ru-website-a-window-into-hollow/",
+  "local_url": "stories/ru-website-a-window-into-hollow/",
   "first_archived_at": "2026-09-06T12:45:54.163034+00:00",
-  "content_hash": "e938b08a9cc412f6267e57f1a58621f6e2b3809ce36f642f81ddfc965e287bc0"
+  "content_hash": "e938b08a9cc412f6267e57f1a58621f6e2b3809ce36f642f81ddfc965e287bc0",
+  "legacy_urls": [
+    "stories/e914eb9def5819de6a88-ru-website-a-window-into-hollow/"
+  ]
 }

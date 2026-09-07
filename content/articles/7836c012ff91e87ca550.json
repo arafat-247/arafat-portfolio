@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:52.230072+00:00",
   "resolved_source_url": "https://www.thedailystar.net/health/food/price-essentials/news/govt-move-check-prices-falls-flat-3419781",
   "status": "published",
-  "local_url": "stories/7836c012ff91e87ca550-govt-move-to-check-prices-falls-flat/",
+  "local_url": "stories/govt-move-to-check-prices-falls-flat/",
   "first_archived_at": "2026-09-06T12:10:52.230257+00:00",
-  "content_hash": "f97aab015ed5cf2070a5f48d603cb7fecbbc2581fe64d33fa22439639d6158aa"
+  "content_hash": "f97aab015ed5cf2070a5f48d603cb7fecbbc2581fe64d33fa22439639d6158aa",
+  "legacy_urls": [
+    "stories/7836c012ff91e87ca550-govt-move-to-check-prices-falls-flat/"
+  ]
 }

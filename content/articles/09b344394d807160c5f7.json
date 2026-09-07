@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:52.330622+00:00",
   "resolved_source_url": "https://www.thedailystar.net/weekend-read/news/dhakas-educational-heritage-3414361",
   "status": "published",
-  "local_url": "stories/09b344394d807160c5f7-dhaka-s-educational-heritage/",
+  "local_url": "stories/dhaka-s-educational-heritage/",
   "first_archived_at": "2026-09-06T12:10:52.330812+00:00",
-  "content_hash": "7de8e868c6f57850f2cea3765555739b1f49f0dd495c081f9a9ce137b0ce3fc1"
+  "content_hash": "7de8e868c6f57850f2cea3765555739b1f49f0dd495c081f9a9ce137b0ce3fc1",
+  "legacy_urls": [
+    "stories/09b344394d807160c5f7-dhaka-s-educational-heritage/"
+  ]
 }

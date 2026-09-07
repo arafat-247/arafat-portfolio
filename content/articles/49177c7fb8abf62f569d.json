@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 653,
-  "fetched_at": "2026-09-07T06:29:01.984946+00:00",
+  "fetched_at": "2026-09-07T07:26:34.245794+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/national-election-2026/news/ncp-eyes-bigger-role-after-bagging-6-seats-debut-4105646",
   "status": "published",
-  "local_url": "stories/49177c7fb8abf62f569d-ncp-eyes-bigger-role-after-bagging-6-seats-in-debut/",
+  "local_url": "stories/ncp-eyes-bigger-role-after-bagging-6-seats-in-debut/",
+  "legacy_urls": [
+    "stories/49177c7fb8abf62f569d-ncp-eyes-bigger-role-after-bagging-6-seats-in-debut/"
+  ],
   "first_archived_at": "2026-09-06T10:57:55.058933+00:00",
   "content_hash": "f84db724ce3da31794ac07856ebda92785edbab8912c8a952481b706d8fe1ffd"
 }

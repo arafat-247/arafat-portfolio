@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:40.519563+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/look-back-2018-quota-protests-and-toriquls-tale-3655141",
   "status": "published",
-  "local_url": "stories/e44e69840b90f6fbde61-a-look-back-at-2018-quota-protests-and-toriqul-s-tale/",
+  "local_url": "stories/a-look-back-at-2018-quota-protests-and-toriqul-s-tale/",
   "first_archived_at": "2026-09-06T11:16:40.519716+00:00",
-  "content_hash": "4015769ef32f83ed8c68b1ddccbf1f428d3c844eddf6bd218f5e21b2ea545a21"
+  "content_hash": "4015769ef32f83ed8c68b1ddccbf1f428d3c844eddf6bd218f5e21b2ea545a21",
+  "legacy_urls": [
+    "stories/e44e69840b90f6fbde61-a-look-back-at-2018-quota-protests-and-toriqul-s-tale/"
+  ]
 }

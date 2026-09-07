@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:35.361147+00:00",
   "resolved_source_url": "https://www.thedailystar.net/environment/news/ban-poly-bags-mixed-reactions-some-shops-3717251",
   "status": "published",
-  "local_url": "stories/c2c16b79b19f521d2959-ban-on-poly-bags-mixed-reactions-in-some-shops/",
+  "local_url": "stories/ban-on-poly-bags-mixed-reactions-in-some-shops/",
   "first_archived_at": "2026-09-06T11:16:35.361307+00:00",
-  "content_hash": "47a630d8cbd4ba9e462677073f2b2e01b9316dadcebae8c57183d516b876c658"
+  "content_hash": "47a630d8cbd4ba9e462677073f2b2e01b9316dadcebae8c57183d516b876c658",
+  "legacy_urls": [
+    "stories/c2c16b79b19f521d2959-ban-on-poly-bags-mixed-reactions-in-some-shops/"
+  ]
 }

@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 743,
-  "fetched_at": "2026-09-07T06:28:58.863459+00:00",
+  "fetched_at": "2026-09-07T07:26:31.551504+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/rights/news/why-must-workers-wait-eid-dues-every-year-4185051",
   "status": "published",
-  "local_url": "stories/0004e1093082a97220d8-why-must-workers-wait-for-eid-dues-every-year/",
+  "local_url": "stories/why-must-workers-wait-for-eid-dues-every-year/",
+  "legacy_urls": [
+    "stories/0004e1093082a97220d8-why-must-workers-wait-for-eid-dues-every-year/"
+  ],
   "first_archived_at": "2026-09-06T10:57:52.770337+00:00",
   "content_hash": "de3ca4241ab73d0a0d06b282f5f08b1d413545099caa5b8218f438cff83970da"
 }

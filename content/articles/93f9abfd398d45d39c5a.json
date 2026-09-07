@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:45:51.927372+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/news/screen-or-not-screen-1667212",
   "status": "published",
-  "local_url": "stories/93f9abfd398d45d39c5a-to-screen-or-not-to-screen/",
+  "local_url": "stories/to-screen-or-not-to-screen/",
   "first_archived_at": "2026-09-06T12:45:51.927526+00:00",
-  "content_hash": "cdc65720ecf6d0c87433df9e4560086be4c5c9fa5d015be51bc5f1d6f9fd182e"
+  "content_hash": "cdc65720ecf6d0c87433df9e4560086be4c5c9fa5d015be51bc5f1d6f9fd182e",
+  "legacy_urls": [
+    "stories/93f9abfd398d45d39c5a-to-screen-or-not-to-screen/"
+  ]
 }

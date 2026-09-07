@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:50.360553+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/hsc-pass-rate-gpa-5-dip-3479621",
   "status": "published",
-  "local_url": "stories/2c126254f6e2a857bf71-hsc-pass-rate-gpa-5-dip/",
+  "local_url": "stories/hsc-pass-rate-gpa-5-dip/",
   "first_archived_at": "2026-09-06T12:10:50.360769+00:00",
-  "content_hash": "963420360efc98f45dbfdb4713091ca5027bb23ac3c28c7c868286489ba3d97d"
+  "content_hash": "963420360efc98f45dbfdb4713091ca5027bb23ac3c28c7c868286489ba3d97d",
+  "legacy_urls": [
+    "stories/2c126254f6e2a857bf71-hsc-pass-rate-gpa-5-dip/"
+  ]
 }

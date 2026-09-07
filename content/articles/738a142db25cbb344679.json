@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:25.166735+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/accidents-fires/news/truck-kills-ru-student-campus-2952501",
   "status": "published",
-  "local_url": "stories/738a142db25cbb344679-truck-kills-ru-student-on-campus/",
+  "local_url": "stories/truck-kills-ru-student-on-campus/",
   "first_archived_at": "2026-09-06T12:27:25.166932+00:00",
-  "content_hash": "e9fa8710d5205a5ac2fd3280a18b9dbe64fda30f38ab61ee1537326bb9cd3fc1"
+  "content_hash": "e9fa8710d5205a5ac2fd3280a18b9dbe64fda30f38ab61ee1537326bb9cd3fc1",
+  "legacy_urls": [
+    "stories/738a142db25cbb344679-truck-kills-ru-student-on-campus/"
+  ]
 }

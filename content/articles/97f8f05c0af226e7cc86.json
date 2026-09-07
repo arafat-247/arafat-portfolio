@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:27:26.320041+00:00",
   "resolved_source_url": "https://www.thedailystar.net/backpage/news/nbr-seeks-bank-info-former-ru-vc-2100361",
   "status": "published",
-  "local_url": "stories/97f8f05c0af226e7cc86-nbr-seeks-bank-info-on-former-ru-vc/",
+  "local_url": "stories/nbr-seeks-bank-info-on-former-ru-vc/",
   "first_archived_at": "2026-09-06T12:27:26.320230+00:00",
-  "content_hash": "6cd404c3b07c67fae5ab7bef1c0606f524ce8bcaf1b0c94124edb9585c62f42c"
+  "content_hash": "6cd404c3b07c67fae5ab7bef1c0606f524ce8bcaf1b0c94124edb9585c62f42c",
+  "legacy_urls": [
+    "stories/97f8f05c0af226e7cc86-nbr-seeks-bank-info-on-former-ru-vc/"
+  ]
 }

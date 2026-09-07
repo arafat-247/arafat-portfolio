@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:33.074063+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/crime-justice/news/sexual-harassment-jnu-2yrs-suspect-protected-victim-tormented-3575661",
   "status": "published",
-  "local_url": "stories/b8ede188d4e442e6eb51-sexual-harassment-at-jnu-for-2yrs-suspect-protected-victim-tormented/",
+  "local_url": "stories/sexual-harassment-at-jnu-for-2yrs-suspect-protected-victim-tormented/",
   "first_archived_at": "2026-09-06T11:17:33.074244+00:00",
-  "content_hash": "a37c82a104dad8681a0705eef1a07835b9e5303e84b8768698d8ea359709af52"
+  "content_hash": "a37c82a104dad8681a0705eef1a07835b9e5303e84b8768698d8ea359709af52",
+  "legacy_urls": [
+    "stories/b8ede188d4e442e6eb51-sexual-harassment-at-jnu-for-2yrs-suspect-protected-victim-tormented/"
+  ]
 }

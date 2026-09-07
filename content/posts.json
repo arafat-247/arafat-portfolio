@@ -20,11 +20,14 @@
       "id": "a1b1dde9-a257-4f21-9b28-f45b57fb6266",
       "status": "published",
       "updated_at": "2026-09-06T12:50:55.171Z",
-      "local_url": "thoughts/a1b1dde9-a257-4f21-9b28-f45b57fb6266/",
+      "local_url": "thoughts/thank-you-messi/",
       "manual_import": false,
       "verified_author": true,
       "first_archived_at": "2026-09-06T12:45:05.051Z",
-      "cover_image": "assets/uploads/7209b790-7048-4c29-b149-39f143b4e24e.webp"
+      "cover_image": "assets/uploads/7209b790-7048-4c29-b149-39f143b4e24e.webp",
+      "legacy_urls": [
+        "thoughts/a1b1dde9-a257-4f21-9b28-f45b57fb6266/"
+      ]
     }
   ]
 }

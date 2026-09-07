@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:09.621818+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/5-educational-institutions-academic-lives-40000-disarray-3764306",
   "status": "published",
-  "local_url": "stories/7e78eb6e10b93e72daec-5-educational-institutions-academic-lives-of-40-000-in-disarray/",
+  "local_url": "stories/5-educational-institutions-academic-lives-of-40-000-in-disarray/",
   "first_archived_at": "2026-09-06T10:59:09.621993+00:00",
-  "content_hash": "286f8a58a3e4fb5a8f9f14c8230f7d7b271cb69c791671569dad89306fc2c67a"
+  "content_hash": "286f8a58a3e4fb5a8f9f14c8230f7d7b271cb69c791671569dad89306fc2c67a",
+  "legacy_urls": [
+    "stories/7e78eb6e10b93e72daec-5-educational-institutions-academic-lives-of-40-000-in-disarray/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:55.483692+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/are-they-even-trying-or-have-they-decided-not-act-3827296",
   "status": "published",
-  "local_url": "stories/37b646ddf94793719933-are-they-even-trying-or-have-they-decided-not-to-act/",
+  "local_url": "stories/are-they-even-trying-or-have-they-decided-not-to-act/",
   "first_archived_at": "2026-09-06T10:58:55.483864+00:00",
-  "content_hash": "b4b30cc322b8c817f9542f6c1fe03c51f117ae03ad316c6b5cf9ac826dccfaa2"
+  "content_hash": "b4b30cc322b8c817f9542f6c1fe03c51f117ae03ad316c6b5cf9ac826dccfaa2",
+  "legacy_urls": [
+    "stories/37b646ddf94793719933-are-they-even-trying-or-have-they-decided-not-to-act/"
+  ]
 }

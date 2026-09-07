@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:07.707711+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/primary-secondary-level-major-changes-coming-bangla-english-textbooks-3788301",
   "status": "published",
-  "local_url": "stories/e4ecd75227a829944a5b-primary-secondary-level-major-changes-coming-to-bangla-english-textbooks/",
+  "local_url": "stories/primary-secondary-level-major-changes-coming-to-bangla-english-textbooks/",
   "first_archived_at": "2026-09-06T10:59:07.707870+00:00",
-  "content_hash": "1ec7d1319ec3b03096280c6782c3c9d4d96fe160ee6864568278e54bb262321b"
+  "content_hash": "1ec7d1319ec3b03096280c6782c3c9d4d96fe160ee6864568278e54bb262321b",
+  "legacy_urls": [
+    "stories/e4ecd75227a829944a5b-primary-secondary-level-major-changes-coming-to-bangla-english-textbooks/"
+  ]
 }

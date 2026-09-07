@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:33.252703+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/hsc-equivalent-exams-demand-auto-pass-unacceptable-3735056",
   "status": "published",
-  "local_url": "stories/d38624b620e38411c502-hsc-equivalent-exams-demand-for-auto-pass-unacceptable/",
+  "local_url": "stories/hsc-equivalent-exams-demand-for-auto-pass-unacceptable/",
   "first_archived_at": "2026-09-06T11:16:33.252944+00:00",
-  "content_hash": "6aa7ba4b5ec323012daaae37f9293e51e3ad0daf7bfa7b5ed96a12df03e18c59"
+  "content_hash": "6aa7ba4b5ec323012daaae37f9293e51e3ad0daf7bfa7b5ed96a12df03e18c59",
+  "legacy_urls": [
+    "stories/d38624b620e38411c502-hsc-equivalent-exams-demand-for-auto-pass-unacceptable/"
+  ]
 }

@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 747,
-  "fetched_at": "2026-09-07T06:28:59.321892+00:00",
+  "fetched_at": "2026-09-07T07:26:31.016795+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/when-will-these-painful-stories-end-4185576",
   "status": "published",
-  "local_url": "stories/34c4ad95db4bbe20da5c-when-will-these-painful-stories-end/",
+  "local_url": "stories/when-will-these-painful-stories-end/",
+  "legacy_urls": [
+    "stories/34c4ad95db4bbe20da5c-when-will-these-painful-stories-end/"
+  ],
   "first_archived_at": "2026-09-06T10:57:51.566785+00:00",
   "content_hash": "a1dfe057816238fbb254f61839b67f224f24914439bff657444952e9cbd9451c"
 }

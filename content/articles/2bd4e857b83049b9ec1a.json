@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:40.190291+00:00",
   "resolved_source_url": "https://www.thedailystar.net/campus/news/ju-failed-make-campus-women-friendly-3543116",
   "status": "published",
-  "local_url": "stories/2bd4e857b83049b9ec1a-ju-failed-to-make-campus-women-friendly/",
+  "local_url": "stories/ju-failed-to-make-campus-women-friendly/",
   "first_archived_at": "2026-09-06T11:17:40.190480+00:00",
-  "content_hash": "8d777231b4f41a147774eb1ff894e467283e9659495f3d03153c9fceec6eca0c"
+  "content_hash": "8d777231b4f41a147774eb1ff894e467283e9659495f3d03153c9fceec6eca0c",
+  "legacy_urls": [
+    "stories/2bd4e857b83049b9ec1a-ju-failed-to-make-campus-women-friendly/"
+  ]
 }

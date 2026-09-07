@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:50.945337+00:00",
   "resolved_source_url": "https://www.thedailystar.net/opinion/news/who-world-holds-strings-republic-3911431",
   "status": "published",
-  "local_url": "stories/d6e0e9bc3a0f1c3ffc35-who-in-the-world-holds-the-strings-in-this-republic/",
+  "local_url": "stories/who-in-the-world-holds-the-strings-in-this-republic/",
   "first_archived_at": "2026-09-06T10:58:50.945516+00:00",
-  "content_hash": "bf7a4e68565b1a433ff336b251be0aa1cac468e86ded8760a11261e3557f5415"
+  "content_hash": "bf7a4e68565b1a433ff336b251be0aa1cac468e86ded8760a11261e3557f5415",
+  "legacy_urls": [
+    "stories/d6e0e9bc3a0f1c3ffc35-who-in-the-world-holds-the-strings-in-this-republic/"
+  ]
 }

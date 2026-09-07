@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 535,
-  "fetched_at": "2026-09-07T06:29:02.224097+00:00",
+  "fetched_at": "2026-09-07T07:26:35.358938+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/national-election-2026/news/yes-wins-4105586",
   "status": "published",
-  "local_url": "stories/69ac199af2da36e6cd56-yes-wins-but/",
+  "local_url": "stories/yes-wins-but/",
+  "legacy_urls": [
+    "stories/69ac199af2da36e6cd56-yes-wins-but/"
+  ],
   "first_archived_at": "2026-09-06T10:57:55.763176+00:00",
   "content_hash": "59e999223e38f3197c324af9a4546174f1a2c6cda5cc85770112f6fd176abf00"
 }

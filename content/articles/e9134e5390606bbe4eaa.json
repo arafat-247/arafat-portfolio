@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:43.172849+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/biggest-event-booklovers-returns-3534326",
   "status": "published",
-  "local_url": "stories/e9134e5390606bbe4eaa-biggest-event-for-booklovers-returns/",
+  "local_url": "stories/biggest-event-for-booklovers-returns/",
   "first_archived_at": "2026-09-06T11:17:43.172956+00:00",
-  "content_hash": "42600f18b2b18c4ce533387d3629d827b4998161fcc0a820636313aec9915391"
+  "content_hash": "42600f18b2b18c4ce533387d3629d827b4998161fcc0a820636313aec9915391",
+  "legacy_urls": [
+    "stories/e9134e5390606bbe4eaa-biggest-event-for-booklovers-returns/"
+  ]
 }

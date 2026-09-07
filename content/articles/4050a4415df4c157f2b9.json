@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:04.296109+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/transport/news/bad-day-catch-flight-3119596",
   "status": "published",
-  "local_url": "stories/4050a4415df4c157f2b9-a-bad-day-to-catch-a-flight/",
+  "local_url": "stories/a-bad-day-to-catch-a-flight/",
   "first_archived_at": "2026-09-06T12:12:04.296331+00:00",
-  "content_hash": "374f99295bbdb1e6dd1d89a708972e4977e451d547ac49f43fd194bea4d3b649"
+  "content_hash": "374f99295bbdb1e6dd1d89a708972e4977e451d547ac49f43fd194bea4d3b649",
+  "legacy_urls": [
+    "stories/4050a4415df4c157f2b9-a-bad-day-to-catch-a-flight/"
+  ]
 }

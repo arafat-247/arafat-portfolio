@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:05.577050+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/textbook-fiasco-end-excuses-act-now-3795786",
   "status": "published",
-  "local_url": "stories/8054c74701b044e35c63-textbook-fiasco-end-excuses-act-now/",
+  "local_url": "stories/textbook-fiasco-end-excuses-act-now/",
   "first_archived_at": "2026-09-06T10:59:05.577231+00:00",
-  "content_hash": "6991aaff1c75aedce4364a7fac8aa385c7357e75c99f630c46600d17b922dec1"
+  "content_hash": "6991aaff1c75aedce4364a7fac8aa385c7357e75c99f630c46600d17b922dec1",
+  "legacy_urls": [
+    "stories/8054c74701b044e35c63-textbook-fiasco-end-excuses-act-now/"
+  ]
 }

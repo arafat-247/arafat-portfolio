@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:54.335471+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/pass-rate-gpa-5-lowest-5-years-3381186",
   "status": "published",
-  "local_url": "stories/a8bce049faba079e8bd7-pass-rate-gpa-5-lowest-in-5-years/",
+  "local_url": "stories/pass-rate-gpa-5-lowest-in-5-years/",
   "first_archived_at": "2026-09-06T12:10:54.335675+00:00",
-  "content_hash": "d45c14e652eaa214c6c8c17c2b58f65b57c5477571a6683c3ce2c28e911a59ca"
+  "content_hash": "d45c14e652eaa214c6c8c17c2b58f65b57c5477571a6683c3ce2c28e911a59ca",
+  "legacy_urls": [
+    "stories/a8bce049faba079e8bd7-pass-rate-gpa-5-lowest-in-5-years/"
+  ]
 }

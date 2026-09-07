@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:12:06.752140+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/the-one-who-pledged-keep-fighting-3079651",
   "status": "published",
-  "local_url": "stories/d182179545b0f5ea7ab6-the-one-who-pledged-to-keep-fighting/",
+  "local_url": "stories/the-one-who-pledged-to-keep-fighting/",
   "first_archived_at": "2026-09-06T12:12:06.752262+00:00",
-  "content_hash": "3928fe113d23fa5b8d8ebce4731362345e06517f4cd7a81466d244e1e85a3818"
+  "content_hash": "3928fe113d23fa5b8d8ebce4731362345e06517f4cd7a81466d244e1e85a3818",
+  "legacy_urls": [
+    "stories/d182179545b0f5ea7ab6-the-one-who-pledged-to-keep-fighting/"
+  ]
 }

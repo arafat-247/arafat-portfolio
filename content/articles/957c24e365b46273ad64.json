@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:38.571306+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/ekushey-boi-mela-likely-get-new-venue-3554966",
   "status": "published",
-  "local_url": "stories/957c24e365b46273ad64-ekushey-boi-mela-likely-to-get-new-venue/",
+  "local_url": "stories/ekushey-boi-mela-likely-to-get-new-venue/",
   "first_archived_at": "2026-09-06T11:17:38.571485+00:00",
-  "content_hash": "ce143d00910f62876b0d87ddb80221c7d1d53a0ceb7c4bcfe167d56b3085baa2"
+  "content_hash": "ce143d00910f62876b0d87ddb80221c7d1d53a0ceb7c4bcfe167d56b3085baa2",
+  "legacy_urls": [
+    "stories/957c24e365b46273ad64-ekushey-boi-mela-likely-to-get-new-venue/"
+  ]
 }

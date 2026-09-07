@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:54.404578+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/pry-secondary-schools-millions-students-still-without-textbooks-3840731",
   "status": "published",
-  "local_url": "stories/cceb33d47cb67a64ea0b-pry-secondary-schools-millions-of-students-still-without-textbooks/",
+  "local_url": "stories/pry-secondary-schools-millions-of-students-still-without-textbooks/",
   "first_archived_at": "2026-09-06T10:58:54.404768+00:00",
-  "content_hash": "7e3f1447079e2c9c35280d82f96c9c15343a5295f3775c2001652dce291738c2"
+  "content_hash": "7e3f1447079e2c9c35280d82f96c9c15343a5295f3775c2001652dce291738c2",
+  "legacy_urls": [
+    "stories/cceb33d47cb67a64ea0b-pry-secondary-schools-millions-of-students-still-without-textbooks/"
+  ]
 }

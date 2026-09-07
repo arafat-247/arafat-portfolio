@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:39.245394+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/celebrating-bangla-3549861",
   "status": "published",
-  "local_url": "stories/7eeaf75f197e5bb86753-celebrating-bangla-ekushey-boi-mela-sees-huge-turnout/",
+  "local_url": "stories/celebrating-bangla-ekushey-boi-mela-sees-huge-turnout/",
   "first_archived_at": "2026-09-06T11:17:39.245594+00:00",
-  "content_hash": "ad9a517a1f7ba2206ed5049cb2818d2441eb1315d8034c26239e5be42174f327"
+  "content_hash": "ad9a517a1f7ba2206ed5049cb2818d2441eb1315d8034c26239e5be42174f327",
+  "legacy_urls": [
+    "stories/7eeaf75f197e5bb86753-celebrating-bangla-ekushey-boi-mela-sees-huge-turnout/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:59:08.358860+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/partisan-link-still-rules-the-game-3775726",
   "status": "published",
-  "local_url": "stories/99f7411a7498aa46c115-partisan-link-still-rules-the-game/",
+  "local_url": "stories/partisan-link-still-rules-the-game/",
   "first_archived_at": "2026-09-06T10:59:08.359018+00:00",
-  "content_hash": "11820ac0ce0e46ce702ff35d1415084cbc34b07625f6a748f284ea0b8d4d0541"
+  "content_hash": "11820ac0ce0e46ce702ff35d1415084cbc34b07625f6a748f284ea0b8d4d0541",
+  "legacy_urls": [
+    "stories/99f7411a7498aa46c115-partisan-link-still-rules-the-game/"
+  ]
 }

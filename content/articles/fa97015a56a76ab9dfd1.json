@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:58.080311+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/crime-justice/news/why-not-banish-aynaghars-3823401",
   "status": "published",
-  "local_url": "stories/fa97015a56a76ab9dfd1-why-not-banish-aynaghars/",
+  "local_url": "stories/why-not-banish-aynaghars/",
   "first_archived_at": "2026-09-06T10:58:58.080480+00:00",
-  "content_hash": "815f03d73680fec9ac521a89dafec685b4e27fc8acfede560fa623f904dc1049"
+  "content_hash": "815f03d73680fec9ac521a89dafec685b4e27fc8acfede560fa623f904dc1049",
+  "legacy_urls": [
+    "stories/fa97015a56a76ab9dfd1-why-not-banish-aynaghars/"
+  ]
 }

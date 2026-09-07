@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:46.782847+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/alarming-failures-3610211",
   "status": "published",
-  "local_url": "stories/112b654ca5365443db82-alarming-failures/",
+  "local_url": "stories/alarming-failures/",
   "first_archived_at": "2026-09-06T11:16:46.782943+00:00",
-  "content_hash": "e8ec61b60e8f4fb84ef52c6086bdd3c3f4f9a374b6dc588faa4f4221a5dd57ae"
+  "content_hash": "e8ec61b60e8f4fb84ef52c6086bdd3c3f4f9a374b6dc588faa4f4221a5dd57ae",
+  "legacy_urls": [
+    "stories/112b654ca5365443db82-alarming-failures/"
+  ]
 }

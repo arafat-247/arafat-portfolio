@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T10:58:58.319030+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/renaming-education-cadre-proposed-3818726",
   "status": "published",
-  "local_url": "stories/4426c5d23105f7d44056-renaming-education-cadre-proposed/",
+  "local_url": "stories/renaming-education-cadre-proposed/",
   "first_archived_at": "2026-09-06T10:58:58.319207+00:00",
-  "content_hash": "fdd877eeb374b5254910453d0289f9fa801bb7ef3b2106d8afeeb874aab6550f"
+  "content_hash": "fdd877eeb374b5254910453d0289f9fa801bb7ef3b2106d8afeeb874aab6550f",
+  "legacy_urls": [
+    "stories/4426c5d23105f7d44056-renaming-education-cadre-proposed/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:16:44.877453+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/new-school-curriculum-implementation-limps-along-3622401",
   "status": "published",
-  "local_url": "stories/ec852f4ed2dedd54b415-new-school-curriculum-implementation-limps-along/",
+  "local_url": "stories/new-school-curriculum-implementation-limps-along/",
   "first_archived_at": "2026-09-06T11:16:44.877621+00:00",
-  "content_hash": "d2b950044ba65cfc93d4d6a8946282aeea5dda6b8bcb58376f0a847b7c274999"
+  "content_hash": "d2b950044ba65cfc93d4d6a8946282aeea5dda6b8bcb58376f0a847b7c274999",
+  "legacy_urls": [
+    "stories/ec852f4ed2dedd54b415-new-school-curriculum-implementation-limps-along/"
+  ]
 }

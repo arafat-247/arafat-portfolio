@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T11:17:35.178673+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/jagannath-university-rife-financial-irregularities-ugc-report-3564411",
   "status": "published",
-  "local_url": "stories/a60ed1e2de97d20b1510-jagannath-university-rife-with-financial-irregularities-ugc-report/",
+  "local_url": "stories/jagannath-university-rife-with-financial-irregularities-ugc-report/",
   "first_archived_at": "2026-09-06T11:17:35.178856+00:00",
-  "content_hash": "8cf5fb216a794afed45bebb5d49937a85f38bb9e7ccc5d84a20d3fb74cc17ddd"
+  "content_hash": "8cf5fb216a794afed45bebb5d49937a85f38bb9e7ccc5d84a20d3fb74cc17ddd",
+  "legacy_urls": [
+    "stories/a60ed1e2de97d20b1510-jagannath-university-rife-with-financial-irregularities-ugc-report/"
+  ]
 }

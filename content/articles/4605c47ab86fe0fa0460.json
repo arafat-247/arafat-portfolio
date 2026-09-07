@@ -17,10 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 1087,
-  "fetched_at": "2026-09-07T06:28:55.031897+00:00",
+  "fetched_at": "2026-09-07T07:26:27.408374+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/education/news/admission-class-1-heavy-loads-tender-shoulders-4228761",
   "status": "published",
-  "local_url": "stories/4605c47ab86fe0fa0460-admission-to-class-1-heavy-loads-on-tender-shoulders/",
+  "local_url": "stories/admission-to-class-1-heavy-loads-on-tender-shoulders/",
+  "legacy_urls": [
+    "stories/4605c47ab86fe0fa0460-admission-to-class-1-heavy-loads-on-tender-shoulders/"
+  ],
   "first_archived_at": "2026-09-06T10:57:48.647738+00:00",
   "content_hash": "db3526a3c12b3e67d1531a48406eada711ebdddc7610e7e5bafe3efd8cbcc5ac"
 }

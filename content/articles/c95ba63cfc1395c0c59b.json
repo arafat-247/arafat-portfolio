@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:48.311918+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/memes-more-just-laugh-3498896",
   "status": "published",
-  "local_url": "stories/c95ba63cfc1395c0c59b-memes-more-than-just-a-laugh/",
+  "local_url": "stories/memes-more-than-just-a-laugh/",
   "first_archived_at": "2026-09-06T12:10:48.312118+00:00",
-  "content_hash": "03f79c252a2dacd2ec3e92a6787f66f3eda305e43573f92be80294d4d32906cc"
+  "content_hash": "03f79c252a2dacd2ec3e92a6787f66f3eda305e43573f92be80294d4d32906cc",
+  "legacy_urls": [
+    "stories/c95ba63cfc1395c0c59b-memes-more-than-just-a-laugh/"
+  ]
 }

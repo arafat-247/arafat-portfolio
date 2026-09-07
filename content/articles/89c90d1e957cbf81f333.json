@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:46.368826+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/19-women-triumph-higher-turnout-3515501",
   "status": "published",
-  "local_url": "stories/89c90d1e957cbf81f333-19-women-triumph-with-higher-turnout/",
+  "local_url": "stories/19-women-triumph-with-higher-turnout/",
   "first_archived_at": "2026-09-06T12:10:46.369001+00:00",
-  "content_hash": "1d6523d811738a26f94658f0463b2929446a73c5dabbdf361bec981a9316ae76"
+  "content_hash": "1d6523d811738a26f94658f0463b2929446a73c5dabbdf361bec981a9316ae76",
+  "legacy_urls": [
+    "stories/89c90d1e957cbf81f333-19-women-triumph-with-higher-turnout/"
+  ]
 }

@@ -20,7 +20,10 @@
   "fetched_at": "2026-09-06T12:10:57.405584+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/cluster-admission-tests-22-univs-lag-behind-have-vacant-seats-3312831",
   "status": "published",
-  "local_url": "stories/944fc8115a39be75263a-cluster-admission-tests-22-univs-lag-behind-have-vacant-seats/",
+  "local_url": "stories/cluster-admission-tests-22-univs-lag-behind-have-vacant-seats/",
   "first_archived_at": "2026-09-06T12:10:57.405697+00:00",
-  "content_hash": "f392cda92ed7f345846374b805dc5da4bb75f817632c6c1bc58d2a7d960786ec"
+  "content_hash": "f392cda92ed7f345846374b805dc5da4bb75f817632c6c1bc58d2a7d960786ec",
+  "legacy_urls": [
+    "stories/944fc8115a39be75263a-cluster-admission-tests-22-univs-lag-behind-have-vacant-seats/"
+  ]
 }
