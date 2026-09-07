@@ -676,9 +676,9 @@
     "https://www.thedailystar.net/opinion/views/news/uprising-unravelling-3951556": {
       "discovered_at": "2026-09-06T04:57:04.186001+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-07T21:31:23.306202+00:00",
+      "last_checked": "2026-09-07T22:15:51.564201+00:00",
       "status": "saved",
-      "last_success": "2026-09-07T21:31:25.084055+00:00",
+      "last_success": "2026-09-07T22:15:53.047892+00:00",
       "failures": 0,
       "error": "",
       "article_id": "6ce36645074760abe246",
@@ -687,9 +687,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/july-uprising-movement-united-campuses-and-classrooms-3950961": {
       "discovered_at": "2026-09-06T04:57:04.186002+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-07T21:31:23.306206+00:00",
+      "last_checked": "2026-09-07T22:15:51.564203+00:00",
       "status": "saved",
-      "last_success": "2026-09-07T21:31:24.899600+00:00",
+      "last_success": "2026-09-07T22:15:53.067292+00:00",
       "failures": 0,
       "error": "",
       "article_id": "1d94835c78dafa1ba238",
@@ -698,9 +698,9 @@
     "https://www.thedailystar.net/campus/news/student-union-election-du-ju-set-sept-polls-other-univs-lag-behind-3943756": {
       "discovered_at": "2026-09-06T04:57:04.186003+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-07T21:31:23.306209+00:00",
+      "last_checked": "2026-09-07T22:15:51.564205+00:00",
       "status": "saved",
-      "last_success": "2026-09-07T21:31:25.122490+00:00",
+      "last_success": "2026-09-07T22:15:53.130360+00:00",
       "failures": 0,
       "error": "",
       "article_id": "f962697f78e62b7647db",
@@ -709,9 +709,9 @@
     "https://www.thedailystar.net/news/bangladesh/education/news/ssc-pass-rate-plunges-16-year-low-3936891": {
       "discovered_at": "2026-09-06T04:57:04.186004+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-07T21:31:23.306211+00:00",
+      "last_checked": "2026-09-07T22:15:51.564207+00:00",
       "status": "saved",
-      "last_success": "2026-09-07T21:31:25.103834+00:00",
+      "last_success": "2026-09-07T22:15:52.700837+00:00",
       "failures": 0,
       "error": "",
       "article_id": "254cef90f85c6a66af90",
@@ -3113,15 +3113,25 @@
       "error": "",
       "article_id": "50c0946db1b351f9cd98",
       "title": "‘Culture is not easy, it’s political as well as artistic’"
+    },
+    "https://www.thedailystar.net/news/bangladesh/news/half-the-children-cant-read-comprehend-4267561": {
+      "discovered_at": "2026-09-07T22:15:41.258350+00:00",
+      "author_listing": true,
+      "last_checked": "2026-09-07T22:15:51.564196+00:00",
+      "status": "failed",
+      "error": "Publication date could not be extracted.",
+      "failures": 1
     }
   },
-  "archive_cursor": 105,
-  "last_attempt": "2026-09-07T22:01:07.815366+00:00",
-  "last_discovery_success": "2026-09-07T22:01:22.068525+00:00",
-  "last_completed": "2026-09-07T22:01:49.137196+00:00",
-  "saved_this_run": 60,
-  "known_sources": 284,
-  "pending": 0,
-  "errors": [],
+  "archive_cursor": 108,
+  "last_attempt": "2026-09-07T22:15:38.879889+00:00",
+  "last_discovery_success": "2026-09-07T22:15:51.563440+00:00",
+  "last_completed": "2026-09-07T22:15:53.133122+00:00",
+  "saved_this_run": 4,
+  "known_sources": 285,
+  "pending": 1,
+  "errors": [
+    "Publication date could not be extracted."
+  ],
   "unsupported": 3
 }
