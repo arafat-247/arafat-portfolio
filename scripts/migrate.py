@@ -33,5 +33,9 @@ def main():
         if key not in known:
             a.update(id=key,stream='thoughts',excerpt=a.get('deck',''),date_published=a.get('date_published') or date(a.get('date','')),local_url='thoughts/'+key+'/')
             posts['posts'].append(a)
+    article_files=sorted((CONTENT/'articles').glob('*.json'))
+    archived=[read(path,{}) for path in article_files]
+    normalise_public_urls([*archived,*posts['posts']])
+    for path,item in zip(article_files,archived): write(path,item)
     write(CONTENT/'posts.json',posts)
 if __name__=='__main__': main()

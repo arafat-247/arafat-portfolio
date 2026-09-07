@@ -1,4 +1,4 @@
-# Arafat Rahaman Portfolio V15.2
+# Arafat Rahaman Portfolio V16.3
 
 This is the complete GitHub Pages repository package, not a CSS patch or a concept board. The approved monochrome identity panel, photographic home categories, compact mobile menu and minimal footer are carried into the public pages.
 
@@ -32,7 +32,7 @@ Do not retain a second active deployment workflow from an old version. Replace `
 
 ## 3. Set the public address and enable deployment
 
-1. Open `content/settings.json`. Check `site_url`. The supplied default is `https://arafat-247.github.io/arafat-portfolio`. If using your own domain, replace it with that HTTPS address. Also check your email, LinkedIn link, biography and award details.
+1. Open `content/settings.json`. Confirm that `site_url` is `https://arafatrahaman.com`. Also check your email, LinkedIn link, biography and award details.
 2. In the repository, open Settings → Pages. Choose **GitHub Actions** as the build/deployment source.
 3. Open Settings → Actions → General → Workflow permissions. Allow **Read and write permissions**. If an organisation or branch rule prevents direct writes, do not weaken it blindly: ask the administrator for an approved publishing route.
 4. Open Actions → **Refresh portfolio and deploy** → Run workflow. Select `main`. Use the deep-scan option for the first archive discovery run.
@@ -96,7 +96,7 @@ Keep periodic offline repository backups. “Permanent” here means retained in
 
 ## 9. Local preview
 
-Python 3.12 or newer is enough for the V15 build and importer; no npm installation is needed for the public site.
+Python 3.12 or newer is enough for the build and importer; no npm installation is needed for the public site.
 
 ```bash
 python scripts/migrate.py

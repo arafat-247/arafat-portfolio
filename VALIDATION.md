@@ -1,16 +1,16 @@
-# V15.2 release validation
+# V16.3 release validation
 
 Prepared on 6 September 2026.
 
 ## Passed locally
 
-- 18 Python tests, including every-card author-list discovery, author-list provenance, exact bylines, manual contribution attribution, sanitisation, URL safety, draft exclusion, revision preservation and failed-source preservation.
+- 20 Python tests, including every-card author-list discovery, clean headline URLs, legacy redirects, author-list provenance, exact bylines, manual contribution attribution, sanitisation, URL safety, draft exclusion, revision preservation and failed-source preservation.
 - 3 JavaScript tests covering atomic GitHub saves, branch conflicts and bounded workflow dispatch.
 - Public and admin JavaScript syntax checks.
 - Build and output validation: local links, assets, safe attributes, JSON indexes, redirects and draft exclusion.
 - The release ZIP is integrity-tested and contains a SHA-256 manifest.
 
-## V15.2 behaviour
+## V16.3 behaviour
 
 - Every valid story card found on the configured Daily Star author pages enters the permanent archive and publishes without an editorial review queue.
 - Article pages keep the original source byline and original-publication link.
@@ -19,6 +19,8 @@ Prepared on 6 September 2026.
 - Publisher cover images are not copied or displayed in Reporting and Opinion archives. Homepage identity imagery and the separate Photography gallery remain.
 - About contains biography, reporting areas, Awards & Recognition and a contact route. The old awards address redirects to this section.
 - Mobile inner pages use a compact sticky header and an overlay drawer instead of repeating the portrait panel above every page.
+- Article addresses use readable headline slugs; previous ID-led addresses remain as permanent compatibility redirects.
+- Canonical, Open Graph and X metadata use the custom domain and the branded 1200 × 630 sharing card.
 
 ## Operational limits
 

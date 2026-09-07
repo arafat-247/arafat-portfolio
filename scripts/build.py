@@ -6,7 +6,12 @@ from core import *
 
 STREAMS={'reporting':('Reporting','News reports, interviews and reported features.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting.html','opinion':'opinion.html','thoughts':'thoughts.html'}
-ASSET_VERSION='16.2.1'
+ASSET_VERSION='16.3.0'
+
+def meta_description(value,limit=190):
+    value=clean(value)
+    if len(value)<=limit:return value
+    return value[:limit-1].rsplit(' ',1)[0].rstrip(' ,;:')+'…'
 
 def text_body(value):
     result=[]
@@ -47,8 +52,23 @@ class Builder:
         metadata=article_data or person
         schema=json.dumps(metadata,ensure_ascii=False).replace('<','\\u003c')
         page_key=re.sub(r'[^a-z0-9]+','-',path.lower()).strip('-')
-        document=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(title)} — {esc(name)}</title><meta name="description" content="{esc(desc or c.get('description',''))}"><meta name="theme-color" content="#102d2a"><script>document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'light'</script><link rel="canonical" href="{esc(self.base+'/'+path)}"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" href="{prefix}feed.xml" title="Arafat Rahaman"><link rel="stylesheet" href="{prefix}portfolio.css?v={ASSET_VERSION}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc or c.get('description',''))}"><meta property="og:url" content="{esc(self.base+'/'+path)}"><script type="application/ld+json">{schema}</script></head><body class="{'home' if home else 'inner'}" data-root="{prefix}" data-page="{page_key}" id="top"><a class="skip" href="#main">Skip to content</a><aside class="identity" aria-label="Profile and navigation"><a href="{prefix}index.html" aria-label="Arafat Rahaman homepage"><img class="portrait" src="{prefix}{esc(sidebar_portrait)}" width="132" height="132" alt="Arafat Rahaman smiling outdoors" decoding="async"></a><div class="social">{socials}</div><a class="name" href="{prefix}index.html">ARAFAT<br>RAHAMAN</a><p>Journalist at The Daily Star<br>Dhaka, Bangladesh</p><nav aria-label="Main navigation"><a href="{prefix}index.html">Portfolio</a><a href="{prefix}about.html">About me</a><a href="{prefix}contact.html">Contact</a></nav></aside><div class="right"><header class="mobilehead"><a class="mobilebrand" href="{prefix}index.html"><span class="mark" aria-hidden="true">A</span><span>Arafat Rahaman</span></a><div class="mobileactions"><button class="themetoggle" type="button" aria-pressed="false"><span class="themesymbol" aria-hidden="true">◐</span><span class="themelabel">Dark</span></button><button class="menutoggle" type="button" aria-expanded="false" aria-controls="mobile-menu"><span class="menulines" aria-hidden="true"><i></i><i></i></span><span>Menu</span></button></div></header><button class="menubackdrop" hidden aria-label="Close menu"></button><nav class="mobilemenu" id="mobile-menu" hidden aria-label="Mobile navigation"><div class="drawerhead"><strong>Menu</strong><button class="drawerclose" type="button" aria-label="Close menu">×</button></div><div class="drawerprofile"><img src="{prefix}{esc(portrait)}" width="72" height="72" alt="Portrait of Arafat Rahaman"><div><h2>Arafat<br>Rahaman</h2><p>Journalist at The Daily Star<br>Dhaka, Bangladesh</p></div></div><div class="drawernav">{menu}</div><div class="menumeta">{socials}</div></nav><main id="main">{body}</main><footer><span>© {datetime.now().year} {esc(name)}</span><span>Dhaka, Bangladesh</span><a class="top" href="#top">Back to top ↑</a></footer></div><script src="{prefix}portfolio.js?v={ASSET_VERSION}" defer></script></body></html>'''
+        canonical_path='' if path=='index.html' else (path[:-10] if path.endswith('/index.html') else path)
+        canonical_url=self.base+'/'+canonical_path
+        description=meta_description(desc or c.get('description',''))
+        social_image=self.base+'/assets/social-preview.jpg'
+        og_type='article' if article_data else 'website'
+        article_tags=''
+        if article_data:
+            if article_data.get('datePublished'):article_tags+=f'<meta property="article:published_time" content="{esc(article_data["datePublished"])}">'
+            if article_data.get('dateModified'):article_tags+=f'<meta property="article:modified_time" content="{esc(article_data["dateModified"])}">'
+        head=f'''<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(title)} — {esc(name)}</title><meta name="description" content="{esc(description)}"><meta name="theme-color" content="#102d2a"><script>try{{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'light'}}catch(e){{document.documentElement.dataset.theme='light'}}</script><link rel="canonical" href="{esc(canonical_url)}"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" href="{prefix}feed.xml" title="Arafat Rahaman"><link rel="stylesheet" href="{prefix}portfolio.css?v={ASSET_VERSION}"><meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{esc(name)}"><meta property="og:locale" content="en_GB"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(canonical_url)}"><meta property="og:image" content="{esc(social_image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Arafat Rahaman, journalist at The Daily Star"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{esc(social_image)}"><meta name="twitter:image:alt" content="Arafat Rahaman, journalist at The Daily Star">{article_tags}<script type="application/ld+json">{schema}</script>'''
+        document=f'''<!doctype html><html lang="en"><head>{head}</head><body class="{'home' if home else 'inner'}" data-root="{prefix}" data-page="{page_key}" id="top"><a class="skip" href="#main">Skip to content</a><aside class="identity" aria-label="Profile and navigation"><a href="{prefix}index.html" aria-label="Arafat Rahaman homepage"><img class="portrait" src="{prefix}{esc(sidebar_portrait)}" width="132" height="132" alt="Arafat Rahaman smiling outdoors" decoding="async"></a><div class="social">{socials}</div><a class="name" href="{prefix}index.html">ARAFAT<br>RAHAMAN</a><p>Journalist at The Daily Star<br>Dhaka, Bangladesh</p><nav aria-label="Main navigation"><a href="{prefix}index.html">Portfolio</a><a href="{prefix}about.html">About me</a><a href="{prefix}contact.html">Contact</a></nav></aside><div class="right"><header class="mobilehead"><a class="mobilebrand" href="{prefix}index.html"><span class="mark" aria-hidden="true">A</span><span>Arafat Rahaman</span></a><div class="mobileactions"><button class="themetoggle" type="button" aria-pressed="false"><span class="themesymbol" aria-hidden="true">◐</span><span class="themelabel">Dark</span></button><button class="menutoggle" type="button" aria-expanded="false" aria-controls="mobile-menu"><span class="menulines" aria-hidden="true"><i></i><i></i></span><span>Menu</span></button></div></header><button class="menubackdrop" hidden aria-label="Close menu"></button><nav class="mobilemenu" id="mobile-menu" hidden aria-label="Mobile navigation"><div class="drawerhead"><strong>Menu</strong><button class="drawerclose" type="button" aria-label="Close menu">×</button></div><div class="drawerprofile"><img src="{prefix}{esc(portrait)}" width="72" height="72" alt="Portrait of Arafat Rahaman"><div><h2>Arafat<br>Rahaman</h2><p>Journalist at The Daily Star<br>Dhaka, Bangladesh</p></div></div><div class="drawernav">{menu}</div><div class="menumeta">{socials}</div></nav><main id="main">{body}</main><footer><span>© {datetime.now().year} {esc(name)}</span><span>Dhaka, Bangladesh</span><a class="top" href="#top">Back to top ↑</a></footer></div><script src="{prefix}portfolio.js?v={ASSET_VERSION}" defer></script></body></html>'''
         target=OUT/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_text(document,encoding='utf-8'); self.routes.append(path)
+    def redirect(self,path,target):
+        if path==target:return
+        destination=self.base+'/'+target
+        document=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><link rel="canonical" href="{esc(destination)}"><meta http-equiv="refresh" content="0;url={esc(destination)}"><title>Moved — Arafat Rahaman</title></head><body><p>This story has moved to a clearer address. <a href="{esc(destination)}">Continue to the article</a>.</p><script>location.replace({json.dumps(destination)}+location.search+location.hash)</script></body></html>'''
+        target_path=OUT/path;target_path.parent.mkdir(parents=True,exist_ok=True);target_path.write_text(document,encoding='utf-8')
     def card(self,a):
         href=esc(a['local_url']); by=esc(a.get('source_name') or NAME)
         return f'<article class="workitem"><div class="workmeta"><span>{esc(date_label(a.get("date_published","")))}</span><span>{esc(a.get("category") or "Reporting")}</span><span>{by}</span></div><div class="workcopy"><h2><a href="{href}">{esc(a["title"])}</a></h2><p>{esc(a.get("excerpt",""))}</p></div><a class="read" href="{href}" aria-label="Read {esc(a["title"])}"><span>Read</span> →</a></article>'
@@ -67,7 +87,7 @@ class Builder:
             if urlsplit(u).scheme=='https':source=f'<div class="sourcebox">Originally published by {esc(a.get("source_name",""))}. <a href="{esc(u)}" rel="noopener noreferrer">Read the original publication</a>.<br>First archived: {esc(date_label(a.get("first_archived_at","")))}. This local copy does not depend on the source remaining online.</div>'
         update=f' · Updated {esc(date_label(a["date_modified"]))}' if a.get('date_modified') and a.get('date_modified')!=a.get('date_published') else ''
         content=f'<article class="page reading"><a class="back" href="{prefix}{section}">← {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a><div class="storylabel"><a href="{prefix}{section}?category={esc(a.get("category",""))}">{esc(a.get("category",""))}</a></div><h1>{esc(title)}</h1><p class="standfirst">{esc(a.get("excerpt",""))}</p><div class="byline"><img src="{prefix}{esc(safe_asset(self.config.get("portrait")))}" alt="" width="37" height="37" decoding="async"><div>{byline}<span class="meta">{esc(date_label(a.get("date_published","")))}{update}</span></div></div><div class="storyactions"><button data-share>Share</button><button data-print>Print / Save PDF</button><span data-share-status role="status"></span></div>{figure}<div class="bodycopy">{body}</div>{source}</article>'
-        meta={'@context':'https://schema.org','@type':'Article','headline':title,'datePublished':a.get('date_published',''),'author':[{'@type':'Person','name':x} for x in original],'url':self.base+'/'+a['local_url']}
+        meta={'@context':'https://schema.org','@type':'Article','headline':title,'datePublished':a.get('date_published',''),'dateModified':a.get('date_modified','') or a.get('date_published',''),'author':[{'@type':'Person','name':x} for x in original],'url':self.base+'/'+a['local_url'],'mainEntityOfPage':self.base+'/'+a['local_url']}
         if a.get('source_url'):meta['isBasedOn']=a['source_url']
         self.page(path,title,content,desc=a.get('excerpt',''),article_data=meta)
 
@@ -90,10 +110,26 @@ def build():
         if a.get('format')=='html':a['body_html']=sanitise(a.get('body',''))
         else:a['body_html']=text_body(a.get('body','')) if a.get('body') else sanitise(a.get('body_html',''))
         a.setdefault('local_url','thoughts/'+a['id']+'/'); a.setdefault('original_authors',[NAME]);articles.append(a)
+    normalise_public_urls(articles)
+    public_records=list(articles)
+    # Some publisher URLs are near-identical editions of the same story. Keep
+    # one public page per clean route while retaining every archived record.
+    deduplicated={}
+    def record_rank(item):
+        source_number=re.search(r'(\d{5,})/?$',item.get('source_url',''))
+        return (int(item.get('word_count') or 0),-int(source_number.group(1)) if source_number else 0)
+    for item in articles:
+        current=deduplicated.get(item['local_url'])
+        if current is None or record_rank(item)>record_rank(current):deduplicated[item['local_url']]=item
+    articles=list(deduplicated.values())
     articles.sort(key=lambda a:datetime.fromisoformat(date(a.get('date_published',''))).timestamp(),reverse=True)
     for a in articles:
         if not re.fullmatch(r'(stories|thoughts)/[a-zA-Z0-9_-]+/',a['local_url']): raise ValueError('Unsafe story path.')
         b.story(a)
+    for a in public_records:
+        for old in a.get('legacy_urls',[]):
+            if re.fullmatch(r'(stories|thoughts)/[a-zA-Z0-9_-]+/',old) and old!=a['local_url']:
+                b.redirect(old+'index.html',a['local_url'])
     keys=('id','title','excerpt','category','stream','date_published','date_modified','cover_image','cover_alt','source_name','local_url')
     write(OUT/'data/index.json',{'articles':[{k:a.get(k,'') for k in keys} for a in articles]})
     tiles=[]
@@ -145,10 +181,14 @@ def build():
     write(OUT/'data/site.json',{'publishing':c.get('publishing',{}),'site_url':b.base})
     state=read(CONTENT/'sync-state.json',{})
     write(OUT/'data/sync.json',{k:state.get(k) for k in ('last_completed','last_discovery_success','saved_this_run','known_sources','pending')})
-    (OUT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+esc(b.base+'/'+p)+'</loc></url>' for p in b.routes if p!='404.html')+'</urlset>',encoding='utf-8')
+    def sitemap_url(path):
+        route='' if path=='index.html' else (path[:-10] if path.endswith('/index.html') else path)
+        return b.base+'/'+route
+    (OUT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+esc(sitemap_url(p))+'</loc></url>' for p in b.routes if p!='404.html')+'</urlset>',encoding='utf-8')
     (OUT/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: '+urlsplit(b.base).path+'/admin/\nSitemap: '+b.base+'/sitemap.xml\n',encoding='utf-8')
     items=''.join('<item><title>'+esc(a['title'])+'</title><link>'+esc(b.base+'/'+a['local_url'])+'</link><guid>'+esc(b.base+'/'+a['local_url'])+'</guid><description>'+esc(a.get('excerpt',''))+'</description></item>' for a in articles[:50])
     (OUT/'feed.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Arafat Rahaman</title><link>'+esc(b.base)+'</link><description>Reporting, opinion and thoughts</description>'+items+'</channel></rss>',encoding='utf-8')
+    (OUT/'CNAME').write_text('arafatrahaman.com\n',encoding='utf-8')
     (OUT/'.nojekyll').touch()
     print(f'Built {len(b.routes)} pages, {len(articles)} published articles, {len(photos)} photographs. Drafts excluded.')
 if __name__=='__main__':build()

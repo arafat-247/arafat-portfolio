@@ -26,7 +26,10 @@ def store_article(item, old=None):
     # Do not replace a complete saved article with a likely paywall/error extract.
     if old and item['word_count'] < old.get('word_count',0)*0.55:
         raise ValueError('New extraction is substantially shorter. Existing archive preserved; review source manually.')
-    item['local_url']=(old or {}).get('local_url') or f"stories/{item['id']}-{slug(item['title'])}/"
+    item['local_url']=(old or {}).get('local_url','')
+    item['legacy_urls']=(old or {}).get('legacy_urls',[])
+    existing=[read(path,{}) for path in (CONTENT/'articles').glob('*.json') if path.stem!=item['id']]
+    normalise_public_urls([*existing,item])
     item['first_archived_at']=(old or {}).get('first_archived_at') or now()
     if not item.get('date_published') and old: item['date_published']=old.get('date_published','')
     if not item.get('cover_image') and old: item['cover_image']=old.get('cover_image','')
