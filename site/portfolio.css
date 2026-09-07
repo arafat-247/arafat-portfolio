@@ -19,17 +19,8 @@ a,button{touch-action:manipulation}
   .mobilemenu[hidden],.menubackdrop[hidden]{display:none!important}
 }
 
-/* V16 responsive experience. The homepage portrait is shared across desktop and mobile. */
-.homecontact,.themetoggle,.tile>i{display:none}
-.homeprofile{display:grid;grid-template-columns:minmax(250px,40%) minmax(0,1fr);min-height:340px;margin:0 0 42px;overflow:hidden;color:#fff;background:#102d2a;box-shadow:var(--shadow)}
-.homeprofile>img{width:100%;height:100%;min-height:340px;object-fit:cover;object-position:53% center;transition:transform .55s cubic-bezier(.22,.75,.16,1)}
-.homeprofile>div{display:flex;min-width:0;flex-direction:column;justify-content:center;padding:42px 46px}
-.homeprofile>div>span{color:#efac96;font-size:11px;font-weight:850;letter-spacing:.16em;text-transform:uppercase}
-.homeprofile h2{margin:8px 0 0;font:700 clamp(42px,5vw,58px)/.95 var(--serif);letter-spacing:-.035em}
-.homeprofile p{max-width:470px;margin:20px 0 0;color:rgb(255 255 255 / 76%);font-size:15px;line-height:1.65}
-.homeprofile nav{display:flex;flex-wrap:wrap;gap:24px;margin-top:26px}
-.homeprofile a{padding-bottom:3px;border-bottom:1px solid currentColor;color:inherit;font-size:13px;font-weight:800;text-decoration:none}
-.homeprofile:hover>img{transform:scale(1.018)}
+/* V16 approved mobile experience. Desktop keeps the established fixed-rail layout. */
+.homeprofile,.homecontact,.themetoggle,.tile>i{display:none}
 .aboutfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 42px}
 .aboutfacts>div{display:flex;min-height:118px;flex-direction:column;justify-content:space-between;padding:18px;border:1px solid var(--line);background:var(--white)}
 .aboutfacts strong{font:700 27px/1 var(--serif)}
