@@ -9,6 +9,16 @@
       "rights_confirmed": true,
       "requested_at": "2026-09-06T12:26:44.641Z",
       "status": "queued"
+    },
+    {
+      "id": "4abbdab3-6d17-4dbc-8417-a04f6f7a2840",
+      "url": "https://www.thedailystar.net/news/bangladesh/news/3-public-universities-vcs-greetings-bnp-leaders-raise-ethical-questions-4264541",
+      "category": "Other Reporting Contribution",
+      "contribution": "Author",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-07T17:45:36.936Z",
+      "status": "queued"
     }
   ]
 }
