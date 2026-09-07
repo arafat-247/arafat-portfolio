@@ -1,1 +1,12 @@
-{"articles":{"5d7f4c97a6f6de5833aa":{"status":"review","date_published":""}}}
+{
+  "articles": {
+    "5d7f4c97a6f6de5833aa": {
+      "status": "published",
+      "date_published": "2026-09-04T00:00:00+06:00",
+      "title": "3 Public Universities: VCs’ greetings to BNP leaders raise ethical questions",
+      "stream": "reporting",
+      "credit_type_override": "author-page",
+      "category": "Other Reporting Contribution"
+    }
+  }
+}
