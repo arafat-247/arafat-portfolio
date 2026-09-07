@@ -1,6 +1,51 @@
 {
   "photos": [
     {
+      "id": "f9b7fb0c-668b-418f-9f9b-e0018c22e17a",
+      "src": "assets/uploads/f9b7fb0c-668b-418f-9f9b-e0018c22e17a.webp",
+      "caption": "Nature x Flowers x Arafat Rahaman",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "Gazipur",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
+      "id": "d337260a-a832-4f50-b5ce-2f67389e9690",
+      "src": "assets/uploads/d337260a-a832-4f50-b5ce-2f67389e9690.webp",
+      "caption": "Nature with Flowers x Arafat Rahaman",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "Gazipur",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
+      "id": "19791c26-1927-44c2-89d6-aa995fccf538",
+      "src": "assets/uploads/19791c26-1927-44c2-89d6-aa995fccf538.webp",
+      "caption": "City Life with Flowers x Arafat Rahaman",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "Dhaka",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
+      "id": "5a7c0ce4-3683-4dcb-b786-472d9bf053d0",
+      "src": "assets/uploads/5a7c0ce4-3683-4dcb-b786-472d9bf053d0.webp",
+      "caption": "Buying Love x Flowers x Arafat Rahaman",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "Shahbagh",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
+      "id": "0122bfd5-b9f4-4884-8f4e-3d812972bbcb",
+      "src": "assets/uploads/0122bfd5-b9f4-4884-8f4e-3d812972bbcb.webp",
+      "caption": "Cats x Flowers x Arafat Rahaman",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "The Daily Star",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
       "id": "850f6e97-ccee-4da2-8009-2ca372da27dd",
       "src": "assets/uploads/850f6e97-ccee-4da2-8009-2ca372da27dd.webp",
       "caption": "Life with Flowers x Arafat Rahaman",
