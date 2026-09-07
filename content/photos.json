@@ -1,6 +1,15 @@
 {
   "photos": [
     {
+      "id": "13597766-0804-42ac-bb79-f785bea5e548",
+      "src": "assets/uploads/13597766-0804-42ac-bb79-f785bea5e548.webp",
+      "caption": "Life, Nature, Flowers x Arafat Rahaman ",
+      "alt": "Photos taken in different timeframes ",
+      "location": "Farmgate, Dhaka",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
       "src": "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (1).webp",
       "alt": "Nightscape at Rajshahi University photographed by Arafat Rahaman",
       "caption": "Rajshahi University at night.",
