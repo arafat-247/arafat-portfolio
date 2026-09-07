@@ -70,7 +70,7 @@ const html=v=>String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'
 function formatDate(v){if(!v)return'Date not recorded';const d=new Date(v);return Number.isNaN(+d)?'Date not recorded':d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'Asia/Dhaka'})}
 const archive=$('[data-archive]');
 if(archive){const filterToggle=$('.filtertoggle');filterToggle?.addEventListener('click',()=>{const open=archive.classList.toggle('filters-open');filterToggle.setAttribute('aria-expanded',String(open))});(async()=>{try{
- const r=await fetch(root+'data/index.json');if(!r.ok)throw Error('Archive could not be loaded. Please reload.');
+ const version=encodeURIComponent(document.body.dataset.version||Date.now());const r=await fetch(root+'data/index.json?v='+version,{cache:'no-store'});if(!r.ok)throw Error('Archive could not be loaded. Please reload.');
  const all=(await r.json()).articles.filter(a=>a.stream===archive.dataset.archive),q=$('[name=q]'),cat=$('[name=category]'),year=$('[name=year]'),credit=$('[name=credit]');let page=1;
  [...new Set(all.map(a=>a.category).filter(Boolean))].sort().forEach(v=>cat.add(new Option(v,v)));[...new Set(all.map(a=>a.date_published?.slice(0,4)).filter(Boolean))].sort().reverse().forEach(v=>year.add(new Option(v,v)));
  const params=new URLSearchParams(location.search);q.value=params.get('q')||'';cat.value=params.get('category')||'';year.value=params.get('year')||'';if(credit)credit.value=params.get('credit')||'';

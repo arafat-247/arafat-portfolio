@@ -54,6 +54,8 @@ class BuildTests(unittest.TestCase):
             self.assertIn('<strong>1</strong><span>non-byline contributions</span>',reporting)
             self.assertIn('name="credit"',reporting)
             self.assertIn('Non-byline contribution',reporting)
+            self.assertIn('data-version="16.8.2"',reporting)
+            self.assertIn("data/index.json?v=",(out/'portfolio.js').read_text())
             index=core.read(out/'data/index.json')['articles']
             record=next(a for a in index if a['id']=='abc123')
             self.assertEqual(record['credit_type'],'contribution')

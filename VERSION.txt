@@ -1,1 +1,1 @@
-16.8.1 — resilient mobile photo decoding, bulk importing and photography, interactive gallery, and clean routes
+16.8.2 — synchronised archive counts and filters, resilient bulk uploads, interactive gallery, and clean routes
