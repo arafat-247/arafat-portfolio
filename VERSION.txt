@@ -1,1 +1,1 @@
-16.3.0 — clean article URLs, branded social previews, corrected canonical links and responsive polish
+16.4.0 — native and social sharing windows, with a new portrait-led 1200 × 630 preview card

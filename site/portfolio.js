@@ -83,6 +83,49 @@ if(archive){const filterToggle=$('.filtertoggle');filterToggle?.addEventListener
  }catch(e){$('.count').textContent=e.message;$('[data-next]').disabled=true}})()}
 
 $('[data-print]')?.addEventListener('click',()=>window.print());
-$('[data-share]')?.addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:document.title,url:location.href});else{await navigator.clipboard.writeText(location.href);$('[data-share-status]').textContent='Link copied.'}}catch(e){if(e.name!=='AbortError')$('[data-share-status]').textContent='Copy the address from your browser to share this story.'}});
+const shareButton=$('[data-share]'),shareDialog=$('#share-dialog'),shareStatus=$('[data-share-status]');
+function shareDetails(){
+ const url=new URL($('link[rel="canonical"]')?.href||location.href);url.search='';url.hash='';
+ return{title:$('.reading h1')?.textContent.trim()||document.title,url:url.href};
+}
+function setShareLinks(){
+ if(!shareDialog)return;
+ const{title,url}=shareDetails(),encodedUrl=encodeURIComponent(url),encodedTitle=encodeURIComponent(title);
+ const destinations={
+  facebook:`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+  whatsapp:`https://api.whatsapp.com/send?text=${encodeURIComponent(title+' '+url)}`,
+  x:`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+  linkedin:`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
+ };
+ shareDialog.querySelectorAll('[data-share-service]').forEach(link=>link.href=destinations[link.dataset.shareService]);
+}
+function openShareDialog(){
+ if(!shareDialog)return;
+ setShareLinks();shareStatus.textContent='';
+ if(typeof shareDialog.showModal==='function')shareDialog.showModal();else shareDialog.setAttribute('open','');
+}
+shareButton?.addEventListener('click',async()=>{
+ const details=shareDetails();
+ if(navigator.share&&window.isSecureContext){
+  try{await navigator.share(details);return}catch(error){if(error.name==='AbortError')return}
+ }
+ openShareDialog();
+});
+$('[data-close-share]')?.addEventListener('click',()=>shareDialog.close());
+shareDialog?.addEventListener('click',event=>{
+ if(event.target===shareDialog){shareDialog.close();return}
+ const link=event.target.closest('[data-share-service]');if(!link)return;
+ event.preventDefault();
+ const popup=window.open(link.href,'share-story','popup=yes,width=680,height=680');
+ if(popup)popup.opener=null;else location.href=link.href;
+});
+$('[data-copy-share]')?.addEventListener('click',async()=>{
+ const{url}=shareDetails();
+ try{
+  if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(url);
+  else{const field=document.createElement('textarea');field.value=url;field.setAttribute('readonly','');field.style.position='fixed';field.style.opacity='0';document.body.append(field);field.select();document.execCommand('copy');field.remove()}
+  shareStatus.textContent='Link copied.';
+ }catch(error){shareStatus.textContent='Could not copy automatically. Select the address in your browser.'}
+});
 let opener;const dialog=$('#photo-dialog');$$('[data-photo]').forEach(button=>button.onclick=()=>{opener=button;dialog.querySelector('img').src=root+button.dataset.photo;dialog.querySelector('img').alt=button.querySelector('img').alt;dialog.showModal()});$('[data-close-photo]')?.addEventListener('click',()=>dialog.close());dialog?.addEventListener('close',()=>opener?.focus());
 })();
