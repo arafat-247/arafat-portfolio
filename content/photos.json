@@ -1,6 +1,42 @@
 {
   "photos": [
     {
+      "id": "850f6e97-ccee-4da2-8009-2ca372da27dd",
+      "src": "assets/uploads/850f6e97-ccee-4da2-8009-2ca372da27dd.webp",
+      "caption": "Life with Flowers x Arafat Rahaman",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "Dhaka",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
+      "id": "b2049858-b590-4c49-8b06-fb774c3823b3",
+      "src": "assets/uploads/b2049858-b590-4c49-8b06-fb774c3823b3.webp",
+      "caption": "Life with Flowers x Arafat Rahaman",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "Dhaka",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
+      "id": "ea43ab93-5e38-4b12-8f39-c7dd174fd680",
+      "src": "assets/uploads/ea43ab93-5e38-4b12-8f39-c7dd174fd680.webp",
+      "caption": "Life with Flowers x Arafat Rahaman",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "Dhaka",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
+      "id": "e329de79-4fe9-4c2a-9129-1e05e8c3cc92",
+      "src": "assets/uploads/e329de79-4fe9-4c2a-9129-1e05e8c3cc92.webp",
+      "caption": "Life with Flowers x Arafat Rahaman",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "Dhaka",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
       "id": "709791b3-8289-4163-822d-fe5e83c34407",
       "src": "assets/uploads/709791b3-8289-4163-822d-fe5e83c34407.webp",
       "caption": "Life with Flowers x Arafat Rahaman",
