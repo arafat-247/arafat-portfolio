@@ -1,1 +1,1 @@
-16.4.0 — native and social sharing windows, with a new portrait-led 1200 × 630 preview card
+16.5.0 — automatic article-specific 1200 × 630 social cards for the complete archive and future posts

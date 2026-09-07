@@ -1,6 +1,7 @@
-import contextlib, io, json, shutil, sys, tempfile, unittest
+import contextlib, io, json, re, shutil, sys, tempfile, unittest
 from pathlib import Path
 from unittest.mock import patch
+from PIL import Image
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import build, core, sync
 from types import SimpleNamespace
@@ -39,7 +40,11 @@ class BuildTests(unittest.TestCase):
             self.assertNotIn('"name": "Arafat Rahaman"',story)
             self.assertIn('<meta property="og:type" content="article">',story)
             self.assertIn('twitter:card" content="summary_large_image"',story)
-            self.assertIn('https://arafatrahaman.com/assets/social-preview-v2.jpg',story)
+            social_match=re.search(r'https://arafatrahaman\.com/(assets/social/a-shared-report-[0-9a-f]{8}\.jpg)',story)
+            self.assertIsNotNone(social_match)
+            social_card=out/social_match.group(1)
+            self.assertTrue(social_card.is_file())
+            with Image.open(social_card) as card:self.assertEqual(card.size,(1200,630))
             self.assertIn('id="share-dialog"',story)
             self.assertIn('data-share-service="facebook"',story)
             self.assertIn('data-copy-share',story)

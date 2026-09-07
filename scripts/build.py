@@ -3,10 +3,11 @@ import json, re, shutil
 from datetime import datetime
 from urllib.parse import urlsplit
 from core import *
+from social_cards import SocialCardRenderer
 
 STREAMS={'reporting':('Reporting','News reports, interviews and reported features.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting.html','opinion':'opinion.html','thoughts':'thoughts.html'}
-ASSET_VERSION='16.4.0'
+ASSET_VERSION='16.5.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -37,7 +38,8 @@ class Builder:
         self.base=self.config.get('site_url','').rstrip('/')
         if urlsplit(self.base).scheme!='https': raise ValueError('Set a valid HTTPS site_url in content/settings.json.')
         self.routes=[]
-    def page(self,path,title,body,home=False,desc='',article_data=None):
+        self.social_cards=SocialCardRenderer(SITE/'assets/social-preview-v2.jpg',OUT/'assets/social')
+    def page(self,path,title,body,home=False,desc='',article_data=None,social_image_path=''):
         prefix='../'*path.count('/')
         c=self.config; name=c.get('site_name',NAME); portrait=safe_asset(c.get('portrait'))
         sidebar_portrait='assets/portraits/contact.webp'
@@ -55,7 +57,7 @@ class Builder:
         canonical_path='' if path=='index.html' else (path[:-10] if path.endswith('/index.html') else path)
         canonical_url=self.base+'/'+canonical_path
         description=meta_description(desc or c.get('description',''))
-        social_image=self.base+'/assets/social-preview-v2.jpg'
+        social_image=self.base+'/'+(social_image_path or 'assets/social-preview-v2.jpg')
         og_type='article' if article_data else 'website'
         article_tags=''
         if article_data:
@@ -90,7 +92,8 @@ class Builder:
         content=f'<article class="page reading"><a class="back" href="{prefix}{section}">← {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a><div class="storylabel"><a href="{prefix}{section}?category={esc(a.get("category",""))}">{esc(a.get("category",""))}</a></div><h1>{esc(title)}</h1><p class="standfirst">{esc(a.get("excerpt",""))}</p><div class="byline"><img src="{prefix}{esc(safe_asset(self.config.get("portrait")))}" alt="" width="37" height="37" decoding="async"><div>{byline}<span class="meta">{esc(date_label(a.get("date_published","")))}{update}</span></div></div><div class="storyactions"><button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-print>Print / Save PDF</button></div>{share_dialog}{figure}<div class="bodycopy">{body}</div>{source}</article>'
         meta={'@context':'https://schema.org','@type':'Article','headline':title,'datePublished':a.get('date_published',''),'dateModified':a.get('date_modified','') or a.get('date_published',''),'author':[{'@type':'Person','name':x} for x in original],'url':self.base+'/'+a['local_url'],'mainEntityOfPage':self.base+'/'+a['local_url']}
         if a.get('source_url'):meta['isBasedOn']=a['source_url']
-        self.page(path,title,content,desc=a.get('excerpt',''),article_data=meta)
+        social_image_path=self.social_cards.render(a)
+        self.page(path,title,content,desc=a.get('excerpt',''),article_data=meta,social_image_path=social_image_path)
 
 def build():
     OUT.mkdir(exist_ok=True)
