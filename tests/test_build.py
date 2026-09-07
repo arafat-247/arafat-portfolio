@@ -69,6 +69,8 @@ class BuildTests(unittest.TestCase):
             self.assertIn('data-review-credit',admin_js)
             self.assertIn('credit_type_override',admin_js)
             self.assertIn('<option value="thoughts">Thoughts</option>',admin_js)
+            self.assertIn('source=photo',admin_js)
+            self.assertIn('save a fresh JPEG copy',admin_js)
             home=(out/'index.html').read_text()
             self.assertEqual(home.count('class="tile-art"'),3)
             self.assertRegex(home,r'class="tile tile-photos"[^>]*><img ')

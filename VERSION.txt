@@ -1,1 +1,1 @@
-16.8.0 — bulk importing and photography, clearer archive status, interactive gallery, and clean public routes
+16.8.1 — resilient mobile photo decoding, bulk importing and photography, interactive gallery, and clean routes
