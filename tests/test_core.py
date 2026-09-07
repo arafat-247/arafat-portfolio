@@ -10,6 +10,24 @@ def sample(author=core.NAME, date='2026-09-05T12:00:00+06:00',body=None):
     return '<script type="application/ld+json">'+json.dumps(obj)+'</script>'
 
 class ContentTests(unittest.TestCase):
+    def test_headline_urls_replace_legacy_ids_and_preserve_redirects(self):
+        records=[
+            {'id':'abc123','title':'A clear headline','stream':'reporting','date_published':'2026-09-05','local_url':'stories/abc123-a-clear-headline/'},
+            {'id':'def456','title':'A clear headline','stream':'reporting','date_published':'2026-09-05','local_url':'stories/def456-a-clear-headline/'},
+        ]
+        core.normalise_public_urls(records)
+        self.assertEqual({x['local_url'] for x in records},{'stories/a-clear-headline/'})
+        self.assertEqual(records[0]['legacy_urls'],['stories/abc123-a-clear-headline/'])
+        self.assertEqual(records[1]['legacy_urls'],['stories/def456-a-clear-headline/'])
+
+    def test_same_headline_on_different_dates_gets_semantic_suffix(self):
+        records=[
+            {'id':'one','title':'Annual results','stream':'reporting','date_published':'2025-06-01','local_url':'stories/one-annual-results/'},
+            {'id':'two','title':'Annual results','stream':'reporting','date_published':'2026-06-01','local_url':'stories/two-annual-results/'},
+        ]
+        core.normalise_public_urls(records)
+        self.assertEqual({x['local_url'] for x in records},{'stories/annual-results-2025/','stories/annual-results-2026/'})
+
     def test_exact_author(self):
         a=core.article(sample(),'https://example.com/news/story-12345')
         self.assertTrue(a['verified_author']);self.assertTrue(a['date_published']);self.assertGreater(a['word_count'],50)

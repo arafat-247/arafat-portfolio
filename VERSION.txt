@@ -1,1 +1,1 @@
-16.2.1 — replace only the desktop sidebar portrait with the approved smiling photograph
+16.3.0 — clean article URLs, branded social previews, corrected canonical links and responsive polish

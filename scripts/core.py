@@ -13,7 +13,7 @@ SITE = ROOT / 'site'
 OUT = ROOT / 'dist'
 NAME = 'Arafat Rahaman'
 AUTHOR = 'https://www.thedailystar.net/author/arafat-rahaman'
-UA = 'ArafatPortfolio/15.2 (+https://arafat-247.github.io/arafat-portfolio/contact.html)'
+UA = 'ArafatPortfolio/16.3 (+https://arafatrahaman.com/contact.html)'
 
 def now(): return datetime.now(timezone.utc).isoformat()
 def read(path, default=None):
@@ -26,7 +26,57 @@ def write(path, value):
 def clean(value): return re.sub(r'\s+', ' ', str(value or '')).strip()
 def esc(value): return html.escape(str(value or ''), quote=True)
 def identity(url): return hashlib.sha256(canonical(url).encode()).hexdigest()[:20]
-def slug(value): return re.sub(r'[^a-z0-9]+', '-', value.lower()).strip('-')[:75] or 'story'
+def slug(value):
+    result=re.sub(r'[^a-z0-9]+','-',value.lower()).strip('-')
+    if len(result)>75:result=result[:75].rsplit('-',1)[0]
+    return result or 'story'
+STORY_PATH=re.compile(r'^(stories|thoughts)/[a-zA-Z0-9_-]+/$')
+
+def normalise_public_urls(records):
+    """Replace legacy ID-led paths with stable headline paths in place.
+
+    Exact title/date duplicates intentionally share one public route; the build
+    keeps the strongest archived copy and redirects every legacy address.
+    """
+    pending=[]; reserved={}
+    for item in records:
+        section='thoughts' if item.get('stream')=='thoughts' else 'stories'
+        current=str(item.get('local_url') or '')
+        ident=str(item.get('id') or '')
+        part=current.rstrip('/').split('/')[-1] if current else ''
+        legacy=not STORY_PATH.fullmatch(current) or part==ident or (ident and part.startswith(ident+'-'))
+        if legacy:
+            pending.append((item,section,slug(item.get('title','story'))))
+        else:
+            reserved.setdefault(current,[]).append(item)
+
+    groups={}
+    for item,section,base in pending:
+        groups.setdefault((section,base),[]).append(item)
+
+    for (section,base),items in sorted(groups.items()):
+        by_day={}
+        for item in items:
+            by_day.setdefault(date(item.get('date_published',''))[:10],[]).append(item)
+        multiple_days=len(by_day)>1
+        for day,day_items in sorted(by_day.items()):
+            stem=base
+            if multiple_days:
+                year=day[:4]
+                stem+=('-'+year) if year and sum(1 for key in by_day if key.startswith(year))==1 else ('-'+day if day else '')
+            candidate=f'{section}/{stem}/'
+            owners=reserved.get(candidate,[])
+            same_story=owners and all(slug(x.get('title',''))==base and date(x.get('date_published',''))[:10]==day for x in owners)
+            if owners and not same_story:
+                token=day or str(day_items[0].get('id',''))[:8]
+                candidate=f'{section}/{stem}-{token}/'
+            reserved.setdefault(candidate,[]).extend(day_items)
+            for item in day_items:
+                old=str(item.get('local_url') or '')
+                if old and old!=candidate and STORY_PATH.fullmatch(old):
+                    item['legacy_urls']=list(dict.fromkeys([*item.get('legacy_urls',[]),old]))
+                item['local_url']=candidate
+    return records
 def canonical(url):
     p = urlsplit(url)
     # Preserve meaningful query parameters; only remove common trackers.
