@@ -19,6 +19,54 @@
       "rights_confirmed": true,
       "requested_at": "2026-09-07T17:45:36.936Z",
       "status": "queued"
+    },
+    {
+      "id": "d8495eb5-204d-495a-bcef-2ea486d18c40",
+      "url": "https://www.thedailystar.net/news/bangladesh/news/titumirs-life-legacy-deserve-more-attention-4044401",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "History",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-07T22:31:17.099Z",
+      "status": "queued"
+    },
+    {
+      "id": "164650b7-8274-4190-833d-2a391fd9fa4e",
+      "url": "https://www.thedailystar.net/news/bangladesh/news/bangla-must-live-beyond-symbolic-observance-4117591",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "History",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-07T22:31:17.099Z",
+      "status": "queued"
+    },
+    {
+      "id": "762d9459-ecc3-4bf0-800a-687b44849bbe",
+      "url": "https://www.thedailystar.net/news/bangladesh/news/language-debate-pak-era-went-beyond-religion-4108751",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "History",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-07T22:31:17.099Z",
+      "status": "queued"
+    },
+    {
+      "id": "6d96713f-7d09-44c5-9567-2ffd9bf3bd84",
+      "url": "https://www.thedailystar.net/news/bangladesh/news/his-ideals-still-relevant-post-uprising-bangladesh-4019086",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "History",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-07T22:31:17.099Z",
+      "status": "queued"
     }
   ]
 }
