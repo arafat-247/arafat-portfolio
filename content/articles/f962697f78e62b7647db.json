@@ -17,13 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 1056,
-  "fetched_at": "2026-09-07T06:36:54.440170+00:00",
+  "fetched_at": "2026-09-07T07:33:40.886312+00:00",
   "resolved_source_url": "https://www.thedailystar.net/campus/news/student-union-election-du-ju-set-sept-polls-other-univs-lag-behind-3943756",
   "status": "published",
   "local_url": "stories/student-union-election-du-ju-set-for-sept-polls-other-univs-lag-behind/",
-  "first_archived_at": "2026-09-06T10:58:45.965111+00:00",
-  "content_hash": "951060437e6ce121c5a91ecbabb64447b57fa32fcd0f3cf21a888259b8d167b6",
   "legacy_urls": [
     "stories/f962697f78e62b7647db-student-union-election-du-ju-set-for-sept-polls-other-univs-lag-behind/"
-  ]
+  ],
+  "first_archived_at": "2026-09-06T10:58:45.965111+00:00",
+  "content_hash": "951060437e6ce121c5a91ecbabb64447b57fa32fcd0f3cf21a888259b8d167b6"
 }
