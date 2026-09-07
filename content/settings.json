@@ -84,8 +84,8 @@
   ],
   "pinned_story_urls": [],
   "analytics": {
-    "provider": "goatcounter",
-    "site_code": ""
+    "provider": "google_analytics",
+    "measurement_id": "G-MHCDNYZYP9"
   },
   "theme": {
     "default": "default",
@@ -102,9 +102,9 @@
   },
   "portrait": "assets/identity/asset0.webp",
   "home_images": [
-    "assets/identity/asset1.webp",
-    "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (2).webp",
-    "assets/identity/asset2.webp",
-    "assets/identity/asset3.webp"
+    "",
+    "",
+    "",
+    "assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (6).webp"
   ]
 }

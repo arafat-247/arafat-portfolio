@@ -1,1 +1,1 @@
-16.5.0 — automatic article-specific 1200 × 630 social cards for the complete archive and future posts
+16.7.0 — editable article classification, abstract homepage section art, individual social cards, and Google Analytics

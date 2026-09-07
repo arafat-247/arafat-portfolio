@@ -5,9 +5,9 @@ from urllib.parse import urlsplit
 from core import *
 from social_cards import SocialCardRenderer
 
-STREAMS={'reporting':('Reporting','News reports, interviews and reported features.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
+STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and separately identified non-byline contributions.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting.html','opinion':'opinion.html','thoughts':'thoughts.html'}
-ASSET_VERSION='16.5.0'
+ASSET_VERSION='16.7.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -58,8 +58,12 @@ class Builder:
         canonical_url=self.base+'/'+canonical_path
         description=meta_description(desc or c.get('description',''))
         social_image=self.base+'/'+(social_image_path or 'assets/social-preview-v2.jpg')
+        measurement_id=str(c.get('analytics',{}).get('measurement_id','')).strip()
+        analytics=''
+        if re.fullmatch(r'G-[A-Z0-9]{6,16}',measurement_id):
+            analytics=f'''<script async src="https://www.googletagmanager.com/gtag/js?id={measurement_id}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','{measurement_id}');</script>'''
         og_type='article' if article_data else 'website'
-        article_tags=''
+        article_tags=analytics
         if article_data:
             if article_data.get('datePublished'):article_tags+=f'<meta property="article:published_time" content="{esc(article_data["datePublished"])}">'
             if article_data.get('dateModified'):article_tags+=f'<meta property="article:modified_time" content="{esc(article_data["dateModified"])}">'
@@ -73,12 +77,13 @@ class Builder:
         target_path=OUT/path;target_path.parent.mkdir(parents=True,exist_ok=True);target_path.write_text(document,encoding='utf-8')
     def card(self,a):
         href=esc(a['local_url']); by=esc(a.get('source_name') or NAME)
-        return f'<article class="workitem"><div class="workmeta"><span>{esc(date_label(a.get("date_published","")))}</span><span>{esc(a.get("category") or "Reporting")}</span><span>{by}</span></div><div class="workcopy"><h2><a href="{href}">{esc(a["title"])}</a></h2><p>{esc(a.get("excerpt",""))}</p></div><a class="read" href="{href}" aria-label="Read {esc(a["title"])}"><span>Read</span> →</a></article>'
+        credit='Non-byline contribution' if a.get('credit_type')=='contribution' else 'Bylined story'
+        return f'<article class="workitem"><div class="workmeta"><span>{esc(date_label(a.get("date_published","")))}</span><span>{esc(a.get("category") or "Reporting")}</span><span>{by}</span><span class="credit credit-{esc(a.get("credit_type","author-page"))}">{credit}</span></div><div class="workcopy"><h2><a href="{href}">{esc(a["title"])}</a></h2><p>{esc(a.get("excerpt",""))}</p></div><a class="read" href="{href}" aria-label="Read {esc(a["title"])}"><span>Read</span> →</a></article>'
     def story(self,a):
         path=a['local_url']+'index.html'; prefix='../'*path.count('/'); stream=a.get('stream','reporting'); section=PATHS.get(stream,'reporting.html')
         title=a['title']; original=a.get('original_authors') or ([] if a.get('source_url') else [NAME]); credit=', '.join(original) or 'Original byline not supplied by the source'
         byline='<strong>'+esc(credit)+'</strong>'
-        if a.get('manual_import') and not a.get('verified_author'):byline+=f'<span>Portfolio contribution: {NAME} · {esc(a.get("contribution","Reporting"))}</span>'
+        if a.get('credit_type')=='contribution':byline+=f'<span>Portfolio contribution: {NAME} · {esc(a.get("contribution","Reporting"))}</span>'
         body=a.get('body_html') or text_body(a.get('body',''))
         body=sanitise(body,a.get('source_url',self.base+'/'))
         cover=safe_asset(a.get('cover_image')); figure=''
@@ -126,6 +131,8 @@ def build():
         current=deduplicated.get(item['local_url'])
         if current is None or record_rank(item)>record_rank(current):deduplicated[item['local_url']]=item
     articles=list(deduplicated.values())
+    for item in articles:
+        item['credit_type']=item.get('credit_type_override') or ('contribution' if item.get('manual_import') and not item.get('author_listing_verified') else 'author-page')
     articles.sort(key=lambda a:datetime.fromisoformat(date(a.get('date_published',''))).timestamp(),reverse=True)
     for a in articles:
         if not re.fullmatch(r'(stories|thoughts)/[a-zA-Z0-9_-]+/',a['local_url']): raise ValueError('Unsafe story path.')
@@ -134,13 +141,17 @@ def build():
         for old in a.get('legacy_urls',[]):
             if re.fullmatch(r'(stories|thoughts)/[a-zA-Z0-9_-]+/',old) and old!=a['local_url']:
                 b.redirect(old+'index.html',a['local_url'])
-    keys=('id','title','excerpt','category','stream','date_published','date_modified','cover_image','cover_alt','source_name','local_url')
+    keys=('id','title','excerpt','category','stream','date_published','date_modified','cover_image','cover_alt','source_name','local_url','credit_type','contribution')
     write(OUT/'data/index.json',{'articles':[{k:a.get(k,'') for k in keys} for a in articles]})
     tiles=[]
-    destinations=[('reporting','Reporting','News reports, interviews and reported features'),('opinion','Opinion & Analysis','Published columns, commentary and analysis'),('thoughts','Thoughts','Personal essays, reflections and field notes'),('photos','Photography','People, places and everyday observations')]
+    destinations=[('reporting','Reports & Features','Reports, interviews, features and credited contributions'),('opinion','Opinion & Analysis','Published columns, commentary and analysis'),('thoughts','Thoughts','Personal essays, reflections and field notes'),('photos','Photography','People, places and everyday observations')]
     for i,(key,title,desc) in enumerate(destinations):
-        src=safe_asset(c['home_images'][i]); href=PATHS.get(key,'photography.html')
-        tiles.append(f'<a class="tile tile-{key}" href="{href}"><img src="{esc(src)}" alt="" width="640" height="420"><span><strong>{esc(title)}</strong><small>{esc(desc)}</small></span><i aria-hidden="true">→</i></a>')
+        href=PATHS.get(key,'photography.html')
+        if key=='photos':
+            visual=f'<img src="{esc(safe_asset(c["home_images"][i]))}" alt="" width="640" height="420">'
+        else:
+            visual='<b class="tile-art" aria-hidden="true"></b>'
+        tiles.append(f'<a class="tile tile-{key}" href="{href}">{visual}<span><strong>{esc(title)}</strong><small>{esc(desc)}</small></span><i aria-hidden="true">→</i></a>')
     home_profile='<section class="homeprofile" aria-labelledby="home-profile-title"><img src="assets/portraits/contact.webp" alt="Arafat Rahaman smiling outdoors" width="430" height="520"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title">Arafat<br>Rahaman</h2><p>I report on education, governance, rights, social policy and public accountability for The Daily Star.</p><nav><a href="about.html">About me →</a><a href="mailto:'+esc(c.get('email',''))+'">Email</a></nav></div></section>'
     home_header='<header class="homeintro"><span>Selected paths through my work</span><h1>Portfolio</h1><p>Reporting, analysis, personal writing and photography from Bangladesh.</p></header>'
     home_contact='<aside class="homecontact"><strong>Have a story lead or reporting enquiry?</strong><a href="contact.html">Get in touch →</a></aside>'
@@ -148,7 +159,15 @@ def build():
     for stream,(title,description) in STREAMS.items():
         subset=[a for a in articles if a.get('stream')==stream]
         cards=''.join(b.card(a) for a in subset[:12]) or '<p class="empty">No entries published here yet.</p>'
-        content=f'<section class="page archivepage" data-archive="{stream}"><header class="pageintro"><div><span class="eyebrow">Published work</span><h1>{title}</h1><p>{description}</p></div><div class="archive-total"><strong>{len(subset)}</strong><span>published pieces</span></div></header><button class="filtertoggle" type="button" aria-expanded="false" aria-controls="archive-filters">Search & filters</button><form class="tools" id="archive-filters" role="search"><label>Search<input type="search" name="q" placeholder="Search {title.lower()}" autocomplete="off"></label><label>Category<select name="category"><option value="">All categories</option></select></label><label>Year<select name="year"><option value="">All years</option></select></label></form><div class="count" role="status">{len(subset)} entries</div><div class="work-list">{cards}</div><nav class="pagination" aria-label="Results pages"><button data-prev disabled>Previous</button><span data-page>Page 1</span><button data-next>Next</button></nav><noscript><p>Enable JavaScript for search and filters. <a href="all-work.html">Read the complete text index</a>.</p></noscript></section>'
+        if stream=='thoughts':
+            totals=f'<div class="archive-total"><div><strong>{len(subset)}</strong><span>published pieces</span></div></div>'
+            credit_filter=''
+        else:
+            author_count=sum(a.get('credit_type')=='author-page' for a in subset)
+            contribution_count=sum(a.get('credit_type')=='contribution' for a in subset)
+            totals=f'<div class="archive-total"><div><strong>{author_count}</strong><span>bylined stories</span></div><div><strong>{contribution_count}</strong><span>non-byline contributions</span></div></div>'
+            credit_filter='<label>Credit<select name="credit"><option value="">All work</option><option value="author-page">Bylined stories</option><option value="contribution">Non-byline contributions</option></select></label>'
+        content=f'<section class="page archivepage" data-archive="{stream}"><header class="pageintro"><div><span class="eyebrow">Published work</span><h1>{title}</h1><p>{description}</p></div>{totals}</header><button class="filtertoggle" type="button" aria-expanded="false" aria-controls="archive-filters">Search & filters</button><form class="tools" id="archive-filters" role="search"><label>Search<input type="search" name="q" placeholder="Search {title.lower()}" autocomplete="off"></label><label>Category<select name="category"><option value="">All categories</option></select></label><label>Year<select name="year"><option value="">All years</option></select></label>{credit_filter}</form><div class="count" role="status">{len(subset)} entries</div><div class="work-list">{cards}</div><nav class="pagination" aria-label="Results pages"><button data-prev disabled>Previous</button><span data-page>Page 1</span><button data-next>Next</button></nav><noscript><p>Enable JavaScript for search and filters. <a href="all-work.html">Read the complete text index</a>.</p></noscript></section>'
         b.page(PATHS[stream],title,content,desc=description)
     all_links=''.join(f'<li><a href="{esc(a["local_url"])}">{esc(a["title"])}</a> · {esc(date_label(a.get("date_published","")))}</li>' for a in articles)
     b.page('all-work.html','Complete index','<section class="page"><h1>Complete index</h1><ul>'+all_links+'</ul></section>')
@@ -156,7 +175,7 @@ def build():
     # Do not publish a draft's uploaded cover just because it exists in source.
     used={safe_asset(a.get('cover_image')) for a in articles if not a.get('source_url')}
     used.update(safe_asset(p.get('src')) for p in photos)
-    used.update(safe_asset(p) for p in c.get('home_images',[]))
+    if len(c.get('home_images',[]))>3:used.add(safe_asset(c['home_images'][3]))
     used.add(safe_asset(c.get('portrait')))
     for asset in used:
         if asset and (SITE/asset).is_file():

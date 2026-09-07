@@ -28,7 +28,7 @@ class BuildTests(unittest.TestCase):
             draft={**common,'id':'draft','title':'PRIVATE-DRAFT-CANARY','status':'draft','cover_image':'assets/uploads/draft-only.webp'}
             published={**common,'id':'essay','title':'Published essay','status':'published','format':'html','body':'<p>Public text.</p><script>ATTACK_CANARY()</script>'}
             core.write(content/'posts.json',{'posts':[draft,published]})
-            imported={'id':'abc123','title':'A shared report','status':'published','stream':'reporting','category':'News','date_published':'2026-09-04T10:00:00+06:00','body_html':'<p>Authorised archived report.</p>','source_url':'https://example.com/a','source_name':'Example publication','original_authors':['Staff Correspondent'],'manual_import':True,'verified_author':False,'contribution':'Co-reporting','local_url':'stories/abc123-report/'}
+            imported={'id':'abc123','title':'A shared report','status':'published','stream':'reporting','category':'News','date_published':'2026-09-04T10:00:00+06:00','body_html':'<p>Authorised archived report.</p>','source_url':'https://example.com/a','source_name':'Example publication','original_authors':['Staff Correspondent'],'manual_import':True,'verified_author':False,'author_listing_verified':False,'contribution':'Co-reporting','local_url':'stories/abc123-report/'}
             core.write(content/'articles/abc123.json',imported)
             with patch.multiple(build,CONTENT=content,SITE=site,OUT=out),contextlib.redirect_stdout(io.StringIO()):build.build()
             visible=''.join(p.read_text() for p in out.rglob('*.html'))+(out/'data/index.json').read_text()
@@ -49,6 +49,30 @@ class BuildTests(unittest.TestCase):
             self.assertIn('data-share-service="facebook"',story)
             self.assertIn('data-copy-share',story)
             self.assertIn('https://arafatrahaman.com/stories/a-shared-report/',story)
+            reporting=(out/'reporting.html').read_text()
+            self.assertIn('<strong>0</strong><span>bylined stories</span>',reporting)
+            self.assertIn('<strong>1</strong><span>non-byline contributions</span>',reporting)
+            self.assertIn('name="credit"',reporting)
+            self.assertIn('Non-byline contribution',reporting)
+            index=core.read(out/'data/index.json')['articles']
+            record=next(a for a in index if a['id']=='abc123')
+            self.assertEqual(record['credit_type'],'contribution')
+            self.assertEqual(record['contribution'],'Co-reporting')
+            admin=(out/'admin/index.html').read_text()
+            self.assertIn('id="import-stream"',admin)
+            self.assertIn('id="import-credit"',admin)
+            self.assertIn('Reports &amp; Features',admin)
+            self.assertNotIn('id="import-category"',admin)
+            admin_js=(out/'admin/admin.js').read_text()
+            self.assertIn('data-review-credit',admin_js)
+            self.assertIn('credit_type_override',admin_js)
+            self.assertIn('<option value="thoughts">Thoughts</option>',admin_js)
+            home=(out/'index.html').read_text()
+            self.assertEqual(home.count('class="tile-art"'),3)
+            self.assertRegex(home,r'class="tile tile-photos"[^>]*><img ')
+            self.assertEqual(home.count('googletagmanager.com/gtag/js?id=G-MHCDNYZYP9'),1)
+            self.assertIn("gtag('config','G-MHCDNYZYP9')",home)
+            self.assertNotIn('googletagmanager.com',(out/'admin/index.html').read_text())
             redirect=(out/'stories/abc123-report/index.html').read_text()
             self.assertIn('noindex,follow',redirect);self.assertIn('/stories/a-shared-report/',redirect)
             self.assertEqual((out/'CNAME').read_text(),'arafatrahaman.com\n')
@@ -64,5 +88,18 @@ class BuildTests(unittest.TestCase):
                 sync.run(SimpleNamespace(full=True,pages=1,limit=1,delay=0))
             self.assertEqual(core.read(root/'articles'/f'{key}.json'),old)
             self.assertEqual(core.read(root/'sync-state.json')['sources'][u]['status'],'failed')
+
+    def test_manual_import_respects_selected_professional_section(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);u='https://example.com/opinion';key=core.identity(u)
+            core.write(root/'imports.json',{'imports':[{'url':u,'stream':'opinion','credit_type':'author-page','contribution':'Research','contribution_confirmed':True,'rights_confirmed':True,'status':'queued'}]})
+            extracted={'id':key,'title':'An imported opinion','date_published':'2026-09-04T10:00:00+06:00','body_html':'<p>Text.</p>','category':'Commentary','source_url':u}
+            with patch('sync.CONTENT',root),patch('sync.discover',return_value=[]),patch('sync.fetch',return_value=(b'<html></html>','text/html',u)),patch('sync.article',return_value=extracted.copy()),contextlib.redirect_stdout(io.StringIO()):
+                sync.run(SimpleNamespace(full=True,pages=1,limit=1,delay=0,workers=1))
+            saved=core.read(root/'articles'/f'{key}.json')
+            self.assertEqual(saved['stream'],'opinion')
+            self.assertEqual(saved['contribution'],'Research')
+            self.assertEqual(saved['category'],'Commentary')
+            self.assertEqual(saved['credit_type_override'],'author-page')
 
 if __name__=='__main__':unittest.main()

@@ -116,8 +116,12 @@ def run(args):
             if not item.get('date_published'):raise ValueError('Publication date could not be extracted.')
             if request:
                 item['manual_import']=True; item['contribution']=request.get('contribution','Reporting contribution')
-                item['rights_confirmed']=True;item['stream']='reporting'
-                item['category']=request.get('category') or 'Event & Roundtable Coverage'
+                item['rights_confirmed']=True
+                requested_stream=request.get('stream','reporting')
+                item['stream']=requested_stream if requested_stream in ('reporting','opinion','thoughts') else 'reporting'
+                item['category']=request.get('category') or item.get('category') or ('Opinion' if item['stream']=='opinion' else 'Reporting contribution')
+                requested_credit=request.get('credit_type','contribution')
+                item['credit_type_override']=requested_credit if requested_credit in ('author-page','contribution') else 'contribution'
             item['status']='published'
             return item,old,None
         except (HTTPError,URLError,ValueError,OSError) as exc:
