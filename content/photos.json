@@ -1,6 +1,15 @@
 {
   "photos": [
     {
+      "id": "cd8b51d2-67ca-46a4-a3d1-6083ab396f94",
+      "src": "assets/uploads/cd8b51d2-67ca-46a4-a3d1-6083ab396f94.webp",
+      "caption": "Dejavu",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "Jahangirnagar University",
+      "date": "2026-09-08",
+      "status": "published"
+    },
+    {
       "id": "d42e31c9-ad4b-49a8-8b8e-38fe65efcb99",
       "src": "assets/uploads/d42e31c9-ad4b-49a8-8b8e-38fe65efcb99.webp",
       "caption": "Life, Nature, Flowers x Arafat Rahaman ",
