@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-  <title id="title">Arafat Rahaman favicon</title>
-  <desc id="desc">A geometric white letter A with a muted coral dot on a graphite square.</desc>
-  <rect width="64" height="64" rx="14" fill="#242424"/>
-  <path d="M0 46V16L64 0v22L0 46Z" fill="#737373" opacity=".55"/>
-  <path fill="#fff" fill-rule="evenodd" d="M15 49 29 15h6l14 34h-8l-3.4-8.7H26.2L22.8 49H15Zm13.8-15.5H35L31.9 25l-3.1 8.5Z"/>
-  <circle cx="52" cy="50" r="5" fill="#d47b63"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Arafat Rahaman</title>
+  <desc id="desc">Ivory A monogram with a rust-red editorial mark on a deep green circle.</desc>
+  <circle cx="48" cy="48" r="45" fill="#173b35"/>
+  <circle cx="48" cy="48" r="41.5" fill="none" stroke="#eee9df" stroke-opacity=".18"/>
+  <path fill="#f8f5ee" fill-rule="evenodd" d="M25 70 42.5 25h11L71 70H59.5l-4-11H40l-4 11H25Zm18.4-21h8.7l-4.35-12.8L43.4 49Z"/>
+  <rect x="66" y="65" width="12" height="6" rx="3" fill="#b15b43"/>
 </svg>

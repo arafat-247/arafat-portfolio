@@ -1,1 +1,1 @@
-16.9.0 — responsive masonry photography wall, place filtering and swipeable filmstrip
+16.10.0 — stronger author identity, article and photography SEO, homepage metadata, and favicon

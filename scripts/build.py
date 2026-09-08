@@ -1,13 +1,13 @@
 """Build public pages from durable content; drafts never enter dist."""
 import json, re, shutil
 from datetime import datetime
-from urllib.parse import urlsplit
+from urllib.parse import quote, urlsplit
 from core import *
 from social_cards import SocialCardRenderer
 
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and separately identified non-byline contributions.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
-ASSET_VERSION='16.9.0'
+ASSET_VERSION='16.10.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -39,7 +39,15 @@ class Builder:
         if urlsplit(self.base).scheme!='https': raise ValueError('Set a valid HTTPS site_url in content/settings.json.')
         self.routes=[]
         self.social_cards=SocialCardRenderer(SITE/'assets/social-preview-v2.jpg',OUT/'assets/social')
-    def page(self,path,title,body,home=False,desc='',article_data=None,social_image_path=''):
+    def person(self):
+        c=self.config; name=c.get('site_name',NAME)
+        same_as=[u for u in c.get('social',{}).values() if urlsplit(str(u)).scheme=='https']
+        person={'@type':'Person','@id':self.base+'/#person','name':name,'url':self.base+'/about/','image':self.base+'/'+safe_asset(c.get('portrait')),'description':c.get('description',''),'jobTitle':'Journalist','worksFor':{'@type':'Organization','name':c.get('organisation','The Daily Star')},'homeLocation':{'@type':'Place','name':c.get('location','Dhaka, Bangladesh')},'sameAs':same_as}
+        if c.get('areas'):person['knowsAbout']=c['areas']
+        if c.get('education'):person['alumniOf']={'@type':'CollegeOrUniversity','name':c['education'][0].get('institution','University of Rajshahi')}
+        if c.get('membership'):person['memberOf']={'@type':'Organization','name':c['membership'].get('name','')}
+        return person
+    def page(self,path,title,body,home=False,desc='',article_data=None,social_image_path='',schema_data=None):
         prefix='../'*path.count('/')
         c=self.config; name=c.get('site_name',NAME); portrait=safe_asset(c.get('portrait'))
         sidebar_portrait='assets/portraits/contact.webp'
@@ -47,15 +55,17 @@ class Builder:
         socials=f'<a href="mailto:{esc(email)}">Email</a>' if email else ''
         if urlsplit(linkedin).scheme=='https':socials+=f'<a href="{esc(linkedin)}" rel="me noopener">LinkedIn</a>'
         menu=f'<a href="{prefix}"><span>01</span>Portfolio</a><a href="{prefix}about/"><span>02</span>About</a><a href="{prefix}contact/"><span>03</span>Contact</a>'
-        same_as=[u for u in c.get('social',{}).values() if urlsplit(str(u)).scheme=='https']
-        person={'@context':'https://schema.org','@type':'Person','name':name,'url':self.base+'/','jobTitle':'Journalist','worksFor':{'@type':'Organization','name':c.get('organisation','The Daily Star')},'homeLocation':{'@type':'Place','name':c.get('location','Dhaka, Bangladesh')},'sameAs':same_as}
-        if c.get('education'):person['alumniOf']={'@type':'CollegeOrUniversity','name':c['education'][0].get('institution','University of Rajshahi')}
-        if c.get('membership'):person['memberOf']={'@type':'Organization','name':c['membership'].get('name','')}
-        metadata=article_data or person
-        schema=json.dumps(metadata,ensure_ascii=False).replace('<','\\u003c')
         page_key=re.sub(r'[^a-z0-9]+','-',path.lower()).strip('-')
         canonical_path='' if path=='index.html' else (path[:-10] if path.endswith('/index.html') else path)
         canonical_url=self.base+'/'+canonical_path
+        person=self.person()
+        if home:
+            default_schema={'@context':'https://schema.org','@graph':[{'@type':'WebSite','@id':self.base+'/#website','name':name,'alternateName':[name+' Portfolio','arafatrahaman.com'],'url':self.base+'/'},{'@type':'WebPage','@id':self.base+'/#webpage','url':self.base+'/','name':name,'isPartOf':{'@id':self.base+'/#website'},'mainEntity':{'@id':self.base+'/#person'}},person]}
+        elif path=='about/index.html':
+            default_schema={'@context':'https://schema.org','@graph':[{'@type':'ProfilePage','@id':canonical_url+'#profilepage','url':canonical_url,'name':'About '+name,'mainEntity':{'@id':self.base+'/#person'}},person]}
+        else:default_schema={'@context':'https://schema.org',**person}
+        metadata=schema_data or article_data or default_schema
+        schema=json.dumps(metadata,ensure_ascii=False).replace('<','\\u003c')
         description=meta_description(desc or c.get('description',''))
         social_image=self.base+'/'+(social_image_path or 'assets/social-preview-v2.jpg')
         measurement_id=str(c.get('analytics',{}).get('measurement_id','')).strip()
@@ -67,7 +77,8 @@ class Builder:
         if article_data:
             if article_data.get('datePublished'):article_tags+=f'<meta property="article:published_time" content="{esc(article_data["datePublished"])}">'
             if article_data.get('dateModified'):article_tags+=f'<meta property="article:modified_time" content="{esc(article_data["dateModified"])}">'
-        head=f'''<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(title)} — {esc(name)}</title><meta name="description" content="{esc(description)}"><meta name="theme-color" content="#102d2a"><script>if(location.protocol==='http:'&&location.hostname==='arafatrahaman.com')location.replace('https://'+location.host+location.pathname+location.search+location.hash);try{{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'light'}}catch(e){{document.documentElement.dataset.theme='light'}}</script><link rel="canonical" href="{esc(canonical_url)}"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" href="{prefix}feed.xml" title="Arafat Rahaman"><link rel="stylesheet" href="{prefix}portfolio.css?v={ASSET_VERSION}"><meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{esc(name)}"><meta property="og:locale" content="en_GB"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(canonical_url)}"><meta property="og:image" content="{esc(social_image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Arafat Rahaman, journalist at The Daily Star"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{esc(social_image)}"><meta name="twitter:image:alt" content="Arafat Rahaman, journalist at The Daily Star">{article_tags}<script type="application/ld+json">{schema}</script>'''
+        full_title=title if home else f'{title} — {name}'
+        head=f'''<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(full_title)}</title><meta name="description" content="{esc(description)}"><meta name="author" content="{esc(name)}"><meta name="theme-color" content="#102d2a"><script>if(location.protocol==='http:'&&location.hostname==='arafatrahaman.com')location.replace('https://'+location.host+location.pathname+location.search+location.hash);try{{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'light'}}catch(e){{document.documentElement.dataset.theme='light'}}</script><link rel="canonical" href="{esc(canonical_url)}"><link rel="author" href="{esc(self.base)}/about/"><link rel="icon" href="{prefix}assets/favicon.png" type="image/png" sizes="96x96"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png" sizes="180x180"><link rel="alternate" type="application/rss+xml" href="{prefix}feed.xml" title="Arafat Rahaman"><link rel="stylesheet" href="{prefix}portfolio.css?v={ASSET_VERSION}"><meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{esc(name)}"><meta property="og:locale" content="en_GB"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(canonical_url)}"><meta property="og:image" content="{esc(social_image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Arafat Rahaman, journalist at The Daily Star"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{esc(social_image)}"><meta name="twitter:image:alt" content="Arafat Rahaman, journalist at The Daily Star">{article_tags}<script type="application/ld+json">{schema}</script>'''
         document=f'''<!doctype html><html lang="en"><head>{head}</head><body class="{'home' if home else 'inner'}" data-root="{prefix}" data-page="{page_key}" data-version="{ASSET_VERSION}" id="top"><a class="skip" href="#main">Skip to content</a><aside class="identity" aria-label="Profile and navigation"><a href="{prefix}" aria-label="Arafat Rahaman homepage"><img class="portrait" src="{prefix}{esc(sidebar_portrait)}" width="132" height="132" alt="Arafat Rahaman smiling outdoors" decoding="async"></a><div class="social">{socials}</div><a class="name" href="{prefix}">ARAFAT<br>RAHAMAN</a><p>Journalist at The Daily Star<br>Dhaka, Bangladesh</p><nav aria-label="Main navigation"><a href="{prefix}">Portfolio</a><a href="{prefix}about/">About me</a><a href="{prefix}contact/">Contact</a></nav></aside><div class="right"><header class="mobilehead"><a class="mobilebrand" href="{prefix}"><span class="mark" aria-hidden="true">A</span><span>Arafat Rahaman</span></a><div class="mobileactions"><button class="themetoggle" type="button" aria-pressed="false"><span class="themesymbol" aria-hidden="true">◐</span><span class="themelabel">Dark</span></button><button class="menutoggle" type="button" aria-expanded="false" aria-controls="mobile-menu"><span class="menulines" aria-hidden="true"><i></i><i></i></span><span>Menu</span></button></div></header><button class="menubackdrop" hidden aria-label="Close menu"></button><nav class="mobilemenu" id="mobile-menu" hidden aria-label="Mobile navigation"><div class="drawerhead"><strong>Menu</strong><button class="drawerclose" type="button" aria-label="Close menu">×</button></div><div class="drawerprofile"><img src="{prefix}{esc(portrait)}" width="72" height="72" alt="Portrait of Arafat Rahaman"><div><h2>Arafat<br>Rahaman</h2><p>Journalist at The Daily Star<br>Dhaka, Bangladesh</p></div></div><div class="drawernav">{menu}</div><div class="menumeta">{socials}</div></nav><main id="main">{body}</main><footer><span>© {datetime.now().year} {esc(name)}</span><span>Dhaka, Bangladesh</span><a class="top" href="#top">Back to top ↑</a></footer></div><script src="{prefix}portfolio.js?v={ASSET_VERSION}" defer></script></body></html>'''
         target=OUT/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_text(document,encoding='utf-8'); self.routes.append(path)
     def redirect(self,path,target):
@@ -95,7 +106,13 @@ class Builder:
         update=f' · Updated {esc(date_label(a["date_modified"]))}' if a.get('date_modified') and a.get('date_modified')!=a.get('date_published') else ''
         share_dialog='''<dialog class="sharedialog" id="share-dialog" aria-labelledby="share-dialog-title"><div class="sharehead"><div><span>Share</span><h2 id="share-dialog-title">Share this story</h2></div><button type="button" data-close-share aria-label="Close sharing window">×</button></div><div class="sharegrid"><a href="#" data-share-service="facebook"><strong>Facebook</strong><span>Share in a new window ↗</span></a><a href="#" data-share-service="whatsapp"><strong>WhatsApp</strong><span>Send to a contact ↗</span></a><a href="#" data-share-service="x"><strong>X</strong><span>Post this story ↗</span></a><a href="#" data-share-service="linkedin"><strong>LinkedIn</strong><span>Share with your network ↗</span></a><button type="button" data-copy-share><strong>Copy link</strong><span>Copy the clean article address</span></button></div><p class="sharestatus" data-share-status role="status" aria-live="polite"></p></dialog>'''
         content=f'<article class="page reading"><a class="back" href="{prefix}{section}">← {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a><div class="storylabel"><a href="{prefix}{section}?category={esc(a.get("category",""))}">{esc(a.get("category",""))}</a></div><h1>{esc(title)}</h1><p class="standfirst">{esc(a.get("excerpt",""))}</p><div class="byline"><img src="{prefix}{esc(safe_asset(self.config.get("portrait")))}" alt="" width="37" height="37" decoding="async"><div>{byline}<span class="meta">{esc(date_label(a.get("date_published","")))}{update}</span></div></div><div class="storyactions"><button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-print>Print / Save PDF</button></div>{share_dialog}{figure}<div class="bodycopy">{body}</div>{source}</article>'
-        meta={'@context':'https://schema.org','@type':'Article','headline':title,'datePublished':a.get('date_published',''),'dateModified':a.get('date_modified','') or a.get('date_published',''),'author':[{'@type':'Person','name':x} for x in original],'url':self.base+'/'+a['local_url'],'mainEntityOfPage':self.base+'/'+a['local_url']}
+        authors=[]
+        for author_name in original:
+            author={'@type':'Person','name':author_name}
+            if author_name.casefold()==NAME.casefold():author.update({'@id':self.base+'/#person','url':self.base+'/about/'})
+            authors.append(author)
+        meta={'@context':'https://schema.org','@type':'Article','headline':title,'datePublished':a.get('date_published',''),'dateModified':a.get('date_modified','') or a.get('date_published',''),'author':authors,'url':self.base+'/'+a['local_url'],'mainEntityOfPage':self.base+'/'+a['local_url']}
+        if a.get('credit_type')=='contribution':meta['contributor']={'@type':'Person','name':NAME,'@id':self.base+'/#person','url':self.base+'/about/'}
         if a.get('source_url'):meta['isBasedOn']=a['source_url']
         social_image_path=self.social_cards.render(a)
         self.page(path,title,content,desc=a.get('excerpt',''),article_data=meta,social_image_path=social_image_path)
@@ -155,7 +172,9 @@ def build():
     home_profile='<section class="homeprofile" aria-labelledby="home-profile-title"><img src="assets/portraits/contact.webp" alt="Arafat Rahaman smiling outdoors" width="430" height="520"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title">Arafat<br>Rahaman</h2><p>I report on education, governance, rights, social policy and public accountability for The Daily Star.</p><nav><a href="about/">About me →</a><a href="mailto:'+esc(c.get('email',''))+'">Email</a></nav></div></section>'
     home_header='<header class="homeintro"><span>Selected paths through my work</span><h1>Portfolio</h1><p>Reporting, analysis, personal writing and photography from Bangladesh.</p></header>'
     home_contact='<aside class="homecontact"><strong>Have a story lead or reporting enquiry?</strong><a href="contact/">Get in touch →</a></aside>'
-    b.page('index.html','Portfolio','<section class="homecontent">'+home_profile+home_header+'<div class="tiles">'+''.join(tiles)+'</div>'+home_contact+'</section>',home=True)
+    home_title='Arafat Rahaman | Journalist at The Daily Star'
+    home_description='Arafat Rahaman is a Dhaka-based journalist at The Daily Star, covering education, governance, rights, social policy and public accountability.'
+    b.page('index.html',home_title,'<section class="homecontent">'+home_profile+home_header+'<div class="tiles">'+''.join(tiles)+'</div>'+home_contact+'</section>',home=True,desc=home_description)
     for stream,(title,description) in STREAMS.items():
         subset=[a for a in articles if a.get('stream')==stream]
         cards=''.join(b.card(a) for a in subset[:12]) or '<p class="empty">No entries published here yet.</p>'
@@ -189,7 +208,16 @@ def build():
     flickr_link=f'<a class="flickr-link" href="{esc(flickr)}" rel="me noopener">More photographs on Flickr ↗</a>' if urlsplit(flickr).scheme=='https' else ''
     photo_dialog='<dialog id="photo-dialog"><div class="photo-viewer"><div class="photo-viewer-head"><span data-photo-count></span><button data-close-photo aria-label="Close photograph">Close ×</button></div><img alt=""><div class="photo-viewer-foot"><button data-photo-prev aria-label="Previous photograph">← Previous</button><p><strong data-photo-caption></strong><small data-photo-location></small></p><button data-photo-next aria-label="Next photograph">Next →</button></div></div></dialog>'
     photo_tools=f'<div class="photo-toolbar"><p><strong data-photo-visible>{len(photos)}</strong> photographs</p><label>Place<select data-photo-filter><option value="">All places</option></select></label><div class="photo-views" role="group" aria-label="Gallery view"><button type="button" data-photo-view="mosaic" aria-pressed="true">Mosaic</button><button type="button" data-photo-view="filmstrip" aria-pressed="false">Filmstrip</button></div></div>' if gallery else ''
-    b.page('photography/index.html','Photography','<section class="page photopage"><header class="pageintro"><div><span class="eyebrow">Visual notes</span><h1>Photography</h1><p>People, places and everyday observations.</p></div>'+flickr_link+'</header>'+photo_tools+'<div class="photogrid" data-photo-grid>'+(gallery or '<p>No photographs published yet.</p>')+'</div>'+photo_dialog+'</section>')
+    photo_objects=[]
+    for p in photos:
+        src=safe_asset(p.get('src'))
+        if not src:continue
+        obj={'@type':'ImageObject','contentUrl':b.base+'/'+quote(src,safe='/'),'name':clean(p.get('caption') or p.get('alt') or 'Photograph by Arafat Rahaman'),'description':clean(p.get('alt') or p.get('caption') or ''),'creator':{'@id':b.base+'/#person'},'creditText':'Photograph by Arafat Rahaman','copyrightNotice':'© Arafat Rahaman'}
+        if date(p.get('date','')):obj['dateCreated']=date(p['date'])
+        if p.get('location'):obj['contentLocation']={'@type':'Place','name':clean(p['location'])}
+        photo_objects.append(obj)
+    photo_schema={'@context':'https://schema.org','@graph':[{'@type':'ImageGallery','@id':b.base+'/photography/#gallery','url':b.base+'/photography/','name':'Photography by Arafat Rahaman','creator':{'@id':b.base+'/#person'},'associatedMedia':photo_objects},b.person()]}
+    b.page('photography/index.html','Photography','<section class="page photopage"><header class="pageintro"><div><span class="eyebrow">Visual notes</span><h1>Photography</h1><p>People, places and everyday observations.</p></div>'+flickr_link+'</header>'+photo_tools+'<div class="photogrid" data-photo-grid>'+(gallery or '<p>No photographs published yet.</p>')+'</div>'+photo_dialog+'</section>',desc='Photographs by Arafat Rahaman documenting people, places and everyday life in Bangladesh.',schema_data=photo_schema)
     bio=c.get('biography') or 'I am a journalist at The Daily Star, reporting on education, governance, rights, social policy and public accountability.\n\nThis space brings together my published journalism, personal writing and photography.'
     areas=''.join(f'<li>{esc(x)}</li>' for x in c.get('areas',[]))
     career=''.join(f'<li><span>{esc(x.get("years",""))}</span><div><h3>{esc(x.get("role",""))}</h3><p>{esc(x.get("organisation",""))} · {esc(x.get("location",""))}</p></div></li>' for x in c.get('career',[]))
@@ -211,7 +239,12 @@ def build():
     def sitemap_url(path):
         route='' if path=='index.html' else (path[:-10] if path.endswith('/index.html') else path)
         return b.base+'/'+route
-    (OUT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+esc(sitemap_url(p))+'</loc></url>' for p in b.routes if p!='404.html')+'</urlset>',encoding='utf-8')
+    def sitemap_entry(path):
+        images=''
+        if path=='photography/index.html':
+            images=''.join('<image:image><image:loc>'+esc(b.base+'/'+quote(asset,safe='/'))+'</image:loc></image:image>' for asset in (safe_asset(p.get('src')) for p in photos) if asset)
+        return '<url><loc>'+esc(sitemap_url(path))+'</loc>'+images+'</url>'
+    (OUT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'+''.join(sitemap_entry(p) for p in b.routes if p!='404.html')+'</urlset>',encoding='utf-8')
     (OUT/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: '+urlsplit(b.base).path+'/admin/\nSitemap: '+b.base+'/sitemap.xml\n',encoding='utf-8')
     items=''.join('<item><title>'+esc(a['title'])+'</title><link>'+esc(b.base+'/'+a['local_url'])+'</link><guid>'+esc(b.base+'/'+a['local_url'])+'</guid><description>'+esc(a.get('excerpt',''))+'</description></item>' for a in articles[:50])
     (OUT/'feed.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Arafat Rahaman</title><link>'+esc(b.base)+'</link><description>Reporting, opinion and thoughts</description>'+items+'</channel></rss>',encoding='utf-8')
