@@ -54,7 +54,7 @@ class BuildTests(unittest.TestCase):
             self.assertIn('<strong>1</strong><span>non-byline contributions</span>',reporting)
             self.assertIn('name="credit"',reporting)
             self.assertIn('Non-byline contribution',reporting)
-            self.assertIn('data-version="16.8.2"',reporting)
+            self.assertIn('data-version="16.9.0"',reporting)
             self.assertIn("data/index.json?v=",(out/'portfolio.js').read_text())
             index=core.read(out/'data/index.json')['articles']
             record=next(a for a in index if a['id']=='abc123')
@@ -84,6 +84,9 @@ class BuildTests(unittest.TestCase):
             self.assertTrue((out/'photography/index.html').is_file())
             self.assertIn('More photographs on Flickr', (out/'photography/index.html').read_text())
             self.assertIn('data-photo-next', (out/'photography/index.html').read_text())
+            self.assertIn("$('[data-photo-filter]')", (out/'portfolio.js').read_text())
+            self.assertIn("data-photo-view", (out/'portfolio.js').read_text())
+            self.assertIn('.photogrid.is-filmstrip', (out/'portfolio.css').read_text())
             self.assertIn('/reporting/',(out/'reporting.html').read_text())
             redirect=(out/'stories/abc123-report/index.html').read_text()
             self.assertIn('noindex,follow',redirect);self.assertIn('/stories/a-shared-report/',redirect)

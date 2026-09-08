@@ -1,1 +1,1 @@
-16.8.3 — reliable Daily Star publication-date extraction and immediate manual retries
+16.9.0 — responsive masonry photography wall, place filtering and swipeable filmstrip

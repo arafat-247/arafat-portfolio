@@ -7,7 +7,7 @@ from social_cards import SocialCardRenderer
 
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and separately identified non-byline contributions.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
-ASSET_VERSION='16.8.2'
+ASSET_VERSION='16.9.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -184,11 +184,12 @@ def build():
     for index,p in enumerate(photos):
         src=safe_asset(p.get('src')); alt=p.get('alt') or p.get('caption','')
         if not src:continue
-        gallery+=f'<figure><button data-photo="{esc(src)}" data-index="{index}" data-caption="{esc(p.get("caption",""))}" data-location="{esc(p.get("location",""))}" aria-label="Open photograph: {esc(alt)}"><img src="../{esc(src)}" alt="{esc(alt)}" loading="lazy" decoding="async"></button><figcaption><span>{esc(p.get("caption",""))}</span><small>{esc(p.get("location",""))}</small></figcaption></figure>'
+        gallery+=f'<figure data-photo-place="{esc(p.get("location",""))}"><button data-photo="{esc(src)}" data-index="{index}" data-caption="{esc(p.get("caption",""))}" data-location="{esc(p.get("location",""))}" aria-label="Open photograph: {esc(alt)}"><img src="../{esc(src)}" alt="{esc(alt)}" loading="lazy" decoding="async"></button><figcaption><span>{esc(p.get("caption",""))}</span><small>{esc(p.get("location",""))}</small></figcaption></figure>'
     flickr=c.get('social',{}).get('flickr','')
     flickr_link=f'<a class="flickr-link" href="{esc(flickr)}" rel="me noopener">More photographs on Flickr ↗</a>' if urlsplit(flickr).scheme=='https' else ''
     photo_dialog='<dialog id="photo-dialog"><div class="photo-viewer"><div class="photo-viewer-head"><span data-photo-count></span><button data-close-photo aria-label="Close photograph">Close ×</button></div><img alt=""><div class="photo-viewer-foot"><button data-photo-prev aria-label="Previous photograph">← Previous</button><p><strong data-photo-caption></strong><small data-photo-location></small></p><button data-photo-next aria-label="Next photograph">Next →</button></div></div></dialog>'
-    b.page('photography/index.html','Photography','<section class="page photopage"><header class="pageintro"><div><span class="eyebrow">Visual notes</span><h1>Photography</h1><p>People, places and everyday observations.</p></div>'+flickr_link+'</header><div class="photogrid">'+(gallery or '<p>No photographs published yet.</p>')+'</div>'+photo_dialog+'</section>')
+    photo_tools=f'<div class="photo-toolbar"><p><strong data-photo-visible>{len(photos)}</strong> photographs</p><label>Place<select data-photo-filter><option value="">All places</option></select></label><div class="photo-views" role="group" aria-label="Gallery view"><button type="button" data-photo-view="mosaic" aria-pressed="true">Mosaic</button><button type="button" data-photo-view="filmstrip" aria-pressed="false">Filmstrip</button></div></div>' if gallery else ''
+    b.page('photography/index.html','Photography','<section class="page photopage"><header class="pageintro"><div><span class="eyebrow">Visual notes</span><h1>Photography</h1><p>People, places and everyday observations.</p></div>'+flickr_link+'</header>'+photo_tools+'<div class="photogrid" data-photo-grid>'+(gallery or '<p>No photographs published yet.</p>')+'</div>'+photo_dialog+'</section>')
     bio=c.get('biography') or 'I am a journalist at The Daily Star, reporting on education, governance, rights, social policy and public accountability.\n\nThis space brings together my published journalism, personal writing and photography.'
     areas=''.join(f'<li>{esc(x)}</li>' for x in c.get('areas',[]))
     career=''.join(f'<li><span>{esc(x.get("years",""))}</span><div><h3>{esc(x.get("role",""))}</h3><p>{esc(x.get("organisation",""))} · {esc(x.get("location",""))}</p></div></li>' for x in c.get('career',[]))
