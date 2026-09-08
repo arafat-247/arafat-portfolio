@@ -79,6 +79,14 @@
       "category": "News",
       "date_published": "2025-12-24T00:00:00+06:00",
       "status": "published"
+    },
+    "70cecae8848187799ec7": {
+      "title": "What price are we paying for ‘progress’?",
+      "stream": "opinion",
+      "credit_type_override": "author-page",
+      "category": "News",
+      "date_published": "2025-10-28T00:00:00+06:00",
+      "status": "published"
     }
   }
 }
