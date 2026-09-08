@@ -6,6 +6,16 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin, urlsplit
 from core import *
 
+def is_due(status,is_fresh=False,retry_failed=False,current=None):
+    if status.get('status')=='unsupported': return False
+    if retry_failed and status.get('status')=='failed' and not status.get('last_success'): return True
+    last=status.get('last_checked','')
+    if not last:return True
+    age=((current or datetime.now(timezone.utc))-datetime.fromisoformat(last)).total_seconds()
+    if status.get('status')=='author_unverified': return age>7*86400
+    if status.get('status')=='failed': return age>min(86400,1200*2**min(status.get('failures',0),6))
+    return age>(900 if is_fresh else 7*86400)
+
 def discover(url):
     data,typ,final=fetch(url)
     if typ not in ('text/html','application/xhtml+xml'): raise ValueError('Author page is not HTML.')
@@ -98,13 +108,7 @@ def run(args):
         state['last_discovery_success']=now()
     except (HTTPError,URLError,ValueError,OSError) as exc: errors.append('Discovery: '+str(exc)[:220])
     def due(u):
-        s=sources[u]; last=s.get('last_checked','')
-        if s.get('status')=='unsupported': return False
-        if not last: return True
-        age=(datetime.now(timezone.utc)-datetime.fromisoformat(last)).total_seconds()
-        if s.get('status')=='author_unverified': return age>7*86400
-        if s.get('status')=='failed': return age>min(86400,1200*2**min(s.get('failures',0),6))
-        return age>(900 if u in fresh else 7*86400)
+        return is_due(sources[u],u in fresh,bool(getattr(args,'retry_failed',False)))
     pending=[u for u in sources if not sources[u].get('last_success') and due(u)]
     recent=[u for u in dict.fromkeys(fresh) if due(u)]
     queue=list(dict.fromkeys([u for u in requests_by_url if due(u)]+recent[:30]+pending+recent+[u for u in sources if due(u)]))
@@ -149,5 +153,5 @@ def run(args):
     if errors: print('Warnings:', '\n'.join(errors[:5]))
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(); p.add_argument('--full',action='store_true'); p.add_argument('--pages',type=int,default=180); p.add_argument('--limit',type=int,default=60); p.add_argument('--delay',type=float,default=.35);p.add_argument('--workers',type=int,default=4)
+    p=argparse.ArgumentParser(); p.add_argument('--full',action='store_true'); p.add_argument('--retry-failed',action='store_true'); p.add_argument('--pages',type=int,default=180); p.add_argument('--limit',type=int,default=60); p.add_argument('--delay',type=float,default=.35);p.add_argument('--workers',type=int,default=4)
     run(p.parse_args())

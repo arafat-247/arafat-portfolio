@@ -71,6 +71,15 @@ class ContentTests(unittest.TestCase):
     def test_drupal_body_and_date(self):
         source='<script type="application/ld+json">'+json.dumps({'@type':'NewsArticle','headline':'Example','author':{'name':core.NAME}})+'</script><article><span>5 September 2026</span><main><h2>Editor pick</h2><div class="node-content"><span>8 August 2026</span><div class="block-field-blocknodenewsbody"><p>'+('Actual reporting. '*40)+'</p></div></div></main></article>'
         a=core.article(source,'https://example.com/a');self.assertTrue(a['date_published'].startswith('2026-08-08'));self.assertNotIn('Editor pick',a['body_html'])
+    def test_daily_star_analytics_timestamp_fallback(self):
+        source=sample(date='')+'<script type="application/json">'+json.dumps({'tds_ga_dimensions':{'NodeType':'news','NodeID':'4267561','created':'1788816753'}})+'</script>'
+        a=core.article(source,'https://example.com/news/story-12345')
+        self.assertEqual(a['date_published'],'2026-09-08T03:32:33+06:00')
+    def test_manual_refresh_retries_failed_story_immediately(self):
+        status={'status':'failed','failures':1,'last_checked':'2026-09-08T04:56:58+00:00'}
+        current=core.datetime.fromisoformat('2026-09-08T05:00:00+00:00')
+        self.assertFalse(sync.is_due(status,current=current))
+        self.assertTrue(sync.is_due(status,retry_failed=True,current=current))
     def test_paywall(self):
         source=sample().replace('"@type": "NewsArticle"','"@type": "NewsArticle", "isAccessibleForFree": false')
         with self.assertRaises(ValueError):core.article(source,'https://example.com/news/story-12345')

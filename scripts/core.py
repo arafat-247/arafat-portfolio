@@ -186,11 +186,13 @@ def objects(value):
         for item in value: yield from objects(item)
 
 def article(source,url,manual=False,author_listing=False):
-    doc=Document(source); candidates=[]
+    doc=Document(source); candidates=[]; embedded=[]
     for n in doc.nodes('script'):
-        if n.attrs.get('type')!='application/ld+json': continue
+        if n.attrs.get('type') not in ('application/ld+json','application/json'): continue
         try: data=json.loads(n.rawtext())
         except (ValueError,TypeError): continue
+        embedded.append(data)
+        if n.attrs.get('type')!='application/ld+json': continue
         for obj in objects(data):
             typ=obj.get('@type',[]); typ=typ if isinstance(typ,list) else [typ]
             if any(t in ('Article','NewsArticle','ReportageNewsArticle','BlogPosting','OpinionNewsArticle') for t in typ): candidates.append(obj)
@@ -248,6 +250,16 @@ def article(source,url,manual=False,author_listing=False):
                 if child.tag=='span' and re.fullmatch(r'\d{1,2} [A-Za-z]+ \d{4}',child.text()):
                     published=date(child.text())
                     if published:break
+            if published:break
+    if not published:
+        # Some current Daily Star pages omit standard publication metadata but
+        # expose the exact Unix timestamp in Drupal's analytics settings.
+        for data in embedded:
+            for obj in objects(data):
+                stamp=obj.get('created') if obj.get('NodeType') or obj.get('NodeID') else None
+                if isinstance(stamp,str) and re.fullmatch(r'\d{9,12}',stamp):
+                    published=datetime.fromtimestamp(int(stamp),timezone.utc).astimezone(timezone(timedelta(hours=6))).isoformat()
+                    break
             if published:break
     if section=='News':
         for token,label in (('/education/','Education'),('/politics/','Politics'),('/crime-justice/','Rights & Justice'),('/environment/','Environment'),('/health/','Health'),('/business/','Economy'),('/opinion/','Opinion'),('/sports/','Sports')):

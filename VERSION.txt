@@ -1,1 +1,1 @@
-16.8.2 — synchronised archive counts and filters, resilient bulk uploads, interactive gallery, and clean routes
+16.8.3 — reliable Daily Star publication-date extraction and immediate manual retries
