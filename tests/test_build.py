@@ -23,7 +23,9 @@ class BuildTests(unittest.TestCase):
             for n in ('portfolio.js','portfolio.css'):shutil.copy2(core.SITE/n,site/n)
             core.write(content/'settings.json',core.read(core.CONTENT/'settings.json'))
             cover=site/'assets/uploads/draft-only.webp';cover.parent.mkdir(exist_ok=True);shutil.copy2(site/'assets/identity/asset0.webp',cover)
-            core.write(content/'photos.json',{'photos':[]})
+            core.write(content/'photos.json',{'photos':[{
+                'id':'photo','src':'assets/identity/asset0.webp','caption':'Dhaka after rain',
+                'alt':'A street in Dhaka after rain','location':'Dhaka','status':'published'}]})
             common={'stream':'thoughts','category':'Essays','date_published':'2026-09-05T10:00:00+06:00','body':'A complete personal essay.'}
             draft={**common,'id':'draft','title':'PRIVATE-DRAFT-CANARY','status':'draft','cover_image':'assets/uploads/draft-only.webp'}
             published={**common,'id':'essay','title':'Published essay','status':'published','format':'html','body':'<p>Public text.</p><script>ATTACK_CANARY()</script>'}
@@ -66,9 +68,21 @@ class BuildTests(unittest.TestCase):
             self.assertIn('https://arafatrahaman.com/stories/a-shared-report/</loc>',sitemap)
             self.assertNotIn('/index.html</loc>',sitemap)
             home=(out/'index.html').read_text()
+            self.assertIn('Reporting public life with evidence and context.',home)
+            self.assertIn('class="recentwork"',home)
+            self.assertIn('class="recentgrid"',home)
+            self.assertIn('Reports &amp; Features',home)
             self.assertEqual(home.count('class="tile-art"'),3)
             self.assertRegex(home,r'class="tile tile-photos"[^>]*><img ')
             self.assertNotIn('src=""',home)
+            reporting=(out/'reporting.html').read_text()
+            self.assertIn('<h1>Reports & Features</h1>',reporting)
+            photography=(out/'photography.html').read_text()
+            self.assertIn('class="photodialog"',photography)
+            self.assertIn('data-prev-photo',photography)
+            self.assertIn('data-next-photo',photography)
+            self.assertIn('data-dialog-caption',photography)
+            self.assertIn('loading="eager"',photography)
     def test_source_failure_preserves_article(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);u='https://www.thedailystar.net/news/example-12345';key=core.identity(u)
