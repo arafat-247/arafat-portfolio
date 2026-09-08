@@ -1,1 +1,1 @@
-16.10.0 — stronger author identity, article and photography SEO, homepage metadata, and favicon
+16.4.0 — sharing windows, portrait-led previews and linked Person/ProfilePage identity data
