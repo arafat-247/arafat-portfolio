@@ -1,1 +1,1 @@
-17.0.0 — editorial portfolio redesign with curated recent work and responsive photography
+17.0.1 — simplified homepage and repaired mobile navigation
