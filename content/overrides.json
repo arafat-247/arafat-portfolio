@@ -135,6 +135,14 @@
       "category": "News",
       "date_published": "2025-02-18T00:00:00+06:00",
       "status": "published"
+    },
+    "fa97015a56a76ab9dfd1": {
+      "title": "Why not banish Aynaghars?",
+      "stream": "opinion",
+      "credit_type_override": "author-page",
+      "category": "Rights & Justice",
+      "date_published": "2025-02-13T00:00:00+06:00",
+      "status": "published"
     }
   }
 }
