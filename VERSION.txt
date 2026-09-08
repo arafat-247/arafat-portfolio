@@ -1,1 +1,1 @@
-16.4.0 — sharing windows, portrait-led previews and linked Person/ProfilePage identity data
+16.5.0 — restored abstract homepage sections and article-specific social previews
