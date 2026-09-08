@@ -1,5 +1,6 @@
-import contextlib, io, json, shutil, sys, tempfile, unittest
+import contextlib, io, json, re, shutil, sys, tempfile, unittest
 from pathlib import Path
+from PIL import Image
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import build, core, sync
@@ -39,7 +40,11 @@ class BuildTests(unittest.TestCase):
             self.assertNotIn('"name": "Arafat Rahaman"',story)
             self.assertIn('<meta property="og:type" content="article">',story)
             self.assertIn('twitter:card" content="summary_large_image"',story)
-            self.assertIn('https://arafatrahaman.com/assets/social-preview-v2.jpg',story)
+            social_match=re.search(r'https://arafatrahaman\.com/(assets/social/a-shared-report-[0-9a-f]{8}\.jpg)',story)
+            self.assertIsNotNone(social_match)
+            social_card=out/social_match.group(1)
+            self.assertTrue(social_card.is_file())
+            with Image.open(social_card) as card:self.assertEqual(card.size,(1200,630))
             self.assertIn('id="share-dialog"',story)
             self.assertIn('data-share-service="facebook"',story)
             self.assertIn('data-copy-share',story)
@@ -60,6 +65,10 @@ class BuildTests(unittest.TestCase):
             sitemap=(out/'sitemap.xml').read_text()
             self.assertIn('https://arafatrahaman.com/stories/a-shared-report/</loc>',sitemap)
             self.assertNotIn('/index.html</loc>',sitemap)
+            home=(out/'index.html').read_text()
+            self.assertEqual(home.count('class="tile-art"'),3)
+            self.assertRegex(home,r'class="tile tile-photos"[^>]*><img ')
+            self.assertNotIn('src=""',home)
     def test_source_failure_preserves_article(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);u='https://www.thedailystar.net/news/example-12345';key=core.identity(u)
