@@ -7,7 +7,7 @@ from social_cards import SocialCardRenderer
 
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and credited contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting.html','opinion':'opinion.html','thoughts':'thoughts.html'}
-ASSET_VERSION='17.0.0'
+ASSET_VERSION='17.0.1'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -152,14 +152,7 @@ def build():
                 b.redirect(old+'index.html',a['local_url'])
     keys=('id','title','excerpt','category','stream','date_published','date_modified','cover_image','cover_alt','source_name','local_url')
     write(OUT/'data/index.json',{'articles':[{k:a.get(k,'') for k in keys} for a in articles]})
-    tiles=[]
-    destinations=[('reporting','Reports & Features','Reports, interviews, features and credited contributions'),('opinion','Opinion & Analysis','Published columns, commentary and analysis'),('thoughts','Thoughts','Personal essays, reflections and field notes'),('photos','Photography','People, places and everyday observations')]
-    for i,(key,title,desc) in enumerate(destinations):
-        href=PATHS.get(key,'photography.html')
-        visual=f'<img src="{esc(safe_asset(c["home_images"][i]))}" alt="" width="640" height="420">' if key=='photos' else '<b class="tile-art" aria-hidden="true"></b>'
-        tiles.append(f'<a class="tile tile-{key}" href="{href}">{visual}<span><strong>{esc(title)}</strong><small>{esc(desc)}</small></span><i aria-hidden="true">→</i></a>')
-    home_profile='<section class="homeprofile" aria-labelledby="home-profile-title"><img src="assets/portraits/contact.webp" alt="Arafat Rahaman smiling outdoors" width="430" height="520"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title">Arafat Rahaman</h2><p>Reporting on education, governance, rights, social policy and public accountability.</p><nav><a href="about.html">About me →</a><a href="mailto:'+esc(c.get('email',''))+'">Email</a></nav></div></section>'
-    home_header='<header class="homeintro"><span class="eyebrow">Journalist · The Daily Star</span><h1>Reporting public life with evidence and context.</h1><div><p>Arafat Rahaman reports on education, governance, rights, social policy and public accountability from Bangladesh.</p><a class="textlink" href="reporting.html">Explore the reporting archive →</a></div></header>'
+    home_profile='<section class="homeprofile" aria-labelledby="home-profile-title"><img src="assets/portraits/contact.webp" alt="Arafat Rahaman smiling outdoors" width="430" height="520"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title">Arafat Rahaman</h2><p>Reporting on education, governance, rights, social policy and public accountability.</p></div></section>'
     chosen=[]
     for wanted in ('reporting','opinion','thoughts','reporting'):
         item=next((a for a in articles if a.get('stream')==wanted and a not in chosen),None)
@@ -167,13 +160,10 @@ def build():
     for item in articles:
         if len(chosen)>=4:break
         if item not in chosen:chosen.append(item)
-    def home_story(a,lead=False):
-        return f'<article class="homework {"homework-lead" if lead else ""}"><div class="homework-meta"><span>{esc(a.get("category") or STREAMS.get(a.get("stream"),STREAMS["reporting"])[0])}</span><time datetime="{esc(date(a.get("date_published","")))}">{esc(date_label(a.get("date_published","")))}</time></div><h3><a href="{esc(a["local_url"])}">{esc(a["title"])}</a></h3><p>{esc(a.get("excerpt",""))}</p><a class="homework-read" href="{esc(a["local_url"])}" aria-label="Read {esc(a["title"])}">Read story <span>→</span></a></article>'
-    recent='<section class="recentwork" aria-labelledby="recent-work-title"><header><div><span class="eyebrow">Recent work</span><h2 id="recent-work-title">Stories, columns and field notes</h2></div><a href="reporting.html">View all work →</a></header><div class="recentgrid">'+''.join(home_story(a,i==0) for i,a in enumerate(chosen))+'</div></section>'
-    stats=f'<div class="homestats" aria-label="Portfolio summary"><div><strong>{len(articles)}</strong><span>stories preserved</span></div><div><strong>Since 2017</strong><span>reporting for The Daily Star</span></div><div><strong>Dhaka</strong><span>reporting across Bangladesh</span></div></div>'
-    section_nav='<section class="sectionnav" aria-labelledby="sections-title"><header><span class="eyebrow">Explore</span><h2 id="sections-title">Browse by form</h2></header><div class="tiles">'+''.join(tiles)+'</div></section>'
-    home_contact='<aside class="homecontact"><span>Have a story lead or reporting enquiry?</span><strong>Let’s start with what you know.</strong><a href="contact.html">Get in touch →</a></aside>'
-    b.page('index.html','Arafat Rahaman','<section class="homecontent">'+home_profile+home_header+stats+recent+section_nav+home_contact+'</section>',home=True)
+    def home_story(a):
+        return f'<article class="homework"><div class="homework-meta"><span>{esc(a.get("category") or STREAMS.get(a.get("stream"),STREAMS["reporting"])[0])}</span><time datetime="{esc(date(a.get("date_published","")))}">{esc(date_label(a.get("date_published","")))}</time></div><h2><a href="{esc(a["local_url"])}">{esc(a["title"])}</a></h2><p>{esc(a.get("excerpt",""))}</p><a class="homework-read" href="{esc(a["local_url"])}" aria-label="Read {esc(a["title"])}">Read story <span>→</span></a></article>'
+    recent='<section class="recentwork" aria-labelledby="recent-work-title"><header><div><span class="eyebrow">Selected work</span><h1 id="recent-work-title">Latest journalism</h1></div><p>Reporting, analysis and personal writing from Bangladesh.</p></header><div class="recentgrid">'+''.join(home_story(a) for a in chosen)+'</div></section>'
+    b.page('index.html','Arafat Rahaman','<section class="homecontent">'+home_profile+recent+'</section>',home=True)
     for stream,(title,description) in STREAMS.items():
         subset=[a for a in articles if a.get('stream')==stream]
         cards=''.join(b.card(a) for a in subset[:12]) or '<p class="empty">No entries published here yet.</p>'
