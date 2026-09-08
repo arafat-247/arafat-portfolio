@@ -3,27 +3,23 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],roo
 if(document.body.classList.contains('home')&&!location.hash){history.scrollRestoration='manual';window.scrollTo(0,0)}
 
 const menu=$('#mobile-menu'),toggle=$('.menutoggle'),backdrop=$('.menubackdrop'),drawerClose=$('.drawerclose'),themeToggle=$('.themetoggle');
-let closeTimer,lastFocused,touchStartX=null,touchDistance=0;
+let closeTimer,lastFocused;
 function openMenu(){
  if(!menu)return;
  clearTimeout(closeTimer);lastFocused=document.activeElement;menu.hidden=false;backdrop.hidden=false;
- requestAnimationFrame(()=>{menu.classList.add('is-open');backdrop.classList.add('is-open')});
- toggle.setAttribute('aria-expanded','true');document.body.classList.add('menu-open');drawerClose.focus();
+ void menu.offsetWidth;menu.classList.add('is-open');backdrop.classList.add('is-open');
+ toggle?.setAttribute('aria-expanded','true');document.body.classList.add('menu-open');drawerClose?.focus();
 }
 function closeMenu(refocus=false){
  if(!menu||menu.hidden)return;
  menu.classList.remove('is-open');backdrop.classList.remove('is-open');toggle?.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open');
- closeTimer=setTimeout(()=>{menu.hidden=true;backdrop.hidden=true},340);
+ closeTimer=setTimeout(()=>{menu.hidden=true;backdrop.hidden=true},260);
  if(refocus&&(lastFocused||toggle))setTimeout(()=>{(lastFocused||toggle)?.focus()},0);
 }
 toggle?.addEventListener('click',()=>toggle.getAttribute('aria-expanded')==='true'?closeMenu(true):openMenu());
 drawerClose?.addEventListener('click',()=>closeMenu(true));
 backdrop?.addEventListener('click',()=>closeMenu(true));
 menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>closeMenu()));
-menu?.addEventListener('pointermove',event=>{const box=menu.getBoundingClientRect();menu.style.setProperty('--menu-x',`${event.clientX-box.left}px`);menu.style.setProperty('--menu-y',`${event.clientY-box.top}px`)});
-menu?.addEventListener('touchstart',event=>{if(event.touches.length!==1)return;touchStartX=event.touches[0].clientX;touchDistance=0},{passive:true});
-menu?.addEventListener('touchmove',event=>{if(touchStartX===null)return;touchDistance=Math.max(0,event.touches[0].clientX-touchStartX);menu.style.transform=`translateX(${touchDistance}px)`},{passive:true});
-menu?.addEventListener('touchend',()=>{menu.style.transform='';if(touchDistance>72)closeMenu();touchStartX=null;touchDistance=0});
 document.addEventListener('keydown',event=>{
  if(event.key==='Escape')closeMenu(true);
  if(event.key!=='Tab'||!menu?.classList.contains('is-open'))return;
@@ -53,7 +49,7 @@ themeToggle?.addEventListener('click',()=>{
 updateTheme();
 
 function observeReveals(scope=document){
- const items=[...scope.querySelectorAll('.homeprofile,.homeintro,.tile,.homecontact,.workitem,.aboutlead,.aboutfacts>*,.coverage,.profiledetails>div,.membership,.recognition li,.contactgrid>*,.photogrid figure')];
+ const items=[...scope.querySelectorAll('.homeprofile,.homework,.workitem,.aboutlead,.aboutfacts>*,.coverage,.profiledetails>div,.membership,.recognition li,.contactgrid>*,.photogrid figure')];
  items.forEach(item=>item.classList.add('in'));
 }
 observeReveals();
