@@ -1,6 +1,21 @@
 {
   "articles": [
     {
+      "id": "0fa24b2d6962506d9e2b",
+      "title": "Half the children can’t read, comprehend",
+      "excerpt": "As the government aims to raise the country’s literacy rate to between 86 and 90 percent by 2030, nearly half of children aged seven to 14 still fail to read and understand a simple story.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-09-08T03:32:33+06:00",
+      "date_modified": "",
+      "cover_image": "",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/half-the-children-can-t-read-comprehend/",
+      "credit_type": "author-page",
+      "contribution": ""
+    },
+    {
       "id": "50c0946db1b351f9cd98",
       "title": "‘Culture is not easy, it’s political as well as artistic’",
       "excerpt": "The crisis facing cultural practice in Bangladesh is not only about obstacles to artistic endeavours but also about a deeper struggle over how society understands its own history, identity and the relationship between culture and religion, speakers at a discussion said yesterday.",
