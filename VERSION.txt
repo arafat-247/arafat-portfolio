@@ -1,1 +1,1 @@
-16.5.0 — restored abstract homepage sections and article-specific social previews
+17.0.0 — editorial portfolio redesign with curated recent work and responsive photography
