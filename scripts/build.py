@@ -3,10 +3,11 @@ import json, re, shutil
 from datetime import datetime
 from urllib.parse import urlsplit
 from core import *
+from social_cards import SocialCardRenderer
 
 STREAMS={'reporting':('Reporting','News reports, interviews and reported features.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting.html','opinion':'opinion.html','thoughts':'thoughts.html'}
-ASSET_VERSION='16.4.0'
+ASSET_VERSION='16.5.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -37,7 +38,8 @@ class Builder:
         self.base=self.config.get('site_url','').rstrip('/')
         if urlsplit(self.base).scheme!='https': raise ValueError('Set a valid HTTPS site_url in content/settings.json.')
         self.routes=[]
-    def page(self,path,title,body,home=False,desc='',article_data=None,profile=False):
+        self.social_cards=SocialCardRenderer(SITE/'assets/social-preview-v2.jpg',OUT/'assets/social')
+    def page(self,path,title,body,home=False,desc='',article_data=None,profile=False,social_image_path=''):
         prefix='../'*path.count('/')
         c=self.config; name=c.get('site_name',NAME); portrait=safe_asset(c.get('portrait'))
         sidebar_portrait='assets/portraits/contact.webp'
@@ -57,7 +59,7 @@ class Builder:
         canonical_path='' if path=='index.html' else (path[:-10] if path.endswith('/index.html') else path)
         canonical_url=self.base+'/'+canonical_path
         description=meta_description(desc or c.get('description',''))
-        social_image=self.base+'/assets/social-preview-v2.jpg'
+        social_image=self.base+'/'+(social_image_path or 'assets/social-preview-v2.jpg')
         measurement_id=str(c.get('analytics',{}).get('measurement_id','')).strip()
         analytics=''
         if re.fullmatch(r'G-[A-Z0-9]{6,16}',measurement_id):
@@ -103,7 +105,8 @@ class Builder:
             authors.append(item)
         meta={'@context':'https://schema.org','@type':'Article','headline':title,'datePublished':a.get('date_published',''),'dateModified':a.get('date_modified','') or a.get('date_published',''),'author':authors,'url':self.base+'/'+a['local_url'],'mainEntityOfPage':self.base+'/'+a['local_url']}
         if a.get('source_url'):meta['isBasedOn']=a['source_url']
-        self.page(path,title,content,desc=a.get('excerpt',''),article_data=meta)
+        social_image_path=self.social_cards.render(a)
+        self.page(path,title,content,desc=a.get('excerpt',''),article_data=meta,social_image_path=social_image_path)
 
 def build():
     OUT.mkdir(exist_ok=True)
@@ -147,10 +150,11 @@ def build():
     keys=('id','title','excerpt','category','stream','date_published','date_modified','cover_image','cover_alt','source_name','local_url')
     write(OUT/'data/index.json',{'articles':[{k:a.get(k,'') for k in keys} for a in articles]})
     tiles=[]
-    destinations=[('reporting','Reporting','News reports, interviews and reported features'),('opinion','Opinion & Analysis','Published columns, commentary and analysis'),('thoughts','Thoughts','Personal essays, reflections and field notes'),('photos','Photography','People, places and everyday observations')]
+    destinations=[('reporting','Reports & Features','Reports, interviews, features and credited contributions'),('opinion','Opinion & Analysis','Published columns, commentary and analysis'),('thoughts','Thoughts','Personal essays, reflections and field notes'),('photos','Photography','People, places and everyday observations')]
     for i,(key,title,desc) in enumerate(destinations):
-        src=safe_asset(c['home_images'][i]); href=PATHS.get(key,'photography.html')
-        tiles.append(f'<a class="tile tile-{key}" href="{href}"><img src="{esc(src)}" alt="" width="640" height="420"><span><strong>{esc(title)}</strong><small>{esc(desc)}</small></span><i aria-hidden="true">→</i></a>')
+        href=PATHS.get(key,'photography.html')
+        visual=f'<img src="{esc(safe_asset(c["home_images"][i]))}" alt="" width="640" height="420">' if key=='photos' else '<b class="tile-art" aria-hidden="true"></b>'
+        tiles.append(f'<a class="tile tile-{key}" href="{href}">{visual}<span><strong>{esc(title)}</strong><small>{esc(desc)}</small></span><i aria-hidden="true">→</i></a>')
     home_profile='<section class="homeprofile" aria-labelledby="home-profile-title"><img src="assets/portraits/contact.webp" alt="Arafat Rahaman smiling outdoors" width="430" height="520"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title">Arafat<br>Rahaman</h2><p>I report on education, governance, rights, social policy and public accountability for The Daily Star.</p><nav><a href="about.html">About me →</a><a href="mailto:'+esc(c.get('email',''))+'">Email</a></nav></div></section>'
     home_header='<header class="homeintro"><span>Selected paths through my work</span><h1>Portfolio</h1><p>Reporting, analysis, personal writing and photography from Bangladesh.</p></header>'
     home_contact='<aside class="homecontact"><strong>Have a story lead or reporting enquiry?</strong><a href="contact.html">Get in touch →</a></aside>'
