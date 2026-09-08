@@ -48,6 +48,8 @@ class BuildTests(unittest.TestCase):
             authored=(out/'thoughts/published-essay/index.html').read_text()
             self.assertIn('https://arafatrahaman.com/about.html#person',authored)
             about=(out/'about.html').read_text()
+            self.assertEqual(about.count('googletagmanager.com/gtag/js?id=G-MHCDNYZYP9'),1)
+            self.assertEqual(about.count("gtag('config','G-MHCDNYZYP9')"),1)
             self.assertIn('"@type": "ProfilePage"',about)
             self.assertIn('"mainEntity": {"@type": "Person"',about)
             self.assertIn('"image": "https://arafatrahaman.com/assets/identity/asset0.webp"',about)
