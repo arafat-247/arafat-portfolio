@@ -175,6 +175,14 @@
       "category": "Sports",
       "date_published": "2025-01-14T00:00:00+06:00",
       "status": "published"
+    },
+    "eaa98eddad45f19611a2": {
+      "title": "When students become guinea pigs",
+      "stream": "opinion",
+      "credit_type_override": "author-page",
+      "category": "News",
+      "date_published": "2025-01-09T00:00:00+06:00",
+      "status": "published"
     }
   }
 }
