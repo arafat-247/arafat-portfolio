@@ -665,9 +665,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/education-left-behind-3959881": {
       "discovered_at": "2026-09-06T04:57:04.186000+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-07T22:40:05.847508+00:00",
+      "last_checked": "2026-09-08T05:11:11.016473+00:00",
       "status": "saved",
-      "last_success": "2026-09-07T22:40:28.000816+00:00",
+      "last_success": "2026-09-08T05:11:12.599217+00:00",
       "failures": 0,
       "error": "",
       "article_id": "ede91d544565009f7d74",
@@ -676,9 +676,9 @@
     "https://www.thedailystar.net/opinion/views/news/uprising-unravelling-3951556": {
       "discovered_at": "2026-09-06T04:57:04.186001+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-07T22:31:47.806978+00:00",
+      "last_checked": "2026-09-08T05:11:11.016477+00:00",
       "status": "saved",
-      "last_success": "2026-09-07T22:31:50.888277+00:00",
+      "last_success": "2026-09-08T05:11:12.440614+00:00",
       "failures": 0,
       "error": "",
       "article_id": "6ce36645074760abe246",
@@ -687,9 +687,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/july-uprising-movement-united-campuses-and-classrooms-3950961": {
       "discovered_at": "2026-09-06T04:57:04.186002+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-07T22:31:47.806979+00:00",
+      "last_checked": "2026-09-08T05:11:11.016480+00:00",
       "status": "saved",
-      "last_success": "2026-09-07T22:31:50.937454+00:00",
+      "last_success": "2026-09-08T05:11:12.716116+00:00",
       "failures": 0,
       "error": "",
       "article_id": "1d94835c78dafa1ba238",
@@ -698,9 +698,9 @@
     "https://www.thedailystar.net/campus/news/student-union-election-du-ju-set-sept-polls-other-univs-lag-behind-3943756": {
       "discovered_at": "2026-09-06T04:57:04.186003+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-07T22:31:47.806981+00:00",
+      "last_checked": "2026-09-08T05:11:11.016482+00:00",
       "status": "saved",
-      "last_success": "2026-09-07T22:31:50.956313+00:00",
+      "last_success": "2026-09-08T05:11:12.580541+00:00",
       "failures": 0,
       "error": "",
       "article_id": "f962697f78e62b7647db",
@@ -709,9 +709,9 @@
     "https://www.thedailystar.net/news/bangladesh/education/news/ssc-pass-rate-plunges-16-year-low-3936891": {
       "discovered_at": "2026-09-06T04:57:04.186004+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-07T22:31:47.806983+00:00",
+      "last_checked": "2026-09-08T05:11:11.016484+00:00",
       "status": "saved",
-      "last_success": "2026-09-07T22:31:51.092455+00:00",
+      "last_success": "2026-09-08T05:11:13.980816+00:00",
       "failures": 0,
       "error": "",
       "article_id": "254cef90f85c6a66af90",
@@ -3163,15 +3163,13 @@
       "title": "‘His ideals still relevant for post-uprising Bangladesh’"
     }
   },
-  "archive_cursor": 135,
-  "last_attempt": "2026-09-08T04:56:24.947454+00:00",
-  "last_discovery_success": "2026-09-08T04:56:36.795868+00:00",
-  "last_completed": "2026-09-08T04:56:58.421954+00:00",
-  "saved_this_run": 59,
+  "archive_cursor": 138,
+  "last_attempt": "2026-09-08T05:10:58.182450+00:00",
+  "last_discovery_success": "2026-09-08T05:11:11.015598+00:00",
+  "last_completed": "2026-09-08T05:11:13.983621+00:00",
+  "saved_this_run": 5,
   "known_sources": 289,
   "pending": 1,
-  "errors": [
-    "Publication date could not be extracted."
-  ],
+  "errors": [],
   "unsupported": 3
 }
