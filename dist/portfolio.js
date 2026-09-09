@@ -49,7 +49,7 @@ themeToggle?.addEventListener('click',()=>{
 updateTheme();
 
 function observeReveals(scope=document){
- const items=[...scope.querySelectorAll('.homeprofile,.homework,.workitem,.aboutlead,.aboutfacts>*,.coverage,.profiledetails>div,.membership,.recognition li,.contactgrid>*,.photogrid figure')];
+ const items=[...scope.querySelectorAll('.homeprofile,.homeintro,.tile,.homecontact,.workitem,.aboutlead,.aboutfacts>*,.coverage,.profiledetails>div,.membership,.recognition li,.contactgrid>*,.photogrid figure')];
  items.forEach(item=>item.classList.add('in'));
 }
 observeReveals();

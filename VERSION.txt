@@ -1,1 +1,1 @@
-17.0.1 — simplified homepage and repaired mobile navigation
+17.1.0 — restored portfolio homepage with streamlined responsive navigation
