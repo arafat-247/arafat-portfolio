@@ -1,6 +1,48 @@
 {
   "articles": [
     {
+      "id": "e2420227c7d7dc51b609",
+      "title": "Listening, speaking skills to get greater focus in primary education: Bobby Hajjaj",
+      "excerpt": "New curriculum to include activities on listening and speaking alongside reading and writing, says state minister",
+      "category": "Education/Events",
+      "stream": "reporting",
+      "date_published": "2026-09-09T14:47:35+06:00",
+      "date_modified": "",
+      "cover_image": "",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/listening-speaking-skills-to-get-greater-focus-in-primary-education-bobby/",
+      "credit_type": "contribution"
+    },
+    {
+      "id": "052cab6c6588ea808e13",
+      "title": "Attack on Badhon: Bangladesh to raise issue with Italy",
+      "excerpt": "Bangladesh will lodge a strong protest with the Italian foreign ministry over the attack on actor Azmeri Haque Badhon in Venice, State Minister-1 for Foreign Affairs Humaiun Kobir told parliament yesterday.",
+      "category": "Education/Events",
+      "stream": "reporting",
+      "date_published": "2026-09-09T00:00:00+06:00",
+      "date_modified": "",
+      "cover_image": "",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/attack-on-badhon-bangladesh-to-raise-issue-with-italy/",
+      "credit_type": "contribution"
+    },
+    {
+      "id": "0b3b2c8a01b67c54309d",
+      "title": "Children need stronger foundational skills before AI use: Milon",
+      "excerpt": "Stresses need to involve teachers before introducing AI in educational institutions",
+      "category": "Education/Events",
+      "stream": "reporting",
+      "date_published": "2026-09-08T00:00:00+06:00",
+      "date_modified": "",
+      "cover_image": "",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/children-need-stronger-foundational-skills-before-ai-use-milon/",
+      "credit_type": "contribution"
+    },
+    {
       "id": "0fa24b2d6962506d9e2b",
       "title": "Half the children can’t read, comprehend",
       "excerpt": "As the government aims to raise the country’s literacy rate to between 86 and 90 percent by 2030, nearly half of children aged seven to 14 still fail to read and understand a simple story.",
@@ -13,6 +55,20 @@
       "source_name": "The Daily Star",
       "local_url": "stories/half-the-children-can-t-read-comprehend/",
       "credit_type": "byline"
+    },
+    {
+      "id": "20511db39e1add9c29df",
+      "title": "Govt redesigns non-formal education for four crore people: Bobby Hajjaj",
+      "excerpt": "New programmes target adults, out-of-school children and adolescents with literacy and skills training",
+      "category": "Education/Events",
+      "stream": "reporting",
+      "date_published": "2026-09-08T00:00:00+06:00",
+      "date_modified": "",
+      "cover_image": "",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/govt-redesigns-non-formal-education-for-four-crore-people-bobby-hajjaj/",
+      "credit_type": "contribution"
     },
     {
       "id": "50c0946db1b351f9cd98",
