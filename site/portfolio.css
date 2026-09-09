@@ -41,6 +41,11 @@ footer .top{margin-left:auto;color:#fff;text-decoration:none}
 .archive-total{display:grid;text-align:right;line-height:1}
 .archive-total strong{font:700 42px/1 var(--serif)}
 .archive-total span{margin-top:7px;color:var(--muted);font-size:11px;letter-spacing:.11em;text-transform:uppercase}
+.archive-totals{display:grid;grid-template-columns:auto auto;align-self:stretch;border-left:1px solid var(--line)}
+.archive-totals>div{display:flex;min-width:142px;flex-direction:column;justify-content:flex-end;padding:4px 0 4px 25px}
+.archive-totals>div+div{margin-left:25px;border-left:1px solid var(--line)}
+.archive-totals strong{font:700 42px/1 var(--serif)}
+.archive-totals span{max-width:145px;margin-top:7px;color:var(--muted);font-size:11px;line-height:1.35;letter-spacing:.1em;text-transform:uppercase}
 .textlink{display:inline-block;color:var(--accent);font-weight:800;text-decoration:none}
 .textlink:hover{text-decoration:underline}
 
@@ -73,6 +78,7 @@ footer .top{margin-left:auto;color:#fff;text-decoration:none}
 /* Archives */
 .filtertoggle{display:none}
 .tools{display:grid;grid-template-columns:minmax(260px,1fr) 210px 160px;gap:10px;margin:0 0 15px;padding:14px;border:1px solid var(--line);background:#e9e6dd}
+.tools-credit{grid-template-columns:minmax(220px,1fr) minmax(160px,210px) 130px minmax(190px,220px)}
 .tools label{display:grid;gap:5px;color:#565850;font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
 .tools input,.tools select{width:100%;min-width:0;height:46px;padding:9px 11px;border:1px solid #c7c2b7;border-radius:0;color:var(--ink);background:var(--surface);font-size:14px}
 .count{margin:16px 0 4px;color:var(--muted);font-size:12px}
@@ -82,6 +88,7 @@ footer .top{margin-left:auto;color:#fff;text-decoration:none}
 .workitem:hover{padding-inline:16px;background:var(--surface)}
 .workmeta{display:grid;gap:5px;color:var(--muted);font-size:11px;line-height:1.4}
 .workmeta span:nth-child(2){color:var(--accent);font-weight:800}
+.workmeta .creditbadge{width:max-content;margin-top:4px;padding:4px 6px;border:1px solid color-mix(in srgb,var(--accent) 55%,var(--line));color:var(--accent);font-size:9px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
 .workcopy h2{margin:0;font:700 clamp(24px,2.3vw,31px)/1.08 var(--serif);letter-spacing:-.025em}
 .workcopy h2 a{text-decoration:none}
 .workcopy h2 a:hover{text-decoration:underline}
@@ -137,10 +144,14 @@ td,th{padding:8px;border:1px solid var(--line)}
 .photoindex strong{font:700 48px/1 var(--serif)}
 .photoindex span{color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
 .photobar{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:18px 0 28px}
-.photobar p{margin:0;color:var(--muted);font-size:13px}
 .photobar a{color:var(--accent);font-size:13px;font-weight:800;text-decoration:none}
+.viewcontrols{display:flex;border:1px solid var(--line);background:var(--surface)}
+.viewcontrols button{min-height:42px;padding:9px 15px;border:0;background:transparent;color:var(--muted);font-size:12px;font-weight:750;cursor:pointer}
+.viewcontrols button+button{border-left:1px solid var(--line)}
+.viewcontrols button[aria-pressed="true"]{color:#fff;background:var(--forest)}
 .photogrid{columns:3 260px;column-gap:14px}
 .photogrid figure{position:relative;margin:0 0 14px;overflow:hidden;break-inside:avoid;background:#dedbd3}
+.photonumber{position:absolute;z-index:3;top:10px;left:10px;display:grid;width:30px;height:30px;place-items:center;border:1px solid rgb(255 255 255 / 50%);border-radius:50%;color:#fff;background:rgb(5 20 17 / 46%);font-size:10px;font-weight:800;backdrop-filter:blur(6px)}
 .photogrid button{display:block;width:100%;padding:0;border:0;background:#1a211f;cursor:zoom-in}
 .photogrid img{width:100%;height:auto;min-height:180px;object-fit:cover;transition:transform .45s ease,filter .3s ease}
 .photogrid figure:hover img{transform:scale(1.025);filter:brightness(.72)}
@@ -148,15 +159,22 @@ td,th{padding:8px;border:1px solid var(--line)}
 .photogrid figure:hover figcaption,.photogrid figure:focus-within figcaption{opacity:1;transform:none}
 .photogrid figcaption strong{display:block;font:700 17px/1.2 var(--serif)}
 .photogrid figcaption small{display:block;margin-top:4px;color:rgb(255 255 255 / 70%);font-size:11px}
+.photogrid[data-view="grid"]{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 14px;columns:auto}
+.photogrid[data-view="grid"] figure{display:grid;grid-template-rows:1fr auto;margin:0;overflow:visible;background:transparent}
+.photogrid[data-view="grid"] button{overflow:hidden;aspect-ratio:4/3}
+.photogrid[data-view="grid"] img{width:100%;height:100%;min-height:0;object-fit:cover}
+.photogrid[data-view="grid"] figcaption{position:static;padding:10px 1px 0;color:var(--ink);background:transparent;opacity:1;transform:none}
+.photogrid[data-view="grid"] figcaption small{color:var(--muted)}
 .photodialog{width:min(96vw,1400px);height:min(94vh,920px);padding:0;border:0;color:#fff;background:#0b0e0d;box-shadow:0 30px 100px #0008}
 .photodialog::backdrop{background:rgb(0 0 0 / 88%)}
 .photodialog>img{width:100%;height:calc(100% - 68px);object-fit:contain}
-.photodialog-bar{display:grid;grid-template-columns:44px minmax(0,1fr) 44px 44px;align-items:center;gap:10px;min-height:68px;padding:8px 14px;border-bottom:1px solid rgb(255 255 255 / 13%)}
+.photodialog-bar{display:grid;grid-template-columns:44px minmax(0,1fr) auto 44px 44px;align-items:center;gap:10px;min-height:68px;padding:8px 14px;border-bottom:1px solid rgb(255 255 255 / 13%)}
 .photodialog-bar button{width:40px;height:40px;padding:0;border:1px solid rgb(255 255 255 / 20%);color:#fff;background:transparent;cursor:pointer}
 .photodialog-bar p{margin:0;padding:0 10px}
 .photodialog-bar strong,.photodialog-bar span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .photodialog-bar strong{font:700 16px/1.25 var(--serif)}
 .photodialog-bar span{color:rgb(255 255 255 / 60%);font-size:11px}
+.photodialog-bar .photoposition{padding:0 8px;color:rgb(255 255 255 / 62%);font-size:10px;font-weight:800;letter-spacing:.1em}
 
 /* About and contact */
 .aboutlead{display:grid;grid-template-columns:minmax(230px,32%) minmax(0,1fr);gap:54px;align-items:start;margin:34px 0 58px}
@@ -259,6 +277,10 @@ html[data-theme="dark"] .workitem:hover{background:#1b2522}
   .pageintro h1,.photohero h1{font-size:clamp(44px,12vw,64px)}
   .archive-total,.photoindex{display:flex;align-items:baseline;gap:8px;text-align:left}
   .archive-total strong,.photoindex strong{font-size:28px}
+  .archive-totals{align-self:auto;border-left:0;border-top:1px solid var(--line)}
+  .archive-totals>div{min-width:0;padding:14px 20px 0 0}
+  .archive-totals>div+div{margin-left:0;padding-left:20px}
+  .archive-totals strong{font-size:28px}
   .filtertoggle{display:block;width:100%;margin:0 0 9px;padding:12px 14px;border:1px solid var(--line);background:#e7e4dc;text-align:left;cursor:pointer}
   html[data-theme="dark"] .filtertoggle{background:#1a2320}
   .filtertoggle:after{content:"+";float:right}
@@ -282,6 +304,7 @@ html[data-theme="dark"] .workitem:hover{background:#1b2522}
   .photogrid figure{margin-bottom:10px}
   .photogrid figcaption{position:static;padding:10px 2px 3px;color:var(--ink);background:transparent;opacity:1;transform:none}
   .photogrid figcaption small{color:var(--muted)}
+  .photogrid[data-view="grid"]{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 10px}
   .photodialog{width:100vw;height:100dvh;max-width:none;max-height:none}
 
   .aboutlead{grid-template-columns:1fr;gap:34px;margin:28px 0 48px}
@@ -313,9 +336,13 @@ html[data-theme="dark"] .workitem:hover{background:#1b2522}
   .tools{grid-template-columns:1fr}
   .tools label:first-child{grid-column:auto}
   .photobar{align-items:flex-start;flex-direction:column;gap:7px}
+  .viewcontrols{width:100%}
+  .viewcontrols button{flex:1}
   .photogrid{columns:1}
   .photogrid img{min-height:0}
+  .photogrid[data-view="grid"]{grid-template-columns:1fr}
   .photodialog-bar{grid-template-columns:36px minmax(0,1fr) 36px 36px;padding-inline:8px}
+  .photodialog-bar .photoposition{display:none}
   .photodialog-bar button{width:34px;height:34px}
 }
 

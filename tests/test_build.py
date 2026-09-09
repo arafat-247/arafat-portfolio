@@ -8,6 +8,12 @@ from types import SimpleNamespace
 from urllib.error import HTTPError
 
 class BuildTests(unittest.TestCase):
+    def test_credit_classification_respects_editorial_override(self):
+        manual={'manual_import':True,'verified_author':False}
+        self.assertEqual(build.credit_type(manual),'contribution')
+        self.assertEqual(build.credit_type({**manual,'credit_type_override':'author-page'}),'byline')
+        self.assertEqual(build.credit_type({'verified_author':True}),'byline')
+
     def test_discovery_reads_every_author_card(self):
         source=b'''<article class="article-author"><a href="/news/first-12345">One</a></article>
         <article class="article-author featured"><a href="https://www.thedailystar.net/news/second-67890">Two</a></article>'''
@@ -38,7 +44,7 @@ class BuildTests(unittest.TestCase):
             self.assertFalse((out/'assets/uploads/draft-only.webp').exists())
             self.assertFalse((out/'content').exists())
             story=(out/'stories/a-shared-report/index.html').read_text()
-            self.assertIn('Staff Correspondent',story);self.assertIn('Portfolio contribution: Arafat Rahaman',story)
+            self.assertIn('Staff Correspondent',story);self.assertIn('Non-byline contribution by Arafat Rahaman',story)
             self.assertNotIn('"name": "Arafat Rahaman"',story)
             self.assertIn('<meta property="og:type" content="article">',story)
             self.assertIn('twitter:card" content="summary_large_image"',story)
@@ -50,11 +56,11 @@ class BuildTests(unittest.TestCase):
             self.assertIn('id="share-dialog"',story)
             self.assertIn('data-share-service="facebook"',story)
             self.assertIn('data-copy-share',story)
-            self.assertNotIn('about.html#person',story)
+            self.assertNotIn('/about/#person',story)
             self.assertIn('https://arafatrahaman.com/stories/a-shared-report/',story)
             authored=(out/'thoughts/published-essay/index.html').read_text()
-            self.assertIn('https://arafatrahaman.com/about.html#person',authored)
-            about=(out/'about.html').read_text()
+            self.assertIn('https://arafatrahaman.com/about/#person',authored)
+            about=(out/'about/index.html').read_text()
             self.assertEqual(about.count('googletagmanager.com/gtag/js?id=G-MHCDNYZYP9'),1)
             self.assertEqual(about.count("gtag('config','G-MHCDNYZYP9')"),1)
             self.assertIn('"@type": "ProfilePage"',about)
@@ -70,6 +76,7 @@ class BuildTests(unittest.TestCase):
             home=(out/'index.html').read_text()
             self.assertIn('Selected paths through my work',home)
             self.assertIn('<h1>Portfolio</h1>',home)
+            self.assertIn("location.pathname.endsWith('/index.html')",home)
             self.assertIn('News reports, interviews and reported features',home)
             self.assertNotIn('class="recentwork"',home)
             self.assertNotIn('Latest journalism',home)
@@ -83,17 +90,27 @@ class BuildTests(unittest.TestCase):
             self.assertNotIn('src=""',home)
             client=(out/'portfolio.js').read_text()
             self.assertIn('if(!menu)return;',client)
-            reporting=(out/'reporting.html').read_text()
+            reporting=(out/'reporting/index.html').read_text()
             self.assertIn('<h1>Reports & Features</h1>',reporting)
+            self.assertIn('data-total="byline">0',reporting)
+            self.assertIn('data-total="contribution">1',reporting)
+            self.assertIn('name="credit"',reporting)
+            self.assertIn('Non-byline contribution',reporting)
             self.assertIn('class="menutoggle"',reporting)
             self.assertIn('class="themetoggle"',reporting)
             self.assertIn('id="mobile-menu"',reporting)
-            photography=(out/'photography.html').read_text()
+            photography=(out/'photography/index.html').read_text()
             self.assertIn('class="photodialog"',photography)
             self.assertIn('data-prev-photo',photography)
             self.assertIn('data-next-photo',photography)
             self.assertIn('data-dialog-caption',photography)
+            self.assertIn('data-photo-view="mosaic"',photography)
+            self.assertIn('data-photo-view="grid"',photography)
             self.assertIn('loading="eager"',photography)
+            self.assertIn('../assets/identity/asset0.webp',photography)
+            self.assertIn('https://arafatrahaman.com/photography/',photography)
+            self.assertTrue((out/'reporting.html').is_file())
+            self.assertIn('https://arafatrahaman.com/reporting/',(out/'reporting.html').read_text())
     def test_source_failure_preserves_article(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);u='https://www.thedailystar.net/news/example-12345';key=core.identity(u)

@@ -11,7 +11,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/half-the-children-can-t-read-comprehend/"
+      "local_url": "stories/half-the-children-can-t-read-comprehend/",
+      "credit_type": "byline"
     },
     {
       "id": "50c0946db1b351f9cd98",
@@ -24,7 +25,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/culture-is-not-easy-it-s-political-as-well-as-artistic/"
+      "local_url": "stories/culture-is-not-easy-it-s-political-as-well-as-artistic/",
+      "credit_type": "contribution"
     },
     {
       "id": "e1f0ffeec2c0aabab8b8",
@@ -37,7 +39,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/when-did-offensive-speech-become-terrorism/"
+      "local_url": "stories/when-did-offensive-speech-become-terrorism/",
+      "credit_type": "byline"
     },
     {
       "id": "a1b1dde9-a257-4f21-9b28-f45b57fb6266",
@@ -50,7 +53,8 @@
       "cover_image": "assets/uploads/7209b790-7048-4c29-b149-39f143b4e24e.webp",
       "cover_alt": "",
       "source_name": "",
-      "local_url": "thoughts/thank-you-messi/"
+      "local_url": "thoughts/thank-you-messi/",
+      "credit_type": "byline"
     },
     {
       "id": "8150d29e3b2f46ee7b91",
@@ -63,7 +67,8 @@
       "cover_image": "assets/imported/86d9a260c8c6f37d384e7d9c.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/why-girls-continue-to-outpace-boys-in-ssc-results/"
+      "local_url": "stories/why-girls-continue-to-outpace-boys-in-ssc-results/",
+      "credit_type": "byline"
     },
     {
       "id": "5d7f4c97a6f6de5833aa",
@@ -76,7 +81,8 @@
       "cover_image": "assets/imported/a2422db2d1c756ba7ece4236.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/3-public-universities-vcs-greetings-to-bnp-leaders-raise-ethical-questions/"
+      "local_url": "stories/3-public-universities-vcs-greetings-to-bnp-leaders-raise-ethical-questions/",
+      "credit_type": "byline"
     },
     {
       "id": "75f6261ed8aba04af297",
@@ -89,7 +95,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/reform-missteps-behind-ssc-result-swings-experts/"
+      "local_url": "stories/reform-missteps-behind-ssc-result-swings-experts/",
+      "credit_type": "byline"
     },
     {
       "id": "f101fb344ef72916c43f",
@@ -102,7 +109,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/health-education-spending-to-reach-5-of-gdp-by-2031/"
+      "local_url": "stories/health-education-spending-to-reach-5-of-gdp-by-2031/",
+      "credit_type": "byline"
     },
     {
       "id": "1e5213a093c35a5e37c5",
@@ -115,7 +123,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ssc-pass-rate-hits-19-year-low/"
+      "local_url": "stories/ssc-pass-rate-hits-19-year-low/",
+      "credit_type": "byline"
     },
     {
       "id": "939e921489d42c92d14f",
@@ -128,7 +137,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/dakhil-pass-rate-lowest-in-23-years/"
+      "local_url": "stories/dakhil-pass-rate-lowest-in-23-years/",
+      "credit_type": "byline"
     },
     {
       "id": "40069ff0c986fe10eeb5",
@@ -141,7 +151,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/teacher-shortages-strain-government-primary-schools/"
+      "local_url": "stories/teacher-shortages-strain-government-primary-schools/",
+      "credit_type": "byline"
     },
     {
       "id": "85d5792701ec5eaa8a25",
@@ -154,7 +165,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/honouring-a-trailblazer/"
+      "local_url": "stories/honouring-a-trailblazer/",
+      "credit_type": "byline"
     },
     {
       "id": "4605c47ab86fe0fa0460",
@@ -167,7 +179,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/admission-to-class-1-heavy-loads-on-tender-shoulders/"
+      "local_url": "stories/admission-to-class-1-heavy-loads-on-tender-shoulders/",
+      "credit_type": "byline"
     },
     {
       "id": "38f310876018043e1fbb",
@@ -180,7 +193,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/when-calling-messi-goat-is-no-longer-enough/"
+      "local_url": "stories/when-calling-messi-goat-is-no-longer-enough/",
+      "credit_type": "byline"
     },
     {
       "id": "73dd7bd180912bd97576",
@@ -193,7 +207,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ugc-to-track-15-years-of-university-research-funding/"
+      "local_url": "stories/ugc-to-track-15-years-of-university-research-funding/",
+      "credit_type": "byline"
     },
     {
       "id": "b48dbcc7102ceaf7e505",
@@ -206,7 +221,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/draft-guidelines-signal-new-direction-for-primary-curriculum/"
+      "local_url": "stories/draft-guidelines-signal-new-direction-for-primary-curriculum/",
+      "credit_type": "byline"
     },
     {
       "id": "2a5e039934d815310d4c",
@@ -219,7 +235,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/govt-asks-pry-schools-to-keep-zia-khaleda-tarique-books/"
+      "local_url": "stories/govt-asks-pry-schools-to-keep-zia-khaleda-tarique-books/",
+      "credit_type": "byline"
     },
     {
       "id": "2f1ebcb41e1c961d09af",
@@ -232,7 +249,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/government-to-fix-learning-standards-in-pry-schools/"
+      "local_url": "stories/government-to-fix-learning-standards-in-pry-schools/",
+      "credit_type": "byline"
     },
     {
       "id": "549d6a0264888b1ce714",
@@ -245,7 +263,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/govt-asks-primary-schools-to-keep-zia-khaleda-tarique-books/"
+      "local_url": "stories/govt-asks-primary-schools-to-keep-zia-khaleda-tarique-books/",
+      "credit_type": "byline"
     },
     {
       "id": "3a5a92bdd6302707039b",
@@ -258,7 +277,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/education-outlay-rises-sharply/"
+      "local_url": "stories/education-outlay-rises-sharply/",
+      "credit_type": "byline"
     },
     {
       "id": "4e6c672a8e01e9878d9a",
@@ -271,7 +291,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/education-health-outlay-to-rise-63/"
+      "local_url": "stories/education-health-outlay-to-rise-63/",
+      "credit_type": "byline"
     },
     {
       "id": "e129201fafdafc2fac39",
@@ -284,7 +305,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/what-does-success-mean-if-it-cannot-care-for-a-mother/"
+      "local_url": "stories/what-does-success-mean-if-it-cannot-care-for-a-mother/",
+      "credit_type": "byline"
     },
     {
       "id": "f8c998259fdb31f58bdd",
@@ -297,7 +319,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/govt-plans-big-for-edn-execution-doubts-remain/"
+      "local_url": "stories/govt-plans-big-for-edn-execution-doubts-remain/",
+      "credit_type": "byline"
     },
     {
       "id": "34c4ad95db4bbe20da5c",
@@ -310,7 +333,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/when-will-these-painful-stories-end/"
+      "local_url": "stories/when-will-these-painful-stories-end/",
+      "credit_type": "byline"
     },
     {
       "id": "0004e1093082a97220d8",
@@ -323,7 +347,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/why-must-workers-wait-for-eid-dues-every-year/"
+      "local_url": "stories/why-must-workers-wait-for-eid-dues-every-year/",
+      "credit_type": "byline"
     },
     {
       "id": "ea006161917860b8f98e",
@@ -336,7 +361,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/before-we-called-her-a-victim-she-was-a-child/"
+      "local_url": "stories/before-we-called-her-a-victim-she-was-a-child/",
+      "credit_type": "byline"
     },
     {
       "id": "1f3935448e32aa583fe1",
@@ -349,7 +375,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/dcs-seek-pm-s-intervention-on-drug-menace/"
+      "local_url": "stories/dcs-seek-pm-s-intervention-on-drug-menace/",
+      "credit_type": "byline"
     },
     {
       "id": "d80c1b0532d940ce0ffe",
@@ -362,7 +389,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/can-playing-a-historic-speech-justify-repeated-bail-denials/"
+      "local_url": "stories/can-playing-a-historic-speech-justify-repeated-bail-denials/",
+      "credit_type": "byline"
     },
     {
       "id": "7480a6f6e7f432cd073b",
@@ -375,7 +403,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/when-mobile-journalism-crosses-the-line-into-public-shaming/"
+      "local_url": "stories/when-mobile-journalism-crosses-the-line-into-public-shaming/",
+      "credit_type": "byline"
     },
     {
       "id": "207e3866bb0b16e0b34a",
@@ -388,7 +417,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/the-promised-end-of-mob-culture-has-yet-to-arrive/"
+      "local_url": "stories/the-promised-end-of-mob-culture-has-yet-to-arrive/",
+      "credit_type": "byline"
     },
     {
       "id": "be71240c730c0d079630",
@@ -401,7 +431,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/the-cost-of-politicising-vc-appointment/"
+      "local_url": "stories/the-cost-of-politicising-vc-appointment/",
+      "credit_type": "byline"
     },
     {
       "id": "2d20d781962d414ecf80",
@@ -414,7 +445,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/bangla-must-live-beyond-symbolic-observance/"
+      "local_url": "stories/bangla-must-live-beyond-symbolic-observance/",
+      "credit_type": "contribution"
     },
     {
       "id": "66874c40c7d706000ea0",
@@ -427,7 +459,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ex-kuet-vc-accused-of-fund-misuse-illegal-appointments/"
+      "local_url": "stories/ex-kuet-vc-accused-of-fund-misuse-illegal-appointments/",
+      "credit_type": "byline"
     },
     {
       "id": "8e4b151b37af3bf7224c",
@@ -440,7 +473,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/language-debate-in-pak-era-went-beyond-religion/"
+      "local_url": "stories/language-debate-in-pak-era-went-beyond-religion/",
+      "credit_type": "contribution"
     },
     {
       "id": "49177c7fb8abf62f569d",
@@ -453,7 +487,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ncp-eyes-bigger-role-after-bagging-6-seats-in-debut/"
+      "local_url": "stories/ncp-eyes-bigger-role-after-bagging-6-seats-in-debut/",
+      "credit_type": "byline"
     },
     {
       "id": "69ac199af2da36e6cd56",
@@ -466,7 +501,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/yes-wins-but/"
+      "local_url": "stories/yes-wins-but/",
+      "credit_type": "byline"
     },
     {
       "id": "d1c1944673f394a34729",
@@ -479,7 +515,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/limit-ssc-exams-to-5-core-subjects/"
+      "local_url": "stories/limit-ssc-exams-to-5-core-subjects/",
+      "credit_type": "byline"
     },
     {
       "id": "ff2087358deb90f8090b",
@@ -492,7 +529,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/public-exams-cut-to-five-subjects-under-proposed-secondary-reforms/"
+      "local_url": "stories/public-exams-cut-to-five-subjects-under-proposed-secondary-reforms/",
+      "credit_type": "byline"
     },
     {
       "id": "20c5a360f002aaaa7f75",
@@ -505,7 +543,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/harassment-of-teachers-stalks-public-univs/"
+      "local_url": "stories/harassment-of-teachers-stalks-public-univs/",
+      "credit_type": "byline"
     },
     {
       "id": "a79dc707aa7e7b732826",
@@ -518,7 +557,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/govt-issues-draft-ordinances-for-broadcast-media-commissions/"
+      "local_url": "stories/govt-issues-draft-ordinances-for-broadcast-media-commissions/",
+      "credit_type": "byline"
     },
     {
       "id": "33116160838d6e5ce89a",
@@ -531,7 +571,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/safety-freedom-and-job-on-young-voters-mind/"
+      "local_url": "stories/safety-freedom-and-job-on-young-voters-mind/",
+      "credit_type": "byline"
     },
     {
       "id": "0d8900388ebd46a452ed",
@@ -544,7 +585,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/commit-to-equity-quality-in-education/"
+      "local_url": "stories/commit-to-equity-quality-in-education/",
+      "credit_type": "byline"
     },
     {
       "id": "4f577942cdfcece24e51",
@@ -557,7 +599,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/dhaka-central-university-govt-backtracks-from-merger-plan/"
+      "local_url": "stories/dhaka-central-university-govt-backtracks-from-merger-plan/",
+      "credit_type": "byline"
     },
     {
       "id": "9fc6521fd77c6d8f1305",
@@ -570,7 +613,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/2-uap-teachers-terminated-amid-student-protests/"
+      "local_url": "stories/2-uap-teachers-terminated-amid-student-protests/",
+      "credit_type": "byline"
     },
     {
       "id": "f45c486fdf558bd640bb",
@@ -583,7 +627,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ncp-struggles-to-steady-ship-ahead-of-polls/"
+      "local_url": "stories/ncp-struggles-to-steady-ship-ahead-of-polls/",
+      "credit_type": "byline"
     },
     {
       "id": "7a86697bd6a85e9727f2",
@@ -596,7 +641,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ncp-aims-for-40-seats-from-jamaat/"
+      "local_url": "stories/ncp-aims-for-40-seats-from-jamaat/",
+      "credit_type": "byline"
     },
     {
       "id": "8456e7f735e3d8c1b842",
@@ -609,7 +655,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/pry-students-get-books-on-first-day-of-yr/"
+      "local_url": "stories/pry-students-get-books-on-first-day-of-yr/",
+      "credit_type": "byline"
     },
     {
       "id": "c23767f12ba1e382d05e",
@@ -622,7 +669,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/is-the-ncp-becoming-what-it-once-rejected/"
+      "local_url": "stories/is-the-ncp-becoming-what-it-once-rejected/",
+      "credit_type": "byline"
     },
     {
       "id": "1b853c517009d9d51dc2",
@@ -635,7 +683,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-party-of-new-hope-looks-like-the-old-guard/"
+      "local_url": "stories/a-party-of-new-hope-looks-like-the-old-guard/",
+      "credit_type": "byline"
     },
     {
       "id": "493998fff8a0bd0b750f",
@@ -648,7 +697,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/education-in-2025-a-year-of-strikes-setbacks-and-disruptions/"
+      "local_url": "stories/education-in-2025-a-year-of-strikes-setbacks-and-disruptions/",
+      "credit_type": "byline"
     },
     {
       "id": "53c2271a471437925f2e",
@@ -661,7 +711,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/dipu-s-ashes-on-dhaka-mymensingh-highway-are-gone-the-stain-on-our-souls/"
+      "local_url": "stories/dipu-s-ashes-on-dhaka-mymensingh-highway-are-gone-the-stain-on-our-souls/",
+      "credit_type": "byline"
     },
     {
       "id": "d1815a69ef8934de0751",
@@ -674,7 +725,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/is-selective-amnesia-the-price-of-a-new-bangladesh/"
+      "local_url": "stories/is-selective-amnesia-the-price-of-a-new-bangladesh/",
+      "credit_type": "byline"
     },
     {
       "id": "939e7a19331fc8fc5d4c",
@@ -687,7 +739,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/only-political-will-can-break-cycle-of-violence/"
+      "local_url": "stories/only-political-will-can-break-cycle-of-violence/",
+      "credit_type": "byline"
     },
     {
       "id": "f946d492f9cd648a1d00",
@@ -700,7 +753,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/put-rights-issues-at-the-heart-of-polls-pledges/"
+      "local_url": "stories/put-rights-issues-at-the-heart-of-polls-pledges/",
+      "credit_type": "byline"
     },
     {
       "id": "f659997994e96cbefc99",
@@ -713,7 +767,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/there-s-no-neutral-observer-in-digital-violence/"
+      "local_url": "stories/there-s-no-neutral-observer-in-digital-violence/",
+      "credit_type": "byline"
     },
     {
       "id": "c5562344967a9f154821",
@@ -726,7 +781,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/have-you-seen-my-babies/"
+      "local_url": "stories/have-you-seen-my-babies/",
+      "credit_type": "byline"
     },
     {
       "id": "9ab78703018b25287659",
@@ -739,7 +795,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/titumir-s-life-legacy-deserve-more-attention/"
+      "local_url": "stories/titumir-s-life-legacy-deserve-more-attention/",
+      "credit_type": "contribution"
     },
     {
       "id": "24f8139c8c1fe9ca41a2",
@@ -752,7 +809,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/we-need-a-climate-solution-built-on-people-not-projects/"
+      "local_url": "stories/we-need-a-climate-solution-built-on-people-not-projects/",
+      "credit_type": "byline"
     },
     {
       "id": "70cecae8848187799ec7",
@@ -765,7 +823,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/what-price-are-we-paying-for-progress/"
+      "local_url": "stories/what-price-are-we-paying-for-progress/",
+      "credit_type": "byline"
     },
     {
       "id": "655e16db4dacf5462832",
@@ -778,7 +837,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/his-ideals-still-relevant-for-post-uprising-bangladesh/"
+      "local_url": "stories/his-ideals-still-relevant-for-post-uprising-bangladesh/",
+      "credit_type": "contribution"
     },
     {
       "id": "629a37cc78ef0b1090be",
@@ -791,7 +851,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/inside-colleges-where-no-one-passed/"
+      "local_url": "stories/inside-colleges-where-no-one-passed/",
+      "credit_type": "byline"
     },
     {
       "id": "f58cd33b4eeef6a2fd65",
@@ -804,7 +865,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/rucsu-too-goes-to-shibir/"
+      "local_url": "stories/rucsu-too-goes-to-shibir/",
+      "credit_type": "byline"
     },
     {
       "id": "996e02bcd9765570d822",
@@ -817,7 +879,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/teachers-with-no-schools-to-go-to/"
+      "local_url": "stories/teachers-with-no-schools-to-go-to/",
+      "credit_type": "byline"
     },
     {
       "id": "5c82c4d359e0c6885f73",
@@ -830,7 +893,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/rucsu-in-chains-how-a-university-scripted-its-own-crisis/"
+      "local_url": "stories/rucsu-in-chains-how-a-university-scripted-its-own-crisis/",
+      "credit_type": "byline"
     },
     {
       "id": "c0d9d088aa3fdb76cc3d",
@@ -843,7 +907,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/total-literacy-elusive-after-tk-4-000cr-spent/"
+      "local_url": "stories/total-literacy-elusive-after-tk-4-000cr-spent/",
+      "credit_type": "byline"
     },
     {
       "id": "a9c248535fd6f30bcf17",
@@ -856,7 +921,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/how-weaponising-murder-cases-is-shielding-real-perpetrators/"
+      "local_url": "stories/how-weaponising-murder-cases-is-shielding-real-perpetrators/",
+      "credit_type": "byline"
     },
     {
       "id": "ede91d544565009f7d74",
@@ -869,7 +935,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/education-left-behind/"
+      "local_url": "stories/education-left-behind/",
+      "credit_type": "byline"
     },
     {
       "id": "6ce36645074760abe246",
@@ -882,7 +949,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/is-the-uprising-unravelling/"
+      "local_url": "stories/is-the-uprising-unravelling/",
+      "credit_type": "byline"
     },
     {
       "id": "1d94835c78dafa1ba238",
@@ -895,7 +963,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/july-uprising-a-movement-that-united-campuses-and-classrooms/"
+      "local_url": "stories/july-uprising-a-movement-that-united-campuses-and-classrooms/",
+      "credit_type": "byline"
     },
     {
       "id": "f962697f78e62b7647db",
@@ -908,7 +977,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/student-union-election-du-ju-set-for-sept-polls-other-univs-lag-behind/"
+      "local_url": "stories/student-union-election-du-ju-set-for-sept-polls-other-univs-lag-behind/",
+      "credit_type": "byline"
     },
     {
       "id": "254cef90f85c6a66af90",
@@ -921,7 +991,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ssc-pass-rate-plunges-to-a-16-year-low/"
+      "local_url": "stories/ssc-pass-rate-plunges-to-a-16-year-low/",
+      "credit_type": "byline"
     },
     {
       "id": "a0e9777d4d00b11541d1",
@@ -934,7 +1005,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/when-did-we-stop-being-human-in-the-pursuit-of-a-headline/"
+      "local_url": "stories/when-did-we-stop-being-human-in-the-pursuit-of-a-headline/",
+      "credit_type": "byline"
     },
     {
       "id": "1ec58f080a87815ff00c",
@@ -947,7 +1019,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/appointment-by-allegiance/"
+      "local_url": "stories/appointment-by-allegiance/",
+      "credit_type": "byline"
     },
     {
       "id": "f825412cb90136803457",
@@ -960,7 +1033,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/technical-education-hit-by-teacher-shortage-falling-enrolment/"
+      "local_url": "stories/technical-education-hit-by-teacher-shortage-falling-enrolment/",
+      "credit_type": "byline"
     },
     {
       "id": "c4e30700aca7bbd25fe6",
@@ -973,7 +1047,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/mob-violence-now-alarmingly-routine/"
+      "local_url": "stories/mob-violence-now-alarmingly-routine/",
+      "credit_type": "byline"
     },
     {
       "id": "2ba0cee54ab5c94b25f0",
@@ -986,7 +1061,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/is-mahmudul-s-arrest-a-message/"
+      "local_url": "stories/is-mahmudul-s-arrest-a-message/",
+      "credit_type": "byline"
     },
     {
       "id": "61343e82bd97d7df2810",
@@ -999,7 +1075,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/are-we-hurtling-towards-mob-journalism/"
+      "local_url": "stories/are-we-hurtling-towards-mob-journalism/",
+      "credit_type": "byline"
     },
     {
       "id": "3eab0b3efc6161ab90e8",
@@ -1012,7 +1089,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/july-warriors-patients-who-refuse-to-be-just-patients/"
+      "local_url": "stories/july-warriors-patients-who-refuse-to-be-just-patients/",
+      "credit_type": "byline"
     },
     {
       "id": "63c52474dc9bd245418b",
@@ -1025,7 +1103,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/from-the-streets-to-the-stands-football-reclaims-bangladeshi-hearts/"
+      "local_url": "stories/from-the-streets-to-the-stands-football-reclaims-bangladeshi-hearts/",
+      "credit_type": "byline"
     },
     {
       "id": "b96d3e55995526e97261",
@@ -1038,7 +1117,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-recurring-script-is-enough-to-prove-the-pattern/"
+      "local_url": "stories/a-recurring-script-is-enough-to-prove-the-pattern/",
+      "credit_type": "byline"
     },
     {
       "id": "d6e0e9bc3a0f1c3ffc35",
@@ -1051,7 +1131,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/who-in-the-world-holds-the-strings-in-this-republic/"
+      "local_url": "stories/who-in-the-world-holds-the-strings-in-this-republic/",
+      "credit_type": "byline"
     },
     {
       "id": "e1697aedf0ebbd3d28ff",
@@ -1064,7 +1145,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/education-health-outlays-see-slight-rise/"
+      "local_url": "stories/education-health-outlays-see-slight-rise/",
+      "credit_type": "byline"
     },
     {
       "id": "c1b02c2cc6a9770ca126",
@@ -1077,7 +1159,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/cowardice-plain-and-simple/"
+      "local_url": "stories/cowardice-plain-and-simple/",
+      "credit_type": "byline"
     },
     {
       "id": "a628026db824b425a51a",
@@ -1090,7 +1173,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/let-s-mope/"
+      "local_url": "stories/let-s-mope/",
+      "credit_type": "byline"
     },
     {
       "id": "7da1093078050a3e63fe",
@@ -1103,7 +1187,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/when-protest-turns-into-a-mob/"
+      "local_url": "stories/when-protest-turns-into-a-mob/",
+      "credit_type": "byline"
     },
     {
       "id": "7b23b4f31d51464a2c48",
@@ -1116,7 +1201,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/search-committee-formed-after-posts-already-filled/"
+      "local_url": "stories/search-committee-formed-after-posts-already-filled/",
+      "credit_type": "byline"
     },
     {
       "id": "78c4e2a6966fc61f37c9",
@@ -1129,7 +1215,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-place-of-hope-healing-for-cancer-patients/"
+      "local_url": "stories/a-place-of-hope-healing-for-cancer-patients/",
+      "credit_type": "byline"
     },
     {
       "id": "3ef86bdff7f4c7c54d90",
@@ -1142,7 +1229,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/concerns-genuine-but-reforms-need-planning/"
+      "local_url": "stories/concerns-genuine-but-reforms-need-planning/",
+      "credit_type": "byline"
     },
     {
       "id": "eb885c74ec8fa42c84fb",
@@ -1155,7 +1243,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-milestone-to-treasure/"
+      "local_url": "stories/a-milestone-to-treasure/",
+      "credit_type": "byline"
     },
     {
       "id": "cceb33d47cb67a64ea0b",
@@ -1168,7 +1257,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/pry-secondary-schools-millions-of-students-still-without-textbooks/"
+      "local_url": "stories/pry-secondary-schools-millions-of-students-still-without-textbooks/",
+      "credit_type": "byline"
     },
     {
       "id": "1ce4876d03a9ff4f1ade",
@@ -1181,7 +1271,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/july-uprising-al-govt-oppositions-used-children-as-pawns/"
+      "local_url": "stories/july-uprising-al-govt-oppositions-used-children-as-pawns/",
+      "credit_type": "byline"
     },
     {
       "id": "c55de567e4d1e4f9ae98",
@@ -1194,7 +1285,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/mohammadpur-gunfight-follows-a-disturbingly-similar-script/"
+      "local_url": "stories/mohammadpur-gunfight-follows-a-disturbingly-similar-script/",
+      "credit_type": "byline"
     },
     {
       "id": "37b646ddf94793719933",
@@ -1207,7 +1299,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/are-they-even-trying-or-have-they-decided-not-to-act/"
+      "local_url": "stories/are-they-even-trying-or-have-they-decided-not-to-act/",
+      "credit_type": "byline"
     },
     {
       "id": "47510b59789fcb156c32",
@@ -1220,7 +1313,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/set-up-waiting-list-system-to-recruit-teachers/"
+      "local_url": "stories/set-up-waiting-list-system-to-recruit-teachers/",
+      "credit_type": "byline"
     },
     {
       "id": "cca05fe6cd8fdcd5aa59",
@@ -1233,7 +1327,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/july-uprising-state-forces-al-perpetrated-gender-based-violence/"
+      "local_url": "stories/july-uprising-state-forces-al-perpetrated-gender-based-violence/",
+      "credit_type": "byline"
     },
     {
       "id": "fa97015a56a76ab9dfd1",
@@ -1246,7 +1341,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/why-not-banish-aynaghars/"
+      "local_url": "stories/why-not-banish-aynaghars/",
+      "credit_type": "byline"
     },
     {
       "id": "56be66b015a674b42619",
@@ -1259,7 +1355,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/primary-education-pece-similar-tests-should-be-scrapped/"
+      "local_url": "stories/primary-education-pece-similar-tests-should-be-scrapped/",
+      "credit_type": "byline"
     },
     {
       "id": "4426c5d23105f7d44056",
@@ -1272,7 +1369,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/renaming-education-cadre-proposed/"
+      "local_url": "stories/renaming-education-cadre-proposed/",
+      "credit_type": "byline"
     },
     {
       "id": "5711de47099e587c9bca",
@@ -1285,7 +1383,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/44th-47th-bcs-exams-phq-for-halting-recruitment-to-310-police-posts/"
+      "local_url": "stories/44th-47th-bcs-exams-phq-for-halting-recruitment-to-310-police-posts/",
+      "credit_type": "byline"
     },
     {
       "id": "fcadece039d5bef6c9b2",
@@ -1298,7 +1397,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/how-many-more-have-to-die-in-custody/"
+      "local_url": "stories/how-many-more-have-to-die-in-custody/",
+      "credit_type": "byline"
     },
     {
       "id": "f54c25846d350d0ace0c",
@@ -1311,7 +1411,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/you-promised-change-where-is-it/"
+      "local_url": "stories/you-promised-change-where-is-it/",
+      "credit_type": "byline"
     },
     {
       "id": "bb386af4818a5c4446de",
@@ -1324,7 +1425,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ugc-considers-july-36-univ-for-seven-govt-colleges/"
+      "local_url": "stories/ugc-considers-july-36-univ-for-seven-govt-colleges/",
+      "credit_type": "byline"
     },
     {
       "id": "7ba6eae1eff79e24da04",
@@ -1337,7 +1439,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/will-the-mob-decide-bangladesh-s-future/"
+      "local_url": "stories/will-the-mob-decide-bangladesh-s-future/",
+      "credit_type": "byline"
     },
     {
       "id": "0ef0aec4dcd5bfa8fdea",
@@ -1350,7 +1453,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/public-universities-admission-woes-deepen-for-students/"
+      "local_url": "stories/public-universities-admission-woes-deepen-for-students/",
+      "credit_type": "byline"
     },
     {
       "id": "65b03c36b33d49a92481",
@@ -1363,7 +1467,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/govt-s-decision-to-release-top-criminals-proving-costly/"
+      "local_url": "stories/govt-s-decision-to-release-top-criminals-proving-costly/",
+      "credit_type": "byline"
     },
     {
       "id": "622c699714c748fc0e0f",
@@ -1376,7 +1481,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/arresting-scapegoats-will-hardly-make-a-difference/"
+      "local_url": "stories/arresting-scapegoats-will-hardly-make-a-difference/",
+      "credit_type": "byline"
     },
     {
       "id": "22831f7ae9381d16d10d",
@@ -1389,7 +1495,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/students-suffer-as-nctb-fails-to-deliver-books/"
+      "local_url": "stories/students-suffer-as-nctb-fails-to-deliver-books/",
+      "credit_type": "byline"
     },
     {
       "id": "3611cd898f1bd7e51825",
@@ -1402,7 +1509,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/police-brutality-on-protesters-a-betrayal-of-the-july-uprising/"
+      "local_url": "stories/police-brutality-on-protesters-a-betrayal-of-the-july-uprising/",
+      "credit_type": "byline"
     },
     {
       "id": "4d0b85be00e8ab566d7b",
@@ -1415,7 +1523,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/removal-of-word-adivasi-indigenous-group-attacked-at-nctb-20-hurt/"
+      "local_url": "stories/removal-of-word-adivasi-indigenous-group-attacked-at-nctb-20-hurt/",
+      "credit_type": "byline"
     },
     {
       "id": "b3a72385e5c2e737ed79",
@@ -1428,7 +1537,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/shakib-al-hasan-an-icon-we-once-adored-now-fading-into-memory/"
+      "local_url": "stories/shakib-al-hasan-an-icon-we-once-adored-now-fading-into-memory/",
+      "credit_type": "byline"
     },
     {
       "id": "8054c74701b044e35c63",
@@ -1441,7 +1551,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/textbook-fiasco-end-excuses-act-now/"
+      "local_url": "stories/textbook-fiasco-end-excuses-act-now/",
+      "credit_type": "byline"
     },
     {
       "id": "eaa98eddad45f19611a2",
@@ -1454,7 +1565,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/when-students-become-guinea-pigs/"
+      "local_url": "stories/when-students-become-guinea-pigs/",
+      "credit_type": "byline"
     },
     {
       "id": "cf98a6f45b9de96fb93d",
@@ -1467,7 +1579,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/wait-for-textbooks-gets-longer/"
+      "local_url": "stories/wait-for-textbooks-gets-longer/",
+      "credit_type": "byline"
     },
     {
       "id": "e4ecd75227a829944a5b",
@@ -1480,7 +1593,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/primary-secondary-level-major-changes-coming-to-bangla-english-textbooks/"
+      "local_url": "stories/primary-secondary-level-major-changes-coming-to-bangla-english-textbooks/",
+      "credit_type": "byline"
     },
     {
       "id": "ed63da7167fd2488f435",
@@ -1493,7 +1607,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/textbook-distribution-runs-into-a-snag/"
+      "local_url": "stories/textbook-distribution-runs-into-a-snag/",
+      "credit_type": "byline"
     },
     {
       "id": "99f7411a7498aa46c115",
@@ -1506,7 +1621,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/partisan-link-still-rules-the-game/"
+      "local_url": "stories/partisan-link-still-rules-the-game/",
+      "credit_type": "byline"
     },
     {
       "id": "ab936f8fd0f26e1f7dbf",
@@ -1519,7 +1635,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/from-driver-fatigue-to-political-barriers-what-s-making-the-roads-deadlier/"
+      "local_url": "stories/from-driver-fatigue-to-political-barriers-what-s-making-the-roads-deadlier/",
+      "credit_type": "byline"
     },
     {
       "id": "7e78eb6e10b93e72daec",
@@ -1532,7 +1649,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/5-educational-institutions-academic-lives-of-40-000-in-disarray/"
+      "local_url": "stories/5-educational-institutions-academic-lives-of-40-000-in-disarray/",
+      "credit_type": "byline"
     },
     {
       "id": "43d4ade15b8097392aa7",
@@ -1545,7 +1663,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/university-admission-cluster-system-s-fate-hangs-in-balance/"
+      "local_url": "stories/university-admission-cluster-system-s-fate-hangs-in-balance/",
+      "credit_type": "byline"
     },
     {
       "id": "964407a33b6eb24234d9",
@@ -1558,7 +1677,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/leading-univs-withdrawing-from-cluster-system/"
+      "local_url": "stories/leading-univs-withdrawing-from-cluster-system/",
+      "credit_type": "byline"
     },
     {
       "id": "adcafe6c2aad8806fde2",
@@ -1571,7 +1691,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/textbooks-to-feature-july-uprising/"
+      "local_url": "stories/textbooks-to-feature-july-uprising/",
+      "credit_type": "byline"
     },
     {
       "id": "798ab31be89cf42ecb90",
@@ -1584,7 +1705,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/dmp-launches-app-to-identify-accident-hotspots/"
+      "local_url": "stories/dmp-launches-app-to-identify-accident-hotspots/",
+      "credit_type": "byline"
     },
     {
       "id": "a3383be6c533a07dc56a",
@@ -1597,7 +1719,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/free-textbook-distribution-race-against-the-clock-for-govt/"
+      "local_url": "stories/free-textbook-distribution-race-against-the-clock-for-govt/",
+      "credit_type": "byline"
     },
     {
       "id": "d473195447e15ea608c1",
@@ -1610,7 +1733,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/76-job-seekers-still-await-approval/"
+      "local_url": "stories/76-job-seekers-still-await-approval/",
+      "credit_type": "byline"
     },
     {
       "id": "d38624b620e38411c502",
@@ -1623,7 +1747,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/hsc-equivalent-exams-demand-for-auto-pass-unacceptable/"
+      "local_url": "stories/hsc-equivalent-exams-demand-for-auto-pass-unacceptable/",
+      "credit_type": "byline"
     },
     {
       "id": "ded467ad148d8038bde9",
@@ -1636,7 +1761,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/this-year-s-hsc-examinees-have-tough-times-ahead/"
+      "local_url": "stories/this-year-s-hsc-examinees-have-tough-times-ahead/",
+      "credit_type": "byline"
     },
     {
       "id": "1722336c577bebdfedce",
@@ -1649,7 +1775,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/madrasa-board-tops-results-with-93-40pc-pass-rate/"
+      "local_url": "stories/madrasa-board-tops-results-with-93-40pc-pass-rate/",
+      "credit_type": "byline"
     },
     {
       "id": "f410ff92aa3a029a50e9",
@@ -1662,7 +1789,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/hsc-pass-rate-drops-number-of-gpa-5-rises/"
+      "local_url": "stories/hsc-pass-rate-drops-number-of-gpa-5-rises/",
+      "credit_type": "byline"
     },
     {
       "id": "63fac4e971b3281d522f",
@@ -1675,7 +1803,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/durga-puja-a-festival-of-faith-and-togetherness/"
+      "local_url": "stories/durga-puja-a-festival-of-faith-and-togetherness/",
+      "credit_type": "byline"
     },
     {
       "id": "c2c16b79b19f521d2959",
@@ -1688,7 +1817,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ban-on-poly-bags-mixed-reactions-in-some-shops/"
+      "local_url": "stories/ban-on-poly-bags-mixed-reactions-in-some-shops/",
+      "credit_type": "byline"
     },
     {
       "id": "0a685b812475f0772f5e",
@@ -1701,7 +1831,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/textbooks-for-class-4-to-9-exaggerated-historical-info-to-be-struck-off/"
+      "local_url": "stories/textbooks-for-class-4-to-9-exaggerated-historical-info-to-be-struck-off/",
+      "credit_type": "byline"
     },
     {
       "id": "510ba83b2b9f9fd7cbb8",
@@ -1714,7 +1845,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/we-cannot-let-mobs-be-the-judge-jury-and-executioner/"
+      "local_url": "stories/we-cannot-let-mobs-be-the-judge-jury-and-executioner/",
+      "credit_type": "byline"
     },
     {
       "id": "3681394ffc0134f2d75a",
@@ -1727,7 +1859,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ugc-chair-five-new-vcs-appointed/"
+      "local_url": "stories/ugc-chair-five-new-vcs-appointed/",
+      "credit_type": "byline"
     },
     {
       "id": "c93c588b3047c425400c",
@@ -1740,7 +1873,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/administrative-vacuum-universities-struggle-to-restart-classes/"
+      "local_url": "stories/administrative-vacuum-universities-struggle-to-restart-classes/",
+      "credit_type": "byline"
     },
     {
       "id": "2c5a367ff2fbb82f27dd",
@@ -1753,7 +1887,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/public-univs-reopen-today/"
+      "local_url": "stories/public-univs-reopen-today/",
+      "credit_type": "byline"
     },
     {
       "id": "41fbf773987f22328dd2",
@@ -1766,7 +1901,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/three-vcs-of-public-universities-resign/"
+      "local_url": "stories/three-vcs-of-public-universities-resign/",
+      "credit_type": "byline"
     },
     {
       "id": "e3597ec9d66e88e0efaa",
@@ -1779,7 +1915,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/students-step-up-to-fill-the-vacuum/"
+      "local_url": "stories/students-step-up-to-fill-the-vacuum/",
+      "credit_type": "byline"
     },
     {
       "id": "272b7fb0948fc870826b",
@@ -1792,7 +1929,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/closure-of-schools-universities-academic-calendars-in-total-disarray/"
+      "local_url": "stories/closure-of-schools-universities-academic-calendars-in-total-disarray/",
+      "credit_type": "byline"
     },
     {
       "id": "edecc027f5f36506c2e3",
@@ -1805,7 +1943,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/univ-teachers-to-carry-on-strike-today/"
+      "local_url": "stories/univ-teachers-to-carry-on-strike-today/",
+      "credit_type": "byline"
     },
     {
       "id": "e44e69840b90f6fbde61",
@@ -1818,7 +1957,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-look-back-at-2018-quota-protests-and-toriqul-s-tale/"
+      "local_url": "stories/a-look-back-at-2018-quota-protests-and-toriqul-s-tale/",
+      "credit_type": "byline"
     },
     {
       "id": "bb8c6df421330fa387bf",
@@ -1831,7 +1971,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/can-we-trust-psc-with-the-recruitment-of-best-young-minds/"
+      "local_url": "stories/can-we-trust-psc-with-the-recruitment-of-best-young-minds/",
+      "credit_type": "byline"
     },
     {
       "id": "de6c8eb16d363f4a44bb",
@@ -1844,7 +1985,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/gazette-delay-leaves-candidates-in-limbo/"
+      "local_url": "stories/gazette-delay-leaves-candidates-in-limbo/",
+      "credit_type": "byline"
     },
     {
       "id": "e735e3d6f421db99a009",
@@ -1857,7 +1999,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/new-curriculum-same-old-craze-for-guidebooks/"
+      "local_url": "stories/new-curriculum-same-old-craze-for-guidebooks/",
+      "credit_type": "byline"
     },
     {
       "id": "5cbd80df730710db3d9d",
@@ -1870,7 +2013,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/school-exam-marks-65pc-for-written-part-35pc-for-practical/"
+      "local_url": "stories/school-exam-marks-65pc-for-written-part-35pc-for-practical/",
+      "credit_type": "byline"
     },
     {
       "id": "3582c9b0330cca5a549c",
@@ -1883,7 +2027,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/vc-teachers-feud-at-cou-stalemate-leaves-students-in-limbo/"
+      "local_url": "stories/vc-teachers-feud-at-cou-stalemate-leaves-students-in-limbo/",
+      "credit_type": "byline"
     },
     {
       "id": "a88aeeb8e91786dfb113",
@@ -1896,7 +2041,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ugc-bans-future-recruitment-at-cmu/"
+      "local_url": "stories/ugc-bans-future-recruitment-at-cmu/",
+      "credit_type": "byline"
     },
     {
       "id": "ec852f4ed2dedd54b415",
@@ -1909,7 +2055,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/new-school-curriculum-implementation-limps-along/"
+      "local_url": "stories/new-school-curriculum-implementation-limps-along/",
+      "credit_type": "byline"
     },
     {
       "id": "65a173acd102a7c35dc9",
@@ -1922,7 +2069,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/they-needed-to-sanction-someone-and-picked-me/"
+      "local_url": "stories/they-needed-to-sanction-someone-and-picked-me/",
+      "credit_type": "byline"
     },
     {
       "id": "800ff5453b45b61f7b43",
@@ -1935,7 +2083,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/spice-prices-shoot-up-by-20-percent/"
+      "local_url": "stories/spice-prices-shoot-up-by-20-percent/",
+      "credit_type": "byline"
     },
     {
       "id": "20a66a22dba3e9823704",
@@ -1948,7 +2097,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/secondary-mpo-schools-must-pay-admission-fees-to-govt/"
+      "local_url": "stories/secondary-mpo-schools-must-pay-admission-fees-to-govt/",
+      "credit_type": "byline"
     },
     {
       "id": "112b654ca5365443db82",
@@ -1961,7 +2111,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/alarming-failures/"
+      "local_url": "stories/alarming-failures/",
+      "credit_type": "byline"
     },
     {
       "id": "b008c989067e796aeeb1",
@@ -1974,7 +2125,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/girls-ace-ssc-again/"
+      "local_url": "stories/girls-ace-ssc-again/",
+      "credit_type": "byline"
     },
     {
       "id": "ecc75435f9ae0237d8b6",
@@ -1987,7 +2139,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/lowest-number-of-gpa-5-in-12-years/"
+      "local_url": "stories/lowest-number-of-gpa-5-in-12-years/",
+      "credit_type": "byline"
     },
     {
       "id": "e2ea1c4ab52082f8affb",
@@ -2000,7 +2153,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/govt-again-moves-to-extend-primary-education-up-to-class-viii/"
+      "local_url": "stories/govt-again-moves-to-extend-primary-education-up-to-class-viii/",
+      "credit_type": "byline"
     },
     {
       "id": "7dedc0f0def74d17e4d2",
@@ -2013,7 +2167,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/schools-colleges-a-reopening-that-defies-heatwave-and-logic/"
+      "local_url": "stories/schools-colleges-a-reopening-that-defies-heatwave-and-logic/",
+      "credit_type": "byline"
     },
     {
       "id": "dd1c19c35bc87359398d",
@@ -2026,7 +2181,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/parents-worried-as-schools-reopen-amid-heat-alert/"
+      "local_url": "stories/parents-worried-as-schools-reopen-amid-heat-alert/",
+      "credit_type": "byline"
     },
     {
       "id": "747621ef09a6db5567ca",
@@ -2039,7 +2195,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/traffic-alert-an-information-hub-improving-lives/"
+      "local_url": "stories/traffic-alert-an-information-hub-improving-lives/",
+      "credit_type": "byline"
     },
     {
       "id": "c4c87db15856c6681940",
@@ -2052,7 +2209,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/women-protected-by-women/"
+      "local_url": "stories/women-protected-by-women/",
+      "credit_type": "byline"
     },
     {
       "id": "011964846584abbf3c1c",
@@ -2065,7 +2223,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/non-payment-of-tax-nbr-freezes-bank-accounts-of-12-pvt-univs/"
+      "local_url": "stories/non-payment-of-tax-nbr-freezes-bank-accounts-of-12-pvt-univs/",
+      "credit_type": "byline"
     },
     {
       "id": "b8ede188d4e442e6eb51",
@@ -2078,7 +2237,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/sexual-harassment-at-jnu-for-2yrs-suspect-protected-victim-tormented/"
+      "local_url": "stories/sexual-harassment-at-jnu-for-2yrs-suspect-protected-victim-tormented/",
+      "credit_type": "byline"
     },
     {
       "id": "4329b197ffec1136a94f",
@@ -2091,7 +2251,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/when-speaking-up-is-a-crime/"
+      "local_url": "stories/when-speaking-up-is-a-crime/",
+      "credit_type": "byline"
     },
     {
       "id": "bb687e2324b2b1219a08",
@@ -2104,7 +2265,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/schools-to-stay-open-in-ramadan/"
+      "local_url": "stories/schools-to-stay-open-in-ramadan/",
+      "credit_type": "byline"
     },
     {
       "id": "433654f710707f58dc9e",
@@ -2117,7 +2279,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/confusion-over-school-closure-in-ramadan/"
+      "local_url": "stories/confusion-over-school-closure-in-ramadan/",
+      "credit_type": "byline"
     },
     {
       "id": "a60ed1e2de97d20b1510",
@@ -2130,7 +2293,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/jagannath-university-rife-with-financial-irregularities-ugc-report/"
+      "local_url": "stories/jagannath-university-rife-with-financial-irregularities-ugc-report/",
+      "credit_type": "byline"
     },
     {
       "id": "8ede73e66c34b7f56dbc",
@@ -2143,7 +2307,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-walk-down-perfume-lane/"
+      "local_url": "stories/a-walk-down-perfume-lane/",
+      "credit_type": "byline"
     },
     {
       "id": "e7e97fcc45be99f5be77",
@@ -2156,7 +2321,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/is-mitford-s-fragrance-fading/"
+      "local_url": "stories/is-mitford-s-fragrance-fading/",
+      "credit_type": "byline"
     },
     {
       "id": "51b2f04f9a7970ae8f88",
@@ -2169,7 +2335,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/wish-it-lasted-a-bit-longer/"
+      "local_url": "stories/wish-it-lasted-a-bit-longer/",
+      "credit_type": "byline"
     },
     {
       "id": "42ca5e718b52b06dd884",
@@ -2182,7 +2349,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/we-are-alive-thanks-to-them/"
+      "local_url": "stories/we-are-alive-thanks-to-them/",
+      "credit_type": "byline"
     },
     {
       "id": "b0bc9a1e2ccf31e548ad",
@@ -2195,7 +2363,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/thanks-to-them-i-am-alive-today/"
+      "local_url": "stories/thanks-to-them-i-am-alive-today/",
+      "credit_type": "byline"
     },
     {
       "id": "957c24e365b46273ad64",
@@ -2208,7 +2377,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ekushey-boi-mela-likely-to-get-new-venue/"
+      "local_url": "stories/ekushey-boi-mela-likely-to-get-new-venue/",
+      "credit_type": "byline"
     },
     {
       "id": "df22a155c0acbb0aee2a",
@@ -2221,7 +2391,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-day-to-be-cherished-forever/"
+      "local_url": "stories/a-day-to-be-cherished-forever/",
+      "credit_type": "byline"
     },
     {
       "id": "7eeaf75f197e5bb86753",
@@ -2234,7 +2405,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/celebrating-bangla-ekushey-boi-mela-sees-huge-turnout/"
+      "local_url": "stories/celebrating-bangla-ekushey-boi-mela-sees-huge-turnout/",
+      "credit_type": "byline"
     },
     {
       "id": "be689bc65320945a6719",
@@ -2247,7 +2419,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/love-resides-here/"
+      "local_url": "stories/love-resides-here/",
+      "credit_type": "byline"
     },
     {
       "id": "2bd4e857b83049b9ec1a",
@@ -2260,7 +2433,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ju-failed-to-make-campus-women-friendly/"
+      "local_url": "stories/ju-failed-to-make-campus-women-friendly/",
+      "credit_type": "byline"
     },
     {
       "id": "b89b42481c65c23a9f28",
@@ -2273,7 +2447,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/falgun-fever-captures-ekushey-boi-mela/"
+      "local_url": "stories/falgun-fever-captures-ekushey-boi-mela/",
+      "credit_type": "byline"
     },
     {
       "id": "8545ab51d54c52606dc6",
@@ -2286,7 +2461,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/where-love-for-books-begins/"
+      "local_url": "stories/where-love-for-books-begins/",
+      "credit_type": "byline"
     },
     {
       "id": "173926218b9fca8e5108",
@@ -2299,7 +2475,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/audiobooks-when-stories-come-alive/"
+      "local_url": "stories/audiobooks-when-stories-come-alive/",
+      "credit_type": "byline"
     },
     {
       "id": "ee439619b5145b6b8aa8",
@@ -2312,7 +2489,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-palace-by-the-river/"
+      "local_url": "stories/a-palace-by-the-river/",
+      "credit_type": "byline"
     },
     {
       "id": "b9e245dcb02fffd7ff32",
@@ -2325,7 +2503,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/one-generation-to-next-humayun-ahmed-lives-on/"
+      "local_url": "stories/one-generation-to-next-humayun-ahmed-lives-on/",
+      "credit_type": "byline"
     },
     {
       "id": "ea9493be87620317147e",
@@ -2338,7 +2517,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-tapestry-of-colours-and-cultures/"
+      "local_url": "stories/a-tapestry-of-colours-and-cultures/",
+      "credit_type": "byline"
     },
     {
       "id": "7226061d3098db8d7f3c",
@@ -2351,7 +2531,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/metro-sees-huge-crowd-as-book-fair-kicks-off/"
+      "local_url": "stories/metro-sees-huge-crowd-as-book-fair-kicks-off/",
+      "credit_type": "byline"
     },
     {
       "id": "e9134e5390606bbe4eaa",
@@ -2364,7 +2545,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/biggest-event-for-booklovers-returns/"
+      "local_url": "stories/biggest-event-for-booklovers-returns/",
+      "credit_type": "byline"
     },
     {
       "id": "d1c0ae74b5a59ed143ea",
@@ -2377,7 +2559,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/banglabazar-all-things-book/"
+      "local_url": "stories/banglabazar-all-things-book/",
+      "credit_type": "byline"
     },
     {
       "id": "af0d5b18bcb24fda7779",
@@ -2390,7 +2573,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/restoring-dhaka-s-lost-past-with-dhaka-gate/"
+      "local_url": "stories/restoring-dhaka-s-lost-past-with-dhaka-gate/",
+      "credit_type": "byline"
     },
     {
       "id": "789ce35dcf7e9304c576",
@@ -2403,7 +2587,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/metro-at-night/"
+      "local_url": "stories/metro-at-night/",
+      "credit_type": "byline"
     },
     {
       "id": "855b42d63c6cfa929ea3",
@@ -2416,7 +2601,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/parties-in-parliament-second-lowest-since-1991/"
+      "local_url": "stories/parties-in-parliament-second-lowest-since-1991/",
+      "credit_type": "byline"
     },
     {
       "id": "89c90d1e957cbf81f333",
@@ -2429,7 +2615,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/19-women-triumph-with-higher-turnout/"
+      "local_url": "stories/19-women-triumph-with-higher-turnout/",
+      "credit_type": "byline"
     },
     {
       "id": "03574cbbd4f1b8bcfddd",
@@ -2442,7 +2629,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/du-bcl-president-poses-with-ballot-paper-with-vote-for-boat/"
+      "local_url": "stories/du-bcl-president-poses-with-ballot-paper-with-vote-for-boat/",
+      "credit_type": "byline"
     },
     {
       "id": "9ed3472fb150c6e4d26c",
@@ -2455,7 +2643,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/bcl-men-enter-polling-booths-in-du-centre-with-food-for-agents/"
+      "local_url": "stories/bcl-men-enter-polling-booths-in-du-centre-with-food-for-agents/",
+      "credit_type": "byline"
     },
     {
       "id": "bc7ba7fce2dc9f2ae33e",
@@ -2468,7 +2657,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ballot-stuffing-attempt-2-star-reporters-cornered-for-bearing-witness/"
+      "local_url": "stories/ballot-stuffing-attempt-2-star-reporters-cornered-for-bearing-witness/",
+      "credit_type": "byline"
     },
     {
       "id": "f6ca7804b0accd371bb3",
@@ -2481,7 +2671,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/memes-more-than-just-a-laugh/"
+      "local_url": "stories/memes-more-than-just-a-laugh/",
+      "credit_type": "byline"
     },
     {
       "id": "2c126254f6e2a857bf71",
@@ -2494,7 +2685,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/hsc-pass-rate-gpa-5-dip/"
+      "local_url": "stories/hsc-pass-rate-gpa-5-dip/",
+      "credit_type": "byline"
     },
     {
       "id": "478d8977b93ae7634c78",
@@ -2507,7 +2699,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/technical-edu-board-outperforms-others/"
+      "local_url": "stories/technical-edu-board-outperforms-others/",
+      "credit_type": "byline"
     },
     {
       "id": "32c91fed518dd89a64e8",
@@ -2520,7 +2713,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ugc-member-urges-teachers-to-ensure-80pc-turnout-in-polls/"
+      "local_url": "stories/ugc-member-urges-teachers-to-ensure-80pc-turnout-in-polls/",
+      "credit_type": "byline"
     },
     {
       "id": "a65fd5364bba43924ce1",
@@ -2533,7 +2727,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/three-day-blockade-low-turnout-at-schools/"
+      "local_url": "stories/three-day-blockade-low-turnout-at-schools/",
+      "credit_type": "byline"
     },
     {
       "id": "b04ee30ececdb439f29d",
@@ -2546,7 +2741,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/empowering-mothers-in-gaibandha/"
+      "local_url": "stories/empowering-mothers-in-gaibandha/",
+      "credit_type": "byline"
     },
     {
       "id": "7836c012ff91e87ca550",
@@ -2559,7 +2755,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/govt-move-to-check-prices-falls-flat/"
+      "local_url": "stories/govt-move-to-check-prices-falls-flat/",
+      "credit_type": "byline"
     },
     {
       "id": "09b344394d807160c5f7",
@@ -2572,7 +2769,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/dhaka-s-educational-heritage/"
+      "local_url": "stories/dhaka-s-educational-heritage/",
+      "credit_type": "byline"
     },
     {
       "id": "41381b962c2cf9b080e1",
@@ -2585,7 +2783,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/academic-activities-in-peril/"
+      "local_url": "stories/academic-activities-in-peril/",
+      "credit_type": "byline"
     },
     {
       "id": "d002905c5744ff57a9f7",
@@ -2598,7 +2797,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/al-activists-police-take-over-some-bnp-sit-ins/"
+      "local_url": "stories/al-activists-police-take-over-some-bnp-sit-ins/",
+      "credit_type": "byline"
     },
     {
       "id": "50ce1bf7ba0f4f188e33",
@@ -2611,7 +2811,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ssc-equivalent-exams-pass-rate-hits-13-year-low/"
+      "local_url": "stories/ssc-equivalent-exams-pass-rate-hits-13-year-low/",
+      "credit_type": "byline"
     },
     {
       "id": "a8bce049faba079e8bd7",
@@ -2624,7 +2825,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/pass-rate-gpa-5-lowest-in-5-years/"
+      "local_url": "stories/pass-rate-gpa-5-lowest-in-5-years/",
+      "credit_type": "byline"
     },
     {
       "id": "bbe8258b6512624de9d4",
@@ -2637,7 +2839,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/we-re-left-with-no-choice/"
+      "local_url": "stories/we-re-left-with-no-choice/",
+      "credit_type": "byline"
     },
     {
       "id": "22836cfd1f3af446c10b",
@@ -2650,7 +2853,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/registration-of-2-parties-questions-raised-over-ec-s-picks/"
+      "local_url": "stories/registration-of-2-parties-questions-raised-over-ec-s-picks/",
+      "credit_type": "byline"
     },
     {
       "id": "783ca75fcc3d4f84bf65",
@@ -2663,7 +2867,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/primary-schools-in-thakurgaon-nilphamari-lack-of-fund-resources-hinder/"
+      "local_url": "stories/primary-schools-in-thakurgaon-nilphamari-lack-of-fund-resources-hinder/",
+      "credit_type": "byline"
     },
     {
       "id": "105854a3a431e191c3d8",
@@ -2676,7 +2881,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/braving-scorching-heat-in-the-line-of-duty/"
+      "local_url": "stories/braving-scorching-heat-in-the-line-of-duty/",
+      "credit_type": "byline"
     },
     {
       "id": "944fc8115a39be75263a",
@@ -2689,7 +2895,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/cluster-admission-tests-22-univs-lag-behind-have-vacant-seats/"
+      "local_url": "stories/cluster-admission-tests-22-univs-lag-behind-have-vacant-seats/",
+      "credit_type": "byline"
     },
     {
       "id": "ee348283231cb3348d69",
@@ -2702,7 +2909,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/four-teachers-appointed-against-two-vacant-posts/"
+      "local_url": "stories/four-teachers-appointed-against-two-vacant-posts/",
+      "credit_type": "byline"
     },
     {
       "id": "52dd64ff15b0fbf51556",
@@ -2715,7 +2923,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/the-tale-of-holiday-sufferings/"
+      "local_url": "stories/the-tale-of-holiday-sufferings/",
+      "credit_type": "byline"
     },
     {
       "id": "1202924f246338ca6ce5",
@@ -2728,7 +2937,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/public-univ-admission-single-entry-exam-from-next-year/"
+      "local_url": "stories/public-univ-admission-single-entry-exam-from-next-year/",
+      "credit_type": "byline"
     },
     {
       "id": "e1566def29af18cb32ba",
@@ -2741,7 +2951,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/patients-find-strength-in-shared-devotion/"
+      "local_url": "stories/patients-find-strength-in-shared-devotion/",
+      "credit_type": "byline"
     },
     {
       "id": "5e6ff82ffb7c3dc97e0f",
@@ -2754,7 +2965,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/jalladkhana-killing-field-a-haunting-reminder-of-the-tragic-past/"
+      "local_url": "stories/jalladkhana-killing-field-a-haunting-reminder-of-the-tragic-past/",
+      "credit_type": "byline"
     },
     {
       "id": "913639db361f09cd6f7b",
@@ -2767,7 +2979,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/revisiting-memories-of-struggle-and-sacrifice/"
+      "local_url": "stories/revisiting-memories-of-struggle-and-sacrifice/",
+      "credit_type": "byline"
     },
     {
       "id": "7c9106a4602169c5d481",
@@ -2780,7 +2993,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-journey-through-bangladesh-s-struggle-for-independence/"
+      "local_url": "stories/a-journey-through-bangladesh-s-struggle-for-independence/",
+      "credit_type": "byline"
     },
     {
       "id": "b3507af3f59ad2b2302f",
@@ -2793,7 +3007,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-village-of-mosques/"
+      "local_url": "stories/a-village-of-mosques/",
+      "credit_type": "byline"
     },
     {
       "id": "c79aef02d31238dfa316",
@@ -2806,7 +3021,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/cultivating-reading-habits-since-2001/"
+      "local_url": "stories/cultivating-reading-habits-since-2001/",
+      "credit_type": "byline"
     },
     {
       "id": "d336cc224b0fc84df7ab",
@@ -2819,7 +3035,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/where-basic-amenities-remain-elusive/"
+      "local_url": "stories/where-basic-amenities-remain-elusive/",
+      "credit_type": "byline"
     },
     {
       "id": "30613a4baf44f6df53cb",
@@ -2832,7 +3049,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/hsc-pass-rate-falls/"
+      "local_url": "stories/hsc-pass-rate-falls/",
+      "credit_type": "byline"
     },
     {
       "id": "7e476e19cbab9eb7818e",
@@ -2845,7 +3063,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-village-of-crabs-in-dhaka/"
+      "local_url": "stories/a-village-of-crabs-in-dhaka/",
+      "credit_type": "byline"
     },
     {
       "id": "af4fbc08671802826c82",
@@ -2858,7 +3077,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/watching-planes-their-only-entertainment/"
+      "local_url": "stories/watching-planes-their-only-entertainment/",
+      "credit_type": "byline"
     },
     {
       "id": "cbb9827714b0b07f55be",
@@ -2871,7 +3091,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/plight-of-dncc-wards-52-53-life-seemed-better-under-union-parishad/"
+      "local_url": "stories/plight-of-dncc-wards-52-53-life-seemed-better-under-union-parishad/",
+      "credit_type": "byline"
     },
     {
       "id": "88cabc444368f4ddea07",
@@ -2884,7 +3105,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/under-the-dirty-water-there-s-a-ward/"
+      "local_url": "stories/under-the-dirty-water-there-s-a-ward/",
+      "credit_type": "byline"
     },
     {
       "id": "65528f66fc5a65f811dc",
@@ -2897,7 +3119,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/nctb-textbooks-never-ending-cycle-of-controversies/"
+      "local_url": "stories/nctb-textbooks-never-ending-cycle-of-controversies/",
+      "credit_type": "byline"
     },
     {
       "id": "744b061ba119c2d84cbc",
@@ -2910,7 +3133,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/radio-silence-bangladesh-betar-s-external-service-inoperative-for-three/"
+      "local_url": "stories/radio-silence-bangladesh-betar-s-external-service-inoperative-for-three/",
+      "credit_type": "byline"
     },
     {
       "id": "928418106ff159acfc8e",
@@ -2923,7 +3147,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/i-ll-pass-this-story-to-my-children/"
+      "local_url": "stories/i-ll-pass-this-story-to-my-children/",
+      "credit_type": "byline"
     },
     {
       "id": "473746cb08f01c291166",
@@ -2936,7 +3161,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/satrasta-tejgaon-road-will-it-finally-be-free-of-congestion/"
+      "local_url": "stories/satrasta-tejgaon-road-will-it-finally-be-free-of-congestion/",
+      "credit_type": "byline"
     },
     {
       "id": "31c71d3d8e063f4a22c1",
@@ -2949,7 +3175,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-good-initiative-but-still-a-long-way-to-go/"
+      "local_url": "stories/a-good-initiative-but-still-a-long-way-to-go/",
+      "credit_type": "byline"
     },
     {
       "id": "683b7f3fb1f02105037b",
@@ -2962,7 +3189,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/study-abroad-students-suffer-as-banks-reluctant-to-open-files/"
+      "local_url": "stories/study-abroad-students-suffer-as-banks-reluctant-to-open-files/",
+      "credit_type": "byline"
     },
     {
       "id": "b959cbf285cbc0bac35a",
@@ -2975,7 +3203,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/many-suffer-at-police-checkpoints-in-city/"
+      "local_url": "stories/many-suffer-at-police-checkpoints-in-city/",
+      "credit_type": "byline"
     },
     {
       "id": "8954b7502453ffc0db94",
@@ -2988,7 +3217,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/the-checkpoint-chronicle-continues/"
+      "local_url": "stories/the-checkpoint-chronicle-continues/",
+      "credit_type": "byline"
     },
     {
       "id": "ea1b6909210a2bc51a82",
@@ -3001,7 +3231,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/no-one-should-face-such-a-horrible-fate/"
+      "local_url": "stories/no-one-should-face-such-a-horrible-fate/",
+      "credit_type": "byline"
     },
     {
       "id": "168febab2557b3ec1fb0",
@@ -3014,7 +3245,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/of-oms-queues-and-desperation/"
+      "local_url": "stories/of-oms-queues-and-desperation/",
+      "credit_type": "byline"
     },
     {
       "id": "5e52bebec4b09532f4c9",
@@ -3027,7 +3259,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/allegations-mount-against-rajshahi-bcl-top-brass/"
+      "local_url": "stories/allegations-mount-against-rajshahi-bcl-top-brass/",
+      "credit_type": "byline"
     },
     {
       "id": "4050a4415df4c157f2b9",
@@ -3040,7 +3273,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/a-bad-day-to-catch-a-flight/"
+      "local_url": "stories/a-bad-day-to-catch-a-flight/",
+      "credit_type": "byline"
     },
     {
       "id": "a2010a4d773c37d64a43",
@@ -3053,7 +3287,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/tough-day-for-dhaka-dwellers/"
+      "local_url": "stories/tough-day-for-dhaka-dwellers/",
+      "credit_type": "byline"
     },
     {
       "id": "40f4d206b67694887534",
@@ -3066,7 +3301,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/manarat-university-govt-reconstitutes-trustee-board-over-militancy-links/"
+      "local_url": "stories/manarat-university-govt-reconstitutes-trustee-board-over-militancy-links/",
+      "credit_type": "byline"
     },
     {
       "id": "5f4b60eb35844f50db91",
@@ -3079,7 +3315,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/atiqul-islam-made-chairman-of-manarat-int-l-university-board-of-trustees/"
+      "local_url": "stories/atiqul-islam-made-chairman-of-manarat-int-l-university-board-of-trustees/",
+      "credit_type": "byline"
     },
     {
       "id": "9890707e7dbd8811d704",
@@ -3092,7 +3329,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/now-school-supplies-get-pricier/"
+      "local_url": "stories/now-school-supplies-get-pricier/",
+      "credit_type": "byline"
     },
     {
       "id": "40814ea8c277711c587d",
@@ -3105,7 +3343,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/bcl-committees-at-3-public-univs-rogues-rewarded/"
+      "local_url": "stories/bcl-committees-at-3-public-univs-rogues-rewarded/",
+      "credit_type": "byline"
     },
     {
       "id": "ad6857917717eb36b0df",
@@ -3118,7 +3357,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ride-sharing-riders-in-trouble/"
+      "local_url": "stories/ride-sharing-riders-in-trouble/",
+      "credit_type": "byline"
     },
     {
       "id": "4167aa794efc25d54667",
@@ -3131,7 +3371,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/roni-calls-off-protest-for-now/"
+      "local_url": "stories/roni-calls-off-protest-for-now/",
+      "credit_type": "byline"
     },
     {
       "id": "d182179545b0f5ea7ab6",
@@ -3144,7 +3385,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/the-one-who-pledged-to-keep-fighting/"
+      "local_url": "stories/the-one-who-pledged-to-keep-fighting/",
+      "credit_type": "byline"
     },
     {
       "id": "9cc826d0605eae2c386f",
@@ -3157,7 +3399,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/road-crash-tragedies-stalk-his-family/"
+      "local_url": "stories/road-crash-tragedies-stalk-his-family/",
+      "credit_type": "byline"
     },
     {
       "id": "738a142db25cbb344679",
@@ -3170,7 +3413,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/truck-kills-ru-student-on-campus/"
+      "local_url": "stories/truck-kills-ru-student-on-campus/",
+      "credit_type": "byline"
     },
     {
       "id": "e4630d043b2448e64645",
@@ -3183,7 +3427,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/hasan-azizul-huq-laid-to-rest/"
+      "local_url": "stories/hasan-azizul-huq-laid-to-rest/",
+      "credit_type": "byline"
     },
     {
       "id": "018770b51878f30d2f57",
@@ -3196,7 +3441,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/desperation-over-accommodation/"
+      "local_url": "stories/desperation-over-accommodation/",
+      "credit_type": "byline"
     },
     {
       "id": "d2be924de9d20e038c11",
@@ -3209,7 +3455,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/where-will-all-the-students-stay/"
+      "local_url": "stories/where-will-all-the-students-stay/",
+      "credit_type": "byline"
     },
     {
       "id": "0bf7cad30d53c07f9034",
@@ -3222,7 +3469,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/lockdown-leaves-students-hanging/"
+      "local_url": "stories/lockdown-leaves-students-hanging/",
+      "credit_type": "byline"
     },
     {
       "id": "97f8f05c0af226e7cc86",
@@ -3235,7 +3483,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/nbr-seeks-bank-info-on-former-ru-vc/"
+      "local_url": "stories/nbr-seeks-bank-info-on-former-ru-vc/",
+      "credit_type": "byline"
     },
     {
       "id": "dd7b445d9f92ac7c25cd",
@@ -3248,7 +3497,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/reckless-recruitment-racks-up-ru-budget/"
+      "local_url": "stories/reckless-recruitment-racks-up-ru-budget/",
+      "credit_type": "byline"
     },
     {
       "id": "4f5f0b8186e2fc0dbea5",
@@ -3261,7 +3511,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ex-ru-vc-s-tenure-recruitment-rules-violated-freely/"
+      "local_url": "stories/ex-ru-vc-s-tenure-recruitment-rules-violated-freely/",
+      "credit_type": "byline"
     },
     {
       "id": "3c1b30526a6996f804d8",
@@ -3274,7 +3525,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/all-for-money/"
+      "local_url": "stories/all-for-money/",
+      "credit_type": "byline"
     },
     {
       "id": "3168fbc11e1cb5304a7e",
@@ -3287,7 +3539,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/bcl-men-to-get-top-priority-for-univ-jobs/"
+      "local_url": "stories/bcl-men-to-get-top-priority-for-univ-jobs/",
+      "credit_type": "byline"
     },
     {
       "id": "62ca6db1d8c353ec695a",
@@ -3300,7 +3553,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/keep-dorms-open-during-exams/"
+      "local_url": "stories/keep-dorms-open-during-exams/",
+      "credit_type": "byline"
     },
     {
       "id": "b2632ca8c0521a815561",
@@ -3313,7 +3567,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ru-teachers-demand-registrar-s-removal/"
+      "local_url": "stories/ru-teachers-demand-registrar-s-removal/",
+      "credit_type": "byline"
     },
     {
       "id": "32df58c77615c28744c2",
@@ -3326,7 +3581,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/recruitment-suspension-ru-will-want-to-know-why/"
+      "local_url": "stories/recruitment-suspension-ru-will-want-to-know-why/",
+      "credit_type": "byline"
     },
     {
       "id": "2ff2b7d7e46056f0ebed",
@@ -3339,7 +3595,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/reports-of-malpractices-recruitment-at-ru-halted/"
+      "local_url": "stories/reports-of-malpractices-recruitment-at-ru-halted/",
+      "credit_type": "byline"
     },
     {
       "id": "eca986bdc6f0cc8907d4",
@@ -3352,7 +3609,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/innocent-ru-student-in-jail-for-2-months/"
+      "local_url": "stories/innocent-ru-student-in-jail-for-2-months/",
+      "credit_type": "byline"
     },
     {
       "id": "e093cb5830cea3a5ab1a",
@@ -3365,7 +3623,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/assault-on-polytech-institute-principal-police-identify-12-bcl-men-who/"
+      "local_url": "stories/assault-on-polytech-institute-principal-police-identify-12-bcl-men-who/",
+      "credit_type": "byline"
     },
     {
       "id": "a56f4daa38b479b97c08",
@@ -3378,7 +3637,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/assault-on-polytech-principal-bcl-men-wanted-to-pass-without-examination/"
+      "local_url": "stories/assault-on-polytech-principal-bcl-men-wanted-to-pass-without-examination/",
+      "credit_type": "byline"
     },
     {
       "id": "2ec7332f497634389536",
@@ -3391,7 +3651,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/series-set-for-bangladesh-women-s-teams/"
+      "local_url": "stories/series-set-for-bangladesh-women-s-teams/",
+      "credit_type": "byline"
     },
     {
       "id": "46198aad58ab6fa6b0bb",
@@ -3404,7 +3665,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ru-student-orgs-continue-to-hold-events-ignoring-ban/"
+      "local_url": "stories/ru-student-orgs-continue-to-hold-events-ignoring-ban/",
+      "credit_type": "byline"
     },
     {
       "id": "665f943ad259dd15699d",
@@ -3417,7 +3679,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/no-dormitories-for-ru-iba-students/"
+      "local_url": "stories/no-dormitories-for-ru-iba-students/",
+      "credit_type": "byline"
     },
     {
       "id": "f7b8a55f252e726b3e47",
@@ -3430,7 +3693,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/hope-revived-for-student-union-polls/"
+      "local_url": "stories/hope-revived-for-student-union-polls/",
+      "credit_type": "byline"
     },
     {
       "id": "8d7a383573a38c45b6ae",
@@ -3443,7 +3707,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/physical-education-limping-at-ru/"
+      "local_url": "stories/physical-education-limping-at-ru/",
+      "credit_type": "byline"
     },
     {
       "id": "332ab0b0f1fd676c1c1a",
@@ -3456,7 +3721,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/hope-of-rucsu-polls-this-year-getting-stronger/"
+      "local_url": "stories/hope-of-rucsu-polls-this-year-getting-stronger/",
+      "credit_type": "byline"
     },
     {
       "id": "86d880fd7f56183d5b3c",
@@ -3469,7 +3735,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/textbook-laden-truck-plunged-in-tangail/"
+      "local_url": "stories/textbook-laden-truck-plunged-in-tangail/",
+      "credit_type": "byline"
     },
     {
       "id": "968b1efb76a372a8dbdf",
@@ -3482,7 +3749,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/7-hurt-as-bcl-men-attack-ru-protesters/"
+      "local_url": "stories/7-hurt-as-bcl-men-attack-ru-protesters/",
+      "credit_type": "byline"
     },
     {
       "id": "93f9abfd398d45d39c5a",
@@ -3495,7 +3763,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/to-screen-or-not-to-screen/"
+      "local_url": "stories/to-screen-or-not-to-screen/",
+      "credit_type": "byline"
     },
     {
       "id": "48782d2cbab099c52fca",
@@ -3508,7 +3777,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/fuelling-creativity/"
+      "local_url": "stories/fuelling-creativity/",
+      "credit_type": "byline"
     },
     {
       "id": "fd53fe63196269070f04",
@@ -3521,7 +3791,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/students-colleagues-seek-fair-probe/"
+      "local_url": "stories/students-colleagues-seek-fair-probe/",
+      "credit_type": "byline"
     },
     {
       "id": "bd070b0be175d3d17549",
@@ -3534,7 +3805,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/circus-circus-staged-at-ru-auditorium/"
+      "local_url": "stories/circus-circus-staged-at-ru-auditorium/",
+      "credit_type": "byline"
     },
     {
       "id": "23400565a6981e650ae3",
@@ -3547,7 +3819,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/sampan-naiya-and-putulnatya-staged-at-ru/"
+      "local_url": "stories/sampan-naiya-and-putulnatya-staged-at-ru/",
+      "credit_type": "byline"
     },
     {
       "id": "e914eb9def5819de6a88",
@@ -3560,7 +3833,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ru-website-a-window-into-hollow/"
+      "local_url": "stories/ru-website-a-window-into-hollow/",
+      "credit_type": "byline"
     },
     {
       "id": "3ab16b5948cadda9286e",
@@ -3573,7 +3847,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/mcq-blunder-ru-to-punish-two-teachers/"
+      "local_url": "stories/mcq-blunder-ru-to-punish-two-teachers/",
+      "credit_type": "byline"
     },
     {
       "id": "31c820716ccf25a7778e",
@@ -3586,7 +3861,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/money-matters/"
+      "local_url": "stories/money-matters/",
+      "credit_type": "byline"
     },
     {
       "id": "09f61a3402ce065d556e",
@@ -3599,7 +3875,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/traffic-jam-shatters-dreams-of-hundreds-of-ru-admission-seekers/"
+      "local_url": "stories/traffic-jam-shatters-dreams-of-hundreds-of-ru-admission-seekers/",
+      "credit_type": "byline"
     },
     {
       "id": "64194878022937d8bc50",
@@ -3612,7 +3889,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ru-administrative-work-at-a-standstill/"
+      "local_url": "stories/ru-administrative-work-at-a-standstill/",
+      "credit_type": "byline"
     },
     {
       "id": "43ed2f3e459fb20a1449",
@@ -3625,7 +3903,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ru-student-returns-lost-cash-to-owner/"
+      "local_url": "stories/ru-student-returns-lost-cash-to-owner/",
+      "credit_type": "byline"
     },
     {
       "id": "cd127683cab1ec8c0e7d",
@@ -3638,7 +3917,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ru-bus-crisis-drags-on/"
+      "local_url": "stories/ru-bus-crisis-drags-on/",
+      "credit_type": "byline"
     },
     {
       "id": "ca542f5e8dc34e090967",
@@ -3651,7 +3931,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/10th-convocation-ru-puts-graduates-in-uncertainty/"
+      "local_url": "stories/10th-convocation-ru-puts-graduates-in-uncertainty/",
+      "credit_type": "byline"
     },
     {
       "id": "af05370f2391c265249b",
@@ -3664,7 +3945,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ru-sees-more-int-l-students/"
+      "local_url": "stories/ru-sees-more-int-l-students/",
+      "credit_type": "byline"
     },
     {
       "id": "11b0cdb28dd1dbf0b3f8",
@@ -3677,7 +3959,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/pace-of-investigation-frustrates-family/"
+      "local_url": "stories/pace-of-investigation-frustrates-family/",
+      "credit_type": "byline"
     },
     {
       "id": "2dd720a4856ae3e75161",
@@ -3690,7 +3973,8 @@
       "cover_image": "",
       "cover_alt": "",
       "source_name": "The Daily Star",
-      "local_url": "stories/ru-convocation-reg-fee-too-high/"
+      "local_url": "stories/ru-convocation-reg-fee-too-high/",
+      "credit_type": "byline"
     }
   ]
 }

@@ -13,7 +13,7 @@ SITE = ROOT / 'site'
 OUT = ROOT / 'dist'
 NAME = 'Arafat Rahaman'
 AUTHOR = 'https://www.thedailystar.net/author/arafat-rahaman'
-UA = 'ArafatPortfolio/16.3 (+https://arafatrahaman.com/contact.html)'
+UA = 'ArafatPortfolio/17.1 (+https://arafatrahaman.com/contact/)'
 
 def now(): return datetime.now(timezone.utc).isoformat()
 def read(path, default=None):

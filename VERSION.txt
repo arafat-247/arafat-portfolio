@@ -1,1 +1,1 @@
-17.1.0 — restored portfolio homepage with streamlined responsive navigation
+17.1.0 — credit-aware archives, clean public routes and interactive photography views
