@@ -67,6 +67,54 @@
       "rights_confirmed": true,
       "requested_at": "2026-09-07T22:31:17.099Z",
       "status": "queued"
+    },
+    {
+      "id": "fceede62-0322-4d80-b843-f1c2d27d09cc",
+      "url": "https://www.thedailystar.net/news/education/news/listening-speaking-skills-get-greater-focus-primary-education-bobby-hajjaj-4268601",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education/Events",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-09T11:14:41.566Z",
+      "status": "queued"
+    },
+    {
+      "id": "978f4522-2972-4e3d-a8a4-06b958e8967d",
+      "url": "https://www.thedailystar.net/news/crime-justice/news/attack-badhon-bangladesh-raise-issue-italy-4268316",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education/Events",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-09T11:14:41.566Z",
+      "status": "queued"
+    },
+    {
+      "id": "c7fdba9d-cf74-40bb-a8ca-9deb40ff8c8e",
+      "url": "https://www.thedailystar.net/news/education/news/children-need-stronger-foundational-skills-ai-use-milon-4267966",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education/Events",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-09T11:14:41.566Z",
+      "status": "queued"
+    },
+    {
+      "id": "9325b43b-ec56-4a07-aa0d-cbc0fc2ee98a",
+      "url": "https://www.thedailystar.net/news/education/news/govt-redesigns-non-formal-education-four-crore-people-bobby-hajjaj-4267781",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education/Events",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-09T11:14:41.566Z",
+      "status": "queued"
     }
   ]
 }
