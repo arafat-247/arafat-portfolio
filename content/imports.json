@@ -115,6 +115,78 @@
       "rights_confirmed": true,
       "requested_at": "2026-09-09T11:14:41.566Z",
       "status": "queued"
+    },
+    {
+      "id": "73273b8a-f9b0-4162-860a-7128d8d6a631",
+      "url": "https://www.thedailystar.net/news/education/news/govt-align-bangla-english-medium-curricula-bobby-hajjaj-4270856",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education/Governance",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-12T10:46:31.960Z",
+      "status": "queued"
+    },
+    {
+      "id": "b7b698e5-ff42-48f6-bfb9-0e41edfba5fc",
+      "url": "https://www.thedailystar.net/news/bangladesh/news/draft-law-may-enable-repression-surveillance-tib-4270656",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education/Governance",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-12T10:46:31.960Z",
+      "status": "queued"
+    },
+    {
+      "id": "3754601a-6644-478d-bed3-f26ecc23eadf",
+      "url": "https://www.thedailystar.net/news/education/news/js-committee-calls-probe-corruption-allegations-national-university-education-bodies-4269591",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education/Governance",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-12T10:46:31.960Z",
+      "status": "queued"
+    },
+    {
+      "id": "4ff15cec-a499-4e19-bf15-2fe8ac21f738",
+      "url": "https://www.thedailystar.net/news/education/news/dshe-directs-schools-colleges-arrange-15-sports-21-co-curricular-activities-4269536",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education/Governance",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-12T10:46:31.960Z",
+      "status": "queued"
+    },
+    {
+      "id": "7dec40aa-0d85-48db-8255-bc8adcff1623",
+      "url": "https://www.thedailystar.net/news/education/news/4585-students-who-failed-ssc-now-pass-after-rescrutiny-4269371",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education/Governance",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-12T10:46:31.960Z",
+      "status": "queued"
+    },
+    {
+      "id": "4d3b2755-211c-4372-aa71-3ad5d78e836a",
+      "url": "https://www.thedailystar.net/news/bangladesh/education/news/universities-need-clear-ai-rules-protect-academic-integrity-ugc-chief-4269526?",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education/Governance",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-12T10:46:31.960Z",
+      "status": "queued"
     }
   ]
 }
