@@ -41,16 +41,13 @@ footer .top{margin-left:auto;color:#fff;text-decoration:none}
 .archive-total{display:grid;text-align:right;line-height:1}
 .archive-total strong{font:700 42px/1 var(--serif)}
 .archive-total span{margin-top:7px;color:var(--muted);font-size:11px;letter-spacing:.11em;text-transform:uppercase}
-.archive-totals{display:grid;grid-template-columns:auto auto;align-self:stretch;border-left:1px solid var(--line)}
-.archive-totals>button{position:relative;display:flex;min-width:142px;flex-direction:column;justify-content:flex-end;padding:4px 0 4px 25px;border:0;color:inherit;background:transparent;text-align:left;cursor:pointer}
-.archive-totals>button+button{margin-left:25px;border-left:1px solid var(--line)}
-.archive-totals>button:after{content:"";position:absolute;right:0;bottom:-29px;left:25px;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .18s ease}
-.archive-totals>button[aria-pressed="true"]:after{transform:scaleX(1)}
-.archive-totals>button[aria-pressed="false"]{color:var(--muted)}
-.archive-totals>button:hover strong{color:var(--accent)}
-.archive-totals>button:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+.archive-totals{display:grid;grid-template-columns:repeat(2,minmax(160px,1fr));align-self:end;gap:8px}
+.archive-totals>button{display:flex;min-height:92px;min-width:0;flex-direction:column;justify-content:center;padding:14px 18px;border:1px solid var(--line);color:var(--ink);background:var(--surface);text-align:left;cursor:pointer;transition:border-color .18s ease,background .18s ease,color .18s ease,transform .18s ease}
+.archive-totals>button[aria-pressed="true"]{border-color:var(--forest);color:#fff;background:var(--forest)}
+.archive-totals>button[aria-pressed="false"]:hover{border-color:var(--accent);transform:translateY(-1px)}
+.archive-totals>button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .archive-totals strong{font:700 42px/1 var(--serif)}
-.archive-totals span{max-width:145px;margin-top:7px;color:var(--muted);font-size:11px;line-height:1.35;letter-spacing:.1em;text-transform:uppercase}
+.archive-totals span{margin-top:7px;color:inherit;font-size:11px;line-height:1.35;letter-spacing:.1em;text-transform:uppercase}
 .textlink{display:inline-block;color:var(--accent);font-weight:800;text-decoration:none}
 .textlink:hover{text-decoration:underline}
 
@@ -281,12 +278,10 @@ html[data-theme="dark"] .workitem:hover{background:#1b2522}
   .pageintro h1,.photohero h1{font-size:clamp(44px,12vw,64px)}
   .archive-total,.photoindex{display:flex;align-items:baseline;gap:8px;text-align:left}
   .archive-total strong,.photoindex strong{font-size:28px}
-  .archive-totals{align-self:auto;border-left:0;border-top:1px solid var(--line)}
-  .archive-totals>button{min-width:0;padding:14px 20px 0 0}
-  .archive-totals>button+button{margin-left:0;padding-left:20px}
-  .archive-totals>button:after{right:20px;bottom:-15px;left:0}
-  .archive-totals>button+button:after{left:20px}
-  .archive-totals strong{font-size:28px}
+  .archive-totals{width:100%;grid-template-columns:repeat(2,minmax(0,1fr));align-self:auto;gap:8px}
+  .archive-totals>button{min-height:88px;padding:13px 14px}
+  .archive-totals strong{font-size:32px}
+  .archive-totals span{font-size:10px;letter-spacing:.08em}
   .filtertoggle{display:block;width:100%;margin:0 0 9px;padding:12px 14px;border:1px solid var(--line);background:#e7e4dc;text-align:left;cursor:pointer}
   html[data-theme="dark"] .filtertoggle{background:#1a2320}
   .filtertoggle:after{content:"+";float:right}
