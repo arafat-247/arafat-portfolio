@@ -1,6 +1,15 @@
 {
   "photos": [
     {
+      "id": "29184844-0e52-4eb3-9ea0-d72fb33b36e7",
+      "src": "assets/uploads/29184844-0e52-4eb3-9ea0-d72fb33b36e7.webp",
+      "caption": "arafat rahaman portrait",
+      "alt": "Photograph by Arafat Rahaman",
+      "location": "aaa",
+      "date": "2026-09-12",
+      "status": "published"
+    },
+    {
       "id": "f9b7fb0c-668b-418f-9f9b-e0018c22e17a",
       "src": "assets/uploads/f9b7fb0c-668b-418f-9f9b-e0018c22e17a.webp",
       "caption": "Nature x Flowers x Arafat Rahaman",
