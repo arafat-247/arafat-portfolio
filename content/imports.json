@@ -187,6 +187,18 @@
       "rights_confirmed": true,
       "requested_at": "2026-09-12T10:46:31.960Z",
       "status": "queued"
+    },
+    {
+      "id": "6d9e134c-c5e6-4aae-ba07-1543447b469c",
+      "url": "https://www.thedailystar.net/news/education/news/primary-school-teacher-transfers-suspended-ahead-14384-new-recruits-4266976",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-12T12:35:49.999Z",
+      "status": "queued"
     }
   ]
 }
