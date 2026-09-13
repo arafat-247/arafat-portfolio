@@ -199,6 +199,18 @@
       "rights_confirmed": true,
       "requested_at": "2026-09-12T12:35:49.999Z",
       "status": "queued"
+    },
+    {
+      "id": "9834ef57-7528-4655-9778-ca4a063a13b9",
+      "url": "https://www.thedailystar.net/news/bangladesh/education/news/madrasa-education-needs-reform-equal-support-4271346",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "History",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-13T07:48:27.114Z",
+      "status": "queued"
     }
   ]
 }
