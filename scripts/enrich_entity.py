@@ -52,9 +52,12 @@ def enrich_person(person, config):
         "mainEntityOfPage": {"@id": profile_url},
         "description": config.get("description", ""),
         "jobTitle": current_role,
+        # These are external entities that this site does not control.  Keep
+        # their identity URLs and names without declaring full Organization
+        # nodes locally; doing so avoids implying ownership of third-party
+        # organisation metadata such as logos while preserving the relation.
         "worksFor": {
-            "@type": "Organization",
-            "@id": "https://www.thedailystar.net/#organization",
+            "@id": "https://www.thedailystar.net/",
             "name": config.get("organisation", "The Daily Star"),
             "url": "https://www.thedailystar.net/",
         },
@@ -85,8 +88,9 @@ def enrich_person(person, config):
         person["alumniOf"] = alumni
 
     if membership.get("name"):
-        member = {"@type": "Organization", "name": membership["name"]}
+        member = {"name": membership["name"]}
         if membership["name"] == "Investigative Reporters & Editors":
+            member["@id"] = "https://www.ire.org/"
             member["url"] = "https://www.ire.org/"
         person["memberOf"] = member
 
