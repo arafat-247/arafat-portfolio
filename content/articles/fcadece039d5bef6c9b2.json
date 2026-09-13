@@ -17,13 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 623,
-  "fetched_at": "2026-09-06T10:58:59.896998+00:00",
+  "fetched_at": "2026-09-13T12:53:03.701498+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/how-many-more-have-die-custody-3814206",
   "status": "published",
   "local_url": "stories/how-many-more-have-to-die-in-custody/",
-  "first_archived_at": "2026-09-06T10:58:59.897167+00:00",
-  "content_hash": "ec884a37cbff5bc54cdf54dbc4f44041f31e9a341a860ebe00fe217b1dd1a842",
   "legacy_urls": [
     "stories/fcadece039d5bef6c9b2-how-many-more-have-to-die-in-custody/"
-  ]
+  ],
+  "first_archived_at": "2026-09-06T10:58:59.897167+00:00",
+  "content_hash": "ec884a37cbff5bc54cdf54dbc4f44041f31e9a341a860ebe00fe217b1dd1a842"
 }
