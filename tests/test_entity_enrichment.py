@@ -29,9 +29,12 @@ class EntityEnrichmentTests(unittest.TestCase):
         self.assertEqual(person["@id"], "https://arafatrahaman.com/about/#person")
         self.assertEqual(person["jobTitle"], "Staff Reporter")
         self.assertEqual(person["worksFor"]["name"], "The Daily Star")
+        self.assertEqual(person["worksFor"]["@id"], "https://www.thedailystar.net/")
+        self.assertNotIn("@type", person["worksFor"])
         self.assertIn("https://www.thedailystar.net/author/arafat-rahaman", person["sameAs"])
         self.assertEqual(person["alumniOf"]["url"], "https://www.ru.ac.bd/")
         self.assertEqual(person["memberOf"]["url"], "https://www.ire.org/")
+        self.assertNotIn("@type", person["memberOf"])
         self.assertIn("AccessFest Fellowship", person["award"][0])
 
     def test_profile_page_keeps_person_as_main_entity(self):
@@ -40,6 +43,7 @@ class EntityEnrichmentTests(unittest.TestCase):
         self.assertIn('"@type":"ProfilePage"', result)
         self.assertIn('"@id":"https://arafatrahaman.com/about/#person"', result)
         self.assertIn('"mainEntityOfPage":{"@id":"https://arafatrahaman.com/about/"}', result)
+        self.assertNotIn('"@type":"Organization"', result)
 
 
 if __name__ == "__main__":
