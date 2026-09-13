@@ -17,16 +17,17 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 629,
-  "fetched_at": "2026-09-06T12:27:11.407868+00:00",
+  "fetched_at": "2026-09-13T12:39:40.955441+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/culture-not-easy-its-political-well-artistic-4265761",
   "manual_import": true,
   "contribution": "Reporting",
   "rights_confirmed": true,
+  "credit_type_override": "contribution",
   "status": "published",
   "local_url": "stories/culture-is-not-easy-it-s-political-as-well-as-artistic/",
-  "first_archived_at": "2026-09-06T12:27:11.408135+00:00",
-  "content_hash": "ccd3cf127dce1224db0bd4edc93136dd6e6a9f9201beec37b0d80e8068f17b5b",
   "legacy_urls": [
     "stories/50c0946db1b351f9cd98-culture-is-not-easy-it-s-political-as-well-as-artistic/"
-  ]
+  ],
+  "first_archived_at": "2026-09-06T12:27:11.408135+00:00",
+  "content_hash": "ccd3cf127dce1224db0bd4edc93136dd6e6a9f9201beec37b0d80e8068f17b5b"
 }
