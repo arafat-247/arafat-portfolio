@@ -56,15 +56,17 @@ jobs:
           EVENT_SCHEDULE: ${{ github.event.schedule }}
           DEEP_SCAN: ${{ inputs.deep_scan }}
         run: python scripts/run_refresh.py
-      - name: Build and validate before saving
+      - name: Build, enrich entity metadata and validate before saving
         run: |
           python scripts/build.py
+          python scripts/enrich_entity.py
           python scripts/validate.py
       - name: Commit durable article bodies, photographs and sync progress
         run: python scripts/persist.py
-      - name: Rebuild the final merged repository version
+      - name: Rebuild, enrich and validate the final merged repository version
         run: |
           python scripts/build.py
+          python scripts/enrich_entity.py
           python scripts/validate.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
