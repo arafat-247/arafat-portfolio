@@ -3274,17 +3274,25 @@
       "article_id": "44424aa1f37759f03838",
       "title": "Primary school teacher transfers suspended ahead of 14,384 new recruits",
       "last_success": "2026-09-12T16:21:56.122677+00:00"
+    },
+    "https://www.thedailystar.net/news/bangladesh/education/news/madrasa-education-needs-reform-equal-support-4271346": {
+      "discovered_at": "2026-09-13T07:48:41.058333+00:00",
+      "last_checked": "2026-09-13T07:48:55.389062+00:00",
+      "status": "saved",
+      "last_success": "2026-09-13T07:48:56.534304+00:00",
+      "failures": 0,
+      "error": "",
+      "article_id": "914939a0c20d277a1f5a",
+      "title": "Madrasa education needs reform, equal support"
     }
   },
-  "archive_cursor": 6,
-  "last_attempt": "2026-09-13T07:39:32.719014+00:00",
-  "last_discovery_success": "2026-09-13T07:40:08.666924+00:00",
-  "last_completed": "2026-09-13T07:40:34.850178+00:00",
-  "saved_this_run": 65,
-  "known_sources": 300,
+  "archive_cursor": 9,
+  "last_attempt": "2026-09-13T07:48:41.057904+00:00",
+  "last_discovery_success": "2026-09-13T07:48:55.387915+00:00",
+  "last_completed": "2026-09-13T07:48:56.536953+00:00",
+  "saved_this_run": 1,
+  "known_sources": 301,
   "pending": 0,
-  "errors": [
-    "Author pagination repeated earlier results; discovery stopped. This is not proof of archive completeness."
-  ],
+  "errors": [],
   "unsupported": 3
 }
