@@ -1,6 +1,20 @@
 {
   "articles": [
     {
+      "id": "2cc8c24550ff6dc327f7",
+      "title": "What else must women do?",
+      "excerpt": "A woman’s profession should not depend on a politician’s religious expectations",
+      "category": "Opinion",
+      "stream": "opinion",
+      "date_published": "2026-09-13T19:17:52+06:00",
+      "date_modified": "",
+      "cover_image": "",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/what-else-must-women-do/",
+      "credit_type": "byline"
+    },
+    {
       "id": "914939a0c20d277a1f5a",
       "title": "Madrasa education needs reform, equal support",
       "excerpt": "Madrasa education in Bangladesh faces structural problems, with Alia institutions affected by unequal state support, curriculum changes and social prejudice, while Qawmi madrasas remain isolated from wider society and lack accountability, academics and researchers said yesterday.",
