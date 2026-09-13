@@ -147,4 +147,8 @@ document.addEventListener('keydown',event=>{
  if(event.key==='ArrowRight')showPhoto(photoIndex+1);
 });
 dialog?.addEventListener('close',()=>{dialog.querySelector('img').removeAttribute('src');opener?.focus()});
+
+if(document.body.classList.contains('home')||document.querySelector('[data-archive="reporting"]')){
+ const discovery=document.createElement('script');discovery.src=root+'assets/discovery.js?v=17.2.0';discovery.defer=true;document.body.append(discovery);
+}
 })();
