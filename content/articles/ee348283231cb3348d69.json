@@ -17,13 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 601,
-  "fetched_at": "2026-09-06T12:10:57.103356+00:00",
+  "fetched_at": "2026-09-14T08:08:55.530132+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/four-teachers-appointed-against-two-vacant-posts-3312056",
   "status": "published",
   "local_url": "stories/four-teachers-appointed-against-two-vacant-posts/",
-  "first_archived_at": "2026-09-06T12:10:57.103565+00:00",
-  "content_hash": "1e7517fbf4733a61cf1913180e79aa640ffce238fbee4e4e4ecdd942512be760",
   "legacy_urls": [
     "stories/ee348283231cb3348d69-four-teachers-appointed-against-two-vacant-posts/"
-  ]
+  ],
+  "first_archived_at": "2026-09-06T12:10:57.103565+00:00",
+  "content_hash": "1e7517fbf4733a61cf1913180e79aa640ffce238fbee4e4e4ecdd942512be760"
 }

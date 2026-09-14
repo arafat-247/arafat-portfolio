@@ -17,13 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 515,
-  "fetched_at": "2026-09-06T12:11:48.166477+00:00",
+  "fetched_at": "2026-09-14T08:08:56.479629+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/news/jalladkhana-killing-field-haunting-reminder-the-tragic-past-3285046",
   "status": "published",
   "local_url": "stories/jalladkhana-killing-field-a-haunting-reminder-of-the-tragic-past/",
-  "first_archived_at": "2026-09-06T12:11:48.166959+00:00",
-  "content_hash": "f47086fe987e54923da5d394a4d4b61319a89cc82a0c0cfff908c85b5ad0ab1d",
   "legacy_urls": [
     "stories/5e6ff82ffb7c3dc97e0f-jalladkhana-killing-field-a-haunting-reminder-of-the-tragic-past/"
-  ]
+  ],
+  "first_archived_at": "2026-09-06T12:11:48.166959+00:00",
+  "content_hash": "f47086fe987e54923da5d394a4d4b61319a89cc82a0c0cfff908c85b5ad0ab1d"
 }

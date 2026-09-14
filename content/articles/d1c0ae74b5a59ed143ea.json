@@ -17,13 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 1379,
-  "fetched_at": "2026-09-06T11:17:44.200600+00:00",
+  "fetched_at": "2026-09-14T08:08:27.437522+00:00",
   "resolved_source_url": "https://www.thedailystar.net/weekend-read/news/banglabazar-all-things-book-3529221",
   "status": "published",
   "local_url": "stories/banglabazar-all-things-book/",
-  "first_archived_at": "2026-09-06T11:17:44.200699+00:00",
-  "content_hash": "910dad81eb05bbe5c862bd5cacd56df06d69d2b6360a7d2d33d4810f5caae5d0",
   "legacy_urls": [
     "stories/d1c0ae74b5a59ed143ea-banglabazar-all-things-book/"
-  ]
+  ],
+  "first_archived_at": "2026-09-06T11:17:44.200699+00:00",
+  "content_hash": "910dad81eb05bbe5c862bd5cacd56df06d69d2b6360a7d2d33d4810f5caae5d0"
 }
