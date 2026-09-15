@@ -17,13 +17,13 @@
   "source_image": "",
   "cover_image": "",
   "word_count": 398,
-  "fetched_at": "2026-09-06T12:45:55.098687+00:00",
+  "fetched_at": "2026-09-15T08:03:08.502812+00:00",
   "resolved_source_url": "https://www.thedailystar.net/city/money-matters-1481416",
   "status": "published",
   "local_url": "stories/money-matters/",
-  "first_archived_at": "2026-09-06T12:45:55.098848+00:00",
-  "content_hash": "ebd1e87b2a90a1cf70ecb941ae5b24efff4248945f1783622c5a6382e427343b",
   "legacy_urls": [
     "stories/31c820716ccf25a7778e-money-matters/"
-  ]
+  ],
+  "first_archived_at": "2026-09-06T12:45:55.098848+00:00",
+  "content_hash": "ebd1e87b2a90a1cf70ecb941ae5b24efff4248945f1783622c5a6382e427343b"
 }
