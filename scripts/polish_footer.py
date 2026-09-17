@@ -14,73 +14,73 @@ CONTENT = ROOT / "content"
 FOOTER_RE = re.compile(r"<footer(?:\s[^>]*)?>.*?</footer>", re.I | re.S)
 CSS_MARKER = "/* Compact editorial site footer */"
 ASSET_VERSION_RE = re.compile(r"portfolio\.css\?v=[0-9.]+", re.I)
-ASSET_VERSION = "17.2.0"
+ASSET_VERSION = "17.3.0"
 
 FOOTER_CSS = r"""
 /* Compact editorial site footer */
-.sitefooter{position:relative;isolation:isolate;overflow:hidden;display:block;min-height:0;padding:26px 36px 15px;color:#f4f0e7;background:linear-gradient(135deg,#082e29 0%,#0a3932 58%,#072722 100%);font-size:12px}
-.sitefooter:before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 87% 16%,rgb(209 165 116 / 13%) 0 15px,transparent 16px),linear-gradient(90deg,transparent 0 68%,rgb(255 255 255 / 2.5%) 100%)}
-.footergrid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(190px,1.05fr) minmax(130px,.68fr) minmax(300px,1.5fr) minmax(130px,.65fr);gap:0;align-items:start;max-width:1120px;margin:0 auto}
-.footeridentity,.footergroup{min-width:0;min-height:116px;padding:0 26px;border-left:1px solid rgb(244 240 231 / 18%)}
+.sitefooter{position:relative;isolation:isolate;overflow:hidden;display:block;min-height:0;padding:21px 34px 13px;color:#f4f0e7;background:linear-gradient(135deg,#082e29 0%,#0a3731 55%,#072722 100%);font-size:12px}
+.sitefooter:before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 92% 15%,rgb(210 176 130 / 13%) 0 12px,transparent 13px),linear-gradient(90deg,transparent 0 67%,rgb(255 255 255 / 2.5%) 100%)}
+.footergrid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(185px,1.08fr) minmax(125px,.66fr) minmax(330px,1.55fr) minmax(125px,.63fr);gap:0;align-items:start;max-width:1120px;margin:0 auto}
+.footeridentity,.footergroup{min-width:0;min-height:98px;padding:0 24px;border-left:1px solid rgb(244 240 231 / 16%)}
 .footeridentity{padding-left:0;border-left:0}
-.footername{display:block;color:#fff;font:700 19px/1.05 var(--serif);letter-spacing:.02em;text-decoration:none}
-.footerrole{display:block;margin-top:6px;color:rgb(244 240 231 / 72%);font-size:11px;line-height:1.35}
-.footertagline{max-width:230px;margin:17px 0 0;color:rgb(244 240 231 / 82%);font:italic 13px/1.4 var(--serif)}
-.footertagline:before{content:"";display:block;width:34px;margin-bottom:11px;border-top:1px solid rgb(244 240 231 / 42%)}
-.footerlabel{display:block;margin:0 0 9px;color:#f8f3ea;font:700 13px/1.2 var(--serif)}
-.footerlinks{display:grid;gap:6px}
-.footerlinks a{width:max-content;max-width:100%;color:rgb(244 240 231 / 78%);font-size:11px;line-height:1.35;text-decoration:none;transition:color .18s ease,transform .18s ease}
+.footername{display:block;color:#fff;font:700 18px/1.05 var(--serif);letter-spacing:.02em;text-decoration:none}
+.footerrole{display:block;margin-top:5px;color:rgb(244 240 231 / 68%);font-size:10.5px;line-height:1.35}
+.footertagline{max-width:225px;margin:13px 0 0;color:rgb(244 240 231 / 78%);font:italic 12.5px/1.35 var(--serif)}
+.footertagline:before{content:"";display:block;width:30px;margin-bottom:8px;border-top:1px solid rgb(244 240 231 / 38%)}
+.footerlabel{display:block;margin:0 0 8px;color:#faf6ef;font:700 12.5px/1.2 var(--serif)}
+.footerlinks{display:grid;gap:5px}
+.footerlinks a{width:max-content;max-width:100%;color:rgb(244 240 231 / 76%);font-size:10.5px;line-height:1.35;text-decoration:none;transition:color .18s ease,transform .18s ease}
 .footerlinks a:hover{color:#fff;transform:translateX(2px)}
 .footerlinks a:focus-visible{outline-color:#e69a84}
-.footerexplore .footerlinks{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:18px;row-gap:6px}
-.footerconnect .footerlinks{gap:8px}
+.footerexplore .footerlinks{grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);grid-template-rows:repeat(3,auto);grid-auto-flow:column;column-gap:20px;row-gap:5px}
+.footerconnect .footerlinks{gap:7px}
 .footerconnect a{display:inline-flex;align-items:center;gap:7px}
-.footerconnect a:before{display:grid;width:18px;height:18px;place-items:center;border:1px solid rgb(244 240 231 / 26%);border-radius:50%;color:#fff;font-size:9px;font-weight:850;line-height:1}
+.footerconnect a:before{display:grid;width:17px;height:17px;place-items:center;border:1px solid rgb(244 240 231 / 24%);border-radius:50%;color:#fff;font-size:8px;font-weight:850;line-height:1}
 .footerconnect a[href^="mailto:"]:before{content:"@"}
-.footerconnect a[href*="linkedin"]:before{content:"in";font-family:Arial,sans-serif;font-size:8px}
-.footerlandmark{position:absolute;right:-6px;bottom:29px;z-index:0;width:min(31vw,360px);height:auto;color:#91b9ad;opacity:.27;pointer-events:none}
-.footerlandmark .land{fill:none;stroke:currentColor;stroke-width:1.5;vector-effect:non-scaling-stroke}
-.footerlandmark .soft{fill:currentColor;stroke:none;opacity:.5}
-.footerbase{position:relative;z-index:2;display:flex;align-items:center;gap:14px;max-width:1120px;margin:15px auto 0;padding-top:11px;border-top:1px solid rgb(244 240 231 / 20%);color:rgb(244 240 231 / 62%);font-size:10px;line-height:1.25}
-.footerbase span+span:before{content:"";display:inline-block;height:10px;margin-right:14px;border-left:1px solid rgb(244 240 231 / 28%);vertical-align:-1px}
+.footerconnect a[href*="linkedin"]:before{content:"in";font-family:Arial,sans-serif;font-size:7.5px}
+.footerlandmark{position:absolute;right:-8px;bottom:20px;z-index:0;width:min(29vw,330px);height:auto;color:#8fb8ac;opacity:.24;pointer-events:none}
+.footerlandmark .land{fill:none;stroke:currentColor;stroke-width:1.35;vector-effect:non-scaling-stroke}
+.footerlandmark .soft{fill:currentColor;stroke:none;opacity:.46}
+.footerbase{position:relative;z-index:2;display:flex;align-items:center;gap:12px;max-width:1120px;margin:11px auto 0;padding-top:9px;border-top:1px solid rgb(244 240 231 / 17%);color:rgb(244 240 231 / 58%);font-size:9.5px;line-height:1.2}
+.footerbase span+span:before{content:"";display:inline-block;height:9px;margin-right:12px;border-left:1px solid rgb(244 240 231 / 24%);vertical-align:-1px}
 .sitefooter .top{margin:0;color:rgb(244 240 231 / 78%)}
-body.home .homecontent{padding-bottom:38px}
+body.home .homecontent{padding-bottom:32px}
 body.home .homecontact{background:#aa4e38}
 html[data-theme="dark"] .sitefooter{color:#f4f0e7;background:linear-gradient(135deg,#062620 0%,#092f29 58%,#061f1b 100%)}
 @media(max-width:980px){
-  .sitefooter{padding-inline:26px}
+  .sitefooter{padding-inline:25px}
   .footergrid{grid-template-columns:1fr .72fr 1.35fr;gap:0}
-  .footerconnect{grid-column:2;grid-row:2;min-height:0;margin-top:16px;padding-top:14px;border-top:1px solid rgb(244 240 231 / 14%)}
+  .footerconnect{grid-column:2;grid-row:2;min-height:0;margin-top:13px;padding-top:11px;border-top:1px solid rgb(244 240 231 / 13%)}
   .footerexplore{grid-column:3;grid-row:1/3}
-  .footerlandmark{width:300px;opacity:.18}
+  .footerlandmark{width:275px;opacity:.16}
 }
 @media(max-width:800px){
-  .sitefooter{padding:22px 20px calc(16px + env(safe-area-inset-bottom))}
+  .sitefooter{padding:20px 20px calc(15px + env(safe-area-inset-bottom))}
   .sitefooter span{display:inline}
-  .footergrid{grid-template-columns:1fr 1fr;gap:0 18px}
-  .footeridentity{grid-column:1/-1;min-height:0;padding:0 0 17px;border-bottom:1px solid rgb(244 240 231 / 18%)}
-  .footername{font-size:18px}
-  .footerrole{display:block;margin-top:4px}
-  .footertagline{max-width:none;margin-top:12px;font-size:12px}
+  .footergrid{grid-template-columns:1fr 1fr;gap:0 17px}
+  .footeridentity{grid-column:1/-1;min-height:0;padding:0 0 14px;border-bottom:1px solid rgb(244 240 231 / 17%)}
+  .footername{font-size:17px}
+  .footerrole{display:block;margin-top:3px}
+  .footertagline{max-width:none;margin-top:10px;font-size:12px}
   .footertagline:before{display:none}
-  .footergroup{min-height:0;margin-top:16px;padding:0;border-left:0}
-  .footernavigate{padding-right:14px;border-right:1px solid rgb(244 240 231 / 16%)}
-  .footerconnect{grid-column:2;grid-row:2;margin-top:16px;padding:0;border-top:0}
-  .footerexplore{grid-column:1/-1;grid-row:auto;margin-top:17px;padding-top:15px;border-top:1px solid rgb(244 240 231 / 16%)}
-  .footerexplore .footerlinks{grid-template-columns:1fr 1fr;gap:6px 14px}
-  .footerlandmark{right:-42px;bottom:33px;width:215px;opacity:.12}
-  .footerbase{flex-wrap:wrap;gap:5px 12px;margin-top:18px;padding-top:10px}
-  .footerbase span+span:before{height:8px;margin-right:10px}
+  .footergroup{min-height:0;margin-top:14px;padding:0;border-left:0}
+  .footernavigate{padding-right:13px;border-right:1px solid rgb(244 240 231 / 15%)}
+  .footerconnect{grid-column:2;grid-row:2;margin-top:14px;padding:0;border-top:0}
+  .footerexplore{grid-column:1/-1;grid-row:auto;margin-top:15px;padding-top:13px;border-top:1px solid rgb(244 240 231 / 15%)}
+  .footerexplore .footerlinks{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-flow:row;gap:5px 13px}
+  .footerlandmark{right:-45px;bottom:29px;width:205px;opacity:.10}
+  .footerbase{flex-wrap:wrap;gap:4px 11px;margin-top:15px;padding-top:9px}
+  .footerbase span+span:before{height:8px;margin-right:9px}
 }
 @media(max-width:460px){
   .sitefooter{padding-inline:18px}
-  .footergrid{column-gap:14px}
-  .footerexplore .footerlinks{grid-template-columns:1fr 1fr;column-gap:10px}
-  .footerlinks a{font-size:10.5px}
-  .footerlandmark{right:-72px;width:200px}
-  body.home .homecontent{padding-bottom:26px}
+  .footergrid{column-gap:13px}
+  .footerexplore .footerlinks{grid-template-columns:1fr 1fr;column-gap:9px}
+  .footerlinks a{font-size:10px}
+  .footerlandmark{right:-75px;width:190px}
+  body.home .homecontent{padding-bottom:24px}
 }
-@media print{.portfolio-related{display:none}.publication-strip{border:1px solid #aaa;background:#fff}}
+@media print{.sitefooter{display:none!important}}
 """.strip()
 
 
@@ -129,7 +129,7 @@ def footer_markup(settings: dict) -> str:
         </nav>
         <nav class="footergroup footerexplore" data-seo-topics="1" aria-label="Explore reporting topics">
           <strong class="footerlabel">Explore</strong>
-          <div class="footerlinks"><a href="/education/">Education</a><a href="/data-evidence/">Data &amp; evidence</a><a href="/public-universities/">Public universities</a><a href="/case-studies/">Case studies</a><a href="/governance-accountability/">Governance &amp; accountability</a></div>
+          <div class="footerlinks"><a href="/education/">Education</a><a href="/public-universities/">Public universities</a><a href="/governance-accountability/">Governance &amp; accountability</a><a href="/data-evidence/">Data &amp; evidence</a><a href="/case-studies/">Case studies</a></div>
         </nav>
         <section class="footergroup footerconnect" aria-label="Connect">
           <strong class="footerlabel">Connect</strong>
@@ -163,8 +163,10 @@ def main() -> None:
     if not css.is_file():
         raise FileNotFoundError("dist/portfolio.css was not generated")
     source = css.read_text(encoding="utf-8")
-    if CSS_MARKER not in source:
-        css.write_text(source + "\n\n" + FOOTER_CSS + "\n", encoding="utf-8")
+    marker_index = source.find(CSS_MARKER)
+    if marker_index >= 0:
+        source = source[:marker_index].rstrip()
+    css.write_text(source + "\n\n" + FOOTER_CSS + "\n", encoding="utf-8")
 
     print(f"Footer polish: pages={changed}, asset_version={ASSET_VERSION}")
 
