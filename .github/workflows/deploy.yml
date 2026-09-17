@@ -70,6 +70,7 @@ jobs:
           python scripts/validate.py
           python scripts/seo_postprocess.py
           python scripts/build_case_studies.py
+          python scripts/clean_related_previews.py
           python scripts/validate.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
