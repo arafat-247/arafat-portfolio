@@ -14,12 +14,12 @@ HOME_PROFILE_RE = re.compile(
     r'<section class="homeprofile"[^>]*>.*?</section>',
     re.S,
 )
-ASSET_VERSION = "17.8.1"
+ASSET_VERSION = "17.8.2"
 HERO_IMAGE = "assets/portraits/byline.webp"
 
 # The existing byline asset is the supplied black-and-white portrait.
 # Keep this a normal image and real text; do not rasterise the whole hero.
-HOME_PROFILE = '<section class="homeprofile" data-hero-version="17.8.1" aria-labelledby="home-profile-title"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="900" height="892" loading="eager" fetchpriority="high" decoding="async"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title"><span>Arafat</span> <em>Rahaman</em></h2><p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p><nav aria-label="About and contact"><a href="about/">About me →</a><a href="mailto:arafat.mcj@yahoo.com">Email</a></nav></div></section>'
+HOME_PROFILE = '<section class="homeprofile" data-hero-version="17.8.2" aria-labelledby="home-profile-title"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="900" height="892" loading="eager" fetchpriority="high" decoding="async"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title"><span>Arafat</span> <em>Rahaman</em></h2><p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p><nav aria-label="About and contact"><a href="about/">About me →</a><a href="mailto:arafat.mcj@yahoo.com">Email</a></nav></div></section>'
 
 HOME_CSS = r"""
 /* Editorial homepage polish */
@@ -205,8 +205,28 @@ body.home .homeprofile a:focus-visible{outline:2px solid #efaa96;outline-offset:
   body.home .homeprofile h2{font-size:42px}
 }
 
-/* Desktop hero: scale to the space beside the original navigation rail. */
+/* Desktop hero: scale to the space beside the navigation rail. */
 @media(min-width:801px){
+  /* The hero is the sole identity introduction on the homepage. */
+  body.home .identityportrait,
+  body.home .identity>.name,
+  body.home .identity>p{display:none}
+  body.home .identity:before{
+    content:"A";
+    display:grid;
+    width:56px;
+    height:56px;
+    flex:0 0 56px;
+    place-items:center;
+    margin:4px 0 30px;
+    border:1px solid rgb(255 255 255 / 28%);
+    border-radius:50%;
+    color:#f7f4ec;
+    background:rgb(255 255 255 / 4%);
+    font:400 36px/1 var(--serif);
+  }
+  body.home .identity nav{margin-top:0}
+
   body.home .homeprofile{
     container-type:inline-size;
     display:grid;
@@ -262,7 +282,7 @@ def main() -> None:
         css = css[:marker_index].rstrip()
     CSS.write_text(css + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
     HOME.write_text(source, encoding="utf-8")
-    print(f"Homepage hero: approved_portrait=1, foreground_text=1, other_sections=unchanged, asset_version={ASSET_VERSION}")
+    print(f"Homepage hero: approved_portrait=1, single_desktop_identity=1, other_sections=unchanged, asset_version={ASSET_VERSION}")
 
 
 if __name__ == "__main__":
