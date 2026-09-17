@@ -19,6 +19,7 @@ OG_URL_RE = re.compile(r'<meta property="og:url" content="[^"]*">', re.I)
 TW_TITLE_RE = re.compile(r'<meta name="twitter:title" content="[^"]*">', re.I)
 TW_DESC_RE = re.compile(r'<meta name="twitter:description" content="[^"]*">', re.I)
 MAIN_RE = re.compile(r'<main id="main">.*?</main>', re.I | re.S)
+NESTED_LINK_RE = re.compile(r'(?P<attr>\b(?:href|src)=["\'])\.\./', re.I)
 
 CSS = """
 /* Flagship reporting case studies */
@@ -49,6 +50,11 @@ def apply_meta(source: str, *, title: str, description: str, canonical: str) -> 
     source = TW_TITLE_RE.sub(f'<meta name="twitter:title" content="{esc(title)}">', source, count=1)
     source = TW_DESC_RE.sub(f'<meta name="twitter:description" content="{esc(description)}">', source, count=1)
     return source
+
+
+def deepen_template_links(source: str) -> str:
+    """Rebase one-level-up template links for /case-studies/<slug>/ pages."""
+    return NESTED_LINK_RE.sub(lambda match: match.group("attr") + "../../", source)
 
 
 def schema_block(study: dict, canonical: str) -> str:
@@ -143,10 +149,11 @@ def main() -> None:
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(index, encoding="utf-8")
 
+    nested_template = deepen_template_links(template)
     urls = [index_canonical]
     for study in studies:
         canonical = SITE + "/case-studies/" + study["slug"] + "/"
-        page = apply_meta(template, title=study["title"], description=study["description"], canonical=canonical)
+        page = apply_meta(nested_template, title=study["title"], description=study["description"], canonical=canonical)
         page = MAIN_RE.sub(f'<main id="main">{study_body(study)}</main>', page, count=1)
         page = page.replace("</head>", schema_block(study, canonical) + "</head>", 1)
         out = DIST / "case-studies" / study["slug"] / "index.html"
