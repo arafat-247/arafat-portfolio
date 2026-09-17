@@ -24,18 +24,27 @@ def is_site_url(url: str) -> bool:
     return parts.scheme == "https" and parts.hostname == SITE_HOST
 
 
-def remove_noindex_from_permanent_redirects() -> int:
-    """Let the instant meta-refresh carry the permanent-move signal itself."""
+def optimise_permanent_redirects() -> int:
+    """Make legacy GitHub Pages redirects immediate and visually silent.
+
+    GitHub Pages cannot emit configurable HTTP 301 responses for these static
+    legacy files. The generated pages therefore use canonical + zero-second
+    meta refresh + location.replace(). This post-process removes the noindex
+    signal and moves the JavaScript redirect into the head so visitors do not
+    see the old "Moved" interstitial before landing on the clean URL.
+    """
     changed = 0
     for page in DIST.rglob("*.html"):
-        html = page.read_text(encoding="utf-8")
-        if REDIRECT_NOINDEX not in html:
+        source = page.read_text(encoding="utf-8")
+        canonical = CANONICAL.search(source)
+        if not canonical or not is_site_url(canonical.group(1)) or not INSTANT_REFRESH.search(source):
             continue
-        canonical = CANONICAL.search(html)
-        if not canonical or not is_site_url(canonical.group(1)) or not INSTANT_REFRESH.search(html):
-            continue
-        page.write_text(html.replace(REDIRECT_NOINDEX, "", 1), encoding="utf-8")
-        changed += 1
+        destination = canonical.group(1)
+        destination_json = json.dumps(destination)
+        clean = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="canonical" href="{destination}"><script>const destination=new URL({destination_json});if(location.search)destination.search=location.search;if(location.hash)destination.hash=location.hash;location.replace(destination.href);</script><meta http-equiv="refresh" content="0;url={destination}"><title>Redirecting…</title><style>html,body{{margin:0;background:#fff}}body{{visibility:hidden}}</style></head><body><noscript><style>body{{visibility:visible;font-family:system-ui,sans-serif;padding:2rem}}</style><p>This address has changed. <a href="{destination}">Continue to the page</a>.</p></noscript></body></html>'''
+        if source != clean:
+            page.write_text(clean, encoding="utf-8")
+            changed += 1
     return changed
 
 
@@ -117,7 +126,7 @@ def add_sitemap_lastmods() -> int:
 def main() -> None:
     if not DIST.is_dir():
         raise FileNotFoundError("dist/ does not exist; run scripts/build.py first")
-    redirects = remove_noindex_from_permanent_redirects()
+    redirects = optimise_permanent_redirects()
     schemas = add_article_images_to_schema()
     sitemap = add_sitemap_lastmods()
     print(f"SEO post-process: redirects={redirects}, article_images={schemas}, sitemap_lastmod={sitemap}")
