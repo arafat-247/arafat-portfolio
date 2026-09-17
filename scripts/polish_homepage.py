@@ -1,4 +1,4 @@
-"""Keep the original homepage language while refining the mobile masthead and portrait lead."""
+"""Apply the approved portrait hero without redesigning the rest of the homepage."""
 from __future__ import annotations
 
 import re
@@ -11,16 +11,20 @@ CSS = DIST / "portfolio.css"
 CSS_MARKER = "/* Editorial homepage polish */"
 ASSET_VERSION_RE = re.compile(r"portfolio\.css\?v=[0-9.]+", re.I)
 HOME_PROFILE_RE = re.compile(
-    r'<section class="homeprofile" aria-labelledby="home-profile-title">.*?</section>',
+    r'<section class="homeprofile"[^>]*>.*?</section>',
     re.S,
 )
-ASSET_VERSION = "17.7.0"
+ASSET_VERSION = "17.8.0"
+HERO_IMAGE = "assets/portraits/byline.webp"
 
-HOME_PROFILE = """<section class="homeprofile" aria-labelledby="home-profile-title"><img src="assets/portraits/home.webp" alt="Arafat Rahaman" width="640" height="760"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title">Arafat Rahaman</h2><p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p><nav><a href="about/">About me →</a><a href="mailto:arafat.mcj@yahoo.com">Email</a></nav></div></section>"""
+# The existing byline asset is the supplied black-and-white portrait.
+# Keep this a normal image and real text; do not rasterise the whole hero.
+HOME_PROFILE = """<section class="homeprofile" data-hero-version="17.8.0" aria-labelledby="home-profile-title"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="900" height="892" loading="eager" fetchpriority="high" decoding="async"><div><span>Journalist \u00b7 Dhaka</span><h2 id="home-profile-title"><span>Arafat</span> <em>Rahaman</em></h2><p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p><nav aria-label="About and contact"><a href="about/">About me \u2192</a><a href="mailto:arafat.mcj@yahoo.com">Email</a></nav></div></section>"""
 
 HOME_CSS = r"""
 /* Editorial homepage polish */
-/* Preserve the site's original palette and structure; only refine the mobile masthead and hero. */
+
+/* Existing mobile masthead and page padding: intentionally unchanged. */
 @media(max-width:800px){
   body.home .mobilehead{
     height:62px;
@@ -41,37 +45,6 @@ HOME_CSS = r"""
   body.home .mobilemenu[hidden],body.home .menubackdrop[hidden]{display:none!important}
 
   body.home .homecontent{padding-top:18px}
-  body.home .homeprofile{
-    display:grid;
-    grid-template-columns:minmax(0,56%) minmax(0,44%);
-    min-height:252px;
-    margin-bottom:34px;
-    overflow:hidden;
-    color:#fff;
-    background:var(--forest);
-    box-shadow:0 14px 36px rgb(12 38 33 / 9%);
-  }
-  body.home .homeprofile>img{
-    width:100%;
-    height:100%;
-    min-height:252px;
-    object-fit:cover;
-    object-position:61% 45%;
-    filter:grayscale(1) contrast(1.02);
-  }
-  body.home .homeprofile>div{
-    display:flex;
-    min-width:0;
-    flex-direction:column;
-    justify-content:center;
-    padding:21px 18px;
-    background:var(--forest);
-  }
-  body.home .homeprofile>div>span{color:#efaa96;font-size:9px;font-weight:850;line-height:1.25;letter-spacing:.13em;text-transform:uppercase}
-  body.home .homeprofile h2{margin:7px 0 0;font:700 clamp(25px,5.5vw,34px)/.98 var(--serif);letter-spacing:-.035em}
-  body.home .homeprofile p{margin:11px 0 0;color:rgb(255 255 255 / 78%);font-size:11px;line-height:1.45}
-  body.home .homeprofile nav{display:flex;flex-wrap:wrap;gap:14px;margin-top:15px}
-  body.home .homeprofile a{padding-bottom:2px;border-bottom:1px solid rgb(255 255 255 / 70%);font-size:10.5px;font-weight:800;text-decoration:none}
 }
 
 @media(max-width:520px){
@@ -86,24 +59,150 @@ HOME_CSS = r"""
   body.home .mobilemenu:not([hidden]){inset:58px 0 auto auto;max-height:calc(100dvh - 58px)}
 
   body.home .homecontent{padding-top:14px}
-  body.home .homeprofile{grid-template-columns:55% 45%;min-height:232px;margin-bottom:30px}
-  body.home .homeprofile>img{min-height:232px;object-position:62% 44%}
-  body.home .homeprofile>div{padding:17px 14px}
-  body.home .homeprofile>div>span{font-size:8px}
-  body.home .homeprofile h2{font-size:25px}
-  body.home .homeprofile p{margin-top:9px;font-size:10.3px;line-height:1.4}
-  body.home .homeprofile nav{gap:11px;margin-top:12px}
-  body.home .homeprofile a{font-size:9.5px}
 }
 
 @media(max-width:380px){
   body.home .mobilebrand{font-size:15px}
   body.home .menutoggle>span:last-child{display:none}
-  body.home .homeprofile{grid-template-columns:54% 46%;min-height:220px}
-  body.home .homeprofile>img{min-height:220px}
-  body.home .homeprofile>div{padding:15px 12px}
-  body.home .homeprofile h2{font-size:23px}
-  body.home .homeprofile p{font-size:9.8px}
+}
+
+/* Approved portrait hero only. Other homepage sections retain their styles. */
+body.home .homeprofile{
+  position:relative;
+  isolation:isolate;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  align-items:center;
+  min-height:480px;
+  margin:0 0 34px;
+  padding:44px;
+  overflow:hidden;
+  color:#f4f2eb;
+  background:var(--forest);
+}
+body.home .homeprofile>img{
+  position:absolute;
+  inset:0 0 0 auto;
+  z-index:0;
+  display:block;
+  width:68%;
+  height:100%;
+  min-height:0;
+  max-width:none;
+  object-fit:cover;
+  object-position:56% 30%;
+  filter:grayscale(1);
+}
+body.home .homeprofile:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(90deg,#0b302b 0%,#0b302b 34%,rgb(11 48 43 / 94%) 39%,rgb(11 48 43 / 58%) 47%,rgb(11 48 43 / 8%) 63%,transparent 78%),linear-gradient(0deg,#0b302b 0%,rgb(11 48 43 / 42%) 20%,transparent 52%);
+}
+body.home .homeprofile>div{
+  position:relative;
+  z-index:2;
+  display:flex;
+  width:48%;
+  min-width:0;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  padding:0;
+  background:transparent;
+}
+body.home .homeprofile>div>span{
+  display:block;
+  color:#efaa96;
+  font:750 10px/1.5 var(--sans);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+body.home .homeprofile h2{
+  margin:24px 0 0;
+  color:#f4f2eb;
+  font:400 clamp(52px,6.2vw,86px)/.99 var(--serif);
+  letter-spacing:-.05em;
+}
+body.home .homeprofile h2 span,body.home .homeprofile h2 em{display:block}
+body.home .homeprofile h2 em{font-weight:400}
+body.home .homeprofile p{
+  display:block;
+  max-width:335px;
+  margin:23px 0 0;
+  overflow:visible;
+  color:#e3e8e3;
+  font:400 14px/1.6 var(--sans);
+  -webkit-line-clamp:unset;
+}
+body.home .homeprofile nav{display:flex;flex-wrap:wrap;gap:24px;margin-top:22px}
+body.home .homeprofile a{
+  display:inline-flex;
+  min-height:44px;
+  align-items:center;
+  padding:3px 0;
+  border-bottom:1px solid #8ca79f;
+  color:#f4f2eb;
+  font:750 12px/1.3 var(--sans);
+  text-decoration:none;
+}
+body.home .homeprofile a:hover{border-color:#efaa96;color:#efaa96}
+body.home .homeprofile a:focus-visible{outline:2px solid #efaa96;outline-offset:5px}
+@media(min-width:1001px) and (max-width:1200px){
+  body.home .homeprofile{min-height:420px;padding:30px}
+  body.home .homeprofile h2{font-size:60px}
+  body.home .homeprofile p{font-size:13px}
+}
+@media(max-width:1000px){
+  body.home .homeprofile{
+    display:block;
+    min-height:0;
+    padding:0;
+  }
+  body.home .homeprofile>img{
+    inset:0 0 auto;
+    width:100%;
+    height:auto;
+    min-height:0;
+    object-position:center top;
+  }
+  body.home .homeprofile:after{
+    background:linear-gradient(180deg,rgb(11 48 43 / 8%) 0%,rgb(11 48 43 / 2%) 28%,rgb(11 48 43 / 60%) 47%,#0b302b 67%,#0b302b 100%);
+  }
+  body.home .homeprofile>div{
+    width:100%;
+    padding:66% 26px 26px;
+    justify-content:flex-end;
+  }
+  body.home .homeprofile>div>span{
+    position:absolute;
+    top:22px;
+    left:26px;
+    width:85px;
+    color:#eaf0e9;
+    font-size:9px;
+    text-shadow:0 1px 5px #102d28;
+  }
+  body.home .homeprofile h2{margin:0;font-size:clamp(43px,8.5vw,66px);line-height:1;letter-spacing:-.05em}
+  body.home .homeprofile h2 em{font-style:normal}
+  body.home .homeprofile p{max-width:430px;margin-top:16px;font-size:13px;line-height:1.55}
+  body.home .homeprofile nav{margin-top:15px;gap:25px}
+}
+@media(max-width:520px){
+  body.home .homeprofile{margin-bottom:30px}
+  body.home .homeprofile>div{padding:66% 22px 24px}
+  body.home .homeprofile>div>span{left:22px;top:20px}
+  body.home .homeprofile h2{font-size:clamp(43px,11.5vw,59px)}
+  body.home .homeprofile p{font-size:12px}
+  body.home .homeprofile nav{gap:24px;margin-top:13px}
+  body.home .homeprofile a{font-size:11px}
+}
+@media(max-width:380px){
+  body.home .homeprofile>div{padding-inline:19px}
+  body.home .homeprofile>div>span{left:19px}
+  body.home .homeprofile h2{font-size:42px}
 }
 """.strip()
 
@@ -111,20 +210,22 @@ HOME_CSS = r"""
 def main() -> None:
     if not HOME.is_file() or not CSS.is_file():
         raise FileNotFoundError("Build output is incomplete; run scripts/build.py first")
+    if not (DIST / HERO_IMAGE).is_file():
+        raise FileNotFoundError(f"The approved hero portrait is missing: {HERO_IMAGE}")
 
     source = HOME.read_text(encoding="utf-8")
     source = ASSET_VERSION_RE.sub(f"portfolio.css?v={ASSET_VERSION}", source)
-    source, replaced = HOME_PROFILE_RE.subn(HOME_PROFILE, source, count=1)
+    source, replaced = HOME_PROFILE_RE.subn(lambda _: HOME_PROFILE, source, count=1)
     if replaced != 1:
         raise RuntimeError("Could not locate the homepage profile block")
-    HOME.write_text(source, encoding="utf-8")
 
     css = CSS.read_text(encoding="utf-8")
     marker_index = css.find(CSS_MARKER)
     if marker_index >= 0:
         css = css[:marker_index].rstrip()
     CSS.write_text(css + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
-    print(f"Homepage concept: original_structure=1, split_hero=1, refined_header=1, asset_version={ASSET_VERSION}")
+    HOME.write_text(source, encoding="utf-8")
+    print(f"Homepage hero: approved_portrait=1, foreground_text=1, other_sections=unchanged, asset_version={ASSET_VERSION}")
 
 
 if __name__ == "__main__":
