@@ -1,0 +1,185 @@
+{
+  "updated": "2026-09-17",
+  "case_studies": [
+    {
+      "slug": "bangladesh-primary-school-teacher-shortage",
+      "source_path": "stories/teacher-shortages-strain-government-primary-schools/",
+      "source_title": "Teacher shortages strain government primary schools",
+      "source_url": "https://www.thedailystar.net/news/education/news/teacher-shortages-strain-government-primary-schools-4242536",
+      "date_published": "2026-08-08",
+      "title": "Bangladesh primary schools: the teacher shortage behind disrupted classes",
+      "description": "A reporting case study on teacher vacancies in Bangladesh's government primary schools, combining national staffing data, school-level reporting and learning assessments.",
+      "question": "How do chronic teacher vacancies translate into lost teaching time and weaker classroom support in government primary schools?",
+      "reporting_note": "The report moved from national vacancy figures to individual schools in Jamalpur, Cumilla, Gazipur and Faridpur. It compared sanctioned posts with teachers actually in classrooms, examined the legal complications behind headteacher recruitment and set the staffing problem against official learning-assessment data.",
+      "evidence": [
+        "The education ministry said 36,235 headteacher posts were vacant across 65,567 government primary schools.",
+        "The Directorate of Primary Education's 2024 sector report said 12,935 schools were operating with four or fewer teachers, including 133 with only one teacher.",
+        "School-level interviews documented cancelled classes, teachers covering multiple subjects and acting headteachers combining teaching with administrative work."
+      ],
+      "why_it_matters": "The staffing numbers become more useful when connected to what happens inside classrooms. The case study preserves that link between administrative vacancy data, regional disparities and the learning conditions experienced by children.",
+      "topics": ["primary education", "teacher shortage", "Bangladesh schools", "education data"]
+    },
+    {
+      "slug": "bangladesh-foundational-reading-crisis",
+      "source_path": "stories/half-the-children-can-t-read-comprehend/",
+      "source_title": "Half the children can’t read, comprehend",
+      "source_url": "https://www.thedailystar.net/news/bangladesh/news/half-the-children-cant-read-comprehend-4267561",
+      "date_published": "2026-09-08",
+      "title": "Bangladesh's foundational reading gap: what the national data show",
+      "description": "A data-led reporting case study on children's foundational reading in Bangladesh, using MICS 2025, grade-level comparisons and inequality measures.",
+      "question": "What does Bangladesh's literacy progress look like when children are tested on reading and comprehension rather than asked whether they can read and write?",
+      "reporting_note": "The report used the Bangladesh Multiple Indicator Cluster Survey 2025 to distinguish self-reported literacy from tested foundational reading. It tracked performance by grade, household wealth and rural-urban location, and compared the findings with other national learning assessments and expert interpretation.",
+      "evidence": [
+        "Only 50.2 percent of children aged seven to 14 met the foundational reading benchmark in MICS 2025, compared with 48.8 percent in 2019.",
+        "The survey assessed 31,859 children in all 64 districts and required both accurate reading and comprehension to meet the benchmark.",
+        "The poorest fifth of households recorded substantially lower foundational reading performance than the richest fifth, while rural children also trailed urban children."
+      ],
+      "why_it_matters": "The central distinction is between being counted as literate and being able to understand a simple text. That difference changes how progress, inequality and future literacy targets should be interpreted.",
+      "topics": ["literacy", "foundational learning", "MICS 2025", "Bangladesh education"]
+    },
+    {
+      "slug": "bangladesh-literacy-spending-4000-crore",
+      "source_path": "stories/total-literacy-elusive-after-tk-4-000cr-spent/",
+      "source_title": "Total literacy elusive after Tk 4,000cr spent",
+      "source_url": "https://www.thedailystar.net/news/bangladesh/news/total-literacy-elusive-after-tk-4000cr-spent-3981391",
+      "date_published": "2025-09-08",
+      "title": "Bangladesh literacy spending: what Tk 4,000 crore of programmes achieved",
+      "description": "A reporting case study tracing three decades of adult and non-formal literacy programmes in Bangladesh, their spending and the persistence of illiteracy.",
+      "question": "Why has illiteracy persisted after decades of government literacy projects and substantial public spending?",
+      "reporting_note": "The report reconstructed the history of literacy initiatives from 1991 onwards using Bureau of Non-Formal Education information, government progress reports and Implementation Monitoring and Evaluation Division material. It then compared that project history with the national literacy rate and interviews on the limits of short-term, project-based approaches.",
+      "evidence": [
+        "Nearly one in five Bangladeshis aged seven and above remained illiterate while the reported literacy rate stood at 77.9 percent.",
+        "At least nine literacy and non-formal education projects had been implemented since 1991, with spending running into several thousand crore taka.",
+        "The reporting traced programme starts, cancellations, successor projects and new proposals to show how literacy policy repeatedly returned to time-bound projects."
+      ],
+      "why_it_matters": "Looking at one project in isolation can hide the institutional pattern. The longer timeline makes it possible to compare public spending, policy continuity and the outcomes that successive programmes were meant to improve.",
+      "topics": ["adult literacy", "public spending", "non-formal education", "Bangladesh"]
+    },
+    {
+      "slug": "bangladesh-technical-education-crisis",
+      "source_path": "stories/technical-education-hit-by-teacher-shortage-falling-enrolment/",
+      "source_title": "Technical education hit by teacher shortage, falling enrolment",
+      "source_url": "https://www.thedailystar.net/news/bangladesh/education/news/technical-education-hit-teacher-shortage-falling-enrolment-3927201",
+      "date_published": "2025-06-27",
+      "title": "Bangladesh technical education: teacher shortages, empty seats and weak demand",
+      "description": "A reporting case study on Bangladesh's technical education system, linking teacher vacancies, falling enrolment, infrastructure gaps and graduate outcomes.",
+      "question": "Why is technical education struggling to attract and train students despite repeated national commitments to expand skills education?",
+      "reporting_note": "The report combined Bangladesh Technical Education Board staffing and enrolment figures with institute-level reporting from Faridpur and Rajshahi, student interviews, a Centre for Policy Dialogue study and responses from education officials. It followed the chain from teacher shortages and laboratory constraints to enrolment and employment outcomes.",
+      "evidence": [
+        "More than half of roughly 15,000 sanctioned teaching posts in government and private technical institutions were vacant as of May 2025.",
+        "Only 69,000 students enrolled in diploma courses against 1.71 lakh seats in 2023-24, leaving close to 60 percent of seats vacant.",
+        "At Faridpur Polytechnic Institute, the report found 55 teachers serving more than 4,000 students where 201 teachers were considered necessary."
+      ],
+      "why_it_matters": "The data connect two problems often discussed separately: the capacity of institutions to teach and the willingness of students to enrol. Together they show why expansion targets cannot be judged by seat numbers alone.",
+      "topics": ["technical education", "polytechnic", "teacher vacancies", "enrolment"]
+    },
+    {
+      "slug": "bangladesh-curriculum-churn-students",
+      "source_path": "stories/when-students-become-guinea-pigs/",
+      "source_title": "When students become guinea pigs",
+      "source_url": "https://www.thedailystar.net/news/bangladesh/news/when-students-become-guinea-pigs-3795426",
+      "date_published": "2025-01-09",
+      "title": "Bangladesh curriculum reform: how repeated changes reached one student cohort",
+      "description": "A reporting case study on curriculum instability in Bangladesh, following how one secondary-school cohort moved through successive systems and assessment rules.",
+      "question": "What happens to students when curriculum and assessment systems change faster than schools can prepare for them?",
+      "reporting_note": "The article used the experience of a single secondary-school cohort as a timeline: the 2012 curriculum, the 2022 curriculum and then a return to the older system. It paired that chronology with an NCTB survey of 2.53 lakh teachers and the policy changes affecting stream selection and assessment.",
+      "evidence": [
+        "The same cohort moved from the 2012 curriculum to the 2022 curriculum and then back to the earlier framework within a short period.",
+        "An NCTB survey of 2.53 lakh teachers found that 37.6 percent only 'roughly' understood the new assessment system, while others reported difficulty applying it.",
+        "The reporting showed how grade-10 students had to compress stream-based study after spending grade 9 under a different framework."
+      ],
+      "why_it_matters": "Policy change is usually described from the ministry level. Following one cohort makes the cumulative effect visible: altered subjects, assessment rules and preparation demands arrive in the same students' academic lives.",
+      "topics": ["curriculum reform", "NCTB", "secondary education", "assessment"]
+    },
+    {
+      "slug": "nctb-textbook-errors-bangladesh",
+      "source_path": "stories/nctb-textbooks-never-ending-cycle-of-controversies/",
+      "source_title": "NCTB textbooks: Never-ending cycle of controversies",
+      "source_url": "https://www.thedailystar.net/news/bangladesh/news/nctb-textbooks-never-ending-cycle-controversies-3224766",
+      "date_published": "2023-01-19",
+      "title": "NCTB textbook errors: tracing a decade of recurring problems",
+      "description": "A reporting case study tracing repeated errors, plagiarism allegations, editorial failures and content disputes in Bangladesh's school textbooks.",
+      "question": "Why did serious textbook errors and controversies keep recurring despite previous corrections and public criticism?",
+      "reporting_note": "The report examined newly distributed textbooks page by page, documented spelling, grammatical and historical errors, followed a plagiarism allegation, and then compared the findings with earlier textbook controversies dating back to 2013. Interviews with NCTB officials and educationists addressed writing, editing, training and accountability.",
+      "evidence": [
+        "The newspaper's review of the Class VI English book documented spelling, grammar and attribution errors.",
+        "The report also examined an admitted plagiarism case in a Class VII science textbook and corrections issued for other secondary-level books.",
+        "Historical comparison showed large batches of errors reported in the 2013 curriculum and a separate 2017 dispute over removed literary content."
+      ],
+      "why_it_matters": "A single typo can be corrected quickly; a recurring pattern points to the production system. The reporting therefore treated errors, editorial processes and accountability as parts of the same institutional question.",
+      "topics": ["NCTB", "textbooks", "curriculum", "education accountability"]
+    },
+    {
+      "slug": "bangladesh-education-2025-review",
+      "source_path": "stories/education-in-2025-a-year-of-strikes-setbacks-and-disruptions/",
+      "source_title": "Education in 2025: A year of strikes, setbacks and disruptions",
+      "source_url": "https://www.thedailystar.net/news/bangladesh/education/news/education-2025-year-strikes-setbacks-and-disruptions-4066821",
+      "date_published": "2025-12-26",
+      "title": "Bangladesh education in 2025: a system-wide year of disruption",
+      "description": "A year-end reporting case study connecting teacher protests, textbook delays, examination results, budget choices and university developments across Bangladesh's education system.",
+      "question": "What did a year of disputes and policy reversals reveal about the governance of Bangladesh's education system?",
+      "reporting_note": "Rather than treating each protest, examination result or policy change as a separate episode, the report assembled them into a system-wide chronology. It combined field accounts from families, national teacher-action figures, examination outcomes, budget data and expert interviews across primary, secondary and higher education.",
+      "evidence": [
+        "A nationwide primary-teacher strike affected all 65,567 government primary schools and about one crore students during the year.",
+        "The HSC pass rate fell to 58.83 percent, while the SSC pass rate reached a 16-year low.",
+        "Primary-education allocation fell by more than Tk 3,000 crore in FY2025-26, while the overall education budget was reported at 1.72 percent of GDP."
+      ],
+      "why_it_matters": "The value of the year-end view is cumulative. It allows classroom disruption, teacher conditions, learning results and public spending to be considered together rather than as unrelated news events.",
+      "topics": ["education policy", "teacher protests", "exam results", "education budget"]
+    },
+    {
+      "slug": "bangladesh-public-university-admission-cluster",
+      "source_path": "stories/public-universities-admission-woes-deepen-for-students/",
+      "source_title": "Public universities: Admission woes deepen for students",
+      "source_url": "https://www.thedailystar.net/news/bangladesh/news/public-universities-admission-woes-deepen-students-3808361",
+      "date_published": "2025-01-25",
+      "title": "Public university admissions in Bangladesh: why the cluster system fragmented",
+      "description": "A reporting case study on Bangladesh's public-university admission clusters, why universities withdrew and what fragmentation meant for applicants.",
+      "question": "Did the cluster admission system reduce students' cost and travel burdens without creating new administrative delays for universities?",
+      "reporting_note": "The report mapped which universities were leaving the GST and engineering clusters, reviewed the original rationale for combined admission tests, and interviewed university leaders, students and UGC officials about the competing problems of applicant burden and administrative delay.",
+      "evidence": [
+        "At least 10 public universities were no longer participating in cluster-based admissions when the report was published.",
+        "All three universities in the engineering cluster had moved back to independent entrance examinations.",
+        "Students described the cluster system as a way to reduce repeated applications, travel and accommodation costs, while universities cited delayed results and session jams."
+      ],
+      "why_it_matters": "Admission reform creates costs on both sides of the system. The reporting puts the applicant's travel and financial burden beside universities' complaints about timing, allocation and academic calendars.",
+      "topics": ["public universities", "admission tests", "GST cluster", "UGC"]
+    },
+    {
+      "slug": "dhaka-student-clashes-education-disruption",
+      "source_path": "stories/5-educational-institutions-academic-lives-of-40-000-in-disarray/",
+      "source_title": "5 educational institutions: Academic lives of 40,000 in disarray",
+      "source_url": "https://www.thedailystar.net/news/bangladesh/education/news/5-educational-institutions-academic-lives-40000-disarray-3764306",
+      "date_published": "2024-11-28",
+      "title": "Dhaka education disruption: how clashes affected 40,000 students",
+      "description": "A reporting case study mapping how a series of clashes in Dhaka disrupted classes and examinations across colleges, a medical institute and a school.",
+      "question": "How far did a sequence of campus clashes spread through Dhaka's education system, and what did that mean for students not directly involved in the violence?",
+      "reporting_note": "The report followed closures, postponed examinations and damage across five institutions, while also tracing spillover effects on Dhaka University's seven affiliated colleges and Bangladesh University of Textiles. Institution heads and education officials were asked about reopening, security and responsibility.",
+      "evidence": [
+        "Academic activities at five institutions were suspended, affecting at least 40,000 students.",
+        "Dhaka University postponed final examinations for students of all seven affiliated colleges after the clashes.",
+        "A separate clash involving Butex and Dhaka Polytechnic Institute resulted in nine Butex examinations being suspended."
+      ],
+      "why_it_matters": "The immediate violence was only one part of the story. Mapping closures and postponed examinations showed how conflict at a few locations produced a wider academic cost for tens of thousands of students.",
+      "topics": ["campus clashes", "Dhaka colleges", "education disruption", "student safety"]
+    },
+    {
+      "slug": "bangladesh-education-reform-first-100-days",
+      "source_path": "stories/govt-plans-big-for-edn-execution-doubts-remain/",
+      "source_title": "Govt plans big for edn, execution doubts remain",
+      "source_url": "https://www.thedailystar.net/news/bangladesh/news/govt-plans-big-edn-execution-doubts-remain-4185701",
+      "date_published": "2026-05-28",
+      "title": "Bangladesh education reform: promises, staffing gaps and the execution test",
+      "description": "A reporting case study examining the government's early education agenda against teacher vacancies, financing questions and implementation capacity.",
+      "question": "How should a large education reform agenda be assessed when the promises span curriculum, meals, technology, staffing and spending at the same time?",
+      "reporting_note": "The report catalogued the government's 12-point agenda, 43 priority areas and 180-day programme, then tested those announcements against staffing shortages, budget questions, school leadership gaps and expert concerns about implementation and monitoring. Government responses were included alongside those concerns.",
+      "evidence": [
+        "The agenda included curriculum revision, compulsory sports, free uniforms, midday meals, digital initiatives and a commitment to raise education spending to 5 percent of GDP.",
+        "The education minister told parliament that at least 92,081 teaching posts were vacant across government and non-government institutions.",
+        "Experts interviewed for the report questioned financing, monitoring and whether separate parts of the education system had sufficiently coherent implementation plans."
+      ],
+      "why_it_matters": "Announcements are only the starting point of policy reporting. Placing commitments beside staffing, financing and implementation constraints creates a baseline against which later progress can be checked.",
+      "topics": ["education reform", "teacher vacancies", "education budget", "policy implementation"]
+    }
+  ]
+}
