@@ -16,6 +16,7 @@ CANON_RE = re.compile(r'<link rel="canonical" href="[^"]+">', re.I)
 OG_TITLE_RE = re.compile(r'<meta property="og:title" content="[^"]*">', re.I)
 OG_DESC_RE = re.compile(r'<meta property="og:description" content="[^"]*">', re.I)
 OG_URL_RE = re.compile(r'<meta property="og:url" content="[^"]*">', re.I)
+OG_IMAGE_RE = re.compile(r'<meta property="og:image" content="([^"]+)">', re.I)
 TW_TITLE_RE = re.compile(r'<meta name="twitter:title" content="[^"]*">', re.I)
 TW_DESC_RE = re.compile(r'<meta name="twitter:description" content="[^"]*">', re.I)
 MAIN_RE = re.compile(r'<main id="main">.*?</main>', re.I | re.S)
@@ -57,7 +58,20 @@ def deepen_template_links(source: str) -> str:
     return NESTED_LINK_RE.sub(lambda match: match.group("attr") + "../../", source)
 
 
-def schema_block(study: dict, canonical: str) -> str:
+def source_article_image(study: dict, fallback_page: str) -> str | None:
+    """Reuse the archived source article's social image for case-study Article schema."""
+    source_path = str(study.get("source_path", "")).strip("/")
+    if source_path:
+        article = DIST / source_path / "index.html"
+        if article.is_file():
+            match = OG_IMAGE_RE.search(article.read_text(encoding="utf-8"))
+            if match:
+                return html.unescape(match.group(1))
+    fallback = OG_IMAGE_RE.search(fallback_page)
+    return html.unescape(fallback.group(1)) if fallback else None
+
+
+def schema_block(study: dict, canonical: str, image_url: str | None = None) -> str:
     data = {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -70,6 +84,8 @@ def schema_block(study: dict, canonical: str) -> str:
         "isBasedOn": study.get("source_url", ""),
         "about": study.get("topics", []),
     }
+    if image_url:
+        data["image"] = image_url
     crumbs = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -155,7 +171,8 @@ def main() -> None:
         canonical = SITE + "/case-studies/" + study["slug"] + "/"
         page = apply_meta(nested_template, title=study["title"], description=study["description"], canonical=canonical)
         page = MAIN_RE.sub(f'<main id="main">{study_body(study)}</main>', page, count=1)
-        page = page.replace("</head>", schema_block(study, canonical) + "</head>", 1)
+        image_url = source_article_image(study, page)
+        page = page.replace("</head>", schema_block(study, canonical, image_url) + "</head>", 1)
         out = DIST / "case-studies" / study["slug"] / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(page, encoding="utf-8")
