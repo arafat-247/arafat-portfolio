@@ -1,6 +1,7 @@
 """Post-process generated output for cleaner search-engine migration signals."""
 from __future__ import annotations
 
+import html as html_lib
 import json
 import re
 from pathlib import Path
@@ -52,8 +53,8 @@ def add_article_images_to_schema() -> int:
     """Use the page's generated social image as the Article image when absent."""
     changed = 0
     for page in DIST.rglob("index.html"):
-        html = page.read_text(encoding="utf-8")
-        image_match = OG_IMAGE.search(html)
+        source = page.read_text(encoding="utf-8")
+        image_match = OG_IMAGE.search(source)
         if not image_match or not is_site_url(image_match.group(1)):
             continue
 
@@ -70,10 +71,82 @@ def add_article_images_to_schema() -> int:
             changed += 1
             return match.group(1) + payload + match.group(3)
 
-        updated = JSON_LD.sub(replace_schema, html, count=1)
-        if updated != html:
+        updated = JSON_LD.sub(replace_schema, source, count=1)
+        if updated != source:
             page.write_text(updated, encoding="utf-8")
     return changed
+
+
+def add_internal_discovery_links() -> tuple[int, int]:
+    """Give every clean page a crawl hub and every article crawlable neighbours.
+
+    The archive UIs load most records with JavaScript, so relying on those alone
+    makes deep stories slower to discover. The complete index is already fully
+    server-rendered. Link it site-wide, then connect article pages to nearby
+    records in the same editorial stream so crawlers and readers can move
+    through the archive without JavaScript.
+    """
+    index_path = DIST / "data" / "index.json"
+    if not index_path.is_file():
+        raise FileNotFoundError("dist/data/index.json was not generated")
+    records = json.loads(index_path.read_text(encoding="utf-8")).get("articles", [])
+    records = [r for r in records if r.get("local_url") and r.get("title")]
+
+    groups: dict[str, list[dict]] = {}
+    for record in records:
+        groups.setdefault(record.get("stream") or "reporting", []).append(record)
+
+    related_added = 0
+    for group in groups.values():
+        for pos, record in enumerate(group):
+            page = DIST / record["local_url"] / "index.html"
+            if not page.is_file():
+                continue
+            source = page.read_text(encoding="utf-8")
+            if 'data-seo-related="1"' in source or "</article>" not in source:
+                continue
+
+            candidates: list[dict] = []
+            for offset in (-1, 1, -2, 2):
+                idx = pos + offset
+                if 0 <= idx < len(group):
+                    candidate = group[idx]
+                    if candidate.get("local_url") != record.get("local_url") and candidate not in candidates:
+                        candidates.append(candidate)
+                if len(candidates) == 3:
+                    break
+            if len(candidates) < 3:
+                for candidate in group:
+                    if candidate.get("local_url") != record.get("local_url") and candidate not in candidates:
+                        candidates.append(candidate)
+                    if len(candidates) == 3:
+                        break
+
+            links = " · ".join(
+                f'<a href="/{html_lib.escape(c["local_url"], quote=True)}">{html_lib.escape(c["title"])}</a>'
+                for c in candidates
+            )
+            related = (
+                '<aside class="sourcebox" data-seo-related="1" aria-label="More from the portfolio">'
+                '<strong>More from this portfolio</strong><br>'
+                + links
+                + ' · <a href="/all-work/">Complete index</a></aside>'
+            )
+            updated = source.replace("</article>", related + "</article>", 1)
+            page.write_text(updated, encoding="utf-8")
+            related_added += 1
+
+    hub_added = 0
+    marker = '<a class="top" href="#top">Back to top ↑</a>'
+    replacement = '<a class="archiveindex" href="/all-work/">Complete index</a>' + marker
+    for page in DIST.rglob("index.html"):
+        source = page.read_text(encoding="utf-8")
+        if 'class="archiveindex"' in source or marker not in source:
+            continue
+        page.write_text(source.replace(marker, replacement, 1), encoding="utf-8")
+        hub_added += 1
+
+    return related_added, hub_added
 
 
 def local_page_for(url: str) -> Path | None:
@@ -90,8 +163,8 @@ def local_page_for(url: str) -> Path | None:
 def article_date(page: Path) -> str | None:
     if not page.is_file():
         return None
-    html = page.read_text(encoding="utf-8")
-    match = ARTICLE_MODIFIED.search(html) or ARTICLE_PUBLISHED.search(html)
+    source = page.read_text(encoding="utf-8")
+    match = ARTICLE_MODIFIED.search(source) or ARTICLE_PUBLISHED.search(source)
     if not match:
         return None
     value = match.group(1)
@@ -128,8 +201,12 @@ def main() -> None:
         raise FileNotFoundError("dist/ does not exist; run scripts/build.py first")
     redirects = optimise_permanent_redirects()
     schemas = add_article_images_to_schema()
+    related, hubs = add_internal_discovery_links()
     sitemap = add_sitemap_lastmods()
-    print(f"SEO post-process: redirects={redirects}, article_images={schemas}, sitemap_lastmod={sitemap}")
+    print(
+        f"SEO post-process: redirects={redirects}, article_images={schemas}, "
+        f"related_links={related}, crawl_hubs={hubs}, sitemap_lastmod={sitemap}"
+    )
 
 
 if __name__ == "__main__":
