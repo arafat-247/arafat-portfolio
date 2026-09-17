@@ -13,7 +13,8 @@ def validate():
                 u=n.attrs.get(key,''); p=urlsplit(u)
                 if p.scheme in ('javascript','data'):errors.append(f'Unsafe URL in {path}')
                 if not u or p.scheme or p.netloc or u.startswith('#'):continue
-                target=(path.parent/unquote(p.path)).resolve()
+                link_path=unquote(p.path)
+                target=((OUT/link_path.lstrip('/')) if link_path.startswith('/') else (path.parent/link_path)).resolve()
                 if not target.is_relative_to(OUT.resolve()):errors.append(f'Escaping link {u}')
                 if not target.exists():errors.append(f'Missing local asset/page: {path.relative_to(OUT)} -> {u}')
                 elif target.is_dir() and not (target/'index.html').exists():errors.append(f'Missing directory index: {u}')
