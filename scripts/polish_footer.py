@@ -14,7 +14,7 @@ CONTENT = ROOT / "content"
 FOOTER_RE = re.compile(r"<footer(?:\s[^>]*)?>.*?</footer>", re.I | re.S)
 CSS_MARKER = "/* Compact editorial site footer */"
 ASSET_VERSION_RE = re.compile(r"portfolio\.css\?v=[0-9.]+", re.I)
-ASSET_VERSION = "17.3.0"
+ASSET_VERSION = "17.3.1"
 
 FOOTER_CSS = r"""
 /* Compact editorial site footer */
@@ -68,7 +68,7 @@ html[data-theme="dark"] .sitefooter{color:#f4f0e7;background:linear-gradient(135
   .footerconnect{grid-column:2;grid-row:2;margin-top:14px;padding:0;border-top:0}
   .footerexplore{grid-column:1/-1;grid-row:auto;margin-top:15px;padding-top:13px;border-top:1px solid rgb(244 240 231 / 15%)}
   .footerexplore .footerlinks{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-flow:row;gap:5px 13px}
-  .footerlandmark{right:-45px;bottom:29px;width:205px;opacity:.10}
+  .footerlandmark{right:-18px;bottom:22px;width:235px;opacity:.23}
   .footerbase{flex-wrap:wrap;gap:4px 11px;margin-top:15px;padding-top:9px}
   .footerbase span+span:before{height:8px;margin-right:9px}
 }
@@ -77,7 +77,7 @@ html[data-theme="dark"] .sitefooter{color:#f4f0e7;background:linear-gradient(135
   .footergrid{column-gap:13px}
   .footerexplore .footerlinks{grid-template-columns:1fr 1fr;column-gap:9px}
   .footerlinks a{font-size:10px}
-  .footerlandmark{right:-75px;width:190px}
+  .footerlandmark{right:-12px;bottom:18px;width:220px;opacity:.26}
   body.home .homecontent{padding-bottom:24px}
 }
 @media print{.sitefooter{display:none!important}}
