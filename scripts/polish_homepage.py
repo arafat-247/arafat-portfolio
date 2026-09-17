@@ -14,12 +14,12 @@ HOME_PROFILE_RE = re.compile(
     r'<section class="homeprofile"[^>]*>.*?</section>',
     re.S,
 )
-ASSET_VERSION = "17.8.0"
+ASSET_VERSION = "17.8.1"
 HERO_IMAGE = "assets/portraits/byline.webp"
 
 # The existing byline asset is the supplied black-and-white portrait.
 # Keep this a normal image and real text; do not rasterise the whole hero.
-HOME_PROFILE = """<section class="homeprofile" data-hero-version="17.8.0" aria-labelledby="home-profile-title"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="900" height="892" loading="eager" fetchpriority="high" decoding="async"><div><span>Journalist \u00b7 Dhaka</span><h2 id="home-profile-title"><span>Arafat</span> <em>Rahaman</em></h2><p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p><nav aria-label="About and contact"><a href="about/">About me \u2192</a><a href="mailto:arafat.mcj@yahoo.com">Email</a></nav></div></section>"""
+HOME_PROFILE = '<section class="homeprofile" data-hero-version="17.8.1" aria-labelledby="home-profile-title"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="900" height="892" loading="eager" fetchpriority="high" decoding="async"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title"><span>Arafat</span> <em>Rahaman</em></h2><p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p><nav aria-label="About and contact"><a href="about/">About me →</a><a href="mailto:arafat.mcj@yahoo.com">Email</a></nav></div></section>'
 
 HOME_CSS = r"""
 /* Editorial homepage polish */
@@ -204,6 +204,43 @@ body.home .homeprofile a:focus-visible{outline:2px solid #efaa96;outline-offset:
   body.home .homeprofile>div>span{left:19px}
   body.home .homeprofile h2{font-size:42px}
 }
+
+/* Desktop hero: scale to the space beside the original navigation rail. */
+@media(min-width:801px){
+  body.home .homeprofile{
+    container-type:inline-size;
+    display:grid;
+    align-items:center;
+    min-height:clamp(338px,42vh,380px);
+    padding:30px 36px;
+    margin-bottom:28px;
+  }
+  body.home .homeprofile>img{
+    inset:0 0 0 auto;
+    width:46%;
+    height:100%;
+    min-height:0;
+    object-fit:cover;
+    object-position:right top;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 23%);
+    mask-image:linear-gradient(90deg,transparent 0%,#000 23%);
+  }
+  body.home .homeprofile:after{
+    background:linear-gradient(90deg,#0b302b 0%,#0b302b 40%,rgb(11 48 43 / 80%) 48%,rgb(11 48 43 / 18%) 65%,transparent 82%),linear-gradient(0deg,#0b302b 0%,rgb(11 48 43 / 28%) 20%,transparent 49%);
+  }
+  body.home .homeprofile>div{width:52%;padding:0;justify-content:center}
+  body.home .homeprofile>div>span{position:static;width:auto;color:#efaa96;font-size:11px;text-shadow:none}
+  body.home .homeprofile h2{margin:14px 0 0;font-size:62px;font-size:clamp(42px,7.2cqi,66px);line-height:1.02;letter-spacing:-.04em}
+  body.home .homeprofile h2 em{font-style:italic}
+  body.home .homeprofile p{max-width:410px;margin-top:16px;font-size:16px;font-size:clamp(15px,1.85cqi,17px);line-height:1.55;text-wrap:pretty}
+  body.home .homeprofile nav{margin-top:14px;gap:24px}
+  body.home .homeprofile a{font-size:14px;min-height:44px}
+}
+@media(min-width:801px) and (max-width:1100px){
+  body.home .homeprofile{padding:28px 26px}
+  body.home .homeprofile>div{width:55%}
+}
+
 """.strip()
 
 
