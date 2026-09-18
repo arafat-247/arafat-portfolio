@@ -1,6 +1,20 @@
 {
   "articles": [
     {
+      "id": "4d09a3c3-8f83-441b-b617-ec0c5cdff9f4",
+      "title": "We are sorry, Tofazzel",
+      "excerpt": "",
+      "category": "Personal essays",
+      "stream": "thoughts",
+      "date_published": "2026-09-18T00:00:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/uploads/3fea49cf-3aa6-4f5d-888a-c2c5e944e9f0.webp",
+      "cover_alt": "Representational Image",
+      "source_name": "",
+      "local_url": "thoughts/we-are-sorry-tofazzel/",
+      "credit_type": "byline"
+    },
+    {
       "id": "50a2a69c69f8aa3965ce",
       "title": "What could he have stolen that was worth his life?",
       "excerpt": "The killing of Mohammad Faysal in Moheshkhali forces an uncomfortable question about those who attack, those who watch and the state that must prevent both",
