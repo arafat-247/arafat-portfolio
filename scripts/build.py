@@ -173,17 +173,18 @@ def build():
     keys=('id','title','excerpt','category','stream','date_published','date_modified','cover_image','cover_alt','source_name','local_url')
     write(OUT/'data/index.json',{'articles':[{**{k:a.get(k,'') for k in keys},'credit_type':credit_type(a)} for a in articles]})
     tiles=[]
-    destinations=[('reporting','Reporting','News reports, interviews and in-depth features','REAL ISSUES.<br>BRIGHTER<br>ANSWERS.'),('opinion','Opinion & Analysis','Published columns, commentary and analysis on policy, politics and society','IDEAS<br>POLICY<br>PEOPLE<br>CHANGE'),('thoughts','Thoughts','Personal essays, reflections and field notes','A MORE<br>THOUGHTFUL<br>BANGLADESH.'),('photos','Photography','People, places and everyday observations from around Bangladesh','PLACES<br>PEOPLE<br>PERSPECTIVES')]
-    for i,(key,title,description,note) in enumerate(destinations):
+    destinations=[('reporting','Reporting','News reports, interviews and reported features'),('opinion','Opinion & Analysis','Published columns, commentary and analysis'),('thoughts','Thoughts','Personal essays, reflections and field notes'),('photos','Photography','People, places and everyday observations')]
+    for i,(key,title,description) in enumerate(destinations):
         href=PATHS.get(key,'photography/')
-        image=safe_asset(c["home_images"][i]) if i < len(c.get("home_images",[])) else ''
-        visual=f'<img src="{esc(image)}" alt="" width="640" height="420" loading="lazy" decoding="async">' if image else '<b class="tile-art" aria-hidden="true"></b>'
-        tiles.append(f'<a class="tile tile-{key}" href="{href}" data-home-tile="{key}">{visual}<b class="tileno" aria-hidden="true">{i+1:02d}</b><span class="tilecopy"><strong>{esc(title)}</strong><small>{esc(description)}</small><em class="tileexplore">Explore →</em></span><span class="tilewords" aria-hidden="true">{note}</span><i aria-hidden="true">→</i></a>')
-    scene=safe_asset(c["home_images"][3]) if len(c.get("home_images",[]))>3 else ''
-    scene_html=f'<img src="{esc(scene)}" alt="" width="720" height="540" loading="eager" decoding="async">' if scene else ''
-    home_profile='<section class="homeprofile" aria-labelledby="home-profile-title"><div class="herocopy"><span>Journalist · Dhaka</span><h2 id="home-profile-title"><span>Arafat</span><em>Rahaman</em></h2><p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p><p class="herotagline">Stories for a more thoughtful Bangladesh.</p><nav><a class="heroprimary" href="about/">About me →</a><a href="contact/">Get in touch →</a></nav><small class="heromicro">Better journalism for a fairer, more equal Bangladesh.</small></div><div class="herolayers" aria-hidden="true"><span class="heropaper heropaper-one"></span><span class="heropaper heropaper-two">Ideas<br>People<br>Policy<br>Change</span></div><figure class="heroportrait"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="900" height="892" loading="eager" fetchpriority="high" decoding="async"><figcaption>A more thoughtful Bangladesh.</figcaption></figure><aside class="heroscene" aria-label="Editorial theme">'+scene_html+'<blockquote class="heroquote">People,<br>policy and<br>a more equal<br>Bangladesh.</blockquote><span class="herolocation">Dhaka,<br>Bangladesh</span></aside></section>'
-    home_header='<header class="homeintro"><div><span>Selected paths through my work</span><h1>Work</h1></div><div class="homeintrocopy"><p>Reporting, analysis, personal writing and photography from Bangladesh.</p><a href="all-work/">View all work →</a></div></header>'
-    home_contact='<aside class="homecontact"><strong>Stories for a more thoughtful Bangladesh.</strong><a href="contact/">Have a story lead? Get in touch →</a></aside>'
+        if key=='photos':
+            image=safe_asset(c["home_images"][i]) if i < len(c.get("home_images",[])) else ''
+            visual=f'<img src="{esc(image)}" alt="" width="640" height="420" loading="lazy" decoding="async">' if image else '<b class="tile-art" aria-hidden="true"></b>'
+        else:
+            visual='<b class="tile-art" aria-hidden="true"></b>'
+        tiles.append(f'<a class="tile tile-{key}" href="{href}" data-home-tile="{key}">{visual}<span><strong>{esc(title)}</strong><small>{esc(description)}</small></span><i aria-hidden="true">→</i></a>')
+    home_profile='<section class="homeprofile homehero" aria-labelledby="home-profile-title"><img class="homeheroimage" src="assets/portraits/home.webp" alt="Black-and-white portrait of Arafat Rahaman" width="1230" height="1236" loading="eager" fetchpriority="high" decoding="async"><div class="homeherooverlay"><span>Journalist · Dhaka</span><h2 id="home-profile-title">Arafat Rahaman</h2><p>I report on education, governance, rights, social policy and public accountability for The Daily Star.</p><nav><a href="about/">About me →</a><a href="contact/">Get in touch →</a></nav></div></section>'
+    home_header='<header class="homeintro"><span>Selected paths through my work</span><h1>Portfolio</h1><p>Reporting, analysis, personal writing and photography from Bangladesh.</p></header>'
+    home_contact='<aside class="homecontact"><strong>Have a story lead or reporting enquiry?</strong><a href="contact/">Get in touch →</a></aside>'
     b.page('index.html','Arafat Rahaman','<section class="homecontent">'+home_profile+home_header+'<div class="tiles">'+''.join(tiles)+'</div>'+home_contact+'</section>',home=True)
     for stream,(title,description) in STREAMS.items():
         subset=[a for a in articles if a.get('stream')==stream]
