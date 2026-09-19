@@ -449,3 +449,107 @@ html[data-theme="dark"] .workitem:hover{background:#1b2522}
   .desktopnav a{padding-inline:8px;font-size:12px}
   .desktopnav a:after{left:8px;right:8px}
 }
+
+/* Desktop reference shell v18.1 */
+@media(min-width:801px){
+  .desktophead{
+    height:66px;
+    background:#f7f3ea;
+    border-bottom:1px solid #ddd6c8;
+    box-shadow:none;
+  }
+  .desktophead-inner{
+    width:min(100% - 44px,1120px);
+    gap:22px;
+  }
+  .desktopbrand{min-width:235px;gap:11px}
+  .desktopmark{width:40px;height:40px;flex-basis:40px;font-size:26px}
+  .desktopbrand strong{font-size:20px}
+  .desktopbrand small{margin-top:2px;font-size:7px;letter-spacing:.15em}
+  .desktopnav{margin-left:auto}
+  .desktopnav a{
+    height:66px;
+    padding:0 11px;
+    font-size:13px;
+    color:#272824;
+    background:transparent;
+  }
+  .desktopnav a:after{
+    left:11px;right:11px;bottom:12px;height:3px;
+    transform:scaleX(.72);
+  }
+  .desktopnav a:hover{
+    border-radius:4px;
+    background:color-mix(in srgb,var(--nav-accent) 10%,#f7f3ea);
+  }
+  .desktopnav a:hover:after,.desktopnav a[aria-current=page]:after{transform:scaleX(1)}
+  .desktopsearch{
+    position:relative;
+    display:grid;
+    width:40px;height:40px;
+    flex:0 0 40px;
+    place-items:center;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .desktopsearch span{
+    width:15px;height:15px;
+    border:1.8px solid currentColor;
+    border-radius:50%;
+  }
+  .desktopsearch span:after{
+    content:"";
+    position:absolute;
+    width:7px;height:1.8px;
+    margin:12px 0 0 -1px;
+    background:currentColor;
+    transform:rotate(45deg);
+    transform-origin:left center;
+  }
+  .desktopmenutoggle{
+    display:none;
+    width:42px;height:42px;
+    padding:9px;
+    border:0;
+    background:transparent;
+    cursor:pointer;
+  }
+  .desktopmenutoggle span{display:block;height:1.5px;margin:5px 0;background:currentColor}
+  .desktophead.scrolled{
+    height:58px;
+    background:#f7f3ea;
+    box-shadow:0 5px 18px rgb(26 31 28 / 7%);
+  }
+  .desktophead.scrolled .desktophead-inner{width:min(100% - 44px,1120px)}
+  .desktophead.scrolled .desktopnav,
+  .desktophead.scrolled .desktopsearch{display:none}
+  .desktophead.scrolled .desktopmenutoggle{display:block;margin-left:auto}
+  .desktophead.scrolled .desktopmark{width:36px;height:36px;flex-basis:36px;font-size:23px}
+  .desktophead.scrolled .desktopbrand strong{font-size:18px}
+  .desktophead.scrolled .desktopbrand small{font-size:6.5px}
+  .desktophead.scrolled.nav-open .desktopnav{
+    position:absolute;
+    top:58px;
+    right:max(22px,calc((100vw - 1120px)/2));
+    display:grid;
+    min-width:245px;
+    padding:8px;
+    border:1px solid #ddd6c8;
+    background:#f7f3ea;
+    box-shadow:0 16px 40px rgb(20 28 25 / 14%);
+  }
+  .desktophead.scrolled.nav-open .desktopnav a{
+    height:auto;
+    padding:12px 14px;
+    border-radius:3px;
+  }
+  .desktophead.scrolled.nav-open .desktopnav a:after{display:none}
+}
+
+@media(min-width:801px) and (max-width:980px){
+  .desktopbrand{min-width:190px}
+  .desktopbrand small{display:none}
+  .desktopnav a{padding-inline:7px;font-size:12px}
+  .desktopnav a:after{left:7px;right:7px}
+  .desktopsearch{width:34px;flex-basis:34px}
+}
