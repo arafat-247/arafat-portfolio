@@ -11,7 +11,7 @@ CSS = DIST / "portfolio.css"
 CSS_MARKER = "/* Hybrid editorial homepage v18.4 */"
 ASSET_VERSION_RE = re.compile(r"portfolio\.css\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\.js\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.4.1"
+ASSET_VERSION = "18.5.0"
 
 HOME_CSS = r"""
 /* Hybrid editorial homepage v18.4 */
