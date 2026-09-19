@@ -189,7 +189,7 @@ def main() -> None:
         source = source[:marker_index].rstrip()
     css.write_text(source + "\n\n" + FOOTER_CSS + "\n", encoding="utf-8")
 
-    print(f"Footer polish: reference_layout=1, pages={changed}, asset_version={ASSET_VERSION}")
+    print(f"Footer polish: reference_layout=1, pages={changed}, asset_version=preserved")
 
 
 if __name__ == "__main__":
