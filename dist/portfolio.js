@@ -53,7 +53,7 @@ observeReveals();
 
 if(document.body.classList.contains('home')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
  document.body.classList.add('home-motion');
- const revealTargets=$('.homeprofile,.home .tile,.homecontact');
+ const revealTargets=$('.homeprofile,.homeintro,.home .tile,.homecontact');
  if('IntersectionObserver' in window){
   const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
    if(!entry.isIntersecting)return;
@@ -64,11 +64,29 @@ if(document.body.classList.contains('home')&&!matchMedia('(prefers-reduced-motio
  }else revealTargets.forEach(item=>item.classList.add('is-visible'));
 }
 
-const desktopHead=$('.desktophead'),hero=$('.homeprofile');
+const desktopHead=$('.desktophead'),hero=$('.homeprofile'),desktopMenuToggle=$('.desktopmenutoggle'),desktopNav=$('.desktopnav');
+function closeDesktopNav(){
+ if(!desktopHead)return;
+ desktopHead.classList.remove('nav-open');
+ desktopMenuToggle?.setAttribute('aria-expanded','false');
+}
+desktopMenuToggle?.addEventListener('click',()=>{
+ if(!desktopHead)return;
+ const open=desktopHead.classList.toggle('nav-open');
+ desktopMenuToggle.setAttribute('aria-expanded',String(open));
+});
+desktopNav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDesktopNav));
+document.addEventListener('click',event=>{
+ if(!desktopHead?.classList.contains('nav-open'))return;
+ if(!desktopHead.contains(event.target))closeDesktopNav();
+});
+document.addEventListener('keydown',event=>{if(event.key==='Escape')closeDesktopNav()});
 function updateShellMotion(){
  const y=window.scrollY;
  $('.mobilehead')?.classList.toggle('scrolled',y>24);
- desktopHead?.classList.toggle('scrolled',y>34);
+ const compact=y>90;
+ desktopHead?.classList.toggle('scrolled',compact);
+ if(!compact)closeDesktopNav();
  if(hero&&innerWidth>800)hero.style.setProperty('--hero-shift',Math.min(12,y*.035).toFixed(1)+'px');
 }
 updateShellMotion();
