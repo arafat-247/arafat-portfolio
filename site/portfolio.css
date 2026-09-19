@@ -230,8 +230,8 @@ html[data-theme="dark"] .workitem:hover{background:#1b2522}
   .mark{display:grid;width:39px;height:39px;place-items:center;border-radius:50%;color:var(--paper);background:var(--ink);font:700 24px var(--serif)}
   .mobileactions{position:relative;z-index:2;display:flex;align-items:center;gap:7px}
   .themetoggle,.menutoggle{display:inline-flex;min-width:44px;min-height:44px;align-items:center;justify-content:center;gap:7px;padding:7px;border:0;background:transparent;cursor:pointer;touch-action:manipulation}
-  .home .menutoggle,.inner .themetoggle{display:none}
-  .home .mobilemenu,.home .menubackdrop{display:none!important}
+  .themetoggle{display:none}
+  .menutoggle{display:inline-flex}
   .themesymbol{display:grid;width:30px;height:30px;place-items:center;border:1px solid var(--line);border-radius:50%}
   .themelabel{display:none}
   .menulines{display:grid;width:21px;gap:5px}
