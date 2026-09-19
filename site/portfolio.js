@@ -51,6 +51,19 @@ function observeReveals(scope=document){
 }
 observeReveals();
 
+if(document.body.classList.contains('inner')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+ document.body.classList.add('inner-motion');
+ const innerTargets=$('.pageintro,.photohero,.workitem,.aboutlead,.aboutfacts>div,.coverage,.profiledetails>div,.membership,.recognition li,.contactgrid>*,.photogrid figure');
+ if('IntersectionObserver' in window){
+  const innerObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+   if(!entry.isIntersecting)return;
+   entry.target.classList.add('is-visible');
+   innerObserver.unobserve(entry.target);
+  }),{threshold:.1,rootMargin:'0px 0px -3% 0px'});
+  innerTargets.forEach((item,index)=>{item.style.transitionDelay=Math.min(index*.035,.16)+'s';innerObserver.observe(item)});
+ }else innerTargets.forEach(item=>item.classList.add('is-visible'));
+}
+
 if(document.body.classList.contains('home')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
  document.body.classList.add('home-motion');
  const revealTargets=$$('.homeprofile,.homeintro,.home .tile,.homecontact');
