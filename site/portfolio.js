@@ -220,3 +220,12 @@ document.addEventListener('keydown',event=>{
 });
 dialog?.addEventListener('close',()=>{dialog.querySelector('img').removeAttribute('src');opener?.focus()});
 })();
+
+// Professional V18 homepage renderer. Archive and article pages remain unchanged.
+if(document.body.classList.contains('home')&&!document.querySelector('script[data-pro-home]')){
+ const s=document.createElement('script');
+ s.src=(document.body.dataset.root||'')+'assets/pro-home.js?v=18.15.0';
+ s.defer=true;
+ s.dataset.proHome='1';
+ document.body.append(s);
+}
