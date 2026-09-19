@@ -1,4 +1,4 @@
-"""Apply the simplified editorial homepage after final build processing."""
+"""Apply the editorial reference homepage after final build processing."""
 from __future__ import annotations
 
 import re
@@ -8,17 +8,333 @@ ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
-CSS_MARKER = "/* Simplified editorial homepage v18.6 */"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.6.1"
+ASSET_VERSION = "18.8.0"
 
 HOME_CSS = r"""
-/* Simplified editorial homepage v18.6 */
+/* Reference editorial homepage v18.8 */
 body.home main{background:var(--paper)}
-body.home .homecontent{width:min(100%,1050px);margin:auto;padding:34px 34px 54px}
+body.home .homecontent{width:100%;margin:0;padding:0 0 64px}
 
-/* Keep the header consistent with the rest of the site. */
+/* Desktop: match the approved editorial reference composition */
+@media(min-width:801px){
+  body.home .homeprofile{display:grid!important}
+  body.home .homehero-reference{
+    grid-template-columns:minmax(320px,.95fr) minmax(360px,.92fr) minmax(250px,.64fr);
+    min-height:590px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+    background:#f4f0e7;
+  }
+
+  body.home .homehero-copy{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:70px 38px 54px max(48px,calc((100vw - 1320px)/2 + 34px));
+  }
+  body.home .homehero-copy>span{
+    color:var(--forest);
+    font-size:11px;
+    font-weight:850;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+  }
+  body.home .homehero-copy h1{
+    margin:14px 0 14px;
+    color:#0f3731;
+    font:400 clamp(64px,6vw,102px)/.78 var(--serif);
+    letter-spacing:-.055em;
+  }
+  body.home .homehero-copy h1 em{
+    display:block;
+    font-style:italic;
+    font-weight:400;
+  }
+  body.home .homehero-copy>p:not(.homehero-tagline){
+    max-width:520px;
+    margin:0;
+    color:#2f322f;
+    font:400 18px/1.5 var(--serif);
+  }
+  body.home .homehero-rule{
+    width:56px;
+    height:2px;
+    margin:20px 0 14px;
+    background:var(--forest);
+  }
+  body.home .homehero-tagline{
+    margin:0;
+    color:#b57449;
+    font:italic 24px/1.2 var(--serif);
+    letter-spacing:.01em;
+  }
+  body.home .homehero-copy nav{
+    display:flex;
+    gap:12px;
+    margin-top:26px;
+  }
+  body.home .homehero-copy nav a{
+    display:inline-flex;
+    min-width:145px;
+    min-height:50px;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    border:1px solid var(--forest);
+    color:var(--forest);
+    background:transparent;
+    font:700 13px/1 var(--serif);
+    text-decoration:none;
+  }
+  body.home .homehero-copy nav .hero-primary{
+    color:#fff;
+    background:var(--forest);
+  }
+  body.home .homehero-copy blockquote{
+    margin:auto 0 0;
+    padding-top:22px;
+    border-top:1px solid color-mix(in srgb,var(--line) 80%,transparent);
+    color:#79776f;
+    font:italic 13px/1.45 var(--serif);
+  }
+
+  body.home .homehero-portrait{
+    position:relative;
+    align-self:center;
+    width:min(100%,470px);
+    margin:0 auto;
+    padding:14px;
+    background:#f8f5ee;
+    box-shadow:0 15px 40px rgb(18 38 32 / 13%);
+    transform:rotate(-1.5deg);
+    z-index:2;
+  }
+  body.home .homehero-portrait:before{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    inset:-16px 32px 16px -18px;
+    background:#ece6da;
+    transform:rotate(2deg);
+  }
+  body.home .homehero-portrait img{
+    display:block;
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    object-position:center;
+    filter:grayscale(1) contrast(1.03);
+  }
+  body.home .homehero-portrait figcaption{
+    position:absolute;
+    left:46px;
+    bottom:34px;
+    max-width:170px;
+    color:#fff;
+    font:italic 22px/1.08 var(--serif);
+    transform:rotate(-4deg);
+    text-shadow:0 1px 14px rgb(0 0 0 / 45%);
+  }
+
+  body.home .homehero-panel{
+    position:relative;
+    overflow:hidden;
+    min-height:590px;
+    color:#fff;
+    background:#0e4d44;
+  }
+  body.home .homehero-panel:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgb(9 69 60 / 12%),rgb(5 55 48 / 58%));
+    pointer-events:none;
+  }
+  body.home .homehero-panel img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:grayscale(.25) sepia(.12) saturate(.75) brightness(.52);
+  }
+  body.home .homehero-panel p{
+    position:absolute;
+    z-index:2;
+    right:36px;
+    top:82px;
+    width:150px;
+    margin:0;
+    padding-top:16px;
+    border-top:2px solid rgb(255 255 255 / 70%);
+    font:italic 24px/1.12 var(--serif);
+  }
+  body.home .homehero-panel>span{
+    position:absolute;
+    z-index:2;
+    right:36px;
+    bottom:44px;
+    padding-top:14px;
+    border-top:2px solid rgb(255 255 255 / 70%);
+    font-size:9px;
+    font-weight:850;
+    letter-spacing:.22em;
+    line-height:1.6;
+    text-transform:uppercase;
+  }
+
+  body.home .homeintro{
+    display:grid;
+    width:min(100% - 64px,1320px);
+    margin:0 auto;
+    padding:34px 0 22px;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    align-items:end;
+  }
+  body.home .homeintro>div:first-child span{
+    display:block;
+    margin-bottom:5px;
+    color:var(--accent);
+    font-size:10px;
+    font-weight:850;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+  }
+  body.home .homeintro h2{
+    margin:0;
+    font:400 56px/.95 var(--serif);
+    letter-spacing:-.045em;
+  }
+  body.home .homeintro>div:last-child{
+    justify-self:end;
+    text-align:left;
+  }
+  body.home .homeintro p{
+    margin:0 0 8px;
+    color:#4d504b;
+    font:400 15px/1.5 var(--serif);
+  }
+  body.home .homeintro a{
+    color:var(--forest);
+    font-size:12px;
+    font-weight:750;
+    text-decoration:none;
+    border-bottom:1px solid currentColor;
+  }
+
+  body.home .tiles{
+    display:grid;
+    width:min(100% - 48px,1360px);
+    margin:0 auto;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+  }
+  body.home .tile{
+    position:relative;
+    min-height:300px;
+    padding:24px 22px 22px;
+    align-items:flex-end;
+    overflow:hidden;
+    color:#fff;
+    border:0;
+    box-shadow:none;
+    transform:none;
+  }
+  body.home .tile:hover{transform:translateY(-2px)}
+  body.home .tile:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:linear-gradient(0deg,rgb(7 25 21 / 76%),rgb(7 25 21 / 5%) 72%);
+  }
+  body.home .tile-number{
+    position:absolute;
+    z-index:2;
+    left:20px;
+    top:18px;
+    color:#efc37a;
+    font:800 10px/1 var(--sans);
+    letter-spacing:.12em;
+    font-style:normal;
+  }
+  body.home .tile-copy{
+    position:relative;
+    z-index:2;
+    width:66%;
+  }
+  body.home .tile strong{
+    font:400 clamp(26px,2.25vw,34px)/1 var(--serif);
+    letter-spacing:-.035em;
+  }
+  body.home .tile small{
+    display:block;
+    margin-top:8px;
+    color:rgb(255 255 255 / 78%);
+    font:400 12px/1.4 var(--serif);
+  }
+  body.home .tile-explore{
+    display:inline-block;
+    margin-top:22px;
+    padding-bottom:4px;
+    border-bottom:1px solid rgb(255 255 255 / 75%);
+    font:700 10px/1 var(--sans);
+  }
+  body.home .tile-keywords{
+    position:absolute;
+    z-index:2;
+    right:18px;
+    bottom:22px;
+    width:86px;
+    padding-top:13px;
+    border-top:1px solid rgb(255 255 255 / 65%);
+    color:rgb(255 255 255 / 86%);
+    font:800 9px/1.5 var(--sans);
+    letter-spacing:.09em;
+    text-transform:uppercase;
+  }
+  body.home .tile-keywords span{display:block}
+  body.home .tile>i{
+    position:absolute;
+    z-index:3;
+    right:17px;
+    top:auto;
+    bottom:18px;
+    display:grid;
+    width:34px;
+    height:34px;
+    place-items:center;
+    border:1px solid rgb(255 255 255 / 65%);
+    border-radius:50%;
+    font-size:14px;
+    transform:none;
+  }
+  body.home .tile-reporting .tile-art{
+    background:
+      linear-gradient(0deg,rgb(7 50 44 / 58%),rgb(7 50 44 / 58%)),
+      url("assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (2).webp") center/cover;
+  }
+  body.home .tile-opinion .tile-art{
+    background:
+      linear-gradient(0deg,rgb(128 58 44 / 62%),rgb(128 58 44 / 62%)),
+      url("assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (4).webp") center/cover;
+  }
+  body.home .tile-thoughts .tile-art{
+    background:
+      linear-gradient(0deg,rgb(45 73 48 / 58%),rgb(45 73 48 / 58%)),
+      url("assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (1).webp") center/cover;
+  }
+  body.home .tile-photos img{filter:brightness(.62) saturate(.72)}
+  body.home .homecontact{
+    width:min(100% - 48px,1360px);
+    margin:26px auto 0;
+  }
+}
+
+/* Tablet and mobile retain a separate, compact composition */
 @media(max-width:800px){
   body.home .mobilehead{height:64px;padding:0 18px}
   body.home .mobilebrand{gap:10px}
@@ -27,132 +343,83 @@ body.home .homecontent{width:min(100%,1050px);margin:auto;padding:34px 34px 54px
   body.home .menutoggle{display:inline-flex}
   body.home .mobilemenu[hidden],
   body.home .menubackdrop[hidden]{display:none!important}
-}
 
-/* Hero */
-body.home .homehero{
-  position:relative;
-  display:block;
-  min-height:460px;
-  margin:0 0 28px;
-  overflow:hidden;
-  color:#fff;
-  background:#102f2a;
-  box-shadow:0 16px 36px rgb(19 40 34 / 10%);
-}
-body.home .homeheroimage{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center 32%;
-  filter:grayscale(1) contrast(1.03);
-}
-body.home .homehero:after{
-  pointer-events:none;
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-  background:
-    linear-gradient(90deg,rgb(6 27 24 / 76%) 0%,rgb(6 27 24 / 42%) 42%,rgb(6 27 24 / 8%) 68%,transparent 100%),
-    linear-gradient(0deg,rgb(6 27 24 / 36%),transparent 50%);
-}
-body.home .homeherooverlay{
-  position:absolute;
-  z-index:2;
-  left:36px;
-  bottom:34px;
-  width:min(48%,470px);
-  padding:26px 28px;
-  background:rgb(7 55 48 / 88%);
-  backdrop-filter:blur(2px);
-}
-body.home .homeherooverlay>span{
-  color:#f2aa91;
-  font-size:10px;
-  font-weight:850;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-}
-body.home .homeherooverlay h2{
-  margin:8px 0 0;
-  color:#fff;
-  font:700 clamp(44px,5vw,68px)/.92 var(--serif);
-  letter-spacing:-.04em;
-}
-body.home .homeherooverlay p{
-  margin:14px 0 0;
-  color:rgb(255 255 255 / 82%);
-  font-size:15px;
-  line-height:1.5;
-}
-body.home .homeherooverlay nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  margin-top:18px;
-}
-body.home .homeherooverlay a{
-  padding-bottom:3px;
-  border-bottom:1px solid currentColor;
-  color:#fff;
-  font-size:12px;
-  font-weight:800;
-  text-decoration:none;
-}
-
-/* Original portfolio structure */
-body.home .homeintro{display:grid;grid-template-columns:1fr 1.6fr;align-items:end;gap:24px;margin:0 0 28px}
-body.home .homeintro>span{grid-column:1/-1;color:var(--accent);font-size:11px;font-weight:850;letter-spacing:.15em;text-transform:uppercase}
-body.home .homeintro h1{margin:0;font:700 clamp(42px,5vw,62px)/.95 var(--serif);letter-spacing:-.04em}
-body.home .homeintro p{margin:0 0 3px;color:var(--muted);font-size:16px;line-height:1.55}
-body.home .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-body.home .tile{min-height:245px;padding:24px;box-shadow:none}
-body.home .tile strong{font:700 clamp(27px,3vw,36px)/1.03 var(--serif)}
-body.home .tile small{max-width:330px;margin-top:8px;font-size:12px;line-height:1.4}
-body.home .tile-reporting .tile-art{background:radial-gradient(circle at 78% 32%,rgb(190 92 66 / 30%) 0 7%,transparent 7.5%),repeating-linear-gradient(90deg,transparent 0 38px,rgb(255 255 255 / 7%) 39px 40px),repeating-linear-gradient(0deg,transparent 0 38px,rgb(255 255 255 / 6%) 39px 40px),#123a34}
-body.home .tile-opinion .tile-art{background:radial-gradient(circle at 82% 20%,transparent 0 34px,rgb(255 255 255 / 12%) 35px 36px,transparent 37px 63px,rgb(255 255 255 / 9%) 64px 65px,transparent 66px),repeating-linear-gradient(135deg,transparent 0 25px,rgb(255 255 255 / 6%) 26px 27px),#203e38}
-body.home .tile-thoughts .tile-art{background:repeating-radial-gradient(ellipse at 76% 55%,transparent 0 22px,rgb(255 255 255 / 9%) 23px 24px,transparent 25px 40px),#304a43}
-body.home .tile-photos img{filter:brightness(.62) saturate(.78)}
-body.home .homecontact{margin-top:42px}
-
-@media(max-width:800px){
-  body.home .homecontent{padding:18px 16px 42px}
-  body.home .homehero{min-height:390px;margin-bottom:26px}
-  body.home .homeheroimage{object-position:center 23%}
-  body.home .homehero:after{
-    background:linear-gradient(0deg,rgb(5 27 23 / 88%) 0%,rgb(5 27 23 / 46%) 44%,rgb(5 27 23 / 7%) 72%,transparent 100%)
+  body.home .homecontent{padding:16px 14px 42px}
+  body.home .homehero-reference{
+    display:block!important;
+    min-height:0;
+    margin:0 0 22px;
+    background:transparent;
   }
-  body.home .homeherooverlay{
-    left:16px;
-    right:16px;
-    bottom:16px;
-    width:auto;
-    padding:20px 20px 18px;
-    background:rgb(7 55 48 / 90%);
+  body.home .homehero-copy{
+    position:absolute;
+    z-index:3;
+    left:26px;
+    right:26px;
+    bottom:36px;
+    padding:18px;
+    color:#fff;
+    background:rgb(7 55 48 / 91%);
   }
-  body.home .homeherooverlay h2{font-size:38px}
-  body.home .homeherooverlay p{font-size:13px}
-  body.home .homeherooverlay nav{margin-top:14px}
-  body.home .homeintro{grid-template-columns:1fr;gap:4px;margin-bottom:22px}
-  body.home .homeintro h1{font-size:clamp(44px,12vw,60px)}
-  body.home .homeintro p{margin-top:10px;font-size:15px}
-  body.home .tiles{grid-template-columns:1fr 1fr;gap:8px}
-  body.home .tile{min-height:170px;padding:18px}
+  body.home .homehero-copy>span{color:#efb39d;font-size:8px;font-weight:850;letter-spacing:.16em;text-transform:uppercase}
+  body.home .homehero-copy h1{margin:7px 0 8px;color:#fff;font:400 34px/.95 var(--serif);letter-spacing:-.03em}
+  body.home .homehero-copy h1 em{display:inline;font-style:normal}
+  body.home .homehero-copy>p:not(.homehero-tagline){margin:0;color:rgb(255 255 255 / 80%);font-size:12px;line-height:1.4}
+  body.home .homehero-rule,
+  body.home .homehero-tagline,
+  body.home .homehero-copy blockquote{display:none}
+  body.home .homehero-copy nav{display:flex;gap:14px;margin-top:12px}
+  body.home .homehero-copy nav a{color:#fff;font-size:10px;font-weight:800;text-decoration:none;border-bottom:1px solid currentColor}
+
+  body.home .homehero-portrait{
+    position:relative;
+    display:block;
+    height:410px;
+    margin:0;
+    overflow:hidden;
+    background:#111;
+  }
+  body.home .homehero-portrait img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 30%;
+    filter:grayscale(1) brightness(.7);
+  }
+  body.home .homehero-portrait figcaption{display:none}
+  body.home .homehero-panel{display:none}
+
+  body.home .homeintro{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+    margin:0 0 18px;
+    padding:18px 0 0;
+  }
+  body.home .homeintro>div:first-child span{display:block;color:var(--accent);font-size:9px;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
+  body.home .homeintro h2{margin:2px 0 0;font:400 48px/.95 var(--serif);letter-spacing:-.04em}
+  body.home .homeintro p{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+  body.home .homeintro a{display:inline-block;margin-top:4px;color:var(--forest);font-size:11px;text-decoration:none}
+
+  body.home .tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  body.home .tile{min-height:158px;padding:16px}
   body.home .tile-reporting,
   body.home .tile-photos{grid-column:1/-1}
+  body.home .tile-number,
+  body.home .tile-keywords,
+  body.home .tile-explore{display:none}
+  body.home .tile-copy{width:auto}
   body.home .tile strong{font-size:22px}
-  body.home .tile small{font-size:11px}
-  body.home .homecontact{margin-top:20px;padding:26px}
-  body.home .homecontact strong{font-size:30px}
+  body.home .tile small{font-size:10.5px}
+  body.home .homecontact{margin-top:18px;padding:24px}
 }
 
 @media(max-width:420px){
-  body.home .homehero{min-height:360px}
-  body.home .homeherooverlay h2{font-size:34px}
-  body.home .tile{min-height:158px}
+  body.home .homehero-portrait{height:380px}
+  body.home .homehero-copy{left:22px;right:22px;bottom:28px}
+  body.home .homehero-copy h1{font-size:31px}
+  body.home .homeintro h2{font-size:44px}
+  body.home .tile{min-height:148px}
 }
 """.strip()
 
@@ -167,19 +434,20 @@ def main() -> None:
     HOME.write_text(source, encoding="utf-8")
 
     css_text = CSS.read_text(encoding="utf-8")
-    old_markers = (
+    markers = (
         "/* Hybrid editorial homepage v18.4 */",
         "/* Simplified editorial homepage v18.6 */",
+        "/* Reference editorial homepage v18.8 */",
     )
     cut = len(css_text)
-    for marker in old_markers:
+    for marker in markers:
         index = css_text.find(marker)
         if index >= 0:
             cut = min(cut, index)
     if cut < len(css_text):
         css_text = css_text[:cut].rstrip()
     CSS.write_text(css_text + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
-    print(f"Homepage polish: simplified=1, overlay_hero=1, asset_version={ASSET_VERSION}")
+    print(f"Homepage polish: reference_layout=1, desktop_four_cards=1, asset_version={ASSET_VERSION}")
 
 
 if __name__ == "__main__":
