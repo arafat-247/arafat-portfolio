@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='18.3.0'
+ASSET_VERSION='18.4.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -179,9 +179,11 @@ def build():
         image=safe_asset(c["home_images"][i]) if i < len(c.get("home_images",[])) else ''
         visual=f'<img src="{esc(image)}" alt="" width="640" height="420" loading="lazy" decoding="async">' if image else '<b class="tile-art" aria-hidden="true"></b>'
         tiles.append(f'<a class="tile tile-{key}" href="{href}" data-home-tile="{key}">{visual}<b class="tileno" aria-hidden="true">{i+1:02d}</b><span class="tilecopy"><strong>{esc(title)}</strong><small>{esc(description)}</small><em class="tileexplore">Explore →</em></span><span class="tilewords" aria-hidden="true">{note}</span><i aria-hidden="true">→</i></a>')
-    home_profile='<section class="homeprofile" aria-labelledby="home-profile-title"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="900" height="892" loading="eager" fetchpriority="high" decoding="async"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title"><span>Arafat</span><em>Rahaman</em></h2><p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p><nav><a href="about/">About me →</a><a href="mailto:'+esc(c.get('email',''))+'">Email →</a></nav><p class="herotagline">Stories for a more thoughtful Bangladesh.</p></div><blockquote class="heroquote">People,<br>policy and<br>a more equal<br>Bangladesh.</blockquote></section>'
-    home_header='<header class="homeintro"><div><span>Selected paths through my work</span><h1>Work</h1></div><p>Reporting, analysis, personal writing and photography from Bangladesh.</p></header>'
-    home_contact='<aside class="homecontact"><strong>Have a story lead or reporting enquiry?</strong><a href="contact/">Get in touch →</a></aside>'
+    scene=safe_asset(c["home_images"][3]) if len(c.get("home_images",[]))>3 else ''
+    scene_html=f'<img src="{esc(scene)}" alt="" width="720" height="540" loading="eager" decoding="async">' if scene else ''
+    home_profile='<section class="homeprofile" aria-labelledby="home-profile-title"><div class="herocopy"><span>Journalist · Dhaka</span><h2 id="home-profile-title"><span>Arafat</span><em>Rahaman</em></h2><p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p><p class="herotagline">Stories for a more thoughtful Bangladesh.</p><nav><a class="heroprimary" href="about/">About me →</a><a href="contact/">Get in touch →</a></nav><small class="heromicro">Better journalism for a fairer, more equal Bangladesh.</small></div><div class="herolayers" aria-hidden="true"><span class="heropaper heropaper-one"></span><span class="heropaper heropaper-two">Ideas<br>People<br>Policy<br>Change</span></div><figure class="heroportrait"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="900" height="892" loading="eager" fetchpriority="high" decoding="async"><figcaption>A more thoughtful Bangladesh.</figcaption></figure><aside class="heroscene" aria-label="Editorial theme">'+scene_html+'<blockquote class="heroquote">People,<br>policy and<br>a more equal<br>Bangladesh.</blockquote><span class="herolocation">Dhaka,<br>Bangladesh</span></aside></section>'
+    home_header='<header class="homeintro"><div><span>Selected paths through my work</span><h1>Work</h1></div><div class="homeintrocopy"><p>Reporting, analysis, personal writing and photography from Bangladesh.</p><a href="all-work/">View all work →</a></div></header>'
+    home_contact='<aside class="homecontact"><strong>Stories for a more thoughtful Bangladesh.</strong><a href="contact/">Have a story lead? Get in touch →</a></aside>'
     b.page('index.html','Arafat Rahaman','<section class="homecontent">'+home_profile+home_header+'<div class="tiles">'+''.join(tiles)+'</div>'+home_contact+'</section>',home=True)
     for stream,(title,description) in STREAMS.items():
         subset=[a for a in articles if a.get('stream')==stream]
