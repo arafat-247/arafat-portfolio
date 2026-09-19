@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='18.2.0'
+ASSET_VERSION='18.3.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
