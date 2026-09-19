@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.12.0"
+ASSET_VERSION = "18.13.0"
 
 HOME_CSS = r"""
 /* Editorial homepage v18.10 — isolated from legacy homepage selectors */
@@ -548,7 +548,17 @@ def main() -> None:
     if cut < len(css_text):
         css_text = css_text[:cut].rstrip()
     CSS.write_text(css_text + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
-    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, css_isolated=1, inline_critical=1, final_composition=18.12")
+
+    versioned_pages = 0
+    for page in DIST.rglob("*.html"):
+        source = page.read_text(encoding="utf-8")
+        updated = ASSET_VERSION_RE.sub(f"portfolio.css?v={ASSET_VERSION}", source)
+        updated = SCRIPT_VERSION_RE.sub(f"portfolio.js?v={ASSET_VERSION}", updated)
+        if updated != source:
+            page.write_text(updated, encoding="utf-8")
+            versioned_pages += 1
+
+    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1, final_composition=18.13")
 
 
 if __name__ == "__main__":

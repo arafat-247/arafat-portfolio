@@ -1,4 +1,4 @@
-"""Render the reference-led editorial site footer after build post-processing.\nPreserve the build asset version so CSS cache busting remains accurate.\n"""
+"""Render the reference-led editorial site footer after build post-processing.\nNever rewrite asset cache versions; the final asset pass owns cache busting.\n"""
 from __future__ import annotations
 
 import html
@@ -175,7 +175,6 @@ def main() -> None:
         if not FOOTER_RE.search(source):
             continue
         updated = FOOTER_RE.sub(footer, source, count=1)
-        updated = ASSET_VERSION_RE.sub(f"portfolio.css?v={ASSET_VERSION}", updated)
         if updated != source:
             page.write_text(updated, encoding="utf-8")
             changed += 1
@@ -189,7 +188,7 @@ def main() -> None:
         source = source[:marker_index].rstrip()
     css.write_text(source + "\n\n" + FOOTER_CSS + "\n", encoding="utf-8")
 
-    print(f"Footer polish: reference_layout=1, pages={changed}, asset_version=preserved")
+    print(f"Footer polish: reference_layout=1, pages={changed}, asset_version=unchanged")
 
 
 if __name__ == "__main__":
