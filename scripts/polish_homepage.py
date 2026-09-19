@@ -8,13 +8,13 @@ ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
-CSS_MARKER = "/* Editorial homepage reference v18.1 */"
+CSS_MARKER = "/* Editorial homepage responsive v18.3 */"
 ASSET_VERSION_RE = re.compile(r"portfolio\.css\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\.js\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.2.0"
+ASSET_VERSION = "18.3.0"
 
 HOME_CSS = r"""
-/* Editorial homepage reference v18.1 */
+/* Editorial homepage responsive v18.3 */
 body.home main{background:#f7f3ea}
 body.home .heroquote{margin:0}
 body.home .herotagline{font-family:"Caveat",cursive}
@@ -179,6 +179,180 @@ body.home .tilewords{display:none}
   body.home .tile{padding-top:34px}
   body.home .tile img{filter:brightness(.73) saturate(.72)}
 }
+
+
+/* Responsive editorial rhythm */
+@media(min-width:981px){
+  body.home .homeprofile{
+    min-height:338px;
+    box-shadow:0 12px 34px rgb(9 42 36 / 8%);
+  }
+  body.home .homeprofile:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+    background:radial-gradient(circle at var(--hero-hx,66%) var(--hero-hy,42%),rgb(255 255 255 / 10%),transparent 24%);
+    opacity:.45;
+    transition:opacity .25s ease;
+  }
+  body.home .homeprofile:hover:before{opacity:.72}
+  body.home .homeprofile>img{
+    transform:translate3d(var(--hero-x,0),calc(var(--hero-y,0) - var(--hero-shift,0px)),0) scale(1.015);
+    transition:transform .5s cubic-bezier(.2,.65,.25,1),filter .3s ease;
+  }
+
+  body.home .tiles{
+    display:grid;
+    grid-template-columns:1.18fr .82fr;
+    grid-template-areas:
+      "reporting opinion"
+      "thoughts photos";
+    gap:4px;
+  }
+  body.home .tile-reporting{grid-area:reporting;min-height:205px}
+  body.home .tile-opinion{grid-area:opinion;min-height:205px}
+  body.home .tile-thoughts{grid-area:thoughts;min-height:185px}
+  body.home .tile-photos{grid-area:photos;min-height:185px}
+  body.home .tile{
+    transform:translate3d(0,0,0);
+    transition:transform .25s cubic-bezier(.2,.7,.25,1),box-shadow .25s ease,filter .25s ease;
+  }
+  body.home .tile img{
+    transform:translate3d(var(--ix,0),var(--iy,0),0) scale(1.035);
+  }
+  body.home .tile:hover img{
+    transform:translate3d(var(--ix,0),var(--iy,0),0) scale(1.07);
+  }
+  body.home .tile-reporting:hover,
+  body.home .tile-thoughts:hover{transform:translate3d(-2px,-3px,0)}
+  body.home .tile-opinion:hover,
+  body.home .tile-photos:hover{transform:translate3d(2px,-3px,0)}
+  body.home .tile .tilecopy{width:min(68%,360px)}
+  body.home .tilewords{transition:transform .22s ease,opacity .22s ease}
+  body.home .tile:hover .tilewords{transform:translateX(-4px);opacity:1}
+  body.home .tileexplore{transition:letter-spacing .18s ease,border-color .18s ease}
+  body.home .tile:hover .tileexplore{letter-spacing:.025em;border-color:#efb398}
+}
+
+@media(min-width:1180px){
+  body.home .homecontent{width:min(100% - 64px,1120px)}
+  body.home .homeprofile{min-height:352px}
+  body.home .tile-reporting,
+  body.home .tile-opinion{min-height:215px}
+  body.home .tile-thoughts,
+  body.home .tile-photos{min-height:195px}
+}
+
+@media(min-width:801px) and (max-width:980px){
+  body.home .homecontent{width:min(100% - 36px,920px)}
+  body.home .homeprofile{min-height:300px}
+  body.home .homeprofile>div{width:52%;min-height:300px;padding:24px 28px}
+  body.home .homeprofile h2{font-size:clamp(48px,6vw,60px)}
+  body.home .heroquote{display:none}
+  body.home .homeintro{grid-template-columns:1fr;gap:7px}
+  body.home .homeintro p{text-align:left}
+  body.home .tiles{grid-template-columns:1fr 1fr;gap:4px}
+  body.home .tile{min-height:176px}
+  body.home .tilewords{display:none}
+}
+
+@media(max-width:800px){
+  body.home .homecontent{padding-top:12px}
+  body.home .homeprofile{
+    position:relative;
+    display:block;
+    min-height:0;
+    margin:0 -22px 26px;
+    border-radius:0;
+    overflow:hidden;
+  }
+  body.home .homeprofile>img{
+    width:100%;
+    height:auto;
+    aspect-ratio:1.12/1;
+    object-fit:cover;
+    object-position:center 18%;
+    filter:grayscale(1) contrast(1.02);
+  }
+  body.home .homeprofile:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:linear-gradient(180deg,transparent 26%,rgb(7 48 42 / 15%) 42%,rgb(7 48 42 / 91%) 69%,#073e36 100%);
+    pointer-events:none;
+  }
+  body.home .homeprofile>div{
+    position:absolute;
+    inset:auto 0 0;
+    z-index:2;
+    width:100%;
+    padding:22px;
+    color:#fff;
+  }
+  body.home .homeprofile>div>span{font-size:9px}
+  body.home .homeprofile h2{
+    margin-top:5px;
+    color:#fff;
+    font:400 clamp(38px,12vw,54px)/.91 var(--serif);
+    letter-spacing:-.035em;
+  }
+  body.home .homeprofile h2 span,
+  body.home .homeprofile h2 em{display:inline}
+  body.home .homeprofile h2 em{font-style:italic}
+  body.home .homeprofile p{
+    max-width:31rem;
+    margin-top:10px;
+    color:rgb(255 255 255 / 86%);
+    font:400 13px/1.42 var(--sans);
+  }
+  body.home .homeprofile nav{margin-top:10px}
+  body.home .homeprofile a{font-size:11px}
+  body.home .homeintro{margin-bottom:10px}
+  body.home .homeintro h1{font-size:40px}
+  body.home .tiles{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+  body.home .tile,
+  body.home .tile-reporting,
+  body.home .tile-opinion,
+  body.home .tile-thoughts,
+  body.home .tile-photos{
+    grid-column:auto;
+    min-height:164px;
+    padding:34px 18px 17px;
+  }
+  body.home .tile strong{font-size:27px}
+  body.home .tile small{max-width:78%;font-size:11.5px}
+  body.home .tile>i{right:16px;left:auto;bottom:15px}
+  body.home .homecontact{margin-top:8px}
+}
+
+@media(max-width:520px){
+  body.home .homecontent{padding-inline:16px}
+  body.home .homeprofile{margin-inline:-16px}
+  body.home .homeprofile>div{padding:18px 17px}
+  body.home .homeprofile p{font-size:12px}
+  body.home .tile{min-height:154px}
+  body.home .tile strong{font-size:25px}
+}
+
+body.home .desktophead:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:var(--page-progress,0%);
+  height:2px;
+  background:linear-gradient(90deg,#0b4b43,#b9563e,#b18c42);
+  opacity:.82;
+  pointer-events:none;
+}
+
 
 @media(prefers-reduced-motion:reduce){
   body.home.home-motion .homeprofile,
