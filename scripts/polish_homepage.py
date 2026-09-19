@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.10.0"
+ASSET_VERSION = "18.11.0"
 
 HOME_CSS = r"""
 /* Editorial homepage v18.10 — isolated from legacy homepage selectors */
@@ -408,6 +408,80 @@ body.home .homecontact strong{font-size:30px}
   .worktile-opinion{min-height:164px}
   .worktile-thoughts,.worktile-photos{min-height:146px}
 }
+
+/* Final homepage composition v18.11 */
+@media(min-width:801px){
+  .editorialhero{
+    grid-template-columns:minmax(330px,.88fr) minmax(390px,.94fr) minmax(250px,.58fr);
+    min-height:500px;
+  }
+  .editorialhero-copy{
+    justify-content:flex-start;
+    padding:58px 34px 34px max(54px,calc((100vw - 1400px)/2 + 34px));
+  }
+  .editorialhero-copy h1{
+    margin-top:10px;
+    font-size:clamp(60px,5.7vw,90px);
+    line-height:.82;
+  }
+  .editorialhero-copy>p:not(.editorialhero-tagline){
+    max-width:470px;
+    font-size:17px;
+    line-height:1.45;
+  }
+  .editorialhero-copy nav{margin-top:16px}
+  .editorialhero-tagline{margin-top:20px;font-size:22px}
+  .editorialhero-portrait{width:min(100%,425px)}
+  .editorialhero-panel{min-height:500px}
+  .editorialhero-panel p{left:34px;top:62px;width:165px;font-size:23px}
+  .editorialhero-panel>span{right:26px;bottom:28px;font-size:14px}
+  .workintro{padding-top:26px}
+  .workgrid{grid-template-rows:178px 178px}
+  body.home .homecontact{margin-top:16px}
+}
+@media(max-width:800px){
+  body.home .homecontent{padding:12px 14px 36px}
+  .editorialhero-portrait img{
+    aspect-ratio:4/5;
+    object-fit:cover;
+    object-position:50% 46%;
+  }
+  .editorialhero-copy{
+    left:14px;
+    right:52px;
+    bottom:14px;
+    padding:13px 14px 14px;
+  }
+  .editorialhero-copy h1{
+    margin:5px 0 7px;
+    font-size:29px;
+    line-height:.96;
+  }
+  .editorialhero-copy>p:not(.editorialhero-tagline){
+    font-size:11px;
+    line-height:1.38;
+  }
+  .editorialhero-copy nav{gap:18px;margin-top:9px}
+  .editorialhero-copy nav a{font-size:9.5px}
+  .workintro{gap:5px;padding:19px 0 14px}
+  .workintro h2{font-size:43px}
+  .workintro p{font-size:13px}
+  .worktile-reporting{min-height:174px}
+  .worktile-opinion{min-height:150px}
+  .worktile-thoughts,.worktile-photos{min-height:134px}
+  .worktile-copy strong{font-size:20px}
+  .worktile-copy small{font-size:10px;line-height:1.34}
+  body.home .homecontact{margin-top:15px;padding:20px}
+  body.home .homecontact strong{font-size:25px}
+}
+@media(max-width:420px){
+  .editorialhero-copy{left:12px;right:44px;bottom:12px;padding:12px 13px}
+  .editorialhero-copy h1{font-size:27px}
+  .workintro h2{font-size:41px}
+  .worktile-reporting{min-height:166px}
+  .worktile-opinion{min-height:144px}
+  .worktile-thoughts,.worktile-photos{min-height:128px}
+}
 """.strip()
 
 
@@ -439,7 +513,7 @@ def main() -> None:
     if cut < len(css_text):
         css_text = css_text[:cut].rstrip()
     CSS.write_text(css_text + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
-    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, css_isolated=1, inline_critical=1")
+    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, css_isolated=1, inline_critical=1, final_composition=18.11")
 
 
 if __name__ == "__main__":
