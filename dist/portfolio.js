@@ -88,18 +88,42 @@ function updateShellMotion(){
  desktopHead?.classList.toggle('scrolled',compact);
  if(!compact)closeDesktopNav();
  if(hero&&innerWidth>800)hero.style.setProperty('--hero-shift',Math.min(12,y*.035).toFixed(1)+'px');
+ if(desktopHead&&document.body.classList.contains('home')){
+  const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+  desktopHead.style.setProperty('--page-progress',Math.min(100,y/max*100).toFixed(2)+'%');
+ }
 }
 updateShellMotion();
 window.addEventListener('scroll',updateShellMotion,{passive:true});
 
 if(matchMedia('(pointer:fine)').matches){
+ if(hero){
+  hero.addEventListener('pointermove',event=>{
+   const box=hero.getBoundingClientRect();
+   const x=(event.clientX-box.left)/box.width-.5;
+   const y=(event.clientY-box.top)/box.height-.5;
+   hero.style.setProperty('--hero-x',(x*8).toFixed(2)+'px');
+   hero.style.setProperty('--hero-y',(y*5).toFixed(2)+'px');
+   hero.style.setProperty('--hero-hx',((x+.5)*100).toFixed(1)+'%');
+   hero.style.setProperty('--hero-hy',((y+.5)*100).toFixed(1)+'%');
+  });
+  hero.addEventListener('pointerleave',()=>{
+   ['--hero-x','--hero-y','--hero-hx','--hero-hy'].forEach(name=>hero.style.removeProperty(name));
+  });
+ }
  $('.home .tile').forEach(tile=>{
   tile.addEventListener('pointermove',event=>{
    const box=tile.getBoundingClientRect();
-   tile.style.setProperty('--mx',((event.clientX-box.left)/box.width*100).toFixed(1)+'%');
-   tile.style.setProperty('--my',((event.clientY-box.top)/box.height*100).toFixed(1)+'%');
+   const x=(event.clientX-box.left)/box.width;
+   const y=(event.clientY-box.top)/box.height;
+   tile.style.setProperty('--mx',(x*100).toFixed(1)+'%');
+   tile.style.setProperty('--my',(y*100).toFixed(1)+'%');
+   tile.style.setProperty('--ix',((x-.5)*7).toFixed(2)+'px');
+   tile.style.setProperty('--iy',((y-.5)*5).toFixed(2)+'px');
   });
-  tile.addEventListener('pointerleave',()=>{tile.style.removeProperty('--mx');tile.style.removeProperty('--my')});
+  tile.addEventListener('pointerleave',()=>{
+   ['--mx','--my','--ix','--iy'].forEach(name=>tile.style.removeProperty(name));
+  });
  });
 }
 
