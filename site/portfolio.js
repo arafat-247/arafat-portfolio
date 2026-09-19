@@ -53,7 +53,7 @@ observeReveals();
 
 if(document.body.classList.contains('home')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
  document.body.classList.add('home-motion');
- const revealTargets=$('.homeprofile,.home .tile,.homecontact');
+ const revealTargets=$('.homeprofile,.homeintro,.home .tile,.homecontact');
  if('IntersectionObserver' in window){
   const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
    if(!entry.isIntersecting)return;
