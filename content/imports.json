@@ -211,6 +211,18 @@
       "rights_confirmed": true,
       "requested_at": "2026-09-13T07:48:27.114Z",
       "status": "queued"
+    },
+    {
+      "id": "287cce62-3683-483a-9c3b-bd7233d9adee",
+      "url": "https://www.thedailystar.net/news/education/news/hold-us-accountable-bobby-tells-education-stakeholders-4276911",
+      "stream": "reporting",
+      "credit_type": "contribution",
+      "category": "Education",
+      "contribution": "Reporting",
+      "contribution_confirmed": true,
+      "rights_confirmed": true,
+      "requested_at": "2026-09-19T14:10:25.916Z",
+      "status": "queued"
     }
   ]
 }
