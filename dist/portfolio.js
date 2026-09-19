@@ -28,7 +28,7 @@ document.addEventListener('keydown',event=>{
  if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
 });
 
-$('.identity nav a,.drawernav a,.desktopnav a').forEach(a=>{
+$$('.identity nav a,.drawernav a,.desktopnav a').forEach(a=>{
  if(a.dataset.nav===document.body.dataset.section)a.setAttribute('aria-current','page');
 });
 
@@ -53,7 +53,7 @@ observeReveals();
 
 if(document.body.classList.contains('home')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
  document.body.classList.add('home-motion');
- const revealTargets=$('.homeprofile,.homeintro,.home .tile,.homecontact');
+ const revealTargets=$$('.homeprofile,.homeintro,.home .tile,.homecontact');
  if('IntersectionObserver' in window){
   const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
    if(!entry.isIntersecting)return;
@@ -111,7 +111,7 @@ if(matchMedia('(pointer:fine)').matches){
    ['--hero-x','--hero-y','--hero-hx','--hero-hy'].forEach(name=>hero.style.removeProperty(name));
   });
  }
- $('.home .tile').forEach(tile=>{
+ $$('.home .tile').forEach(tile=>{
   tile.addEventListener('pointermove',event=>{
    const box=tile.getBoundingClientRect();
    const x=(event.clientX-box.left)/box.width;
