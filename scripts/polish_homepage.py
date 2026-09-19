@@ -73,6 +73,7 @@ body.home .tilewords{display:none}
     position:relative;
     z-index:5;
     grid-column:1/6;
+    grid-row:1;
     align-self:center;
     padding:44px 10px 40px 42px;
   }
@@ -191,6 +192,7 @@ body.home .tilewords{display:none}
     position:relative;
     z-index:4;
     grid-column:5/10;
+    grid-row:1;
     align-self:center;
     justify-self:center;
     width:min(100%,430px);
