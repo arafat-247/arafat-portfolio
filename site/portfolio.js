@@ -51,6 +51,19 @@ function observeReveals(scope=document){
 }
 observeReveals();
 
+if(document.body.classList.contains('home')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+ document.body.classList.add('home-motion');
+ const revealTargets=$('.homeprofile,.home .tile,.homecontact');
+ if('IntersectionObserver' in window){
+  const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+   if(!entry.isIntersecting)return;
+   entry.target.classList.add('is-visible');
+   revealObserver.unobserve(entry.target);
+  }),{threshold:.12,rootMargin:'0px 0px -4% 0px'});
+  revealTargets.forEach((item,index)=>{item.style.transitionDelay=Math.min(index*.045,.18)+'s';revealObserver.observe(item)});
+ }else revealTargets.forEach(item=>item.classList.add('is-visible'));
+}
+
 const desktopHead=$('.desktophead'),hero=$('.homeprofile');
 function updateShellMotion(){
  const y=window.scrollY;
