@@ -14,7 +14,7 @@ CONTENT = ROOT / "content"
 FOOTER_RE = re.compile(r"<footer(?:\s[^>]*)?>.*?</footer>", re.I | re.S)
 CSS_MARKER = "/* Compact editorial site footer */"
 ASSET_VERSION_RE = re.compile(r"portfolio\.css\?v=[0-9.]+", re.I)
-ASSET_VERSION = "17.3.1"
+ASSET_VERSION = "18.0.1"
 
 FOOTER_CSS = r"""
 /* Compact editorial site footer */
