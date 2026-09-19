@@ -161,11 +161,11 @@ def main() -> None:
     source = SCRIPT_VERSION_RE.sub(f"portfolio.js?v={ASSET_VERSION}", source)
     HOME.write_text(source, encoding="utf-8")
 
-    css = CSS.read_text(encoding="utf-8")
-    marker_index = css.find(CSS_MARKER)
+    css_text = CSS.read_text(encoding="utf-8")
+    marker_index = css_text.find(CSS_MARKER)
     if marker_index >= 0:
-        css = css[:marker_index].rstrip()
-    css.write_text(css + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
+        css_text = css_text[:marker_index].rstrip()
+    CSS.write_text(css_text + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
     print(f"Homepage polish: editorial_desktop=1, interactions=1, asset_version={ASSET_VERSION}")
 
 
