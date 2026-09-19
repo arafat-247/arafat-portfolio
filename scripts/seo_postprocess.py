@@ -286,12 +286,6 @@ def add_breadcrumbs() -> int:
         label, section_url = streams.get(record.get("stream") or "reporting", streams["reporting"])
         title = record["title"]
         current_url = SITE_BASE + "/" + record["local_url"]
-        visible = (
-            '<nav class="breadcrumbs" data-seo-breadcrumb="1" aria-label="Breadcrumb">'
-            '<a href="/">Home</a><span aria-hidden="true">›</span>'
-            f'<a href="{section_url}">{html_lib.escape(label)}</a><span aria-hidden="true">›</span>'
-            f'<span aria-current="page">{html_lib.escape(title)}</span></nav>'
-        )
         breadcrumb_data = {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -304,8 +298,7 @@ def add_breadcrumbs() -> int:
         script = '<script type="application/ld+json" data-seo-breadcrumb="1">' + json.dumps(
             breadcrumb_data, ensure_ascii=False, separators=(",", ":")
         ).replace("<", "\\u003c") + "</script>"
-        updated = source.replace('<article class="page reading">', '<article class="page reading">' + visible, 1)
-        updated = updated.replace("</head>", script + "</head>", 1)
+        updated = source.replace("</head>", script + "</head>", 1)
         if updated != source:
             page.write_text(updated, encoding="utf-8")
             changed += 1
