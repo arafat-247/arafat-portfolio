@@ -1,4 +1,4 @@
-"""Render the reference-led editorial site footer after build post-processing."""
+"""Render the reference-led editorial site footer after build post-processing.\nPreserve the build asset version so CSS cache busting remains accurate.\n"""
 from __future__ import annotations
 
 import html
