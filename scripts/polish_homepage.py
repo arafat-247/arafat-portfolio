@@ -11,7 +11,7 @@ CSS = DIST / "portfolio.css"
 CSS_MARKER = "/* Hybrid editorial homepage v18.4 */"
 ASSET_VERSION_RE = re.compile(r"portfolio\.css\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\.js\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.4.0"
+ASSET_VERSION = "18.4.1"
 
 HOME_CSS = r"""
 /* Hybrid editorial homepage v18.4 */
@@ -649,6 +649,142 @@ body.home .desktophead:after{
   opacity:.82;
   pointer-events:none;
 }
+
+
+/* Hero composition lock: matches the approved framed-reference proportions. */
+@media(min-width:801px){
+  body.home .homeprofile{
+    position:relative;
+    display:block;
+    height:clamp(430px,40vw,500px);
+    min-height:0;
+    overflow:hidden;
+  }
+  body.home .herocopy{
+    position:absolute;
+    z-index:5;
+    left:36px;
+    top:50%;
+    width:38%;
+    padding:0;
+    transform:translateY(-50%);
+  }
+  body.home .herocopy>span{font-size:10px}
+  body.home .homeprofile h2{
+    margin-top:13px;
+    font-size:clamp(58px,6vw,82px);
+    line-height:.86;
+  }
+  body.home .herocopy>p:not(.herotagline){
+    max-width:405px;
+    margin-top:18px;
+    font-size:16px;
+    line-height:1.43;
+  }
+  body.home .homeprofile .herotagline{
+    margin-top:16px;
+    font-size:24px;
+  }
+  body.home .homeprofile nav{margin-top:20px}
+  body.home .homeprofile nav a{
+    min-width:138px;
+    min-height:45px;
+    padding:9px 17px;
+  }
+  body.home .heromicro{margin-top:21px}
+
+  body.home .herolayers{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    display:block;
+    pointer-events:none;
+  }
+  body.home .heropaper-one{
+    left:50%;
+    top:12%;
+    width:180px;
+    height:315px;
+    transform:rotate(-4deg);
+  }
+  body.home .heropaper-two{
+    left:67%;
+    top:20%;
+    width:112px;
+    min-height:220px;
+    transform:rotate(3deg);
+  }
+
+  body.home .heroscene{
+    position:absolute;
+    z-index:2;
+    top:0;
+    right:0;
+    width:34%;
+    height:100%;
+    min-height:0;
+  }
+  body.home .heroscene>img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+  body.home .heroquote{
+    top:58px;
+    right:28px;
+    width:140px;
+    font-size:20px;
+  }
+  body.home .herolocation{
+    right:28px;
+    bottom:26px;
+  }
+
+  body.home .heroportrait{
+    position:absolute;
+    z-index:4;
+    left:57.5%;
+    top:50%;
+    width:min(35%,410px);
+    max-width:410px;
+    margin:0;
+    padding:12px;
+    transform:translate(-50%,-50%) rotate(-1.6deg);
+  }
+  body.home .homeprofile:hover .heroportrait{
+    transform:translate(calc(-50% + var(--hero-x,0)),calc(-50% + var(--hero-y,0))) rotate(-1.6deg);
+  }
+  body.home .heroportrait img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:none;
+    aspect-ratio:auto;
+    object-fit:contain;
+    object-position:center;
+  }
+  body.home .heroportrait figcaption{
+    left:30px;
+    bottom:28px;
+    max-width:132px;
+  }
+}
+
+@media(min-width:801px) and (max-width:1080px){
+  body.home .homeprofile{height:430px}
+  body.home .herocopy{left:28px;width:40%}
+  body.home .homeprofile h2{font-size:clamp(52px,6.2vw,67px)}
+  body.home .herocopy>p:not(.herotagline){font-size:14px}
+  body.home .homeprofile .herotagline{font-size:21px}
+  body.home .homeprofile nav a{min-width:116px}
+  body.home .heroportrait{left:58%;width:min(35%,350px)}
+  body.home .heroscene{width:33%}
+  body.home .heroquote{right:20px;width:118px;font-size:17px}
+  body.home .heropaper-one{left:49%;width:150px;height:285px}
+  body.home .heropaper-two{left:67%;width:96px}
+}
+
 
 @media(prefers-reduced-motion:reduce){
   body.home.home-motion .homeprofile,
