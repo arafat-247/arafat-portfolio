@@ -418,6 +418,9 @@ def main() -> None:
     source = HOME.read_text(encoding="utf-8")
     source = ASSET_VERSION_RE.sub(f"portfolio.css?v={ASSET_VERSION}", source)
     source = SCRIPT_VERSION_RE.sub(f"portfolio.js?v={ASSET_VERSION}", source)
+    source = re.sub(r'<style id="homepage-critical">.*?</style>', '', source, flags=re.I | re.S)
+    critical = '<style id="homepage-critical">\n' + HOME_CSS + '\n</style>'
+    source = source.replace("</head>", critical + "</head>", 1)
     HOME.write_text(source, encoding="utf-8")
 
     css_text = CSS.read_text(encoding="utf-8")
@@ -436,7 +439,7 @@ def main() -> None:
     if cut < len(css_text):
         css_text = css_text[:cut].rstrip()
     CSS.write_text(css_text + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
-    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, css_isolated=1")
+    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, css_isolated=1, inline_critical=1")
 
 
 if __name__ == "__main__":
