@@ -93,6 +93,7 @@ class BuildTests(unittest.TestCase):
             client_css=(out/'portfolio.css').read_text()
             self.assertIn('.themetoggle{display:none}',client_css)
             self.assertIn('.menutoggle{display:inline-flex}',client_css)
+            self.assertNotIn('.home .menubackdrop{display:block!important}',client_css)
             self.assertNotIn('src=""',home)
             client=(out/'portfolio.js').read_text()
             self.assertIn('if(!menu)return;',client)
