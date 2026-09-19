@@ -107,15 +107,16 @@ class Builder:
         path=a['local_url']+'index.html'; prefix='../'*path.count('/'); stream=a.get('stream','reporting'); section=PATHS.get(stream,'reporting/')
         title=a['title']; original=a.get('original_authors') or ([] if a.get('source_url') else [NAME]); credit=', '.join(original) or 'Original byline not supplied by the source'
         contribution=''
-        if credit_type(a)=='contribution':contribution=f'<span class="articlecredit">Non-byline contribution by {NAME} · {esc(a.get("contribution","Reporting"))}</span>'
+        if credit_type(a)=='contribution':contribution=f'<span>Non-byline contribution by {NAME} · {esc(a.get("contribution","Reporting"))}</span>'
         body=a.get('body_html') or text_body(a.get('body',''))
         body=sanitise(body,a.get('source_url',self.base+'/'))
         cover=safe_asset(a.get('cover_image')); figure=''
-        if cover and not a.get('source_url'):figure=f'<figure class="cover articlecover"><img src="{prefix}{esc(cover)}" alt="{esc(a.get("cover_alt",""))}" decoding="async"><figcaption>{esc(a.get("cover_credit", ""))}</figcaption></figure>'
+        if cover and not a.get('source_url'):figure=f'<figure class="cover"><img src="{prefix}{esc(cover)}" alt="{esc(a.get("cover_alt",""))}" decoding="async"><figcaption>{esc(a.get("cover_credit", ""))}</figcaption></figure>'
         source=''
         if a.get('source_url'):
             u=a['source_url']
-            if urlsplit(u).scheme=='https':source=f'<div class="sourcebox articlesource">Originally published by {esc(a.get("source_name",""))}. <a href="{esc(u)}" rel="noopener noreferrer">Read the original publication</a>.<br>First archived: {esc(date_label(a.get("first_archived_at","")))}.</div>'
+            if urlsplit(u).scheme=='https':source=f'<div class="sourcebox">Originally published by {esc(a.get("source_name",""))}. <a href="{esc(u)}" rel="noopener noreferrer">Read the original publication</a>.<br>First archived: {esc(date_label(a.get("first_archived_at","")))}. This local copy does not depend on the source remaining online.</div>'
+        update=f' · Updated {esc(date_label(a["date_modified"]))}' if a.get('date_modified') and a.get('date_modified')!=a.get('date_published') else ''
         words=int(a.get('word_count') or 0)
         if words<=0:words=len(re.findall(r"\b[\w’'-]+\b",re.sub(r'<[^>]+>',' ',body)))
         read_minutes=max(1,(words+219)//220)
@@ -123,22 +124,20 @@ class Builder:
         category=clean(a.get('category') or '')
         stream_cf=clean(stream_label).casefold(); category_cf=category.casefold()
         show_category=bool(category and category_cf not in stream_cf and stream_cf not in category_cf)
-        kicker=f'<span class="articlestream">{esc(stream_label)}</span>'
-        if show_category:kicker+=f'<span class="articlekicker-sep">·</span><a class="articlecategory" href="{prefix}{section}?category={esc(category)}">{esc(category)}</a>'
+        kicker=f'<span class="storytype">{esc(stream_label)}</span>'
+        if show_category:kicker+=f'<span class="storykicker-sep">·</span><a class="storycategory" href="{prefix}{section}?category={esc(category)}">{esc(category)}</a>'
         publication=esc(a.get('source_name') or '')
-        date_text=esc(date_label(a.get('date_published','')))
-        if a.get('date_modified') and a.get('date_modified')!=a.get('date_published'):
-            date_text+=f' · Updated {esc(date_label(a["date_modified"]))}'
-        facts=[date_text,f'{read_minutes} min read']
+        share_dialog='''<dialog class="sharedialog" id="share-dialog" aria-labelledby="share-dialog-title"><div class="sharehead"><div><span>Share</span><h2 id="share-dialog-title">Share this story</h2></div><button type="button" data-close-share aria-label="Close sharing window">×</button></div><div class="sharegrid"><a href="#" data-share-service="facebook"><strong>Facebook</strong><span>Share in a new window ↗</span></a><a href="#" data-share-service="whatsapp"><strong>WhatsApp</strong><span>Send to a contact ↗</span></a><a href="#" data-share-service="x"><strong>X</strong><span>Post this story ↗</span></a><a href="#" data-share-service="linkedin"><strong>LinkedIn</strong><span>Share with your network ↗</span></a><button type="button" data-copy-share><strong>Copy link</strong><span>Copy the clean article address</span></button></div><p class="sharestatus" data-share-status role="status" aria-live="polite"></p></dialog>'''
+        facts=[esc(date_label(a.get('date_published',''))),f'{read_minutes} min read']
         if publication:facts.append(publication)
         facts_html=''.join(f'<span>{fact}</span>' for fact in facts if fact)
-        share_dialog='''<dialog class="sharedialog" id="share-dialog" aria-labelledby="share-dialog-title"><div class="sharehead"><div><span>Share</span><h2 id="share-dialog-title">Share this story</h2></div><button type="button" data-close-share aria-label="Close sharing window">×</button></div><div class="sharegrid"><a href="#" data-share-service="facebook"><strong>Facebook</strong><span>Share in a new window ↗</span></a><a href="#" data-share-service="whatsapp"><strong>WhatsApp</strong><span>Send to a contact ↗</span></a><a href="#" data-share-service="x"><strong>X</strong><span>Post this story ↗</span></a><a href="#" data-share-service="linkedin"><strong>LinkedIn</strong><span>Share with your network ↗</span></a><button type="button" data-copy-share><strong>Copy link</strong><span>Copy the clean article address</span></button></div><p class="sharestatus" data-share-status role="status" aria-live="polite"></p></dialog>'''
-        content=(f'<article class="page reading articlepage"><header class="articlehead">'
-                 f'<a class="articleback" href="{prefix}{section}">← {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a>'
-                 f'<div class="articlekicker">{kicker}</div><h1>{esc(title)}</h1><p class="articlestandfirst">{esc(a.get("excerpt",""))}</p>'
-                 f'<div class="articlemeta"><div class="articlebyline"><strong>{esc(credit)}</strong>{contribution}</div>'
-                 f'<div class="articlefacts">{facts_html}</div><div class="articleactions"><button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-print>Print / PDF</button></div></div></header>'
-                 f'<div class="articlebodywrap">{figure}<div class="bodycopy articlebody">{body}</div>{source}</div>{share_dialog}</article>')
+        byline_html=f'<img src="{prefix}assets/portraits/byline.webp" alt="Arafat Rahaman" width="64" height="64" decoding="async"><div><strong>{esc(credit)}</strong>{contribution}<span class="meta">{esc(date_label(a.get("date_published","")))}{update}</span></div>'
+        content=(f'<article class="page reading"><header class="storyhead">'
+                 f'<a class="back" href="{prefix}{section}">← {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a>'
+                 f'<div class="storykicker">{kicker}</div><h1>{esc(title)}</h1><p class="standfirst">{esc(a.get("excerpt",""))}</p>'
+                 f'<div class="storyfooter"><div class="byline">{byline_html}</div>'
+                 f'<div class="storyfacts">{facts_html}</div><div class="storyactions"><button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-print>Print / PDF</button></div></div></header>'
+                 f'<div class="storymain">{figure}<div class="bodycopy">{body}</div>{source}</div>{share_dialog}</article>')
         profile_url=self.base+'/about/'
         authors=[]
         for author in original:
