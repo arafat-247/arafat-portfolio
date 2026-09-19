@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='18.7.0'
+ASSET_VERSION='18.7.1'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -121,16 +121,23 @@ class Builder:
         if words<=0:words=len(re.findall(r"\\b[\\w’'-]+\\b",re.sub(r'<[^>]+>',' ',body)))
         read_minutes=max(1,(words+219)//220)
         stream_label={'reporting':'Reporting','opinion':'Opinion & Analysis','thoughts':'Thoughts'}.get(stream,'Reporting')
-        category=clean(a.get('category') or stream_label)
-        publication=f'<span>{esc(a.get("source_name",""))}</span>' if a.get('source_name') else ''
+        category=clean(a.get('category') or '')
+        stream_cf=clean(stream_label).casefold()
+        category_cf=category.casefold()
+        show_category=bool(category and category_cf not in stream_cf and stream_cf not in category_cf)
+        kicker=f'<span class="storytype">{esc(stream_label)}</span>'
+        if show_category:kicker+=f'<span class="storykicker-sep">·</span><a class="storycategory" href="{prefix}{section}?category={esc(category)}">{esc(category)}</a>'
+        publication=esc(a.get('source_name') or '')
         share_dialog='''<dialog class="sharedialog" id="share-dialog" aria-labelledby="share-dialog-title"><div class="sharehead"><div><span>Share</span><h2 id="share-dialog-title">Share this story</h2></div><button type="button" data-close-share aria-label="Close sharing window">×</button></div><div class="sharegrid"><a href="#" data-share-service="facebook"><strong>Facebook</strong><span>Share in a new window ↗</span></a><a href="#" data-share-service="whatsapp"><strong>WhatsApp</strong><span>Send to a contact ↗</span></a><a href="#" data-share-service="x"><strong>X</strong><span>Post this story ↗</span></a><a href="#" data-share-service="linkedin"><strong>LinkedIn</strong><span>Share with your network ↗</span></a><button type="button" data-copy-share><strong>Copy link</strong><span>Copy the clean article address</span></button></div><p class="sharestatus" data-share-status role="status" aria-live="polite"></p></dialog>'''
-        content=(f'<article class="page reading"><a class="back" href="{prefix}{section}">← Back to {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a>'
-                 f'<header class="storyhead"><div class="storykicker"><span class="storytype">{esc(stream_label)}</span><a class="storycategory" href="{prefix}{section}?category={esc(category)}">{esc(category)}</a></div>'
-                 f'<h1>{esc(title)}</h1><p class="standfirst">{esc(a.get("excerpt",""))}</p>'
-                 f'<div class="storymeta"><div class="byline"><img src="{prefix}assets/portraits/byline.webp" alt="Arafat Rahaman" width="64" height="64" decoding="async"><div>{byline}<span class="meta">{esc(date_label(a.get("date_published","")))}{update}</span></div></div>'
-                 f'<div class="storyfacts"><span>{esc(date_label(a.get("date_published","")))}</span><span>{read_minutes} min read</span>{publication}</div></div></header>'
-                 f'<div class="storylayout"><aside class="storyrail" aria-label="Story tools"><span class="storyrail-label">Story tools</span><div class="storyactions"><button type="button" data-share aria-haspopup="dialog">Share story</button><button type="button" data-print>Print / PDF</button></div><a class="railback" href="{prefix}{section}">More {esc(stream_label)} →</a></aside>'
-                 f'<div class="storymain">{figure}<div class="bodycopy">{body}</div>{source}</div></div>{share_dialog}</article>')
+        facts=[esc(date_label(a.get('date_published',''))),f'{read_minutes} min read']
+        if publication:facts.append(publication)
+        facts_html=''.join(f'<span>{fact}</span>' for fact in facts if fact)
+        content=(f'<article class="page reading"><header class="storyhead">'
+                 f'<a class="back" href="{prefix}{section}">← {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a>'
+                 f'<div class="storykicker">{kicker}</div><h1>{esc(title)}</h1><p class="standfirst">{esc(a.get("excerpt",""))}</p>'
+                 f'<div class="storyfooter"><div class="byline"><div><strong>{byline}</strong><span class="meta">{esc(date_label(a.get("date_published","")))}{update}</span></div></div>'
+                 f'<div class="storyfacts">{facts_html}</div><div class="storyactions"><button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-print>Print / PDF</button></div></div></header>'
+                 f'<div class="storymain">{figure}<div class="bodycopy">{body}</div>{source}</div>{share_dialog}</article>')
         profile_url=self.base+'/about/'
         authors=[]
         for author in original:
