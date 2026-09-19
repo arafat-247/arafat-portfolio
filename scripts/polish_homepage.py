@@ -1,4 +1,4 @@
-"""Apply the approved portrait hero without redesigning the rest of the homepage."""
+"""Apply the approved clean editorial homepage after final build processing."""
 from __future__ import annotations
 
 import re
@@ -8,281 +8,165 @@ ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
-CSS_MARKER = "/* Editorial homepage polish */"
+CSS_MARKER = "/* Editorial homepage polish v18 */"
 ASSET_VERSION_RE = re.compile(r"portfolio\.css\?v=[0-9.]+", re.I)
-HOME_PROFILE_RE = re.compile(
-    r'<section class="homeprofile"[^>]*>.*?</section>',
-    re.S,
-)
-ASSET_VERSION = "17.8.2"
-HERO_IMAGE = "assets/portraits/byline.webp"
-
-# The existing byline asset is the supplied black-and-white portrait.
-# Keep this a normal image and real text; do not rasterise the whole hero.
-HOME_PROFILE = '<section class="homeprofile" data-hero-version="17.8.2" aria-labelledby="home-profile-title"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="900" height="892" loading="eager" fetchpriority="high" decoding="async"><div><span>Journalist · Dhaka</span><h2 id="home-profile-title"><span>Arafat</span> <em>Rahaman</em></h2><p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p><nav aria-label="About and contact"><a href="about/">About me →</a><a href="mailto:arafat.mcj@yahoo.com">Email</a></nav></div></section>'
+SCRIPT_VERSION_RE = re.compile(r"portfolio\.js\?v=[0-9.]+", re.I)
+ASSET_VERSION = "18.0.1"
 
 HOME_CSS = r"""
-/* Editorial homepage polish */
+/* Editorial homepage polish v18 */
+body.home main{background:var(--paper)}
+body.home .heroquote{margin:0}
 
-/* Existing mobile masthead and page padding: intentionally unchanged. */
-@media(max-width:800px){
-  body.home .mobilehead{
-    height:62px;
-    padding:0 16px;
-    border-bottom:1px solid var(--line);
-    background:var(--surface);
+body.home .tile-reporting:after{background:linear-gradient(90deg,rgb(5 43 37 / 91%) 0%,rgb(5 43 37 / 66%) 52%,rgb(5 43 37 / 28%) 100%)}
+body.home .tile-opinion:after{background:linear-gradient(90deg,rgb(120 47 30 / 91%) 0%,rgb(120 47 30 / 66%) 53%,rgb(120 47 30 / 28%) 100%)}
+body.home .tile-thoughts:after{background:linear-gradient(90deg,rgb(37 48 28 / 90%) 0%,rgb(37 48 28 / 63%) 55%,rgb(37 48 28 / 28%) 100%)}
+body.home .tile-photos:after{background:linear-gradient(90deg,rgb(9 25 23 / 88%) 0%,rgb(9 25 23 / 58%) 54%,rgb(9 25 23 / 20%) 100%)}
+
+body.home .tileno{
+  position:absolute;z-index:3;left:22px;top:18px;color:#f0b07f;
+  font:800 10px/1 var(--sans);letter-spacing:.12em
+}
+body.home .tileexplore{
+  display:block;width:max-content;margin-top:15px;padding-bottom:3px;
+  border-bottom:1px solid rgb(255 255 255 / 78%);
+  color:#fff;font:700 11px/1.2 var(--sans);font-style:normal
+}
+
+@media(min-width:801px){
+  body.home .homecontent{
+    width:min(100% - 48px,1200px);
+    margin:0 auto;
+    padding:24px 0 30px;
   }
-  body.home .mobilehead.scrolled{box-shadow:0 5px 18px rgb(12 30 27 / 8%)}
-  body.home .mobilebrand{gap:10px;font:700 18px/1 var(--serif);letter-spacing:-.02em}
-  body.home .mobilebrand .mark{width:37px;height:37px;border-radius:50%;color:#fff;background:var(--forest);font:400 24px/37px var(--serif);text-align:center}
-  body.home .mobileactions{gap:7px}
-  body.home .themetoggle{min-width:38px;min-height:38px;padding:4px}
-  body.home .menutoggle{display:inline-flex;min-width:auto;min-height:38px;gap:7px;padding:5px 2px 5px 6px}
-  body.home .menutoggle>span:last-child{display:inline;font-size:12px;font-weight:760}
-  body.home .menulines{width:20px}
-  body.home .mobilemenu:not([hidden]){display:flex!important;inset:62px 0 auto auto;max-height:calc(100dvh - 62px)}
-  body.home .menubackdrop:not([hidden]){display:block!important}
-  body.home .mobilemenu[hidden],body.home .menubackdrop[hidden]{display:none!important}
-
-  body.home .homecontent{padding-top:18px}
-}
-
-@media(max-width:520px){
-  body.home .mobilehead{height:58px;padding-inline:14px}
-  body.home .mobilebrand{gap:8px;font-size:16px}
-  body.home .mobilebrand .mark{width:34px;height:34px;font-size:22px;line-height:34px}
-  body.home .mobileactions{gap:4px}
-  body.home .themesymbol{width:28px;height:28px}
-  body.home .menutoggle{gap:5px}
-  body.home .menutoggle>span:last-child{font-size:11px}
-  body.home .menulines{width:18px}
-  body.home .mobilemenu:not([hidden]){inset:58px 0 auto auto;max-height:calc(100dvh - 58px)}
-
-  body.home .homecontent{padding-top:14px}
-}
-
-@media(max-width:380px){
-  body.home .mobilebrand{font-size:15px}
-  body.home .menutoggle>span:last-child{display:none}
-}
-
-/* Approved portrait hero only. Other homepage sections retain their styles. */
-body.home .homeprofile{
-  position:relative;
-  isolation:isolate;
-  display:grid;
-  grid-template-columns:minmax(0,1fr);
-  align-items:center;
-  min-height:480px;
-  margin:0 0 34px;
-  padding:44px;
-  overflow:hidden;
-  color:#f4f2eb;
-  background:var(--forest);
-}
-body.home .homeprofile>img{
-  position:absolute;
-  inset:0 0 0 auto;
-  z-index:0;
-  display:block;
-  width:68%;
-  height:100%;
-  min-height:0;
-  max-width:none;
-  object-fit:cover;
-  object-position:56% 30%;
-  filter:grayscale(1);
-}
-body.home .homeprofile:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:linear-gradient(90deg,#0b302b 0%,#0b302b 34%,rgb(11 48 43 / 94%) 39%,rgb(11 48 43 / 58%) 47%,rgb(11 48 43 / 8%) 63%,transparent 78%),linear-gradient(0deg,#0b302b 0%,rgb(11 48 43 / 42%) 20%,transparent 52%);
-}
-body.home .homeprofile>div{
-  position:relative;
-  z-index:2;
-  display:flex;
-  width:48%;
-  min-width:0;
-  flex-direction:column;
-  align-items:flex-start;
-  justify-content:center;
-  padding:0;
-  background:transparent;
-}
-body.home .homeprofile>div>span{
-  display:block;
-  color:#efaa96;
-  font:750 10px/1.5 var(--sans);
-  letter-spacing:.16em;
-  text-transform:uppercase;
-}
-body.home .homeprofile h2{
-  margin:24px 0 0;
-  color:#f4f2eb;
-  font:400 clamp(52px,6.2vw,86px)/.99 var(--serif);
-  letter-spacing:-.05em;
-}
-body.home .homeprofile h2 span,body.home .homeprofile h2 em{display:block}
-body.home .homeprofile h2 em{font-weight:400}
-body.home .homeprofile p{
-  display:block;
-  max-width:335px;
-  margin:23px 0 0;
-  overflow:visible;
-  color:#e3e8e3;
-  font:400 14px/1.6 var(--sans);
-  -webkit-line-clamp:unset;
-}
-body.home .homeprofile nav{display:flex;flex-wrap:wrap;gap:24px;margin-top:22px}
-body.home .homeprofile a{
-  display:inline-flex;
-  min-height:44px;
-  align-items:center;
-  padding:3px 0;
-  border-bottom:1px solid #8ca79f;
-  color:#f4f2eb;
-  font:750 12px/1.3 var(--sans);
-  text-decoration:none;
-}
-body.home .homeprofile a:hover{border-color:#efaa96;color:#efaa96}
-body.home .homeprofile a:focus-visible{outline:2px solid #efaa96;outline-offset:5px}
-@media(min-width:1001px) and (max-width:1200px){
-  body.home .homeprofile{min-height:420px;padding:30px}
-  body.home .homeprofile h2{font-size:60px}
-  body.home .homeprofile p{font-size:13px}
-}
-@media(max-width:1000px){
   body.home .homeprofile{
-    display:block;
-    min-height:0;
-    padding:0;
+    position:relative;isolation:isolate;display:block;min-height:365px;
+    margin:0 0 7px;padding:0;overflow:hidden;color:#f4f2eb;background:#0b3a33
   }
   body.home .homeprofile>img{
-    inset:0 0 auto;
-    width:100%;
-    height:auto;
-    min-height:0;
-    object-position:center top;
+    position:absolute;inset:calc(var(--hero-shift,0px) * -1) 0 auto auto;z-index:0;
+    width:66%;height:calc(100% + 24px);max-width:none;min-height:0;
+    object-fit:cover;object-position:58% 31%;filter:grayscale(1);
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 29%);
+    mask-image:linear-gradient(90deg,transparent 0%,#000 29%);
+    transition:transform .6s cubic-bezier(.2,.65,.25,1)
   }
   body.home .homeprofile:after{
-    background:linear-gradient(180deg,rgb(11 48 43 / 8%) 0%,rgb(11 48 43 / 2%) 28%,rgb(11 48 43 / 60%) 47%,#0b302b 67%,#0b302b 100%);
+    content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:
+      linear-gradient(90deg,#0b3a33 0%,#0b3a33 35%,rgb(11 58 51 / 90%) 45%,rgb(11 58 51 / 20%) 70%,transparent 86%),
+      linear-gradient(0deg,rgb(7 37 32 / 42%),transparent 42%)
   }
   body.home .homeprofile>div{
-    width:100%;
-    padding:66% 26px 26px;
-    justify-content:flex-end;
+    position:relative;z-index:3;display:flex;width:45%;min-height:365px;
+    flex-direction:column;align-items:flex-start;justify-content:center;padding:38px 40px
   }
   body.home .homeprofile>div>span{
-    position:absolute;
-    top:22px;
-    left:26px;
-    width:85px;
-    color:#eaf0e9;
-    font-size:9px;
-    text-shadow:0 1px 5px #102d28;
+    color:#efaa82;font:800 10px/1.3 var(--sans);letter-spacing:.17em;text-transform:uppercase
   }
-  body.home .homeprofile h2{margin:0;font-size:clamp(43px,8.5vw,66px);line-height:1;letter-spacing:-.05em}
-  body.home .homeprofile h2 em{font-style:normal}
-  body.home .homeprofile p{max-width:430px;margin-top:16px;font-size:13px;line-height:1.55}
-  body.home .homeprofile nav{margin-top:15px;gap:25px}
-}
-@media(max-width:520px){
-  body.home .homeprofile{margin-bottom:30px}
-  body.home .homeprofile>div{padding:66% 22px 24px}
-  body.home .homeprofile>div>span{left:22px;top:20px}
-  body.home .homeprofile h2{font-size:clamp(43px,11.5vw,59px)}
-  body.home .homeprofile p{font-size:12px}
-  body.home .homeprofile nav{gap:24px;margin-top:13px}
-  body.home .homeprofile a{font-size:11px}
-}
-@media(max-width:380px){
-  body.home .homeprofile>div{padding-inline:19px}
-  body.home .homeprofile>div>span{left:19px}
-  body.home .homeprofile h2{font-size:42px}
+  body.home .homeprofile h2{
+    margin:13px 0 0;color:#fff;font:400 clamp(55px,5.8vw,78px)/.88 var(--serif);
+    letter-spacing:-.035em
+  }
+  body.home .homeprofile h2 span,body.home .homeprofile h2 em{display:block}
+  body.home .homeprofile h2 em{font-weight:400;font-style:italic}
+  body.home .homeprofile p{
+    display:block;max-width:390px;margin:20px 0 0;overflow:visible;color:rgb(255 255 255 / 83%);
+    font:400 15px/1.55 var(--sans);-webkit-line-clamp:unset;text-wrap:pretty
+  }
+  body.home .homeprofile nav{display:flex;gap:25px;margin-top:17px}
+  body.home .homeprofile a{
+    min-height:0;padding:0 0 5px;border-bottom:1px solid rgb(255 255 255 / 74%);
+    color:#fff;font:700 12px/1.3 var(--sans);text-decoration:none;
+    transition:color .18s ease,border-color .18s ease,transform .18s ease
+  }
+  body.home .homeprofile a:hover{color:#efb398;border-color:#efb398;transform:translateX(2px)}
+  body.home .heroquote{
+    position:absolute;z-index:3;right:24px;top:44%;width:150px;transform:translateY(-50%);
+    padding-top:16px;border-top:1px solid #315c56;color:#173f39;
+    font:italic 20px/1.12 var(--serif);text-align:left
+  }
+
+  body.home .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}
+  body.home .tile{
+    min-height:214px;padding:46px 24px 21px;transform:translateZ(0);
+    box-shadow:none;transition:transform .24s ease,box-shadow .24s ease,filter .24s ease
+  }
+  body.home .tile:before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgb(255 255 255 / 13%),transparent 34%);
+    opacity:0;transition:opacity .22s ease
+  }
+  body.home .tile:hover:before{opacity:1}
+  body.home .tile:hover{transform:translateY(-3px);box-shadow:0 17px 38px rgb(10 35 30 / 16%)}
+  body.home .tile img{
+    inset:-5px;width:calc(100% + 10px);height:calc(100% + 10px);
+    filter:saturate(.72) contrast(.97);transition:transform .65s cubic-bezier(.2,.65,.25,1),filter .3s ease
+  }
+  body.home .tile:hover img{transform:scale(1.045);filter:saturate(.9) contrast(1)}
+  body.home .tile span{z-index:2}
+  body.home .tile strong{font:400 clamp(29px,2.8vw,39px)/.98 var(--serif);letter-spacing:-.025em}
+  body.home .tile small{max-width:310px;margin-top:8px;color:rgb(255 255 255 / 79%);font-size:12px;line-height:1.35}
+  body.home .tile>i{
+    right:22px;top:auto;bottom:20px;display:grid;width:34px;height:34px;place-items:center;
+    border:1px solid rgb(255 255 255 / 65%);border-radius:50%;font-size:15px;
+    transition:transform .22s ease,background .22s ease
+  }
+  body.home .tile:hover>i{transform:translateX(3px);background:rgb(255 255 255 / 10%)}
+
+  body.home .homecontact{
+    grid-template-columns:minmax(0,1fr) auto;min-height:76px;gap:24px;
+    margin:8px 0 0;padding:18px 28px;background:#ad513b
+  }
+  body.home .homecontact strong{font:400 clamp(28px,3vw,38px)/1 var(--serif)}
+  body.home .homecontact a{
+    transition:transform .18s ease,border-color .18s ease;
+    font-family:var(--serif);font-weight:400
+  }
+  body.home .homecontact a:hover{transform:translateX(3px)}
+
+  body.home.home-motion .homeprofile,
+  body.home.home-motion .tile,
+  body.home.home-motion .homecontact{opacity:0;transform:translateY(12px)}
+  body.home.home-motion .homeprofile.is-visible,
+  body.home.home-motion .tile.is-visible,
+  body.home.home-motion .homecontact.is-visible{
+    opacity:1;transform:none;transition:opacity .52s ease,transform .52s cubic-bezier(.2,.7,.25,1),box-shadow .24s ease
+  }
+  body.home.home-motion .tile.is-visible:hover{transform:translateY(-3px)}
 }
 
-/* Desktop hero: scale to the space beside the navigation rail. */
-@media(min-width:801px){
-  /* The hero is the sole identity introduction on the homepage. */
-  body.home .identityportrait,
-  body.home .identity>.name,
-  body.home .identity>p{display:none}
-  body.home .identity:before{
-    content:"A";
-    display:grid;
-    width:56px;
-    height:56px;
-    flex:0 0 56px;
-    place-items:center;
-    margin:4px 0 30px;
-    border:1px solid rgb(255 255 255 / 28%);
-    border-radius:50%;
-    color:#f7f4ec;
-    background:rgb(255 255 255 / 4%);
-    font:400 36px/1 var(--serif);
-  }
-  body.home .identity nav{margin-top:0}
-
-  body.home .homeprofile{
-    container-type:inline-size;
-    display:grid;
-    align-items:center;
-    min-height:clamp(338px,42vh,380px);
-    padding:30px 36px;
-    margin-bottom:28px;
-  }
-  body.home .homeprofile>img{
-    inset:0 0 0 auto;
-    width:46%;
-    height:100%;
-    min-height:0;
-    object-fit:cover;
-    object-position:right top;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 23%);
-    mask-image:linear-gradient(90deg,transparent 0%,#000 23%);
-  }
-  body.home .homeprofile:after{
-    background:linear-gradient(90deg,#0b302b 0%,#0b302b 40%,rgb(11 48 43 / 80%) 48%,rgb(11 48 43 / 18%) 65%,transparent 82%),linear-gradient(0deg,#0b302b 0%,rgb(11 48 43 / 28%) 20%,transparent 49%);
-  }
-  body.home .homeprofile>div{width:52%;padding:0;justify-content:center}
-  body.home .homeprofile>div>span{position:static;width:auto;color:#efaa96;font-size:11px;text-shadow:none}
-  body.home .homeprofile h2{margin:14px 0 0;font-size:62px;font-size:clamp(42px,7.2cqi,66px);line-height:1.02;letter-spacing:-.04em}
-  body.home .homeprofile h2 em{font-style:italic}
-  body.home .homeprofile p{max-width:410px;margin-top:16px;font-size:16px;font-size:clamp(15px,1.85cqi,17px);line-height:1.55;text-wrap:pretty}
-  body.home .homeprofile nav{margin-top:14px;gap:24px}
-  body.home .homeprofile a{font-size:14px;min-height:44px}
-}
-@media(min-width:801px) and (max-width:1100px){
-  body.home .homeprofile{padding:28px 26px}
-  body.home .homeprofile>div{width:55%}
+@media(max-width:800px){
+  body.home .heroquote{display:none}
+  body.home .tileno{left:16px;top:14px;font-size:9px}
+  body.home .tileexplore{display:none}
+  body.home .tile{padding-top:34px}
+  body.home .tile img{filter:brightness(.74) saturate(.74)}
 }
 
+@media(prefers-reduced-motion:reduce){
+  body.home.home-motion .homeprofile,
+  body.home.home-motion .tile,
+  body.home.home-motion .homecontact{opacity:1;transform:none}
+}
 """.strip()
 
 
 def main() -> None:
     if not HOME.is_file() or not CSS.is_file():
         raise FileNotFoundError("Build output is incomplete; run scripts/build.py first")
-    if not (DIST / HERO_IMAGE).is_file():
-        raise FileNotFoundError(f"The approved hero portrait is missing: {HERO_IMAGE}")
 
     source = HOME.read_text(encoding="utf-8")
     source = ASSET_VERSION_RE.sub(f"portfolio.css?v={ASSET_VERSION}", source)
-    source, replaced = HOME_PROFILE_RE.subn(lambda _: HOME_PROFILE, source, count=1)
-    if replaced != 1:
-        raise RuntimeError("Could not locate the homepage profile block")
+    source = SCRIPT_VERSION_RE.sub(f"portfolio.js?v={ASSET_VERSION}", source)
+    HOME.write_text(source, encoding="utf-8")
 
     css = CSS.read_text(encoding="utf-8")
     marker_index = css.find(CSS_MARKER)
     if marker_index >= 0:
         css = css[:marker_index].rstrip()
-    CSS.write_text(css + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
-    HOME.write_text(source, encoding="utf-8")
-    print(f"Homepage hero: approved_portrait=1, single_desktop_identity=1, other_sections=unchanged, asset_version={ASSET_VERSION}")
+    css.write_text(css + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
+    print(f"Homepage polish: editorial_desktop=1, interactions=1, asset_version={ASSET_VERSION}")
 
 
 if __name__ == "__main__":
