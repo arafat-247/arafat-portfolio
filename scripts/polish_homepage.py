@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.15.0"
+ASSET_VERSION = "18.16.0"
 
 HOME_CSS = r"""
 /* Editorial homepage v18.10 — isolated from legacy homepage selectors */
@@ -408,208 +408,6 @@ body.home .homecontact strong{font-size:30px}
   .worktile-opinion{min-height:164px}
   .worktile-thoughts,.worktile-photos{min-height:146px}
 }
-
-/* Final homepage composition v18.12 */
-@media(min-width:801px){
-  .editorialhero{
-    grid-template-columns:minmax(360px,1.06fr) minmax(360px,.86fr) minmax(250px,.62fr);
-    min-height:420px;
-    max-height:440px;
-  }
-  .editorialhero-copy{
-    justify-content:center;
-    padding:34px 42px 34px max(54px,calc((100vw - 1400px)/2 + 34px));
-  }
-  .editorialhero-copy h1{
-    margin:9px 0 13px;
-    font-size:clamp(56px,5vw,78px);
-    line-height:.84;
-  }
-  .editorialhero-copy>p:not(.editorialhero-tagline){
-    max-width:430px;
-    font-size:16px;
-    line-height:1.42;
-  }
-  .editorialhero-copy nav{margin-top:14px}
-  .editorialhero-tagline{margin-top:18px;font-size:20px}
-  .editorialhero-portrait{
-    width:min(100%,372px);
-    padding:10px;
-  }
-  .editorialhero-portrait img{
-    aspect-ratio:1/1;
-    object-fit:cover;
-    object-position:50% 50%;
-  }
-  .editorialhero-panel{min-height:420px}
-  .editorialhero-panel p{
-    left:32px;
-    top:52px;
-    width:160px;
-    font-size:22px;
-  }
-  .editorialhero-panel>span{
-    right:24px;
-    bottom:24px;
-    font-size:13px;
-  }
-  .workintro{padding-top:22px}
-  .workgrid{grid-template-rows:170px 170px}
-  body.home .homecontact{margin-top:14px}
-}
-@media(min-width:801px) and (max-width:1180px){
-  .editorialhero{
-    grid-template-columns:minmax(320px,1fr) minmax(330px,.9fr) minmax(220px,.58fr);
-    min-height:400px;
-  }
-  .editorialhero-copy{
-    padding-left:34px;
-    padding-right:28px;
-  }
-  .editorialhero-copy h1{font-size:clamp(50px,5.2vw,68px)}
-  .editorialhero-portrait{width:min(100%,340px)}
-  .editorialhero-panel{min-height:400px}
-}
-@media(max-width:800px){
-  body.home .homecontent{padding:10px 12px 34px}
-  .editorialhero{
-    overflow:visible;
-  }
-  .editorialhero-portrait img{
-    aspect-ratio:1/1.12;
-    object-fit:cover;
-    object-position:50% 48%;
-  }
-  .editorialhero-copy{
-    left:12px;
-    right:34px;
-    bottom:12px;
-    padding:12px 13px 13px;
-    background:rgb(8 55 48 / 90%);
-  }
-  .editorialhero-copy h1{
-    margin:4px 0 7px;
-    font-size:27px;
-    line-height:.97;
-  }
-  .editorialhero-copy>p:not(.editorialhero-tagline){
-    font-size:10.8px;
-    line-height:1.36;
-  }
-  .editorialhero-copy nav{gap:17px;margin-top:8px}
-  .editorialhero-copy nav a{font-size:9.2px}
-  .workintro{gap:4px;padding:17px 0 13px}
-  .workintro h2{font-size:40px}
-  .workintro p{font-size:12.5px;line-height:1.4}
-  .worktile-reporting{min-height:164px}
-  .worktile-opinion{min-height:142px}
-  .worktile-thoughts,.worktile-photos{min-height:124px}
-  .worktile-copy strong{font-size:19px}
-  .worktile-copy small{font-size:9.8px;line-height:1.32}
-  body.home .homecontact{margin-top:14px;padding:19px}
-  body.home .homecontact strong{font-size:24px}
-}
-@media(max-width:420px){
-  .editorialhero-copy{left:10px;right:28px;bottom:10px;padding:11px 12px}
-  .editorialhero-copy h1{font-size:26px}
-  .workintro h2{font-size:39px}
-  .worktile-reporting{min-height:158px}
-  .worktile-opinion{min-height:136px}
-  .worktile-thoughts,.worktile-photos{min-height:120px}
-}
-
-/* Desktop hero repair v18.14 — lock the approved three-part composition */
-@media(min-width:801px){
-  .editorialhero{
-    height:430px;
-    min-height:430px;
-    max-height:430px;
-    grid-template-columns:minmax(390px,1.08fr) minmax(340px,.84fr) minmax(260px,.62fr);
-    align-items:stretch;
-    overflow:hidden;
-  }
-  .editorialhero-copy{
-    position:relative!important;
-    inset:auto!important;
-    display:flex!important;
-    width:auto!important;
-    height:430px;
-    min-height:430px;
-    align-self:stretch!important;
-    justify-content:center!important;
-    overflow:visible;
-    padding:32px 44px 32px max(54px,calc((100vw - 1400px)/2 + 36px))!important;
-    background:transparent!important;
-    backdrop-filter:none!important;
-  }
-  .editorialhero-copy h1{
-    margin:10px 0 13px!important;
-    font-size:clamp(58px,4.8vw,74px)!important;
-    line-height:.86!important;
-  }
-  .editorialhero-copy h1 em{display:block!important}
-  .editorialhero-copy>p:not(.editorialhero-tagline){
-    max-width:440px;
-    font-size:16px;
-    line-height:1.43;
-  }
-  .editorialhero-copy nav{margin-top:14px}
-  .editorialhero-tagline{margin-top:18px;font-size:20px}
-  .editorialhero-portrait{
-    position:relative!important;
-    inset:auto!important;
-    align-self:center!important;
-    width:min(80%,340px)!important;
-    height:auto!important;
-    margin:0 auto!important;
-    padding:9px!important;
-    transform:rotate(-.6deg)!important;
-  }
-  .editorialhero-portrait img{
-    display:block;
-    width:100%!important;
-    height:auto!important;
-    aspect-ratio:1/1!important;
-    object-fit:cover!important;
-    object-position:50% 48%!important;
-  }
-  .editorialhero-panel{
-    height:430px;
-    min-height:430px;
-    max-height:430px;
-  }
-  .editorialhero-panel p{
-    left:32px;
-    top:50px;
-    width:164px;
-    font-size:22px;
-  }
-  .editorialhero-panel>span{
-    right:24px;
-    bottom:24px;
-    font-size:13px;
-  }
-}
-@media(min-width:801px) and (max-width:1180px){
-  .editorialhero{
-    height:400px;
-    min-height:400px;
-    max-height:400px;
-    grid-template-columns:minmax(340px,1.05fr) minmax(300px,.82fr) minmax(220px,.58fr);
-  }
-  .editorialhero-copy{
-    height:400px;
-    min-height:400px;
-    padding:28px 30px 28px 34px!important;
-  }
-  .editorialhero-copy h1{font-size:clamp(52px,5.1vw,66px)!important}
-  .editorialhero-portrait{width:min(78%,300px)!important}
-  .editorialhero-panel{
-    height:400px;
-    min-height:400px;
-    max-height:400px;
-  }
-}
 """.strip()
 
 
@@ -641,17 +439,15 @@ def main() -> None:
     if cut < len(css_text):
         css_text = css_text[:cut].rstrip()
     CSS.write_text(css_text + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
-
     versioned_pages = 0
     for page in DIST.rglob("*.html"):
-        source = page.read_text(encoding="utf-8")
-        updated = ASSET_VERSION_RE.sub(f"portfolio.css?v={ASSET_VERSION}", source)
+        page_source = page.read_text(encoding="utf-8")
+        updated = ASSET_VERSION_RE.sub(f"portfolio.css?v={ASSET_VERSION}", page_source)
         updated = SCRIPT_VERSION_RE.sub(f"portfolio.js?v={ASSET_VERSION}", updated)
-        if updated != source:
+        if updated != page_source:
             page.write_text(updated, encoding="utf-8")
             versioned_pages += 1
-
-    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1, final_composition=18.15")
+    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1")
 
 
 if __name__ == "__main__":

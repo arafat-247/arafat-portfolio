@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='18.15.0'
+ASSET_VERSION='18.16.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -215,7 +215,7 @@ def build():
         '<p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p>'
         '<nav><a href="about/">About me →</a><a href="contact/">Get in touch →</a></nav>'
         '<p class="editorialhero-tagline">Stories for a more thoughtful Bangladesh.</p></div>'
-        '<figure class="editorialhero-portrait"><img src="assets/portraits/home.webp" alt="Portrait of Arafat Rahaman seated against a dark background" width="843" height="834" loading="eager" fetchpriority="high" decoding="async"></figure>'
+        '<figure class="editorialhero-portrait"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></figure>'
         '<aside class="editorialhero-panel">'+panel_visual+'<p>People,<br>policy and<br>a more equal<br>Bangladesh.</p><span>Better questions.<br>A fairer tomorrow.</span></aside>'
         '</section>'
     )

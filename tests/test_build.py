@@ -77,7 +77,7 @@ class BuildTests(unittest.TestCase):
             self.assertIn('class="desktophead"',home)
             self.assertIn('data-nav="home">Portfolio</a>',home)
             self.assertIn('class="editorialhero"',home)
-            self.assertIn('assets/portraits/home.webp',home)
+            self.assertIn('assets/portraits/byline.webp',home)
             self.assertIn('class="editorialhero-portrait"',home)
             self.assertIn('<h2>Work</h2>',home)
             self.assertIn('Have a story lead or reporting enquiry?',home)
