@@ -71,20 +71,6 @@
       "credit_type": "contribution"
     },
     {
-      "id": "28a237ee201114b0c61e",
-      "title": "Govt to align Bangla, English-medium curricula: Bobby Hajjaj",
-      "excerpt": "Curriculum, infrastructure, teacher training and technology to be prioritised, he says",
-      "category": "Education/Governance",
-      "stream": "reporting",
-      "date_published": "2026-09-12T13:39:43+06:00",
-      "date_modified": "",
-      "cover_image": "",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/govt-to-align-bangla-english-medium-curricula-bobby-hajjaj/",
-      "credit_type": "contribution"
-    },
-    {
       "id": "0ed348dc90dd4f6d40ef",
       "title": "Draft law may enable repression, surveillance: TIB",
       "excerpt": "The draft Cyber Security (Amendment) Act, 2026 poses serious risks to fundamental human rights and freedom of speech and expression, Transparency International Bangladesh said yesterday.",
@@ -96,6 +82,20 @@
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/draft-law-may-enable-repression-surveillance-tib/",
+      "credit_type": "contribution"
+    },
+    {
+      "id": "28a237ee201114b0c61e",
+      "title": "Govt to align Bangla, English-medium curricula: Bobby Hajjaj",
+      "excerpt": "Curriculum, infrastructure, teacher training and technology to be prioritised, he says",
+      "category": "Education/Governance",
+      "stream": "reporting",
+      "date_published": "2026-09-12T00:00:00+06:00",
+      "date_modified": "",
+      "cover_image": "",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/govt-to-align-bangla-english-medium-curricula-bobby-hajjaj/",
       "credit_type": "contribution"
     },
     {
