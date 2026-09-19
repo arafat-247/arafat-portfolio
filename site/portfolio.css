@@ -350,3 +350,102 @@ html[data-theme="dark"] .workitem:hover{background:#1b2522}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
 @media print{.identity,.mobilehead,.storyactions,.sharedialog,footer{display:none!important}.right{margin:0}.page{max-width:760px;padding:0}.bodycopy{font-size:12pt}.sourcebox{border:1px solid #aaa}}
+
+/* Desktop editorial shell v18 */
+:root{--serif:"DM Serif Display",Georgia,"Times New Roman",serif}
+.desktophead{display:none}
+
+@media(min-width:801px){
+  .identity{display:none}
+  .right{margin-left:0}
+  .desktophead{
+    position:sticky;
+    top:0;
+    z-index:60;
+    display:block;
+    height:76px;
+    border-bottom:1px solid var(--line);
+    background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(14px);
+    transition:height .22s ease,box-shadow .22s ease,background .22s ease;
+  }
+  .desktophead.scrolled{height:60px;box-shadow:0 8px 28px rgb(14 35 31 / 8%);background:color-mix(in srgb,var(--paper) 97%,transparent)}
+  .desktophead-inner{
+    display:flex;
+    width:min(100% - 48px,1200px);
+    height:100%;
+    margin:0 auto;
+    align-items:center;
+    justify-content:space-between;
+    gap:34px;
+  }
+  .desktopbrand{display:flex;align-items:center;gap:12px;min-width:230px;color:var(--ink);text-decoration:none}
+  .desktopmark{
+    display:grid;
+    width:42px;
+    height:42px;
+    flex:0 0 42px;
+    place-items:center;
+    border-radius:50%;
+    color:#f8f4eb;
+    background:var(--forest);
+    font:400 27px/1 var(--serif);
+    transition:width .22s ease,height .22s ease,flex-basis .22s ease,font-size .22s ease,transform .22s ease;
+  }
+  .desktopbrand:hover .desktopmark{transform:rotate(-3deg) scale(1.035)}
+  .desktopbrand strong{display:block;font:400 21px/1.02 var(--serif)}
+  .desktopbrand small{display:block;margin-top:3px;color:var(--muted);font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+  .desktophead.scrolled .desktopmark{width:34px;height:34px;flex-basis:34px;font-size:22px}
+  .desktophead.scrolled .desktopbrand strong{font-size:18px}
+  .desktophead.scrolled .desktopbrand small{font-size:7px}
+
+  .desktopnav{display:flex;align-self:stretch;align-items:center;gap:2px;white-space:nowrap}
+  .desktopnav a{
+    --nav-accent:var(--forest);
+    position:relative;
+    display:flex;
+    height:100%;
+    align-items:center;
+    padding:0 12px;
+    color:color-mix(in srgb,var(--ink) 82%,transparent);
+    font:400 13px/1 var(--serif);
+    text-decoration:none;
+    transition:color .18s ease,background .18s ease,transform .18s ease;
+  }
+  .desktopnav a:after{
+    content:"";
+    position:absolute;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    height:3px;
+    background:var(--nav-accent);
+    transform:scaleX(.42);
+    transform-origin:left;
+    opacity:.78;
+    transition:transform .22s ease,opacity .22s ease,bottom .22s ease;
+  }
+  .desktophead.scrolled .desktopnav a:after{bottom:8px}
+  .desktopnav a:hover,.desktopnav a[aria-current=page]{color:var(--ink);background:color-mix(in srgb,var(--nav-accent) 9%,transparent)}
+  .desktopnav a:hover:after,.desktopnav a[aria-current=page]:after{transform:scaleX(1);opacity:1}
+  .desktopnav a[data-nav="home"]{--nav-accent:#0b4b43}
+  .desktopnav a[data-nav="reporting"]{--nav-accent:#b9563e}
+  .desktopnav a[data-nav="opinion"]{--nav-accent:#b18c42}
+  .desktopnav a[data-nav="thoughts"]{--nav-accent:#b57943}
+  .desktopnav a[data-nav="photography"]{--nav-accent:#526b78}
+  .desktopnav a[data-nav="about"]{--nav-accent:#6d8878}
+  .desktopnav a[data-nav="contact"]{--nav-accent:#aa4e38}
+
+  .page{width:min(100% - 48px,1160px);padding:56px 0 82px}
+  .reading{max-width:980px}
+  .pageintro h1,.photohero h1,.reading h1,.workcopy h2,.coverage h2,.recognition h2,.profiledetails h2,.contactgrid strong{font-family:var(--serif)}
+  .workitem{transition:background .2s ease,padding .2s ease,transform .2s ease}
+  .workitem:hover{transform:translateX(3px)}
+}
+
+@media(min-width:801px) and (max-width:1120px){
+  .desktophead-inner{width:min(100% - 32px,1200px);gap:20px}
+  .desktopbrand{min-width:190px}
+  .desktopnav a{padding-inline:8px;font-size:12px}
+  .desktopnav a:after{left:8px;right:8px}
+}
