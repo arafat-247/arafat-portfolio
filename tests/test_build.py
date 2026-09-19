@@ -91,7 +91,7 @@ class BuildTests(unittest.TestCase):
             self.assertIn('class="tile-keywords"',home)
             self.assertIn('View all work →',home)
             self.assertIn('People,<br>policy and<br>a more equal<br>Bangladesh.',home)
-            self.assertRegex(home,r'class="tile tile-photos"[^>]*><img ')
+            self.assertRegex(home,r'class="tile tile-photos"[^>]*>.*?<img ',msg='Photography tile should contain an image')
             self.assertIn('class="themetoggle"',home)
             self.assertIn('class="menutoggle"',home)
             client_css=(out/'portfolio.css').read_text()
