@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.11.0"
+ASSET_VERSION = "18.12.0"
 
 HOME_CSS = r"""
 /* Editorial homepage v18.10 — isolated from legacy homepage selectors */
@@ -409,78 +409,113 @@ body.home .homecontact strong{font-size:30px}
   .worktile-thoughts,.worktile-photos{min-height:146px}
 }
 
-/* Final homepage composition v18.11 */
+/* Final homepage composition v18.12 */
 @media(min-width:801px){
   .editorialhero{
-    grid-template-columns:minmax(330px,.88fr) minmax(390px,.94fr) minmax(250px,.58fr);
-    min-height:500px;
+    grid-template-columns:minmax(360px,1.06fr) minmax(360px,.86fr) minmax(250px,.62fr);
+    min-height:420px;
+    max-height:440px;
   }
   .editorialhero-copy{
-    justify-content:flex-start;
-    padding:58px 34px 34px max(54px,calc((100vw - 1400px)/2 + 34px));
+    justify-content:center;
+    padding:34px 42px 34px max(54px,calc((100vw - 1400px)/2 + 34px));
   }
   .editorialhero-copy h1{
-    margin-top:10px;
-    font-size:clamp(60px,5.7vw,90px);
-    line-height:.82;
+    margin:9px 0 13px;
+    font-size:clamp(56px,5vw,78px);
+    line-height:.84;
   }
   .editorialhero-copy>p:not(.editorialhero-tagline){
-    max-width:470px;
-    font-size:17px;
-    line-height:1.45;
+    max-width:430px;
+    font-size:16px;
+    line-height:1.42;
   }
-  .editorialhero-copy nav{margin-top:16px}
-  .editorialhero-tagline{margin-top:20px;font-size:22px}
-  .editorialhero-portrait{width:min(100%,425px)}
-  .editorialhero-panel{min-height:500px}
-  .editorialhero-panel p{left:34px;top:62px;width:165px;font-size:23px}
-  .editorialhero-panel>span{right:26px;bottom:28px;font-size:14px}
-  .workintro{padding-top:26px}
-  .workgrid{grid-template-rows:178px 178px}
-  body.home .homecontact{margin-top:16px}
+  .editorialhero-copy nav{margin-top:14px}
+  .editorialhero-tagline{margin-top:18px;font-size:20px}
+  .editorialhero-portrait{
+    width:min(100%,372px);
+    padding:10px;
+  }
+  .editorialhero-portrait img{
+    aspect-ratio:1/1;
+    object-fit:cover;
+    object-position:50% 50%;
+  }
+  .editorialhero-panel{min-height:420px}
+  .editorialhero-panel p{
+    left:32px;
+    top:52px;
+    width:160px;
+    font-size:22px;
+  }
+  .editorialhero-panel>span{
+    right:24px;
+    bottom:24px;
+    font-size:13px;
+  }
+  .workintro{padding-top:22px}
+  .workgrid{grid-template-rows:170px 170px}
+  body.home .homecontact{margin-top:14px}
+}
+@media(min-width:801px) and (max-width:1180px){
+  .editorialhero{
+    grid-template-columns:minmax(320px,1fr) minmax(330px,.9fr) minmax(220px,.58fr);
+    min-height:400px;
+  }
+  .editorialhero-copy{
+    padding-left:34px;
+    padding-right:28px;
+  }
+  .editorialhero-copy h1{font-size:clamp(50px,5.2vw,68px)}
+  .editorialhero-portrait{width:min(100%,340px)}
+  .editorialhero-panel{min-height:400px}
 }
 @media(max-width:800px){
-  body.home .homecontent{padding:12px 14px 36px}
+  body.home .homecontent{padding:10px 12px 34px}
+  .editorialhero{
+    overflow:visible;
+  }
   .editorialhero-portrait img{
-    aspect-ratio:4/5;
+    aspect-ratio:1/1.12;
     object-fit:cover;
-    object-position:50% 46%;
+    object-position:50% 48%;
   }
   .editorialhero-copy{
-    left:14px;
-    right:52px;
-    bottom:14px;
-    padding:13px 14px 14px;
+    left:12px;
+    right:34px;
+    bottom:12px;
+    padding:12px 13px 13px;
+    background:rgb(8 55 48 / 90%);
   }
   .editorialhero-copy h1{
-    margin:5px 0 7px;
-    font-size:29px;
-    line-height:.96;
+    margin:4px 0 7px;
+    font-size:27px;
+    line-height:.97;
   }
   .editorialhero-copy>p:not(.editorialhero-tagline){
-    font-size:11px;
-    line-height:1.38;
+    font-size:10.8px;
+    line-height:1.36;
   }
-  .editorialhero-copy nav{gap:18px;margin-top:9px}
-  .editorialhero-copy nav a{font-size:9.5px}
-  .workintro{gap:5px;padding:19px 0 14px}
-  .workintro h2{font-size:43px}
-  .workintro p{font-size:13px}
-  .worktile-reporting{min-height:174px}
-  .worktile-opinion{min-height:150px}
-  .worktile-thoughts,.worktile-photos{min-height:134px}
-  .worktile-copy strong{font-size:20px}
-  .worktile-copy small{font-size:10px;line-height:1.34}
-  body.home .homecontact{margin-top:15px;padding:20px}
-  body.home .homecontact strong{font-size:25px}
+  .editorialhero-copy nav{gap:17px;margin-top:8px}
+  .editorialhero-copy nav a{font-size:9.2px}
+  .workintro{gap:4px;padding:17px 0 13px}
+  .workintro h2{font-size:40px}
+  .workintro p{font-size:12.5px;line-height:1.4}
+  .worktile-reporting{min-height:164px}
+  .worktile-opinion{min-height:142px}
+  .worktile-thoughts,.worktile-photos{min-height:124px}
+  .worktile-copy strong{font-size:19px}
+  .worktile-copy small{font-size:9.8px;line-height:1.32}
+  body.home .homecontact{margin-top:14px;padding:19px}
+  body.home .homecontact strong{font-size:24px}
 }
 @media(max-width:420px){
-  .editorialhero-copy{left:12px;right:44px;bottom:12px;padding:12px 13px}
-  .editorialhero-copy h1{font-size:27px}
-  .workintro h2{font-size:41px}
-  .worktile-reporting{min-height:166px}
-  .worktile-opinion{min-height:144px}
-  .worktile-thoughts,.worktile-photos{min-height:128px}
+  .editorialhero-copy{left:10px;right:28px;bottom:10px;padding:11px 12px}
+  .editorialhero-copy h1{font-size:26px}
+  .workintro h2{font-size:39px}
+  .worktile-reporting{min-height:158px}
+  .worktile-opinion{min-height:136px}
+  .worktile-thoughts,.worktile-photos{min-height:120px}
 }
 """.strip()
 
@@ -513,7 +548,7 @@ def main() -> None:
     if cut < len(css_text):
         css_text = css_text[:cut].rstrip()
     CSS.write_text(css_text + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
-    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, css_isolated=1, inline_critical=1, final_composition=18.11")
+    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, css_isolated=1, inline_critical=1, final_composition=18.12")
 
 
 if __name__ == "__main__":
