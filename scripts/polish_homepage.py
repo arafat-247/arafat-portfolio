@@ -11,7 +11,7 @@ CSS = DIST / "portfolio.css"
 CSS_MARKER = "/* Simplified editorial homepage v18.6 */"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.6.0"
+ASSET_VERSION = "18.6.1"
 
 HOME_CSS = r"""
 /* Simplified editorial homepage v18.6 */
@@ -25,8 +25,8 @@ body.home .homecontent{width:min(100%,1050px);margin:auto;padding:34px 34px 54px
   body.home .mark{width:39px;height:39px}
   body.home .themetoggle{display:none}
   body.home .menutoggle{display:inline-flex}
-  body.home .mobilemenu,
-  body.home .menubackdrop{display:block!important}
+  body.home .mobilemenu[hidden],
+  body.home .menubackdrop[hidden]{display:none!important}
 }
 
 /* Hero */
@@ -50,6 +50,7 @@ body.home .homeheroimage{
   filter:grayscale(1) contrast(1.03);
 }
 body.home .homehero:after{
+  pointer-events:none;
   content:"";
   position:absolute;
   inset:0;
