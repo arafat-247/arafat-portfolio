@@ -82,7 +82,7 @@ class BuildTests(unittest.TestCase):
             self.assertIn('<h1>Portfolio</h1>',home)
             self.assertIn('Have a story lead or reporting enquiry?',home)
             self.assertIn("location.pathname.endsWith('/index.html')",home)
-            self.assertIn('News reports, interviews and in-depth features',home)
+            self.assertIn('News reports, interviews and reported features',home)
             self.assertNotIn('class="recentwork"',home)
             self.assertNotIn('Latest journalism',home)
             self.assertEqual(home.count('class="tile-art"'),3)
