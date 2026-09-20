@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='18.17.0'
+ASSET_VERSION='18.18.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -220,12 +220,11 @@ def build():
         '<span class="editorialhero-rule" aria-hidden="true"></span>'
         '<p class="editorialhero-tagline">Stories for a more thoughtful Bangladesh.</p>'
         '<nav class="editorialhero-actions"><a class="editorialhero-primary" href="about/">About me <b aria-hidden="true">→</b></a><a class="editorialhero-secondary" href="'+esc(home_email_href)+'">Email <b aria-hidden="true">→</b></a></nav>'
-        '<p class="editorialhero-quote">“Better journalism for a fairer, more equal Bangladesh.”</p>'
         '</div>'
         '<figure class="editorialhero-portrait"><div class="editorialhero-photo-frame"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"><span class="editorialhero-photo-note">A more<br>thoughtful<br>Bangladesh.</span></div></figure>'
         '<aside class="editorialhero-panel">'+panel_visual
         +'<span class="editorialhero-paper editorialhero-paper-long" aria-hidden="true"></span>'
-        +'<span class="editorialhero-paper editorialhero-paper-note" aria-hidden="true"><b>IDEAS<br>PEOPLE<br>POLICY<br>CHANGE</b><i></i></span>'
+        +'<span class="editorialhero-paper editorialhero-paper-note" aria-hidden="true"><i></i></span>'
         +'<p class="editorialhero-panel-quote">People,<br>policy and<br>a more equal<br>Bangladesh.</p>'
         +'<span class="editorialhero-location">Dhaka,<br>Bangladesh</span>'
         +'</aside>'

@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.17.0"
+ASSET_VERSION = "18.18.0"
 
 HOME_CSS = r"""
 /* Editorial homepage v18.10 — isolated from legacy homepage selectors */
@@ -90,23 +90,6 @@ body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
 .editorialhero-secondary{color:#202521;background:transparent}
 .editorialhero-primary:hover{background:#0f6256}
 .editorialhero-secondary:hover{background:#efe9dd}
-.editorialhero-quote{
-  position:relative;
-  max-width:390px;
-  margin:35px 0 0;
-  padding-left:38px;
-  color:#807d75;
-  font:italic 12px/1.35 var(--serif);
-}
-.editorialhero-quote:before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:.65em;
-  width:24px;
-  height:1px;
-  background:#a7a198;
-}
 
 /* The portrait overlaps the cream field and the green panel, as in the reference. */
 .editorialhero-portrait{
@@ -213,12 +196,6 @@ body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
   padding:22px 17px;
   transform:rotate(4.2deg);
   background:#efe9de;
-}
-.editorialhero-paper-note b{
-  display:block;
-  color:#777168;
-  font:800 10px/1.6 var(--sans);
-  letter-spacing:.18em;
 }
 .editorialhero-paper-note i{
   position:absolute;
@@ -462,7 +439,6 @@ body.home .homecontact strong{font-size:30px}
   .editorialhero-tagline{font-size:25px}
   .editorialhero-actions{gap:8px;margin-top:20px}
   .editorialhero-actions a{min-width:0;height:46px;flex:1;padding:0 14px;font-size:13px}
-  .editorialhero-quote{display:none}
 
   .editorialhero-portrait{
     position:relative;
@@ -487,7 +463,6 @@ body.home .homecontact strong{font-size:30px}
   }
   .editorialhero-paper-long{left:9%;top:8%;width:72px;height:83%}
   .editorialhero-paper-note{left:29%;top:31%;width:80px;height:58%;padding:14px 10px}
-  .editorialhero-paper-note b{font-size:7px}
   .editorialhero-paper-note i{left:18px;right:16px;bottom:18px}
   .editorialhero-panel-quote{top:16%;right:7%;width:132px;font-size:18px}
   .editorialhero-location{right:7%;bottom:9%;font-size:7px}
