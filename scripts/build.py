@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='18.16.0'
+ASSET_VERSION='18.17.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -208,15 +208,27 @@ def build():
         words=''.join(f'<span>{esc(word)}</span>' for word in keywords.split('|'))
         work_tiles.append(f'<a class="worktile worktile-{key}" href="{href}" data-home-tile="{key}"><em class="worktile-number">{number}</em>{visual}<span class="worktile-copy"><strong>{esc(title)}</strong><small>{esc(description)}</small><b class="worktile-explore">Explore →</b></span><span class="worktile-keywords" aria-hidden="true">{words}</span><i class="worktile-arrow" aria-hidden="true">→</i></a>')
     panel_image=safe_asset(c.get('home_images',[None])[0]) if c.get('home_images') else ''
-    panel_visual=f'<img src="{esc(panel_image)}" alt="" loading="eager" decoding="async">' if panel_image else ''
+    panel_visual=f'<img class="editorialhero-panel-image" src="{esc(panel_image)}" alt="" loading="eager" decoding="async">' if panel_image else ''
+    home_email=clean(c.get('email',''))
+    home_email_href='mailto:'+home_email if home_email else 'contact/'
     editorial_hero=(
         '<section class="editorialhero" aria-labelledby="home-profile-title">'
-        '<div class="editorialhero-copy"><span>Journalist · Dhaka</span><h1 id="home-profile-title">Arafat <em>Rahaman</em></h1>'
-        '<p>Reporting on education, governance, public accountability and social issues for The Daily Star.</p>'
-        '<nav><a href="about/">About me →</a><a href="contact/">Get in touch →</a></nav>'
-        '<p class="editorialhero-tagline">Stories for a more thoughtful Bangladesh.</p></div>'
-        '<figure class="editorialhero-portrait"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></figure>'
-        '<aside class="editorialhero-panel">'+panel_visual+'<p>People,<br>policy and<br>a more equal<br>Bangladesh.</p><span>Better questions.<br>A fairer tomorrow.</span></aside>'
+        '<div class="editorialhero-copy">'
+        '<span class="editorialhero-kicker">Journalist · Dhaka</span>'
+        '<h1 id="home-profile-title">Arafat <em>Rahaman</em></h1>'
+        '<p class="editorialhero-deck">Reporting on education, governance, public accountability and social issues for The Daily Star.</p>'
+        '<span class="editorialhero-rule" aria-hidden="true"></span>'
+        '<p class="editorialhero-tagline">Stories for a more thoughtful Bangladesh.</p>'
+        '<nav class="editorialhero-actions"><a class="editorialhero-primary" href="about/">About me <b aria-hidden="true">→</b></a><a class="editorialhero-secondary" href="'+esc(home_email_href)+'">Email <b aria-hidden="true">→</b></a></nav>'
+        '<p class="editorialhero-quote">“Better journalism for a fairer, more equal Bangladesh.”</p>'
+        '</div>'
+        '<figure class="editorialhero-portrait"><div class="editorialhero-photo-frame"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"><span class="editorialhero-photo-note">A more<br>thoughtful<br>Bangladesh.</span></div></figure>'
+        '<aside class="editorialhero-panel">'+panel_visual
+        +'<span class="editorialhero-paper editorialhero-paper-long" aria-hidden="true"></span>'
+        +'<span class="editorialhero-paper editorialhero-paper-note" aria-hidden="true"><b>IDEAS<br>PEOPLE<br>POLICY<br>CHANGE</b><i></i></span>'
+        +'<p class="editorialhero-panel-quote">People,<br>policy and<br>a more equal<br>Bangladesh.</p>'
+        +'<span class="editorialhero-location">Dhaka,<br>Bangladesh</span>'
+        +'</aside>'
         '</section>'
     )
     work_intro='<header class="workintro"><div><span>Selected paths through my work</span><h2>Work</h2></div><div><p>Reporting, analysis, personal writing and photography from Bangladesh.</p><a href="all-work/">View all work →</a></div></header>'
