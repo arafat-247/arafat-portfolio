@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='18.20.0'
+ASSET_VERSION='18.22.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -201,11 +201,8 @@ def build():
     ]
     for i,(key,number,title,description,keywords) in enumerate(destinations):
         href=PATHS.get(key,'photography/')
-        if key=='photos':
-            image=safe_asset(c["home_images"][i]) if i < len(c.get("home_images",[])) else ''
-            visual=f'<img class="worktile-image" src="{esc(image)}" alt="" width="640" height="420" loading="lazy" fetchpriority="low" decoding="async">' if image else '<b class="worktile-art" aria-hidden="true"></b>'
-        else:
-            visual='<b class="worktile-art" aria-hidden="true"></b>'
+        image=safe_asset(c["home_images"][i]) if i < len(c.get("home_images",[])) else ''
+        visual=f'<img class="worktile-image" src="{esc(image)}" alt="" width="640" height="420" loading="lazy" fetchpriority="low" decoding="async">' if image else '<b class="worktile-art" aria-hidden="true"></b>'
         words=''.join(f'<span>{esc(word)}</span>' for word in keywords.split('|'))
         work_tiles.append(f'<a class="worktile worktile-{key}" href="{href}" data-home-tile="{key}"><em class="worktile-number">{number}</em>{visual}<span class="worktile-copy"><strong>{esc(title)}</strong><small>{esc(description)}</small><b class="worktile-explore">Explore →</b></span><span class="worktile-keywords" aria-hidden="true">{words}</span><i class="worktile-arrow" aria-hidden="true">→</i></a>')
     panel_image=safe_asset(c.get('home_images',[None])[0]) if c.get('home_images') else ''
