@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.20.0"
+ASSET_VERSION = "18.21.0"
 
 HOME_CSS = r"""
 /* Editorial homepage v18.10 — isolated from legacy homepage selectors */
@@ -473,139 +473,250 @@ body.home .homecontact{
 }
 body.home .homecontact strong{font-size:30px}
 
-/* MOBILE — separate composition, not a squeezed desktop layout */
+/* MOBILE — one coherent editorial composition */
 @media(max-width:800px){
   body.home .mobilehead{
-    height:62px;
-    padding:0 16px;
-    border-bottom:1px solid #ddd6c8;
-    background:rgb(247 243 234 / 96%);
-    backdrop-filter:blur(10px);
+    height:58px;
+    padding:0 15px;
+    border-bottom:1px solid #ded7cb;
+    background:#f7f3ea;
   }
   body.home .mobilebrand{gap:9px;font-size:13px}
-  body.home .mark{width:36px;height:36px}
+  body.home .mark{width:34px;height:34px}
   body.home .themetoggle{display:none}
-  body.home .menutoggle{display:inline-flex}
+  body.home .menutoggle{display:inline-flex;gap:7px;font-size:12px}
   body.home .mobilemenu[hidden],
   body.home .menubackdrop[hidden]{display:none!important}
-  body.home .homecontent{padding:10px 12px 34px}
+  body.home .homecontent{padding:0 0 30px}
+
   .editorialhero{
     display:grid;
     min-height:0;
-    overflow:visible;
+    overflow:hidden;
     grid-template-columns:1fr;
-    gap:10px;
+    gap:0;
     border:0;
-    background:transparent;
+    background:#f7f3ea;
   }
   .editorialhero-portrait{
     position:relative;
     inset:auto;
     order:1;
     width:100%;
-    height:min(92vw,390px);
+    height:min(102vw,430px);
     margin:0;
-    padding:8px;
-    border-radius:20px;
-    background:#f8f3e9;
-    box-shadow:0 10px 24px rgb(20 34 30 / 10%);
+    padding:0;
+    background:#d8d4cc;
+    box-shadow:none;
     transform:none;
   }
-  .editorialhero-portrait:before{inset:-5px 18px 10px -6px;border-radius:18px;transform:rotate(.8deg)}
-  .editorialhero-photo-frame{border-radius:14px}
-  .editorialhero-photo-note{left:18px;bottom:18px;font-size:18px}
+  .editorialhero-portrait:before{display:none}
+  .editorialhero-photo-frame{border-radius:0}
+  .editorialhero-portrait img{
+    object-position:center 43%;
+    filter:grayscale(1) contrast(1.04);
+  }
+  .editorialhero-photo-note{display:none}
+
   .editorialhero-copy{
     position:relative;
     inset:auto;
     order:2;
     width:100%;
-    padding:22px 18px 20px;
-    border:1px solid #e0d9cd;
-    border-radius:20px;
+    padding:24px 20px 25px;
+    border:0;
+    border-bottom:1px solid #ddd6c8;
+    border-radius:0;
     background:#f7f3ea;
   }
-  .editorialhero-kicker{font-size:8px;letter-spacing:.18em}
+  .editorialhero-kicker{font-size:8px;letter-spacing:.2em}
   .editorialhero-copy h1{
-    margin:8px 0 10px;
-    font-size:clamp(46px,14vw,60px);
-    line-height:.85;
+    margin:8px 0 11px;
+    font-size:clamp(43px,13.4vw,56px);
+    line-height:.88;
+    letter-spacing:-.045em;
   }
-  .editorialhero-deck{max-width:none;font-size:14.5px;line-height:1.46}
-  .editorialhero-rule{width:46px;margin:16px 0 9px}
-  .editorialhero-tagline{font-size:23px}
+  .editorialhero-copy h1 em{display:inline;font-style:italic}
+  .editorialhero-deck{
+    max-width:560px;
+    font-size:14.5px;
+    line-height:1.48;
+  }
+  .editorialhero-rule{width:42px;margin:15px 0 9px}
+  .editorialhero-tagline{font-size:21px;line-height:1.08}
   .editorialhero-actions{gap:8px;margin-top:18px}
-  .editorialhero-actions a{min-width:0;height:44px;flex:1;padding:0 13px;font-size:12px}
-  .editorialhero-panel{
-    position:relative;
-    inset:auto;
-    order:3;
-    width:100%;
-    height:132px;
-    min-height:132px;
-    border-radius:20px;
+  .editorialhero-actions a{
+    min-width:0;
+    height:43px;
+    flex:1;
+    padding:0 13px;
+    font-size:12px;
   }
-  .editorialhero-paper-long{left:8%;top:8%;width:62px;height:82%}
-  .editorialhero-paper-note{left:27%;top:31%;width:72px;height:56%;padding:12px 9px}
-  .editorialhero-paper-note i{left:16px;right:14px;bottom:16px}
-  .editorialhero-panel-quote{top:15%;right:6%;width:126px;font-size:17px}
-  .editorialhero-location{right:6%;bottom:8%;font-size:6.5px}
+
+  /* Desktop's decorative third panel becomes visual noise on a narrow screen. */
+  .editorialhero-panel{display:none}
+
   .workintro{
-    width:100%;
-    grid-template-columns:1fr;
-    gap:5px;
-    padding:24px 4px 14px;
+    display:grid;
+    width:auto;
+    margin:0 18px;
+    padding:25px 0 14px;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:6px 14px;
+    align-items:end;
+    border-bottom:1px solid #ddd6c8;
   }
-  .workintro>div:first-child span{font-size:8px}
-  .workintro h2{font-size:40px}
-  .workintro>div:last-child{justify-self:start}
-  .workintro p{font-size:13px;line-height:1.45}
-  .workintro a{font-size:11px}
+  .workintro>div:first-child span{
+    margin-bottom:5px;
+    font-size:8px;
+    letter-spacing:.16em;
+  }
+  .workintro h2{font-size:38px;line-height:.96}
+  .workintro>div:last-child{
+    display:contents;
+    max-width:none;
+  }
+  .workintro p{
+    grid-column:1/-1;
+    grid-row:2;
+    margin:0;
+    color:#5a5d57;
+    font-size:12.5px;
+    line-height:1.45;
+  }
+  .workintro a{
+    grid-column:2;
+    grid-row:1;
+    align-self:end;
+    margin-bottom:2px;
+    font-size:10.5px;
+    white-space:nowrap;
+  }
+
   .workgrid{
-    width:100%;
-    grid-template-columns:1fr 1fr;
+    display:grid;
+    width:auto;
+    margin:0 18px;
+    grid-template-columns:1fr;
     grid-template-rows:auto;
-    gap:8px;
+    gap:7px;
+    padding-top:12px;
   }
-  .worktile{min-height:148px;padding:15px}
+  .worktile,
   .worktile-reporting,
-  .worktile-opinion{grid-column:1/-1;grid-row:auto;min-height:168px}
-  .worktile-thoughts{grid-column:1;grid-row:auto;min-height:150px}
-  .worktile-photos{grid-column:2;grid-row:auto;min-height:150px}
+  .worktile-opinion,
+  .worktile-thoughts,
+  .worktile-photos{
+    grid-column:1;
+    grid-row:auto;
+    min-height:132px;
+    padding:17px 17px 15px;
+  }
+  .worktile-reporting{min-height:150px}
   .worktile-copy,
   .worktile-reporting .worktile-copy,
   .worktile-opinion .worktile-copy,
   .worktile-thoughts .worktile-copy,
-  .worktile-photos .worktile-copy{width:auto;max-width:82%}
-  .worktile-reporting .worktile-copy,.worktile-opinion .worktile-copy{max-width:70%}
-  .worktile-copy strong{font-size:21px}
-  .worktile-reporting .worktile-copy strong{font-size:28px}
-  .worktile-opinion .worktile-copy strong{font-size:25px}
-  .worktile-copy small{margin-top:5px;font-size:10.5px;line-height:1.38}
-  .worktile-number{left:15px;top:13px;font-size:8px}
+  .worktile-photos .worktile-copy{
+    width:auto;
+    max-width:72%;
+  }
+  .worktile-reporting .worktile-copy{max-width:66%}
+  .worktile-copy strong{font-size:23px;line-height:1}
+  .worktile-reporting .worktile-copy strong{font-size:29px}
+  .worktile-opinion .worktile-copy strong{font-size:24px}
+  .worktile-copy small{
+    margin-top:5px;
+    font-size:10.5px;
+    line-height:1.36;
+  }
+  .worktile-number{
+    left:16px;
+    top:14px;
+    font-size:8px;
+  }
   .worktile-keywords,.worktile-explore{display:none}
-  .worktile-arrow{right:12px;top:12px;bottom:auto;width:28px;height:28px;font-size:12px}
-  .worktile-reporting .worktile-art:before{right:8%;top:18%;width:31%;height:50%}
-  .worktile-reporting .worktile-art:after{right:7%;bottom:10%;width:90px}
-  .worktile-opinion .worktile-art:before{right:3%;top:-4px;font-size:120px}
-  .worktile-opinion .worktile-art:after{right:10%;bottom:16%;width:84px;height:56px}
-  .worktile-thoughts .worktile-art:before{left:10%;top:22%;width:46%}
-  .worktile-thoughts .worktile-art:after{right:12%;bottom:12%;width:46px;height:46px}
-  body.home .homecontact{width:100%;margin-top:14px;padding:20px}
-  body.home .homecontact strong{font-size:24px}
+  .worktile-arrow{
+    right:13px;
+    top:13px;
+    bottom:auto;
+    width:28px;
+    height:28px;
+    font-size:12px;
+  }
+  .worktile-reporting .worktile-art:before{
+    right:7%;
+    top:16%;
+    width:30%;
+    height:54%;
+  }
+  .worktile-reporting .worktile-art:after{
+    right:6%;
+    bottom:10%;
+    width:82px;
+  }
+  .worktile-opinion .worktile-art:before{
+    right:3%;
+    top:-9px;
+    font-size:116px;
+  }
+  .worktile-opinion .worktile-art:after{
+    right:9%;
+    bottom:15%;
+    width:78px;
+    height:52px;
+  }
+  .worktile-thoughts .worktile-art:before{
+    left:9%;
+    top:20%;
+    width:42%;
+  }
+  .worktile-thoughts .worktile-art:after{
+    right:11%;
+    bottom:13%;
+    width:44px;
+    height:44px;
+  }
+  .worktile-photos .worktile-image{object-position:center 46%}
+
+  body.home .homecontact{
+    width:auto;
+    margin:14px 18px 0;
+    padding:18px 17px;
+    grid-template-columns:1fr auto;
+    gap:16px;
+  }
+  body.home .homecontact strong{
+    max-width:240px;
+    font-size:20px;
+    line-height:1.08;
+  }
+  body.home .homecontact a{
+    align-self:center;
+    font-size:11px;
+  }
 }
+
 @media(max-width:420px){
-  body.home .homecontent{padding-inline:10px}
-  .editorialhero-portrait{height:82vw;min-height:288px}
-  .editorialhero-copy{padding:20px 16px 18px}
-  .editorialhero-copy h1{font-size:47px}
-  .editorialhero-panel{height:124px;min-height:124px}
-  .workintro h2{font-size:38px}
-  .worktile-reporting,.worktile-opinion{min-height:160px}
-  .worktile-thoughts,.worktile-photos{min-height:142px}
-  .worktile-copy strong{font-size:20px}
+  .editorialhero-portrait{height:94vw;max-height:380px}
+  .editorialhero-copy{padding:22px 18px 23px}
+  .editorialhero-copy h1{font-size:45px}
+  .editorialhero-deck{font-size:14px}
+  .editorialhero-tagline{font-size:20px}
+  .workintro{margin-inline:16px}
+  .workintro h2{font-size:36px}
+  .workgrid{margin-inline:16px}
+  .worktile,
+  .worktile-reporting,
+  .worktile-opinion,
+  .worktile-thoughts,
+  .worktile-photos{min-height:126px}
+  .worktile-reporting{min-height:144px}
+  .worktile-copy strong{font-size:22px}
   .worktile-reporting .worktile-copy strong{font-size:27px}
   .worktile-opinion .worktile-copy strong{font-size:23px}
   .worktile-copy small{font-size:10px}
+  body.home .homecontact{margin-inline:16px}
 }
 """.strip()
 
