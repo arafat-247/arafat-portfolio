@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.19.0"
+ASSET_VERSION = "18.20.0"
 
 HOME_CSS = r"""
 /* Editorial homepage v18.10 — isolated from legacy homepage selectors */
@@ -275,7 +275,7 @@ body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
   border-bottom:1px solid currentColor;
 }
 
-/* WORK GRID — reference 5 */
+/* WORK GRID — corrected: editorial elements for first three, original image for photography */
 .workgrid{
   display:grid;
   width:min(100% - 72px,1400px);
@@ -304,11 +304,11 @@ body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
   position:absolute;
   inset:0;
   z-index:-1;
-  background:linear-gradient(0deg,rgb(6 24 20 / 78%),rgb(6 24 20 / 8%) 72%);
+  pointer-events:none;
 }
-.worktile-reporting{grid-column:1;grid-row:1/3}
-.worktile-opinion{grid-column:2/4;grid-row:1}
-.worktile-thoughts{grid-column:2;grid-row:2}
+.worktile-reporting{grid-column:1;grid-row:1/3;background:#0f4e45}
+.worktile-opinion{grid-column:2/4;grid-row:1;background:#713f32}
+.worktile-thoughts{grid-column:2;grid-row:2;background:#405447}
 .worktile-photos{grid-column:3;grid-row:2}
 .worktile-art,.worktile-image{
   position:absolute;
@@ -320,7 +320,7 @@ body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
 }
 .worktile-number{
   position:absolute;
-  z-index:2;
+  z-index:3;
   left:18px;
   top:16px;
   color:#efc37a;
@@ -328,7 +328,7 @@ body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
   letter-spacing:.12em;
   font-style:normal;
 }
-.worktile-copy{position:relative;z-index:2;width:64%}
+.worktile-copy{position:relative;z-index:3;width:64%}
 .worktile-reporting .worktile-copy{width:56%}
 .worktile-opinion .worktile-copy{width:58%}
 .worktile-thoughts .worktile-copy,.worktile-photos .worktile-copy{width:78%}
@@ -353,7 +353,7 @@ body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
 }
 .worktile-keywords{
   position:absolute;
-  z-index:2;
+  z-index:3;
   right:18px;
   bottom:20px;
   width:94px;
@@ -367,7 +367,7 @@ body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
 .worktile-keywords span{display:block}
 .worktile-arrow{
   position:absolute;
-  z-index:3;
+  z-index:4;
   right:16px;
   bottom:16px;
   display:grid;
@@ -381,19 +381,90 @@ body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
 }
 .worktile-reporting .worktile-art{
   background:
-    linear-gradient(0deg,rgb(5 47 40 / 36%),rgb(5 47 40 / 15%)),
-    url("assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (2).webp") center/cover;
+    linear-gradient(90deg,rgb(255 255 255 / 6%) 1px,transparent 1px) 0 0/38px 38px,
+    linear-gradient(0deg,rgb(255 255 255 / 6%) 1px,transparent 1px) 0 0/38px 38px,
+    radial-gradient(circle at 78% 26%,rgb(240 195 122 / 22%) 0 8%,transparent 8.5%),
+    linear-gradient(145deg,#0a4038,#15594f 55%,#0c3933);
+}
+.worktile-reporting .worktile-art:before{
+  content:"";
+  position:absolute;
+  right:10%;
+  top:16%;
+  width:33%;
+  height:54%;
+  border:1px solid rgb(255 255 255 / 30%);
+  background:
+    repeating-linear-gradient(180deg,rgb(255 255 255 / 22%) 0 1px,transparent 1px 12px),
+    rgb(245 239 225 / 8%);
+  transform:rotate(4deg);
+  box-shadow:-15px 15px 0 rgb(5 36 31 / 22%);
+}
+.worktile-reporting .worktile-art:after{
+  content:"";
+  position:absolute;
+  right:8%;
+  bottom:11%;
+  width:118px;
+  height:36px;
+  border-top:2px solid #efc37a;
+  border-bottom:1px solid rgb(255 255 255 / 35%);
+  transform:rotate(-4deg);
 }
 .worktile-opinion .worktile-art{
   background:
-    linear-gradient(0deg,rgb(111 44 31 / 50%),rgb(111 44 31 / 36%)),
-    url("assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (4).webp") center/cover;
+    linear-gradient(130deg,transparent 0 54%,rgb(255 255 255 / 8%) 54% 55%,transparent 55%),
+    repeating-linear-gradient(0deg,transparent 0 25px,rgb(255 255 255 / 7%) 26px 27px),
+    linear-gradient(115deg,#7d4537,#5a332c 62%,#3f2925);
+}
+.worktile-opinion .worktile-art:before{
+  content:"“";
+  position:absolute;
+  right:7%;
+  top:-16px;
+  color:rgb(247 230 206 / 20%);
+  font:400 180px/.9 Georgia,serif;
+}
+.worktile-opinion .worktile-art:after{
+  content:"";
+  position:absolute;
+  right:20%;
+  bottom:22%;
+  width:122px;
+  height:74px;
+  border:1px solid rgb(255 255 255 / 30%);
+  border-left:5px solid #efc37a;
+  transform:rotate(-5deg);
 }
 .worktile-thoughts .worktile-art{
   background:
-    linear-gradient(0deg,rgb(47 70 43 / 42%),rgb(47 70 43 / 24%)),
-    url("assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (1).webp") center/cover;
+    radial-gradient(circle at 76% 31%,transparent 0 29px,rgb(255 255 255 / 15%) 30px 31px,transparent 32px 54px,rgb(255 255 255 / 9%) 55px 56px,transparent 57px),
+    repeating-linear-gradient(135deg,transparent 0 24px,rgb(255 255 255 / 5%) 25px 26px),
+    linear-gradient(140deg,#506356,#354b40 68%,#293f36);
 }
+.worktile-thoughts .worktile-art:before{
+  content:"";
+  position:absolute;
+  left:13%;
+  top:22%;
+  width:44%;
+  height:1px;
+  background:rgb(255 255 255 / 30%);
+  box-shadow:0 18px 0 rgb(255 255 255 / 22%),0 36px 0 rgb(255 255 255 / 16%);
+  transform:rotate(-7deg);
+}
+.worktile-thoughts .worktile-art:after{
+  content:"";
+  position:absolute;
+  right:12%;
+  bottom:16%;
+  width:56px;
+  height:56px;
+  border:2px solid #d8b174;
+  border-radius:50%;
+  opacity:.75;
+}
+.worktile-photos:after{background:linear-gradient(0deg,rgb(6 24 20 / 78%),rgb(6 24 20 / 8%) 72%)}
 .worktile-photos .worktile-image{filter:brightness(.66) saturate(.72)}
 body.home .homecontact{
   width:min(100% - 72px,1400px);
@@ -402,123 +473,139 @@ body.home .homecontact{
 }
 body.home .homecontact strong{font-size:30px}
 
-/* MOBILE */
+/* MOBILE — separate composition, not a squeezed desktop layout */
 @media(max-width:800px){
-  body.home .mobilehead{height:64px;padding:0 18px}
-  body.home .mobilebrand{gap:10px}
-  body.home .mark{width:39px;height:39px}
+  body.home .mobilehead{
+    height:62px;
+    padding:0 16px;
+    border-bottom:1px solid #ddd6c8;
+    background:rgb(247 243 234 / 96%);
+    backdrop-filter:blur(10px);
+  }
+  body.home .mobilebrand{gap:9px;font-size:13px}
+  body.home .mark{width:36px;height:36px}
   body.home .themetoggle{display:none}
   body.home .menutoggle{display:inline-flex}
   body.home .mobilemenu[hidden],
   body.home .menubackdrop[hidden]{display:none!important}
-
-  body.home .homecontent{padding:16px 14px 42px}
-
+  body.home .homecontent{padding:10px 12px 34px}
   .editorialhero{
-    display:flex;
+    display:grid;
     min-height:0;
     overflow:visible;
-    flex-direction:column;
+    grid-template-columns:1fr;
+    gap:10px;
     border:0;
-    background:#f7f3ea;
+    background:transparent;
   }
-  .editorialhero-copy{
+  .editorialhero-portrait{
     position:relative;
     inset:auto;
     order:1;
     width:100%;
-    padding:27px 20px 23px;
+    height:min(92vw,390px);
+    margin:0;
+    padding:8px;
+    border-radius:20px;
+    background:#f8f3e9;
+    box-shadow:0 10px 24px rgb(20 34 30 / 10%);
+    transform:none;
   }
-  .editorialhero-kicker{font-size:8px;letter-spacing:.18em}
-  .editorialhero-copy h1{
-    margin:9px 0 10px;
-    font-size:clamp(48px,15vw,68px);
-    line-height:.84;
-  }
-  .editorialhero-deck{font-size:15px;line-height:1.42}
-  .editorialhero-rule{margin:17px 0 9px}
-  .editorialhero-tagline{font-size:25px}
-  .editorialhero-actions{gap:8px;margin-top:20px}
-  .editorialhero-actions a{min-width:0;height:46px;flex:1;padding:0 14px;font-size:13px}
-
-  .editorialhero-portrait{
+  .editorialhero-portrait:before{inset:-5px 18px 10px -6px;border-radius:18px;transform:rotate(.8deg)}
+  .editorialhero-photo-frame{border-radius:14px}
+  .editorialhero-photo-note{left:18px;bottom:18px;font-size:18px}
+  .editorialhero-copy{
     position:relative;
     inset:auto;
     order:2;
-    width:calc(100% - 28px);
-    height:420px;
-    margin:0 auto 14px;
-    padding:9px;
-    transform:rotate(-.45deg);
+    width:100%;
+    padding:22px 18px 20px;
+    border:1px solid #e0d9cd;
+    border-radius:20px;
+    background:#f7f3ea;
   }
-  .editorialhero-portrait:before{inset:-8px 24px 12px -10px}
-  .editorialhero-photo-note{left:20px;bottom:22px;font-size:20px}
-
+  .editorialhero-kicker{font-size:8px;letter-spacing:.18em}
+  .editorialhero-copy h1{
+    margin:8px 0 10px;
+    font-size:clamp(46px,14vw,60px);
+    line-height:.85;
+  }
+  .editorialhero-deck{max-width:none;font-size:14.5px;line-height:1.46}
+  .editorialhero-rule{width:46px;margin:16px 0 9px}
+  .editorialhero-tagline{font-size:23px}
+  .editorialhero-actions{gap:8px;margin-top:18px}
+  .editorialhero-actions a{min-width:0;height:44px;flex:1;padding:0 13px;font-size:12px}
   .editorialhero-panel{
     position:relative;
     inset:auto;
     order:3;
     width:100%;
-    height:164px;
-    min-height:164px;
+    height:132px;
+    min-height:132px;
+    border-radius:20px;
   }
-  .editorialhero-paper-long{left:9%;top:8%;width:72px;height:83%}
-  .editorialhero-paper-note{left:29%;top:31%;width:80px;height:58%;padding:14px 10px}
-  .editorialhero-paper-note i{left:18px;right:16px;bottom:18px}
-  .editorialhero-panel-quote{top:16%;right:7%;width:132px;font-size:18px}
-  .editorialhero-location{right:7%;bottom:9%;font-size:7px}
-
+  .editorialhero-paper-long{left:8%;top:8%;width:62px;height:82%}
+  .editorialhero-paper-note{left:27%;top:31%;width:72px;height:56%;padding:12px 9px}
+  .editorialhero-paper-note i{left:16px;right:14px;bottom:16px}
+  .editorialhero-panel-quote{top:15%;right:6%;width:126px;font-size:17px}
+  .editorialhero-location{right:6%;bottom:8%;font-size:6.5px}
   .workintro{
     width:100%;
     grid-template-columns:1fr;
-    gap:7px;
-    padding:24px 0 17px;
+    gap:5px;
+    padding:24px 4px 14px;
   }
-  .workintro h2{font-size:46px}
+  .workintro>div:first-child span{font-size:8px}
+  .workintro h2{font-size:40px}
   .workintro>div:last-child{justify-self:start}
-  .workintro p{font-size:14px}
-
+  .workintro p{font-size:13px;line-height:1.45}
+  .workintro a{font-size:11px}
   .workgrid{
     width:100%;
     grid-template-columns:1fr 1fr;
     grid-template-rows:auto;
     gap:8px;
   }
-  .worktile{padding:16px;min-height:150px}
-  .worktile-reporting{grid-column:1/-1;grid-row:auto;min-height:196px}
-  .worktile-opinion{grid-column:1/-1;grid-row:auto;min-height:170px}
-  .worktile-thoughts{grid-column:1;grid-row:auto;min-height:152px}
-  .worktile-photos{grid-column:2;grid-row:auto;min-height:152px}
+  .worktile{min-height:148px;padding:15px}
+  .worktile-reporting,
+  .worktile-opinion{grid-column:1/-1;grid-row:auto;min-height:168px}
+  .worktile-thoughts{grid-column:1;grid-row:auto;min-height:150px}
+  .worktile-photos{grid-column:2;grid-row:auto;min-height:150px}
   .worktile-copy,
   .worktile-reporting .worktile-copy,
   .worktile-opinion .worktile-copy,
   .worktile-thoughts .worktile-copy,
-  .worktile-photos .worktile-copy{width:auto}
-  .worktile-copy strong{font-size:22px}
-  .worktile-copy small{font-size:10.5px}
-  .worktile-number,.worktile-keywords,.worktile-explore{display:none}
-  .worktile-arrow{
-    right:12px;
-    top:12px;
-    bottom:auto;
-    width:auto;
-    height:auto;
-    border:0;
-  }
-
-  body.home .homecontact{width:100%;margin-top:18px;padding:23px}
-  body.home .homecontact strong{font-size:28px}
+  .worktile-photos .worktile-copy{width:auto;max-width:82%}
+  .worktile-reporting .worktile-copy,.worktile-opinion .worktile-copy{max-width:70%}
+  .worktile-copy strong{font-size:21px}
+  .worktile-reporting .worktile-copy strong{font-size:28px}
+  .worktile-opinion .worktile-copy strong{font-size:25px}
+  .worktile-copy small{margin-top:5px;font-size:10.5px;line-height:1.38}
+  .worktile-number{left:15px;top:13px;font-size:8px}
+  .worktile-keywords,.worktile-explore{display:none}
+  .worktile-arrow{right:12px;top:12px;bottom:auto;width:28px;height:28px;font-size:12px}
+  .worktile-reporting .worktile-art:before{right:8%;top:18%;width:31%;height:50%}
+  .worktile-reporting .worktile-art:after{right:7%;bottom:10%;width:90px}
+  .worktile-opinion .worktile-art:before{right:3%;top:-4px;font-size:120px}
+  .worktile-opinion .worktile-art:after{right:10%;bottom:16%;width:84px;height:56px}
+  .worktile-thoughts .worktile-art:before{left:10%;top:22%;width:46%}
+  .worktile-thoughts .worktile-art:after{right:12%;bottom:12%;width:46px;height:46px}
+  body.home .homecontact{width:100%;margin-top:14px;padding:20px}
+  body.home .homecontact strong{font-size:24px}
 }
-
 @media(max-width:420px){
-  .editorialhero-copy{padding:24px 16px 20px}
-  .editorialhero-copy h1{font-size:50px}
-  .editorialhero-portrait{height:360px}
-  .editorialhero-panel{height:150px;min-height:150px}
-  .workintro h2{font-size:43px}
-  .worktile-reporting{min-height:184px}
-  .worktile-opinion{min-height:164px}
-  .worktile-thoughts,.worktile-photos{min-height:146px}
+  body.home .homecontent{padding-inline:10px}
+  .editorialhero-portrait{height:82vw;min-height:288px}
+  .editorialhero-copy{padding:20px 16px 18px}
+  .editorialhero-copy h1{font-size:47px}
+  .editorialhero-panel{height:124px;min-height:124px}
+  .workintro h2{font-size:38px}
+  .worktile-reporting,.worktile-opinion{min-height:160px}
+  .worktile-thoughts,.worktile-photos{min-height:142px}
+  .worktile-copy strong{font-size:20px}
+  .worktile-reporting .worktile-copy strong{font-size:27px}
+  .worktile-opinion .worktile-copy strong{font-size:23px}
+  .worktile-copy small{font-size:10px}
 }
 """.strip()
 
