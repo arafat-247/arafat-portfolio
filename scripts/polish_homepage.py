@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "18.18.0"
+ASSET_VERSION = "18.19.0"
 
 HOME_CSS = r"""
 /* Editorial homepage v18.10 — isolated from legacy homepage selectors */
@@ -120,6 +120,7 @@ body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
   overflow:hidden;
   background:#d8d4cc;
 }
+.editorialhero-picture{display:block;width:100%;height:100%}
 .editorialhero-portrait img{
   display:block;
   width:100%;
@@ -549,7 +550,7 @@ def main() -> None:
             cut = min(cut, index)
     if cut < len(css_text):
         css_text = css_text[:cut].rstrip()
-    CSS.write_text(css_text + "\n\n" + HOME_CSS + "\n", encoding="utf-8")
+    CSS.write_text(css_text + "\n", encoding="utf-8")
     versioned_pages = 0
     for page in DIST.rglob("*.html"):
         page_source = page.read_text(encoding="utf-8")
@@ -558,7 +559,7 @@ def main() -> None:
         if updated != page_source:
             page.write_text(updated, encoding="utf-8")
             versioned_pages += 1
-    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1")
+    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1, duplicate_home_css=0")
 
 
 if __name__ == "__main__":
