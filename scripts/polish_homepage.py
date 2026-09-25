@@ -663,7 +663,7 @@ body.home main{
   .desk-books{right:-7%;width:34%}
   .desk-camera{left:-12%;width:35%}
 }
-""".strip()""".strip()
+""".strip()
 
 
 def main() -> None:
@@ -702,7 +702,7 @@ def main() -> None:
         if updated != page_source:
             page.write_text(updated, encoding="utf-8")
             versioned_pages += 1
-    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1, duplicate_home_css=0")
+    print(f"Homepage polish: approved_desk_home=1, responsive_mobile=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1")
 
 
 if __name__ == "__main__":
