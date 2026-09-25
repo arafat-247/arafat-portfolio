@@ -36,7 +36,7 @@ body.home .right,body.home main{width:100%!important;max-width:none!important;ma
   body.home .deskhome{display:none!important}
   body.home .portalhome-mobile{display:block!important;width:100%!important;max-width:100vw!important;margin:0!important;background:#eee9df;color:#171512}
   .portalnav{display:none!important}
-  .portalhero{display:flex;min-height:100svh;flex-direction:column;align-items:center;justify-content:flex-start;padding:48px 22px 34px;text-align:center;background:#eee9df}
+  .portalhero{display:flex;min-height:0;flex-direction:column;align-items:center;justify-content:flex-start;padding:38px 22px 28px;text-align:center;background:#eee9df}
   .portalhero-photo{order:1;width:132px;height:132px;margin:0 0 18px;overflow:hidden;border-radius:50%;box-shadow:0 0 0 1px #cfc7b9}
   .portalhero-photo picture,.portalhero-photo img{display:block;width:100%;height:100%}
   .portalhero-photo img{object-fit:cover;object-position:52% 31%;filter:grayscale(1)}
@@ -46,11 +46,11 @@ body.home .right,body.home main{width:100%!important;max-width:none!important;ma
   .portalhero-deck{order:3;max-width:315px;margin:12px auto 0;color:#5c574f;font:400 13.5px/1.45 var(--serif)}
   .portalhero-social{order:4;display:flex;gap:16px;margin:14px 0 0}
   .portalhero-social a{color:#5c574f;font:700 10px/1 var(--sans);letter-spacing:.08em;text-decoration:none;text-transform:uppercase}
-  .portalhero-actions{order:5;display:grid;width:100%;max-width:290px;margin:27px auto 0;border-top:1px solid #c9c1b5}
-  .portalhero-actions a{display:flex;min-height:62px;align-items:center;justify-content:center;border-bottom:1px solid #c9c1b5;color:#171512;font:400 clamp(27px,7.5vw,34px)/1 var(--serif);text-decoration:none}
-  .portalhero-visual,.portalhero-panel,.portalhero-script{display:none!important}
+  .portalhero-actions{order:5;display:grid;width:100%;max-width:290px;margin:24px auto 0;border-top:1px solid #c9c1b5}
+  .portalhero-actions a{display:flex;min-height:56px;align-items:center;justify-content:center;border-bottom:1px solid #c9c1b5;color:#171512;font:400 clamp(27px,7.5vw,34px)/1 var(--serif);text-decoration:none}
+  .portalhero-visual,.portalhero-panel,.portalhero-script,.portalhome-mobile .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 
-  .portalwork{padding:0 14px 22px;background:#eee9df}
+  .portalwork{padding:10px 14px 22px;background:#eee9df}
   .portalgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .portalpanel{position:relative;display:flex!important;min-height:170px;overflow:hidden;align-items:flex-end;padding:16px;color:#fff;text-decoration:none;background:#143f39}
   .portalpanel:nth-child(2){background:#a44d3a}
