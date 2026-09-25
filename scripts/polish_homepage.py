@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "20.0.2"
+ASSET_VERSION = "20.0.3"
 
 HOME_CSS = r"""
 /* Homepage v20.0.2 — approved flowing editorial composition */
@@ -137,6 +137,7 @@ body.home .portalhome{
     radial-gradient(circle at 26% 14%,#1b211f 0,#0c1210 54%,#050807 100%)
 }
 .portalpanel{
+  display:block;
   position:absolute;
   isolation:isolate;
   overflow:hidden;
