@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='20.0.1'
+ASSET_VERSION='20.0.2'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -200,6 +200,8 @@ def build():
         '<nav class="portalnav" aria-label="Homepage navigation">'
         '<a class="portalbrand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a>'
         '<div class="portalnavlinks"><a href="./" aria-current="page">Home</a><a href="#work">Work</a><a href="about/">About</a><a href="contact/">Contact</a></div>'
+        '<details class="portalmobilemenu"><summary aria-label="Open navigation"><span></span><span></span></summary>'
+        '<div class="portalmobilemenu-panel"><a href="./" aria-current="page">Home</a><a href="#work">Work</a><a href="about/">About</a><a href="reporting/">Reporting</a><a href="opinion/">Opinion</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a><a href="contact/">Contact</a></div></details>'
         '</nav>'
     )
     hero=(
