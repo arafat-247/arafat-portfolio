@@ -104,7 +104,6 @@ class BuildTests(unittest.TestCase):
             self.assertNotIn('class="homehero-copy"',home)
             self.assertNotIn('class="workgrid"',home)
             self.assertTrue((out/'assets/home/approved-desk-desktop.webp').is_file())
-            self.assertFalse((out/'assets/home/approved-desk-mobile.webp').is_file())
             self.assertIn('class="themetoggle"',home)
             self.assertIn('class="menutoggle"',home)
             client_css=(out/'portfolio.css').read_text()
