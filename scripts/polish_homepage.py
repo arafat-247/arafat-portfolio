@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "20.4.0"
+ASSET_VERSION = "20.5.0"
 
 HOME_CSS = r"""
 /* Homepage v20.3 — photographic journalist's desk */
@@ -133,17 +133,19 @@ body.home main{
   text-decoration:none;
 }
 
-/* Mobile is a real interface; desktop remains the approved photographic composition. */
+/* Mobile — faithful responsive adaptation of the approved desktop composition. */
 @media(max-width:800px){
   body.home,
   body.home .right,
   body.home main{
-    background:#2b160b;
+    background:#ede3d1;
   }
   .deskhome{
     min-height:0;
     padding:0;
-    background:#2b160b;
+    background:
+      linear-gradient(rgb(246 239 226 / 95%),rgb(237 226 207 / 96%)),
+      url("assets/home/approved-desk-desktop.webp") 50% 42%/220% auto;
   }
   .deskstage{
     width:100%;
@@ -153,9 +155,7 @@ body.home main{
     border:0;
     border-radius:0;
     box-shadow:none;
-    background:
-      linear-gradient(rgb(49 24 10 / 88%),rgb(35 16 7 / 92%)),
-      url("assets/home/approved-desk-desktop.webp") 68% 46%/250% auto;
+    background:transparent;
   }
   .deskvisual,
   .deskhotspots-desktop,
@@ -168,103 +168,227 @@ body.home main{
     z-index:6;
     display:block;
     min-height:100vh;
-    padding:0 14px 34px;
-    color:#f4eadc;
+    overflow:hidden;
+    padding:0 16px 36px;
+    color:#1e1a16;
+    background:
+      radial-gradient(circle at 82% 9%,rgb(18 81 69 / 12%),transparent 19%),
+      linear-gradient(180deg,#f3eadc 0,#efe3d1 52%,#eadac4 100%);
   }
+  .mobilelive:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:.26;
+    background:
+      repeating-linear-gradient(0deg,rgb(74 52 32 / 3%) 0 1px,transparent 1px 4px),
+      repeating-linear-gradient(90deg,rgb(74 52 32 / 2%) 0 1px,transparent 1px 5px);
+    mix-blend-mode:multiply;
+  }
+
+  /* Header: same restrained identity as desktop, no dark app bar. */
   .mobilelive-head{
     position:sticky;
-    z-index:30;
+    z-index:50;
     top:0;
     display:flex;
-    min-height:68px;
+    min-height:64px;
     align-items:center;
     justify-content:space-between;
     gap:18px;
-    margin:0 -14px;
-    padding:11px 17px 10px;
-    border-bottom:1px solid rgb(245 229 207 / 12%);
-    background:rgb(34 16 8 / 82%);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
+    margin:0 -16px;
+    padding:10px 18px 9px;
+    border-bottom:1px solid rgb(51 38 26 / 13%);
+    background:rgb(244 237 224 / 93%);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
   }
   .mobilelive-brand{
     display:grid;
-    gap:3px;
-    color:#f4eadc;
+    gap:2px;
+    color:#1d1814;
     text-decoration:none;
   }
   .mobilelive-brand strong{
-    font:400 24px/.95 var(--serif);
-    letter-spacing:-.025em;
+    font:400 24px/.96 var(--serif);
+    letter-spacing:-.035em;
   }
   .mobilelive-brand small{
-    color:#c6aa83;
+    color:#756652;
     font:800 6px/1 var(--sans);
     letter-spacing:.25em;
     text-transform:uppercase;
   }
-  .mobilelive-menu{
-    position:relative;
-  }
   .mobilelive-menu summary{
     display:grid;
-    width:40px;
-    height:40px;
+    width:42px;
+    height:42px;
     place-content:center;
-    gap:5px;
-    border:1px solid rgb(245 229 207 / 20%);
+    gap:6px;
+    border:0;
     border-radius:50%;
-    background:rgb(12 8 5 / 35%);
+    background:transparent;
     cursor:pointer;
     list-style:none;
   }
   .mobilelive-menu summary::-webkit-details-marker{display:none}
   .mobilelive-menu summary i{
     display:block;
-    width:18px;
+    width:25px;
     height:1.5px;
-    background:#f4eadc;
+    background:#1f1a16;
+    transition:transform .24s ease,opacity .24s ease;
+  }
+  .mobilelive-menu[open] summary{
+    position:fixed;
+    z-index:103;
+    top:11px;
+    right:14px;
+  }
+  .mobilelive-menu[open] summary i:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .mobilelive-menu[open] summary i:nth-child(2){opacity:0}
+  .mobilelive-menu[open] summary i:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  .mobilelive-menu[open]:before{
+    content:"";
+    position:fixed;
+    z-index:100;
+    inset:0;
+    background:rgb(23 17 12 / 42%);
+    backdrop-filter:blur(2px);
   }
   .mobilelive-menu nav{
-    position:absolute;
-    top:46px;
+    position:fixed;
+    z-index:101;
+    top:0;
     right:0;
+    bottom:0;
     display:grid;
-    width:188px;
-    overflow:hidden;
-    border:1px solid rgb(79 55 35 / 30%);
-    border-radius:10px;
-    background:#e9dcc5;
-    box-shadow:0 18px 40px rgb(0 0 0 / 40%);
+    width:min(84vw,340px);
+    align-content:start;
+    overflow:auto;
+    padding:88px 26px 30px;
+    border:0;
+    border-left:1px solid rgb(72 52 34 / 14%);
+    border-radius:0;
+    background:
+      linear-gradient(180deg,rgb(248 242 231 / 98%),rgb(239 226 207 / 99%)),
+      repeating-linear-gradient(0deg,rgb(91 64 38 / 3%) 0 1px,transparent 1px 4px);
+    box-shadow:-20px 0 46px rgb(38 24 12 / 22%);
+    transform:translateX(105%);
+    transition:transform .26s ease;
+  }
+  .mobilelive-menu[open] nav{transform:translateX(0)}
+  .mobilelive-menu nav:before{
+    content:"Arafat Rahaman";
+    display:block;
+    margin-bottom:20px;
+    color:#0b5b50;
+    font:400 28px/.95 var(--serif);
+    letter-spacing:-.035em;
   }
   .mobilelive-menu nav a{
-    padding:12px 14px;
-    border-bottom:1px solid rgb(75 51 31 / 13%);
-    color:#25170e;
-    font:600 14px/1.1 var(--serif);
+    position:relative;
+    padding:15px 0;
+    border-bottom:1px solid rgb(74 53 34 / 14%);
+    color:#231a14;
+    font:600 22px/1 var(--serif);
     text-decoration:none;
   }
-  .mobilelive-menu nav a:last-child{border-bottom:0}
-
-  .mobilelive-hero{
-    display:grid;
-    grid-template-columns:minmax(118px,39%) 1fr;
-    gap:14px;
-    align-items:end;
-    padding:22px 2px 24px;
+  .mobilelive-menu nav a:after{
+    content:"→";
+    position:absolute;
+    right:0;
+    color:#0c5b50;
+    font-weight:400;
   }
-  .mobilelive-profile{
+
+  /* Hero: same cream + portrait + green panel language as desktop. */
+  .mobilelive-hero{
     position:relative;
     display:block;
-    padding:7px 7px 58px;
+    min-height:560px;
+    margin:0 -16px;
+    padding:34px 22px 24px;
+    overflow:hidden;
+    background:#f4ecdf;
+    border-bottom:1px solid rgb(59 43 28 / 12%);
+  }
+  .mobilelive-hero:before{
+    content:"";
+    position:absolute;
+    z-index:0;
+    right:-18%;
+    top:33%;
+    width:68%;
+    height:54%;
+    background:linear-gradient(180deg,#0d6a5f 0,#075248 100%);
+    clip-path:polygon(10% 0,100% 8%,100% 93%,0 100%);
+    opacity:.96;
+  }
+  .mobilelive-hero:after{
+    content:"People, policy\A and a more equal\A Bangladesh.";
+    white-space:pre;
+    position:absolute;
+    z-index:1;
+    right:6%;
+    top:47%;
+    width:31%;
+    color:#f8f0e4;
+    font:italic 400 20px/.98 var(--serif);
+    transform:rotate(-1deg);
+  }
+  .mobilelive-intro{
+    position:relative;
+    z-index:3;
+    width:76%;
+    padding:0 0 18px;
+    text-shadow:none;
+  }
+  .mobilelive-intro>span{
+    display:block;
+    margin-bottom:9px;
+    color:#9f2d20;
+    font:850 8px/1 var(--sans);
+    letter-spacing:.2em;
+    text-transform:uppercase;
+  }
+  .mobilelive-intro h2{
+    margin:0 0 12px;
+    color:#0d4e45;
+    font:400 clamp(42px,12vw,58px)/.88 var(--serif);
+    letter-spacing:-.05em;
+  }
+  .mobilelive-intro p{
+    margin:0;
+    max-width:94%;
+    color:#3a322a;
+    font:400 14px/1.42 var(--serif);
+  }
+
+  .mobilelive-profile{
+    position:absolute;
+    z-index:4;
+    left:5%;
+    bottom:18px;
+    width:68%;
+    padding:9px 9px 66px;
     color:#24170f;
     text-decoration:none;
-    transform:rotate(-1.8deg);
+    transform:rotate(-2.2deg);
     background:
       repeating-linear-gradient(0deg,rgb(89 61 34 / 3%) 0 1px,transparent 1px 3px),
-      #e5d7c0;
-    border:1px solid rgb(70 48 30 / 28%);
-    box-shadow:0 11px 23px rgb(0 0 0 / 34%);
+      #f0e4d2;
+    border:1px solid rgb(70 48 30 / 22%);
+    box-shadow:0 16px 28px rgb(48 31 17 / 22%);
+  }
+  .mobilelive-profile:before{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    inset:-10px 18px 16px -12px;
+    background:#ded0bb;
+    transform:rotate(1.3deg);
   }
   .mobilelive-profile picture,
   .mobilelive-profile img{
@@ -272,91 +396,77 @@ body.home main{
     width:100%;
   }
   .mobilelive-profile img{
-    aspect-ratio:1/1.02;
+    aspect-ratio:1/1.03;
     object-fit:cover;
-    object-position:center 34%;
+    object-position:center 36%;
     filter:grayscale(1) contrast(1.04);
   }
   .mobilelive-profile>span{
     position:absolute;
-    left:11px;
-    right:9px;
-    bottom:9px;
+    left:13px;
+    right:11px;
+    bottom:11px;
     display:grid;
     gap:3px;
   }
   .mobilelive-profile strong{
-    font:700 14px/1 var(--serif);
+    font:600 16px/1 var(--serif);
   }
   .mobilelive-profile small{
-    color:#4c3929;
-    font:400 9.5px/1.22 var(--serif);
-  }
-  .mobilelive-intro{
-    padding:0 2px 4px;
-    text-shadow:0 2px 8px rgb(0 0 0 / 38%);
-  }
-  .mobilelive-intro>span{
-    display:block;
-    margin-bottom:8px;
-    color:#d0aa74;
-    font:800 7px/1 var(--sans);
-    letter-spacing:.18em;
-    text-transform:uppercase;
-  }
-  .mobilelive-intro h2{
-    margin:0 0 8px;
-    color:#f5ebdd;
-    font:400 clamp(32px,9vw,43px)/.9 var(--serif);
-    letter-spacing:-.04em;
-  }
-  .mobilelive-intro p{
-    margin:0;
-    color:#dfd0be;
-    font:400 13px/1.4 var(--serif);
+    color:#554333;
+    font:400 10.5px/1.2 var(--serif);
   }
 
+  /* Work area: desk collage rhythm, stacked rather than flattened. */
   .mobilelive-work{
+    position:relative;
     display:grid;
     gap:18px;
-    padding:2px 1px 8px;
+    margin:0 -16px;
+    padding:28px 18px 12px;
+    background:
+      linear-gradient(rgb(51 27 13 / 89%),rgb(38 19 9 / 92%)),
+      url("assets/home/approved-desk-desktop.webp") 63% 60%/230% auto;
+  }
+  .mobilelive-work:before{
+    content:"Work";
+    position:absolute;
+    left:20px;
+    top:7px;
+    color:rgb(244 232 214 / 70%);
+    font:400 12px/1 var(--serif);
+    letter-spacing:.12em;
+    text-transform:uppercase;
   }
   .mobilelive-card{
     position:relative;
     display:block;
     color:#24170f;
     text-decoration:none;
-    filter:drop-shadow(0 12px 17px rgb(0 0 0 / 31%));
+    filter:drop-shadow(0 12px 18px rgb(0 0 0 / 24%));
+    transition:transform .2s ease,filter .2s ease;
   }
-  .mobilelive-card:nth-child(odd){transform:rotate(-.55deg)}
-  .mobilelive-card:nth-child(even){transform:rotate(.45deg)}
+  .mobilelive-card:nth-child(odd){transform:rotate(-.7deg)}
+  .mobilelive-card:nth-child(even){transform:rotate(.55deg)}
   .mobilelive-card:active{transform:translateY(2px) rotate(0)}
   .mobilelive-media{
     position:relative;
     display:block;
-    min-height:180px;
+    min-height:168px;
     overflow:hidden;
-    border:1px solid rgb(70 47 27 / 24%);
+    border:1px solid rgb(70 47 27 / 22%);
     background:#ddccb0;
-  }
-  .mobilelive-media:before{
-    content:"";
-    position:absolute;
-    z-index:-1;
-    inset:8px -6px -8px 7px;
-    border:1px solid rgb(70 47 27 / 18%);
-    background:#bda98b;
   }
   .mobilelive-reporting .mobilelive-media img,
   .mobilelive-photo img{
     display:block;
     width:100%;
-    height:195px;
+    height:184px;
     object-fit:cover;
   }
   .mobilelive-reporting .mobilelive-media img{
     object-position:center;
-    filter:sepia(.24) saturate(.72) contrast(.95);
+    filter:sepia(.15) saturate(.78) contrast(.97);
   }
   .mobilelive-copy{
     position:relative;
@@ -365,13 +475,13 @@ body.home main{
     grid-template-columns:auto 1fr auto;
     align-items:center;
     gap:9px;
-    width:91%;
-    margin:-33px 0 0 7%;
-    padding:14px 15px 14px 20px;
-    border:1px solid rgb(70 47 27 / 24%);
+    width:92%;
+    margin:-29px 0 0 6%;
+    padding:13px 14px 13px 18px;
+    border:1px solid rgb(70 47 27 / 22%);
     background:
       repeating-linear-gradient(0deg,rgb(83 58 34 / 3%) 0 1px,transparent 1px 3px),
-      #eadcc4;
+      #efe1ca;
     box-shadow:0 5px 10px rgb(0 0 0 / 12%);
   }
   .mobilelive-copy>b{
@@ -379,7 +489,7 @@ body.home main{
     width:38px;
     aspect-ratio:1;
     place-items:center;
-    margin-left:-29px;
+    margin-left:-27px;
     border:2px solid #a4291d;
     border-radius:50%;
     color:#a4291d;
@@ -392,24 +502,25 @@ body.home main{
     gap:3px;
   }
   .mobilelive-copy strong{
-    font:600 22px/.98 var(--serif);
+    font:600 23px/.98 var(--serif);
     letter-spacing:-.025em;
   }
   .mobilelive-copy small{
     color:#4a392a;
-    font:400 11.5px/1.3 var(--serif);
+    font:400 11.5px/1.28 var(--serif);
   }
   .mobilelive-copy em{
+    color:#0d5a4f;
     font:400 23px/1 var(--serif);
     font-style:normal;
   }
 
   .mobilelive-paper{
-    min-height:190px;
-    padding:29px 30px 23px;
+    min-height:182px;
+    padding:27px 30px 23px;
     background:
       linear-gradient(90deg,transparent 0 8%,rgb(167 81 52 / 11%) 8.2% 8.6%,transparent 8.8%),
-      repeating-linear-gradient(0deg,#e4d6bb 0 23px,#c6b9a4 24px 25px);
+      repeating-linear-gradient(0deg,#e5d8bd 0 23px,#c8bba6 24px 25px);
   }
   .mobilelive-paper i{
     display:block;
@@ -420,17 +531,17 @@ body.home main{
   }
   .mobilelive-paper mark{
     display:inline-block;
-    margin-top:16px;
+    margin-top:15px;
     padding:2px 4px;
     color:#5b3d1d;
-    background:#d8aa51;
+    background:#d9ad56;
     font:400 10px/1.2 var(--serif);
     transform:rotate(-1deg);
   }
   .mobilelive-paper u{
     position:absolute;
-    right:19px;
-    bottom:26px;
+    right:18px;
+    bottom:24px;
     color:#ad2a20;
     font:600 20px/.9 "Caveat",cursive;
     text-decoration:none;
@@ -441,17 +552,17 @@ body.home main{
     position:absolute;
     left:20px;
     right:22px;
-    bottom:30px;
+    bottom:28px;
     height:1px;
     background:#a93428;
     transform:rotate(-2deg);
-    opacity:.65;
+    opacity:.6;
   }
 
   .mobilelive-notebook{
-    min-height:205px;
-    padding:27px 62px 24px 38px;
-    border-radius:7px;
+    min-height:194px;
+    padding:25px 60px 23px 36px;
+    border-radius:6px;
     background:
       linear-gradient(90deg,transparent 0 8%,rgb(176 95 67 / 17%) 8.2% 8.6%,transparent 8.8%),
       repeating-linear-gradient(0deg,#e8ddc7 0 25px,#b8b1a4 26px 27px);
@@ -460,9 +571,9 @@ body.home main{
     content:"";
     position:absolute;
     right:11%;
-    top:6%;
+    top:5%;
     width:8%;
-    height:88%;
+    height:89%;
     border-radius:10px;
     background:linear-gradient(90deg,#0c0b09,#b79a5d 20%,#111 34% 78%,#c5a466 82%,#090806);
     transform:rotate(-8deg);
@@ -479,13 +590,14 @@ body.home main{
     color:#4a392b;
     font:500 16px/1.18 "Caveat",cursive;
   }
+
   .mobilelive-photo{
-    min-height:190px;
-    padding:8px 8px 14px;
+    min-height:184px;
+    padding:8px 8px 13px;
     background:#e7d8bf;
   }
   .mobilelive-photo img{
-    height:190px;
+    height:184px;
     object-position:center;
     border:1px solid rgb(65 45 26 / 15%);
   }
@@ -494,34 +606,45 @@ body.home main{
     display:flex;
     justify-content:space-between;
     gap:14px;
-    margin-top:24px;
-    padding:17px 4px 3px;
-    border-top:1px solid rgb(241 220 193 / 20%);
+    margin:0 -16px;
+    padding:18px 20px 5px;
+    border-top:1px solid rgb(75 54 35 / 13%);
+    background:#0d5a4f;
   }
   .mobilelive-foot a{
-    color:#e3c79f;
+    color:#f3e8d8;
     font:800 8px/1.2 var(--sans);
     letter-spacing:.12em;
     text-decoration:none;
     text-transform:uppercase;
   }
+
+  @media(prefers-reduced-motion:no-preference){
+    .mobilelive-card{animation:mobileDeskIn .55s ease both}
+    .mobilelive-card:nth-child(2){animation-delay:.05s}
+    .mobilelive-card:nth-child(3){animation-delay:.1s}
+    .mobilelive-card:nth-child(4){animation-delay:.15s}
+    @keyframes mobileDeskIn{
+      from{opacity:0;transform:translateY(18px) rotate(0)}
+      to{opacity:1}
+    }
+  }
 }
 @media(max-width:420px){
-  .mobilelive{padding-inline:11px}
-  .mobilelive-head{margin-inline:-11px;padding-inline:14px}
+  .mobilelive{padding-inline:12px}
+  .mobilelive-head{margin-inline:-12px;padding-inline:14px}
   .mobilelive-brand strong{font-size:22px}
-  .mobilelive-hero{
-    grid-template-columns:42% 1fr;
-    gap:11px;
-    padding-top:18px;
-  }
-  .mobilelive-profile{padding:6px 6px 54px}
-  .mobilelive-profile small{font-size:9px}
-  .mobilelive-intro h2{font-size:34px}
-  .mobilelive-intro p{font-size:12.5px}
+  .mobilelive-hero{margin-inline:-12px;padding:30px 18px 22px;min-height:520px}
+  .mobilelive-intro{width:78%}
+  .mobilelive-intro h2{font-size:44px}
+  .mobilelive-intro p{font-size:13.5px}
+  .mobilelive-profile{left:4%;width:70%;bottom:16px}
+  .mobilelive-hero:after{font-size:18px;right:5%;width:30%}
+  .mobilelive-work{margin-inline:-12px;padding-inline:14px}
   .mobilelive-copy{width:93%;margin-left:5%}
-  .mobilelive-copy strong{font-size:20px}
+  .mobilelive-copy strong{font-size:21px}
   .mobilelive-copy small{font-size:11px}
+  .mobilelive-foot{margin-inline:-12px}
 }
 """.strip()
 
