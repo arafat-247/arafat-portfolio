@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "20.0.0"
+ASSET_VERSION = "20.0.1"
 
 HOME_CSS = r"""
 /* Homepage v20.0 — approved flowing editorial composition */
@@ -21,10 +21,10 @@ body.home .mobilehead,
 body.home .mobilemenu,
 body.home .menubackdrop,
 body.home .right>footer{display:none!important}
-body.home .right{margin-left:0;min-height:100vh;background:#111}
-body.home main{min-height:100vh;background:#111}
+body.home .right{width:100%!important;max-width:none!important;margin-left:0!important;min-height:100vh;background:#111}
+body.home main{width:100%!important;max-width:none!important;min-height:100vh;background:#111}
 body.home .portalhome{
-  width:min(100% - 28px,1500px);
+  width:calc(100% - 28px);
   margin:14px auto 22px;
   overflow:hidden;
   border-radius:28px;
@@ -142,7 +142,7 @@ body.home .portalhome{
   color:#fff;text-decoration:none
 }
 .portalpanel:before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none
 }
 .portalimage{
   position:absolute;inset:0;z-index:-3;
