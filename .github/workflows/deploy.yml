@@ -76,6 +76,9 @@ jobs:
           python scripts/restore_approved_mobile.py
           python scripts/apply_approved_mobile_home.py
           python scripts/redesign_story_pages.py
+          python scripts/rebuild_desktop_home.py
+          mkdir -p dist/assets/imported
+          cp -a site/assets/imported/. dist/assets/imported/
           python scripts/validate.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
