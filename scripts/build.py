@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='20.1.0'
+ASSET_VERSION='20.0.5'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -90,7 +90,7 @@ class Builder:
         social_title=f'{name} — Journalist and Writer' if home else title
         asset_version=ASSET_VERSION
         clean_home_path="if(location.pathname.endsWith('/index.html'))location.replace(location.pathname.slice(0,-10)+location.search+location.hash);" if home else ''
-        home_hero=''
+        home_hero='assets/portraits/byline.avif' if home else ''
         hero_preload=f'<link rel="preload" as="image" href="{prefix}{esc(home_hero)}" type="image/avif" fetchpriority="high">' if home_hero else ''
         head=f'''{analytics}{hero_preload}<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(document_title)}</title><meta name="description" content="{esc(description)}"><meta name="theme-color" content="#0b2f2a"><script>{clean_home_path}if(location.protocol==='http:'&&location.hostname==='arafatrahaman.com')location.replace('https://'+location.host+location.pathname+location.search+location.hash);try{{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'light'}}catch(e){{document.documentElement.dataset.theme='light'}}</script><link rel="canonical" href="{esc(canonical_url)}"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" href="{prefix}feed.xml" title="Arafat Rahaman"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet"><link rel="stylesheet" href="{prefix}portfolio.css?v={asset_version}"><meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{esc(name)}"><meta property="og:locale" content="en_GB"><meta property="og:title" content="{esc(social_title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(canonical_url)}"><meta property="og:image" content="{esc(social_image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Arafat Rahaman, journalist at The Daily Star"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(social_title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{esc(social_image)}"><meta name="twitter:image:alt" content="Arafat Rahaman, journalist at The Daily Star">{article_tags}<script type="application/ld+json">{schema}</script>'''
         active=nav_active or ('home' if home else page_key.split('-',1)[0])
@@ -193,67 +193,48 @@ def build():
                 b.redirect(old+'index.html',a['local_url'])
     keys=('id','title','excerpt','category','stream','date_published','date_modified','cover_image','cover_alt','source_name','local_url')
     write(OUT/'data/index.json',{'articles':[{**{k:a.get(k,'') for k in keys},'credit_type':credit_type(a)} for a in articles]})
+    work_tiles=[]
+    destinations=[
+        ('reporting','01','Reporting','News reports, interviews and in-depth features from the ground.','Real issues|Brighter answers'),
+        ('opinion','02','Opinion & Analysis','Published columns, commentary and analysis on policy, politics and society.','Ideas|Policy|People|Change'),
+        ('thoughts','03','Thoughts','Reflections on society, journalism and the questions that matter.','Reflections|People|Society|Tomorrow'),
+        ('photos','04','Photography','People, places and everyday observations from Bangladesh.','Places|People|Stories'),
+    ]
+    for i,(key,number,title,description,keywords) in enumerate(destinations):
+        href=PATHS.get(key,'photography/')
+        if key=='photos':
+            image=safe_asset(c["home_images"][i]) if i < len(c.get("home_images",[])) else ''
+            visual=f'<img class="worktile-image" src="{esc(image)}" alt="" width="640" height="420" loading="lazy" fetchpriority="low" decoding="async">' if image else '<b class="worktile-art" aria-hidden="true"></b>'
+        else:
+            visual='<b class="worktile-art" aria-hidden="true"></b>'
+        words=''.join(f'<span>{esc(word)}</span>' for word in keywords.split('|'))
+        work_tiles.append(f'<a class="worktile worktile-{key}" href="{href}" data-home-tile="{key}"><em class="worktile-number">{number}</em>{visual}<span class="worktile-copy"><strong>{esc(title)}</strong><small>{esc(description)}</small><b class="worktile-explore">Explore →</b></span><span class="worktile-keywords" aria-hidden="true">{words}</span><i class="worktile-arrow" aria-hidden="true">→</i></a>')
+    panel_image=safe_asset(c.get('home_images',[None])[0]) if c.get('home_images') else ''
+    panel_visual=f'<img class="editorialhero-panel-image" src="{esc(panel_image)}" alt="" loading="lazy" fetchpriority="low" decoding="async">' if panel_image else ''
     home_email=clean(c.get('email',''))
     home_email_href='mailto:'+home_email if home_email else 'contact/'
-    photo_image=safe_asset(c.get('home_images',[])[3]) if len(c.get('home_images',[]))>3 else ''
-    photo_visual=f'<img class="journeyphoto" src="{esc(photo_image)}" alt="" width="640" height="420" loading="lazy" fetchpriority="low" decoding="async">' if photo_image else '<span class="journeyphoto-placeholder" aria-hidden="true"></span>'
-    journey_nav=(
-        '<header class="journeyhead">'
-        '<a class="journeybrand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a>'
-        '<nav class="journeynav" aria-label="Homepage navigation"><a href="./" aria-current="page">Home</a><a href="#journey-work">Work</a><a href="about/">About</a><a href="photography/">Photography</a><a href="contact/">Contact</a></nav>'
-        '<details class="journeymenu"><summary aria-label="Open navigation"><span></span><span></span></summary><div><a href="./">Home</a><a href="#journey-work">Work</a><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a><a href="about/">About</a><a href="contact/">Contact</a></div></details>'
-        '</header>'
-    )
-    journey_map=(
-        '<svg class="journeymap" viewBox="0 0 1200 900" aria-hidden="true" focusable="false">'
-        '<path class="journeyoutline" d="M695 104C774 91 861 108 913 151c45 37 89 45 135 64-37 38-55 85-47 137 9 54-23 92-61 126-40 36-53 83-62 134-12 70-58 121-116 162-55 39-104 87-149 136-36 40-82 62-132 71-23-46-54-84-97-112-47-31-76-74-92-128-17-57-16-112-2-169 14-58 4-111-33-157-31-39-39-84-28-133 12-50 42-87 85-114 55-35 108-73 160-112 48-36 104-56 179-52z"/>'
-        '<path class="journeyriver" d="M681 127c-56 76-44 151 9 221 48 64 56 122 19 185-28 48-77 82-106 128-35 55-32 113-5 177"/>'
-        '<path class="journeyriver small" d="M476 291c79 36 132 87 158 156 16 41 18 82 1 127"/>'
-        '<path class="journeyroute" d="M238 399C359 321 448 353 548 433c74 59 162 70 238 7 62-52 72-121 28-188M788 440c-40 79-92 142-174 188-76 42-134 96-155 176M460 804c84-78 165-88 256-41 50 26 104 18 145-26"/>'
-        '<circle class="routepoint p1" cx="238" cy="399" r="8"/><circle class="routepoint p2" cx="788" cy="440" r="8"/><circle class="routepoint p3" cx="460" cy="804" r="8"/><circle class="routepoint p4" cx="861" cy="737" r="8"/>'
-        '</svg>'
-    )
-    journey_hero=(
-        '<section class="journeyhero" aria-labelledby="journey-title">'
-        '<span class="journeyeyebrow">Selected work</span>'
-        '<h1 id="journey-title">Four paths through a changing Bangladesh</h1>'
-        '<p>Reporting, analysis, reflections and photography — different forms, one pursuit: clearer stories about people, policy and public life.</p>'
-        '<div class="journeyhero-links"><a href="#journey-work">Explore the four paths →</a><a href="about/">About me</a></div>'
+    editorial_hero=(
+        '<section class="editorialhero" aria-labelledby="home-profile-title">'
+        '<div class="editorialhero-copy">'
+        '<span class="editorialhero-kicker">Journalist · Dhaka</span>'
+        '<h1 id="home-profile-title">Arafat <em>Rahaman</em></h1>'
+        '<p class="editorialhero-deck">Reporting on education, governance, public accountability and social issues for The Daily Star.</p>'
+        '<span class="editorialhero-rule" aria-hidden="true"></span>'
+        '<p class="editorialhero-tagline">Stories for a more thoughtful Bangladesh.</p>'
+        '<nav class="editorialhero-actions"><a class="editorialhero-primary" href="about/">About me <b aria-hidden="true">→</b></a><a class="editorialhero-secondary" href="'+esc(home_email_href)+'">Email <b aria-hidden="true">→</b></a></nav>'
+        '</div>'
+        '<figure class="editorialhero-portrait"><div class="editorialhero-photo-frame"><picture class="editorialhero-picture"><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Black-and-white portrait of Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture><span class="editorialhero-photo-note">A more<br>thoughtful<br>Bangladesh.</span></div></figure>'
+        '<aside class="editorialhero-panel">'+panel_visual
+        +'<span class="editorialhero-paper editorialhero-paper-long" aria-hidden="true"></span>'
+        +'<span class="editorialhero-paper editorialhero-paper-note" aria-hidden="true"><i></i></span>'
+        +'<p class="editorialhero-panel-quote">People,<br>policy and<br>a more equal<br>Bangladesh.</p>'
+        +'<span class="editorialhero-location">Dhaka,<br>Bangladesh</span>'
+        +'</aside>'
         '</section>'
     )
-    reporting_node=(
-        '<a class="journeynode journey-reporting" href="reporting/" aria-label="Explore reporting">'
-        '<span class="journeymarker" aria-hidden="true"></span><span class="journeynumber">01</span>'
-        '<span class="journeyart journeyart-reporting" aria-hidden="true"><i></i><b></b></span>'
-        '<span class="journeycopy"><strong>Reporting</strong><small>On the ground, with people and the institutions shaping daily life.</small><em>→</em></span></a>'
-    )
-    opinion_node=(
-        '<a class="journeynode journey-opinion" href="opinion/" aria-label="Explore opinion and analysis">'
-        '<span class="journeymarker" aria-hidden="true"></span><span class="journeynumber">02</span>'
-        '<span class="journeyart journeyart-opinion" aria-hidden="true"><i></i><b></b><u></u></span>'
-        '<span class="journeycopy"><strong>Opinion &amp; Analysis</strong><small>Deeper looks at policy, politics, institutions and their consequences.</small><em>→</em></span></a>'
-    )
-    thoughts_node=(
-        '<a class="journeynode journey-thoughts" href="thoughts/" aria-label="Explore thoughts">'
-        '<span class="journeymarker" aria-hidden="true"></span><span class="journeynumber">03</span>'
-        '<span class="journeyart journeyart-thoughts" aria-hidden="true"><i></i><b></b></span>'
-        '<span class="journeycopy"><strong>Thoughts</strong><small>Notes, reflections and unfinished conversations on journalism and society.</small><em>→</em></span></a>'
-    )
-    photo_node=(
-        '<a class="journeynode journey-photography" href="photography/" aria-label="Explore photography">'
-        '<span class="journeymarker" aria-hidden="true"></span><span class="journeynumber">04</span>'+photo_visual+
-        '<span class="journeycopy"><strong>Photography</strong><small>People, places and in-between moments from Bangladesh.</small><em>→</em></span></a>'
-    )
-    journey_bottom=(
-        '<div class="journeybottom"><span>Bangladesh · people · policy · public life</span>'
-        '<a href="'+esc(home_email_href)+'">Story lead or reporting enquiry →</a></div>'
-    )
-    journey_home=(
-        '<section class="journeyhome">'+journey_nav+
-        '<div class="journeycanvas" id="journey-work">'+journey_map+journey_hero+reporting_node+opinion_node+thoughts_node+photo_node+journey_bottom+'</div>'
-        '</section>'
-    )
-    b.page('index.html','Arafat Rahaman',journey_home,home=True)
+    work_intro='<header class="workintro"><div><span>Selected paths through my work</span><h2>Work</h2></div><div><p>Reporting, analysis, personal writing and photography from Bangladesh.</p><a href="all-work/">View all work →</a></div></header>'
+    home_contact='<aside class="homecontact"><strong>Have a story lead or reporting enquiry?</strong><a href="contact/">Get in touch →</a></aside>'
+    b.page('index.html','Arafat Rahaman','<section class="homecontent">'+editorial_hero+work_intro+'<div class="workgrid">'+''.join(work_tiles)+'</div>'+home_contact+'</section>',home=True)
     for stream,(title,description) in STREAMS.items():
         subset=[a for a in articles if a.get('stream')==stream]
         if stream=='reporting':
