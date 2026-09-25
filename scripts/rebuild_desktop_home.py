@@ -1,64 +1,213 @@
-"""Replace the static desktop desk image with live responsive HTML/CSS/JS.
-Mobile homepage is intentionally untouched.
+"""Add tactile interaction to the approved photographic desktop homepage.
+
+This is a prototype pass. It keeps the approved desk image and the existing
+semantic/clickable hotspots, then overlays aligned image slices, subtle motion,
+reactive navigation, a live Dhaka analogue clock and restrained physical detail.
+Mobile is untouched.
 """
 from __future__ import annotations
+
 import re
 from pathlib import Path
 
-ROOT=Path(__file__).resolve().parents[1]
-HOME=ROOT/'dist'/'index.html'
-STYLE_ID='live-desktop-desk-v1'
-SCRIPT_ID='live-desktop-desk-js'
+ROOT = Path(__file__).resolve().parents[1]
+HOME = ROOT / "dist" / "index.html"
+STYLE_ID = "desktop-tactile-prototype-v1"
+SCRIPT_ID = "desktop-tactile-clock-v1"
+DESK_IMAGE = "assets/home/approved-desk-desktop.webp"
 
-DESKTOP=r'''<section class="deskhome deskhome-live" aria-labelledby="deskhome-title">
-<div class="deskstage deskstage-live">
-<div class="deskgrain" aria-hidden="true"></div>
-<nav class="desklive-nav" aria-label="Homepage navigation">
-<a href="./" aria-current="page">Home</a><a href="about/">About</a><a href="all-work/">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a>
-</nav>
-<article class="deskpaper deskintro"><span>Journalist · Bangladesh</span><h1 id="deskhome-title">Arafat<br>Rahaman</h1><small>The Daily Star · Dhaka</small></article>
-<a class="deskpaper deskprofile" href="about/" aria-label="About Arafat Rahaman"><i class="desktape" aria-hidden="true"></i><figure><img src="assets/identity/asset0.webp" alt="Arafat Rahaman" loading="eager" fetchpriority="high" decoding="async"><figcaption><strong>Arafat Rahaman</strong><span>Reporter · Writer · Photographer</span></figcaption></figure></a>
-<div class="deskclock" aria-label="Current local time in Dhaka"><div class="clockface"><span class="clockmark m12">12</span><span class="clockmark m3">3</span><span class="clockmark m6">6</span><span class="clockmark m9">9</span><i class="clockhand hour" data-clock-hour></i><i class="clockhand minute" data-clock-minute></i><i class="clockhand second" data-clock-second></i><b></b></div><small data-clock-label>Dhaka time</small></div>
-<a class="deskpaper deskcard deskreporting wind-a" href="reporting/"><em>01</em><strong>Reporting</strong><p>On-the-ground stories about people, power and a changing Bangladesh.</p><i>→</i></a>
-<a class="deskpaper deskcard deskopinion wind-b" href="opinion/"><em>02</em><strong>Opinion &amp;<br>Analysis</strong><p>Commentary and analysis on public issues.</p><i>→</i></a>
-<a class="deskpaper deskcard deskthoughts wind-c" href="thoughts/"><em>03</em><strong>Thoughts</strong><p>Notes, ideas and conversations on journalism and society.</p><i>→</i></a>
-<a class="deskpaper deskcard deskphotography wind-d" href="photography/"><img src="assets/photography/Rajshahi University-nightscape-Journalist-Arafat-Rahaman (6).webp" alt="" loading="lazy" decoding="async"><span></span><em>04</em><strong>Photography</strong><p>People, places and moments through my lens.</p><i>→</i></a>
-<span class="deskclip clip1" aria-hidden="true"></span><span class="deskclip clip2" aria-hidden="true"></span><span class="deskpencil" aria-hidden="true"></span>
-<a class="desklive-email" href="mailto:arafat.mcj@yahoo.com">arafat.mcj@yahoo.com ↗</a>
-</div></section>'''
+LAYER = r"""
+<div class="desktactile" aria-hidden="true">
+  <span class="deskpatch patch-stories"></span>
+  <span class="deskpatch patch-centre"></span>
+  <span class="deskpatch patch-rightnote"></span>
+  <span class="deskpatch patch-leftnote"></span>
 
-CSS=r'''<style id="live-desktop-desk-v1">
+  <span class="deskpiece piece-profile"><img src="assets/home/approved-desk-desktop.webp" alt=""></span>
+  <span class="deskpiece piece-reporting"><img src="assets/home/approved-desk-desktop.webp" alt=""></span>
+  <span class="deskpiece piece-opinion"><img src="assets/home/approved-desk-desktop.webp" alt=""></span>
+  <span class="deskpiece piece-thoughts"><img src="assets/home/approved-desk-desktop.webp" alt=""></span>
+  <span class="deskpiece piece-photo"><img src="assets/home/approved-desk-desktop.webp" alt=""></span>
+
+  <span class="deskcloth"></span>
+
+  <span class="deskclock-live">
+    <span class="deskclock-face">
+      <i class="tick t12">12</i><i class="tick t3">3</i><i class="tick t6">6</i><i class="tick t9">9</i>
+      <b class="hand hour" data-desk-hour></b>
+      <b class="hand minute" data-desk-minute></b>
+      <b class="hand second" data-desk-second></b>
+      <em></em>
+    </span>
+    <small data-desk-clock-label>Dhaka</small>
+  </span>
+</div>
+""".strip()
+
+CSS = r"""
 @media(min-width:801px){
-body.home{background:#111715;overflow-x:hidden}.deskhome-live{display:block;width:100%;min-height:100vh;padding:18px;background:#111715}.deskstage-live{container-type:inline-size;position:relative;width:min(100%,1600px);min-height:680px;aspect-ratio:1447/1087;margin:auto;overflow:hidden;border:1px solid rgb(255 255 255/18%);border-radius:25px;isolation:isolate;background:radial-gradient(circle at 18% 18%,rgb(255 255 255/4%) 0 1px,transparent 2px) 0 0/18px 18px,repeating-linear-gradient(91deg,transparent 0 16%,rgb(20 8 3/9%) 16.2% 16.5%,transparent 16.8% 32%),linear-gradient(112deg,#3b1d10,#63351d 28%,#3c2115 52%,#714022 76%,#30180f);box-shadow:0 22px 65px rgb(0 0 0/42%)}.deskgrain{position:absolute;inset:0;z-index:-4;pointer-events:none;background:linear-gradient(180deg,rgb(255 225 185/3%),rgb(0 0 0/13%))}
-.desklive-nav{position:absolute;z-index:40;top:3%;right:5%;display:flex;gap:clamp(14px,1.5cqw,25px)}.desklive-nav a{position:relative;padding:7px 4px;color:#f7ebda;font:800 clamp(9px,.72cqw,12px)/1 var(--sans);letter-spacing:.1em;text-decoration:none;text-transform:uppercase;transition:transform .18s ease,color .18s ease}.desklive-nav a:after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;background:#e6b66e;transition:left .18s ease,right .18s ease}.desklive-nav a:hover,.desklive-nav a:focus-visible{color:#efc989;transform:translateY(-3px)}.desklive-nav a:hover:after,.desklive-nav a:focus-visible:after,.desklive-nav a[aria-current="page"]:after{left:3px;right:3px}
-.deskpaper{position:absolute;display:block;box-sizing:border-box;color:#211a14;text-decoration:none;box-shadow:0 13px 30px rgb(24 9 3/28%);transition:transform .23s ease,box-shadow .23s ease,filter .23s ease;transform-origin:center}.deskpaper:hover,.deskpaper:focus-visible{z-index:30!important;box-shadow:0 25px 45px rgb(20 8 3/40%);filter:saturate(1.04)}.deskpaper:focus-visible,.desklive-nav a:focus-visible,.desklive-email:focus-visible{outline:3px solid #f1cf92;outline-offset:5px}
-.deskintro{left:5.5%;top:8%;width:26%;min-height:22%;padding:clamp(22px,2.2cqw,38px);background:#f1e7d5;transform:rotate(-2.4deg)}.deskintro:before{content:"";position:absolute;inset:10px;border:1px solid rgb(64 43 27/12%)}.deskintro span{display:block;margin-bottom:14px;color:#8b3026;font:850 clamp(7px,.58cqw,10px)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase}.deskintro h1{margin:0;color:#173f38;font:400 clamp(35px,4.2cqw,68px)/.82 var(--serif);letter-spacing:-.055em}.deskintro small{display:block;margin-top:18px;color:#766655;font:800 clamp(7px,.52cqw,9px)/1 var(--sans);letter-spacing:.13em;text-transform:uppercase}
-.deskprofile{left:35%;top:5%;width:22%;height:24.5%;padding:1.2%;background:#f7efe4;transform:rotate(2.1deg)}.deskprofile:hover,.deskprofile:focus-visible{transform:rotate(.5deg) translateY(-8px)}.deskprofile figure{display:grid;height:100%;grid-template-rows:1fr auto;margin:0}.deskprofile img{width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 28%;filter:grayscale(1) contrast(1.05)}.deskprofile figcaption{display:flex;align-items:end;justify-content:space-between;gap:8px;padding-top:8px}.deskprofile figcaption strong{font:700 clamp(10px,.9cqw,15px)/1 var(--serif)}.deskprofile figcaption span{max-width:48%;color:#756452;font:800 clamp(6px,.45cqw,8px)/1.2 var(--sans);letter-spacing:.08em;text-align:right;text-transform:uppercase}.desktape{position:absolute;z-index:3;top:-5%;left:33%;width:35%;height:12%;background:rgb(224 202 160/80%);transform:rotate(-3deg)}
-.deskclock{position:absolute;z-index:18;right:8%;top:11%;display:grid;justify-items:center;gap:7px;width:16%;min-width:120px;color:#f1e6d5}.clockface{position:relative;width:min(11cqw,165px);aspect-ratio:1;border:clamp(5px,.5cqw,9px) solid #2a2520;border-radius:50%;background:radial-gradient(circle at 50% 46%,#f4eadb,#ddd0bb 72%,#c4b294);box-shadow:0 13px 25px rgb(0 0 0/35%),inset 0 0 0 2px #8d7659}.clockface b{position:absolute;z-index:10;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:#241f1a;transform:translate(-50%,-50%)}.clockmark{position:absolute;color:#3b3026;font:700 clamp(8px,.75cqw,12px)/1 Georgia,serif}.m12{left:50%;top:7%;transform:translateX(-50%)}.m3{right:8%;top:50%;transform:translateY(-50%)}.m6{left:50%;bottom:7%;transform:translateX(-50%)}.m9{left:8%;top:50%;transform:translateY(-50%)}.clockhand{position:absolute;z-index:5;left:50%;bottom:50%;width:2px;background:#2b251f;border-radius:2px;transform-origin:50% 100%}.clockhand.hour{height:25%;width:4px}.clockhand.minute{height:34%;width:3px}.clockhand.second{height:38%;width:1px;background:#9e3128}.deskclock small{font:800 clamp(7px,.55cqw,9px)/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
-.deskcard{padding:clamp(18px,1.8cqw,30px);overflow:hidden}.deskcard em{position:absolute;right:7%;top:8%;opacity:.55;font:800 clamp(8px,.65cqw,11px)/1 var(--sans);font-style:normal}.deskcard strong{display:block;margin-top:13%;font:400 clamp(24px,2.45cqw,40px)/.9 var(--serif);letter-spacing:-.045em}.deskcard p{max-width:24ch;margin:10% 0 0;font:500 clamp(9px,.74cqw,12px)/1.4 var(--serif)}.deskcard>i{position:absolute;right:8%;bottom:7%;font:400 clamp(24px,2cqw,34px)/1 var(--serif);font-style:normal}.deskreporting{left:6%;top:37%;width:24.8%;height:31%;background:#efe6d5;transform:rotate(-3deg)}.deskopinion{left:31.7%;top:36.5%;width:25.6%;height:31.2%;color:#f8edda;background:#87332b;transform:rotate(1.7deg)}.deskthoughts{left:58.1%;top:37%;width:25.8%;height:30.8%;background:#d7c5a5;transform:rotate(-1.7deg)}.deskphotography{left:39.2%;top:69%;width:25.2%;height:22%;padding:0;color:#fff;background:#101815;transform:rotate(2deg)}.deskphotography img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)}.deskphotography>span{position:absolute;inset:0;background:linear-gradient(180deg,rgb(3 12 10/7%),rgb(3 12 10/76%))}.deskphotography em{z-index:2;left:8%;right:auto;color:#fff}.deskphotography strong{position:absolute;z-index:2;left:8%;bottom:22%;margin:0;font-size:clamp(24px,2.2cqw,36px)}.deskphotography p{position:absolute;z-index:2;left:8%;bottom:8%;margin:0;color:#eee6da;font:600 clamp(8px,.66cqw,11px)/1.2 var(--sans)}.deskphotography>i{z-index:2}
-.deskcard:hover,.deskcard:focus-visible{animation-play-state:paused;transform:rotate(0deg) translateY(-10px) scale(1.015)}@keyframes paperBreezeA{0%,100%{transform:rotate(-3deg) translate(0,0)}45%{transform:rotate(-2.2deg) translate(1px,-2px)}70%{transform:rotate(-3.5deg) translate(-1px,1px)}}@keyframes paperBreezeB{0%,100%{transform:rotate(1.7deg)}50%{transform:rotate(2.4deg) translateY(-2px)}}@keyframes paperBreezeC{0%,100%{transform:rotate(-1.7deg)}55%{transform:rotate(-.9deg) translate(1px,-1px)}}@keyframes paperBreezeD{0%,100%{transform:rotate(2deg)}50%{transform:rotate(2.7deg) translateY(-2px)}}.wind-a{animation:paperBreezeA 6.8s ease-in-out infinite}.wind-b{animation:paperBreezeB 7.7s ease-in-out infinite}.wind-c{animation:paperBreezeC 8.3s ease-in-out infinite}.wind-d{animation:paperBreezeD 7.2s ease-in-out infinite}
-.deskclip{position:absolute;z-index:17;width:1.3%;height:8.5%;border:3px solid rgb(190 188 177/70%);border-bottom:0;border-radius:10px 10px 0 0;pointer-events:none}.clip1{left:29.5%;top:39%;transform:rotate(8deg)}.clip2{left:82.7%;top:42%;transform:rotate(-12deg)}.deskpencil{position:absolute;z-index:4;left:17.5%;bottom:8%;width:18%;height:1.2%;border-radius:999px;background:linear-gradient(90deg,#d8bb78 0 8%,#8b3028 8% 88%,#2f241d 88% 94%,#d4b681 94%);box-shadow:0 4px 7px rgb(0 0 0/22%);transform:rotate(12deg)}.desklive-email{position:absolute;right:6%;bottom:4%;z-index:22;color:#ead9c5;font:750 clamp(8px,.66cqw,11px)/1 var(--sans);letter-spacing:.08em;text-decoration:none;text-transform:uppercase}
-@media(max-width:1100px){.deskstage-live{min-height:660px}.deskintro{left:3.8%;width:27.5%}.deskclock{right:5.5%}.deskreporting{left:4.8%}.deskthoughts{width:26.2%}}
+  .deskstage{isolation:isolate}
+  .deskvisual{z-index:0}
+  .desktactile{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+  .deskhotspots-desktop{z-index:12!important}
+
+  .deskpiece{
+    position:absolute;overflow:hidden;
+    transform-origin:50% 50%;
+    filter:drop-shadow(0 8px 9px rgb(13 5 1 / 0));
+    transition:transform .34s cubic-bezier(.2,.72,.2,1),filter .34s ease;
+    will-change:transform;
+  }
+  .deskpiece img{position:absolute;max-width:none!important;user-select:none;-webkit-user-drag:none}
+
+  .piece-profile{left:34.6%;top:4.2%;width:22.7%;height:24.5%;clip-path:polygon(4% 3%,92% 0,100% 91%,8% 100%,0 11%)}
+  .piece-profile img{width:440.53%;height:408.17%;left:-152.43%;top:-17.15%}
+
+  .piece-reporting{left:6%;top:36.4%;width:25%;height:31.8%;clip-path:polygon(2% 4%,93% 0,100% 96%,11% 100%,0 11%)}
+  .piece-reporting img{width:400%;height:314.47%;left:-24%;top:-114.47%}
+
+  .piece-opinion{left:31.3%;top:36.8%;width:26.5%;height:31.4%;clip-path:polygon(1% 3%,94% 0,100% 94%,7% 100%,0 8%)}
+  .piece-opinion img{width:377.36%;height:318.48%;left:-118.12%;top:-117.20%}
+
+  .piece-thoughts{left:57.7%;top:36.5%;width:26.1%;height:31.5%;clip-path:polygon(3% 1%,96% 2%,100% 93%,7% 100%,0 8%)}
+  .piece-thoughts img{width:383.15%;height:317.47%;left:-221.08%;top:-115.88%}
+
+  .piece-photo{left:39.1%;top:68%;width:25.4%;height:23%;clip-path:polygon(2% 3%,96% 0,100% 93%,7% 100%,0 8%)}
+  .piece-photo img{width:393.71%;height:434.79%;left:-153.94%;top:-295.66%}
+
+  @keyframes deskBreezeA{0%,100%{transform:translate3d(0,0,0) rotate(0)}48%{transform:translate3d(.8px,-1.1px,0) rotate(.08deg)}}
+  @keyframes deskBreezeB{0%,100%{transform:translate3d(0,0,0) rotate(0)}52%{transform:translate3d(-.7px,-.8px,0) rotate(-.07deg)}}
+  .piece-reporting,.piece-thoughts{animation:deskBreezeA 8.8s ease-in-out infinite}
+  .piece-opinion,.piece-photo{animation:deskBreezeB 10.4s ease-in-out infinite}
+  .piece-profile{animation:deskBreezeA 12.2s ease-in-out infinite}
+
+  .deskstage:has(.deskprofile-hotspot:is(:hover,:focus-visible)) .piece-profile,
+  .deskstage:has(.deskreporting-hotspot:is(:hover,:focus-visible)) .piece-reporting,
+  .deskstage:has(.deskopinion-hotspot:is(:hover,:focus-visible)) .piece-opinion,
+  .deskstage:has(.deskthoughts-hotspot:is(:hover,:focus-visible)) .piece-thoughts,
+  .deskstage:has(.deskphoto-hotspot:is(:hover,:focus-visible)) .piece-photo{
+    animation-play-state:paused;
+    transform:translate3d(0,-4px,0) rotate(.18deg);
+    filter:drop-shadow(0 11px 9px rgb(13 5 1 / 28%));
+  }
+
+  .deskhotspot[class*="desknav-"]:before{
+    content:"";position:absolute;left:10%;right:10%;bottom:3%;
+    height:1px;background:#ead3ad;
+    transform:scaleX(0);transform-origin:center;
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .deskhotspot[class*="desknav-"]:hover:before,
+  .deskhotspot[class*="desknav-"]:focus-visible:before{
+    transform:scaleX(1);box-shadow:0 0 10px rgb(234 211 173 / 72%)
+  }
+  .deskhotspot[class*="desknav-"]:hover{background:rgb(255 243 220 / 4%)}
+
+  .deskpatch{
+    position:absolute;
+    background:
+      repeating-linear-gradient(3deg,rgb(255 255 255 / 0) 0 9px,rgb(37 13 4 / 8%) 10px 11px),
+      linear-gradient(98deg,#3a1d10,#4b2817 48%,#3b1d10);
+    box-shadow:inset 0 0 18px rgb(14 5 2 / 28%);
+    opacity:.96;
+    mask-image:radial-gradient(ellipse at center,#000 63%,transparent 100%);
+    -webkit-mask-image:radial-gradient(ellipse at center,#000 63%,transparent 100%);
+  }
+  .patch-stories{left:25.6%;top:9.2%;width:12.4%;height:14.8%;transform:rotate(-1deg)}
+  .patch-centre{left:29.8%;top:27.2%;width:35.2%;height:10.2%}
+  .patch-rightnote{left:76.3%;top:22.8%;width:14.1%;height:15.2%;transform:rotate(2deg)}
+  .patch-leftnote{left:3.2%;top:78.6%;width:14.4%;height:15.5%;transform:rotate(-2deg)}
+
+  .deskcloth{
+    position:absolute;right:-3%;bottom:-4%;width:28%;height:23%;
+    opacity:.18;transform:rotate(-7deg);
+    background:
+      repeating-linear-gradient(0deg,#e8dfcc 0 9px,#183d36 9px 18px),
+      repeating-linear-gradient(90deg,transparent 0 9px,#8c3129 9px 18px);
+    background-blend-mode:multiply;
+    box-shadow:0 -5px 18px rgb(15 6 2 / 26%);
+    clip-path:polygon(17% 8%,100% 0,100% 100%,0 100%);
+  }
+
+  .deskclock-live{
+    position:absolute;z-index:6;right:4.8%;top:27.8%;width:8.3%;
+    display:grid;justify-items:center;gap:5px;color:#eadcc6;
+    filter:drop-shadow(0 7px 8px rgb(12 5 2 / 35%));
+  }
+  .deskclock-face{
+    position:relative;display:block;width:100%;aspect-ratio:1;
+    border:clamp(3px,.35vw,6px) solid #3a2a1d;border-radius:50%;
+    background:radial-gradient(circle at 42% 37%,#f0e6d4,#cdbb9f 72%,#9f896d);
+    box-shadow:inset 0 0 0 1px #806a4f,0 3px 0 #2b1b11;
+  }
+  .deskclock-face .tick{position:absolute;color:#3b2d21;font:700 clamp(6px,.55vw,10px)/1 Georgia,serif;font-style:normal}
+  .deskclock-face .t12{top:7%;left:50%;transform:translateX(-50%)}
+  .deskclock-face .t3{right:8%;top:50%;transform:translateY(-50%)}
+  .deskclock-face .t6{bottom:7%;left:50%;transform:translateX(-50%)}
+  .deskclock-face .t9{left:8%;top:50%;transform:translateY(-50%)}
+  .deskclock-face .hand{position:absolute;z-index:3;left:50%;bottom:50%;display:block;border-radius:99px;background:#33261d;transform-origin:50% 100%}
+  .deskclock-face .hour{width:3px;height:24%}
+  .deskclock-face .minute{width:2px;height:34%}
+  .deskclock-face .second{width:1px;height:38%;background:#a62d25}
+  .deskclock-face em{position:absolute;z-index:5;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:#35271d;transform:translate(-50%,-50%)}
+  .deskclock-live small{font:800 clamp(5px,.43vw,8px)/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;text-shadow:0 1px 4px #2b160b}
+
+  @media(max-width:1080px){
+    .deskclock-live{right:3.6%;width:8.8%}
+    .patch-centre{width:34.5%}
+  }
 }
-@media(max-width:800px){.deskhome-live{display:none!important}}
-@media(prefers-reduced-motion:reduce){.wind-a,.wind-b,.wind-c,.wind-d{animation:none!important}.deskpaper,.desklive-nav a{transition:none!important}}
-</style>'''
+@media(max-width:800px){.desktactile{display:none!important}}
+@media(prefers-reduced-motion:reduce){
+  .deskpiece{animation:none!important;transition:none!important}
+}
+""".strip()
 
-JS=r'''<script id="live-desktop-desk-js">
-(()=>{const root=document.querySelector('.deskhome-live');if(!root)return;const h=root.querySelector('[data-clock-hour]'),m=root.querySelector('[data-clock-minute]'),s=root.querySelector('[data-clock-second]'),label=root.querySelector('[data-clock-label]');const tick=()=>{const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(new Date());const get=t=>Number(parts.find(p=>p.type===t)?.value||0);const hh=get('hour'),mm=get('minute'),ss=get('second');h.style.transform=`rotate(${(hh%12)*30+mm*.5}deg)`;m.style.transform=`rotate(${mm*6+ss*.1}deg)`;s.style.transform=`rotate(${ss*6}deg)`;label.textContent=`Dhaka · ${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}`};tick();setInterval(tick,1000)})();
-</script>'''
+JS = r"""
+(()=> {
+  const root=document.querySelector('.deskclock-live');
+  if(!root) return;
+  const hour=root.querySelector('[data-desk-hour]');
+  const minute=root.querySelector('[data-desk-minute]');
+  const second=root.querySelector('[data-desk-second]');
+  const label=root.querySelector('[data-desk-clock-label]');
+  const tick=()=> {
+    const parts=new Intl.DateTimeFormat('en-GB',{
+      timeZone:'Asia/Dhaka',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false
+    }).formatToParts(new Date());
+    const n=(type)=>Number(parts.find(p=>p.type===type)?.value||0);
+    const h=n('hour'),m=n('minute'),s=n('second');
+    hour.style.transform=`rotate(${(h%12)*30+m*.5}deg)`;
+    minute.style.transform=`rotate(${m*6+s*.1}deg)`;
+    second.style.transform=`rotate(${s*6}deg)`;
+    label.textContent=`Dhaka · ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+  };
+  tick();
+  setInterval(tick,1000);
+})();
+""".strip()
 
-def main():
-    if not HOME.is_file():raise FileNotFoundError('dist/index.html does not exist; run the build first')
-    source=HOME.read_text(encoding='utf-8')
-    source=re.sub(r'<style id="'+re.escape(STYLE_ID)+r'">.*?</style>','',source,flags=re.I|re.S)
-    source=re.sub(r'<script id="'+re.escape(SCRIPT_ID)+r'">.*?</script>','',source,flags=re.I|re.S)
-    pattern=re.compile(r'<section\s+class="[^"]*\bdeskhome\b[^"]*"[^>]*>.*?</section>',re.I|re.S)
-    source,count=pattern.subn(DESKTOP,source,count=1)
-    if count!=1:raise RuntimeError('Could not locate desktop homepage section')
-    source=source.replace('</head>',CSS+'\n</head>',1).replace('</body>',JS+'\n</body>',1)
-    HOME.write_text(source,encoding='utf-8')
-    if 'approved-desk-desktop.webp' in source:raise RuntimeError('Static desktop artwork is still referenced by homepage')
-    print('Desktop homepage rebuilt: live_html=1, static_image=0, responsive=1, paper_motion=1, reactive_nav=1, live_dhaka_clock=1, mobile_untouched=1')
+def main() -> None:
+    if not HOME.is_file():
+        raise FileNotFoundError("dist/index.html does not exist; run the build first")
 
-if __name__=='__main__':main()
+    source=HOME.read_text(encoding="utf-8")
+    source=re.sub(rf'<style id="{STYLE_ID}">.*?</style>',"",source,flags=re.I|re.S)
+    source=re.sub(rf'<script id="{SCRIPT_ID}">.*?</script>',"",source,flags=re.I|re.S)
+    source=re.sub(r'<div class="desktactile".*?</div>\s*(?=<div class="desksemantics"|<nav class="deskhotspots)',"",source,flags=re.I|re.S)
+
+    if 'class="deskhome deskhome-photo"' not in source or DESK_IMAGE not in source:
+        raise RuntimeError("Approved photographic desktop homepage was not found")
+
+    picture=re.compile(r'(<picture class="deskvisual"[^>]*>.*?</picture>)',re.I|re.S)
+    source,count=picture.subn(r'\1'+LAYER,source,count=1)
+    if count!=1:
+        raise RuntimeError("Could not attach tactile layer to approved desk image")
+
+    source=source.replace("</head>",f'<style id="{STYLE_ID}">\n{CSS}\n</style></head>',1)
+    source=source.replace("</body>",f'<script id="{SCRIPT_ID}">\n{JS}\n</script></body>',1)
+    HOME.write_text(source,encoding="utf-8")
+    print("Desktop tactile prototype applied: approved_photo=kept, hotspots=kept, paper_motion=subtle, live_clock=1, decorative_copy_masked=1, mobile_untouched=1")
+
+if __name__=="__main__":
+    main()
