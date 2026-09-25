@@ -191,7 +191,8 @@ body.home main{
   .portalmenu>nav{
     position:fixed;z-index:102;inset:0 0 0 auto;
     display:grid;width:min(86vw,350px);align-content:start;
-    padding:78px 26px 28px;\n    height:100dvh;overflow-y:auto;
+    padding:78px 26px 28px;
+    height:100dvh;overflow-y:auto;
     background:linear-gradient(180deg,#faf5ea,#efe2cf);
     border-left:1px solid rgb(65 46 30 / 12%);
     box-shadow:-20px 0 45px rgb(28 18 10 / 22%);
