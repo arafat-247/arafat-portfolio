@@ -10,10 +10,10 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "20.0.1"
+ASSET_VERSION = "20.0.2"
 
 HOME_CSS = r"""
-/* Homepage v20.0.1 — approved flowing editorial composition */
+/* Homepage v20.0.2 — approved flowing editorial composition */
 body.home{background:#111}
 body.home .identity,
 body.home .desktophead,
@@ -44,6 +44,7 @@ body.home .portalhome{
 .portalbrand strong{font:400 23px/1 var(--serif);letter-spacing:-.03em}
 .portalbrand small{font:800 7px/1.1 var(--sans);letter-spacing:.25em;text-transform:uppercase;opacity:.62}
 .portalnavlinks{display:flex;align-items:center;gap:30px}
+.portalmobilemenu{display:none}
 .portalnavlinks a{
   position:relative;padding:23px 0 18px;
   color:inherit;font:750 9px/1 var(--sans);
@@ -298,10 +299,26 @@ body.home .portalhome{
   .portalbrand strong{font-size:20px}
   .portalbrand small{font-size:6px;color:rgb(255 255 255 / 60%)}
   .portalnavlinks{display:none}
-  .portalnav:after{
-    content:"";width:24px;height:15px;
-    border-top:2px solid currentColor;border-bottom:2px solid currentColor
+  .portalmobilemenu{display:block;position:relative;margin-left:auto}
+  .portalmobilemenu summary{
+    display:grid;width:34px;height:34px;place-content:center;gap:6px;
+    list-style:none;cursor:pointer
   }
+  .portalmobilemenu summary::-webkit-details-marker{display:none}
+  .portalmobilemenu summary span{display:block;width:24px;height:2px;background:currentColor}
+  .portalmobilemenu-panel{
+    position:absolute;z-index:90;right:0;top:38px;
+    display:grid;width:min(76vw,270px);padding:8px 0;
+    border:1px solid rgb(255 255 255 / 12%);
+    background:#0a0d0c;box-shadow:0 18px 40px rgb(0 0 0 / 36%)
+  }
+  .portalmobilemenu-panel a{
+    padding:12px 16px;border-bottom:1px solid rgb(255 255 255 / 8%);
+    color:#fff;font:750 10px/1 var(--sans);letter-spacing:.14em;
+    text-transform:uppercase;text-decoration:none
+  }
+  .portalmobilemenu-panel a:last-child{border-bottom:0}
+  .portalmobilemenu-panel a[aria-current=page]{color:#e2bb73}
 
   .portalhero{display:block;min-height:0;padding:22px 18px 18px}
   .portalhero h1{font-size:50px}
