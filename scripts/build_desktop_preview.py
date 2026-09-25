@@ -11,7 +11,8 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "dist" / "index.html"\nPREVIEW = ROOT / "dist" / "desktop-preview" / "index.html"
+SOURCE = ROOT / "dist" / "index.html"
+PREVIEW = ROOT / "dist" / "desktop-preview" / "index.html"
 STYLE_ID = "desktop-tactile-preview-v1"
 SCRIPT_ID = "desktop-tactile-preview-clock-v1"
 DESK_IMAGE = "assets/home/approved-desk-desktop.webp"
