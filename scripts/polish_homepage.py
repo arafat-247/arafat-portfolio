@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "21.2.1"
+ASSET_VERSION = "21.2.2"
 
 HOME_CSS = r"""
 
@@ -165,8 +165,7 @@ body.home main{
     align-items:center;justify-content:space-between;gap:12px;
     padding:9px 16px 8px;
     border-bottom:1px solid rgb(39 29 20 / 13%);
-    color:#171512;background:rgb(247 241 231 / 97%);
-    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)
+    color:#171512;background:#f7f1e7;
   }
   .portalbrand{display:grid;min-width:0;gap:2px;color:inherit;text-decoration:none}
   .portalbrand strong{font:400 clamp(20px,5.3vw,23px)/.98 var(--serif);letter-spacing:-.035em}
@@ -193,6 +192,7 @@ body.home main{
     position:fixed;z-index:102;inset:0 0 0 auto;
     display:grid;width:min(86vw,350px);align-content:start;
     padding:78px 26px 28px;
+    height:100dvh;overflow-y:auto;
     background:linear-gradient(180deg,#faf5ea,#efe2cf);
     border-left:1px solid rgb(65 46 30 / 12%);
     box-shadow:-20px 0 45px rgb(28 18 10 / 22%);
