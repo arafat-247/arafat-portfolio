@@ -13,7 +13,7 @@ SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
 ASSET_VERSION = "20.0.1"
 
 HOME_CSS = r"""
-/* Homepage v20.0 — approved flowing editorial composition */
+/* Homepage v20.0.1 — approved flowing editorial composition */
 body.home{background:#111}
 body.home .identity,
 body.home .desktophead,
@@ -130,8 +130,8 @@ body.home .portalhome{
 .portalgrid{
   position:relative;
   width:100%;
-  height:760px;
-  min-height:760px;
+  height:clamp(860px,72vw,1040px);
+  min-height:860px;
   background:
     radial-gradient(circle at 26% 14%,#1b211f 0,#0c1210 54%,#050807 100%)
 }
@@ -145,11 +145,11 @@ body.home .portalhome{
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none
 }
 .portalimage{
-  position:absolute;inset:0;z-index:-3;
+  position:absolute;inset:0;z-index:0;
   width:100%;height:100%;object-fit:cover
 }
 .portalart{
-  position:absolute;inset:0;z-index:-3;
+  position:absolute;inset:0;z-index:0;
   background-image:url("assets/home/portal-reference-sprite.webp");
   background-repeat:no-repeat;background-size:100% 300%
 }
