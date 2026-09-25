@@ -42,6 +42,7 @@ def store_article(item, old=None):
     normalise_public_urls([*existing,item])
     item['first_archived_at']=(old or {}).get('first_archived_at') or now()
     if not item.get('date_published') and old: item['date_published']=old.get('date_published','')
+    if not item.get('source_image') and old: item['source_image']=old.get('source_image','')
     if not item.get('cover_image') and old: item['cover_image']=old.get('cover_image','')
     item['content_hash']=hashlib.sha256(json.dumps({k:item.get(k) for k in ('title','excerpt','body_html','date_published','date_modified','original_authors','source_image')},sort_keys=True).encode()).hexdigest()
     if old and old.get('content_hash')!=item['content_hash']:
@@ -119,8 +120,13 @@ def run(args):
         try:
             data,typ,final=fetch(u)
             if typ not in ('text/html','application/xhtml+xml'): raise ValueError('URL is not an HTML article.')
-            item=article(data.decode('utf-8',errors='replace'),u,manual=bool(request),author_listing=bool(status.get('author_listing')))
+            source=data.decode('utf-8',errors='replace')
+            item=article(source,u,manual=bool(request),author_listing=bool(status.get('author_listing')))
             item['resolved_source_url']=final
+            source_doc=Document(source)
+            image=source_doc.meta('og:image') or source_doc.meta('og:image:url') or source_doc.meta('twitter:image') or source_doc.meta('twitter:image:src')
+            if image:item['source_image']=urljoin(final,image)
+            elif old:item['source_image']=old.get('source_image','')
             if not item.get('date_published'):raise ValueError('Publication date could not be extracted.')
             if request:
                 item['manual_import']=True; item['contribution']=request.get('contribution','Reporting contribution')
@@ -131,6 +137,9 @@ def run(args):
                 requested_credit=request.get('credit_type','contribution')
                 item['credit_type_override']=requested_credit if requested_credit in ('author-page','contribution') else 'contribution'
             item['status']='published'
+            try:archive_image(item)
+            except (HTTPError,URLError,ValueError,OSError):
+                if old:item['cover_image']=old.get('cover_image','')
             return item,old,None
         except (HTTPError,URLError,ValueError,OSError) as exc:
             return None,old,str(exc)[:260]
