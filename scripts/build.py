@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='20.9.0'
+ASSET_VERSION='21.0.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -193,48 +193,60 @@ def build():
                 b.redirect(old+'index.html',a['local_url'])
     keys=('id','title','excerpt','category','stream','date_published','date_modified','cover_image','cover_alt','source_name','local_url')
     write(OUT/'data/index.json',{'articles':[{**{k:a.get(k,'') for k in keys},'credit_type':credit_type(a)} for a in articles]})
-    home_email=clean(c.get('email',''))
-    home_email_href='mailto:'+home_email if home_email else 'contact/'
-    photo_image=safe_asset(c.get('home_images',[])[3]) if len(c.get('home_images',[]))>3 else 'assets/home/reference-photo.webp'
-    desk_home=(
-        '<section class="deskhome deskhome-photo" aria-labelledby="deskhome-title">'
-        '<div class="deskstage">'
-        '<picture class="deskvisual" aria-hidden="true">'
-        '<img src="assets/home/approved-desk-desktop.webp" alt="" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">'
-        '</picture>'
-        '<section class="mobilefresh" aria-label="Arafat Rahaman portfolio">'
-        '<header class="mf-head"><a class="mf-brand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a><nav class="mf-quicknav" aria-label="Homepage shortcuts"><a href="about/">About</a><a href="contact/">Contact</a></nav></header>'
-        '<section class="mf-hero" aria-labelledby="mf-home-title"><div class="mf-copy"><span class="mf-kicker">Staff reporter · The Daily Star</span><h1 id="mf-home-title">Arafat <em>Rahaman</em></h1><p class="mf-deck">Reporting on education, governance, public accountability and social issues through field reporting, interviews, public records, data and visual storytelling.</p><p class="mf-script">Stories for a more thoughtful Bangladesh.</p><div class="mf-actions"><a class="mf-primary" href="about/">About me <b>→</b></a><a href="#mobile-work">Explore work <b>↓</b></a></div><a class="mf-email-link" href="'+esc(home_email_href)+'">Email me →</a></div>'
-        '<div class="mf-visual"><figure class="mf-photo"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture><figcaption>Dhaka, Bangladesh</figcaption></figure><aside class="mf-green-note" aria-hidden="true"><span>Education</span><span>Governance</span><span>Public life</span></aside></div></section>'
-        '<section class="mf-work" id="mobile-work" aria-labelledby="mf-work-title"><header class="mf-work-head"><div><span>Selected paths through my work</span><h2 id="mf-work-title">Work</h2></div><a href="all-work/">View all →</a></header><div class="mf-track">'
-        '<a class="mf-card mf-reporting" href="reporting/"><span class="mf-card-num">01</span><span class="mf-art" aria-hidden="true"></span><span class="mf-card-copy"><strong>Reporting</strong><small>People, places and the big picture from the ground.</small></span><i>→</i></a>'
-        '<a class="mf-card mf-opinion" href="opinion/"><span class="mf-card-num">02</span><span class="mf-art" aria-hidden="true"></span><span class="mf-card-copy"><strong>Opinion &amp; Analysis</strong><small>Sharper takes on the issues shaping Bangladesh.</small></span><i>→</i></a>'
-        '<a class="mf-card mf-thoughts" href="thoughts/"><span class="mf-card-num">03</span><span class="mf-art" aria-hidden="true"></span><span class="mf-card-copy"><strong>Thoughts</strong><small>Notes, reflections and work in progress.</small></span><i>→</i></a>'
-        '<a class="mf-card mf-photography" href="photography/"><span class="mf-card-num">04</span><img src="'+esc(photo_image)+'" alt="" width="640" height="420" loading="lazy" decoding="async"><span class="mf-card-copy"><strong>Photography</strong><small>A visual diary of people, places and daily life.</small></span><i>→</i></a>'
-        '</div></section>'
-        '<footer class="mf-footer"><strong>Arafat Rahaman</strong><span>Journalist · Dhaka, Bangladesh</span><nav><a href="about/">About</a><a href="contact/">Contact</a><a href="all-work/">Complete index</a></nav></footer></section>'
-        '<div class="desksemantics">'
-        '<h1 id="deskhome-title">Arafat Rahaman — journalist in Bangladesh</h1>'
-        '<p>Reporting from the ground, unpacking what it means, and keeping a notebook for what lingers. Four ways I tell stories.</p>'
-        '<nav aria-label="Work"><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a></nav>'
-        '</div>'
-        '<nav class="deskhotspots deskhotspots-desktop" aria-label="Homepage navigation">'
-        '<a class="deskhotspot desknav-home" href="./"><span>Home</span></a>'
-        '<a class="deskhotspot desknav-about" href="about/"><span>About</span></a>'
-        '<a class="deskhotspot desknav-work" href="all-work/"><span>Work</span></a>'
-        '<a class="deskhotspot desknav-writing" href="thoughts/"><span>Writing</span></a>'
-        '<a class="deskhotspot desknav-contact" href="contact/"><span>Contact</span></a>'
-        '<a class="deskhotspot deskprofile-hotspot" href="about/"><span>About Arafat Rahaman</span></a>'
-        '<a class="deskhotspot deskreporting-hotspot" href="reporting/"><span>Reporting</span></a>'
-        '<a class="deskhotspot deskopinion-hotspot" href="opinion/"><span>Opinion &amp; Analysis</span></a>'
-        '<a class="deskhotspot deskthoughts-hotspot" href="thoughts/"><span>Thoughts</span></a>'
-        '<a class="deskhotspot deskphoto-hotspot" href="photography/"><span>Photography</span></a>'
+    def portal_image(path,alt=''):
+        if not path:return ''
+        return f'<img class="portalimage" src="{esc(path)}" alt="{esc(alt)}" loading="lazy" fetchpriority="low" decoding="async">'
+    portal_nav=(
+        '<nav class="portalnav" aria-label="Homepage navigation">'
+        '<a class="portalbrand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a>'
+        '<div class="portalnavlinks"><a href="./" aria-current="page">Home</a><a href="#work">Work</a><a href="about/">About</a><a href="contact/">Contact</a></div>'
+        '<details class="portalmenu"><summary aria-label="Open navigation"><i></i><i></i><i></i></summary><nav><a href="./">Home</a><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a><a href="about/">About</a><a href="contact/">Contact</a></nav></details>'
         '</nav>'
-        '<a class="deskemail" href="'+esc(home_email_href)+'"><span>Email Arafat Rahaman</span></a>'
+    )
+    hero=(
+        '<section class="portalhero" aria-labelledby="portal-home-title">'
+        '<div class="portalhero-copy"><span class="portalkicker">Journalist · Bangladesh</span>'
+        '<h1 id="portal-home-title">Stories <em>from a changing Bangladesh</em></h1>'
+        '<p class="portalhero-deck">I report on education, governance, public accountability and social issues for The Daily Star. My work combines field reporting, interviews, public records, data and visual storytelling.</p>'
+        '<p class="portalhero-script">A more thoughtful Bangladesh.</p>'
+        '<div class="portalhero-actions"><a class="portalhero-primary" href="about/">About me <b aria-hidden="true">→</b></a><a href="#work">Explore my work <b aria-hidden="true">↓</b></a></div>'
         '</div>'
+        '<div class="portalhero-visual" aria-hidden="true"><div class="portalhero-panel"><p>People, policy and a more equal Bangladesh.</p><span>Dhaka · Bangladesh</span></div>'
+        '<figure class="portalhero-photo"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture></figure></div>'
         '</section>'
     )
-    b.page('index.html','Arafat Rahaman',desk_home,home=True)
+    reporting_panel=(
+        '<a class="portalpanel portal-reporting" href="reporting/" aria-label="Explore reporting">'
+        +portal_image('assets/home/reference-report.webp','')
+        +'<span class="portalnumber">01</span><span class="portalcopy"><strong>Reporting</strong><small>On the ground stories about people, power and a changing Bangladesh.</small></span><i class="portalarrow" aria-hidden="true">→</i></a>'
+    )
+    opinion_panel=(
+        '<a class="portalpanel portal-opinion" href="opinion/" aria-label="Explore opinion and analysis"><b class="portalart portalart-opinion" aria-hidden="true"></b>'
+        '<span class="portalnumber">02</span><span class="portalcopy"><strong>Opinion &amp; Analysis</strong><small>Sharper takes on the issues shaping Bangladesh and beyond.</small></span><i class="portalarrow" aria-hidden="true">→</i></a>'
+    )
+    thoughts_panel=(
+        '<a class="portalpanel portal-thoughts" href="thoughts/" aria-label="Explore thoughts"><b class="portalart portalart-thoughts" aria-hidden="true"></b><span class="portalnote" aria-hidden="true">A more curious Bangladesh.</span>'
+        '<span class="portalnumber">03</span><span class="portalcopy"><strong>Thoughts</strong><small>Notes, ideas and unfinished conversations on journalism, society and life.</small></span><i class="portalarrow" aria-hidden="true">→</i></a>'
+    )
+    photo_panel=(
+        '<a class="portalpanel portal-photography" href="photography/" aria-label="Explore photography">'
+        +portal_image('assets/home/reference-photo.webp','')
+        +'<span class="portalnumber">04</span><span class="portalcopy"><strong>Photography</strong><small>People, places and moments from Bangladesh through my lens.</small></span><i class="portalarrow" aria-hidden="true">→</i></a>'
+    )
+    work=(
+        '<section class="portalwork" id="work" aria-label="Selected work"><h2 class="sr-only">Selected work</h2>'
+        '<div class="portalgrid">'+opinion_panel+reporting_panel+thoughts_panel+photo_panel+'</div></section>'
+    )
+    home_footer=(
+        '<footer class="portalfooter">'
+        '<div class="portalfooter-brand"><strong>Arafat Rahaman</strong><span>Journalist · The Daily Star</span><em>Journalism for a more equal Bangladesh.</em><small>© '+str(datetime.now().year)+' Arafat Rahaman. All rights reserved.</small></div>'
+        '<nav aria-label="Footer navigation"><b>Explore</b><a href="./">Portfolio</a><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a></nav>'
+        '<nav aria-label="About links"><b>About</b><a href="about/">About me</a><a href="contact/">Contact</a><a href="all-work/">Complete index</a></nav>'
+        '<div class="portalfooter-meta"><b>Connect</b><a href="mailto:'+esc(c.get('email',''))+'">Email</a><a href="'+esc(c.get('social',{}).get('linkedin',''))+'" rel="me noopener">LinkedIn</a><a href="'+esc(c.get('social',{}).get('daily_star','https://www.thedailystar.net/author/arafat-rahaman'))+'" rel="noopener">The Daily Star</a><span class="portalfooter-mark" aria-hidden="true">╱╲╱╲╱────●</span><small>Dhaka / People / Policy / A fairer tomorrow</small></div>'
+        '</footer>'
+    )
+    portal_home='<section class="portalhome" aria-labelledby="portal-home-title">'+portal_nav+hero+work+home_footer+'</section>'
+    b.page('index.html','Arafat Rahaman',portal_home,home=True)
     for stream,(title,description) in STREAMS.items():
         subset=[a for a in articles if a.get('stream')==stream]
         if stream=='reporting':
@@ -255,7 +267,7 @@ def build():
     used={safe_asset(a.get('cover_image')) for a in articles if not a.get('source_url')}
     used.update(safe_asset(p.get('src')) for p in photos)
     used.update(safe_asset(p) for p in c.get('home_images',[]))
-    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/approved-desk-desktop.webp'})
+    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/portal-reference-sprite.webp','assets/home/approved-desk-desktop.webp'})
     used.add(safe_asset(c.get('portrait')))
     for asset in used:
         if asset and (SITE/asset).is_file():
