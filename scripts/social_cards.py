@@ -1,8 +1,13 @@
 """Create deterministic article-specific Open Graph cards during the site build."""
 from hashlib import sha256
+from html.parser import HTMLParser
+from io import BytesIO
 from pathlib import Path, PurePosixPath
+from urllib.parse import urljoin
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageOps
+
+from core import fetch
 
 WIDTH, HEIGHT = 1200, 630
 INK = (248, 246, 239)
@@ -22,6 +27,19 @@ SANS_BOLD_FONTS = (
     '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
     '/usr/share/fonts/opentype/urw-base35/NimbusSans-Bold.otf',
 )
+
+
+class OgImageParser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.image=''
+
+    def handle_starttag(self,tag,attrs):
+        if tag.lower()!='meta' or self.image:return
+        attrs=dict(attrs)
+        key=(attrs.get('property') or attrs.get('name') or '').lower()
+        if key in ('og:image','og:image:url','twitter:image','twitter:image:src'):
+            self.image=(attrs.get('content') or '').strip()
 
 
 def load_font(candidates, size):
@@ -67,14 +85,20 @@ def clean_label(value,limit):
 
 def filename_for(article):
     slug=PurePosixPath(str(article.get('local_url','')).rstrip('/')).name or 'article'
-    signature='|'.join(str(article.get(key,'')) for key in ('title','category','stream','date_published','source_name'))
+    signature='|'.join(str(article.get(key,'')) for key in ('title','category','stream','date_published','source_name','source_url','source_image','cover_image'))
     digest=sha256(signature.encode('utf-8')).hexdigest()[:8]
     return f'{slug}-{digest}.jpg'
+
+
+def looks_generic(url):
+    value=str(url or '').lower()
+    return any(token in value for token in ('logo','favicon','placeholder','default-image','default_image','social-share','social_share','share-default','share_default'))
 
 
 class SocialCardRenderer:
     def __init__(self,template,output):
         self.template=Path(template);self.output=Path(output);self._base=None
+        self.site_root=self.template.parent.parent
 
     def base(self):
         if self._base is None:
@@ -89,12 +113,62 @@ class SocialCardRenderer:
             self._base=Image.composite(veil,image,mask)
         return self._base.copy()
 
+    def local_story_image(self,article):
+        cover=str(article.get('cover_image') or '').strip().lstrip('/')
+        if not cover:return None
+        path=(self.site_root/cover).resolve()
+        try:path.relative_to(self.site_root.resolve())
+        except ValueError:return None
+        if not path.is_file():return None
+        try:return Image.open(path).convert('RGB')
+        except OSError:return None
+
+    def remote_story_image(self,article):
+        candidates=[]
+        source_image=str(article.get('source_image') or '').strip()
+        if source_image:candidates.append(source_image)
+        source_url=str(article.get('source_url') or '').strip()
+        if source_url and not candidates:
+            try:
+                data,typ,final=fetch(source_url,2_000_000)
+                if typ in ('text/html','application/xhtml+xml'):
+                    parser=OgImageParser();parser.feed(data.decode('utf-8',errors='replace'))
+                    if parser.image:candidates.append(urljoin(final,parser.image))
+            except (OSError,ValueError):
+                pass
+        for candidate in candidates:
+            if not candidate or looks_generic(candidate):continue
+            try:
+                data,typ,_=fetch(candidate,8_000_000)
+                if not typ.startswith('image/'):continue
+                image=Image.open(BytesIO(data)).convert('RGB')
+                if image.width<480 or image.height<270 or image.width*image.height<250000:continue
+                return image
+            except (OSError,ValueError):
+                continue
+        return None
+
+    def story_image(self,article):
+        return self.local_story_image(article) or self.remote_story_image(article)
+
+    def story_base(self,story):
+        image=Image.new('RGB',(WIDTH,HEIGHT),GREEN)
+        photo=ImageOps.fit(story,(620,HEIGHT),method=Image.Resampling.LANCZOS,centering=(0.5,0.5))
+        image.paste(photo,(0,0))
+        veil=Image.new('RGB',(WIDTH,HEIGHT),GREEN);mask=Image.new('L',(WIDTH,HEIGHT),0)
+        pixels=mask.load()
+        for x in range(540,681):
+            alpha=min(255,max(0,round((x-540)/140*255)))
+            for y in range(HEIGHT):pixels[x,y]=alpha
+        return Image.composite(veil,image,mask)
+
     def render(self,article):
         self.output.mkdir(parents=True,exist_ok=True)
         filename=filename_for(article);target=self.output/filename
         if target.is_file():return 'assets/social/'+filename
 
-        image=self.base()
+        story=self.story_image(article)
+        image=self.story_base(story) if story else self.base()
         draw=ImageDraw.Draw(image)
 
         stream={'reporting':'REPORTING','opinion':'OPINION & ANALYSIS','thoughts':'THOUGHTS'}.get(article.get('stream'),'PORTFOLIO')
