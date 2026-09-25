@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='20.8.0'
+ASSET_VERSION='20.9.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -203,10 +203,9 @@ def build():
         '<img src="assets/home/approved-desk-desktop.webp" alt="" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">'
         '</picture>'
         '<section class="mobilefresh" aria-label="Arafat Rahaman portfolio">'
-        '<header class="mf-head"><a class="mf-brand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a><span class="mf-head-place">Dhaka</span></header>'
-        '<section class="mf-hero" aria-labelledby="mf-home-title"><div class="mf-copy"><span class="mf-kicker">Staff reporter · The Daily Star</span><h1 id="mf-home-title">Arafat <em>Rahaman</em></h1><p class="mf-deck">Reporting on education, governance, public accountability and social issues through field reporting, interviews, public records, data and visual storytelling.</p></div>'
-        '<div class="mf-visual"><figure class="mf-photo"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture><figcaption>Dhaka, Bangladesh</figcaption></figure><aside class="mf-green-note" aria-hidden="true"><span>People</span><span>Policy</span><span>Public life</span></aside></div>'
-        '<div class="mf-lower"><p class="mf-script">Stories for a more thoughtful Bangladesh.</p><div class="mf-actions"><a class="mf-primary" href="#mobile-work">Explore work <b>→</b></a><a href="'+esc(home_email_href)+'">Email <b>→</b></a></div></div></section>'
+        '<header class="mf-head"><a class="mf-brand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a><nav class="mf-quicknav" aria-label="Homepage shortcuts"><a href="about/">About</a><a href="contact/">Contact</a></nav></header>'
+        '<section class="mf-hero" aria-labelledby="mf-home-title"><div class="mf-copy"><span class="mf-kicker">Staff reporter · The Daily Star</span><h1 id="mf-home-title">Arafat <em>Rahaman</em></h1><p class="mf-deck">Reporting on education, governance, public accountability and social issues through field reporting, interviews, public records, data and visual storytelling.</p><p class="mf-script">Stories for a more thoughtful Bangladesh.</p><div class="mf-actions"><a class="mf-primary" href="about/">About me <b>→</b></a><a href="#mobile-work">Explore work <b>↓</b></a></div><a class="mf-email-link" href="'+esc(home_email_href)+'">Email me →</a></div>'
+        '<div class="mf-visual"><figure class="mf-photo"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture><figcaption>Dhaka, Bangladesh</figcaption></figure><aside class="mf-green-note" aria-hidden="true"><span>Education</span><span>Governance</span><span>Public life</span></aside></div></section>'
         '<section class="mf-work" id="mobile-work" aria-labelledby="mf-work-title"><header class="mf-work-head"><div><span>Selected paths through my work</span><h2 id="mf-work-title">Work</h2></div><a href="all-work/">View all →</a></header><div class="mf-track">'
         '<a class="mf-card mf-reporting" href="reporting/"><span class="mf-card-num">01</span><span class="mf-art" aria-hidden="true"></span><span class="mf-card-copy"><strong>Reporting</strong><small>People, places and the big picture from the ground.</small></span><i>→</i></a>'
         '<a class="mf-card mf-opinion" href="opinion/"><span class="mf-card-num">02</span><span class="mf-art" aria-hidden="true"></span><span class="mf-card-copy"><strong>Opinion &amp; Analysis</strong><small>Sharper takes on the issues shaping Bangladesh.</small></span><i>→</i></a>'
