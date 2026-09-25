@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='21.1.0'
+ASSET_VERSION='21.2.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -246,9 +246,8 @@ def build():
         '</section>'
     )
     reporting_panel=(
-        '<a class="portalpanel portal-reporting" href="reporting/" aria-label="Explore reporting">'
-        +portal_image('assets/home/reference-report.webp','')
-        +'<span class="portalnumber">01</span><span class="portalcopy"><strong>Reporting</strong><small>On the ground stories about people, power and a changing Bangladesh.</small></span><i class="portalarrow" aria-hidden="true">→</i></a>'
+        '<a class="portalpanel portal-reporting" href="reporting/" aria-label="Explore reporting"><b class="portalart portalart-reporting" aria-hidden="true"></b>'
+        '<span class="portalnumber">01</span><span class="portalcopy"><strong>Reporting</strong><small>On the ground stories about people, power and a changing Bangladesh.</small></span><i class="portalarrow" aria-hidden="true">→</i></a>'
     )
     opinion_panel=(
         '<a class="portalpanel portal-opinion" href="opinion/" aria-label="Explore opinion and analysis"><b class="portalart portalart-opinion" aria-hidden="true"></b>'
@@ -258,14 +257,15 @@ def build():
         '<a class="portalpanel portal-thoughts" href="thoughts/" aria-label="Explore thoughts"><b class="portalart portalart-thoughts" aria-hidden="true"></b><span class="portalnote" aria-hidden="true">A more curious Bangladesh.</span>'
         '<span class="portalnumber">03</span><span class="portalcopy"><strong>Thoughts</strong><small>Notes, ideas and unfinished conversations on journalism, society and life.</small></span><i class="portalarrow" aria-hidden="true">→</i></a>'
     )
+    mobile_photo=safe_asset(c.get('home_images',[])[3]) if len(c.get('home_images',[]))>3 else ''
     photo_panel=(
         '<a class="portalpanel portal-photography" href="photography/" aria-label="Explore photography">'
-        +portal_image('assets/home/reference-photo.webp','')
+        +portal_image(mobile_photo,'')
         +'<span class="portalnumber">04</span><span class="portalcopy"><strong>Photography</strong><small>People, places and moments from Bangladesh through my lens.</small></span><i class="portalarrow" aria-hidden="true">→</i></a>'
     )
     work=(
         '<section class="portalwork" id="work" aria-label="Selected work"><h2 class="sr-only">Selected work</h2>'
-        '<div class="portalgrid">'+opinion_panel+reporting_panel+thoughts_panel+photo_panel+'</div></section>'
+        '<div class="portalgrid">'+reporting_panel+opinion_panel+thoughts_panel+photo_panel+'</div></section>'
     )
     home_footer=(
         '<footer class="portalfooter">'
