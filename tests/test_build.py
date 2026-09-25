@@ -97,7 +97,7 @@ class BuildTests(unittest.TestCase):
             self.assertIn('class="mf-menu"',home)
             self.assertIn('Reporting from the ground, unpacking what it means',home)
             self.assertNotIn('Selected work',home)
-            self.assertNotIn('Selected paths through my work',home)
+            self.assertIn('Selected paths through my work',home)
             self.assertIn("location.pathname.endsWith('/index.html')",home)
             self.assertNotIn('class="recentwork"',home)
             self.assertNotIn('Latest journalism',home)
