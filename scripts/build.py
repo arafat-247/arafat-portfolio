@@ -226,23 +226,16 @@ def build():
     def portal_image(path,alt=''):
         if not path:return ''
         return f'<img class="portalimage" src="{esc(path)}" alt="{esc(alt)}" loading="lazy" fetchpriority="low" decoding="async">'
-    portal_nav=(
-        '<nav class="portalnav" aria-label="Homepage navigation">'
-        '<a class="portalbrand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a>'
-        '<div class="portalnavlinks"><a href="./" aria-current="page">Home</a><a href="#work">Work</a><a href="about/">About</a><a href="contact/">Contact</a></div>'
-        '<details class="portalmenu"><summary aria-label="Open navigation"><i></i><i></i><i></i></summary><nav><a href="./">Home</a><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a><a href="about/">About</a><a href="contact/">Contact</a></nav></details>'
-        '</nav>'
-    )
+    portal_nav=''
     hero=(
         '<section class="portalhero" aria-labelledby="portal-home-title">'
+        '<figure class="portalhero-photo"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Portrait of Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture></figure>'
         '<div class="portalhero-copy"><span class="portalkicker">Journalist · Bangladesh</span>'
-        '<h1 id="portal-home-title">Stories <em>from a changing Bangladesh</em></h1>'
-        '<p class="portalhero-deck">I report on education, governance, public accountability and social issues for The Daily Star. My work combines field reporting, interviews, public records, data and visual storytelling.</p>'
-        '<p class="portalhero-script">A more thoughtful Bangladesh.</p>'
-        '<div class="portalhero-actions"><a class="portalhero-primary" href="about/">About me <b aria-hidden="true">→</b></a><a href="#work">Explore my work <b aria-hidden="true">↓</b></a></div>'
+        '<h1 id="portal-home-title">Arafat Rahaman</h1>'
+        '<p class="portalhero-deck">Journalist at The Daily Star, reporting on education, governance, public accountability and social issues.</p>'
+        '<div class="portalhero-social"><a href="mailto:'+esc(c.get("email",""))+'">Email</a><a href="'+esc(c.get("social",{}).get("linkedin",""))+'" rel="me noopener">LinkedIn</a></div>'
+        '<nav class="portalhero-actions" aria-label="Homepage links"><a href="#work">Work</a><a href="about/">About</a><a href="contact/">Contact</a></nav>'
         '</div>'
-        '<div class="portalhero-visual" aria-hidden="true"><div class="portalhero-panel"><p>People, policy and a more equal Bangladesh.</p><span>Dhaka · Bangladesh</span></div>'
-        '<figure class="portalhero-photo"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture></figure></div>'
         '</section>'
     )
     reporting_panel=(
