@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='20.5.0'
+ASSET_VERSION='20.6.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -202,21 +202,19 @@ def build():
         '<picture class="deskvisual" aria-hidden="true">'
         '<img src="assets/home/approved-desk-desktop.webp" alt="" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">'
         '</picture>'
-        '<section class="mobilelive" aria-label="Arafat Rahaman portfolio">'
-        '<header class="mobilelive-head"><a class="mobilelive-brand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a>'
-        '<details class="mobilelive-menu"><summary aria-label="Open navigation"><i></i><i></i><i></i></summary><nav><a href="./">Home</a><a href="about/">About</a><a href="all-work/">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a></nav></details></header>'
-        '<div class="mobilelive-hero">'
-        '<a class="mobilelive-profile" href="about/"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture><span><strong>Arafat Rahaman</strong><small>Reporting on education, governance, accountability and social issues.</small></span></a>'
-        '<div class="mobilelive-intro"><span>From the newsroom and the field</span><h2>Four ways I tell stories.</h2><p>Reporting, analysis, reflections and photography from Bangladesh.</p></div>'
-        '</div>'
-        '<nav class="mobilelive-work" aria-label="Explore work">'
-        '<a class="mobilelive-card mobilelive-reporting" href="reporting/"><span class="mobilelive-media"><img src="assets/home/reference-report.webp" alt="" width="450" height="335" loading="lazy" decoding="async"></span><span class="mobilelive-copy"><b>01</b><span><strong>Reporting</strong><small>People, places and the big picture from the ground.</small></span><em aria-hidden="true">→</em></span></a>'
-        '<a class="mobilelive-card mobilelive-opinion" href="opinion/"><span class="mobilelive-media mobilelive-paper"><i>Progress is not only what we build,<br>but who we make room for.</i><mark>a sharper, more honest conversation</mark><u>Development<br>for whom?</u></span><span class="mobilelive-copy"><b>02</b><span><strong>Opinion &amp; Analysis</strong><small>Sharper takes on the issues shaping Bangladesh.</small></span><em aria-hidden="true">→</em></span></a>'
-        '<a class="mobilelive-card mobilelive-thoughts" href="thoughts/"><span class="mobilelive-media mobilelive-notebook"><i>Ideas from<br>the in-between.</i><span>– Notes<br>– Observations<br>– Unfinished questions<br>– A more humane tomorrow?</span></span><span class="mobilelive-copy"><b>03</b><span><strong>Thoughts</strong><small>Notes, reflections and work in progress.</small></span><em aria-hidden="true">→</em></span></a>'
-        '<a class="mobilelive-card mobilelive-photography" href="photography/"><span class="mobilelive-media mobilelive-photo"><img src="'+esc(photo_image)+'" alt="Bangladesh at sunset" width="640" height="420" loading="lazy" decoding="async"></span><span class="mobilelive-copy"><b>04</b><span><strong>Photography</strong><small>A visual diary of people, places and daily life.</small></span><em aria-hidden="true">→</em></span></a>'
-        '</nav>'
-        '<div class="mobilelive-foot"><a href="all-work/">Complete index →</a><a href="'+esc(home_email_href)+'">Email me →</a></div>'
-        '</section>'
+        '<section class="mobilefresh" aria-label="Arafat Rahaman portfolio">'
+        '<header class="mf-head"><a class="mf-brand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a>'
+        '<details class="mf-menu"><summary aria-label="Open navigation"><span class="mf-menu-word">Menu</span><i></i><i></i></summary>'
+        '<div class="mf-menu-sheet"><span class="mf-menu-kicker">Navigate</span><strong>Arafat Rahaman</strong><nav><a href="./" aria-current="page">Home <b>01</b></a><a href="reporting/">Reporting <b>02</b></a><a href="opinion/">Opinion &amp; Analysis <b>03</b></a><a href="thoughts/">Thoughts <b>04</b></a><a href="photography/">Photography <b>05</b></a><a href="about/">About <b>06</b></a><a href="contact/">Contact <b>07</b></a></nav><p>Stories for a more thoughtful Bangladesh.</p></div></details></header>'
+        '<section class="mf-hero" aria-labelledby="mf-home-title"><div class="mf-copy"><span class="mf-kicker">Staff reporter · The Daily Star</span><h1 id="mf-home-title">Arafat <em>Rahaman</em></h1><p class="mf-deck">Reporting on education, governance, public accountability and social issues through field reporting, interviews, public records, data and visual storytelling.</p><p class="mf-script">Stories for a more thoughtful Bangladesh.</p><div class="mf-actions"><a class="mf-primary" href="#mobile-work">Explore work <b>→</b></a><a href="'+esc(home_email_href)+'">Email <b>→</b></a></div></div>'
+        '<div class="mf-visual"><span class="mf-green-note" aria-hidden="true"><i>Dhaka</i><b>People.<br>Policy.<br>Public life.</b></span><figure class="mf-photo"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture><figcaption>Dhaka, Bangladesh</figcaption></figure></div></section>'
+        '<section class="mf-work" id="mobile-work" aria-labelledby="mf-work-title"><header class="mf-work-head"><div><span>Selected paths</span><h2 id="mf-work-title">Work</h2></div><p>Swipe →</p></header><div class="mf-track">'
+        '<a class="mf-card mf-reporting" href="reporting/"><span class="mf-card-num">01</span><span class="mf-art" aria-hidden="true"></span><span class="mf-card-copy"><strong>Reporting</strong><small>People, places and the big picture from the ground.</small></span><i>→</i></a>'
+        '<a class="mf-card mf-opinion" href="opinion/"><span class="mf-card-num">02</span><span class="mf-art" aria-hidden="true"></span><span class="mf-card-copy"><strong>Opinion &amp; Analysis</strong><small>Sharper takes on the issues shaping Bangladesh.</small></span><i>→</i></a>'
+        '<a class="mf-card mf-thoughts" href="thoughts/"><span class="mf-card-num">03</span><span class="mf-art" aria-hidden="true"></span><span class="mf-card-copy"><strong>Thoughts</strong><small>Notes, reflections and work in progress.</small></span><i>→</i></a>'
+        '<a class="mf-card mf-photography" href="photography/"><span class="mf-card-num">04</span><img src="'+esc(photo_image)+'" alt="" width="640" height="420" loading="lazy" decoding="async"><span class="mf-card-copy"><strong>Photography</strong><small>A visual diary of people, places and daily life.</small></span><i>→</i></a>'
+        '</div><div class="mf-work-links"><a href="all-work/">Complete index →</a><a href="about/">About me →</a></div></section>'
+        '<div class="mf-footer" role="contentinfo"><strong>Arafat Rahaman</strong><span>Journalist · Dhaka, Bangladesh</span><a href="'+esc(home_email_href)+'">Get in touch →</a></div></section>'
         '<div class="desksemantics">'
         '<h1 id="deskhome-title">Arafat Rahaman — journalist in Bangladesh</h1>'
         '<p>Reporting from the ground, unpacking what it means, and keeping a notebook for what lingers. Four ways I tell stories.</p>'
