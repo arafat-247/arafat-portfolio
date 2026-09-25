@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='20.0.0'
+ASSET_VERSION='20.0.1'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -233,8 +233,8 @@ def build():
         +'<span class="portalnumber">04</span><span class="portalcopy"><strong>Photography</strong><small>People, places and moments from Bangladesh through my lens.</small></span><i class="portalarrow" aria-hidden="true">→</i></a>'
     )
     work=(
-        '<section class="portalwork" id="work" aria-label="Selected work"><h2 class="sr-only">Selected work</h2>'
-        '<div class="portalgrid">'+opinion_panel+reporting_panel+thoughts_panel+photo_panel+'</div></section>'
+        '<section class="portalwork" id="work" aria-label="Selected work">'
+        '<div class="portalgrid">'+reporting_panel+opinion_panel+thoughts_panel+photo_panel+'</div></section>'
     )
     home_footer=(
         '<footer class="portalfooter">'
