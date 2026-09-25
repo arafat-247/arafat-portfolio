@@ -226,7 +226,11 @@ def build():
     def portal_image(path,alt=''):
         if not path:return ''
         return f'<img class="portalimage" src="{esc(path)}" alt="{esc(alt)}" loading="lazy" fetchpriority="low" decoding="async">'
-    portal_nav=''
+    portal_nav=(
+        '<nav class="portalnav" aria-label="Homepage navigation">'
+        '<details class="portalmenu"><summary aria-label="Open navigation">Menu</summary><nav><a href="./">Home</a><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a><a href="about/">About</a><a href="contact/">Contact</a></nav></details>'
+        '</nav>'
+    )
     hero=(
         '<section class="portalhero" aria-labelledby="portal-home-title">'
         '<figure class="portalhero-photo"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Portrait of Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture></figure>'
