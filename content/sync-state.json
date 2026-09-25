@@ -3341,12 +3341,14 @@
     }
   },
   "archive_cursor": 156,
-  "last_attempt": "2026-09-25T08:07:43.548509+00:00",
-  "last_discovery_success": "2026-09-25T08:08:00.959518+00:00",
-  "last_completed": "2026-09-25T08:08:04.925032+00:00",
-  "saved_this_run": 5,
+  "last_attempt": "2026-09-25T08:11:24.765366+00:00",
+  "last_discovery_success": "2026-09-25T08:11:57.134337+00:00",
+  "last_completed": "2026-09-25T08:11:57.135072+00:00",
+  "saved_this_run": 0,
   "known_sources": 306,
   "pending": 0,
-  "errors": [],
+  "errors": [
+    "Author pagination repeated earlier results; discovery stopped. This is not proof of archive completeness."
+  ],
   "unsupported": 3
 }
