@@ -297,7 +297,7 @@ def build():
     used={safe_asset(a.get('cover_image')) for a in articles if not a.get('source_url')}
     used.update(safe_asset(p.get('src')) for p in photos)
     used.update(safe_asset(p) for p in c.get('home_images',[]))
-    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/portal-reference-sprite.webp','assets/home/approved-desk-desktop.webp'})
+    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/portal-reference-sprite.webp','assets/home/approved-desk-desktop.webp','assets/home/approved-mobile-reporting.svg','assets/home/approved-mobile-opinion.svg','assets/home/approved-mobile-thoughts.svg','assets/home/approved-mobile-photography.svg'})
     used.add(safe_asset(c.get('portrait')))
     for asset in used:
         if asset and (SITE/asset).is_file():
