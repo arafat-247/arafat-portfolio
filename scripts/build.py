@@ -195,6 +195,7 @@ def build():
     write(OUT/'data/index.json',{'articles':[{**{k:a.get(k,'') for k in keys},'credit_type':credit_type(a)} for a in articles]})
     home_email=clean(c.get('email',''))
     home_email_href='mailto:'+home_email if home_email else 'contact/'
+    photo_image=safe_asset(c.get('home_images',[])[3]) if len(c.get('home_images',[]))>3 else 'assets/home/reference-photo.webp'
     desk_home=(
         '<section class="deskhome deskhome-photo" aria-labelledby="deskhome-title">'
         '<div class="deskstage">'
