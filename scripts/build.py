@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='20.2.0'
+ASSET_VERSION='20.3.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -90,7 +90,7 @@ class Builder:
         social_title=f'{name} — Journalist and Writer' if home else title
         asset_version=ASSET_VERSION
         clean_home_path="if(location.pathname.endsWith('/index.html'))location.replace(location.pathname.slice(0,-10)+location.search+location.hash);" if home else ''
-        home_hero='assets/portraits/byline.avif' if home else ''
+        home_hero=''
         hero_preload=f'<link rel="preload" as="image" href="{prefix}{esc(home_hero)}" type="image/avif" fetchpriority="high">' if home_hero else ''
         head=f'''{analytics}{hero_preload}<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(document_title)}</title><meta name="description" content="{esc(description)}"><meta name="theme-color" content="#0b2f2a"><script>{clean_home_path}if(location.protocol==='http:'&&location.hostname==='arafatrahaman.com')location.replace('https://'+location.host+location.pathname+location.search+location.hash);try{{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'light'}}catch(e){{document.documentElement.dataset.theme='light'}}</script><link rel="canonical" href="{esc(canonical_url)}"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" href="{prefix}feed.xml" title="Arafat Rahaman"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet"><link rel="stylesheet" href="{prefix}portfolio.css?v={asset_version}"><meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{esc(name)}"><meta property="og:locale" content="en_GB"><meta property="og:title" content="{esc(social_title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(canonical_url)}"><meta property="og:image" content="{esc(social_image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Arafat Rahaman, journalist at The Daily Star"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(social_title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{esc(social_image)}"><meta name="twitter:image:alt" content="Arafat Rahaman, journalist at The Daily Star">{article_tags}<script type="application/ld+json">{schema}</script>'''
         active=nav_active or ('home' if home else page_key.split('-',1)[0])
@@ -195,37 +195,40 @@ def build():
     write(OUT/'data/index.json',{'articles':[{**{k:a.get(k,'') for k in keys},'credit_type':credit_type(a)} for a in articles]})
     home_email=clean(c.get('email',''))
     home_email_href='mailto:'+home_email if home_email else 'contact/'
-    photo_image=safe_asset(c.get('home_images',[])[3]) if len(c.get('home_images',[]))>3 else ''
-    photo_visual=f'<img src="{esc(photo_image)}" alt="Bangladesh at sunset" width="640" height="420" loading="lazy" decoding="async">' if photo_image else ''
     desk_home=(
-        '<section class="deskhome" aria-labelledby="deskhome-name">'
+        '<section class="deskhome deskhome-photo" aria-labelledby="deskhome-title">'
         '<div class="deskstage">'
-        '<div class="deskdecor desk-laptop" aria-hidden="true"></div>'
-        '<div class="deskdecor desk-coffee" aria-hidden="true"><i></i></div>'
-        '<div class="deskdecor desk-books" aria-hidden="true"><i></i><b></b><u></u></div>'
-        '<div class="deskdecor desk-camera" aria-hidden="true"><i></i><b></b></div>'
-        '<div class="deskdecor desk-map" aria-hidden="true"><i></i></div>'
-        '<div class="deskdecor desk-plant desk-plant-a" aria-hidden="true"></div>'
-        '<div class="deskdecor desk-plant desk-plant-b" aria-hidden="true"></div>'
-        '<header class="deskhead">'
-        '<a class="deskbrand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a>'
-        '<nav class="desknav" aria-label="Homepage navigation"><a href="./" aria-current="page">Home</a><a href="about/">About</a><a href="#desk-work">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a></nav>'
-        '</header>'
-        '<aside class="desknote desknote-left" aria-hidden="true">Stories<br>People<br>Places<br>A more just Bangladesh.</aside>'
-        '<aside class="desknote desknote-right" aria-hidden="true">Same country,<br>deeper questions.</aside>'
-        '<a class="deskprofile" href="about/" aria-label="Read about Arafat Rahaman">'
-        '<span class="deskphoto"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture></span>'
-        '<span class="deskbio"><strong id="deskhome-name">Arafat Rahaman</strong><small>Journalist covering education, governance, accountability and social issues.</small></span>'
-        '</a>'
-        '<p class="deskintro">Reporting from the ground, unpacking what it means, and keeping a notebook for what lingers. Four ways I tell stories.</p>'
-        '<div class="deskwork" id="desk-work">'
-        '<a class="deskpiece desk-reporting" href="reporting/"><span class="deskpaper deskpaper-report"><img src="assets/home/reference-report.webp" alt="" width="450" height="335" loading="lazy" decoding="async"></span><span class="desklabel"><b>1</b><strong>Reporting</strong><small>People, places and the big picture from the ground.</small><em aria-hidden="true">→</em></span></a>'
-        '<a class="deskpiece desk-opinion" href="opinion/"><span class="deskpaper deskpaper-opinion"><i>Progress is not only what we build,<br>but who we make room for.</i><mark>a sharper, more honest conversation</mark><u>Development<br>for whom?</u></span><span class="desklabel"><b>2</b><strong>Opinion &amp; Analysis</strong><small>Sharper takes on the issues shaping Bangladesh.</small><em aria-hidden="true">→</em></span></a>'
-        '<a class="deskpiece desk-thoughts" href="thoughts/"><span class="deskpaper deskpaper-notebook"><i>Ideas from<br>the in-between.</i><span>– Notes<br>– Observations<br>– Unfinished questions<br>– A more humane tomorrow?</span></span><span class="desklabel"><b>3</b><strong>Thoughts</strong><small>Notes, reflections and work in progress.</small><em aria-hidden="true">→</em></span></a>'
-        '<a class="deskpiece desk-photography" href="photography/"><span class="deskpaper deskpaper-photo">'+photo_visual+'</span><span class="desklabel"><b>4</b><strong>Photography</strong><small>A visual diary of people, places and daily life.</small><em aria-hidden="true">→</em></span></a>'
+        '<picture class="deskvisual" aria-hidden="true">'
+        '<source media="(max-width: 800px)" srcset="assets/home/approved-desk-mobile.webp">'
+        '<img src="assets/home/approved-desk-desktop.webp" alt="" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">'
+        '</picture>'
+        '<div class="desksemantics">'
+        '<h1 id="deskhome-title">Arafat Rahaman — journalist in Bangladesh</h1>'
+        '<p>Reporting from the ground, unpacking what it means, and keeping a notebook for what lingers. Four ways I tell stories.</p>'
+        '<nav aria-label="Work"><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a></nav>'
         '</div>'
-        '<aside class="desknote desknote-bottom" aria-hidden="true">Different<br>angles.<br>Same home.</aside>'
-        '<div class="deskfooterline"><span>News is a record. A good story is a conversation.</span><a href="'+esc(home_email_href)+'">Email me →</a></div>'
+        '<nav class="deskhotspots deskhotspots-desktop" aria-label="Homepage navigation">'
+        '<a class="deskhotspot desknav-home" href="./"><span>Home</span></a>'
+        '<a class="deskhotspot desknav-about" href="about/"><span>About</span></a>'
+        '<a class="deskhotspot desknav-work" href="all-work/"><span>Work</span></a>'
+        '<a class="deskhotspot desknav-writing" href="thoughts/"><span>Writing</span></a>'
+        '<a class="deskhotspot desknav-contact" href="contact/"><span>Contact</span></a>'
+        '<a class="deskhotspot deskprofile-hotspot" href="about/"><span>About Arafat Rahaman</span></a>'
+        '<a class="deskhotspot deskreporting-hotspot" href="reporting/"><span>Reporting</span></a>'
+        '<a class="deskhotspot deskopinion-hotspot" href="opinion/"><span>Opinion &amp; Analysis</span></a>'
+        '<a class="deskhotspot deskthoughts-hotspot" href="thoughts/"><span>Thoughts</span></a>'
+        '<a class="deskhotspot deskphoto-hotspot" href="photography/"><span>Photography</span></a>'
+        '</nav>'
+        '<nav class="deskhotspots deskhotspots-mobile" aria-label="Homepage work links">'
+        '<a class="deskhotspot deskprofile-mobile" href="about/"><span>About Arafat Rahaman</span></a>'
+        '<a class="deskhotspot deskreporting-mobile" href="reporting/"><span>Reporting</span></a>'
+        '<a class="deskhotspot deskopinion-mobile" href="opinion/"><span>Opinion &amp; Analysis</span></a>'
+        '<a class="deskhotspot deskthoughts-mobile" href="thoughts/"><span>Thoughts</span></a>'
+        '<a class="deskhotspot deskphoto-mobile" href="photography/"><span>Photography</span></a>'
+        '</nav>'
+        '<details class="deskmobilemenu"><summary aria-label="Open navigation"><i></i><i></i><i></i></summary>'
+        '<nav><a href="./">Home</a><a href="about/">About</a><a href="all-work/">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a></nav></details>'
+        '<a class="deskemail" href="'+esc(home_email_href)+'"><span>Email Arafat Rahaman</span></a>'
         '</div>'
         '</section>'
     )
@@ -250,7 +253,7 @@ def build():
     used={safe_asset(a.get('cover_image')) for a in articles if not a.get('source_url')}
     used.update(safe_asset(p.get('src')) for p in photos)
     used.update(safe_asset(p) for p in c.get('home_images',[]))
-    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp'})
+    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/approved-desk-desktop.webp','assets/home/approved-desk-mobile.webp'})
     used.add(safe_asset(c.get('portrait')))
     for asset in used:
         if asset and (SITE/asset).is_file():
