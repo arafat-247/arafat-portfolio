@@ -10,383 +10,531 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "20.0.3"
+ASSET_VERSION = "20.0.4"
 
 HOME_CSS = r"""
-/* Homepage v20.0.2 — approved flowing editorial composition */
-body.home{background:#111}
-body.home .identity,
-body.home .desktophead,
-body.home .mobilehead,
-body.home .mobilemenu,
-body.home .menubackdrop,
-body.home .right>footer{display:none!important}
-body.home .right{width:100%!important;max-width:none!important;margin-left:0!important;min-height:100vh;background:#111}
-body.home main{width:100%!important;max-width:none!important;min-height:100vh;background:#111}
-body.home .portalhome{
-  width:calc(100% - 28px);
-  margin:14px auto 22px;
+/* Editorial homepage v18.10 — isolated from legacy homepage selectors */
+body.home main{background:var(--paper)}
+body.home .homecontent{width:100%;max-width:none;margin:0;padding:0 0 56px}
+
+/* HERO — exact visual target from supplied reference */
+.editorialhero{
+  position:relative;
+  min-height:clamp(520px,38.6vw,592px);
   overflow:hidden;
-  border-radius:28px;
-  background:#f4eee4;
-  color:#111;
-  box-shadow:0 14px 50px rgb(0 0 0 / 22%);
+  border-bottom:1px solid #ddd6c8;
+  background:#f7f3ea;
 }
-
-/* Header */
-.portalnav{
-  display:flex;min-height:62px;align-items:center;justify-content:space-between;
-  padding:0 clamp(24px,5vw,70px);
-  color:#171512;background:#f4eee4;
-  border-bottom:1px solid rgb(17 17 17 / 11%)
+.editorialhero-copy{
+  position:absolute;
+  z-index:5;
+  inset:0 auto 0 0;
+  display:flex;
+  width:43%;
+  min-width:0;
+  flex-direction:column;
+  justify-content:center;
+  padding:54px 36px 34px max(66px,calc((100vw - 1440px)/2 + 66px));
 }
-.portalbrand{display:grid;gap:2px;text-decoration:none}
-.portalbrand strong{font:400 23px/1 var(--serif);letter-spacing:-.03em}
-.portalbrand small{font:800 7px/1.1 var(--sans);letter-spacing:.25em;text-transform:uppercase;opacity:.62}
-.portalnavlinks{display:flex;align-items:center;gap:30px}
-.portalmobilemenu{display:none}
-.portalnavlinks a{
-  position:relative;padding:23px 0 18px;
-  color:inherit;font:750 9px/1 var(--sans);
-  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;opacity:.72
+.editorialhero-kicker{
+  color:#0d554a;
+  font:850 10px/1 var(--sans);
+  letter-spacing:.26em;
+  text-transform:uppercase;
 }
-.portalnavlinks a:hover,.portalnavlinks a[aria-current=page]{opacity:1}
-.portalnavlinks a[aria-current=page]:after{content:"";position:absolute;left:0;right:0;bottom:12px;height:1.5px;background:#171512}
-
-/* Hero */
-.portalhero{
-  position:relative;
-  display:grid;
-  min-height:470px;
-  grid-template-columns:minmax(0,1fr) minmax(520px,48%);
-  align-items:center;
-  padding:22px clamp(24px,5vw,70px) 28px;
-  background:#f4eee4
+.editorialhero-copy h1{
+  margin:15px 0 13px;
+  color:#073e38;
+  font:400 clamp(72px,6.75vw,104px)/.80 var(--serif);
+  letter-spacing:-.058em;
 }
-.portalhero-copy{position:relative;z-index:3;padding:10px 0}
-.portalkicker{
-  display:block;margin-bottom:12px;color:#a52918;
-  font:850 9px/1 var(--sans);letter-spacing:.25em;text-transform:uppercase
-}
-.portalhero h1{
-  margin:0 0 14px;
-  font:400 clamp(66px,6.2vw,96px)/.83 var(--serif);
-  letter-spacing:-.055em
-}
-.portalhero h1 em{display:block;font-style:italic}
-.portalhero-deck{
-  max-width:620px;margin:0;color:#302d28;
-  font:400 clamp(16px,1.25vw,19px)/1.42 var(--serif)
-}
-.portalhero-script{
-  margin:15px 0 0;color:#b87b46;
-  font:600 clamp(24px,2vw,31px)/1 "Caveat",cursive
-}
-.portalhero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-.portalhero-actions a{
-  display:inline-flex;min-width:174px;min-height:42px;
-  align-items:center;justify-content:space-between;gap:20px;
-  padding:0 18px;border:1px solid #153d38;border-radius:999px;
-  color:#171512;font:750 11px/1 var(--sans);text-decoration:none
-}
-.portalhero-actions .portalhero-primary{color:#fff;background:#0b5b50;border-color:#0b5b50}
-.portalhero-actions a b{font-weight:400}
-.portalhero-visual{position:relative;min-height:410px}
-.portalhero-panel{
-  position:absolute;z-index:1;inset:42px 0 36px 42%;
-  overflow:hidden;border-radius:0 34px 34px 0;
-  background:linear-gradient(180deg,#0d6a5f 0,#075248 100%);
-  clip-path:polygon(0 0,100% 11%,100% 88%,0 100%)
-}
-.portalhero-panel p{
-  position:absolute;right:12%;top:19%;width:220px;margin:0;
-  color:#fff;font:italic 400 clamp(30px,2.7vw,42px)/.97 var(--serif)
-}
-.portalhero-panel span{
-  position:absolute;right:12%;bottom:13%;
-  color:#fff;font:800 7px/1 var(--sans);
-  letter-spacing:.28em;text-transform:uppercase
-}
-.portalhero-photo{
-  position:absolute;z-index:2;inset:0 23% 0 0;margin:0
-}
-.portalhero-photo picture,.portalhero-photo img{display:block;width:100%;height:100%}
-.portalhero-photo img{
-  object-fit:cover;object-position:center 42%;
-  filter:grayscale(1) contrast(1.04)
-}
-.portalhero-photo:after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,#f4eee4 0%,transparent 24%,transparent 100%);
-  pointer-events:none
-}
-
-/* Work: single continuous composition */
-.portalwork{
-  position:relative;
+.editorialhero-copy h1 em{display:block;font-style:italic;font-weight:400}
+.editorialhero-deck{
+  max-width:500px;
   margin:0;
-  background:#09100e;
-  overflow:hidden
+  color:#242724;
+  font:400 clamp(17px,1.42vw,21px)/1.42 var(--serif);
 }
-.portalgrid{
+.editorialhero-rule{
+  display:block;
+  width:58px;
+  height:2px;
+  margin:22px 0 12px;
+  background:#214d48;
+}
+.editorialhero-tagline{
+  margin:0;
+  color:#b17a4f;
+  font:600 clamp(24px,2.1vw,31px)/1.05 "Caveat",cursive;
+  letter-spacing:.01em;
+}
+.editorialhero-actions{
+  display:flex;
+  gap:12px;
+  margin-top:26px;
+}
+.editorialhero-actions a{
+  display:flex;
+  min-width:150px;
+  height:53px;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:0 22px;
+  border:1px solid #28413d;
+  font:700 15px/1 var(--serif);
+  text-decoration:none;
+}
+.editorialhero-actions b{font-weight:400}
+.editorialhero-primary{color:#fff;background:#0b5147}
+.editorialhero-secondary{color:#202521;background:transparent}
+.editorialhero-primary:hover{background:#0f6256}
+.editorialhero-secondary:hover{background:#efe9dd}
+
+/* The portrait overlaps the cream field and the green panel, as in the reference. */
+.editorialhero-portrait{
+  position:absolute;
+  z-index:8;
+  left:40.2%;
+  top:29px;
+  bottom:30px;
+  width:min(32vw,486px);
+  margin:0;
+  padding:13px 14px 15px;
+  background:#faf7f0;
+  box-shadow:0 14px 32px rgb(25 40 35 / 13%);
+  transform:rotate(-.75deg);
+}
+.editorialhero-portrait:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-12px 31px 16px -17px;
+  background:#e7e0d5;
+  transform:rotate(1.45deg);
+}
+.editorialhero-photo-frame{
   position:relative;
   width:100%;
-  height:clamp(860px,72vw,1040px);
-  min-height:860px;
-  background:
-    radial-gradient(circle at 26% 14%,#1b211f 0,#0c1210 54%,#050807 100%)
-}
-.portalpanel{
-  display:block;
-  position:absolute;
-  isolation:isolate;
+  height:100%;
   overflow:hidden;
-  color:#fff;text-decoration:none
+  background:#d8d4cc;
 }
-.portalpanel:before{
-  content:"";position:absolute;inset:0;z-index:1;pointer-events:none
+.editorialhero-picture{display:block;width:100%;height:100%}
+.editorialhero-portrait img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 48%;
+  filter:grayscale(1) contrast(1.04);
 }
-.portalimage{
-  position:absolute;inset:0;z-index:0;
-  width:100%;height:100%;object-fit:cover
+.editorialhero-photo-note{
+  position:absolute;
+  left:27px;
+  bottom:27px;
+  color:#f4efe7;
+  font:600 23px/1.02 "Caveat",cursive;
+  text-shadow:0 1px 3px rgb(0 0 0 / 20%);
+  transform:rotate(-5deg);
 }
-.portalart{
-  position:absolute;inset:0;z-index:0;
-  background-image:url("assets/home/portal-reference-sprite.webp");
-  background-repeat:no-repeat;background-size:100% 300%
-}
-.portalart-opinion{background-position:center 50%}
-.portalart-thoughts{background-position:center bottom}
 
-/* reporting top-right */
-.portal-reporting{
+/* Deep-green Bangladesh panel with layered editorial paper details. */
+.editorialhero-panel{
+  position:absolute;
+  z-index:1;
+  inset:0 0 0 auto;
+  width:42%;
+  overflow:hidden;
+  color:#f7f1e7;
+  background:#0b4b43;
+}
+.editorialhero-panel-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:grayscale(1) contrast(1.04);
+  opacity:.23;
+  mix-blend-mode:screen;
+}
+.editorialhero-panel:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(90deg,rgb(9 63 56 / 18%),rgb(4 55 49 / 4%)),
+    linear-gradient(180deg,rgb(11 75 67 / 8%),rgb(7 54 48 / 20%));
+  pointer-events:none;
+}
+.editorialhero-paper{
+  position:absolute;
   z-index:2;
-  top:0;right:0;
-  width:63%;height:58%;
-  color:#111;
-  background:#efe9df;
-  clip-path:polygon(0 0,100% 0,100% 100%,82% 99%,70% 91%,57% 87%,45% 91%,28% 100%,0 100%)
+  display:block;
+  color:#756f65;
+  background:#eee8dc;
+  box-shadow:0 5px 14px rgb(12 35 30 / 12%);
 }
-.portal-reporting .portalimage{filter:saturate(.72) brightness(1.04) contrast(.94)}
-.portal-reporting:before{
-  background:linear-gradient(90deg,rgb(244 238 228 / 96%) 0 22%,rgb(244 238 228 / 58%) 44%,rgb(244 238 228 / 3%) 72%)
+.editorialhero-paper-long{
+  left:17%;
+  top:9%;
+  width:113px;
+  height:78%;
+  opacity:.83;
+  transform:rotate(-4.5deg);
+  background:
+    repeating-linear-gradient(0deg,transparent 0 8px,rgb(93 87 78 / 10%) 8px 9px),
+    #eee8dc;
 }
-.portal-reporting .portalcopy{left:15%;top:17%;max-width:360px}
-.portal-reporting .portalnumber{left:15%;top:11%}
-.portal-reporting .portalarrow{left:15%;bottom:18%;right:auto;color:#111;border-color:rgb(17 17 17 / 55%)}
-
-/* opinion wave */
-.portal-opinion{
+.editorialhero-paper-note{
+  left:38%;
+  top:39%;
+  width:118px;
+  height:43%;
+  padding:22px 17px;
+  transform:rotate(4.2deg);
+  background:#efe9de;
+}
+.editorialhero-paper-note i{
+  position:absolute;
+  left:29px;
+  right:23px;
+  bottom:31px;
+  height:22px;
+  border-top:2px solid #9b8a77;
+  border-radius:50%;
+  transform:rotate(-12deg);
+}
+.editorialhero-panel-quote{
+  position:absolute;
   z-index:4;
-  left:0;top:18%;
-  width:59%;height:54%;
-  background:#8d150e;
-  clip-path:polygon(0 15%,18% 8%,34% 12%,48% 22%,59% 20%,70% 12%,79% 14%,88% 27%,100% 44%,100% 100%,74% 96%,58% 91%,43% 93%,28% 100%,13% 97%,0 88%)
+  top:13%;
+  right:8%;
+  width:165px;
+  margin:0;
+  padding-top:15px;
+  border-top:2px solid rgb(255 255 255 / 68%);
+  color:#f6efe5;
+  font:italic clamp(20px,1.75vw,27px)/1.05 var(--serif);
 }
-.portal-opinion:before{
-  background:linear-gradient(180deg,rgb(142 21 13 / 80%),rgb(104 13 8 / 90%))
-}
-.portal-opinion .portalart{opacity:.74;mix-blend-mode:multiply}
-.portal-opinion:after{
-  content:"“";position:absolute;right:19%;top:27%;z-index:1;
-  color:rgb(255 255 255 / 10%);
-  font:400 190px/.7 var(--serif)
-}
-.portal-opinion .portalcopy{left:8%;top:38%;max-width:310px}
-.portal-opinion .portalnumber{left:8%;top:30%}
-.portal-opinion .portalarrow{left:8%;bottom:12%;right:auto}
-
-/* thoughts paper */
-.portal-thoughts{
-  z-index:5;
-  left:0;bottom:0;
-  width:54%;height:41%;
-  color:#12110f;
-  background:#f3eee4;
-  clip-path:polygon(0 0,54% 0,63% 6%,72% 18%,79% 33%,86% 52%,95% 76%,100% 100%,0 100%)
-}
-.portal-thoughts:before{
-  background:linear-gradient(180deg,rgb(245 240 232 / 8%),rgb(245 240 232 / 5%))
-}
-.portal-thoughts .portalart{opacity:.96;background-size:100% 300%;background-position:center bottom}
-.portal-thoughts .portalcopy{left:6%;bottom:14%;max-width:330px}
-.portal-thoughts .portalnumber{left:6%;top:16%}
-.portal-thoughts .portalarrow{left:6%;bottom:5%;right:auto;color:#111;border-color:rgb(17 17 17 / 55%)}
-.portalnote{
-  position:absolute;z-index:4;left:42%;top:20%;
-  max-width:180px;color:#705c42;
-  font:600 29px/1.02 "Caveat",cursive;
-  transform:rotate(-8deg)
-}
-.portal-thoughts:after{
-  content:"";position:absolute;z-index:1;
-  width:120px;height:120px;border-radius:50%;
-  right:9%;top:15%;background:rgb(220 181 87 / 52%)
+.editorialhero-location{
+  position:absolute;
+  z-index:4;
+  right:8.5%;
+  bottom:8%;
+  padding-top:14px;
+  border-top:2px solid rgb(255 255 255 / 62%);
+  color:#fff;
+  font:850 9px/1.7 var(--sans);
+  letter-spacing:.28em;
+  text-transform:uppercase;
 }
 
-/* photography lower-right */
-.portal-photography{
+/* Keep the reference geometry stable at ordinary laptop widths. */
+@media(min-width:801px) and (max-width:1180px){
+  .editorialhero{min-height:515px}
+  .editorialhero-copy{width:44%;padding-left:34px;padding-right:26px}
+  .editorialhero-copy h1{font-size:clamp(62px,7.2vw,82px)}
+  .editorialhero-deck{font-size:17px}
+  .editorialhero-portrait{left:40%;top:27px;bottom:28px;width:min(34vw,410px)}
+  .editorialhero-panel{width:41%}
+  .editorialhero-panel-quote{right:6%;width:145px;font-size:21px}
+  .editorialhero-paper-note{left:37%;width:102px}
+}
+
+/* WORK INTRO */
+.workintro{
+  display:grid;
+  width:min(100% - 72px,1400px);
+  margin:0 auto;
+  padding:30px 0 18px;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  align-items:end;
+}
+.workintro>div:first-child span{
+  display:block;
+  margin-bottom:4px;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.workintro h2{margin:0;font:400 58px/.94 var(--serif);letter-spacing:-.045em}
+.workintro>div:last-child{justify-self:end;max-width:620px}
+.workintro p{margin:0 0 8px;color:#474a45;font:400 15px/1.5 var(--serif)}
+.workintro a{
+  color:var(--forest);
+  font-size:12px;
+  font-weight:750;
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+}
+
+/* WORK GRID — reference 5 */
+.workgrid{
+  display:grid;
+  width:min(100% - 72px,1400px);
+  margin:0 auto;
+  grid-template-columns:1.08fr .52fr .52fr;
+  grid-template-rows:190px 190px;
+  gap:10px;
+}
+.worktile{
+  position:relative;
+  isolation:isolate;
+  display:flex;
+  min-width:0;
+  min-height:0;
+  overflow:hidden;
+  align-items:flex-end;
+  padding:22px 22px 20px;
+  color:#fff;
+  background:#173a34;
+  text-decoration:none;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.worktile:hover{transform:translateY(-2px);box-shadow:0 13px 28px rgb(15 38 32 / 14%)}
+.worktile:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(0deg,rgb(6 24 20 / 78%),rgb(6 24 20 / 8%) 72%);
+}
+.worktile-reporting{grid-column:1;grid-row:1/3}
+.worktile-opinion{grid-column:2/4;grid-row:1}
+.worktile-thoughts{grid-column:2;grid-row:2}
+.worktile-photos{grid-column:3;grid-row:2}
+.worktile-art,.worktile-image{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.worktile-number{
+  position:absolute;
+  z-index:2;
+  left:18px;
+  top:16px;
+  color:#efc37a;
+  font:800 10px/1 var(--sans);
+  letter-spacing:.12em;
+  font-style:normal;
+}
+.worktile-copy{position:relative;z-index:2;width:64%}
+.worktile-reporting .worktile-copy{width:56%}
+.worktile-opinion .worktile-copy{width:58%}
+.worktile-thoughts .worktile-copy,.worktile-photos .worktile-copy{width:78%}
+.worktile-copy strong{
+  display:block;
+  font:400 clamp(25px,2.35vw,36px)/1 var(--serif);
+  letter-spacing:-.035em;
+}
+.worktile-reporting .worktile-copy strong{font-size:clamp(38px,3.1vw,50px)}
+.worktile-copy small{
+  display:block;
+  margin-top:7px;
+  color:rgb(255 255 255 / 84%);
+  font:400 12px/1.38 var(--serif);
+}
+.worktile-explore{
+  display:inline-block;
+  margin-top:18px;
+  padding-bottom:4px;
+  border-bottom:1px solid rgb(255 255 255 / 76%);
+  font:700 10px/1 var(--sans);
+}
+.worktile-keywords{
+  position:absolute;
+  z-index:2;
+  right:18px;
+  bottom:20px;
+  width:94px;
+  padding-top:12px;
+  border-top:1px solid rgb(255 255 255 / 64%);
+  color:rgb(255 255 255 / 88%);
+  font:800 9px/1.5 var(--sans);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.worktile-keywords span{display:block}
+.worktile-arrow{
+  position:absolute;
   z-index:3;
-  right:0;bottom:0;
-  width:54%;height:43%;
-  background:#07100f;
-  clip-path:polygon(0 14%,19% 1%,39% 7%,55% 12%,70% 8%,84% 1%,100% 0,100% 100%,0 100%)
+  right:16px;
+  bottom:16px;
+  display:grid;
+  width:34px;
+  height:34px;
+  place-items:center;
+  border:1px solid rgb(255 255 255 / 66%);
+  border-radius:50%;
+  font-size:14px;
+  font-style:normal;
 }
-.portal-photography .portalimage{filter:saturate(.9) brightness(.82) contrast(1.04)}
-.portal-photography:before{
-  background:linear-gradient(180deg,rgb(3 6 6 / 3%) 8%,rgb(3 6 6 / 32%) 48%,rgb(3 6 6 / 78%) 100%)
+.worktile-reporting{background:#0f4e45}
+.worktile-opinion{background:#713f32}
+.worktile-thoughts{background:#405447}
+.worktile-reporting .worktile-art{
+  background:
+    linear-gradient(90deg,rgb(255 255 255 / 6%) 1px,transparent 1px) 0 0/38px 38px,
+    linear-gradient(0deg,rgb(255 255 255 / 6%) 1px,transparent 1px) 0 0/38px 38px,
+    radial-gradient(circle at 78% 26%,rgb(240 195 122 / 22%) 0 8%,transparent 8.5%),
+    linear-gradient(145deg,#0a4038,#15594f 55%,#0c3933);
 }
-.portal-photography .portalcopy{left:18%;bottom:16%;max-width:330px}
-.portal-photography .portalnumber{left:18%;top:33%}
-.portal-photography .portalarrow{left:18%;bottom:5%;right:auto}
+.worktile-reporting .worktile-art:before{
+  content:"";position:absolute;right:10%;top:16%;width:33%;height:54%;
+  border:1px solid rgb(255 255 255 / 30%);
+  background:repeating-linear-gradient(180deg,rgb(255 255 255 / 22%) 0 1px,transparent 1px 12px),rgb(245 239 225 / 8%);
+  transform:rotate(4deg);box-shadow:-15px 15px 0 rgb(5 36 31 / 22%);
+}
+.worktile-reporting .worktile-art:after{
+  content:"";position:absolute;right:8%;bottom:11%;width:118px;height:36px;
+  border-top:2px solid #efc37a;border-bottom:1px solid rgb(255 255 255 / 35%);transform:rotate(-4deg);
+}
+.worktile-opinion .worktile-art{
+  background:
+    linear-gradient(130deg,transparent 0 54%,rgb(255 255 255 / 8%) 54% 55%,transparent 55%),
+    repeating-linear-gradient(0deg,transparent 0 25px,rgb(255 255 255 / 7%) 26px 27px),
+    linear-gradient(115deg,#7d4537,#5a332c 62%,#3f2925);
+}
+.worktile-opinion .worktile-art:before{
+  content:"“";position:absolute;right:7%;top:-16px;color:rgb(247 230 206 / 20%);font:400 180px/.9 Georgia,serif;
+}
+.worktile-opinion .worktile-art:after{
+  content:"";position:absolute;right:20%;bottom:22%;width:122px;height:74px;
+  border:1px solid rgb(255 255 255 / 30%);border-left:5px solid #efc37a;transform:rotate(-5deg);
+}
+.worktile-thoughts .worktile-art{
+  background:
+    radial-gradient(circle at 76% 31%,transparent 0 29px,rgb(255 255 255 / 15%) 30px 31px,transparent 32px 54px,rgb(255 255 255 / 9%) 55px 56px,transparent 57px),
+    repeating-linear-gradient(135deg,transparent 0 24px,rgb(255 255 255 / 5%) 25px 26px),
+    linear-gradient(140deg,#506356,#354b40 68%,#293f36);
+}
+.worktile-thoughts .worktile-art:before{
+  content:"";position:absolute;left:13%;top:22%;width:44%;height:1px;background:rgb(255 255 255 / 30%);
+  box-shadow:0 18px 0 rgb(255 255 255 / 22%),0 36px 0 rgb(255 255 255 / 16%);transform:rotate(-7deg);
+}
+.worktile-thoughts .worktile-art:after{
+  content:"";position:absolute;right:12%;bottom:16%;width:56px;height:56px;border:2px solid #d8b174;border-radius:50%;opacity:.75;
+}
+.worktile-photos .worktile-image{filter:brightness(.66) saturate(.72)}
+body.home .homecontact{
+  width:min(100% - 72px,1400px);
+  margin:20px auto 0;
+  padding:26px 30px;
+}
+body.home .homecontact strong{font-size:30px}
 
-/* shared text */
-.portalnumber{
-  position:absolute;z-index:5;
-  color:currentColor;font:800 10px/1 var(--sans);letter-spacing:.06em
-}
-.portalnumber:after{
-  content:"";display:inline-block;width:38px;height:1px;
-  margin-left:10px;vertical-align:middle;background:currentColor;opacity:.5
-}
-.portalcopy{
-  position:absolute;z-index:5;display:block
-}
-.portalcopy strong{
-  display:block;margin-bottom:9px;
-  font:400 clamp(38px,3.8vw,62px)/.92 var(--serif);
-  letter-spacing:-.04em
-}
-.portalcopy small{
-  display:block;color:currentColor;opacity:.92;
-  font:400 14px/1.32 var(--serif)
-}
-.portalarrow{
-  position:absolute;z-index:5;
-  display:grid;width:42px;height:42px;place-items:center;
-  border:1px solid currentColor;border-radius:50%;
-  font-size:16px;font-style:normal;transition:transform .2s ease
-}
-.portalpanel:hover .portalarrow{transform:translateX(3px)}
-
-/* footer */
-.portalfooter{
-  display:grid!important;
-  grid-template-columns:1.18fr .8fr .7fr 1.1fr;
-  gap:24px 34px;
-  padding:22px clamp(24px,5vw,70px) 20px;
-  color:#f2ede3;background:#07594e;
-  border-top:1px solid rgb(255 255 255 / 10%)
-}
-.portalfooter-brand{display:grid;gap:5px}
-.portalfooter-brand strong{font:400 21px/1 var(--serif)}
-.portalfooter-brand span{font:700 8px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase}
-.portalfooter-brand em{margin-top:7px;color:#f1c272;font:600 21px/1 "Caveat",cursive}
-.portalfooter-brand small{margin-top:8px;color:#d4dfda;font-size:9px}
-.portalfooter nav,.portalfooter-meta{display:grid;align-content:start;gap:6px}
-.portalfooter b{color:#f1c45e;font:800 8px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase}
-.portalfooter a{color:#fff;font:600 10px/1.25 var(--sans);text-decoration:none}
-.portalfooter-meta small{color:#e1ebe6;font:800 7px/1.35 var(--sans);letter-spacing:.13em;text-transform:uppercase}
-.portalfooter-mark{margin-top:8px;color:#d6c28a;font:400 27px/1 monospace;letter-spacing:-.15em}
-
-/* Mobile keeps same flow, stacked with curved seams */
+/* MOBILE — restrained, consistent composition */
 @media(max-width:800px){
-  body.home{background:#090b0a}
-  body.home .portalhome{width:100%;margin:0;border-radius:0;box-shadow:none}
-  .portalnav{
-    min-height:58px;padding:0 16px;
-    color:#fff;background:#0a0d0c;border-color:rgb(255 255 255 / 9%)
-  }
-  .portalbrand strong{font-size:20px}
-  .portalbrand small{font-size:6px;color:rgb(255 255 255 / 60%)}
-  .portalnavlinks{display:none}
-  .portalmobilemenu{display:block;position:relative;margin-left:auto}
-  .portalmobilemenu summary{
-    display:grid;width:34px;height:34px;place-content:center;gap:6px;
-    list-style:none;cursor:pointer
-  }
-  .portalmobilemenu summary::-webkit-details-marker{display:none}
-  .portalmobilemenu summary span{display:block;width:24px;height:2px;background:currentColor}
-  .portalmobilemenu-panel{
-    position:absolute;z-index:90;right:0;top:38px;
-    display:grid;width:min(76vw,270px);padding:8px 0;
-    border:1px solid rgb(255 255 255 / 12%);
-    background:#0a0d0c;box-shadow:0 18px 40px rgb(0 0 0 / 36%)
-  }
-  .portalmobilemenu-panel a{
-    padding:12px 16px;border-bottom:1px solid rgb(255 255 255 / 8%);
-    color:#fff;font:750 10px/1 var(--sans);letter-spacing:.14em;
-    text-transform:uppercase;text-decoration:none
-  }
-  .portalmobilemenu-panel a:last-child{border-bottom:0}
-  .portalmobilemenu-panel a[aria-current=page]{color:#e2bb73}
+  body.home .mobilehead{height:62px;padding:0 16px}
+  body.home .mobilebrand{gap:9px}
+  body.home .mark{width:36px;height:36px}
+  body.home .themetoggle{display:none}
+  body.home .menutoggle{display:inline-flex}
+  body.home .mobilemenu[hidden],
+  body.home .menubackdrop[hidden]{display:none!important}
 
-  .portalhero{display:block;min-height:0;padding:22px 18px 18px}
-  .portalhero h1{font-size:50px}
-  .portalhero-deck{font-size:15px}
-  .portalhero-script{font-size:26px}
-  .portalhero-actions a{min-width:0;flex:1;font-size:10px;padding-inline:13px}
-  .portalhero-visual{min-height:320px;margin-top:18px}
-  .portalhero-photo{inset:0 20% 0 0}
-  .portalhero-panel{inset:44px 0 28px 44%}
-  .portalhero-panel p{right:10%;top:16%;width:125px;font-size:21px}
-  .portalhero-panel span{right:10%;font-size:6px}
+  body.home .homecontent{padding:0 14px 38px}
 
-  .portalgrid{height:auto;min-height:0;background:#09100e}
-  .portalpanel{
-    position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
-    width:100%!important;height:auto!important;margin:0!important
+  .editorialhero{
+    display:flex;
+    min-height:0;
+    overflow:visible;
+    flex-direction:column;
+    border:0;
+    background:#f7f3ea;
   }
-  .portal-reporting{
-    min-height:300px;
-    clip-path:polygon(0 0,100% 0,100% 91%,78% 86%,61% 92%,40% 100%,0 96%)
+  .editorialhero-copy{
+    position:relative;inset:auto;order:1;width:100%;
+    padding:28px 10px 22px;
   }
-  .portal-reporting .portalcopy{left:24px;top:20%;max-width:52%}
-  .portal-reporting .portalnumber{left:24px;top:10%}
-  .portal-reporting .portalarrow{left:24px;bottom:12%}
-
-  .portal-opinion{
-    min-height:255px;margin-top:-12px!important;
-    clip-path:polygon(0 9%,22% 3%,46% 12%,64% 6%,83% 18%,100% 31%,100% 88%,77% 84%,56% 94%,31% 100%,0 91%)
+  .editorialhero-kicker{font-size:8px;letter-spacing:.18em}
+  .editorialhero-copy h1{
+    margin:9px 0 10px;
+    font-size:clamp(48px,14vw,62px);
+    line-height:.86;
   }
-  .portal-opinion .portalcopy{left:24px;top:26%;max-width:68%}
-  .portal-opinion .portalnumber{left:24px;top:16%}
-  .portal-opinion .portalarrow{left:24px;bottom:11%}
+  .editorialhero-deck{font-size:15px;line-height:1.44}
+  .editorialhero-rule{margin:16px 0 9px}
+  .editorialhero-tagline{font-size:23px}
+  .editorialhero-actions{gap:8px;margin-top:18px}
+  .editorialhero-actions a{min-width:0;height:44px;flex:1;padding:0 14px;font-size:12px}
 
-  .portal-thoughts{
-    min-height:245px;margin-top:-9px!important;
-    clip-path:polygon(0 4%,55% 0,70% 8%,84% 27%,100% 58%,100% 100%,0 100%)
+  .editorialhero-portrait{
+    position:relative;inset:auto;order:2;
+    width:100%;height:min(94vw,430px);
+    margin:0;padding:0;
+    background:#d8d4cc;box-shadow:none;transform:none;
   }
-  .portal-thoughts .portalcopy{left:24px;bottom:17%;max-width:65%}
-  .portal-thoughts .portalnumber{left:24px;top:14%}
-  .portal-thoughts .portalarrow{left:24px;bottom:4%}
-  .portalnote{left:auto;right:18px;top:13%;max-width:115px;font-size:22px}
+  .editorialhero-portrait:before{display:none}
+  .editorialhero-photo-frame{height:100%}
+  .editorialhero-photo-note{left:18px;bottom:18px;font-size:18px}
+  .editorialhero-panel{display:none}
 
-  .portal-photography{
-    min-height:285px;margin-top:-7px!important;
-    clip-path:polygon(0 9%,22% 0,50% 5%,72% 0,100% 5%,100% 100%,0 100%)
+  .workintro{
+    width:100%;grid-template-columns:1fr;gap:5px;
+    padding:25px 0 14px;
   }
-  .portal-photography .portalcopy{left:24px;bottom:17%;max-width:72%}
-  .portal-photography .portalnumber{left:24px;top:16%}
-  .portal-photography .portalarrow{left:24px;bottom:4%}
+  .workintro h2{font-size:42px}
+  .workintro>div:last-child{justify-self:start}
+  .workintro p{font-size:13px;line-height:1.45}
 
-  .portalcopy strong{font-size:34px}
-  .portalcopy small{font-size:12px}
+  .workgrid{
+    width:100%;
+    grid-template-columns:1fr;
+    grid-template-rows:auto;
+    gap:8px;
+  }
+  .worktile,
+  .worktile-reporting,
+  .worktile-opinion,
+  .worktile-thoughts,
+  .worktile-photos{
+    grid-column:1/-1;grid-row:auto;
+    min-height:150px;padding:16px;
+  }
+  .worktile-reporting{min-height:180px}
+  .worktile-copy,
+  .worktile-reporting .worktile-copy,
+  .worktile-opinion .worktile-copy,
+  .worktile-thoughts .worktile-copy,
+  .worktile-photos .worktile-copy{width:auto;max-width:76%}
+  .worktile-copy strong{font-size:24px}
+  .worktile-reporting .worktile-copy strong{font-size:31px}
+  .worktile-copy small{font-size:11px;line-height:1.4}
+  .worktile-number{left:15px;top:13px;font-size:8px}
+  .worktile-keywords,.worktile-explore{display:none}
+  .worktile-arrow{right:13px;top:13px;bottom:auto;width:29px;height:29px;font-size:12px}
+  .worktile-reporting .worktile-art:before{right:7%;top:18%;width:30%;height:50%}
+  .worktile-opinion .worktile-art:before{right:3%;top:-8px;font-size:118px}
+  .worktile-thoughts .worktile-art:after{width:44px;height:44px}
 
-  .portalfooter{grid-template-columns:1fr;gap:20px;padding:27px 20px}
-  .portalfooter-brand em{font-size:24px}
+  body.home .homecontact{width:100%;margin-top:14px;padding:20px}
+  body.home .homecontact strong{font-size:24px}
 }
-
 @media(max-width:420px){
-  .portalhero h1{font-size:46px}
-  .portalhero-deck{font-size:14px}
-  .portalhero-visual{min-height:300px}
-  .portal-reporting{min-height:275px}
-  .portal-opinion{min-height:240px}
-  .portal-thoughts{min-height:230px}
-  .portal-photography{min-height:260px}
-  .portalcopy strong{font-size:31px}
-  .portalcopy small{font-size:11px}
+  body.home .homecontent{padding-inline:10px}
+  .editorialhero-copy{padding:24px 8px 20px}
+  .editorialhero-copy h1{font-size:47px}
+  .editorialhero-portrait{height:88vw;min-height:300px}
+  .workintro h2{font-size:39px}
+  .worktile,
+  .worktile-reporting,
+  .worktile-opinion,
+  .worktile-thoughts,
+  .worktile-photos{min-height:142px}
+  .worktile-reporting{min-height:170px}
+  .worktile-copy strong{font-size:22px}
+  .worktile-reporting .worktile-copy strong{font-size:29px}
 }
 """.strip()
 
@@ -427,7 +575,7 @@ def main() -> None:
         if updated != page_source:
             page.write_text(updated, encoding="utf-8")
             versioned_pages += 1
-    print(f"Homepage polish: approved_flowing_composition=1, reference_photography=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1")
+    print(f"Homepage polish: isolated_classes=1, hero_reference_4=1, work_reference_5=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1, duplicate_home_css=0")
 
 
 if __name__ == "__main__":
