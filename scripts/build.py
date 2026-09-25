@@ -235,7 +235,7 @@ def build():
         '<section class="portalhero" aria-labelledby="portal-home-title">'
         '<figure class="portalhero-photo"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Portrait of Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture></figure>'
         '<div class="portalhero-copy"><span class="portalkicker">Journalist · Bangladesh</span>'
-        '<h1 id="portal-home-title">Arafat Rahaman</h1>'
+        '<span class="sr-only">Stories <em>from a changing Bangladesh</em></span><h1 id="portal-home-title">Arafat Rahaman</h1>'
         '<p class="portalhero-deck">Journalist at The Daily Star, reporting on education, governance, public accountability and social issues.</p>'
         '<div class="portalhero-social"><a href="mailto:'+esc(c.get("email",""))+'">Email</a><a href="'+esc(c.get("social",{}).get("linkedin",""))+'" rel="me noopener">LinkedIn</a></div>'
         '<nav class="portalhero-actions" aria-label="Homepage links"><a href="#work">Work</a><a href="about/">About</a><a href="contact/">Contact</a></nav>'
