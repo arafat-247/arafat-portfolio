@@ -53,10 +53,8 @@ def main():
     source=HOME.read_text(encoding='utf-8')
     source=re.sub(r'<style id="'+re.escape(STYLE_ID)+r'">.*?</style>','',source,flags=re.I|re.S)
     source=re.sub(r'<script id="'+re.escape(SCRIPT_ID)+r'">.*?</script>','',source,flags=re.I|re.S)
-    pattern=re.compile(r'<section class="deskhome deskhome-photo"\b.*?</section>',re.I|re.S)
+    pattern=re.compile(r'<section\s+class="[^"]*\bdeskhome\b[^"]*"[^>]*>.*?</section>',re.I|re.S)
     source,count=pattern.subn(DESKTOP,source,count=1)
-    if count!=1:
-        source,count=re.subn(r'<section class="deskhome deskhome-live"\b.*?</section>',DESKTOP,source,count=1,flags=re.I|re.S)
     if count!=1:raise RuntimeError('Could not locate desktop homepage section')
     source=source.replace('</head>',CSS+'\n</head>',1).replace('</body>',JS+'\n</body>',1)
     HOME.write_text(source,encoding='utf-8')
