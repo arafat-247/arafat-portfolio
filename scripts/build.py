@@ -8,7 +8,7 @@ from social_cards import SocialCardRenderer
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='20.3.0'
+ASSET_VERSION='20.4.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -195,13 +195,28 @@ def build():
     write(OUT/'data/index.json',{'articles':[{**{k:a.get(k,'') for k in keys},'credit_type':credit_type(a)} for a in articles]})
     home_email=clean(c.get('email',''))
     home_email_href='mailto:'+home_email if home_email else 'contact/'
+    photo_image=safe_asset(c.get('home_images',[])[3]) if len(c.get('home_images',[]))>3 else 'assets/home/reference-photo.webp'
     desk_home=(
         '<section class="deskhome deskhome-photo" aria-labelledby="deskhome-title">'
         '<div class="deskstage">'
         '<picture class="deskvisual" aria-hidden="true">'
-        '<source media="(max-width: 800px)" srcset="assets/home/approved-desk-mobile.webp">'
         '<img src="assets/home/approved-desk-desktop.webp" alt="" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">'
         '</picture>'
+        '<section class="mobilelive" aria-label="Arafat Rahaman portfolio">'
+        '<header class="mobilelive-head"><a class="mobilelive-brand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a>'
+        '<details class="mobilelive-menu"><summary aria-label="Open navigation"><i></i><i></i><i></i></summary><nav><a href="./">Home</a><a href="about/">About</a><a href="all-work/">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a></nav></details></header>'
+        '<div class="mobilelive-hero">'
+        '<a class="mobilelive-profile" href="about/"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture><span><strong>Arafat Rahaman</strong><small>Reporting on education, governance, accountability and social issues.</small></span></a>'
+        '<div class="mobilelive-intro"><span>From the newsroom and the field</span><h2>Four ways I tell stories.</h2><p>Reporting, analysis, reflections and photography from Bangladesh.</p></div>'
+        '</div>'
+        '<nav class="mobilelive-work" aria-label="Explore work">'
+        '<a class="mobilelive-card mobilelive-reporting" href="reporting/"><span class="mobilelive-media"><img src="assets/home/reference-report.webp" alt="" width="450" height="335" loading="lazy" decoding="async"></span><span class="mobilelive-copy"><b>01</b><span><strong>Reporting</strong><small>People, places and the big picture from the ground.</small></span><em aria-hidden="true">→</em></span></a>'
+        '<a class="mobilelive-card mobilelive-opinion" href="opinion/"><span class="mobilelive-media mobilelive-paper"><i>Progress is not only what we build,<br>but who we make room for.</i><mark>a sharper, more honest conversation</mark><u>Development<br>for whom?</u></span><span class="mobilelive-copy"><b>02</b><span><strong>Opinion &amp; Analysis</strong><small>Sharper takes on the issues shaping Bangladesh.</small></span><em aria-hidden="true">→</em></span></a>'
+        '<a class="mobilelive-card mobilelive-thoughts" href="thoughts/"><span class="mobilelive-media mobilelive-notebook"><i>Ideas from<br>the in-between.</i><span>– Notes<br>– Observations<br>– Unfinished questions<br>– A more humane tomorrow?</span></span><span class="mobilelive-copy"><b>03</b><span><strong>Thoughts</strong><small>Notes, reflections and work in progress.</small></span><em aria-hidden="true">→</em></span></a>'
+        '<a class="mobilelive-card mobilelive-photography" href="photography/"><span class="mobilelive-media mobilelive-photo"><img src="'+esc(photo_image)+'" alt="Bangladesh at sunset" width="640" height="420" loading="lazy" decoding="async"></span><span class="mobilelive-copy"><b>04</b><span><strong>Photography</strong><small>A visual diary of people, places and daily life.</small></span><em aria-hidden="true">→</em></span></a>'
+        '</nav>'
+        '<div class="mobilelive-foot"><a href="all-work/">Complete index →</a><a href="'+esc(home_email_href)+'">Email me →</a></div>'
+        '</section>'
         '<div class="desksemantics">'
         '<h1 id="deskhome-title">Arafat Rahaman — journalist in Bangladesh</h1>'
         '<p>Reporting from the ground, unpacking what it means, and keeping a notebook for what lingers. Four ways I tell stories.</p>'
@@ -219,15 +234,6 @@ def build():
         '<a class="deskhotspot deskthoughts-hotspot" href="thoughts/"><span>Thoughts</span></a>'
         '<a class="deskhotspot deskphoto-hotspot" href="photography/"><span>Photography</span></a>'
         '</nav>'
-        '<nav class="deskhotspots deskhotspots-mobile" aria-label="Homepage work links">'
-        '<a class="deskhotspot deskprofile-mobile" href="about/"><span>About Arafat Rahaman</span></a>'
-        '<a class="deskhotspot deskreporting-mobile" href="reporting/"><span>Reporting</span></a>'
-        '<a class="deskhotspot deskopinion-mobile" href="opinion/"><span>Opinion &amp; Analysis</span></a>'
-        '<a class="deskhotspot deskthoughts-mobile" href="thoughts/"><span>Thoughts</span></a>'
-        '<a class="deskhotspot deskphoto-mobile" href="photography/"><span>Photography</span></a>'
-        '</nav>'
-        '<details class="deskmobilemenu"><summary aria-label="Open navigation"><i></i><i></i><i></i></summary>'
-        '<nav><a href="./">Home</a><a href="about/">About</a><a href="all-work/">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a></nav></details>'
         '<a class="deskemail" href="'+esc(home_email_href)+'"><span>Email Arafat Rahaman</span></a>'
         '</div>'
         '</section>'
@@ -253,7 +259,7 @@ def build():
     used={safe_asset(a.get('cover_image')) for a in articles if not a.get('source_url')}
     used.update(safe_asset(p.get('src')) for p in photos)
     used.update(safe_asset(p) for p in c.get('home_images',[]))
-    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/approved-desk-desktop.webp','assets/home/approved-desk-mobile.webp'})
+    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/approved-desk-desktop.webp'})
     used.add(safe_asset(c.get('portrait')))
     for asset in used:
         if asset and (SITE/asset).is_file():
