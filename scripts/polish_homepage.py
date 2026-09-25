@@ -259,8 +259,8 @@ body.home main{
   .portalhero-visual{position:absolute;z-index:3;inset:0;min-height:0}
   .portalhero-photo{
     position:absolute;z-index:3;
-    top:14px;right:-2%;
-    width:59%;height:clamp(350px,91vw,395px);
+    top:14px;right:0;
+    width:58%;height:clamp(350px,91vw,395px);
     margin:0;overflow:hidden;
     clip-path:polygon(13% 0,100% 0,100% 91%,0 100%,7% 20%)
   }
@@ -419,12 +419,7 @@ body.home main{
   .portal-thoughts .portalcopy{top:86px;max-width:64%}
   .portal-thoughts .portalnumber{top:41px}
   .portal-thoughts .portalarrow{color:#16130f}
-  .portalnote{
-    position:absolute;z-index:4;right:16px;top:35px;
-    max-width:104px;color:#725e44;
-    font:600 clamp(17px,4.8vw,21px)/1 "Caveat",cursive;
-    transform:rotate(-7deg)
-  }
+  .portalnote{display:none}
   .portal-thoughts:after{display:none}
   .portal-photography .portalcopy{bottom:80px;top:auto;max-width:72%}
   .portal-photography .portalnumber{top:45px}
