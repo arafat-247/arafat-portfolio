@@ -65,20 +65,20 @@ if(document.body.classList.contains('home')&&!matchMedia('(prefers-reduced-motio
 }
 
 if(document.body.classList.contains('home')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
- const mobileRevealTargets=$('.mf-work-head,.mf-card,.mf-footer');
- if(mobileRevealTargets.length){
-  mobileRevealTargets.forEach((item,index)=>{
-   item.classList.add('mf-reveal-ready');
-   item.style.setProperty('--mf-delay',Math.min(index*.055,.2)+'s');
+ const portalPanels=$$('.portalpanel');
+ if(portalPanels.length){
+  portalPanels.forEach((item,index)=>{
+   item.classList.add('portal-reveal');
+   item.style.setProperty('--portal-delay',Math.min(index*.055,.18)+'s');
   });
   if('IntersectionObserver' in window){
-   const mobileRevealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+   const portalObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
     if(!entry.isIntersecting)return;
-    entry.target.classList.add('mf-reveal-visible');
-    mobileRevealObserver.unobserve(entry.target);
-   }),{threshold:.14,rootMargin:'0px 0px -7% 0px'});
-   mobileRevealTargets.forEach(item=>mobileRevealObserver.observe(item));
-  }else mobileRevealTargets.forEach(item=>item.classList.add('mf-reveal-visible'));
+    entry.target.classList.add('is-visible');
+    portalObserver.unobserve(entry.target);
+   }),{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+   portalPanels.forEach(item=>portalObserver.observe(item));
+  }else portalPanels.forEach(item=>item.classList.add('is-visible'));
  }
 }
 
