@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "21.2.0"
+ASSET_VERSION = "21.2.1"
 
 HOME_CSS = r"""
 
@@ -302,9 +302,9 @@ body.home main{
     display:block;width:100%!important;height:auto!important;
     margin:0!important;overflow:hidden;isolation:isolate;text-decoration:none
   }
-  .portalpanel:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
-  .portalimage{position:absolute;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover}
-  .portalart{position:absolute;inset:0;z-index:-3}
+  .portalpanel:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none}
+  .portalimage{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover}
+  .portalart{position:absolute;inset:0;z-index:0}
 
   /* Reporting — editorial flag/city treatment, no fragile external art */
   .portal-reporting{
