@@ -75,6 +75,7 @@ jobs:
           python scripts/polish_homepage.py
           python scripts/restore_approved_mobile.py
           python scripts/apply_approved_mobile_home.py
+          python scripts/redesign_desktop_home.py
           python scripts/redesign_story_pages.py
           mkdir -p dist/assets/imported
           cp -a site/assets/imported/. dist/assets/imported/
