@@ -18,15 +18,16 @@ body.home .portalhome-mobile{display:none!important}
 .desk-nav a:hover,.desk-nav a:focus-visible{color:#fff}
 .desk-nav a:hover::after,.desk-nav a[aria-current]::after{right:0}
 .desk-menu-button,.desk-mobile-nav{display:none}
+.desk-scribble-mask{position:absolute;z-index:3;left:25.5%;top:8.5%;width:14%;height:19%;background:#28170f;filter:blur(1.6cqw);pointer-events:none}
 .desk-scribble{position:absolute;z-index:4;left:26%;top:10%;width:12%;margin:0;padding:1.1cqw 1.5cqw 1.1cqw 1.9cqw;background:transparent;font:italic 2cqw/1.08 'Segoe Print','Bradley Hand',cursive;color:#d7c8b6;transform:rotate(-10deg);text-shadow:0 1px 1px #160b07}
-.desk-scribble::before{content:'';position:absolute;z-index:-1;inset:-2cqw -3cqw -5cqw;background:radial-gradient(ellipse,#28170f 75%,#28170ff5 84%,transparent 100%)}
 .desk-portrait{position:absolute;z-index:6;left:37.3%;top:5.2%;width:19.2%;height:23.3%;display:block;background:#d8c8b0;padding:.65cqw;box-shadow:0 1cqw 2cqw #12080088;transform:rotate(-7deg);transition:transform .35s,box-shadow .35s}
 .desk-portrait:hover,.desk-portrait:focus-visible{transform:rotate(-5deg) translateY(-.7cqw);box-shadow:0 1.5cqw 2.6cqw #120800a8}
 .desk-portrait-image{display:block;height:66%;background:#3e3935 url('assets/portraits/byline.webp') center 37%/cover;filter:grayscale(1) sepia(.13)}
 .desk-portrait-caption{display:grid;gap:.3cqw;padding:.6cqw .35cqw;color:#30251d;transform:rotate(0deg)}
 .desk-portrait-caption strong{font:700 1.08cqw/1.1 Georgia,serif}
 .desk-portrait-caption>span{font:400 .79cqw/1.14 Georgia,serif}
-.desk-intro{position:absolute;z-index:5;left:27.2%;top:24.8%;width:44%;margin:0;padding:3cqw 3.4cqw;background:radial-gradient(ellipse,#28170f 77%,#28170ff5 84%,transparent 100%);font:400 1.43cqw/1.34 Georgia,serif;color:#f2e9dd;text-shadow:0 2px 3px #1c100b}
+.desk-intro-mask{position:absolute;z-index:4;left:29%;top:26.8%;width:39%;height:12%;background:#28170f;filter:blur(1.6cqw);pointer-events:none}
+.desk-intro{position:absolute;z-index:5;left:30.3%;top:27.5%;width:37.5%;margin:0;padding:1cqw 1.4cqw;background:none;font:400 1.43cqw/1.34 Georgia,serif;color:#f2e9dd;text-shadow:0 2px 3px #1c100b}
 .desk-work{position:absolute;inset:0}
 .desk-object{position:absolute;z-index:4;display:block;color:#261d17!important;transition:transform .35s,filter .35s;filter:drop-shadow(.25cqw .7cqw .5cqw #1007039c)}
 .desk-object:hover,.desk-object:focus-visible{z-index:12;transform:translateY(-.8cqw) rotate(0deg);filter:drop-shadow(.5cqw 1.1cqw .7cqw #100703a9)}
@@ -82,7 +83,7 @@ body.home .portalhome-mobile{display:none!important}
  .desk-menu-button span{display:block;width:20px;height:1px;background:currentColor}
  .desk-mobile-nav:not([hidden]){display:grid;position:absolute;z-index:30;right:14px;top:65px;width:min(300px,calc(100% - 28px));padding:12px;background:#e8d9c2;box-shadow:0 20px 35px #0008}
  .desk-mobile-nav a{padding:13px 16px;border-bottom:1px solid #aa9377;color:#2d2119;font:18px Georgia,serif}
- .desk-scribble{display:none}
+ .desk-scribble,.desk-scribble-mask,.desk-intro-mask{display:none}
  .desk-portrait{position:relative;left:auto;top:auto;width:180px;height:215px;margin:40px auto 24px;padding:7px;transform:rotate(-4deg)}
  .desk-portrait:hover{transform:rotate(-2deg) translateY(-6px)}
  .desk-portrait-caption{gap:3px;padding:5px}
