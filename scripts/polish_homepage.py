@@ -16,7 +16,7 @@ HOME_CSS = r"""
 
 /* Homepage v20.3 — photographic journalist's desk */
 body.home{
-  background:#15110d;
+  background:#111715;
   overflow-x:hidden;
 }
 body.home .identity,
@@ -33,7 +33,7 @@ body.home main{
   max-width:none!important;
   margin:0!important;
   padding:0!important;
-  background:#15110d;
+  background:#111715;
 }
 .deskhome{
   width:100%;
@@ -44,143 +44,98 @@ body.home main{
 .deskstage{
   position:relative;
   width:min(100%,1600px);
-  min-height:900px;
+  aspect-ratio:1447/1087;
   margin:0 auto;
   overflow:hidden;
-  border:1px solid rgb(255 255 255 / 14%);
-  border-radius:28px;
-  isolation:isolate;
-  color:#f6ead9;
-  background:
-    radial-gradient(circle at 72% 15%,rgb(241 196 124 / 12%),transparent 21%),
-    linear-gradient(100deg,rgba(0,0,0,.12),transparent 28%,rgba(0,0,0,.08) 60%),
-    repeating-linear-gradient(92deg,transparent 0 145px,rgba(35,13,4,.17) 148px 152px,transparent 155px 298px),
-    linear-gradient(112deg,#2d160d 0%,#5b2f18 33%,#3a1d11 60%,#6f3b21 84%,#2d170e 100%);
-  box-shadow:0 32px 90px rgb(0 0 0 / 45%);
+  border:1px solid rgb(255 255 255 / 20%);
+  border-radius:25px;
+  background:#2b160b;
+  box-shadow:0 22px 65px rgb(0 0 0 / 42%);
 }
-.deskgrain{
-  position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:
-    repeating-linear-gradient(0deg,transparent 0 24px,rgb(255 255 255 / .012) 25px 26px,transparent 27px 47px),
-    radial-gradient(circle at 20% 75%,rgb(0 0 0 / .24),transparent 31%);
-  mix-blend-mode:screen
+.deskvisual{
+  position:absolute;
+  inset:0;
+  display:block;
 }
-.deskbrand{position:absolute;z-index:30;left:4.2%;top:3.4%}
-.deskbrand a{display:grid;gap:6px;color:#fff;text-decoration:none}
-.deskbrand strong{font:400 clamp(28px,2.6vw,44px)/.95 "DM Serif Display",Georgia,serif;letter-spacing:-.04em}
-.deskbrand small{font:800 8px/1 Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#e2cfb8}
-.desknav{
-  position:absolute;z-index:30;left:36%;top:3.6%;
-  display:flex;gap:clamp(20px,2.4vw,40px)
+.deskvisual img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  user-select:none;
+  -webkit-user-drag:none;
 }
-.desknav a{
-  color:#f1e5d5;text-decoration:none;font:600 14px/1 Arial,sans-serif;
-  padding:7px 0;border-bottom:1px solid transparent
+.mobilefresh{display:none}
+.desksemantics{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
 }
-.desknav a:hover,.desknav a:focus-visible,.desknav a[aria-current]{color:#f2c47e;border-color:#f2c47e}
-.deskintro{
-  position:absolute;z-index:14;left:4.6%;top:16%;width:26.5%;
-  padding:34px 32px 31px;
-  background:linear-gradient(135deg,rgba(21,11,7,.91),rgba(26,13,8,.62));
-  border:1px solid rgb(255 255 255 / 6%);
-  box-shadow:0 20px 35px rgb(0 0 0 / 26%)
+.deskhotspots{
+  position:absolute;
+  inset:0;
+  z-index:5;
 }
-.deskintro>span{font:800 8px/1 Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#d9b986}
-.deskintro h1{margin:17px 0 16px;font:400 clamp(39px,4vw,65px)/.91 "DM Serif Display",Georgia,serif;letter-spacing:-.045em}
-.deskintro p{margin:0;color:#eadfce;font:400 16px/1.45 "Source Serif 4",Georgia,serif}
-.deskintro>a{display:inline-flex;gap:26px;margin-top:22px;padding-bottom:6px;border-bottom:1px solid #e8d3b6;color:#fff;text-decoration:none;font:700 12px/1 Arial,sans-serif}
-.deskportrait{
-  position:absolute;z-index:12;left:36.5%;top:10%;width:19.2%;height:26%;
-  padding:10px 10px 35px;background:#efe2cf;transform:rotate(-3deg);
-  box-shadow:0 20px 36px rgb(0 0 0 / 34%);text-decoration:none
+.deskhotspot{
+  position:absolute;
+  display:block;
+  border-radius:4px;
+  color:transparent;
+  text-decoration:none;
+  background:transparent;
 }
-.deskportrait:before{content:"";position:absolute;inset:6px -10px -9px 10px;z-index:-1;background:#d2c2ab;transform:rotate(5deg);box-shadow:0 14px 26px rgb(0 0 0 / 28%)}
-.deskportrait picture,.deskportrait img{display:block;width:100%;height:100%}
-.deskportrait img{object-fit:cover;object-position:center 30%;filter:grayscale(.12) contrast(1.04)}
-.deskportrait>span{position:absolute;left:14px;bottom:11px;color:#20160f;font:600 12px/1 "Caveat",cursive}
-.deskwork{
-  position:absolute;z-index:16;left:31.7%;top:37.5%;width:39%;height:45%;
-  display:grid;grid-template-columns:1fr 1fr;gap:16px
+.deskhotspot span,
+.deskemail span{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
 }
-.desk-work-card{
-  position:relative;display:flex;flex-direction:column;min-width:0;overflow:hidden;
-  padding:16px 16px 14px;color:#20160f;text-decoration:none;
-  background:#efe1ca;box-shadow:0 15px 25px rgb(0 0 0 / 28%);
-  transition:transform .22s ease,box-shadow .22s ease
+.deskhotspot:focus-visible{
+  outline:3px solid #f0d5aa;
+  outline-offset:3px;
+  background:rgb(255 255 255 / 5%);
 }
-.desk-work-card:nth-child(1){transform:rotate(-1.4deg)}
-.desk-work-card:nth-child(2){transform:rotate(1.2deg)}
-.desk-work-card:nth-child(3){transform:rotate(.8deg)}
-.desk-work-card:nth-child(4){transform:rotate(-1deg)}
-.desk-work-card:hover,.desk-work-card:focus-visible{transform:translateY(-7px) rotate(0);box-shadow:0 22px 31px rgb(0 0 0 / 35%)}
-.desk-card-number{position:absolute;right:12px;top:10px;font:800 7px/1 Arial,sans-serif;letter-spacing:.08em;color:#7d6d59}
-.desk-work-card>strong{margin-top:auto;font:600 clamp(18px,1.55vw,25px)/1 "DM Serif Display",Georgia,serif}
-.desk-work-card>small{margin-top:5px;color:#665846;font:600 10px/1.25 Arial,sans-serif}
-.desk-newspaper{height:59%;padding:10px;background:#e6d8c1;border:1px solid #b7a48b}
-.desk-newspaper b{display:block;border-bottom:2px solid #33271d;padding-bottom:6px;font:700 19px/1 "DM Serif Display",Georgia,serif}
-.desk-newspaper em{display:block;margin:7px 0 6px;font:800 7px/1 Arial,sans-serif;letter-spacing:.14em}
-.desk-newspaper i{display:block;height:1px;margin:7px 0;background:#76624b;opacity:.55}
-.desk-marked-page{position:relative;height:59%;padding:15px 14px;background:#f5ead8;border:1px solid #c8b293}
-.desk-marked-page i{display:block;margin:7px 0;font:600 12px/1.1 "Source Serif 4",Georgia,serif}
-.desk-marked-page i:nth-child(2){background:#e4bf58;width:max-content;padding:1px 4px}
-.desk-marked-page b{position:absolute;right:14px;bottom:6px;color:#a32f24;font:600 39px/1 "Caveat",cursive;transform:rotate(8deg)}
-.desk-notebook{
-  height:59%;padding:17px 15px 12px 28px;
-  background:repeating-linear-gradient(180deg,#f2e6cf 0 25px,#baa47f 26px 27px);
-  border-left:8px solid #3c352e
+.deskhotspots-desktop{display:block}
+.deskhotspots-mobile{display:none}
+
+/* Desktop navigation — positions match the approved composition. */
+.desknav-home{left:49.7%;top:1.2%;width:5.9%;height:5.3%}
+.desknav-about{left:56.2%;top:1.2%;width:6.0%;height:5.3%}
+.desknav-work{left:63.0%;top:1.2%;width:5.7%;height:5.3%}
+.desknav-writing{left:69.1%;top:1.2%;width:7.2%;height:5.3%}
+.desknav-contact{left:76.5%;top:1.2%;width:7.2%;height:5.3%}
+
+/* Portrait and work objects. */
+.deskprofile-hotspot{left:34.6%;top:4.2%;width:22.7%;height:24.5%}
+.deskreporting-hotspot{left:6.0%;top:36.4%;width:25.0%;height:31.8%}
+.deskopinion-hotspot{left:31.3%;top:36.8%;width:26.5%;height:31.4%}
+.deskthoughts-hotspot{left:57.7%;top:36.5%;width:26.1%;height:31.5%}
+.deskphoto-hotspot{left:39.1%;top:68.0%;width:25.4%;height:23.0%}
+.deskemail{
+  position:absolute;
+  z-index:6;
+  right:27%;
+  bottom:1.3%;
+  width:15%;
+  height:3.5%;
+  text-decoration:none;
 }
-.desk-notebook i{display:block;margin:6px 0;color:#493a2e;font:600 13px/1 "Caveat",cursive}
-.desk-photo figure{height:59%;margin:0;overflow:hidden;background:#111}
-.desk-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.84) contrast(1.04)}
-.deskclock-object{
-  position:absolute;z-index:18;right:2.8%;top:3.4%;width:8.4%;
-  display:grid;gap:6px;justify-items:center;color:#f1e2cf;
-  transform:rotate(2deg);filter:drop-shadow(0 14px 16px rgb(0 0 0 / 33%))
-}
-.deskclock-face{
-  position:relative;width:100%;aspect-ratio:1;border:8px solid #211b17;border-radius:50%;
-  background:radial-gradient(circle at 40% 35%,#f5ead8,#d7c3a4 73%,#aa8f6f)
-}
-.deskclock-face i{position:absolute;color:#36291f;font:700 9px/1 Georgia,serif;font-style:normal}
-.deskclock-12{top:7%;left:50%;transform:translateX(-50%)}.deskclock-3{right:8%;top:50%;transform:translateY(-50%)}.deskclock-6{bottom:7%;left:50%;transform:translateX(-50%)}.deskclock-9{left:8%;top:50%;transform:translateY(-50%)}
-.deskclock-hand{position:absolute;left:50%;bottom:50%;display:block;transform-origin:50% 100%;border-radius:20px;background:#34271d}
-.deskclock-hour{width:3px;height:24%}.deskclock-minute{width:2px;height:34%}.deskclock-second{width:1px;height:39%;background:#a52a22}
-.deskclock-face>span{position:absolute;z-index:4;left:50%;top:50%;width:7px;height:7px;border-radius:50%;background:#34271d;transform:translate(-50%,-50%)}
-.deskclock-object>small{font:800 7px/1 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
-.deskcamera{position:absolute;z-index:9;left:12%;bottom:9.5%;width:13.8%;height:11%;background:linear-gradient(145deg,#1b1c1c,#090909);border-radius:12px;transform:rotate(-9deg);box-shadow:0 16px 24px rgb(0 0 0 / 38%)}
-.deskcamera i{position:absolute;left:31%;top:24%;width:42%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#050708 0 38%,#3b4142 39% 49%,#070707 50% 65%,#232323 66%);box-shadow:0 0 0 7px #0b0b0b}
-.deskcamera b{position:absolute;left:18%;top:-13%;width:34%;height:22%;background:#191919;border-radius:4px}
-.deskcoffee{position:absolute;z-index:10;right:16%;top:12%;width:8.6%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#1a0e08 0 43%,#cbb393 45% 65%,#f2e7d7 66%);box-shadow:0 13px 18px rgb(0 0 0 / 27%)}
-.deskcoffee:after{content:"";position:absolute;right:-26%;top:34%;width:35%;height:29%;border:8px solid #dcc5a5;border-left-width:5px;border-radius:50%}
-.deskpencil{position:absolute;z-index:8;right:8.5%;top:33%;width:2px;height:180px;background:#dfb14f;transform:rotate(31deg);box-shadow:0 0 0 2px #845d24}
-.desk-selected{
-  position:absolute;z-index:17;right:2.6%;top:31.5%;width:24%;min-height:42%;
-  padding:20px 20px 18px;color:#1f160f;background:#ddccb3;
-  transform:rotate(4deg);box-shadow:0 21px 38px rgb(0 0 0 / 32%)
-}
-.desk-selected header{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding-bottom:13px;border-bottom:2px solid #35281e}
-.desk-selected header>span{grid-column:1/-1;font:800 7px/1 Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7a6046}
-.desk-selected h2{margin:0;font:400 27px/1 "DM Serif Display",Georgia,serif}
-.desk-selected header a{align-self:end;color:#33271d;text-decoration:none;font:700 8px/1 Arial,sans-serif;text-transform:uppercase}
-.desk-selected-list{display:grid}
-.desk-selected-list a{position:relative;display:grid;gap:5px;padding:14px 25px 14px 0;border-bottom:1px solid #9d876b;color:#23170f;text-decoration:none}
-.desk-selected-list small{font:800 6px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#7a654d}
-.desk-selected-list strong{font:600 15px/1.08 "Source Serif 4",Georgia,serif}
-.desk-selected-list span{position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:18px}
-.deskcontact{
-  position:absolute;z-index:20;left:28.8%;bottom:2.6%;display:flex;gap:26px;align-items:center;
-  padding:9px 14px;border-top:1px solid rgb(255 255 255 / 24%);
-  color:#eadbc7;text-decoration:none;font:700 9px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase
-}
-.deskcontact strong{color:#f0c88c}
-.deskhome a:focus-visible{outline:3px solid #f2c47e;outline-offset:4px}
-@media(max-width:1180px) and (min-width:801px){
-  .deskstage{min-height:820px}
-  .deskintro{width:28.5%}
-  .deskwork{left:31%;width:40%}
-  .desk-selected{width:25%}
-  .desknav{left:34%;gap:18px}
-}
+
+/* Mobile and tablet — responsive translation of the desktop design */
+
 .portalhome-mobile{display:none!important}
 
 @media(max-width:800px){

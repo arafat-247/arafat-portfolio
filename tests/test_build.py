@@ -3,7 +3,7 @@ from pathlib import Path
 from PIL import Image
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-import build, build_desktop_preview, core, sync
+import build, core, sync
 from types import SimpleNamespace
 from urllib.error import HTTPError
 
@@ -74,30 +74,16 @@ class BuildTests(unittest.TestCase):
             self.assertIn('https://arafatrahaman.com/stories/a-shared-report/</loc>',sitemap)
             self.assertNotIn('/index.html</loc>',sitemap)
             home=(out/'index.html').read_text()
-            self.assertIn('class="deskhome deskhome-built"',home)
+            self.assertIn('class="deskhome deskhome-photo"',home)
             self.assertIn('class="deskstage"',home)
-            self.assertIn('class="deskintro"',home)
-            self.assertIn('class="deskportrait"',home)
-            self.assertIn('class="deskwork"',home)
-            self.assertIn('class="desk-work-card desk-reporting"',home)
-            self.assertIn('class="desk-work-card desk-opinion"',home)
-            self.assertIn('class="desk-work-card desk-thoughts"',home)
-            self.assertIn('class="desk-work-card desk-photo"',home)
-            self.assertIn('class="deskclock-object"',home)
-            self.assertIn('Latest / selected work',home)
-            self.assertIn('class="desk-selected"',home)
-            self.assertNotIn('assets/home/approved-desk-desktop.webp',home)
-            self.assertNotIn('class="deskhotspots deskhotspots-desktop"',home)
-            self.assertFalse((out/'assets/home/approved-desk-desktop.webp').exists())
-            with patch.multiple(build_desktop_preview,HOME=out/'index.html',PREVIEW=out/'desktop-preview/index.html'),contextlib.redirect_stdout(io.StringIO()):
-                build_desktop_preview.main()
-            preview=(out/'desktop-preview/index.html').read_text()
-            self.assertIn('<base href="/">',preview)
-            self.assertEqual(preview.count('class="deskhome deskhome-built"'),1)
-            self.assertIn('Latest / selected work',preview)
-            self.assertIn('class="deskclock-object"',preview)
-            self.assertIn('class="portalhome portalhome-mobile"',preview)
-            self.assertNotIn('assets/home/approved-desk-desktop.webp',preview)
+            self.assertIn('class="deskvisual"',home)
+            self.assertIn('assets/home/approved-desk-desktop.webp',home)
+            self.assertIn('class="deskhotspots deskhotspots-desktop"',home)
+            self.assertIn('class="deskhotspot deskprofile-hotspot"',home)
+            self.assertIn('class="deskhotspot deskreporting-hotspot"',home)
+            self.assertIn('class="deskhotspot deskopinion-hotspot"',home)
+            self.assertIn('class="deskhotspot deskthoughts-hotspot"',home)
+            self.assertIn('class="deskhotspot deskphoto-hotspot"',home)
             self.assertIn('class="portalhome portalhome-mobile"',home)
             self.assertIn('class="portalmenu"',home)
             self.assertIn('Stories <em>from a changing Bangladesh</em>',home)
@@ -118,6 +104,7 @@ class BuildTests(unittest.TestCase):
             self.assertNotIn('Latest journalism',home)
             self.assertNotIn('class="homehero-copy"',home)
             self.assertNotIn('class="workgrid"',home)
+            self.assertTrue((out/'assets/home/approved-desk-desktop.webp').is_file())
             self.assertIn('class="themetoggle"',home)
             self.assertIn('class="menutoggle"',home)
             client_css=(out/'portfolio.css').read_text()
