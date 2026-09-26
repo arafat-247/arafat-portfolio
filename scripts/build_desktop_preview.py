@@ -29,11 +29,30 @@ DESK = '''<section class="deskhome desk-rebuild" aria-labelledby="desk-title">
 </section>'''
 
 
+def replace_desk_section(source: str, replacement: str) -> str:
+    start_match = re.search(r'<section\s+class="[^"]*\bdeskhome\b[^"]*"[^>]*>', source, flags=re.I)
+    if not start_match:
+        raise RuntimeError('Desk homepage section not found')
+    token_re = re.compile(r'<section\b[^>]*>|</section>', re.I)
+    depth = 0
+    end = None
+    for match in token_re.finditer(source, start_match.start()):
+        token = match.group(0).lower()
+        if token.startswith('<section'):
+            depth += 1
+        else:
+            depth -= 1
+            if depth == 0:
+                end = match.end()
+                break
+    if end is None:
+        raise RuntimeError('Desk homepage section is not balanced')
+    return source[:start_match.start()] + replacement + source[end:]
+
+
 def main():
     source = HOME.read_text(encoding='utf-8')
-    source, count = re.subn(r'<section class="deskhome\b[^>]*>.*?</section>', lambda _: DESK, source, count=1, flags=re.S)
-    if count != 1:
-        raise RuntimeError('Desk homepage section not found')
+    source = replace_desk_section(source, DESK)
     css = (ROOT / 'scripts' / 'desktop_preview.css').read_text(encoding='utf-8')
     js = (ROOT / 'scripts' / 'desktop_preview.js').read_text(encoding='utf-8')
     source = source.replace('<head>', '<head><base href="/"><meta name="robots" content="noindex,nofollow">', 1)
