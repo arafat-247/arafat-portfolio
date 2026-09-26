@@ -3,7 +3,7 @@ from pathlib import Path
 from PIL import Image
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-import build, core, sync
+import build, build_desktop_preview, core, sync
 from types import SimpleNamespace
 from urllib.error import HTTPError
 
@@ -88,6 +88,16 @@ class BuildTests(unittest.TestCase):
             self.assertIn('class="desk-selected"',home)
             self.assertNotIn('assets/home/approved-desk-desktop.webp',home)
             self.assertNotIn('class="deskhotspots deskhotspots-desktop"',home)
+            self.assertFalse((out/'assets/home/approved-desk-desktop.webp').exists())
+            with patch.multiple(build_desktop_preview,HOME=out/'index.html',PREVIEW=out/'desktop-preview/index.html'),contextlib.redirect_stdout(io.StringIO()):
+                build_desktop_preview.main()
+            preview=(out/'desktop-preview/index.html').read_text()
+            self.assertIn('<base href="/">',preview)
+            self.assertEqual(preview.count('class="deskhome deskhome-built"'),1)
+            self.assertIn('Latest / selected work',preview)
+            self.assertIn('class="deskclock-object"',preview)
+            self.assertIn('class="portalhome portalhome-mobile"',preview)
+            self.assertNotIn('assets/home/approved-desk-desktop.webp',preview)
             self.assertIn('class="portalhome portalhome-mobile"',home)
             self.assertIn('class="portalmenu"',home)
             self.assertIn('Stories <em>from a changing Bangladesh</em>',home)
