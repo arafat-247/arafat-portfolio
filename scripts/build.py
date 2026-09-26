@@ -196,41 +196,32 @@ def build():
     home_email=clean(c.get('email',''))
     home_email_href='mailto:'+home_email if home_email else 'contact/'
     photo_image=safe_asset(c.get('home_images',[])[3]) if len(c.get('home_images',[]))>3 else 'assets/home/reference-photo.webp'
-    latest_desktop=[]
-    for item in articles[:3]:
-        href=str(item.get('local_url') or '')
-        if not re.fullmatch(r'(stories|thoughts)/[a-zA-Z0-9_-]+/',href):continue
-        latest_desktop.append({
-            'href':href,
-            'title':clean(item.get('title') or 'Reporting'),
-            'date':date_label(item.get('date_published','')),
-            'category':clean(item.get('category') or 'Reporting'),
-        })
-    latest_desktop_markup=''.join(
-        '<a href="'+esc(item['href'])+'"><small>'+esc(item['date'])+' · '+esc(item['category'])+'</small><strong>'+esc(item['title'])+'</strong><span aria-hidden="true">↗</span></a>'
-        for item in latest_desktop
-    )
     desk_home=(
-        '<section class="deskhome deskhome-built" aria-labelledby="deskhome-title">'
+        '<section class="deskhome deskhome-photo" aria-labelledby="deskhome-title">'
         '<div class="deskstage">'
-        '<div class="deskgrain" aria-hidden="true"></div>'
-        '<header class="deskbrand"><a href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a></header>'
-        '<nav class="desknav" aria-label="Homepage navigation"><a href="./" aria-current="page">Home</a><a href="about/">About</a><a href="all-work/">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a></nav>'
-        '<section class="deskintro"><span>Stories / People / Places</span><h1 id="deskhome-title">Reporting Bangladesh, one story at a time.</h1><p>I report on education, governance, public accountability and the choices that shape everyday life.</p><a href="about/">About me <b aria-hidden="true">↗</b></a></section>'
-        '<a class="deskportrait" href="about/" aria-label="About Arafat Rahaman"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="Portrait of Arafat Rahaman" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture><span>Arafat · Dhaka</span></a>'
-        '<section class="deskwork" aria-label="Explore the portfolio">'
-        '<a class="desk-work-card desk-reporting" href="reporting/"><span class="desk-card-number">01</span><div class="desk-newspaper"><b>The Daily Star</b><em>FIELD REPORT</em><i></i><i></i><i></i></div><strong>Reporting</strong><small>People, institutions and public life from the ground.</small></a>'
-        '<a class="desk-work-card desk-opinion" href="opinion/"><span class="desk-card-number">02</span><div class="desk-marked-page"><i>Policy</i><i>Power</i><i>Accountability</i><b>?</b></div><strong>Opinion &amp; Analysis</strong><small>Arguments, context and scrutiny.</small></a>'
-        '<a class="desk-work-card desk-thoughts" href="thoughts/"><span class="desk-card-number">03</span><div class="desk-notebook"><i>Notes</i><i>Questions</i><i>What stays after deadline?</i></div><strong>Thoughts</strong><small>Reflections, field notes and unfinished questions.</small></a>'
-        '<a class="desk-work-card desk-photo" href="photography/"><span class="desk-card-number">04</span><figure><img src="'+esc(photo_image)+'" alt="" loading="lazy" decoding="async"></figure><strong>Photography</strong><small>People, places and everyday observations.</small></a>'
-        '</section>'
-        '<div class="deskclock-object" role="img" aria-label="Live analogue clock showing current time in Dhaka"><div class="deskclock-face"><i class="deskclock-12">12</i><i class="deskclock-3">3</i><i class="deskclock-6">6</i><i class="deskclock-9">9</i><b class="deskclock-hand deskclock-hour" data-desk-hour></b><b class="deskclock-hand deskclock-minute" data-desk-minute></b><b class="deskclock-hand deskclock-second" data-desk-second></b><span></span></div><small data-desk-clock-label>Dhaka time</small></div>'
-        '<div class="deskcamera" aria-hidden="true"><i></i><b></b></div><div class="deskcoffee" aria-hidden="true"></div><div class="deskpencil" aria-hidden="true"></div>'
-        '<section class="desk-selected" aria-labelledby="desk-selected-title"><header><span>Latest / selected work</span><h2 id="desk-selected-title">Recent reporting</h2><a href="all-work/">View all ↗</a></header><div class="desk-selected-list">'+latest_desktop_markup+'</div></section>'
-        '<a class="deskcontact" href="'+esc(home_email_href)+'"><span>Have a story lead?</span><strong>Get in touch ↗</strong></a>'
+        '<picture class="deskvisual" aria-hidden="true">'
+        '<img src="assets/home/approved-desk-desktop.webp" alt="" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">'
+        '</picture>'
+        '<div class="desksemantics">'
+        '<h1 id="deskhome-title">Arafat Rahaman — journalist in Bangladesh</h1>'
+        '<p>Reporting from the ground, unpacking what it means, and keeping a notebook for what lingers. Four ways I tell stories.</p>'
+        '<nav aria-label="Work"><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a></nav>'
+        '</div>'
+        '<nav class="deskhotspots deskhotspots-desktop" aria-label="Homepage navigation">'
+        '<a class="deskhotspot desknav-home" href="./"><span>Home</span></a>'
+        '<a class="deskhotspot desknav-about" href="about/"><span>About</span></a>'
+        '<a class="deskhotspot desknav-work" href="all-work/"><span>Work</span></a>'
+        '<a class="deskhotspot desknav-writing" href="thoughts/"><span>Writing</span></a>'
+        '<a class="deskhotspot desknav-contact" href="contact/"><span>Contact</span></a>'
+        '<a class="deskhotspot deskprofile-hotspot" href="about/"><span>About Arafat Rahaman</span></a>'
+        '<a class="deskhotspot deskreporting-hotspot" href="reporting/"><span>Reporting</span></a>'
+        '<a class="deskhotspot deskopinion-hotspot" href="opinion/"><span>Opinion &amp; Analysis</span></a>'
+        '<a class="deskhotspot deskthoughts-hotspot" href="thoughts/"><span>Thoughts</span></a>'
+        '<a class="deskhotspot deskphoto-hotspot" href="photography/"><span>Photography</span></a>'
+        '</nav>'
+        '<a class="deskemail" href="'+esc(home_email_href)+'"><span>Email Arafat Rahaman</span></a>'
         '</div>'
         '</section>'
-        '<script>(function(){var root=document.querySelector(".deskclock-object");if(!root)return;var h=root.querySelector("[data-desk-hour]"),m=root.querySelector("[data-desk-minute]"),s=root.querySelector("[data-desk-second]"),label=root.querySelector("[data-desk-clock-label]");function tick(){var parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).formatToParts(new Date());function n(t){var p=parts.find(function(x){return x.type===t});return Number(p?p.value:0)}var hh=n("hour"),mm=n("minute"),ss=n("second");h.style.transform="rotate("+((hh%12)*30+mm*.5)+"deg)";m.style.transform="rotate("+(mm*6+ss*.1)+"deg)";s.style.transform="rotate("+(ss*6)+"deg)";label.textContent="Dhaka · "+String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0")}tick();setInterval(tick,1000)})();</script>'
     )
     def portal_image(path,alt=''):
         if not path:return ''
@@ -306,7 +297,7 @@ def build():
     used={safe_asset(a.get('cover_image')) for a in articles if not a.get('source_url')}
     used.update(safe_asset(p.get('src')) for p in photos)
     used.update(safe_asset(p) for p in c.get('home_images',[]))
-    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/portal-reference-sprite.webp','assets/home/approved-mobile-reporting.svg','assets/home/approved-mobile-opinion.svg','assets/home/approved-mobile-thoughts.svg','assets/home/approved-mobile-photography.svg'})
+    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/portal-reference-sprite.webp','assets/home/approved-desk-desktop.webp','assets/home/approved-mobile-reporting.svg','assets/home/approved-mobile-opinion.svg','assets/home/approved-mobile-thoughts.svg','assets/home/approved-mobile-photography.svg'})
     used.add(safe_asset(c.get('portrait')))
     for asset in used:
         if asset and (SITE/asset).is_file():
