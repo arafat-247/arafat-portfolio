@@ -24,7 +24,7 @@ DESK = '''<section class="deskhome desk-rebuild" aria-labelledby="desk-title">
       <a class="desk-object desk-thoughts" href="thoughts/" aria-label="Explore thoughts"><span class="desk-notebook"><span>Ideas from<br>the in-between.</span><span class="desk-notebook-list">— Notes<br>— Observations<br>— Unfinished questions<br>— A more humane tomorrow?</span></span><span class="desk-tab"><span class="desk-number">3</span><span class="desk-tab-copy"><strong>Thoughts</strong><small>Notes, reflections and work in progress.</small></span><span class="desk-arrow" aria-hidden="true">↗</span></span></a>
       <a class="desk-object desk-photo" href="photography/" aria-label="Explore photography"><span class="desk-photo-print" aria-hidden="true"></span><span class="desk-tab"><span class="desk-number">4</span><span class="desk-tab-copy"><strong>Photography</strong><small>A visual diary of people, places and daily life.</small></span><span class="desk-arrow" aria-hidden="true">↗</span></span></a>
     </div>
-    <div class="desk-signoff"><a href="contact/">Have a story? Get in touch ↗</a><time id="desk-dhaka-time" aria-label="Current time in Dhaka"></time></div>
+    <div class="desk-signoff"><a href="contact/">Have a story? Get in touch ↗</a><time id="desk-dhaka-time" aria-label="Current time in Dhaka"><span class="desk-clock" aria-hidden="true"><i class="desk-hour-hand"></i><i class="desk-minute-hand"></i></span><span class="desk-clock-label"></span></time></div>
   </div>
 </section>'''
 
