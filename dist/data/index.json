@@ -1,6 +1,20 @@
 {
   "articles": [
     {
+      "id": "a6c20036-786b-4442-9344-520f4f7af183",
+      "title": "Manush, tumi emon keno?",
+      "excerpt": "We can stop for a bird, hold an umbrella over a stranger and enter a river to save a life. We can also humiliate, hurt and kill. The distance between those two versions of us is sometimes painfully small.",
+      "category": "Personal",
+      "stream": "thoughts",
+      "date_published": "2026-09-27T00:00:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/uploads/dea14108-086a-43ab-b3bb-f76c11b3a853.webp",
+      "cover_alt": "",
+      "source_name": "",
+      "local_url": "thoughts/manush-tumi-emon-keno/",
+      "credit_type": "byline"
+    },
+    {
       "id": "d996562b-0d84-47de-a280-050acf6e89c5",
       "title": "Dear fellow journalists; We report everyone else's fight for fair pay. What about our wage board?",
       "excerpt": "For many journalists, the last wage structure that reached their newsroom dates to 2013. With the Ninth still largely unimplemented, the harder question is whether any new award would actually be enforced.",
