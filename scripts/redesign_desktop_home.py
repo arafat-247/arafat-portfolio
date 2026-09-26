@@ -34,7 +34,7 @@ def main():
       </header>
       <div class="editorial-main">
         <div class="editorial-intro">
-          <span class="editorial-eyebrow">Independent voice · The Daily Star</span>
+          <span class="editorial-eyebrow">Journalist · The Daily Star</span>
           <h1 id="editorial-title">Arafat<br><em>Rahaman.</em></h1>
           <p>Reporting on education, governance and the decisions that shape everyday life in Bangladesh.</p>
           <a class="editorial-text-link" href="about/">About the journalist <span aria-hidden="true">↗</span></a>
