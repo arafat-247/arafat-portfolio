@@ -85,7 +85,7 @@ class BuildTests(unittest.TestCase):
             self.assertIn('class="desk-card opinion"',home)
             self.assertIn('class="desk-card thoughts"',home)
             self.assertIn('class="desk-card photography"',home)
-            self.assertIn('id="motion-toggle"',home)
+            self.assertIn('class="motion-button"',home)
             self.assertNotIn('class="deskhome desk-rebuild"',home)
             self.assertNotIn('id="desk-dhaka-time"',home)
             self.assertIn('class="portalhome portalhome-mobile"',home)

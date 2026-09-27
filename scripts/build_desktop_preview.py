@@ -10,10 +10,10 @@ PREVIEW = ROOT / 'dist' / 'desktop-preview' / 'index.html'
 
 
 def replace_desk_section(source: str, replacement: str) -> str:
-    start_match = re.search(r'<section\\s+class="[^"]*\\bdeskhome\\b[^"]*"[^>]*>', source, flags=re.I)
+    start_match = re.search(r'<section\s+class="[^"]*\bdeskhome\b[^"]*"[^>]*>', source, flags=re.I)
     if not start_match:
         raise RuntimeError('Desk homepage section not found')
-    token_re = re.compile(r'<section\\b[^>]*>|</section>', re.I)
+    token_re = re.compile(r'<section\b[^>]*>|</section>', re.I)
     depth = 0
     end = None
     for match in token_re.finditer(source, start_match.start()):
