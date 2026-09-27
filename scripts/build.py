@@ -4,6 +4,7 @@ from datetime import datetime
 from urllib.parse import urlsplit
 from core import *
 from social_cards import SocialCardRenderer
+from build_desktop_preview import DESK as DESK_HOME
 
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
@@ -196,33 +197,7 @@ def build():
     home_email=clean(c.get('email',''))
     home_email_href='mailto:'+home_email if home_email else 'contact/'
     photo_image=safe_asset(c.get('home_images',[])[3]) if len(c.get('home_images',[]))>3 else 'assets/home/reference-photo.webp'
-    desk_home=(
-        '<section class="deskhome deskhome-photo" aria-labelledby="deskhome-title">'
-        '<div class="deskstage">'
-        '<picture class="deskvisual" aria-hidden="true">'
-        '<img src="assets/home/approved-desk-desktop.webp" alt="" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">'
-        '</picture>'
-        '<div class="desksemantics">'
-        '<h1 id="deskhome-title">Arafat Rahaman — journalist in Bangladesh</h1>'
-        '<p>Reporting from the ground, unpacking what it means, and keeping a notebook for what lingers. Four ways I tell stories.</p>'
-        '<nav aria-label="Work"><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a></nav>'
-        '</div>'
-        '<nav class="deskhotspots deskhotspots-desktop" aria-label="Homepage navigation">'
-        '<a class="deskhotspot desknav-home" href="./"><span>Home</span></a>'
-        '<a class="deskhotspot desknav-about" href="about/"><span>About</span></a>'
-        '<a class="deskhotspot desknav-work" href="all-work/"><span>Work</span></a>'
-        '<a class="deskhotspot desknav-writing" href="thoughts/"><span>Writing</span></a>'
-        '<a class="deskhotspot desknav-contact" href="contact/"><span>Contact</span></a>'
-        '<a class="deskhotspot deskprofile-hotspot" href="about/"><span>About Arafat Rahaman</span></a>'
-        '<a class="deskhotspot deskreporting-hotspot" href="reporting/"><span>Reporting</span></a>'
-        '<a class="deskhotspot deskopinion-hotspot" href="opinion/"><span>Opinion &amp; Analysis</span></a>'
-        '<a class="deskhotspot deskthoughts-hotspot" href="thoughts/"><span>Thoughts</span></a>'
-        '<a class="deskhotspot deskphoto-hotspot" href="photography/"><span>Photography</span></a>'
-        '</nav>'
-        '<a class="deskemail" href="'+esc(home_email_href)+'"><span>Email Arafat Rahaman</span></a>'
-        '</div>'
-        '</section>'
-    )
+    desk_home=DESK_HOME
     def portal_image(path,alt=''):
         if not path:return ''
         return f'<img class="portalimage" src="{esc(path)}" alt="{esc(alt)}" loading="lazy" fetchpriority="low" decoding="async">'
