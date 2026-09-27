@@ -4,7 +4,7 @@ from datetime import datetime
 from urllib.parse import urlsplit
 from core import *
 from social_cards import SocialCardRenderer
-from build_desktop_preview import DESK as DESK_HOME
+from reference_desk import DESK as DESK_HOME
 
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
@@ -272,7 +272,7 @@ def build():
     used={safe_asset(a.get('cover_image')) for a in articles if not a.get('source_url')}
     used.update(safe_asset(p.get('src')) for p in photos)
     used.update(safe_asset(p) for p in c.get('home_images',[]))
-    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/portal-reference-sprite.webp','assets/home/approved-desk-desktop.webp','assets/home/approved-mobile-reporting.svg','assets/home/approved-mobile-opinion.svg','assets/home/approved-mobile-thoughts.svg','assets/home/approved-mobile-photography.svg'})
+    used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/portal-reference-sprite.webp','assets/home/approved-desk-desktop.webp','assets/home/approved-mobile-reporting.svg','assets/home/approved-mobile-opinion.svg','assets/home/approved-mobile-thoughts.svg','assets/home/approved-mobile-photography.svg','assets/home/reference-desk-bg.webp','assets/home/reference-reporting.webp','assets/home/reference-opinion.webp','assets/home/reference-photography.webp','assets/home/reference-thoughts.webp','assets/home/reference-desk-tablet-bg.webp','assets/home/reference-four-objects.webp','assets/home/reference-leaf.webp','assets/home/reference-portrait.webp','assets/home/reference-cup.webp'})
     used.add(safe_asset(c.get('portrait')))
     for asset in used:
         if asset and (SITE/asset).is_file():
