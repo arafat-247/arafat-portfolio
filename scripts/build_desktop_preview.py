@@ -52,7 +52,8 @@ def replace_desk_section(source: str, replacement: str) -> str:
 
 def main():
     source = HOME.read_text(encoding='utf-8')
-    source = replace_desk_section(source, DESK)
+    preview_desk = DESK.replace('href="./"', 'href="desktop-preview/"').replace('href="#desk-work"', 'href="desktop-preview/#desk-work"')
+    source = replace_desk_section(source, preview_desk)
     css = (ROOT / 'scripts' / 'desktop_preview.css').read_text(encoding='utf-8')
     js = (ROOT / 'scripts' / 'desktop_preview.js').read_text(encoding='utf-8')
     source = source.replace('<head>', '<head><base href="/"><meta name="robots" content="noindex,nofollow">', 1)
