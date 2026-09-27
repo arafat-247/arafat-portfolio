@@ -292,6 +292,65 @@
     background:#eadcc4;
   }
 
+  /* Reporting stays one continuous editorial stream, never a two-up card grid. */
+  body.inner-prototype[data-prototype-view="reporting"] .work-list{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    margin-top:6px;
+  }
+  body.inner-prototype[data-prototype-view="reporting"] .workitem{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 38px;
+    grid-template-rows:auto auto;
+    gap:8px 24px;
+    padding:27px 10px 29px;
+    border:0;
+    border-bottom:1px solid #d1c0a7;
+    background:transparent;
+    box-shadow:none;
+    transform:none;
+  }
+  body.inner-prototype[data-prototype-view="reporting"] .workitem:first-child{
+    border-top:1px solid #d1c0a7;
+  }
+  body.inner-prototype[data-prototype-view="reporting"] .workitem:hover{
+    padding-inline:10px;
+    border-color:#b99a70;
+    background:rgba(234,220,196,.35);
+    transform:none;
+    box-shadow:none;
+  }
+  body.inner-prototype[data-prototype-view="reporting"] .workmeta{
+    grid-column:1/-1;
+    grid-row:1;
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px 12px;
+    margin:0;
+  }
+  body.inner-prototype[data-prototype-view="reporting"] .workcopy{
+    grid-column:1;
+    grid-row:2;
+    max-width:880px;
+  }
+  body.inner-prototype[data-prototype-view="reporting"] .workcopy h2{
+    font-size:clamp(25px,2.2vw,34px);
+    line-height:1.15;
+  }
+  body.inner-prototype[data-prototype-view="reporting"] .workcopy p{
+    max-width:820px;
+    margin-top:9px;
+    font-size:13px;
+    line-height:1.6;
+  }
+  body.inner-prototype[data-prototype-view="reporting"] .read{
+    grid-column:2;
+    grid-row:2;
+    align-self:center;
+    justify-self:end;
+  }
+
   body.inner-prototype .reading{
     width:min(100%,1030px);
     max-width:1030px;
