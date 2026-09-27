@@ -24,5 +24,11 @@ class DesktopPreviewIsolationTests(unittest.TestCase):
         self.assertEqual(result.count('class="deskhome'), 1)
 
 
+    def test_shared_desk_markup_is_live_safe(self):
+        self.assertNotIn('href="desktop-preview/', build_desktop_preview.DESK)
+        self.assertIn('href="./" aria-current="page"', build_desktop_preview.DESK)
+        self.assertIn('href="#desk-work"', build_desktop_preview.DESK)
+
+
 if __name__ == "__main__":
     unittest.main()
