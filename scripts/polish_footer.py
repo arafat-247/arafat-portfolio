@@ -162,6 +162,17 @@ def footer_markup(settings: dict) -> str:
     </footer>'''
 
 
+def replace_page_footer(source: str, footer: str, *, homepage: bool = False) -> str:
+    """Replace the shared site footer without touching the reference desk footer."""
+    if homepage:
+        mobile_start = source.find('<section class="portalhome portalhome-mobile"')
+        if mobile_start >= 0:
+            match = FOOTER_RE.search(source, mobile_start)
+            if match:
+                return source[:match.start()] + footer + source[match.end():]
+    return FOOTER_RE.sub(footer, source, count=1)
+
+
 def main() -> None:
     if not DIST.is_dir():
         raise FileNotFoundError("dist/ does not exist; run scripts/build.py first")
@@ -174,7 +185,7 @@ def main() -> None:
         source = page.read_text(encoding="utf-8")
         if not FOOTER_RE.search(source):
             continue
-        updated = FOOTER_RE.sub(footer, source, count=1)
+        updated = replace_page_footer(source, footer, homepage=(page == DIST / "index.html"))
         if updated != source:
             page.write_text(updated, encoding="utf-8")
             changed += 1
