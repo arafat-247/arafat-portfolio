@@ -1,5 +1,9 @@
+import sys
 import unittest
-from scripts import build_inner_preview
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+import build_inner_preview
 
 SAMPLE = '''<!doctype html><html><head><title>Old</title></head><body class="inner" data-root="../"><aside class="identity"></aside><div class="right"><main><section class="page"></section></main></div></body></html>'''
 
