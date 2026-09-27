@@ -53,6 +53,15 @@ def main() -> None:
     write_preview("reporting", decorate(reporting_source, "reporting", "Reports & Features"))
     write_preview("story", decorate(story_source, "story", "Story page"))
     write_preview("about", decorate(about_source, "about", "About"))
+
+    landing = DIST / "inner-preview" / "index.html"
+    landing.parent.mkdir(parents=True, exist_ok=True)
+    landing.write_text(
+        '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow">'
+        '<meta http-equiv="refresh" content="0;url=/inner-preview/reporting/"><title>Desktop inner-page prototype</title></head>'
+        '<body><p><a href="/inner-preview/reporting/">Open the desktop inner-page prototype</a></p></body></html>',
+        encoding="utf-8",
+    )
     print("Desktop inner-page prototypes built at /inner-preview/ without modifying live inner pages")
 
 if __name__ == "__main__":
