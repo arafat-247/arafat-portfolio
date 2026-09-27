@@ -26,8 +26,10 @@ class DesktopPreviewIsolationTests(unittest.TestCase):
 
     def test_shared_desk_markup_is_live_safe(self):
         self.assertNotIn('href="desktop-preview/', build_desktop_preview.DESK)
-        self.assertIn('href="./" aria-current="page"', build_desktop_preview.DESK)
-        self.assertIn('href="#desk-work"', build_desktop_preview.DESK)
+        self.assertIn('href="./"', build_desktop_preview.DESK)
+        self.assertIn('href="#work"', build_desktop_preview.DESK)
+        self.assertIn('class="clock-surface desktop-clock"', build_desktop_preview.DESK)
+        self.assertIn('class="category-grid"', build_desktop_preview.DESK)
 
 
 if __name__ == "__main__":
