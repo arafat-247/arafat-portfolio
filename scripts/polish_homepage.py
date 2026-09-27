@@ -10,7 +10,7 @@ HOME = DIST / "index.html"
 CSS = DIST / "portfolio.css"
 ASSET_VERSION_RE = re.compile(r"portfolio\\.css\\?v=[0-9.]+", re.I)
 SCRIPT_VERSION_RE = re.compile(r"portfolio\\.js\\?v=[0-9.]+", re.I)
-ASSET_VERSION = "21.2.3"
+ASSET_VERSION = "21.2.4"
 
 HOME_CSS = r"""
 
@@ -471,8 +471,12 @@ def main() -> None:
     source = ASSET_VERSION_RE.sub(f"portfolio.css?v={ASSET_VERSION}", source)
     source = SCRIPT_VERSION_RE.sub(f"portfolio.js?v={ASSET_VERSION}", source)
     source = re.sub(r'<style id="homepage-critical">.*?</style>', '', source, flags=re.I | re.S)
-    critical = '<style id="homepage-critical">\n' + HOME_CSS + '\n</style>'
+    source = re.sub(r'<script id="live-desk-interaction">.*?</script>', '', source, flags=re.I | re.S)
+    desktop_css = (ROOT / "scripts" / "desktop_preview.css").read_text(encoding="utf-8")
+    desk_js = (ROOT / "scripts" / "desktop_preview.js").read_text(encoding="utf-8")
+    critical = '<style id="homepage-critical">\n' + desktop_css + '\n' + HOME_CSS + '\n</style>'
     source = source.replace("</head>", critical + "</head>", 1)
+    source = source.replace("</body>", '<script id="live-desk-interaction">\n' + desk_js + '\n</script></body>', 1)
     HOME.write_text(source, encoding="utf-8")
 
     css_text = CSS.read_text(encoding="utf-8")
@@ -499,7 +503,7 @@ def main() -> None:
         if updated != page_source:
             page.write_text(updated, encoding="utf-8")
             versioned_pages += 1
-    print(f"Homepage polish: photographic_desktop=1, flowing_mobile=1, mobile_menu=1, mobile_audited=1, mobile_contained=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1")
+    print(f"Homepage polish: coded_desktop=1, flowing_mobile=1, mobile_menu=1, mobile_audited=1, mobile_contained=1, asset_version={ASSET_VERSION}, versioned_pages={versioned_pages}, css_isolated=1, inline_critical=1")
 
 
 if __name__ == "__main__":
