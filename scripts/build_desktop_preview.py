@@ -10,11 +10,11 @@ DESK = '''<section class="deskhome desk-rebuild" aria-labelledby="desk-title">
   <div class="deskstage desk-scene" id="desk-top">
     <img class="desk-photography" src="assets/home/approved-desk-desktop.webp" alt="" width="1447" height="1087" fetchpriority="high" decoding="async">
     <header class="desk-masthead">
-      <a class="desk-brand" href="desktop-preview/" aria-current="page"><strong id="desk-title">Arafat Rahaman</strong><span>Journalist · Bangladesh</span></a>
-      <nav class="desk-nav" aria-label="Main navigation"><a href="desktop-preview/" aria-current="page">Home</a><a href="about/">About</a><a href="desktop-preview/#desk-work">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a></nav>
+      <a class="desk-brand" href="./" aria-current="page"><strong id="desk-title">Arafat Rahaman</strong><span>Journalist · Bangladesh</span></a>
+      <nav class="desk-nav" aria-label="Main navigation"><a href="./" aria-current="page">Home</a><a href="about/">About</a><a href="#desk-work">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a></nav>
       <button class="desk-menu-button" type="button" aria-expanded="false" aria-controls="desk-mobile-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
     </header>
-    <nav class="desk-mobile-nav" id="desk-mobile-nav" aria-label="Mobile navigation" hidden><a href="desktop-preview/">Home</a><a href="about/">About</a><a href="desktop-preview/#desk-work">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a></nav>
+    <nav class="desk-mobile-nav" id="desk-mobile-nav" aria-label="Mobile navigation" hidden><a href="./">Home</a><a href="about/">About</a><a href="#desk-work">Work</a><a href="thoughts/">Writing</a><a href="contact/">Contact</a></nav>
     <span class="desk-scribble-mask" aria-hidden="true"></span><p class="desk-scribble">Stories<br>People<br>Places</p>
     <a class="desk-portrait" href="about/" aria-label="Read about Arafat Rahaman"><span class="desk-portrait-image" aria-hidden="true"></span><span class="desk-portrait-caption"><strong>Arafat Rahaman</strong><span>Journalist covering education, governance, accountability and social issues.</span></span></a>
     <span class="desk-intro-mask" aria-hidden="true"></span><p class="desk-intro">Reporting from the ground, unpacking what it means, and keeping a notebook for what lingers. Four ways I tell stories.</p>
