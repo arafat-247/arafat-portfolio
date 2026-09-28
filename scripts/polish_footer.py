@@ -79,10 +79,40 @@ FOOTER_CSS = r"""
 body.home .homecontent{padding-bottom:0}
 html[data-theme="dark"] .sitefooter{background:#052f29}
 
+@media(min-width:801px){
+  body.inner .sitefooter{
+    max-width:1220px;
+    margin:0 auto 26px;
+    padding:25px 0 13px;
+    border-top:1px solid rgba(245,232,211,.22);
+    color:#f5e9d6;
+    background:transparent;
+  }
+  body.inner .footergrid{
+    max-width:none;
+    grid-template-columns:1.3fr 1.15fr .8fr 1fr;
+    gap:20px;
+  }
+  body.inner .footeridentity,
+  body.inner .footergroup{padding:0 0 0 22px;min-height:104px;border-left:1px solid rgba(245,232,211,.18)}
+  body.inner .footeridentity{padding-left:0;border-left:0}
+  body.inner .footerart{display:none}
+  body.inner .footername{font-family:"Libre Baskerville",Georgia,serif}
+  body.inner .footertagline{font:italic 13px/1.4 "Libre Baskerville",Georgia,serif;transform:none}
+  body.inner .footerbase{max-width:none;margin-top:18px;border-color:rgba(245,232,211,.18)}
+  html[data-theme="dark"] body.inner .sitefooter{background:transparent}
+}
+
 @media(max-width:980px){
   .footergrid{grid-template-columns:1.2fr .8fr .7fr .8fr}
   .footerart{grid-column:1/-1;min-height:70px;margin-top:12px;padding:12px 0 0;border-left:0;border-top:1px solid rgb(244 240 231 / 14%)}
   .footerlandmark{width:250px}
+}
+@media(min-width:801px) and (max-width:1100px){
+  body.inner .footergrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 30px}
+  body.inner .footeridentity,
+  body.inner .footergroup{min-height:0}
+  body.inner .footerabout{padding-left:0;border-left:0}
 }
 @media(max-width:800px){
   .sitefooter{padding:19px 20px calc(14px + env(safe-area-inset-bottom))}
