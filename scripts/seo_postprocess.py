@@ -476,6 +476,10 @@ def add_internal_discovery_links() -> tuple[int, int, int]:
     for page in DIST.rglob("index.html"):
         if "admin" in page.parts:
             continue
+        # The desk homepage has a deliberately compact sign-off; topic links
+        # belong in the inner-page navigation rather than inside that layout.
+        if page == DIST / "index.html":
+            continue
         source = page.read_text(encoding="utf-8")
         if 'data-seo-topics="1"' in source or "</footer>" not in source:
             continue
