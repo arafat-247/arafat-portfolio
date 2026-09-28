@@ -76,6 +76,27 @@ ARTICLE_END_CSS = """
 html[data-theme="dark"] .publication-strip{background:#1a2320}
 html[data-theme="dark"] .publication-strip__action{background:#235a51}
 html[data-theme="dark"] .portfolio-related__all,html[data-theme="dark"] .portfolio-related-card__more{color:#9bc4b8}
+@media(min-width:801px){
+  body.inner .casepanel,
+  body.inner .casecard,
+  body.inner .caseoriginal,
+  body.inner .publication-strip,
+  body.inner .portfolio-related-card{
+    border-color:#cdbb9f;
+    background:#eadcc4;
+  }
+  body.inner .caseoriginal{border-left:3px solid #9c452f}
+  body.inner .casekicker,
+  body.inner .portfolio-related__kicker,
+  body.inner .portfolio-related-card__tag,
+  body.inner .portfolio-related__all,
+  body.inner .portfolio-related-card__more{color:#9c452f}
+  body.inner .publication-strip__action{background:#6f3c29}
+  body.inner .publication-strip__action:hover{background:#9c452f}
+  body.inner .portfolio-related-card__placeholder{
+    background:linear-gradient(135deg,#6f3c29,#b3906a);
+  }
+}
 @media(max-width:800px){
   .publication-strip{grid-template-columns:minmax(0,1fr) auto;gap:8px 10px;margin-top:24px;padding:10px 11px}
   .publication-strip__logo{font-size:20px}
