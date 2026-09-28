@@ -11,13 +11,13 @@
   "author_listing_verified": true,
   "stream": "reporting",
   "category": "News",
-  "date_published": "2024-02-01T00:00:00+06:00",
+  "date_published": "2024-02-01T21:46:50+06:00",
   "date_modified": "",
   "body_html": "<p>Passengers thronged Dhaka Metro Rail stations as the month-long Amar Ekushey Book Fair kicked off today.</p><p>At the Dhaka University station, hundreds of passengers were seen waiting at packed platforms, hoping to board already overflowing trains.</p><p>This correspondent witnessed at least four trains arrive and depart, all of them filled to the brim, from 6:00pm to 7:00pm. However, many were seen waiting eagerly for the next ride.</p><p>Many frustrated passengers shared their experiences with The Daily Star.</p><p>Sabbir Islam, a private university student, said, &quot;I came here on the metro and thought I would used it on my return journey. But the crowd is unbelievable! I&#x27;ve already missed two trains... Everyone&#x27;s struggling even getting closer to the trains.&quot;</p><p>He urged authorities to increase the number of trains or seats.</p><p>Another passenger, Antora Biswas, said, &quot;As it was raining outside, I chose to take the metro to return to Motijheel. But seeing the amount of passengers waiting on platforms, it seems like I have already made a mistake.&quot;</p><p>Mofiz Uddin, a metro rail official, was seen tirelessly trying to manage the crowd with a megaphone. He was repeatedly warning passengers to stay off the tracks for safety. Despite his sincere efforts, the situation remained chaotic.</p><p>Talking about the excessive crowd, he told this newspaper, &quot;I&#x27;ve never seen anything like this. Usually, two staff can handle the platform. But today, even with four of us, we&#x27;re struggling to manage the sheer number of people.&quot;</p><p>He attributed the surge of passengers to the book fair and VIP movement, which he said caused a temporary influx of passengers.</p><p>This correspondent also struggled to get on a train, missing five before finally boarding the sixth one after an hour-long wait.</p><p>Prime Minister Sheikh Hasina opened the Amar Ekushey Book Fair-2024 at the Bangla Academy premises in Dhaka this afternoon.</p>",
-  "source_image": "",
-  "cover_image": "",
+  "source_image": "https://www.thedailystar.net/sites/default/files/styles/social_share/public/media/api_images/2024/02/01/dhaka%20metro%20see%20overflowed%20passengers_2ff2.jpg",
+  "cover_image": "assets/imported/3503150f73d5d25b7758a5fe.jpg",
   "word_count": 304,
-  "fetched_at": "2026-09-21T08:14:26.407850+00:00",
+  "fetched_at": "2026-09-28T09:00:49.377792+00:00",
   "resolved_source_url": "https://www.thedailystar.net/news/bangladesh/transport/news/metro-sees-huge-crowd-book-fair-kicks-3534081",
   "status": "published",
   "local_url": "stories/metro-sees-huge-crowd-as-book-fair-kicks-off/",
@@ -25,5 +25,5 @@
     "stories/7226061d3098db8d7f3c-metro-sees-huge-crowd-as-book-fair-kicks-off/"
   ],
   "first_archived_at": "2026-09-06T11:17:47.892783+00:00",
-  "content_hash": "073ce2d032234044baeea5411cc212401c7e4229c1b59550043101dd83617172"
+  "content_hash": "fc829b5903bbf45fbc49d645c8a172b8a72ed6eb4582b8dff73945a0e89213fa"
 }
