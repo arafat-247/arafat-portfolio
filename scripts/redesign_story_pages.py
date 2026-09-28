@@ -323,6 +323,42 @@ html[data-theme="dark"] .bodycopy{color:#edf0eb!important}
   .storyhero-visual{min-height:170px!important}
   .storyhero-art{min-height:170px!important}
 }
+@media(min-width:801px){
+  body.inner .reading{--story-accent:#9c452f}
+  body.inner .storyhead.storyhero{
+    border:1px solid #cdbb9f!important;
+    border-radius:0!important;
+    background:#eadcc4!important;
+    box-shadow:none!important;
+  }
+  body.inner .storyhero-copy{
+    background:#f5ede0!important;
+  }
+  body.inner .storyhero h1{
+    color:#271a13!important;
+    font-family:"Libre Baskerville",Georgia,serif!important;
+  }
+  body.inner .storyhero .standfirst{color:#635449!important}
+  body.inner .storyhero-visual{
+    background:linear-gradient(145deg,#6f3c29,#25150e)!important;
+  }
+  body.inner .storyhero-art:after{display:none!important}
+  body.inner .storyhero-art-copy strong{font-family:"Libre Baskerville",Georgia,serif!important}
+  body.inner .storyhero-photo{background:#3a2115!important}
+  body.inner .storymain{color:#30251d!important}
+  body.inner .bodycopy{color:#30251d!important}
+  body.inner .sourcebox{border-color:#cdbb9f!important}
+  html[data-theme="dark"] body.inner .storyhead.storyhero{
+    border-color:#cdbb9f!important;background:#eadcc4!important;
+  }
+  html[data-theme="dark"] body.inner .storyhero-copy{background:#f5ede0!important}
+  html[data-theme="dark"] body.inner .storyhero h1{color:#271a13!important}
+  html[data-theme="dark"] body.inner .storyhero .standfirst{color:#635449!important}
+  html[data-theme="dark"] body.inner .bodycopy{color:#30251d!important}
+  html[data-theme="dark"] body.inner .storyfooter .byline,
+  html[data-theme="dark"] body.inner .storypublication strong{color:#30251d!important}
+  html[data-theme="dark"] body.inner .storyactions button{color:#30251d!important;background:#eadcc4!important}
+}
 '''.strip()
 
 
