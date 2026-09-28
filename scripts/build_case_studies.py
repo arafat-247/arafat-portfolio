@@ -383,6 +383,8 @@ def main() -> None:
     for page in DIST.rglob("index.html"):
         if "admin" in page.parts:
             continue
+        if page == DIST / "index.html":
+            continue
         source = page.read_text(encoding="utf-8")
         updated = insert_nav_link(source)
         if updated != source:
