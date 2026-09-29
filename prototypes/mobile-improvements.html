@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Arafat Rahaman — Mobile prototype</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{--paper:#f4eee4;--ink:#171512;--green:#073f38;--green2:#0b5b50;--muted:#746654;--line:rgba(39,29,20,.13);--serif:Georgia,"Times New Roman",serif;--sans:Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}html{background:#ddd5ca}body{margin:0;background:#ddd5ca;color:var(--ink);font-family:var(--serif)}
+.phone{width:min(100%,430px);margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;min-height:58px;padding:8px 13px;border-bottom:1px solid var(--line);background:rgba(247,241,231,.98)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}.monogram{display:grid;width:38px;height:38px;place-items:center;border-radius:50%;background:var(--green2);color:white;font:700 13px/1 var(--serif)}.brandcopy{display:grid;gap:2px}.brandcopy strong{font:400 20px/.95 var(--serif);letter-spacing:-.035em}.brandcopy small{font:700 6px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.menu{position:relative}.menu summary{list-style:none;display:grid;width:42px;height:42px;place-content:center;gap:5px;cursor:pointer}.menu summary::-webkit-details-marker{display:none}.menu summary i{width:24px;height:1.5px;background:#171512;display:block}.menu nav{position:absolute;right:0;top:48px;width:230px;padding:9px;background:#faf5ea;border:1px solid var(--line);box-shadow:0 14px 32px rgba(0,0,0,.16)}.menu nav a{display:flex;min-height:44px;align-items:center;justify-content:space-between;padding:0 10px;border-bottom:1px solid var(--line);color:inherit;text-decoration:none;font:600 16px/1 var(--serif)}.menu nav a:last-child{border-bottom:0}.menu:not([open]) nav{display:none}
+.hero{position:relative;min-height:376px;overflow:hidden;background:var(--green);color:white}.hero-copy{position:relative;z-index:4;width:62%;padding:48px 12px 26px 17px}.eyebrow{font:800 7px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#d9c7aa}.hero h1{margin:8px 0 13px;font:400 clamp(35px,10vw,43px)/.91 var(--serif);letter-spacing:-.055em}.hero p{margin:0;max-width:95%;font:400 12px/1.46 var(--serif);color:#f0ebe3}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.actions a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 13px;border:1px solid rgba(255,255,255,.7);border-radius:999px;color:white;text-decoration:none;font:700 9px/1 var(--sans)}.actions a.primary{background:var(--paper);border-color:var(--paper);color:var(--green)}
+.hero-photo{position:absolute;z-index:2;right:0;top:0;width:48%;height:100%;margin:0;overflow:hidden;clip-path:polygon(20% 0,100% 0,100% 100%,0 100%,11% 50%)}.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:51% 38%;filter:grayscale(1) contrast(1.04)}.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--green) 0,rgba(7,63,56,.42) 18%,transparent 48%)}
+.section{padding:27px 16px 22px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:14px}.section-head h2{margin:0;font:400 29px/.96 var(--serif);letter-spacing:-.04em}.section-head a{font:700 10px/1 var(--sans);color:var(--green2);text-decoration:none}
+.story{display:block;color:inherit;text-decoration:none;border:1px solid var(--line);background:#fbf7f0;border-radius:5px;overflow:hidden}.story + .story{margin-top:10px}.story.lead{display:grid;grid-template-columns:42% 58%;min-height:150px}.story figure{margin:0;background:#e5dbcb;min-height:112px;overflow:hidden}.story figure img{width:100%;height:100%;object-fit:cover}.editorial{height:100%;min-height:150px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(145deg,#0f5a50,#17493f 55%,#d77b5e 125%);color:#fff}.editorial span{font:800 7px/1 var(--sans);letter-spacing:.15em}.editorial strong{margin-top:7px;font:600 17px/1.05 var(--serif)}.story-copy{padding:11px}.story-meta{display:block;margin-bottom:6px;font:800 6.5px/1.1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#7d6a54}.story h3{margin:0;font:600 17px/1.07 var(--serif);letter-spacing:-.025em}.story p{margin:8px 0 0;color:#685948;font:400 11px/1.38 var(--serif)}
+.morestories{display:grid;gap:10px;margin-top:10px}.morestories .story{margin:0;display:grid;grid-template-columns:34% 66%;min-height:108px}.morestories figure{min-height:108px}
+.divider{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-block:1px solid var(--line);background:#eee5d8;color:var(--green2);font:700 13px/1 var(--serif)}
+.portfolio{padding:0 0 20px}.panel{position:relative;min-height:210px;padding:26px 20px 20px;overflow:hidden;color:#171512}.panel + .panel{margin-top:1px}.panel small{display:block;margin-bottom:10px;font:800 8px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}.panel strong{display:block;max-width:64%;font:400 32px/.94 var(--serif);letter-spacing:-.04em}.panel p{max-width:64%;font:400 12px/1.35 var(--serif)}.panel .go{position:absolute;left:20px;bottom:18px;display:grid;width:42px;height:42px;place-items:center;border:1px solid currentColor;border-radius:50%;text-decoration:none;color:inherit}.reporting{background:#ead5b4 url("https://arafatrahaman.com/assets/home/approved-mobile-reporting.svg") center/cover no-repeat}.opinion{background:#981911 url("https://arafatrahaman.com/assets/home/approved-mobile-opinion.svg") center/cover no-repeat;color:white}.thoughts{background:#efe7da url("https://arafatrahaman.com/assets/home/approved-mobile-thoughts.svg") center/cover no-repeat}.photo{background:#07100f url("https://arafatrahaman.com/assets/home/approved-mobile-photography.svg") center/cover no-repeat;color:white}
+.footer{padding:24px 16px 28px;background:#0f3f39;color:#f6f0e7}.footer h2{margin:0 0 12px;font:400 28px/1 var(--serif)}.footer a{color:inherit}.footerlinks{display:flex;flex-wrap:wrap;gap:15px;font:700 10px/1 var(--sans)}.note{padding:10px 12px;background:#fff7d8;color:#574815;font:700 11px/1.4 var(--sans);border-bottom:1px solid #ead89d}
+@media(max-width:360px){.hero{min-height:390px}.hero-copy{width:65%;padding-left:14px}.hero h1{font-size:34px}.story.lead{grid-template-columns:1fr}.story.lead .editorial{min-height:125px}.morestories .story{grid-template-columns:1fr}.morestories figure{aspect-ratio:16/8}.panel{min-height:200px}.panel strong,.panel p{max-width:72%}}
+</style>
+</head>
+<body>
+<div class="phone">
+<div class="note">Prototype only — this file does not affect the live website.</div>
+<header class="topbar">
+<a class="brand" href="#"><span class="monogram">AR</span><span class="brandcopy"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></span></a>
+<details class="menu"><summary aria-label="Open menu"><i></i><i></i><i></i></summary><nav><a href="#about">About <span>→</span></a><a href="#reporting">Reporting <span>→</span></a><a href="#opinion">Opinion <span>→</span></a><a href="#thoughts">Thoughts <span>→</span></a><a href="#photography">Photography <span>→</span></a><a href="#contact">Contact <span>→</span></a></nav></details>
+</header>
+<section class="hero" id="about">
+<div class="hero-copy"><span class="eyebrow">Journalist · Bangladesh</span><h1>Arafat Rahaman</h1><p>Journalist at The Daily Star, reporting on education, governance, public accountability and social issues across Bangladesh.</p><div class="actions"><a class="primary" href="#reporting">Explore work</a><a href="#contact">Contact</a></div></div>
+<figure class="hero-photo"><img src="https://arafatrahaman.com/assets/portraits/byline.avif" alt=""></figure>
+</section>
+<section class="section" id="reporting">
+<div class="section-head"><h2>Selected reporting</h2><a href="https://arafatrahaman.com/reporting/">View all →</a></div>
+<a class="story lead" href="https://arafatrahaman.com/stories/half-the-children-can-t-read-comprehend/"><div class="editorial"><span>REPORTING · 8 SEP 2026</span><strong>Half the children can’t read, comprehend</strong></div><div class="story-copy"><span class="story-meta">Education · Data</span><h3>Bangladesh’s foundational reading gap</h3><p>A data-led report on tested reading and comprehension, grade-level gaps and inequality.</p></div></a>
+<div class="morestories">
+<a class="story" href="https://arafatrahaman.com/stories/teacher-shortages-strain-government-primary-schools/"><figure><img loading="lazy" src="https://arafatrahaman.com/assets/home/reference-report.webp" alt=""></figure><div class="story-copy"><span class="story-meta">8 Aug 2026 · Education</span><h3>Teacher shortages strain government primary schools</h3></div></a>
+<a class="story" href="https://arafatrahaman.com/stories/total-literacy-elusive-after-tk-4-000cr-spent/"><figure><img loading="lazy" src="https://arafatrahaman.com/assets/home/reference-photo.webp" alt=""></figure><div class="story-copy"><span class="story-meta">8 Sep 2025 · Reporting</span><h3>Total literacy elusive after Tk 4,000cr spent</h3></div></a>
+</div>
+</section>
+<div class="divider"><span>Explore the portfolio</span><b>↓</b></div>
+<section class="portfolio">
+<article class="panel reporting"><small>01 · Reporting</small><strong>News, investigations and field reporting</strong><p>Education, governance, rights and public accountability.</p><a class="go" href="https://arafatrahaman.com/reporting/">→</a></article>
+<article class="panel opinion" id="opinion"><small>02 · Opinion & analysis</small><strong>Context beyond the headline</strong><p>Commentary and analysis on public life and journalism.</p><a class="go" href="https://arafatrahaman.com/opinion/">→</a></article>
+<article class="panel thoughts" id="thoughts"><small>03 · Thoughts</small><strong>Notes, reflections and ideas</strong><p>Shorter writing on reporting, society and lived experience.</p><a class="go" href="https://arafatrahaman.com/thoughts/">→</a></article>
+<article class="panel photo" id="photography"><small>04 · Photography</small><strong>Bangladesh, frame by frame</strong><p>Selected photographs from reporting and travel.</p><a class="go" href="https://arafatrahaman.com/photography/">→</a></article>
+</section>
+<footer class="footer" id="contact"><h2>Have a story?</h2><div class="footerlinks"><a href="mailto:arafat.mcj@yahoo.com">Email</a><a href="https://bd.linkedin.com/in/arafat-rahaman">LinkedIn</a><a href="https://www.thedailystar.net/author/arafat-rahaman">The Daily Star</a></div></footer>
+</div>
+</body>
+</html>
