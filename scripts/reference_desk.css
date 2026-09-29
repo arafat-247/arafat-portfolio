@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 body.home,body.home .right,body.home main{background:#110c09!important}
 .deskhome.desk{padding:0;background-color:#110c09}
 :root{--desk-image:url('assets/home/reference-desk-bg.webp')}
