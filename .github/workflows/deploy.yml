@@ -68,6 +68,7 @@ jobs:
           python scripts/build.py
           python scripts/enrich_entity.py
           python scripts/validate.py
+          python scripts/build_portfolio_features.py
           python scripts/seo_postprocess.py
           python scripts/build_case_studies.py
           python scripts/clean_related_previews.py
