@@ -187,10 +187,18 @@ function fitEpaper(){
  if(!epaperDialog||!epaperSheet)return;
  const viewport=epaperDialog.querySelector('.epaper-viewport');
  const natural=measureEpaper();
- const availableWidth=Math.max(260,viewport.clientWidth-32);
+ const compact=window.matchMedia('(max-width:800px)').matches;
+ const availableWidth=Math.max(240,viewport.clientWidth-(compact?12:32));
  const availableHeight=Math.max(360,viewport.clientHeight-32);
- setEpaperScale(Math.min(1,availableWidth/natural.width,availableHeight/natural.height));
- setEpaperStatus('Fitted to screen');
+ const scale=compact
+  ? Math.min(1,availableWidth/natural.width)
+  : Math.min(1,availableWidth/natural.width,availableHeight/natural.height);
+ setEpaperScale(scale);
+ if(epaperStage){
+  epaperStage.style.marginLeft='auto';
+  epaperStage.style.marginRight='auto';
+ }
+ setEpaperStatus(compact?'Fit to width':'Fit to screen');
 }
 function loadExternalScript(src,test){
  if(test())return Promise.resolve();
@@ -248,10 +256,21 @@ async function downloadEpaperImage(){
   if(button)button.disabled=true;
   const canvas=await renderEpaperCanvas();
   const blob=await new Promise((resolve,reject)=>canvas.toBlob(value=>value?resolve(value):reject(new Error('Image export failed')),'image/png'));
+  const filename=epaperFilename('png');
+  if(navigator.canShare){
+   try{
+    const file=new File([blob],filename,{type:'image/png'});
+    if(navigator.canShare({files:[file]})){
+     await navigator.share({files:[file],title:'E-paper article'});
+     setEpaperStatus(`Image ready · ${canvas.width} × ${canvas.height}px`);
+     return;
+    }
+   }catch(error){if(error?.name==='AbortError')return}
+  }
   const url=URL.createObjectURL(blob),link=document.createElement('a');
-  link.href=url;link.download=epaperFilename('png');document.body.appendChild(link);link.click();link.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),1500);
-  setEpaperStatus(`HD image saved · ${canvas.width} × ${canvas.height}px`);
+  link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),2500);
+  setEpaperStatus(`Image ready · ${canvas.width} × ${canvas.height}px`);
  }catch(error){
   console.error(error);setEpaperStatus('Image download failed. Please try again.');
  }finally{if(button)button.disabled=false}
