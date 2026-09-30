@@ -9,7 +9,7 @@ from reference_desk import DESK as DESK_HOME
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='21.3.0'
+ASSET_VERSION='21.4.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -143,11 +143,12 @@ class Builder:
                            f'decoding="async"><figcaption>{esc(a.get("cover_credit",""))}</figcaption></figure>')
         share_dialog='''<dialog class="sharedialog" id="share-dialog" aria-labelledby="share-dialog-title"><div class="sharehead"><div><span>Share</span><h2 id="share-dialog-title">Share this story</h2></div><button type="button" data-close-share aria-label="Close sharing window">×</button></div><div class="sharegrid"><a href="#" data-share-service="facebook"><strong>Facebook</strong><span>Share in a new window ↗</span></a><a href="#" data-share-service="whatsapp"><strong>WhatsApp</strong><span>Send to a contact ↗</span></a><a href="#" data-share-service="x"><strong>X</strong><span>Post this story ↗</span></a><a href="#" data-share-service="linkedin"><strong>LinkedIn</strong><span>Share with your network ↗</span></a><button type="button" data-copy-share><strong>Copy link</strong><span>Copy the clean article address</span></button></div><p class="sharestatus" data-share-status role="status" aria-live="polite"></p></dialog>'''
         epaper_dialog=(f'<dialog class="epaper-dialog" id="epaper-dialog" aria-labelledby="epaper-title">'
-                       f'<div class="epaper-toolbar"><div class="epaper-toolbar-title"><strong>E-paper view</strong><span>Article-only preview · exports exclude website chrome</span></div>'
-                       f'<div class="epaper-tools"><button type="button" data-download-epaper-pdf>Download PDF</button><button type="button" data-download-epaper-image>Download image</button><button type="button" data-epaper-fit>Fit</button><button type="button" data-epaper-zoom-out aria-label="Zoom out">−</button><button type="button" data-epaper-zoom-in aria-label="Zoom in">+</button><button type="button" data-close-epaper>Close</button></div>'
+                       f'<div class="epaper-toolbar"><div class="epaper-toolbar-title"><strong>E-paper</strong><span>Article-only preview</span></div>'
+                       f'<div class="epaper-tools"><button type="button" data-download-epaper-pdf aria-label="Download e-paper as PDF">PDF</button><button type="button" data-download-epaper-image aria-label="Download e-paper as image">Image</button><button type="button" data-epaper-fit>Fit</button><button type="button" data-epaper-zoom-out aria-label="Zoom out">−</button><button type="button" data-epaper-zoom-in aria-label="Zoom in">+</button><button class="epaper-close" type="button" data-close-epaper aria-label="Close e-paper view">×</button></div>'
                        f'<span class="epaper-status" data-epaper-status role="status" aria-live="polite"></span></div>'
                        f'<div class="epaper-viewport"><div class="epaper-stage"><article class="epaper-sheet">'
-                       f'<div class="epaper-strip"><span>{esc(stream_label)}</span><span>{esc(date_label(a.get("date_published","")))}</span><span>Article preview</span></div>'
+                       f'<header class="epaper-nameplate"><div><strong>Arafat Rahaman</strong><span>Journalist · Bangladesh</span></div><b>E-PAPER</b></header>'
+                       f'<div class="epaper-strip"><span>{esc(stream_label)}</span><span>{esc(date_label(a.get("date_published","")))}</span><span>{esc(category or stream_label)}</span></div>'
                        f'<section class="epaper-lead"><div class="epaper-section">{esc(category or stream_label)}</div><h2 id="epaper-title">{esc(title)}</h2>'
                        f'<p>{esc(a.get("excerpt",""))}</p><div class="epaper-byline">By {esc(credit)}</div></section>'
                        f'{epaper_figure}<div class="epaper-columns">{epaper_body}</div>'
