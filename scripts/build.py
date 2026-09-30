@@ -303,6 +303,11 @@ def build():
         b.page(PAGE_PATHS[stream],title,content,desc=description,nav_active=stream)
     all_links=''.join(f'<li><a href="../{esc(a["local_url"])}">{esc(a["title"])}</a> · {esc(date_label(a.get("date_published","")))}</li>' for a in articles)
     b.page('all-work/index.html','Complete index','<section class="page"><h1>Complete index</h1><ul>'+all_links+'</ul></section>')
+    # These routes are rebuilt into their richer forms later in the deploy
+    # pipeline. Emit lightweight pages here so link validation remains valid
+    # after every clean base build as well.
+    b.page('case-studies/index.html','Reporting case studies','<section class="page"><h1>Reporting case studies</h1><p>Selected reporting projects and the work behind them.</p><a href="../reporting/">Browse reporting →</a></section>',nav_active='reporting')
+    b.page('collections/index.html','Beat collections & story series','<section class="page"><h1>Beat collections &amp; story series</h1><p>Browse reporting by beat and follow recurring coverage across stories.</p><a href="../all-work/">Browse all work →</a></section>',nav_active='reporting')
     photos=[p for p in read(CONTENT/'photos.json',{'photos':[]})['photos'] if p.get('status','published')=='published']
     # Every published article cover may appear in the e-paper preview, including
     # archived source articles. Drafts are already excluded from "articles".
