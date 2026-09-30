@@ -188,17 +188,16 @@ function fitEpaper(){
  const viewport=epaperDialog.querySelector('.epaper-viewport');
  const natural=measureEpaper();
  const compact=window.matchMedia('(max-width:800px)').matches;
- const availableWidth=Math.max(240,viewport.clientWidth-(compact?12:32));
- const availableHeight=Math.max(360,viewport.clientHeight-32);
- const scale=compact
-  ? Math.min(1,availableWidth/natural.width)
-  : Math.min(1,availableWidth/natural.width,availableHeight/natural.height);
+ const availableWidth=Math.max(240,viewport.clientWidth-(compact?8:28));
+ const availableHeight=Math.max(320,viewport.clientHeight-(compact?8:28));
+ const scale=Math.min(1,availableWidth/natural.width,availableHeight/natural.height);
  setEpaperScale(scale);
  if(epaperStage){
   epaperStage.style.marginLeft='auto';
   epaperStage.style.marginRight='auto';
  }
- setEpaperStatus(compact?'Fit to width':'Fit to screen');
+ viewport.scrollTo({top:0,left:0});
+ setEpaperStatus('Fit to screen');
 }
 function loadExternalScript(src,test){
  if(test())return Promise.resolve();
