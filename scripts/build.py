@@ -9,7 +9,7 @@ from reference_desk import DESK as DESK_HOME
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='21.4.0'
+ASSET_VERSION='21.5.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -137,6 +137,10 @@ class Builder:
             r'<p[^>]*>\s*<em[^>]*>Follow\s*</em>.*?The Daily Star Opinion.*?</p>',
         ):
             epaper_body=re.sub(pattern,'',epaper_body,flags=re.I|re.S)
+        epaper_paragraphs=re.findall(r'<p\b[^>]*>.*?</p>',epaper_body,flags=re.I|re.S)
+        epaper_intro=''.join(epaper_paragraphs[:2])
+        for paragraph in epaper_paragraphs[:2]:
+            epaper_body=epaper_body.replace(paragraph,'',1)
         epaper_figure=''
         if cover:
             epaper_figure=(f'<figure class="cover"><img src="{prefix}{esc(cover)}" alt="{esc(a.get("cover_alt",""))}" '
@@ -151,7 +155,8 @@ class Builder:
                        f'<div class="epaper-strip"><span>{esc(stream_label)}</span><span>{esc(date_label(a.get("date_published","")))}</span><span>{esc(category or stream_label)}</span></div>'
                        f'<section class="epaper-lead"><div class="epaper-section">{esc(category or stream_label)}</div><h2 id="epaper-title">{esc(title)}</h2>'
                        f'<p>{esc(a.get("excerpt",""))}</p><div class="epaper-byline">By {esc(credit)}</div></section>'
-                       f'{epaper_figure}<div class="epaper-columns">{epaper_body}</div>'
+                       f'<div class="epaper-topgrid{" epaper-topgrid-no-photo" if not epaper_figure else ""}"><div class="epaper-intro">{epaper_intro}</div>{epaper_figure}</div>'
+                       f'<div class="epaper-columns">{epaper_body}</div>'
                        f'</article></div></div></dialog>')
         facts=[esc(date_label(a.get('date_published',''))),f'{read_minutes} min read']
         if publication:facts.append(publication)
