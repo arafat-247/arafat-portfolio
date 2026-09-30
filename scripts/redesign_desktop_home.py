@@ -27,7 +27,18 @@ def selected_stories():
         try:posts=json.loads(POSTS.read_text(encoding='utf-8')).get('posts',[])
         except (OSError,ValueError):posts=[]
     published_posts=[item for item in posts if item.get('status')=='published']
-    all_items=list(article_map.values())+published_posts
+
+    def is_byline(item):
+        if item.get('credit_type_override')=='contribution':
+            return False
+        if item.get('source_url') and not item.get('verified_author'):
+            return False
+        return True
+
+    all_items=[
+        item for item in list(article_map.values())+published_posts
+        if item.get('status')=='published' and is_byline(item)
+    ]
 
     def stamp(item):
         return str(item.get('date_published') or '')
@@ -45,7 +56,6 @@ def selected_stories():
         ('opinion','Opinion & Analysis'),
         ('reporting','Reporting'),
         ('opinion','Opinion & Analysis'),
-        ('reporting','Reporting'),
         ('thoughts','Thoughts'),
     ]:
         candidates=sorted(
