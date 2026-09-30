@@ -43,6 +43,7 @@
   .editorial-story-links{display:grid}
   .editorial-story-links a{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:19px 8px;border-bottom:1px solid #c9c9bd;font:400 clamp(19px,1.7vw,26px)/1.2 Georgia,serif;transition:padding .2s,color .2s}
   .editorial-story-links a:first-child{border-top:1px solid #c9c9bd}
+  .editorial-story-links a span:first-child{display:grid;gap:5px}.editorial-story-links a small{color:#6f786f;font:700 10px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase}
   .editorial-story-links a:hover{padding-left:18px;color:#a14832}
   .editorial-story-links a span:last-child{font:400 21px/1 Arial,sans-serif}
   .editorial-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px clamp(32px,5vw,82px);background:#173d34;color:#e8e9df;font-size:12px;letter-spacing:.04em}
