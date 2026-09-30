@@ -45,16 +45,52 @@ def editorial_cover(title,date,label):
 def selected_reporting():
     articles=article_index()
     posts=json.loads(POSTS.read_text(encoding='utf-8')).get('posts',[]) if POSTS.is_file() else []
-    thought_index={str(item.get('local_url') or '').lstrip('/'):item for item in posts if item.get('status')=='published'}
+    published_posts=[item for item in posts if item.get('status')=='published']
+    all_items=list(articles.values())+published_posts
 
-    picks=[
-        (articles.get('stories/higher-viva-marks-may-undermine-fairness-in-public-recruitment/'),'Opinion & Analysis'),
-        (articles.get('stories/when-mobile-journalism-crosses-the-line-into-public-shaming/'),'Opinion & Analysis'),
-        (articles.get('stories/what-else-must-women-do/'),'Opinion & Analysis'),
-        (articles.get('stories/half-the-children-can-t-read-comprehend/'),'Reporting'),
-        (thought_index.get('thoughts/i-get-eid-off-do-my-colleagues-get-the-same-for-puja/'),'Thoughts'),
-    ]
-    picks=[(item,label) for item,label in picks if item]
+    def stamp(item):
+        return str(item.get('date_published') or '')
+
+    latest=max(all_items,key=stamp) if all_items else None
+    latest_url=str((latest or {}).get('local_url') or '').lstrip('/')
+
+    def newest(stream,exclude=None):
+        excluded=set(exclude or [])
+        candidates=[
+            item for item in all_items
+            if item.get('stream')==stream
+            and str(item.get('local_url') or '').lstrip('/') not in excluded
+        ]
+        return max(candidates,key=stamp) if candidates else None
+
+    picks=[]
+    used=set()
+    if latest:
+        picks.append((latest,'Latest'))
+        if latest_url:used.add(latest_url)
+
+    for stream,label in [
+        ('opinion','Opinion & Analysis'),
+        ('reporting','Reporting'),
+        ('opinion','Opinion & Analysis'),
+        ('reporting','Reporting'),
+        ('thoughts','Thoughts'),
+    ]:
+        candidates=sorted(
+            [
+                item for item in all_items
+                if item.get('stream')==stream
+                and str(item.get('local_url') or '').lstrip('/') not in used
+            ],
+            key=stamp,
+            reverse=True
+        )
+        if candidates:
+            item=candidates[0]
+            picks.append((item,label))
+            local=str(item.get('local_url') or '').lstrip('/')
+            if local:used.add(local)
+
     if not picks:return ''
 
     def cover_for(item):
