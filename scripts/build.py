@@ -9,7 +9,7 @@ from reference_desk import DESK as DESK_HOME
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='21.9.2'
+ASSET_VERSION='21.10.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -50,7 +50,7 @@ class Builder:
         if urlsplit(self.base).scheme!='https': raise ValueError('Set a valid HTTPS site_url in content/settings.json.')
         self.routes=[]
         self.social_cards=SocialCardRenderer(SITE/'assets/social-preview-v2.jpg',OUT/'assets/social')
-    def page(self,path,title,body,home=False,desc='',article_data=None,profile=False,social_image_path='',nav_active=''):
+    def page(self,path,title,body,home=False,desc='',article_data=None,profile=False,social_image_path='',nav_active='',critical_image=''):
         prefix='../'*path.count('/')
         c=self.config; name=c.get('site_name',NAME); portrait=safe_asset(c.get('portrait'))
         sidebar_portrait='assets/portraits/about.webp'
@@ -95,6 +95,8 @@ class Builder:
         if home:
             hero_preload=(f'<link rel="preload" as="image" href="{prefix}assets/home/reference-desk-bg.webp" type="image/webp" media="(min-width:801px)" fetchpriority="high">'
                           f'<link rel="preload" as="image" href="{prefix}assets/portraits/byline.avif" type="image/avif" media="(max-width:800px)" fetchpriority="high">')
+        if critical_image:
+            hero_preload+=f'<link rel="preload" as="image" href="{prefix}{esc(critical_image)}" fetchpriority="high">'
         head=f'''{analytics}{hero_preload}<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(document_title)}</title><meta name="description" content="{esc(description)}"><meta name="theme-color" content="#0b2f2a"><script>{clean_home_path}if(location.protocol==='http:'&&location.hostname==='arafatrahaman.com')location.replace('https://'+location.host+location.pathname+location.search+location.hash);try{{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'light'}}catch(e){{document.documentElement.dataset.theme='light'}}</script><link rel="canonical" href="{esc(canonical_url)}"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" href="{prefix}feed.xml" title="Arafat Rahaman"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link id="portfolio-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" media="print"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"></noscript><link rel="stylesheet" href="{prefix}portfolio.css?v={asset_version}"><meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{esc(name)}"><meta property="og:locale" content="en_GB"><meta property="og:title" content="{esc(social_title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(canonical_url)}"><meta property="og:image" content="{esc(social_image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Arafat Rahaman, journalist at The Daily Star"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(social_title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{esc(social_image)}"><meta name="twitter:image:alt" content="Arafat Rahaman, journalist at The Daily Star">{article_tags}<script type="application/ld+json">{schema}</script>'''
         active=nav_active or ('home' if home else page_key.split('-',1)[0])
         document=f'''<!doctype html><html lang="en"><head>{head}</head><body class="{'home' if home else 'inner'}" data-root="{prefix}" data-page="{page_key}" data-section="{esc(active)}" id="top"><a class="skip" href="#main">Skip to content</a><aside class="identity" aria-label="Profile and navigation"><a class="identityportrait" href="{prefix}./" aria-label="Arafat Rahaman homepage"><img class="portrait" src="{prefix}{esc(sidebar_portrait)}" width="112" height="112" alt="Arafat Rahaman smiling outdoors" loading="lazy" fetchpriority="low" decoding="async"></a><a class="name" href="{prefix}./">ARAFAT<br>RAHAMAN</a><p>Journalist at The Daily Star<br>Dhaka, Bangladesh</p><nav aria-label="Main navigation">{sidebar_menu}</nav><div class="social">{socials}</div></aside><div class="right"><header class="desktophead"><div class="desktophead-inner"><a class="desktopbrand" href="{prefix}./"><span class="desktopmark" aria-hidden="true">A</span><span><strong>{esc(name)}</strong><small>Journalist · The Daily Star</small></span></a><nav class="desktopnav" id="desktop-nav" aria-label="Main navigation">{desktop_menu}</nav><a class="desktopsearch" href="{prefix}reporting/" aria-label="Search published work"><span aria-hidden="true"></span></a><button class="desktopmenutoggle" type="button" aria-expanded="false" aria-controls="desktop-nav" aria-label="Open navigation"><span></span><span></span><span></span></button></div></header><header class="mobilehead"><a class="mobilebrand" href="{prefix}./"><span class="mark" aria-hidden="true">A</span><span>Arafat Rahaman</span></a><div class="mobileactions"><button class="themetoggle" type="button" aria-pressed="false"><span class="themesymbol" aria-hidden="true">◐</span><span class="themelabel">Dark</span></button><button class="menutoggle" type="button" aria-expanded="false" aria-controls="mobile-menu"><span class="menulines" aria-hidden="true"><i></i><i></i></span><span>Menu</span></button></div></header><button class="menubackdrop" hidden aria-label="Close menu"></button><nav class="mobilemenu" id="mobile-menu" hidden aria-label="Mobile navigation"><div class="drawerhead"><strong>Navigation</strong><button class="drawerclose" type="button" aria-label="Close menu">×</button></div><div class="drawerprofile"><img src="{prefix}{esc(portrait)}" width="72" height="72" alt="Portrait of Arafat Rahaman" loading="lazy" fetchpriority="low" decoding="async"><div><h2>Arafat Rahaman</h2><p>Journalist · Dhaka</p></div></div><div class="drawernav">{menu}</div><div class="menumeta">{socials}</div></nav><main id="main">{body}</main><footer><span>© {datetime.now().year} {esc(name)}</span><span>Independent portfolio · Dhaka</span><a class="top" href="#top">Back to top ↑</a></footer></div><script src="{prefix}portfolio.js?v={asset_version}" defer></script></body></html>'''
@@ -116,7 +118,7 @@ class Builder:
         body=a.get('body_html') or text_body(a.get('body',''))
         body=sanitise(body,a.get('source_url',self.base+'/'))
         cover=safe_asset(a.get('cover_image')); figure=''
-        if cover and not a.get('source_url'):figure=f'<figure class="cover"><img src="{prefix}{esc(cover)}" alt="{esc(a.get("cover_alt",""))}" decoding="async"><figcaption>{esc(a.get("cover_credit", ""))}</figcaption></figure>'
+        if cover and not a.get('source_url'):figure=f'<figure class="cover"><img src="{prefix}{esc(cover)}" alt="{esc(a.get("cover_alt",""))}" loading="eager" fetchpriority="high" decoding="async"><figcaption>{esc(a.get("cover_credit", ""))}</figcaption></figure>'
         source=''
         if a.get('source_url'):
             u=a['source_url']
@@ -170,7 +172,7 @@ class Builder:
         facts=[esc(date_label(a.get('date_published',''))),f'{read_minutes} min read']
         if publication:facts.append(publication)
         facts_html=''.join(f'<span>{fact}</span>' for fact in facts if fact)
-        byline_html=f'<img src="{prefix}assets/portraits/byline.webp" alt="Arafat Rahaman" width="64" height="64" decoding="async"><div><strong>{esc(credit)}</strong>{contribution}<span class="meta">{esc(date_label(a.get("date_published","")))}{update}</span></div>'
+        byline_html=f'<picture><source srcset="{prefix}assets/portraits/byline.avif" type="image/avif"><img src="{prefix}assets/portraits/byline.webp" alt="Arafat Rahaman" width="64" height="64" loading="eager" fetchpriority="high" decoding="async"></picture><div><strong>{esc(credit)}</strong>{contribution}<span class="meta">{esc(date_label(a.get("date_published","")))}{update}</span></div>'
         content=(f'<article class="page reading"><header class="storyhead">'
                  f'<a class="back" href="{prefix}{section}">← {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a>'
                  f'<div class="storykicker">{kicker}</div><h1>{esc(title)}</h1><p class="standfirst">{esc(a.get("excerpt",""))}</p>'
@@ -187,7 +189,7 @@ class Builder:
         meta={'@context':'https://schema.org','@type':'Article','headline':title,'datePublished':a.get('date_published',''),'dateModified':a.get('date_modified','') or a.get('date_published',''),'author':authors,'url':self.base+'/'+a['local_url'],'mainEntityOfPage':self.base+'/'+a['local_url']}
         if a.get('source_url'):meta['isBasedOn']=a['source_url']
         social_image_path=self.social_cards.render(a)
-        self.page(path,title,content,desc=a.get('excerpt',''),article_data=meta,social_image_path=social_image_path,nav_active=stream)
+        self.page(path,title,content,desc=a.get('excerpt',''),article_data=meta,social_image_path=social_image_path,nav_active=stream,critical_image=cover if cover and not a.get('source_url') else '')
 
 def build():
     OUT.mkdir(exist_ok=True)
