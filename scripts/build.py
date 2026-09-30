@@ -222,7 +222,9 @@ def build():
         if p.is_dir():shutil.rmtree(p)
         else:p.unlink()
     shutil.copytree(SITE/'assets',OUT/'assets',ignore=shutil.ignore_patterns('photography-src','uploads','imported'))
-    for file in ('portfolio.css','portfolio.js','portfolio-features.css','all-work.js','epaper.js'):shutil.copy2(SITE/file,OUT/file)
+    for file in ('portfolio.css','portfolio.js','portfolio-features.css','all-work.js','epaper.js'):
+        source=SITE/file
+        if source.is_file():shutil.copy2(source,OUT/file)
     shutil.copytree(SITE/'admin',OUT/'admin')
     b=Builder(); c=b.config; overrides=read(CONTENT/'overrides.json',{'articles':{}})['articles']; articles=[]
     for path in sorted((CONTENT/'articles').glob('*.json')):
