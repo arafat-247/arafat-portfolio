@@ -49,7 +49,9 @@ def selected_reporting():
 
     picks=[
         (articles.get('stories/half-the-children-can-t-read-comprehend/'),'Reporting'),
+        (articles.get('stories/teacher-shortages-strain-government-primary-schools/'),'Reporting'),
         (articles.get('stories/when-mobile-journalism-crosses-the-line-into-public-shaming/'),'Opinion & Analysis'),
+        (articles.get('stories/total-literacy-elusive-after-tk-4-000cr-spent/'),'Reporting'),
         (thought_index.get('thoughts/i-get-eid-off-do-my-colleagues-get-the-same-for-puja/'),'Thoughts'),
     ]
     picks=[(item,label) for item,label in picks if item]
