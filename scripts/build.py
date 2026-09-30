@@ -9,7 +9,7 @@ from reference_desk import DESK as DESK_HOME
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='21.5.0'
+ASSET_VERSION='21.6.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -138,9 +138,16 @@ class Builder:
         ):
             epaper_body=re.sub(pattern,'',epaper_body,flags=re.I|re.S)
         epaper_paragraphs=re.findall(r'<p\b[^>]*>.*?</p>',epaper_body,flags=re.I|re.S)
-        epaper_intro=''.join(epaper_paragraphs[:2])
-        for paragraph in epaper_paragraphs[:2]:
+        epaper_intro_parts=[]
+        epaper_intro_words=0
+        for paragraph in epaper_paragraphs[:7]:
+            epaper_intro_parts.append(paragraph)
             epaper_body=epaper_body.replace(paragraph,'',1)
+            plain=re.sub(r'<[^>]+>',' ',paragraph)
+            epaper_intro_words+=len(re.findall(r"\b[\w’'-]+\b",plain))
+            if epaper_intro_words>=230:
+                break
+        epaper_intro=''.join(epaper_intro_parts)
         epaper_figure=''
         if cover:
             epaper_figure=(f'<figure class="cover"><img src="{prefix}{esc(cover)}" alt="{esc(a.get("cover_alt",""))}" '
