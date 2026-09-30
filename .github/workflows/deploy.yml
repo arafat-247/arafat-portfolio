@@ -60,6 +60,7 @@ jobs:
         run: |
           python scripts/build.py
           python scripts/enrich_entity.py
+          python scripts/build_portfolio_features.py
           python scripts/validate.py
       - name: Commit durable article bodies, photographs and sync progress
         run: python scripts/persist.py
