@@ -132,16 +132,15 @@ class Builder:
         publication=esc(a.get('source_name') or '')
         share_dialog='''<dialog class="sharedialog" id="share-dialog" aria-labelledby="share-dialog-title"><div class="sharehead"><div><span>Share</span><h2 id="share-dialog-title">Share this story</h2></div><button type="button" data-close-share aria-label="Close sharing window">×</button></div><div class="sharegrid"><a href="#" data-share-service="facebook"><strong>Facebook</strong><span>Share in a new window ↗</span></a><a href="#" data-share-service="whatsapp"><strong>WhatsApp</strong><span>Send to a contact ↗</span></a><a href="#" data-share-service="x"><strong>X</strong><span>Post this story ↗</span></a><a href="#" data-share-service="linkedin"><strong>LinkedIn</strong><span>Share with your network ↗</span></a><button type="button" data-copy-share><strong>Copy link</strong><span>Copy the clean article address</span></button></div><p class="sharestatus" data-share-status role="status" aria-live="polite"></p></dialog>'''
         epaper_dialog=(f'<dialog class="epaper-dialog" id="epaper-dialog" aria-labelledby="epaper-title">'
-                       f'<div class="epaper-toolbar"><div><strong>E-paper preview</strong><span>Illustrative newspaper-page layout</span></div>'
-                       f'<div class="epaper-tools"><button type="button" data-epaper-zoom-out aria-label="Zoom out">−</button><button type="button" data-epaper-fit>Fit page</button><button type="button" data-epaper-zoom-in aria-label="Zoom in">+</button><button type="button" data-close-epaper>Close</button></div></div>'
-                       f'<div class="epaper-viewport"><article class="epaper-sheet">'
-                       f'<header class="epaper-masthead"><div class="epaper-name">Arafat Rahaman</div><div class="epaper-edition">Portfolio e-paper · Bangladesh</div></header>'
-                       f'<div class="epaper-strip"><span>{esc(stream_label)}</span><span>{esc(date_label(a.get("date_published","")))}</span><span>Page 1</span></div>'
+                       f'<div class="epaper-toolbar"><div class="epaper-toolbar-title"><strong>E-paper view</strong><span>Article-only preview · exports exclude website chrome</span></div>'
+                       f'<div class="epaper-tools"><button type="button" data-download-epaper-pdf>Download PDF</button><button type="button" data-download-epaper-image>Download image</button><button type="button" data-epaper-fit>Fit</button><button type="button" data-epaper-zoom-out aria-label="Zoom out">−</button><button type="button" data-epaper-zoom-in aria-label="Zoom in">+</button><button type="button" data-close-epaper>Close</button></div>'
+                       f'<span class="epaper-status" data-epaper-status role="status" aria-live="polite"></span></div>'
+                       f'<div class="epaper-viewport"><div class="epaper-stage"><article class="epaper-sheet">'
+                       f'<div class="epaper-strip"><span>{esc(stream_label)}</span><span>{esc(date_label(a.get("date_published","")))}</span><span>Article preview</span></div>'
                        f'<section class="epaper-lead"><div class="epaper-section">{esc(category or stream_label)}</div><h2 id="epaper-title">{esc(title)}</h2>'
                        f'<p>{esc(a.get("excerpt",""))}</p><div class="epaper-byline">By {esc(credit)}</div></section>'
                        f'{figure}<div class="epaper-columns">{body}</div>'
-                       f'<footer class="epaper-footer"><span>ARAFATRAHAMAN.COM</span><span>Illustrative e-paper preview</span></footer>'
-                       f'</article></div></dialog>')
+                       f'</article></div></div></dialog>')
         facts=[esc(date_label(a.get('date_published',''))),f'{read_minutes} min read']
         if publication:facts.append(publication)
         facts_html=''.join(f'<span>{fact}</span>' for fact in facts if fact)
