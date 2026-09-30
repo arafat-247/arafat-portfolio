@@ -3,6 +3,11 @@ if(portfolioFonts)portfolioFonts.media='all';
 (()=>{'use strict';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],root=document.body.dataset.root||'';
 if(document.body.classList.contains('home')&&!location.hash){history.scrollRestoration='manual';window.scrollTo(0,0)}
+if('serviceWorker' in navigator){
+ window.addEventListener('load',()=>setTimeout(()=>{
+  navigator.serviceWorker.register(new URL(root+'sw.js',location.href)).catch(()=>{});
+ },1200),{once:true});
+}
 
 const menu=$('#mobile-menu'),toggle=$('.menutoggle'),backdrop=$('.menubackdrop'),drawerClose=$('.drawerclose'),themeToggle=$('.themetoggle');
 let closeTimer,lastFocused;
@@ -164,156 +169,6 @@ if(archive){const filterToggle=$('.filtertoggle');filterToggle?.addEventListener
  $('.tools').onsubmit=e=>{e.preventDefault();page=1;draw()};q.oninput=()=>{page=1;draw()};cat.onchange=year.onchange=()=>{page=1;draw()};creditViews.forEach(button=>button.onclick=()=>{selectedCredit=button.dataset.creditView;page=1;draw()});$('[data-prev]').onclick=()=>{page--;draw();archive.scrollIntoView({behavior:'smooth'})};$('[data-next]').onclick=()=>{page++;draw();archive.scrollIntoView({behavior:'smooth'})};draw();
  }catch(e){$('.count').textContent=e.message;$('[data-next]').disabled=true}})()}
 
-
-const allWork=$('[data-all-work]');
-if(allWork){const form=$('#all-work-tools'),box=$('[data-all-results]'),count=$('[data-all-count]'),more=$('[data-all-more]');let rows=[],shown=24;
- const escText=v=>String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const localUrl=a=>/^(stories|thoughts)\/[a-zA-Z0-9_-]+\/$/.test(a.local_url)?root+a.local_url:root+'all-work/';
- const card=a=>{const img=a.cover_image?'<figure><img src="'+root+escText(a.cover_image)+'" alt="" loading="lazy" decoding="async"></figure>':'<figure></figure>';const badge=a.credit_type==='contribution'?'Non-byline':a.stream==='opinion'?'Opinion':a.stream==='thoughts'?'Thoughts':'Reporting';return '<article class="featurecard">'+img+'<div><div class="featuremeta"><span>'+escText((a.date_published||'').slice(0,10))+'</span><b>'+escText(badge)+'</b><span>'+escText(a.beat_title||'Other')+'</span></div><h2><a href="'+escText(localUrl(a))+'">'+escText(a.title)+'</a></h2><p>'+escText(a.excerpt)+'</p></div></article>'};
- const filtered=()=>{const data=new FormData(form),q=String(data.get('q')||'').trim().toLowerCase(),stream=data.get('stream'),beat=data.get('beat'),year=data.get('year'),credit=data.get('credit');return rows.filter(a=>(!stream||a.stream===stream)&&(!beat||a.beat===beat)&&(!year||String(a.date_published||'').startsWith(year))&&(!credit||a.credit_type===credit)&&(!q||[a.title,a.excerpt,a.category,a.beat_title,(a.series||[]).join(' ')].join(' ').toLowerCase().includes(q)))};
- const draw=reset=>{if(reset)shown=24;const found=filtered();box.innerHTML=found.slice(0,shown).map(card).join('')||'<p class="empty">No matches. Try another search or filter.</p>';count.textContent=found.length+' '+(found.length===1?'result':'results');more.hidden=shown>=found.length};
- form?.addEventListener('input',()=>draw(true));form?.addEventListener('change',()=>draw(true));$('[data-all-reset]')?.addEventListener('click',()=>{form.reset();draw(true)});more?.addEventListener('click',()=>{shown+=24;draw(false)});
- fetch(root+'data/portfolio-features.json').then(r=>{if(!r.ok)throw Error('Archive data unavailable');return r.json()}).then(data=>{rows=data.articles||[];const years=[...new Set(rows.map(a=>String(a.date_published||'').slice(0,4)).filter(Boolean))].sort().reverse();years.forEach(v=>form.elements.year.add(new Option(v,v)));draw(true)}).catch(()=>{if(more)more.hidden=true});
-}
-
-const epaperButton=$('[data-epaper-view]'),epaperDialog=$('#epaper-dialog'),epaperSheet=$('.epaper-sheet'),epaperStage=$('.epaper-stage'),epaperStatus=$('[data-epaper-status]');
-let epaperScale=1,epaperNatural={width:920,height:1260};
-function setEpaperStatus(message){if(epaperStatus)epaperStatus.textContent=message||''}
-function measureEpaper(){
- if(!epaperSheet)return epaperNatural;
- const previous=epaperSheet.style.getPropertyValue('--epaper-scale');
- epaperSheet.style.setProperty('--epaper-scale','1');
- epaperNatural={width:epaperSheet.offsetWidth||920,height:epaperSheet.scrollHeight||1260};
- if(previous)epaperSheet.style.setProperty('--epaper-scale',previous);else epaperSheet.style.removeProperty('--epaper-scale');
- return epaperNatural;
-}
-function setEpaperScale(value){
- if(!epaperSheet)return;
- const natural=measureEpaper();
- epaperScale=Math.max(.25,Math.min(1.5,value));
- epaperSheet.style.setProperty('--epaper-scale',epaperScale.toFixed(3));
- if(epaperStage){
-  epaperStage.style.width=Math.ceil(natural.width*epaperScale)+'px';
-  epaperStage.style.height=Math.ceil(natural.height*epaperScale)+'px';
- }
-}
-function fitEpaper(){
- if(!epaperDialog||!epaperSheet)return;
- const viewport=epaperDialog.querySelector('.epaper-viewport');
- const natural=measureEpaper();
- const compact=window.matchMedia('(max-width:800px)').matches;
- const availableWidth=Math.max(240,viewport.clientWidth-(compact?8:28));
- const availableHeight=Math.max(320,viewport.clientHeight-(compact?8:28));
- const scale=Math.min(1,availableWidth/natural.width,availableHeight/natural.height);
- setEpaperScale(scale);
- if(epaperStage){
-  epaperStage.style.marginLeft='auto';
-  epaperStage.style.marginRight='auto';
- }
- viewport.scrollTo({top:0,left:0});
- setEpaperStatus('Fit to screen');
-}
-function loadExternalScript(src,test){
- if(test())return Promise.resolve();
- return new Promise((resolve,reject)=>{
-  const existing=document.querySelector(`script[src="${src}"]`);
-  if(existing){
-   existing.addEventListener('load',resolve,{once:true});
-   existing.addEventListener('error',reject,{once:true});
-   return;
-  }
-  const script=document.createElement('script');
-  script.src=src;script.async=true;script.crossOrigin='anonymous';
-  script.onload=resolve;script.onerror=()=>reject(new Error('Could not load export library'));
-  document.head.appendChild(script);
- });
-}
-async function ensureEpaperExportLibraries(){
- await loadExternalScript('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js',()=>typeof window.html2canvas==='function');
- await loadExternalScript('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js',()=>!!window.jspdf?.jsPDF);
-}
-function epaperFilename(extension){
- const title=$('.reading h1')?.textContent.trim()||'article';
- const slug=title.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,80)||'article';
- return `${slug}-epaper.${extension}`;
-}
-async function renderEpaperCanvas(){
- if(!epaperSheet)throw new Error('E-paper sheet is unavailable');
- await ensureEpaperExportLibraries();
- setEpaperStatus('Preparing HD export…');
- const oldScale=epaperScale;
- const oldTransition=epaperSheet.style.transition;
- epaperSheet.style.transition='none';
- setEpaperScale(1);
- await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
- try{
-  return await window.html2canvas(epaperSheet,{
-   scale:3,
-   useCORS:true,
-   backgroundColor:'#f4f0e7',
-   logging:false,
-   imageTimeout:15000,
-   width:epaperSheet.scrollWidth,
-   height:epaperSheet.scrollHeight,
-   windowWidth:epaperSheet.scrollWidth,
-   windowHeight:epaperSheet.scrollHeight
-  });
- }finally{
-  epaperSheet.style.transition=oldTransition;
-  setEpaperScale(oldScale);
- }
-}
-async function downloadEpaperImage(){
- const button=$('[data-download-epaper-image]');
- try{
-  if(button)button.disabled=true;
-  const canvas=await renderEpaperCanvas();
-  const blob=await new Promise((resolve,reject)=>canvas.toBlob(value=>value?resolve(value):reject(new Error('Image export failed')),'image/png'));
-  const filename=epaperFilename('png');
-  const url=URL.createObjectURL(blob),link=document.createElement('a');
-  link.href=url;
-  link.download=filename;
-  link.rel='noopener';
-  link.style.display='none';
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),5000);
-  setEpaperStatus(`PNG downloaded · ${canvas.width} × ${canvas.height}px`);
- }catch(error){
-  console.error(error);setEpaperStatus('Image download failed. Please try again.');
- }finally{if(button)button.disabled=false}
-}
-async function downloadEpaperPdf(){
- const button=$('[data-download-epaper-pdf]');
- try{
-  if(button)button.disabled=true;
-  const canvas=await renderEpaperCanvas();
-  const {jsPDF}=window.jspdf;
-  const widthPt=canvas.width*.24,heightPt=canvas.height*.24;
-  const pdf=new jsPDF({orientation:widthPt>heightPt?'landscape':'portrait',unit:'pt',format:[widthPt,heightPt],compress:true});
-  pdf.addImage(canvas.toDataURL('image/png'),'PNG',0,0,widthPt,heightPt,undefined,'FAST');
-  pdf.save(epaperFilename('pdf'));
-  setEpaperStatus('HD PDF saved');
- }catch(error){
-  console.error(error);setEpaperStatus('PDF download failed. Please try again.');
- }finally{if(button)button.disabled=false}
-}
-epaperButton?.addEventListener('click',()=>{
- if(!epaperDialog)return;
- epaperDialog.showModal();
- setEpaperStatus('');
- requestAnimationFrame(()=>requestAnimationFrame(fitEpaper));
-});
-$('[data-close-epaper]')?.addEventListener('click',()=>epaperDialog?.close());
-$('[data-epaper-zoom-in]')?.addEventListener('click',()=>{setEpaperScale(epaperScale+.1);setEpaperStatus(Math.round(epaperScale*100)+'%')});
-$('[data-epaper-zoom-out]')?.addEventListener('click',()=>{setEpaperScale(epaperScale-.1);setEpaperStatus(Math.round(epaperScale*100)+'%')});
-$('[data-epaper-fit]')?.addEventListener('click',fitEpaper);
-$('[data-download-epaper-image]')?.addEventListener('click',downloadEpaperImage);
-$('[data-download-epaper-pdf]')?.addEventListener('click',downloadEpaperPdf);
-epaperDialog?.addEventListener('click',event=>{if(event.target===epaperDialog)epaperDialog.close()});
-epaperDialog?.addEventListener('close',()=>{setEpaperScale(1);setEpaperStatus('')});
-window.addEventListener('resize',()=>{if(epaperDialog?.open)fitEpaper()},{passive:true});
 
 $('[data-print]')?.addEventListener('click',()=>window.print());
 const shareButton=$('[data-share]'),shareDialog=$('#share-dialog'),shareStatus=$('[data-share-status]');
