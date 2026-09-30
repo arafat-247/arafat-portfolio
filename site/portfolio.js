@@ -3,6 +3,11 @@ if(portfolioFonts)portfolioFonts.media='all';
 (()=>{'use strict';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],root=document.body.dataset.root||'';
 if(document.body.classList.contains('home')&&!location.hash){history.scrollRestoration='manual';window.scrollTo(0,0)}
+if('serviceWorker' in navigator){
+ window.addEventListener('load',()=>setTimeout(()=>{
+  navigator.serviceWorker.register(new URL(root+'sw.js',location.href)).catch(()=>{});
+ },1200),{once:true});
+}
 
 const menu=$('#mobile-menu'),toggle=$('.menutoggle'),backdrop=$('.menubackdrop'),drawerClose=$('.drawerclose'),themeToggle=$('.themetoggle');
 let closeTimer,lastFocused;
