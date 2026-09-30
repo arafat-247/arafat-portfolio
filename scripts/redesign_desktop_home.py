@@ -28,7 +28,9 @@ def selected_stories():
     post_map={str(item.get('local_url') or '').lstrip('/'):item for item in posts if item.get('status')=='published'}
     picks=[
         (article_map.get('stories/half-the-children-can-t-read-comprehend/'),'Reporting'),
+        (article_map.get('stories/teacher-shortages-strain-government-primary-schools/'),'Reporting'),
         (article_map.get('stories/when-mobile-journalism-crosses-the-line-into-public-shaming/'),'Opinion & Analysis'),
+        (article_map.get('stories/total-literacy-elusive-after-tk-4-000cr-spent/'),'Reporting'),
         (post_map.get('thoughts/i-get-eid-off-do-my-colleagues-get-the-same-for-puja/'),'Thoughts'),
     ]
     links=[]
