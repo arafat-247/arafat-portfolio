@@ -57,13 +57,13 @@ class Builder:
         email=c.get('email',''); linkedin=c.get('social',{}).get('linkedin','')
         socials=f'<a href="mailto:{esc(email)}">Email</a>' if email else ''
         if urlsplit(linkedin).scheme=='https':socials+=f'<a href="{esc(linkedin)}" rel="me noopener">LinkedIn</a>'
-        nav_items=(('01','./','Portfolio','home'),('02','reporting/','Reports & Features','reporting'),('03','opinion/','Opinion & Analysis','opinion'),('04','thoughts/','Thoughts','thoughts'),('05','photography/','Photography','photography'),('06','about/','About','about'),('07','contact/','Contact','contact'))
-        home_nav=(('01','./','Portfolio','home'),('02','about/','About me','about'),('03','contact/','Contact','contact'))
+        nav_items=(('01','./','Home','home'),('02','about/','About','about'),('03','all-work/','Work','work'),('04','collections/','Topics','topics'),('05','contact/','Contact','contact'))
+        home_nav=(('01','./','Home','home'),('02','about/','About','about'),('03','all-work/','Work','work'),('04','collections/','Topics','topics'),('05','contact/','Contact','contact'))
         def nav_markup(items):
             return ''.join(f'<a href="{prefix}{href}" data-nav="{key}"><span>{number}</span>{label}</a>' for number,href,label,key in items)
         menu=nav_markup(nav_items)
         sidebar_menu=nav_markup(home_nav) if home else menu
-        desktop_items=(('./','Portfolio','home'),('reporting/','Reporting','reporting'),('opinion/','Opinion & Analysis','opinion'),('thoughts/','Thoughts','thoughts'),('photography/','Photography','photography'),('about/','About','about'),('contact/','Contact','contact'))
+        desktop_items=(('./','Home','home'),('about/','About','about'),('all-work/','Work','work'),('collections/','Topics','topics'),('contact/','Contact','contact'))
         desktop_menu=''.join(f'<a href="{prefix}{href}" data-nav="{key}">{label}</a>' for href,label,key in desktop_items)
         same_as=[u for u in c.get('social',{}).values() if urlsplit(str(u)).scheme=='https']
         profile_url=self.base+'/about/'
@@ -241,7 +241,7 @@ def build():
         '<nav class="portalnav" aria-label="Homepage navigation">'
         '<a class="portalbrand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a>'
         '<div class="portalnavlinks"><a href="./" aria-current="page">Home</a><a href="#mobile-work">Work</a><a href="about/">About</a><a href="contact/">Contact</a></div>'
-        '<details class="portalmenu"><summary aria-label="Open navigation"><i></i><i></i><i></i></summary><nav><a href="./">Home</a><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a><a href="about/">About</a><a href="contact/">Contact</a></nav></details>'
+        '<details class="portalmenu"><summary aria-label="Open navigation"><i></i><i></i><i></i></summary><nav><a href="./">Home</a><a href="about/">About</a><a href="all-work/">Work</a><a href="collections/">Topics</a><a href="contact/">Contact</a></nav></details>'
         '</nav>'
     )
     hero=(
