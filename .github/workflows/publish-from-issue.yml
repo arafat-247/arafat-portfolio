@@ -1,0 +1,51 @@
+name: Publish from GitHub issue
+on:
+  issues:
+    types: [opened, edited, reopened]
+permissions:
+  contents: write
+  issues: write
+  actions: write
+concurrency:
+  group: portfolio-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: startsWith(github.event.issue.title, '[Publish]') && github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install -r requirements.txt
+      - id: publish
+        run: python scripts/publish_issue.py --event "$GITHUB_EVENT_PATH" --output "$GITHUB_OUTPUT"
+      - name: Validate before saving
+        run: |
+          python scripts/build.py
+          python scripts/validate.py
+      - name: Commit story
+        run: |
+          git config user.name "Portfolio publisher"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/posts.json site/assets/uploads
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Publish from issue #${{ github.event.issue.number }} [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Deploy published story
+        if: steps.publish.outputs.status == 'published'
+        env: {GH_TOKEN: ${{ github.token }}}
+        run: gh workflow run deploy.yml --ref main
+      - name: Comment and close published issue
+        if: steps.publish.outputs.status == 'published'
+        env: {GH_TOKEN: ${{ github.token }}}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --repo "${{ github.repository }}" --body "Queued for publication: https://arafatrahaman.com/${{ steps.publish.outputs.local_url }}"
+          gh issue close "${{ github.event.issue.number }}" --repo "${{ github.repository }}"
+      - name: Confirm draft
+        if: steps.publish.outputs.status == 'draft'
+        env: {GH_TOKEN: ${{ github.token }}}
+        run: gh issue comment "${{ github.event.issue.number }}" --repo "${{ github.repository }}" --body "Draft saved. Edit this issue and switch **Publishing action** to **Publish now** when ready."
