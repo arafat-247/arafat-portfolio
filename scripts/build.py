@@ -5,11 +5,12 @@ from urllib.parse import urlsplit
 from core import *
 from social_cards import SocialCardRenderer
 from reference_desk import DESK as DESK_HOME
+from PIL import Image, ImageOps
 
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='21.10.0'
+ASSET_VERSION='21.10.1'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -42,6 +43,28 @@ def credit_type(article):
     if article.get('manual_import') and not (article.get('verified_author') or article.get('author_listing_verified')):
         return 'contribution'
     return 'byline'
+
+def story_cover_asset(cover):
+    """Create a smaller display copy for above-the-fold story artwork."""
+    cover=safe_asset(cover)
+    if not cover:return ''
+    source=SITE/cover
+    if not source.is_file():return cover
+    try:
+        if source.stat().st_size<=180_000:
+            return cover
+        with Image.open(source) as original:
+            image=ImageOps.exif_transpose(original)
+            image.thumbnail((1200,900),Image.Resampling.LANCZOS)
+            if image.mode not in ('RGB','RGBA'):
+                image=image.convert('RGB')
+            target_rel=f'assets/optimized/{source.stem}-story.webp'
+            target=OUT/target_rel
+            target.parent.mkdir(parents=True,exist_ok=True)
+            image.save(target,'WEBP',quality=78,method=6)
+            return target_rel
+    except (OSError,ValueError):
+        return cover
 
 class Builder:
     def __init__(self):
@@ -117,8 +140,8 @@ class Builder:
         if credit_type(a)=='contribution':contribution=f'<span>Non-byline contribution by {NAME} · {esc(a.get("contribution","Reporting"))}</span>'
         body=a.get('body_html') or text_body(a.get('body',''))
         body=sanitise(body,a.get('source_url',self.base+'/'))
-        cover=safe_asset(a.get('cover_image')); figure=''
-        if cover and not a.get('source_url'):figure=f'<figure class="cover"><img src="{prefix}{esc(cover)}" alt="{esc(a.get("cover_alt",""))}" loading="eager" fetchpriority="high" decoding="async"><figcaption>{esc(a.get("cover_credit", ""))}</figcaption></figure>'
+        cover=safe_asset(a.get('cover_image')); display_cover=story_cover_asset(cover) if cover and not a.get('source_url') else cover; figure=''
+        if display_cover and not a.get('source_url'):figure=f'<figure class="cover"><img src="{prefix}{esc(display_cover)}" alt="{esc(a.get("cover_alt",""))}" loading="eager" fetchpriority="high" decoding="async"><figcaption>{esc(a.get("cover_credit", ""))}</figcaption></figure>'
         source=''
         if a.get('source_url'):
             u=a['source_url']
@@ -189,7 +212,7 @@ class Builder:
         meta={'@context':'https://schema.org','@type':'Article','headline':title,'datePublished':a.get('date_published',''),'dateModified':a.get('date_modified','') or a.get('date_published',''),'author':authors,'url':self.base+'/'+a['local_url'],'mainEntityOfPage':self.base+'/'+a['local_url']}
         if a.get('source_url'):meta['isBasedOn']=a['source_url']
         social_image_path=self.social_cards.render(a)
-        self.page(path,title,content,desc=a.get('excerpt',''),article_data=meta,social_image_path=social_image_path,nav_active=stream,critical_image=cover if cover and not a.get('source_url') else '')
+        self.page(path,title,content,desc=a.get('excerpt',''),article_data=meta,social_image_path=social_image_path,nav_active=stream,critical_image=display_cover if display_cover and not a.get('source_url') else '')
 
 def build():
     OUT.mkdir(exist_ok=True)
