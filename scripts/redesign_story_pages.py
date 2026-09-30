@@ -25,6 +25,11 @@ HEADER_RE = re.compile(
     re.I | re.S,
 )
 
+RELATED_RE = re.compile(
+    r'<section class="portfolio-related"(?P<attrs>[^>]*)>.*?</section>',
+    re.I | re.S,
+)
+
 CSS = r'''
 /* Homepage-inspired editorial story system */
 .reading{
@@ -323,6 +328,53 @@ html[data-theme="dark"] .bodycopy{color:#edf0eb!important}
   .storyhero-visual{min-height:170px!important}
   .storyhero-art{min-height:170px!important}
 }
+
+/* Keep recommendations visually and structurally above the site footer. */
+body.inner main>.portfolio-related{
+  width:min(100% - 48px,1120px)!important;
+  max-width:1120px!important;
+  box-sizing:border-box!important;
+  margin:40px auto 24px!important;
+  padding:26px 0 6px!important;
+  border-top:1px solid color-mix(in srgb,var(--line) 88%,transparent)!important;
+}
+@media(max-width:800px){
+  body.inner main>.portfolio-related{
+    width:min(100% - 28px,720px)!important;
+    margin:28px auto 30px!important;
+    padding:21px 0 4px!important;
+    border-top:2px solid var(--story-accent)!important;
+  }
+  body.inner main>.portfolio-related .portfolio-related__head{
+    align-items:flex-end!important;
+    gap:10px!important;
+    margin-bottom:12px!important;
+  }
+  body.inner main>.portfolio-related .portfolio-related__head h2{
+    font-size:23px!important;
+    line-height:1.05!important;
+  }
+  body.inner main>.portfolio-related .portfolio-related__all{
+    font-size:9px!important;
+    white-space:nowrap!important;
+  }
+  body.inner main>.portfolio-related .portfolio-related__grid{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  body.inner main>.portfolio-related .portfolio-related-card{
+    grid-template-columns:88px minmax(0,1fr)!important;
+    min-height:88px!important;
+    padding:6px!important;
+  }
+  body.inner main>.portfolio-related .portfolio-related-card h3{
+    font-size:14px!important;
+    line-height:1.17!important;
+  }
+  body.inner main + .sitefooter{
+    margin-top:0!important;
+  }
+}
 @media(min-width:801px){
   body.inner .reading{--story-accent:#9c452f}
   body.inner .storyhead.storyhero{
@@ -389,6 +441,19 @@ def art_title(source: str) -> str:
     return category or 'Field reporting'
 
 
+def move_related_after_article(source: str) -> str:
+    """Place recommendations after the article but before the shared site footer."""
+    match = RELATED_RE.search(source)
+    if not match:
+        return source
+    related = match.group(0)
+    without = source[:match.start()] + source[match.end():]
+    marker = '</article></main>'
+    if marker not in without:
+        return source
+    return without.replace(marker, '</article>' + related + '</main>', 1)
+
+
 def polish(path: Path) -> bool:
     source = path.read_text(encoding='utf-8')
     if '<article class="page reading">' not in source:
@@ -426,6 +491,7 @@ def polish(path: Path) -> bool:
         )
         source = source[:match.start()] + rebuilt + source[match.end():]
 
+    source = move_related_after_article(source)
     source = STYLE_RE.sub('', source)
     source = source.replace('</head>', f'<style id="{STYLE_ID}">\n{CSS}\n</style></head>', 1)
     path.write_text(source, encoding='utf-8')
