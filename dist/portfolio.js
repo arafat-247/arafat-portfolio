@@ -162,14 +162,31 @@ if(archive){const filterToggle=$('.filtertoggle');filterToggle?.addEventListener
  $('.tools').onsubmit=e=>{e.preventDefault();page=1;draw()};q.oninput=()=>{page=1;draw()};cat.onchange=year.onchange=()=>{page=1;draw()};creditViews.forEach(button=>button.onclick=()=>{selectedCredit=button.dataset.creditView;page=1;draw()});$('[data-prev]').onclick=()=>{page--;draw();archive.scrollIntoView({behavior:'smooth'})};$('[data-next]').onclick=()=>{page++;draw();archive.scrollIntoView({behavior:'smooth'})};draw();
  }catch(e){$('.count').textContent=e.message;$('[data-next]').disabled=true}})()}
 
-$('[data-newspaper-view]')?.addEventListener('click',event=>{
- const article=$('.reading');if(!article)return;
- const on=!article.classList.contains('newspaper-view');
- article.classList.toggle('newspaper-view',on);
- event.currentTarget.setAttribute('aria-pressed',String(on));
- event.currentTarget.textContent=on?'Web view':'Newspaper view';
- if(on)article.scrollIntoView({behavior:'smooth',block:'start'});
+const epaperButton=$('[data-epaper-view]'),epaperDialog=$('#epaper-dialog'),epaperSheet=$('.epaper-sheet');
+let epaperScale=1;
+function setEpaperScale(value){
+ epaperScale=Math.max(.5,Math.min(1.5,value));
+ if(epaperSheet)epaperSheet.style.setProperty('--epaper-scale',epaperScale.toFixed(2));
+}
+function fitEpaper(){
+ if(!epaperDialog||!epaperSheet)return;
+ const viewport=epaperDialog.querySelector('.epaper-viewport');
+ const available=Math.max(280,viewport.clientWidth-28);
+ const natural=epaperSheet.offsetWidth||920;
+ setEpaperScale(Math.min(1,available/natural));
+}
+epaperButton?.addEventListener('click',()=>{
+ if(!epaperDialog)return;
+ epaperDialog.showModal();
+ requestAnimationFrame(fitEpaper);
 });
+$('[data-close-epaper]')?.addEventListener('click',()=>epaperDialog?.close());
+$('[data-epaper-zoom-in]')?.addEventListener('click',()=>setEpaperScale(epaperScale+.1));
+$('[data-epaper-zoom-out]')?.addEventListener('click',()=>setEpaperScale(epaperScale-.1));
+$('[data-epaper-fit]')?.addEventListener('click',fitEpaper);
+epaperDialog?.addEventListener('click',event=>{if(event.target===epaperDialog)epaperDialog.close()});
+epaperDialog?.addEventListener('close',()=>setEpaperScale(1));
+
 $('[data-print]')?.addEventListener('click',()=>window.print());
 const shareButton=$('[data-share]'),shareDialog=$('#share-dialog'),shareStatus=$('[data-share-status]');
 function shareDetails(){
