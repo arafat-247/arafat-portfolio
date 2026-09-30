@@ -139,7 +139,8 @@ class Builder:
                  f'<a class="back" href="{prefix}{section}">← {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a>'
                  f'<div class="storykicker">{kicker}</div><h1>{esc(title)}</h1><p class="standfirst">{esc(a.get("excerpt",""))}</p>'
                  f'<div class="storyfooter"><div class="byline">{byline_html}</div>'
-                 f'<div class="storyfacts">{facts_html}</div><div class="storyactions"><button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-print>Print / PDF</button></div></div></header>'
+                 f'<div class="storyfacts">{facts_html}</div><div class="storyactions"><button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-newspaper-view aria-pressed="false">Newspaper view</button><button type="button" data-print>Print / PDF</button></div></div></header>'
+                 f'<div class="newspaper-banner" aria-hidden="true"><strong>Arafat Rahaman</strong><span>Portfolio edition · {esc(date_label(a.get("date_published","")))}</span></div>'
                  f'<div class="storymain">{figure}<div class="bodycopy">{body}</div>{source}</div>{share_dialog}</article>')
         profile_url=self.base+'/about/'
         authors=[]
