@@ -942,16 +942,17 @@ html[data-theme="dark"] .bodycopy{color:#edf0eb}
   align-items:flex-end;
   justify-content:space-between;
   gap:18px;
-  padding-bottom:6px;
+  padding:2px 0 7px;
   border-bottom:4px solid #171614;
 }
 .epaper-nameplate>div{display:grid;gap:1px}
 .epaper-nameplate strong{
-  font:700 33px/.86 Georgia,"Times New Roman",serif;
-  letter-spacing:-.045em;
+  font:700 29px/1 Georgia,"Times New Roman",serif;
+  letter-spacing:-.035em;
 }
 .epaper-nameplate span{
-  font:700 7px/1 var(--sans);
+  margin-top:3px;
+  font:700 6.5px/1.15 var(--sans);
   letter-spacing:.12em;
   text-transform:uppercase;
 }
@@ -983,8 +984,8 @@ html[data-theme="dark"] .bodycopy{color:#edf0eb}
 .epaper-lead h2{
   max-width:850px;
   margin:0;
-  font:700 40px/.91 Georgia,"Times New Roman",serif;
-  letter-spacing:-.043em;
+  font:700 38px/.94 Georgia,"Times New Roman",serif;
+  letter-spacing:-.038em;
   text-wrap:balance;
 }
 .epaper-lead>p{
@@ -1011,7 +1012,7 @@ html[data-theme="dark"] .bodycopy{color:#edf0eb}
   column-gap:13px;
   column-rule:1px solid #aaa39a;
   color:#171614;
-  font:400 11.2px/1.31 Georgia,"Times New Roman",serif;
+  font:400 11.7px/1.34 Georgia,"Times New Roman",serif;
   text-align:justify;
   hyphens:auto;
 }
@@ -1042,7 +1043,7 @@ html[data-theme="dark"] .bodycopy{color:#edf0eb}
   column-gap:15px;
   column-rule:1px solid #aaa39a;
   color:#171614;
-  font:400 11.15px/1.3 Georgia,"Times New Roman",serif;
+  font:400 11.65px/1.33 Georgia,"Times New Roman",serif;
   text-align:justify;
   hyphens:auto;
 }
