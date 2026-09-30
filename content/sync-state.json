@@ -621,9 +621,9 @@
     "https://www.thedailystar.net/supplements/world-teachers-day-2025/news/teachers-no-schools-go-4001791": {
       "discovered_at": "2026-09-06T04:57:04.185991+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-29T09:04:22.269725+00:00",
+      "last_checked": "2026-09-30T03:44:39.571454+00:00",
       "status": "saved",
-      "last_success": "2026-09-29T09:04:53.535446+00:00",
+      "last_success": "2026-09-30T03:44:42.101215+00:00",
       "failures": 0,
       "error": "",
       "article_id": "996e02bcd9765570d822",
@@ -632,9 +632,9 @@
     "https://www.thedailystar.net/opinion/views/news/rucsu-chains-how-university-scripted-its-own-crisis-3994316": {
       "discovered_at": "2026-09-06T04:57:04.185992+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-29T09:04:22.269727+00:00",
+      "last_checked": "2026-09-30T03:44:39.571457+00:00",
       "status": "saved",
-      "last_success": "2026-09-29T09:04:54.890058+00:00",
+      "last_success": "2026-09-30T03:44:46.534884+00:00",
       "failures": 0,
       "error": "",
       "article_id": "5c82c4d359e0c6885f73",
@@ -643,9 +643,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/total-literacy-elusive-after-tk-4000cr-spent-3981391": {
       "discovered_at": "2026-09-06T04:57:04.185997+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-29T09:04:22.269728+00:00",
+      "last_checked": "2026-09-30T03:44:39.571458+00:00",
       "status": "saved",
-      "last_success": "2026-09-29T09:04:55.120266+00:00",
+      "last_success": "2026-09-30T03:44:42.075659+00:00",
       "failures": 0,
       "error": "",
       "article_id": "c0d9d088aa3fdb76cc3d",
@@ -654,9 +654,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/how-weaponising-murder-cases-shielding-real-perpetrators-3976136": {
       "discovered_at": "2026-09-06T04:57:04.185999+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-29T09:04:22.269730+00:00",
+      "last_checked": "2026-09-30T03:44:39.571459+00:00",
       "status": "saved",
-      "last_success": "2026-09-29T09:04:56.769322+00:00",
+      "last_success": "2026-09-30T03:44:41.542252+00:00",
       "failures": 0,
       "error": "",
       "article_id": "a9c248535fd6f30bcf17",
@@ -665,9 +665,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/education-left-behind-3959881": {
       "discovered_at": "2026-09-06T04:57:04.186000+00:00",
       "author_listing": true,
-      "last_checked": "2026-09-29T09:04:22.269732+00:00",
+      "last_checked": "2026-09-30T03:44:39.571460+00:00",
       "status": "saved",
-      "last_success": "2026-09-29T09:04:56.834380+00:00",
+      "last_success": "2026-09-30T03:44:44.276037+00:00",
       "failures": 0,
       "error": "",
       "article_id": "ede91d544565009f7d74",
@@ -3351,15 +3351,13 @@
       "title": "Pry teacher recruitment: Selected, yet still waiting"
     }
   },
-  "archive_cursor": 54,
-  "last_attempt": "2026-09-30T03:37:02.458509+00:00",
-  "last_discovery_success": "2026-09-30T03:37:15.180973+00:00",
-  "last_completed": "2026-09-30T03:38:05.456137+00:00",
-  "saved_this_run": 59,
+  "archive_cursor": 57,
+  "last_attempt": "2026-09-30T03:44:27.774069+00:00",
+  "last_discovery_success": "2026-09-30T03:44:39.570918+00:00",
+  "last_completed": "2026-09-30T03:44:46.536753+00:00",
+  "saved_this_run": 5,
   "known_sources": 307,
   "pending": 0,
-  "errors": [
-    "The read operation timed out"
-  ],
+  "errors": [],
   "unsupported": 3
 }
