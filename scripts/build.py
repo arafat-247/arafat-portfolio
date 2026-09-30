@@ -10,7 +10,7 @@ from PIL import Image, ImageOps
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='21.12.0'
+ASSET_VERSION='21.13.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -223,7 +223,7 @@ def build():
         if p.is_dir():shutil.rmtree(p)
         else:p.unlink()
     shutil.copytree(SITE/'assets',OUT/'assets',ignore=shutil.ignore_patterns('photography-src','uploads','imported'))
-    for file in ('portfolio.css','portfolio.js','portfolio-features.css','all-work.js','epaper.css','epaper.js'):
+    for file in ('portfolio.css','portfolio.js','portfolio-features.css','all-work.js','epaper.css','epaper.js','sw.js'):
         source=SITE/file
         if source.is_file():shutil.copy2(source,OUT/file)
     shutil.copytree(SITE/'admin',OUT/'admin')
