@@ -238,7 +238,7 @@ def build():
     portal_nav=(
         '<nav class="portalnav" aria-label="Homepage navigation">'
         '<a class="portalbrand" href="./"><strong>Arafat Rahaman</strong><small>Journalist · Bangladesh</small></a>'
-        '<div class="portalnavlinks"><a href="./" aria-current="page">Home</a><a href="#work">Work</a><a href="about/">About</a><a href="contact/">Contact</a></div>'
+        '<div class="portalnavlinks"><a href="./" aria-current="page">Home</a><a href="#mobile-work">Work</a><a href="about/">About</a><a href="contact/">Contact</a></div>'
         '<details class="portalmenu"><summary aria-label="Open navigation"><i></i><i></i><i></i></summary><nav><a href="./">Home</a><a href="reporting/">Reporting</a><a href="opinion/">Opinion &amp; Analysis</a><a href="thoughts/">Thoughts</a><a href="photography/">Photography</a><a href="about/">About</a><a href="contact/">Contact</a></nav></details>'
         '</nav>'
     )
@@ -248,7 +248,7 @@ def build():
         '<h1 id="portal-home-title">Stories <em>from a changing Bangladesh</em></h1>'
         '<p class="portalhero-deck">I report on education, governance, public accountability and social issues for The Daily Star. My work combines field reporting, interviews, public records, data and visual storytelling.</p>'
         '<p class="portalhero-script">A more thoughtful Bangladesh.</p>'
-        '<div class="portalhero-actions"><a class="portalhero-primary" href="about/">About me <b aria-hidden="true">→</b></a><a href="#work">Explore my work <b aria-hidden="true">↓</b></a></div>'
+        '<div class="portalhero-actions"><a class="portalhero-primary" href="about/">About me <b aria-hidden="true">→</b></a><a href="#mobile-work">Explore my work <b aria-hidden="true">↓</b></a></div>'
         '</div>'
         '<div class="portalhero-visual" aria-hidden="true"><div class="portalhero-panel"><p>People, policy and a more equal Bangladesh.</p><span>Dhaka · Bangladesh</span></div>'
         '<figure class="portalhero-photo"><picture><source srcset="assets/portraits/byline.avif" type="image/avif"><img src="assets/portraits/byline.webp" alt="" width="1000" height="991" loading="eager" fetchpriority="high" decoding="async"></picture></figure></div>'
@@ -273,7 +273,7 @@ def build():
         +'<span class="portalnumber">04</span><span class="portalcopy"><strong>Photography</strong><small>People, places and moments from Bangladesh through my lens.</small></span><i class="portalarrow" aria-hidden="true">→</i></a>'
     )
     work=(
-        '<section class="portalwork" id="work" aria-label="Selected work"><h2 class="sr-only">Selected work</h2>'
+        '<section class="portalwork" id="mobile-work" aria-label="Selected work"><h2 class="sr-only">Selected work</h2>'
         '<div class="portalgrid">'+reporting_panel+opinion_panel+thoughts_panel+photo_panel+'</div></section>'
     )
     home_footer=(
