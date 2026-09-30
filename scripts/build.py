@@ -289,8 +289,9 @@ def build():
     all_links=''.join(f'<li><a href="../{esc(a["local_url"])}">{esc(a["title"])}</a> · {esc(date_label(a.get("date_published","")))}</li>' for a in articles)
     b.page('all-work/index.html','Complete index','<section class="page"><h1>Complete index</h1><ul>'+all_links+'</ul></section>')
     photos=[p for p in read(CONTENT/'photos.json',{'photos':[]})['photos'] if p.get('status','published')=='published']
-    # Do not publish a draft's uploaded cover just because it exists in source.
-    used={safe_asset(a.get('cover_image')) for a in articles if not a.get('source_url')}
+    # Every published article cover may appear in the e-paper preview, including
+    # archived source articles. Drafts are already excluded from "articles".
+    used={safe_asset(a.get('cover_image')) for a in articles}
     used.update(safe_asset(p.get('src')) for p in photos)
     used.update(safe_asset(p) for p in c.get('home_images',[]))
     used.update({'assets/home/reference-report.webp','assets/home/reference-photo.webp','assets/home/portal-reference-sprite.webp','assets/home/approved-desk-desktop.webp','assets/home/approved-mobile-reporting.svg','assets/home/approved-mobile-opinion.svg','assets/home/approved-mobile-thoughts.svg','assets/home/approved-mobile-photography.svg','assets/home/reference-desk-bg.webp','assets/home/reference-reporting.webp','assets/home/reference-opinion.webp','assets/home/reference-photography.webp','assets/home/reference-thoughts.webp','assets/home/reference-desk-tablet-bg.webp','assets/home/reference-four-objects.webp','assets/home/reference-leaf.webp','assets/home/reference-portrait.webp','assets/home/reference-cup.webp'})
