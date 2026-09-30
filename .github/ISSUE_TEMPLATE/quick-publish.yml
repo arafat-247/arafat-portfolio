@@ -1,0 +1,54 @@
+name: Quick publish
+description: Publish an original article or save it as a draft.
+title: "[Publish] "
+body:
+  - type: dropdown
+    id: action
+    attributes:
+      label: Publishing action
+      options: [Publish now, Save as draft]
+    validations: {required: true}
+  - type: input
+    id: headline
+    attributes: {label: Headline}
+    validations: {required: true}
+  - type: textarea
+    id: deck
+    attributes:
+      label: Deck / short description
+      description: Shown under the headline and on archive cards.
+    validations: {required: true}
+  - type: dropdown
+    id: section
+    attributes:
+      label: Section
+      options: [Thoughts, Opinion & Analysis, Reporting]
+    validations: {required: true}
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      value: How I see
+    validations: {required: true}
+  - type: input
+    id: date
+    attributes:
+      label: Publication date
+      description: YYYY-MM-DD. Leave blank to use today's Dhaka date.
+  - type: textarea
+    id: article
+    attributes:
+      label: Article text
+      description: Plain text. Blank lines make paragraphs; ## makes a subheading; > makes a quote.
+    validations: {required: true}
+  - type: textarea
+    id: cover
+    attributes:
+      label: Cover image
+      description: Optional. Drag or paste one image here.
+  - type: input
+    id: alt
+    attributes: {label: Image description}
+  - type: input
+    id: credit
+    attributes: {label: Image credit}
