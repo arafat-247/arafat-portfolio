@@ -48,10 +48,10 @@ def selected_reporting():
     thought_index={str(item.get('local_url') or '').lstrip('/'):item for item in posts if item.get('status')=='published'}
 
     picks=[
-        (articles.get('stories/half-the-children-can-t-read-comprehend/'),'Reporting'),
-        (articles.get('stories/teacher-shortages-strain-government-primary-schools/'),'Reporting'),
+        (articles.get('stories/higher-viva-marks-may-undermine-fairness-in-public-recruitment/'),'Opinion & Analysis'),
         (articles.get('stories/when-mobile-journalism-crosses-the-line-into-public-shaming/'),'Opinion & Analysis'),
-        (articles.get('stories/total-literacy-elusive-after-tk-4-000cr-spent/'),'Reporting'),
+        (articles.get('stories/what-else-must-women-do/'),'Opinion & Analysis'),
+        (articles.get('stories/half-the-children-can-t-read-comprehend/'),'Reporting'),
         (thought_index.get('thoughts/i-get-eid-off-do-my-colleagues-get-the-same-for-puja/'),'Thoughts'),
     ]
     picks=[(item,label) for item,label in picks if item]
