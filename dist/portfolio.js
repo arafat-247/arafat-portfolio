@@ -256,20 +256,16 @@ async function downloadEpaperImage(){
   const canvas=await renderEpaperCanvas();
   const blob=await new Promise((resolve,reject)=>canvas.toBlob(value=>value?resolve(value):reject(new Error('Image export failed')),'image/png'));
   const filename=epaperFilename('png');
-  if(navigator.canShare){
-   try{
-    const file=new File([blob],filename,{type:'image/png'});
-    if(navigator.canShare({files:[file]})){
-     await navigator.share({files:[file],title:'E-paper article'});
-     setEpaperStatus(`Image ready · ${canvas.width} × ${canvas.height}px`);
-     return;
-    }
-   }catch(error){if(error?.name==='AbortError')return}
-  }
   const url=URL.createObjectURL(blob),link=document.createElement('a');
-  link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),2500);
-  setEpaperStatus(`Image ready · ${canvas.width} × ${canvas.height}px`);
+  link.href=url;
+  link.download=filename;
+  link.rel='noopener';
+  link.style.display='none';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
+  setEpaperStatus(`PNG downloaded · ${canvas.width} × ${canvas.height}px`);
  }catch(error){
   console.error(error);setEpaperStatus('Image download failed. Please try again.');
  }finally{if(button)button.disabled=false}
@@ -282,7 +278,7 @@ async function downloadEpaperPdf(){
   const {jsPDF}=window.jspdf;
   const widthPt=canvas.width*.24,heightPt=canvas.height*.24;
   const pdf=new jsPDF({orientation:widthPt>heightPt?'landscape':'portrait',unit:'pt',format:[widthPt,heightPt],compress:true});
-  pdf.addImage(canvas.toDataURL('image/jpeg',.96),'JPEG',0,0,widthPt,heightPt,undefined,'FAST');
+  pdf.addImage(canvas.toDataURL('image/png'),'PNG',0,0,widthPt,heightPt,undefined,'FAST');
   pdf.save(epaperFilename('pdf'));
   setEpaperStatus('HD PDF saved');
  }catch(error){
