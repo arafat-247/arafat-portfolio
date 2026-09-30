@@ -20,22 +20,51 @@ def selected_stories():
             try:item=json.loads(path.read_text(encoding='utf-8'))
             except (OSError,ValueError):continue
             local=str(item.get('local_url') or '').lstrip('/')
-            if local:article_map[local]=item
+            if local and item.get('status')=='published':article_map[local]=item
+
     posts=[]
     if POSTS.is_file():
         try:posts=json.loads(POSTS.read_text(encoding='utf-8')).get('posts',[])
         except (OSError,ValueError):posts=[]
-    post_map={str(item.get('local_url') or '').lstrip('/'):item for item in posts if item.get('status')=='published'}
-    picks=[
-        (article_map.get('stories/higher-viva-marks-may-undermine-fairness-in-public-recruitment/'),'Opinion & Analysis'),
-        (article_map.get('stories/when-mobile-journalism-crosses-the-line-into-public-shaming/'),'Opinion & Analysis'),
-        (article_map.get('stories/what-else-must-women-do/'),'Opinion & Analysis'),
-        (article_map.get('stories/half-the-children-can-t-read-comprehend/'),'Reporting'),
-        (post_map.get('thoughts/i-get-eid-off-do-my-colleagues-get-the-same-for-puja/'),'Thoughts'),
-    ]
+    published_posts=[item for item in posts if item.get('status')=='published']
+    all_items=list(article_map.values())+published_posts
+
+    def stamp(item):
+        return str(item.get('date_published') or '')
+
+    latest=max(all_items,key=stamp) if all_items else None
+    picks=[]
+    used=set()
+
+    if latest:
+        picks.append((latest,'Latest'))
+        local=str(latest.get('local_url') or '').lstrip('/')
+        if local:used.add(local)
+
+    for stream,label in [
+        ('opinion','Opinion & Analysis'),
+        ('reporting','Reporting'),
+        ('opinion','Opinion & Analysis'),
+        ('reporting','Reporting'),
+        ('thoughts','Thoughts'),
+    ]:
+        candidates=sorted(
+            [
+                item for item in all_items
+                if item.get('stream')==stream
+                and str(item.get('local_url') or '').lstrip('/') not in used
+            ],
+            key=stamp,
+            reverse=True
+        )
+        if candidates:
+            item=candidates[0]
+            picks.append((item,label))
+            local=str(item.get('local_url') or '').lstrip('/')
+            if local:used.add(local)
+
     links=[]
     for item,label in picks:
-        if not item:continue
         path=str(item.get('local_url') or '').lstrip('/')
         if not re.fullmatch(r'(stories|thoughts)/[a-zA-Z0-9_-]+/',path):continue
         title=html.escape(str(item.get('title') or 'Selected work'))
