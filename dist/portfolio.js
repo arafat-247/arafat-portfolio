@@ -1,3 +1,5 @@
+const portfolioFonts=document.getElementById('portfolio-fonts');
+if(portfolioFonts)portfolioFonts.media='all';
 (()=>{'use strict';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],root=document.body.dataset.root||'';
 if(document.body.classList.contains('home')&&!location.hash){history.scrollRestoration='manual';window.scrollTo(0,0)}
