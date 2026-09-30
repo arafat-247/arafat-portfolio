@@ -162,6 +162,14 @@ if(archive){const filterToggle=$('.filtertoggle');filterToggle?.addEventListener
  $('.tools').onsubmit=e=>{e.preventDefault();page=1;draw()};q.oninput=()=>{page=1;draw()};cat.onchange=year.onchange=()=>{page=1;draw()};creditViews.forEach(button=>button.onclick=()=>{selectedCredit=button.dataset.creditView;page=1;draw()});$('[data-prev]').onclick=()=>{page--;draw();archive.scrollIntoView({behavior:'smooth'})};$('[data-next]').onclick=()=>{page++;draw();archive.scrollIntoView({behavior:'smooth'})};draw();
  }catch(e){$('.count').textContent=e.message;$('[data-next]').disabled=true}})()}
 
+$('[data-newspaper-view]')?.addEventListener('click',event=>{
+ const article=$('.reading');if(!article)return;
+ const on=!article.classList.contains('newspaper-view');
+ article.classList.toggle('newspaper-view',on);
+ event.currentTarget.setAttribute('aria-pressed',String(on));
+ event.currentTarget.textContent=on?'Web view':'Newspaper view';
+ if(on)article.scrollIntoView({behavior:'smooth',block:'start'});
+});
 $('[data-print]')?.addEventListener('click',()=>window.print());
 const shareButton=$('[data-share]'),shareDialog=$('#share-dialog'),shareStatus=$('[data-share-status]');
 function shareDetails(){
