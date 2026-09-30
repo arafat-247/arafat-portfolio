@@ -31,8 +31,8 @@ body.home,body.home .right,body.home main{background:#110c09!important}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.steam i,.wind-leaf,.desk-card:after{animation:none!important}.wind-leaf.three{display:none}.desk-card,.card-photo,.card-label span{transition:none}.motion-button{display:none}}
 
 /* Approved four-object design, preserved at every preview width. */
-@media(min-width:1101px){.category-grid{left:32.5%;top:34.5%;width:49%;column-gap:12px;row-gap:14px}}
-.category-grid .desk-card{padding:0;border:0;background:none;box-shadow:none;aspect-ratio:1.5;transform:none;min-height:0;overflow:visible}
+@media(min-width:1101px){.category-grid{left:29.8%;top:32.5%;width:min(57%,960px);column-gap:8px;row-gap:10px}}
+.category-grid .desk-card{padding:0;border:0;background:none;box-shadow:none;aspect-ratio:1.46;transform:none;min-height:0;overflow:visible}
 .category-grid .desk-card:hover,.category-grid .desk-card:focus-visible{transform:translateY(-5px);box-shadow:none;filter:drop-shadow(0 7px 5px #10090550)}
 .category-grid .card-photo{position:absolute;inset:0;aspect-ratio:auto;width:100%;height:100%;background-image:url('assets/home/reference-four-objects.webp');background-size:200% 200%;border:0;box-shadow:none;filter:none}
 .category-grid .crop-reporting{background-position:0 0;clip-path:inset(0 0 5% 0)}
