@@ -46,22 +46,24 @@ def selected_reporting():
     articles=article_index()
     posts=json.loads(POSTS.read_text(encoding='utf-8')).get('posts',[]) if POSTS.is_file() else []
     published_posts=[item for item in posts if item.get('status')=='published']
-    all_items=list(articles.values())+published_posts
+
+    def is_byline(item):
+        if item.get('credit_type_override')=='contribution':
+            return False
+        if item.get('source_url') and not item.get('verified_author'):
+            return False
+        return True
+
+    all_items=[
+        item for item in list(articles.values())+published_posts
+        if item.get('status')=='published' and is_byline(item)
+    ]
 
     def stamp(item):
         return str(item.get('date_published') or '')
 
     latest=max(all_items,key=stamp) if all_items else None
     latest_url=str((latest or {}).get('local_url') or '').lstrip('/')
-
-    def newest(stream,exclude=None):
-        excluded=set(exclude or [])
-        candidates=[
-            item for item in all_items
-            if item.get('stream')==stream
-            and str(item.get('local_url') or '').lstrip('/') not in excluded
-        ]
-        return max(candidates,key=stamp) if candidates else None
 
     picks=[]
     used=set()
@@ -73,7 +75,6 @@ def selected_reporting():
         ('opinion','Opinion & Analysis'),
         ('reporting','Reporting'),
         ('opinion','Opinion & Analysis'),
-        ('reporting','Reporting'),
         ('thoughts','Thoughts'),
     ]:
         candidates=sorted(
@@ -143,6 +144,6 @@ def main():
     source=re.sub(rf'<style id="{STYLE_ID}">.*?</style>','',source,flags=re.I|re.S)
     source=source.replace('</head>',f'<style id="{STYLE_ID}">\n{CSS}\n</style></head>',1)
     HOME.write_text(source,encoding='utf-8')
-    print('Approved mobile homepage applied: header_option=1, selected_reporting=3, real_story_images_or_editorial_fallback=1, duplicate_label=removed, divider=readable, portfolio_backgrounds=hard_locked, desktop_untouched=1')
+    print('Approved mobile homepage applied: header_option=1, selected_reporting=5, real_story_images_or_editorial_fallback=1, duplicate_label=removed, divider=readable, portfolio_backgrounds=hard_locked, desktop_untouched=1')
 
 if __name__=='__main__':main()
