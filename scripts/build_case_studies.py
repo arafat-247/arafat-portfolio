@@ -358,6 +358,7 @@ def main() -> None:
     if not template_path.is_file():
         raise FileNotFoundError("dist/all-work/index.html was not generated")
     template = template_path.read_text(encoding="utf-8")
+    template = re.sub(r'<script src="../all-work\.js[^"]*" defer></script>', '', template, flags=re.I)
 
     index_canonical = SITE + "/case-studies/"
     index = apply_meta(
