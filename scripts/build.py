@@ -130,6 +130,17 @@ class Builder:
         kicker=f'<span class="storytype">{esc(stream_label)}</span>'
         if show_category:kicker+=f'<span class="storykicker-sep">·</span><a class="storycategory" href="{prefix}{section}?category={esc(category)}">{esc(category)}</a>'
         publication=esc(a.get('source_name') or '')
+        epaper_body=body
+        for pattern in (
+            r'<p[^>]*>\s*<em[^>]*>\s*<strong[^>]*>Arafat Rahaman.*?</p>',
+            r'<p[^>]*>\s*<em[^>]*>\s*<strong[^>]*>Views expressed in this article.*?</p>',
+            r'<p[^>]*>\s*<em[^>]*>Follow\s*</em>.*?The Daily Star Opinion.*?</p>',
+        ):
+            epaper_body=re.sub(pattern,'',epaper_body,flags=re.I|re.S)
+        epaper_figure=''
+        if cover:
+            epaper_figure=(f'<figure class="cover"><img src="{prefix}{esc(cover)}" alt="{esc(a.get("cover_alt",""))}" '
+                           f'decoding="async"><figcaption>{esc(a.get("cover_credit",""))}</figcaption></figure>')
         share_dialog='''<dialog class="sharedialog" id="share-dialog" aria-labelledby="share-dialog-title"><div class="sharehead"><div><span>Share</span><h2 id="share-dialog-title">Share this story</h2></div><button type="button" data-close-share aria-label="Close sharing window">×</button></div><div class="sharegrid"><a href="#" data-share-service="facebook"><strong>Facebook</strong><span>Share in a new window ↗</span></a><a href="#" data-share-service="whatsapp"><strong>WhatsApp</strong><span>Send to a contact ↗</span></a><a href="#" data-share-service="x"><strong>X</strong><span>Post this story ↗</span></a><a href="#" data-share-service="linkedin"><strong>LinkedIn</strong><span>Share with your network ↗</span></a><button type="button" data-copy-share><strong>Copy link</strong><span>Copy the clean article address</span></button></div><p class="sharestatus" data-share-status role="status" aria-live="polite"></p></dialog>'''
         epaper_dialog=(f'<dialog class="epaper-dialog" id="epaper-dialog" aria-labelledby="epaper-title">'
                        f'<div class="epaper-toolbar"><div class="epaper-toolbar-title"><strong>E-paper view</strong><span>Article-only preview · exports exclude website chrome</span></div>'
@@ -139,7 +150,7 @@ class Builder:
                        f'<div class="epaper-strip"><span>{esc(stream_label)}</span><span>{esc(date_label(a.get("date_published","")))}</span><span>Article preview</span></div>'
                        f'<section class="epaper-lead"><div class="epaper-section">{esc(category or stream_label)}</div><h2 id="epaper-title">{esc(title)}</h2>'
                        f'<p>{esc(a.get("excerpt",""))}</p><div class="epaper-byline">By {esc(credit)}</div></section>'
-                       f'{figure}<div class="epaper-columns">{body}</div>'
+                       f'{epaper_figure}<div class="epaper-columns">{epaper_body}</div>'
                        f'</article></div></div></dialog>')
         facts=[esc(date_label(a.get('date_published',''))),f'{read_minutes} min read']
         if publication:facts.append(publication)
