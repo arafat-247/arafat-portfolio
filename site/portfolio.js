@@ -6,8 +6,57 @@ if(document.body.classList.contains('home')&&!location.hash){history.scrollResto
 if('serviceWorker' in navigator){
  window.addEventListener('load',()=>setTimeout(()=>{
   navigator.serviceWorker.register(new URL(root+'sw.js',location.href)).catch(()=>{});
- },1200),{once:true});
+ },400),{once:true});
 }
+
+const scriptUrl=new URL(document.currentScript?.src||location.href,location.href);
+const assetVersion=scriptUrl.searchParams.get('v')||'21.17.0';
+
+const prefetched=new Set();
+let hoverPrefetchTimer;
+function prefetchInternal(anchor){
+ if(!anchor?.href)return;
+ let url;
+ try{url=new URL(anchor.href,location.href)}catch{return}
+ if(url.origin!==location.origin||url.pathname===location.pathname&&url.search===location.search||url.hash&&url.pathname===location.pathname)return;
+ if(prefetched.has(url.href)||anchor.hasAttribute('download'))return;
+ prefetched.add(url.href);
+ fetch(url.href,{credentials:'same-origin',cache:'force-cache'}).catch(()=>{});
+}
+document.addEventListener('pointerover',event=>{
+ const anchor=event.target.closest?.('a[href]');
+ if(!anchor)return;
+ clearTimeout(hoverPrefetchTimer);
+ hoverPrefetchTimer=setTimeout(()=>prefetchInternal(anchor),80);
+},{passive:true});
+document.addEventListener('focusin',event=>prefetchInternal(event.target.closest?.('a[href]')));
+document.addEventListener('touchstart',event=>prefetchInternal(event.target.closest?.('a[href]')),{passive:true});
+
+const epaperButton=$('[data-epaper-view]');
+let epaperAssetsPromise;
+function loadEpaperAssets(){
+ if(window.__portfolioEpaperReady)return Promise.resolve();
+ if(epaperAssetsPromise)return epaperAssetsPromise;
+ epaperAssetsPromise=new Promise((resolve,reject)=>{
+  const finish=()=>{window.__portfolioEpaperReady=true;resolve()};
+  const fail=()=>{epaperAssetsPromise=null;reject(new Error('Could not load e-paper assets'))};
+  let style=document.querySelector('link[data-epaper-style]');
+  if(!style){
+   style=document.createElement('link');style.rel='stylesheet';style.href=root+'epaper.css?v='+assetVersion;style.dataset.epaperStyle='1';document.head.appendChild(style);
+  }
+  const script=document.createElement('script');
+  script.src=root+'epaper.js?v='+assetVersion;script.defer=true;script.dataset.epaperScript='1';
+  script.addEventListener('load',finish,{once:true});script.addEventListener('error',fail,{once:true});document.body.appendChild(script);
+ });
+ return epaperAssetsPromise;
+}
+epaperButton?.addEventListener('pointerenter',()=>loadEpaperAssets().catch(()=>{}),{once:true,passive:true});
+epaperButton?.addEventListener('focus',()=>loadEpaperAssets().catch(()=>{}),{once:true});
+epaperButton?.addEventListener('click',async event=>{
+ if(window.__portfolioEpaperReady)return;
+ event.preventDefault();event.stopImmediatePropagation();
+ try{await loadEpaperAssets();epaperButton.click()}catch{alert('E-paper view could not be loaded. Please try again.')}
+});
 
 const menu=$('#mobile-menu'),toggle=$('.menutoggle'),backdrop=$('.menubackdrop'),drawerClose=$('.drawerclose'),themeToggle=$('.themetoggle');
 let closeTimer,lastFocused;
