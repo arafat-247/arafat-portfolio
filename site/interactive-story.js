@@ -1,130 +1,71 @@
 (()=>{
-  const root=document.querySelector('[data-interactive-story]');
-  if(!root)return;
-  const parse=el=>{
-    const node=el.querySelector('[data-ix-config]');
-    if(!node)return {};
-    try{return JSON.parse(node.textContent)}catch(error){return {}}
-  };
-  const fmt=(value,decimals)=>{
-    const n=Number(value);
-    if(!Number.isFinite(n))return String(value??'');
-    if(decimals!==undefined&&decimals!==null)return n.toLocaleString('en-GB',{minimumFractionDigits:Number(decimals),maximumFractionDigits:Number(decimals)});
-    return Number.isInteger(n)?n.toLocaleString('en-GB'):n.toLocaleString('en-GB',{maximumFractionDigits:2});
-  };
-  const suffix=(value)=>String(value??'');
+ const root=document.querySelector('[data-immersive-story]');if(!root)return;
+ const field=root.querySelector('[data-school-field]');
+ if(field){
+   const frag=document.createDocumentFragment();
+   for(let i=0;i<100;i++){const dot=document.createElement('i');frag.appendChild(dot)}
+   field.appendChild(frag);
+ }
+ const steps=[...root.querySelectorAll('[data-step]')],dots=field?[...field.children]:[];
+ const big=root.querySelector('[data-big-number]'),label=root.querySelector('[data-big-label]'),fill=root.querySelector('[data-share-fill]'),caption=root.querySelector('[data-visual-caption]');
+ const renderStep=i=>{
+   steps.forEach((s,n)=>s.classList.toggle('is-active',n===i));
+   if(i===0){if(big)big.textContent='65,567';if(label)label.textContent='government primary schools';if(fill)fill.style.width='100%';if(caption)caption.textContent='Start with the full system.';dots.forEach(d=>d.className='')}
+   if(i===1){if(big)big.textContent='36,235';if(label)label.textContent='vacant headteacher posts';if(fill)fill.style.width='55.3%';if(caption)caption.textContent='About 55.3% of headteacher posts were vacant.';dots.forEach((d,n)=>d.className=n<55?'hot':'dim')}
+   if(i===2){if(big)big.textContent='1';if(label)label.textContent='assistant teacher may carry both teaching and administration';if(fill)fill.style.width='55.3%';if(caption)caption.textContent='A vacancy is not just an empty office; the work moves to someone already teaching.';dots.forEach((d,n)=>d.className=n<55?'hot':'dim')}
+ };
+ if('IntersectionObserver'in window){
+   const io=new IntersectionObserver(entries=>{
+     const active=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+     if(active)renderStep(Number(active.target.dataset.step));
+   },{rootMargin:'-25% 0px -45% 0px',threshold:[0,.2,.5,.8]});
+   steps.forEach(s=>io.observe(s));
+ } else renderStep(0);
 
-  root.querySelectorAll('[data-ix-module="ratio"]').forEach(el=>{
-    const c=parse(el), buttons=[...el.querySelectorAll('[data-ratio-choice]')];
-    const value=el.querySelector('[data-ratio-value]'),fill=el.querySelector('[data-ratio-fill]'),sentence=el.querySelector('[data-ratio-sentence]');
-    const render=choice=>{
-      const primary=choice==='primary';
-      const n=Number(primary?c.numerator:c.secondary_value)||0,d=Number(c.denominator)||0,p=d?n/d*100:0,label=primary?(c.primary_label||'Part'):(c.secondary_label||'Remainder');
-      if(value)value.textContent=fmt(n);
-      if(fill)fill.style.width=Math.max(0,Math.min(100,p))+'%';
-      if(sentence)sentence.textContent=label+': '+fmt(n)+' of '+fmt(d)+' ('+p.toFixed(1)+'%).';
-      buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.ratioChoice===choice)));
-    };
-    buttons.forEach(b=>b.addEventListener('click',()=>render(b.dataset.ratioChoice)));
-  });
+ const range=root.querySelector('[data-teacher-range]'),teachers=root.querySelector('[data-teachers]'),plural=root.querySelector('[data-plural]'),per=root.querySelector('[data-students-per]'),teacherDots=root.querySelector('[data-teacher-dots]');
+ const renderTeachers=value=>{
+   const n=Math.max(1,Math.min(5,Number(value)||1));
+   if(teachers)teachers.textContent=String(n);if(plural)plural.textContent=n===1?'':'s';if(per)per.textContent=(70/n).toFixed(n===1?0:1);
+   if(teacherDots){teacherDots.replaceChildren(...Array.from({length:n},()=>document.createElement('i')))}
+ };
+ if(range){range.addEventListener('input',()=>renderTeachers(range.value));renderTeachers(range.value)}
 
-  root.querySelectorAll('[data-ix-module="scenario"]').forEach(el=>{
-    const c=parse(el),range=el.querySelector('[data-scenario-range]'),input=el.querySelector('[data-scenario-input]'),output=el.querySelector('[data-scenario-output]'),visual=el.querySelector('[data-scenario-visual]');
-    const render=v=>{
-      const count=Math.max(1,Number(v)||1),result=(Number(c.total)||0)/count;
-      if(input)input.textContent=fmt(count);
-      if(output)output.textContent=fmt(result,c.decimals??1);
-      if(range)range.value=String(count);
-      if(visual){
-        const dots=Math.min(70,Math.max(1,Math.round(result)));
-        visual.replaceChildren(...Array.from({length:dots},()=>{const i=document.createElement('i');return i}));
-      }
-    };
-    if(range)range.addEventListener('input',()=>render(range.value));
-    el.querySelectorAll('[data-scenario-preset]').forEach(b=>b.addEventListener('click',()=>render(b.dataset.scenarioPreset)));
-    render(range?.value||c.start||1);
-  });
+ const cases=[
+  {location:'Jamalpur',title:'West Nangla Government Primary School',text:'Five posts were sanctioned, but the school was operating with one teacher for 70 students.',metrics:[['Sanctioned posts','5'],['Teachers serving','1'],['Students','70'],['Vacant posts','4']],quote:'“The shortage of teachers has made many guardians reluctant to admit their children to this school.”'},
+  {location:'Gazipur',title:'Sonarua Government Primary School',text:'Four teachers were serving against six sanctioned posts. Around three classes were cancelled every day.',metrics:[['Sanctioned posts','6'],['Teachers serving','4'],['Vacant posts','2'],['Classes cancelled','~3/day']],quote:'“A teacher has to take two to three additional classes every day.”'},
+  {location:'Faridpur',title:'No. 24 Purba Aliabad Government Primary School',text:'Three teachers were working against five sanctioned posts.',metrics:[['Sanctioned posts','5'],['Teachers serving','3'],['Vacant posts','2'],['Reported effect','Split classes']],quote:'“One teacher often teaches two classes at the same time and sometimes leaves one class before finishing the lesson.”'}
+ ];
+ const caseButtons=[...root.querySelectorAll('[data-case]')],caseLocation=root.querySelector('[data-case-location]'),caseTitle=root.querySelector('[data-case-title]'),caseText=root.querySelector('[data-case-text]'),caseMetrics=root.querySelector('[data-case-metrics]'),caseQuote=root.querySelector('[data-case-quote]'),caseGraphic=root.querySelector('[data-case-graphic]');
+ const renderCase=i=>{
+   const c=cases[i];if(!c)return;
+   caseButtons.forEach((b,n)=>b.setAttribute('aria-pressed',String(n===i)));
+   if(caseLocation)caseLocation.textContent=c.location;if(caseTitle)caseTitle.textContent=c.title;if(caseText)caseText.textContent=c.text;if(caseQuote)caseQuote.textContent=c.quote;
+   if(caseMetrics){caseMetrics.replaceChildren(...c.metrics.map(([l,v])=>{const d=document.createElement('div'),s=document.createElement('span'),b=document.createElement('strong');s.textContent=l;b.textContent=v;d.append(s,b);return d}))}
+   if(caseGraphic)caseGraphic.style.setProperty('--case-index',i);
+ };
+ caseButtons.forEach((b,i)=>b.addEventListener('click',()=>renderCase(i)));renderCase(0);
 
-  root.querySelectorAll('[data-ix-module="bar_chart"]').forEach(el=>{
-    const c=parse(el),list=el.querySelector('[data-bar-list]'),detail=el.querySelector('[data-bar-detail]');
-    let order=(c.data||[]).map((_,i)=>i);
-    const rows=()=>[...list.querySelectorAll('[data-bar-index]')];
-    const select=index=>{
-      rows().forEach(r=>r.setAttribute('aria-pressed',String(Number(r.dataset.barIndex)===index)));
-      const item=(c.data||[])[index]||{};
-      if(detail)detail.textContent=item.note||item.label+': '+fmt(item.value,c.decimals)+suffix(c.suffix);
-    };
-    rows().forEach(r=>r.addEventListener('click',()=>select(Number(r.dataset.barIndex))));
-    el.querySelectorAll('[data-bar-sort]').forEach(button=>button.addEventListener('click',()=>{
-      const mode=button.dataset.barSort;
-      el.querySelectorAll('[data-bar-sort]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
-      order=mode==='rank'?(c.data||[]).map((_,i)=>i).sort((a,b)=>Number(c.data[b].value)-Number(c.data[a].value)):(c.data||[]).map((_,i)=>i);
-      const map=new Map(rows().map(r=>[Number(r.dataset.barIndex),r]));
-      order.forEach(i=>list.appendChild(map.get(i)));
-    }));
-    if((c.data||[]).length)select(0);
-  });
+ const regional=[['Chattogram',6.65],['Dhaka',6.52],['Rajshahi',6.46],['Barishal',5.89],['Sylhet',5.59]];
+ const bars=root.querySelector('[data-rank-bars]'),rankButtons=[...root.querySelectorAll('[data-rank-order]')];
+ const renderRanks=mode=>{
+   const data=[...regional];if(mode==='low')data.sort((a,b)=>a[1]-b[1]);
+   rankButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.rankOrder===mode)));
+   if(bars){bars.replaceChildren(...data.map(([name,value])=>{const row=document.createElement('div');row.className='rank-row';const l=document.createElement('span'),track=document.createElement('div'),bar=document.createElement('i'),v=document.createElement('strong');l.textContent=name;bar.style.width=(value/6.65*100)+'%';track.appendChild(bar);v.textContent=value.toFixed(2);row.append(l,track,v);return row}))}
+ };
+ rankButtons.forEach(b=>b.addEventListener('click',()=>renderRanks(b.dataset.rankOrder)));renderRanks('reported');
 
-  root.querySelectorAll('[data-ix-module="compare"]').forEach(el=>{
-    const c=parse(el),buttons=[...el.querySelectorAll('[data-compare-index]')];
-    const l=el.querySelector('[data-compare-left]'),r=el.querySelector('[data-compare-right]'),lu=el.querySelector('[data-compare-unit-left]'),ru=el.querySelector('[data-compare-unit-right]'),lb=el.querySelector('[data-compare-bar-left]'),rb=el.querySelector('[data-compare-bar-right]'),delta=el.querySelector('[data-compare-delta]');
-    const render=index=>{
-      const m=(c.metrics||[])[index]||{},left=Number(m.left)||0,right=Number(m.right)||0,max=Math.max(Math.abs(left),Math.abs(right),1),unit=m.unit||'';
-      if(l)l.textContent=fmt(left,m.decimals); if(r)r.textContent=fmt(right,m.decimals); if(lu)lu.textContent=unit;if(ru)ru.textContent=unit;
-      if(lb)lb.style.height=(Math.abs(left)/max*52+8)+'%'; if(rb)rb.style.height=(Math.abs(right)/max*52+8)+'%';
-      const gap=Math.abs(left-right),leader=left===right?'Neither':left>right?(c.left_label||'Left'):(c.right_label||'Right');
-      if(delta)delta.textContent=left===right?'No difference on this measure.':leader+' leads by '+fmt(gap,m.decimals)+unit+'.';
-      buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
-    };
-    buttons.forEach((b,i)=>b.addEventListener('click',()=>render(i)));
-    if(buttons.length)render(0);
-  });
+ const learning={math:{a:61,b:70,copy:'61% of Class III students and 70% of Class V students lacked grade-appropriate proficiency in mathematics.'},bangla:{a:51,b:50,copy:'51% of Class III students and 50% of Class V students lacked the required competency in Bangla.'}};
+ const subjectButtons=[...root.querySelectorAll('[data-subject]')],class3=root.querySelector('[data-class3]'),class5=root.querySelector('[data-class5]'),f3=root.querySelector('[data-class3-fill]'),f5=root.querySelector('[data-class5-fill]'),learnCopy=root.querySelector('[data-learning-copy]');
+ const renderLearning=key=>{const d=learning[key];subjectButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.subject===key)));if(class3)class3.textContent=d.a+'%';if(class5)class5.textContent=d.b+'%';if(f3)f3.style.height=d.a+'%';if(f5)f5.style.height=d.b+'%';if(learnCopy)learnCopy.textContent=d.copy};
+ subjectButtons.forEach(b=>b.addEventListener('click',()=>renderLearning(b.dataset.subject)));renderLearning('math');
 
-  root.querySelectorAll('[data-ix-module="explorer"]').forEach(el=>{
-    const c=parse(el),buttons=[...el.querySelectorAll('[data-explorer-index]')],title=el.querySelector('[data-explorer-title]'),text=el.querySelector('[data-explorer-text]'),metrics=el.querySelector('[data-explorer-metrics]');
-    const render=index=>{
-      const option=(c.options||[])[index]||{};
-      if(title)title.textContent=option.title||option.label||'';
-      if(text)text.textContent=option.text||'';
-      if(metrics){
-        metrics.replaceChildren(...(option.metrics||[]).map(m=>{
-          const card=document.createElement('article'),label=document.createElement('span'),value=document.createElement('strong');
-          label.textContent=m.label||'';value.textContent=fmt(m.value,m.decimals)+suffix(m.suffix);
-          card.append(label,value);
-          if(m.note){const small=document.createElement('small');small.textContent=m.note;card.appendChild(small)}
-          return card;
-        }));
-      }
-      buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
-    };
-    buttons.forEach((b,i)=>b.addEventListener('click',()=>render(i)));
-    if(buttons.length)render(0);
-  });
-
-  root.querySelectorAll('[data-ix-module="timeline"]').forEach(el=>{
-    const c=parse(el),buttons=[...el.querySelectorAll('[data-timeline-index]')],date=el.querySelector('[data-timeline-date]'),title=el.querySelector('[data-timeline-title]'),text=el.querySelector('[data-timeline-text]');
-    const render=index=>{
-      const event=(c.events||[])[index]||{};
-      if(date)date.textContent=event.date||'';if(title)title.textContent=event.label||'';if(text)text.textContent=event.text||'';
-      buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
-    };
-    buttons.forEach((b,i)=>b.addEventListener('click',()=>render(i)));
-    if(buttons.length)render(0);
-  });
-
-  const modules=[...root.querySelectorAll('.ix-module')],nav=[...root.querySelectorAll('[data-module-nav] a')];
-  const setActive=id=>nav.forEach(a=>a.classList.toggle('is-active',a.getAttribute('href')==='#'+id));
-  if('IntersectionObserver'in window){
-    const io=new IntersectionObserver(entries=>{
-      const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
-      if(visible[0])setActive(visible[0].target.id);
-    },{rootMargin:'-18% 0px -58% 0px',threshold:[0,.2,.5]});
-    modules.forEach(m=>io.observe(m));
-  }
-  const updateProgress=()=>{
-    const shell=root.querySelector('.ix-shell');if(!shell)return;
-    const top=shell.getBoundingClientRect().top+scrollY,total=Math.max(1,shell.offsetHeight-innerHeight*.6),travel=scrollY-top+innerHeight*.2;
-    document.documentElement.style.setProperty('--progress',(Math.max(0,Math.min(1,travel/total))*100).toFixed(2)+'%');
-  };
-  addEventListener('scroll',updateProgress,{passive:true});addEventListener('resize',updateProgress,{passive:true});updateProgress();
+ const times=[
+  {date:'2013',title:'Recruitment rules set the route',text:'Under the existing rules, 20 percent of headteacher posts are filled through direct recruitment and 80 percent through promotion from assistant teachers.'},
+  {date:'2017',title:'A writ petition stalls the process',text:'A writ petition challenged a provision of the 2013 Recruitment Rules relating to seniority, stalling the filling of many headteacher posts.'},
+  {date:'2 July 2026',title:'The Appellate Division removes a major obstacle',text:'The Appellate Division overturned a High Court verdict that had struck down part of the rules governing seniority and promotion.'},
+  {date:'Next',title:'Recruitment is expected to restart',text:'Primary and mass education ministry officials said a formal requisition would soon be sent to the Public Service Commission for direct recruitment and promotion under special arrangements.'}
+ ];
+ const timeButtons=[...root.querySelectorAll('[data-time]')],td=root.querySelector('[data-time-date]'),tt=root.querySelector('[data-time-title]'),tx=root.querySelector('[data-time-text]');
+ const renderTime=i=>{const d=times[i];timeButtons.forEach((b,n)=>b.setAttribute('aria-pressed',String(n===i)));if(td)td.textContent=d.date;if(tt)tt.textContent=d.title;if(tx)tx.textContent=d.text};
+ timeButtons.forEach((b,i)=>b.addEventListener('click',()=>renderTime(i)));renderTime(0);
 })();
