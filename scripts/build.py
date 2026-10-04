@@ -198,12 +198,13 @@ class Builder:
         facts=[esc(date_label(a.get('date_published',''))),f'{read_minutes} min read']
         if publication:facts.append(publication)
         facts_html=''.join(f'<span>{fact}</span>' for fact in facts if fact)
+        interactive_link='<a class="interactive-trigger" href="interactive/">Interactive edition</a>' if has_interactive(a) else ''
         byline_html=f'<picture><source srcset="{prefix}assets/portraits/byline.avif" type="image/avif"><img src="{prefix}assets/portraits/byline.webp" alt="Arafat Rahaman" width="64" height="64" loading="eager" fetchpriority="high" decoding="async"></picture><div><strong>{esc(credit)}</strong>{contribution}<span class="meta">{esc(date_label(a.get("date_published","")))}{update}</span></div>'
         content=(f'<article class="page reading"><header class="storyhead">'
                  f'<a class="back" href="{prefix}{section}">← {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a>'
                  f'<div class="storykicker">{kicker}</div><h1>{esc(title)}</h1><p class="standfirst">{esc(a.get("excerpt",""))}</p>'
                  f'<div class="storyfooter"><div class="byline">{byline_html}</div>'
-                 f'<div class="storyfacts">{facts_html}</div><div class="storyactions">{f"<a class=\"interactive-trigger\" href=\"interactive/\">Interactive edition</a>" if has_interactive(a) else ""}<button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-epaper-view aria-haspopup="dialog">E-paper view</button><button type="button" data-print>Print / PDF</button></div></div></header>'
+                 f'<div class="storyfacts">{facts_html}</div><div class="storyactions">{interactive_link}<button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-epaper-view aria-haspopup="dialog">E-paper view</button><button type="button" data-print>Print / PDF</button></div></div></header>'
                  f'<div class="storymain">{figure}<div class="bodycopy">{body}</div>{source}</div>{share_dialog}{epaper_dialog}</article>')
         profile_url=self.base+'/about/'
         authors=[]
