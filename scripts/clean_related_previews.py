@@ -10,6 +10,8 @@ import re
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
+from PIL import Image, ImageOps
+
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 SITE = "https://arafatrahaman.com"
@@ -56,13 +58,42 @@ def cover_for(href: str) -> str | None:
     return None
 
 
+def related_thumbnail(cover: str) -> str:
+    parts = urlsplit(cover)
+    if parts.netloc and parts.netloc != "arafatrahaman.com":
+        return cover
+    rel = parts.path.lstrip("/")
+    if not rel.startswith("assets/"):
+        return cover
+    source = DIST / rel
+    if not source.is_file():
+        source = ROOT / "site" / rel
+    if not source.is_file():
+        return cover
+    target_dir = DIST / "assets" / "related"
+    target_dir.mkdir(parents=True, exist_ok=True)
+    target = target_dir / f"{source.stem}-related.webp"
+    try:
+        if not target.is_file() or target.stat().st_mtime < source.stat().st_mtime:
+            with Image.open(source) as original:
+                image = ImageOps.exif_transpose(original)
+                image = ImageOps.fit(image, (720, 405), method=Image.Resampling.LANCZOS)
+                if image.mode not in ("RGB", "RGBA"):
+                    image = image.convert("RGB")
+                image.save(target, "WEBP", quality=70, method=6)
+        return "/assets/related/" + target.name
+    except (OSError, ValueError):
+        return cover
+
+
 def replace_card(match: re.Match[str]) -> str:
     href = html.unescape(match.group("href"))
     cover = cover_for(href)
     if cover:
+        cover = related_thumbnail(cover)
         visual = (
-            f'<img src="{html.escape(cover, quote=True)}" alt="" '
-            'loading="lazy" decoding="async">'
+            f'<img src="{html.escape(cover, quote=True)}" alt="" width="720" height="405" '
+            'loading="lazy" decoding="async" fetchpriority="low">'
         )
     else:
         visual = '<span class="portfolio-related-card__placeholder" aria-hidden="true"></span>'
