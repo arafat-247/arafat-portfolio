@@ -31,7 +31,11 @@ def _module_header(module,index):
     eyebrow=esc(module.get('eyebrow') or f'Explore {index:02d}')
     title=esc(module.get('title') or 'Explore the reporting')
     text=esc(module.get('text') or '')
-    return f'<header class="ix-module-head"><span>{eyebrow}</span><h2>{title}</h2>{f"<p>{text}</p>" if text else ""}</header>'
+    text_html=f'<p>{text}</p>' if text else ''
+    return f'<header class="ix-module-head"><span>{eyebrow}</span><h2>{title}</h2>{text_html}</header>'
+
+def _method(note):
+    return f'<p class="ix-method">{note}</p>' if note else ''
 
 def _ratio(module,index):
     numerator=float(module.get('numerator') or 0)
@@ -52,7 +56,7 @@ def _ratio(module,index):
       f'<div class="ix-ratio-stage"><div class="ix-ratio-number"><strong data-ratio-value>{_fmt(numerator)}</strong><span>{unit}</span></div>'
       f'<div class="ix-ratio-track" aria-hidden="true"><span data-ratio-fill style="width:{pct:.2f}%"></span></div>'
       f'<p data-ratio-sentence>{primary}: {_fmt(numerator)} of {_fmt(denominator)} ({pct:.1f}%).</p></div>'
-      f'{f"<p class=\"ix-method\">{note}</p>" if note else ""}'
+      f'{_method(note)}'
       f'<script type="application/json" data-ix-config>{_json(payload)}</script></section>'
     )
 
@@ -77,7 +81,7 @@ def _scenario(module,index):
       f'<div class="ix-presets">{presets}</div></div>'
       f'<div class="ix-output-panel"><span>{output_label}</span><strong data-scenario-output>{_fmt(result,decimals)}</strong><em>{unit}</em>'
       f'<div class="ix-people" data-scenario-visual aria-hidden="true"></div></div></div>'
-      f'{f"<p class=\"ix-method\">{note}</p>" if note else ""}'
+      f'{_method(note)}'
       f'<script type="application/json" data-ix-config>{_json(module)}</script></section>'
     )
 
@@ -99,7 +103,7 @@ def _bar_chart(module,index):
       f'<div class="ix-toolbar"><button type="button" data-bar-sort="original" aria-pressed="true">Reported order</button>'
       f'<button type="button" data-bar-sort="rank" aria-pressed="false">Rank</button></div>'
       f'<div class="ix-bar-list" data-bar-list>{rows}</div><p class="ix-chart-detail" data-bar-detail>{detail}</p>'
-      f'{f"<p class=\"ix-method\">{note}</p>" if note else ""}'
+      f'{_method(note)}'
       f'<script type="application/json" data-ix-config>{_json(module)}</script></section>'
     )
 
@@ -116,7 +120,7 @@ def _compare(module,index):
       f'<div class="ix-compare-stage"><article><span>{left}</span><strong data-compare-left>{_fmt(first.get("left"),first.get("decimals"))}</strong><em data-compare-unit-left>{unit}</em><i data-compare-bar-left></i></article>'
       f'<div class="ix-vs">vs</div><article><span>{right}</span><strong data-compare-right>{_fmt(first.get("right"),first.get("decimals"))}</strong><em data-compare-unit-right>{unit}</em><i data-compare-bar-right></i></article></div>'
       f'<p class="ix-delta" data-compare-delta></p>'
-      f'{f"<p class=\"ix-method\">{note}</p>" if note else ""}'
+      f'{_method(note)}'
       f'<script type="application/json" data-ix-config>{_json(module)}</script></section>'
     )
 
@@ -126,15 +130,16 @@ def _explorer(module,index):
     first=options[0] if options else {}
     cards=''
     for metric in first.get('metrics',[]):
+        small=f'<small>{esc(metric.get("note",""))}</small>' if metric.get('note') else ''
         cards+=(f'<article><span>{esc(metric.get("label",""))}</span><strong>{_fmt(metric.get("value"),metric.get("decimals"))}{esc(metric.get("suffix") or "")}</strong>'
-                f'{f"<small>{esc(metric.get(\"note\",\"\"))}</small>" if metric.get("note") else ""}</article>')
+                f'{small}</article>')
     note=esc(module.get('note') or '')
     return (
       f'<section class="ix-module ix-explorer" id="interactive-{index}" data-ix-module="explorer">'
       f'{_module_header(module,index)}<div class="ix-tabs ix-tabs-scroll" role="group" aria-label="Choose case">{tabs}</div>'
       f'<div class="ix-explorer-title"><strong data-explorer-title>{esc(first.get("title") or first.get("label") or "")}</strong><p data-explorer-text>{esc(first.get("text") or "")}</p></div>'
       f'<div class="ix-metric-grid" data-explorer-metrics>{cards}</div>'
-      f'{f"<p class=\"ix-method\">{note}</p>" if note else ""}'
+      f'{_method(note)}'
       f'<script type="application/json" data-ix-config>{_json(module)}</script></section>'
     )
 
@@ -147,7 +152,7 @@ def _timeline(module,index):
       f'<section class="ix-module ix-timeline" id="interactive-{index}" data-ix-module="timeline">'
       f'{_module_header(module,index)}<div class="ix-timeline-track" data-timeline-track>{buttons}</div>'
       f'<article class="ix-timeline-card"><span data-timeline-date>{esc(first.get("date",""))}</span><h3 data-timeline-title>{esc(first.get("label",""))}</h3><p data-timeline-text>{esc(first.get("text",""))}</p></article>'
-      f'{f"<p class=\"ix-method\">{note}</p>" if note else ""}'
+      f'{_method(note)}'
       f'<script type="application/json" data-ix-config>{_json(module)}</script></section>'
     )
 
