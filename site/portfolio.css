@@ -2012,3 +2012,29 @@ html[data-theme="dark"] body.inner .contactgrid>a:first-child{background:#0b4b43
   body.inner .desktophead.nav-open .desktopnav a{height:auto;padding:12px 14px}
   body.inner .desktophead.nav-open .desktopnav a:after{display:none}
 }
+
+
+/* Interactive edition entry point */
+.storyactions .interactive-trigger{
+  display:inline-flex;
+  min-height:36px;
+  align-items:center;
+  justify-content:center;
+  padding:8px 12px;
+  border:1px solid var(--story-accent);
+  border-radius:999px;
+  color:var(--story-accent);
+  background:color-mix(in srgb,var(--story-accent) 7%,transparent);
+  font-size:9px;
+  font-weight:850;
+  line-height:1;
+  text-decoration:none;
+}
+.storyactions .interactive-trigger:hover{
+  color:#fff;
+  background:var(--story-accent);
+}
+@media(max-width:470px){
+  .storyactions .interactive-trigger{min-height:34px;padding:7px 10px;font-size:8.5px}
+}
+
