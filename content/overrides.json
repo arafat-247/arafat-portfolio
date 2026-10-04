@@ -183,6 +183,448 @@
       "category": "News",
       "date_published": "2025-01-09T00:00:00+06:00",
       "status": "published"
+    },
+    "40069ff0c986fe10eeb5": {
+      "interactive": {
+        "enabled": true,
+        "kicker": "Interactive · Primary education",
+        "intro": "Move through the staffing figures, school-level cases and regional disparities reported in this investigation.",
+        "modules": [
+          {
+            "type": "ratio",
+            "short_title": "Vacant headteacher posts",
+            "eyebrow": "The national shortage",
+            "title": "More than half of headteacher posts are vacant",
+            "text": "Use the switch to compare filled and vacant posts across government primary schools.",
+            "numerator": 36235,
+            "denominator": 65567,
+            "unit": "posts",
+            "primary_label": "Vacant",
+            "secondary_label": "Not vacant",
+            "note": "Reported figures: 36,235 vacant headteacher posts among 65,567 government primary schools."
+          },
+          {
+            "type": "scenario",
+            "short_title": "What one teacher carries",
+            "eyebrow": "Workload simulator",
+            "title": "What happens when one teacher must cover an entire school?",
+            "text": "Change the number of teachers to see how many students each teacher would carry at West Nangla Government Primary School, where 70 students were being taught by one teacher.",
+            "min": 1,
+            "max": 5,
+            "start": 1,
+            "total": 70,
+            "input_label": "Teachers available",
+            "output_label": "Students per teacher",
+            "output_unit": "students",
+            "presets": [
+              {
+                "label": "Reported situation",
+                "value": 1
+              },
+              {
+                "label": "Three teachers",
+                "value": 3
+              },
+              {
+                "label": "All five sanctioned posts",
+                "value": 5
+              }
+            ],
+            "note": "Derived calculation using the reported 70 students and five sanctioned teaching posts. This is a workload illustration, not an official pupil-teacher ratio."
+          },
+          {
+            "type": "explorer",
+            "short_title": "Three schools",
+            "eyebrow": "Reported cases",
+            "title": "Compare what shortages look like inside schools",
+            "text": "Select a school to examine the staffing gap and its reported consequence.",
+            "options": [
+              {
+                "label": "West Nangla",
+                "title": "West Nangla Government Primary School · Jamalpur",
+                "text": "The school had been operating with one teacher since January 15.",
+                "metrics": [
+                  {
+                    "label": "Sanctioned posts",
+                    "value": 5
+                  },
+                  {
+                    "label": "Teachers serving",
+                    "value": 1
+                  },
+                  {
+                    "label": "Students",
+                    "value": 70
+                  },
+                  {
+                    "label": "Vacant posts",
+                    "value": 4,
+                    "note": "Derived from sanctioned and serving posts"
+                  }
+                ]
+              },
+              {
+                "label": "Sonarua",
+                "title": "Sonarua Government Primary School · Gazipur",
+                "text": "Around three classes were reported cancelled every day because of the shortage.",
+                "metrics": [
+                  {
+                    "label": "Sanctioned posts",
+                    "value": 6
+                  },
+                  {
+                    "label": "Teachers serving",
+                    "value": 4
+                  },
+                  {
+                    "label": "Vacant posts",
+                    "value": 2,
+                    "note": "Derived from sanctioned and serving posts"
+                  },
+                  {
+                    "label": "Classes cancelled daily",
+                    "value": 3,
+                    "note": "Around three"
+                  }
+                ]
+              },
+              {
+                "label": "Purba Aliabad",
+                "title": "No. 24 Purba Aliabad Government Primary School · Faridpur",
+                "text": "A Class III student said one teacher often taught two classes at the same time.",
+                "metrics": [
+                  {
+                    "label": "Sanctioned posts",
+                    "value": 5
+                  },
+                  {
+                    "label": "Teachers serving",
+                    "value": 3
+                  },
+                  {
+                    "label": "Vacant posts",
+                    "value": 2,
+                    "note": "Derived from sanctioned and serving posts"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "bar_chart",
+            "short_title": "Regional disparity",
+            "eyebrow": "Teachers per school",
+            "title": "Staffing levels vary by division",
+            "text": "Rank the reported divisional averages to see the gap between the best- and worst-staffed regions cited in the story.",
+            "suffix": "",
+            "decimals": 2,
+            "data": [
+              {
+                "label": "Chattogram",
+                "value": 6.65
+              },
+              {
+                "label": "Dhaka",
+                "value": 6.52
+              },
+              {
+                "label": "Rajshahi",
+                "value": 6.46
+              },
+              {
+                "label": "Barishal",
+                "value": 5.89
+              },
+              {
+                "label": "Sylhet",
+                "value": 5.59
+              }
+            ],
+            "note": "Average teachers per government primary school, based on 2023 data cited in DPE’s Annual Sector Performance Report 2024."
+          },
+          {
+            "type": "compare",
+            "short_title": "Learning risk",
+            "eyebrow": "Learning outcomes",
+            "title": "The staffing crisis sits on top of weak learning outcomes",
+            "text": "Switch between mathematics and Bangla to compare the shares of Class III and Class V students lacking grade-appropriate proficiency.",
+            "left_label": "Class III",
+            "right_label": "Class V",
+            "metrics": [
+              {
+                "label": "Mathematics",
+                "left": 61,
+                "right": 70,
+                "unit": "%",
+                "decimals": 0
+              },
+              {
+                "label": "Bangla",
+                "left": 51,
+                "right": 50,
+                "unit": "%",
+                "decimals": 0
+              }
+            ],
+            "note": "National Student Assessment 2022 figures reported in the article."
+          }
+        ]
+      }
+    },
+    "1e5213a093c35a5e37c5": {
+      "interactive": {
+        "enabled": true,
+        "kicker": "Interactive · SSC results",
+        "intro": "Reorder the education boards, compare boys and girls, and examine how the 2026 SSC result changed from the previous year.",
+        "modules": [
+          {
+            "type": "bar_chart",
+            "short_title": "Board ranking",
+            "eyebrow": "Board-wise performance",
+            "title": "How the nine general boards performed",
+            "text": "Switch to Rank to sort the boards from highest to lowest pass rate.",
+            "suffix": "%",
+            "decimals": 2,
+            "data": [
+              {
+                "label": "Dhaka",
+                "value": 71.63
+              },
+              {
+                "label": "Jashore",
+                "value": 66.27
+              },
+              {
+                "label": "Cumilla",
+                "value": 65.42
+              },
+              {
+                "label": "Rajshahi",
+                "value": 63.67
+              },
+              {
+                "label": "Barishal",
+                "value": 60.35
+              },
+              {
+                "label": "Chattogram",
+                "value": 59.48
+              },
+              {
+                "label": "Sylhet",
+                "value": 58.33
+              },
+              {
+                "label": "Dinajpur",
+                "value": 58.05
+              },
+              {
+                "label": "Mymensingh",
+                "value": 57.39
+              }
+            ],
+            "note": "Pass rates across the nine general education boards as reported in the article."
+          },
+          {
+            "type": "compare",
+            "short_title": "Girls vs boys",
+            "eyebrow": "Gender gap",
+            "title": "Girls maintained a sizeable lead",
+            "text": "Toggle between pass rate and GPA-5 count.",
+            "left_label": "Girls",
+            "right_label": "Boys",
+            "metrics": [
+              {
+                "label": "Pass rate",
+                "left": 66.68,
+                "right": 57.86,
+                "unit": "%",
+                "decimals": 2
+              },
+              {
+                "label": "GPA-5 achievers",
+                "left": 63896,
+                "right": 52780,
+                "unit": " students",
+                "decimals": 0
+              }
+            ],
+            "note": "Figures reported for the 2026 SSC and equivalent examinations."
+          },
+          {
+            "type": "compare",
+            "short_title": "Institutions",
+            "eyebrow": "Institutional performance",
+            "title": "Perfect-result schools fell while zero-pass schools surged",
+            "text": "Compare the number of institutions in 2025 and 2026.",
+            "left_label": "2025",
+            "right_label": "2026",
+            "metrics": [
+              {
+                "label": "100% pass institutions",
+                "left": 984,
+                "right": 669,
+                "unit": "",
+                "decimals": 0
+              },
+              {
+                "label": "Zero-pass institutions",
+                "left": 134,
+                "right": 312,
+                "unit": "",
+                "decimals": 0
+              }
+            ]
+          },
+          {
+            "type": "compare",
+            "short_title": "Study groups",
+            "eyebrow": "Group performance",
+            "title": "Humanities students were far behind science",
+            "text": "Compare the reported pass rates between study groups.",
+            "left_label": "Humanities",
+            "right_label": "Science",
+            "metrics": [
+              {
+                "label": "Pass rate",
+                "left": 48.74,
+                "right": 80.64,
+                "unit": "%",
+                "decimals": 2
+              },
+              {
+                "label": "Humanities vs business studies",
+                "left": 48.74,
+                "right": 64.29,
+                "unit": "%",
+                "decimals": 2
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "8150d29e3b2f46ee7b91": {
+      "interactive": {
+        "enabled": true,
+        "kicker": "Interactive · Gender and education",
+        "intro": "Use the comparisons to examine the data points behind the widening SSC performance gap.",
+        "modules": [
+          {
+            "type": "compare",
+            "short_title": "SSC result gap",
+            "eyebrow": "2026 SSC",
+            "title": "Girls led in both pass rate and GPA-5",
+            "text": "Switch between the two reported measures.",
+            "left_label": "Girls",
+            "right_label": "Boys",
+            "metrics": [
+              {
+                "label": "Pass rate",
+                "left": 66.68,
+                "right": 57.86,
+                "unit": "%",
+                "decimals": 2
+              },
+              {
+                "label": "GPA-5 achievers",
+                "left": 63896,
+                "right": 52780,
+                "unit": " students",
+                "decimals": 0
+              }
+            ]
+          },
+          {
+            "type": "compare",
+            "short_title": "Child labour",
+            "eyebrow": "Economic pressure",
+            "title": "Boys were more likely to be engaged in child labour",
+            "text": "The MICS 2025 figures cited in the story show a national gender gap among children aged 5–17.",
+            "left_label": "Boys",
+            "right_label": "Girls",
+            "metrics": [
+              {
+                "label": "Child labour rate",
+                "left": 10.9,
+                "right": 7.5,
+                "unit": "%",
+                "decimals": 1
+              }
+            ],
+            "note": "BBS-Unicef Multiple Indicator Cluster Survey 2025 figures cited in the report."
+          },
+          {
+            "type": "explorer",
+            "short_title": "Regional pattern",
+            "eyebrow": "Attendance and results",
+            "title": "Compare Rangpur and Rajshahi",
+            "text": "Select a region to see how lower-secondary participation and SSC performance differed by gender.",
+            "options": [
+              {
+                "label": "Rangpur / Dinajpur Board",
+                "title": "Rangpur division and Dinajpur Board",
+                "text": "The story reported a wide gap in lower-secondary participation and a similar gap in SSC pass rates.",
+                "metrics": [
+                  {
+                    "label": "Boys attending lower secondary or higher",
+                    "value": 46.5,
+                    "suffix": "%"
+                  },
+                  {
+                    "label": "Girls attending lower secondary or higher",
+                    "value": 67.6,
+                    "suffix": "%"
+                  },
+                  {
+                    "label": "Boys’ SSC pass rate",
+                    "value": 53.33,
+                    "suffix": "%"
+                  },
+                  {
+                    "label": "Girls’ SSC pass rate",
+                    "value": 63.01,
+                    "suffix": "%"
+                  }
+                ]
+              },
+              {
+                "label": "Rajshahi",
+                "title": "Rajshahi division and Rajshahi Board",
+                "text": "Rajshahi had the country’s highest overall child labour rate in the cited data.",
+                "metrics": [
+                  {
+                    "label": "Overall child labour rate",
+                    "value": 12.4,
+                    "suffix": "%"
+                  },
+                  {
+                    "label": "Boys attending lower secondary or higher",
+                    "value": 53,
+                    "suffix": "%"
+                  },
+                  {
+                    "label": "Girls attending lower secondary or higher",
+                    "value": 68.3,
+                    "suffix": "%"
+                  },
+                  {
+                    "label": "Boys’ SSC pass rate",
+                    "value": 57.33,
+                    "suffix": "%"
+                  },
+                  {
+                    "label": "Girls’ SSC pass rate",
+                    "value": 70.73,
+                    "suffix": "%"
+                  }
+                ]
+              }
+            ],
+            "note": "Participation figures come from BBS-Unicef MICS 2025; pass rates are from the 2026 SSC results as reported in the article."
+          }
+        ]
+      }
     }
   }
 }

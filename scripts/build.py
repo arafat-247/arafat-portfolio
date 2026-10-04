@@ -5,12 +5,13 @@ from urllib.parse import urlsplit
 from core import *
 from social_cards import SocialCardRenderer
 from reference_desk import DESK as DESK_HOME
+from interactive_stories import has_interactive, render_interactive_page
 from PIL import Image, ImageOps
 
 STREAMS={'reporting':('Reports & Features','Reports, interviews, features and separately identified non-byline contributions.'),'opinion':('Opinion & Analysis','Published columns, commentary and analysis.'),'thoughts':('Thoughts','Personal essays, reflections and field notes.')}
 PATHS={'reporting':'reporting/','opinion':'opinion/','thoughts':'thoughts/'}
 PAGE_PATHS={'reporting':'reporting/index.html','opinion':'opinion/index.html','thoughts':'thoughts/index.html'}
-ASSET_VERSION='21.14.0'
+ASSET_VERSION='21.15.0'
 
 def meta_description(value,limit=190):
     value=clean(value)
@@ -197,12 +198,13 @@ class Builder:
         facts=[esc(date_label(a.get('date_published',''))),f'{read_minutes} min read']
         if publication:facts.append(publication)
         facts_html=''.join(f'<span>{fact}</span>' for fact in facts if fact)
+        interactive_link='<a class="interactive-trigger" href="interactive/">Interactive edition</a>' if has_interactive(a) else ''
         byline_html=f'<picture><source srcset="{prefix}assets/portraits/byline.avif" type="image/avif"><img src="{prefix}assets/portraits/byline.webp" alt="Arafat Rahaman" width="64" height="64" loading="eager" fetchpriority="high" decoding="async"></picture><div><strong>{esc(credit)}</strong>{contribution}<span class="meta">{esc(date_label(a.get("date_published","")))}{update}</span></div>'
         content=(f'<article class="page reading"><header class="storyhead">'
                  f'<a class="back" href="{prefix}{section}">← {esc(STREAMS.get(stream,STREAMS["reporting"])[0])}</a>'
                  f'<div class="storykicker">{kicker}</div><h1>{esc(title)}</h1><p class="standfirst">{esc(a.get("excerpt",""))}</p>'
                  f'<div class="storyfooter"><div class="byline">{byline_html}</div>'
-                 f'<div class="storyfacts">{facts_html}</div><div class="storyactions"><a class="interactive-trigger" href="interactive/">Interactive edition</a><button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-epaper-view aria-haspopup="dialog">E-paper view</button><button type="button" data-print>Print / PDF</button></div></div></header>'
+                 f'<div class="storyfacts">{facts_html}</div><div class="storyactions">{interactive_link}<button type="button" data-share aria-haspopup="dialog">Share</button><button type="button" data-epaper-view aria-haspopup="dialog">E-paper view</button><button type="button" data-print>Print / PDF</button></div></div></header>'
                  f'<div class="storymain">{figure}<div class="bodycopy">{body}</div>{source}</div>{share_dialog}{epaper_dialog}</article>')
         profile_url=self.base+'/about/'
         authors=[]
@@ -218,59 +220,27 @@ class Builder:
         self.interactive_story(a,social_image_path=social_image_path)
 
     def interactive_story(self,a,social_image_path=''):
-        interactive=a.get('interactive',{})
-        if interactive is False or (isinstance(interactive,dict) and interactive.get('enabled') is False):
+        if not has_interactive(a):
             return
         path=a['local_url']+'interactive/index.html'
         prefix='../'*path.count('/')
-        title=a['title']
-        description=meta_description(a.get('excerpt','') or title)
-        stream=a.get('stream','reporting')
-        stream_label={'reporting':'Reporting','opinion':'Opinion & Analysis','thoughts':'Thoughts'}.get(stream,'Reporting')
-        category=clean(a.get('category') or '')
-        body=a.get('body_html') or text_body(a.get('body',''))
-        body=sanitise(body,a.get('source_url',self.base+'/'))
-        words=int(a.get('word_count') or 0)
-        if words<=0:
-            words=len(re.findall(r"\b[\w’'-]+\b",re.sub(r'<[^>]+>',' ',body)))
-        read_minutes=max(1,(words+219)//220)
-        cover=safe_asset(a.get('cover_image'))
-        display_cover=story_cover_asset(cover) if cover and not a.get('source_url') else ''
-        original=a.get('original_authors') or ([] if a.get('source_url') else [NAME])
-        credit=', '.join(original) or 'Original byline not supplied by the source'
-        publication=clean(a.get('source_name') or '')
-        published=esc(date_label(a.get('date_published','')))
-        article_url=self.base+'/'+a['local_url']
-        interactive_url=article_url+'interactive/'
-        social_image=self.base+'/'+(social_image_path or 'assets/social-preview-v2.jpg')
-        hero_class=' has-image' if display_cover else ''
-        if display_cover:
-            hero_visual=f'<div class="ix-hero-media"><img src="{prefix}{esc(display_cover)}" alt="{esc(a.get("cover_alt",""))}" fetchpriority="high" decoding="async"></div>'
-        else:
-            hero_visual='<div class="ix-hero-art" aria-hidden="true"><div class="ix-hero-grid"></div></div>'
-        meta_bits=[published,f'{read_minutes} min read',esc(credit)]
-        if publication:
-            meta_bits.append(esc(publication))
-        meta_html=''.join(f'<span>{bit}</span>' for bit in meta_bits if bit)
-        source_html=''
-        if a.get('source_url') and urlsplit(a['source_url']).scheme=='https':
-            source_html=(f'<aside class="ix-source">Originally published by {esc(a.get("source_name",""))}. '
-                         f'<a href="{esc(a["source_url"])}" rel="noopener noreferrer">Read the original publication ↗</a>. '
-                         f'This interactive edition changes presentation only; the reporting and quotations remain those of the archived article.</aside>')
-        schema={
-            '@context':'https://schema.org',
-            '@type':'WebPage',
-            'name':'Interactive edition: '+title,
-            'url':interactive_url,
-            'isPartOf':{'@type':'WebSite','url':self.base+'/'},
-            'about':{'@type':'Article','headline':title,'url':article_url,'datePublished':a.get('date_published','')},
-        }
-        schema_json=json.dumps(schema,ensure_ascii=False).replace('<','\\u003c')
         measurement_id=str(self.config.get('analytics',{}).get('measurement_id','')).strip()
         analytics=''
         if re.fullmatch(r'G-[A-Z0-9]{6,16}',measurement_id):
             analytics=f'''<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','{measurement_id}');function loadAnalytics(){{if(document.querySelector('script[data-ga-loader]'))return;const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id={measurement_id}';s.dataset.gaLoader='1';document.head.appendChild(s)}}['pointerdown','keydown','touchstart'].forEach(e=>window.addEventListener(e,loadAnalytics,{{once:true,passive:true}}));document.addEventListener('visibilitychange',function(){{if(document.visibilityState==='hidden')loadAnalytics()}},{{once:true}});</script>'''
-        document=f'''<!doctype html><html lang="en"><head>{analytics}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Interactive edition: {esc(title)} — Arafat Rahaman</title><meta name="description" content="{esc(description)}"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#0b5146"><script>try{{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'light'}}catch(e){{document.documentElement.dataset.theme='light'}}</script><link rel="canonical" href="{esc(article_url)}"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"><link rel="stylesheet" href="{prefix}interactive-story.css?v={ASSET_VERSION}"><meta property="og:type" content="article"><meta property="og:site_name" content="Arafat Rahaman"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(interactive_url)}"><meta property="og:image" content="{esc(social_image)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{esc(social_image)}"><script type="application/ld+json">{schema_json}</script></head><body><a class="ix-skip" href="#story">Skip to story</a><header class="ix-topbar"><a class="ix-brand" href="{prefix}"><span class="ix-brand-mark" aria-hidden="true">A</span><span>Arafat Rahaman</span></a><nav class="ix-mode" aria-label="Reading mode"><a href="../">Article</a><span aria-current="page">Interactive</span></nav><a class="ix-exit" href="../">Exit interactive</a></header><div class="ix-progress-mobile" aria-hidden="true"><span data-progress-fill></span></div><main id="main" data-interactive-story><section class="ix-hero{hero_class}">{hero_visual}<div class="ix-hero-copy"><div class="ix-eyebrow">Interactive edition · {esc(stream_label)}{(' · '+esc(category)) if category else ''}</div><h1>{esc(title)}</h1><p class="ix-deck">{esc(a.get('excerpt',''))}</p><div class="ix-meta">{meta_html}</div><div class="ix-hero-actions"><a class="ix-start" href="#story">Start interactive reading ↓</a><a class="ix-original" href="../">Read standard article</a></div></div></section><p class="ix-disclosure">Interactive presentation created for this portfolio from the original report. Reporting, quotations and factual content are unchanged.</p><div class="ix-layout" id="story" data-story-body><aside class="ix-rail" aria-label="Story progress"><span class="ix-rail-label">Story progress</span><div class="ix-rail-track" aria-hidden="true"><span data-progress-fill></span></div><div class="ix-rail-status"><span><b data-current-part>01</b> / <b data-total-parts>01</b></span><span>Scroll</span></div><nav class="ix-chapters" data-chapter-nav aria-label="Story sections"></nav></aside><article class="ix-story"><div class="ix-copy" data-interactive-copy>{body}</div>{source_html}<section class="ix-end"><span>Continue</span><h2>Return to the original article view.</h2><a class="ix-return" href="../">Standard article ←</a></section></article></div></main><script src="{prefix}interactive-story.js?v={ASSET_VERSION}" defer></script></body></html>'''
+        cover=safe_asset(a.get('cover_image'))
+        display_cover=story_cover_asset(cover) if cover and not a.get('source_url') else cover
+        document=render_interactive_page(
+            a,
+            site_url=self.base,
+            asset_version=ASSET_VERSION,
+            social_image_path=social_image_path,
+            cover_image=display_cover,
+            date_label=date_label,
+            analytics=analytics,
+        )
+        if not document:
+            return
         target=OUT/path
         target.parent.mkdir(parents=True,exist_ok=True)
         target.write_text(document,encoding='utf-8')

@@ -36,7 +36,7 @@ class BuildTests(unittest.TestCase):
             draft={**common,'id':'draft','title':'PRIVATE-DRAFT-CANARY','status':'draft','cover_image':'assets/uploads/draft-only.webp'}
             published={**common,'id':'essay','title':'Published essay','status':'published','format':'html','body':'<p>Public text.</p><script>ATTACK_CANARY()</script>'}
             core.write(content/'posts.json',{'posts':[draft,published]})
-            imported={'id':'abc123','title':'A shared report','status':'published','stream':'reporting','category':'News','date_published':'2026-09-04T10:00:00+06:00','body_html':'<p>Authorised archived report.</p>','source_url':'https://example.com/a','source_name':'Example publication','original_authors':['Staff Correspondent'],'manual_import':True,'verified_author':False,'contribution':'Co-reporting','local_url':'stories/abc123-report/'}
+            imported={'id':'abc123','title':'A shared report','status':'published','stream':'reporting','category':'News','date_published':'2026-09-04T10:00:00+06:00','body_html':'<p>Authorised archived report.</p>','source_url':'https://example.com/a','source_name':'Example publication','original_authors':['Staff Correspondent'],'manual_import':True,'verified_author':False,'contribution':'Co-reporting','local_url':'stories/abc123-report/','interactive':{'enabled':True,'modules':[{'type':'ratio','title':'A factual split','numerator':36,'denominator':65,'primary_label':'Vacant','secondary_label':'Other'}]}}
             core.write(content/'articles/abc123.json',imported)
             with patch.multiple(build,CONTENT=content,SITE=site,OUT=out),contextlib.redirect_stdout(io.StringIO()):build.build()
             visible=''.join(p.read_text() for p in out.rglob('*.html'))+(out/'data/index.json').read_text()
@@ -143,12 +143,14 @@ class BuildTests(unittest.TestCase):
             self.assertTrue(interactive_path.is_file())
             interactive_html=interactive_path.read_text()
             self.assertIn('data-interactive-story',interactive_html)
-            self.assertIn('data-interactive-copy',interactive_html)
-            self.assertIn('Interactive presentation created for this portfolio',interactive_html)
+            self.assertIn('data-ix-module="ratio"',interactive_html)
+            self.assertIn('This is not a second version of the article.',interactive_html)
             self.assertIn('<meta name="robots" content="noindex,follow">',interactive_html)
             self.assertIn('<link rel="canonical" href="https://arafatrahaman.com/',interactive_html)
             self.assertIn('interactive-story.css',interactive_html)
             self.assertIn('interactive-story.js',interactive_html)
+            self.assertNotIn('class="interactive-trigger"',authored)
+            self.assertFalse((out/'thoughts/published-essay/interactive/index.html').exists())
             self.assertTrue((out/'interactive-story.css').is_file())
             self.assertTrue((out/'interactive-story.js').is_file())
             client=(out/'portfolio.js').read_text()
