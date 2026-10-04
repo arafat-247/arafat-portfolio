@@ -158,8 +158,109 @@ def _timeline(module,index):
 
 RENDERERS={'ratio':_ratio,'scenario':_scenario,'bar_chart':_bar_chart,'compare':_compare,'explorer':_explorer,'timeline':_timeline}
 
+def _teacher_shortage_immersive(article, *, site_url, asset_version, social_image_path, cover_image, date_label, analytics=''):
+    local_url=article['local_url']
+    path=local_url+'interactive/index.html'
+    prefix='../'*path.count('/')
+    title=clean(article.get('title') or '')
+    excerpt=clean(article.get('excerpt') or '')
+    article_url=site_url+'/'+local_url
+    interactive_url=article_url+'interactive/'
+    source_name=clean(article.get('source_name') or '')
+    byline=', '.join(article.get('original_authors') or ['Arafat Rahaman'])
+    published=esc(date_label(article.get('date_published','')))
+    cover=clean(cover_image or article.get('cover_image') or '')
+    hero=(f'<img src="{prefix}{esc(cover)}" alt="{esc(article.get("cover_alt") or "")}" fetchpriority="high" decoding="async">' if cover.startswith('assets/') else '')
+    body=sanitise(article.get('body_html') or '',article.get('source_url',site_url+'/'))
+    social_image=site_url+'/'+(social_image_path or 'assets/social-preview-v2.jpg')
+    description=excerpt[:187].rsplit(' ',1)[0]+'…' if len(excerpt)>190 else excerpt
+    schema={
+      '@context':'https://schema.org','@type':'WebPage','name':'Interactive: '+title,
+      'url':interactive_url,'isPartOf':{'@type':'WebSite','url':site_url+'/'},
+      'about':{'@type':'Article','headline':title,'url':article_url,'datePublished':article.get('date_published','')}
+    }
+    source_link=''
+    if article.get('source_url') and urlsplit(article['source_url']).scheme=='https':
+        source_link=f'<a href="{esc(article["source_url"])}" rel="noopener noreferrer">Read the original Daily Star report ↗</a>'
+    return f'''<!doctype html><html lang="en"><head>{analytics}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Interactive: {esc(title)} — Arafat Rahaman</title><meta name="description" content="{esc(description)}"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#062f2a"><link rel="canonical" href="{esc(article_url)}"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"><link rel="stylesheet" href="{prefix}interactive-story.css?v={asset_version}"><meta property="og:type" content="article"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(interactive_url)}"><meta property="og:image" content="{esc(social_image)}"><script type="application/ld+json">{_json(schema)}</script></head><body><a class="skip" href="#story">Skip to story</a><header class="top"><a class="brand" href="{prefix}">Arafat Rahaman</a><div class="switch"><a href="../">Article</a><span>Interactive</span></div><a class="close" href="../">Exit</a></header><main data-immersive-story>
+<section class="hero">{f'<div class="hero-media">{hero}</div>' if hero else ''}<div class="hero-shade"></div><div class="hero-copy"><p class="eyebrow">Interactive investigation · Primary education</p><h1>{esc(title)}</h1><p class="standfirst">{esc(excerpt)}</p><p class="byline">{esc(byline)} · {published}</p><a class="begin" href="#story">Enter the story ↓</a></div></section>
+
+<section class="opening" id="story"><p class="opening-kicker">The national picture</p><h2><span>36,235</span> headteacher posts were vacant.</h2><p>Bangladesh has 65,567 government primary schools. The reported vacancy figure means more than half of those headteacher posts were empty.</p></section>
+
+<section class="scrolly" data-scrolly>
+  <div class="scrolly-visual">
+    <div class="school-field" aria-hidden="true" data-school-field></div>
+    <div class="big-stat"><strong data-big-number>65,567</strong><span data-big-label>government primary schools</span></div>
+    <div class="share-meter"><i data-share-fill></i></div>
+    <p class="visual-caption" data-visual-caption>Start with the full system.</p>
+  </div>
+  <div class="scrolly-steps">
+    <article class="step" data-step="0"><span>01</span><h3>Start with every government primary school</h3><p>The system covers 65,567 schools nationwide.</p></article>
+    <article class="step" data-step="1"><span>02</span><h3>Now remove the headteachers who are missing</h3><p>36,235 headteacher posts were vacant — about 55.3 percent of all government primary schools.</p></article>
+    <article class="step" data-step="2"><span>03</span><h3>The vacancy moves into the classroom</h3><p>When a headteacher post remains empty, an assistant teacher often takes on administrative duties while continuing to teach.</p></article>
+  </div>
+</section>
+
+<section class="narrative dark">
+  <div class="narrative-copy"><p class="eyebrow">Inside one school</p><h2>One teacher. Seventy students. Five sanctioned posts.</h2><p>At West Nangla Government Primary School in Jamalpur, headteacher Abdul Momin was running the entire school alone.</p><blockquote>“The shortage of teachers has made many guardians reluctant to admit their children to this school.”</blockquote></div>
+  <div class="simulator" data-simulator>
+    <div class="sim-top"><span>Try the staffing level</span><strong><b data-teachers>1</b> teacher<span data-plural></span></strong></div>
+    <input aria-label="Number of teachers" type="range" min="1" max="5" value="1" step="1" data-teacher-range>
+    <div class="teacher-dots" data-teacher-dots aria-hidden="true"></div>
+    <div class="student-load"><span>Students per teacher</span><strong data-students-per>70</strong></div>
+    <p>This is a simple workload illustration using the reported 70 students and five sanctioned posts. It does not represent an official pupil-teacher ratio.</p>
+  </div>
+</section>
+
+<section class="case-section">
+  <div class="section-head"><p class="eyebrow">Three schools, three versions of the same shortage</p><h2>Move between the schools</h2><p>The problem does not look identical everywhere. Select a school to see what the reporting found on the ground.</p></div>
+  <div class="case-tabs" role="tablist">
+    <button type="button" data-case="0" aria-pressed="true">West Nangla · Jamalpur</button>
+    <button type="button" data-case="1" aria-pressed="false">Sonarua · Gazipur</button>
+    <button type="button" data-case="2" aria-pressed="false">Purba Aliabad · Faridpur</button>
+  </div>
+  <div class="case-stage">
+    <div class="case-graphic" data-case-graphic aria-hidden="true"></div>
+    <article class="case-copy"><p class="case-location" data-case-location>Jamalpur</p><h3 data-case-title>West Nangla Government Primary School</h3><p data-case-text>Five posts were sanctioned, but the school was operating with one teacher for 70 students.</p><div class="case-metrics" data-case-metrics></div><blockquote data-case-quote>“The shortage of teachers has made many guardians reluctant to admit their children to this school.”</blockquote></article>
+  </div>
+</section>
+
+<section class="rank-section">
+  <div class="section-head"><p class="eyebrow">Regional disparity</p><h2>Where staffing runs thinner</h2><p>Among the divisions cited in the report, the average number of teachers per government primary school ranged from 6.65 in Chattogram to 5.59 in Sylhet.</p></div>
+  <div class="rank-control"><button type="button" data-rank-order="reported" aria-pressed="true">Reported order</button><button type="button" data-rank-order="low" aria-pressed="false">Lowest first</button></div>
+  <div class="rank-bars" data-rank-bars></div>
+</section>
+
+<section class="learning-section">
+  <div class="learning-copy"><p class="eyebrow">The consequence</p><h2>The staffing shortage lands in a system already struggling with learning.</h2><p>The National Student Assessment 2022 found large shares of Class III and Class V students below grade-appropriate proficiency in mathematics and Bangla.</p></div>
+  <div class="learning-tool" data-learning>
+    <div class="learning-tabs"><button type="button" data-subject="math" aria-pressed="true">Mathematics</button><button type="button" data-subject="bangla" aria-pressed="false">Bangla</button></div>
+    <div class="learning-cards"><article><span>Class III</span><strong data-class3>61%</strong><div><i data-class3-fill></i></div></article><article><span>Class V</span><strong data-class5>70%</strong><div><i data-class5-fill></i></div></article></div>
+    <p data-learning-copy>61% of Class III students and 70% of Class V students lacked grade-appropriate proficiency in mathematics.</p>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <div class="section-head"><p class="eyebrow">Why did the vacancies persist?</p><h2>A recruitment problem years in the making</h2></div>
+  <div class="timeline" data-timeline>
+    <button type="button" data-time="0" aria-pressed="true"><span>2013</span><strong>Recruitment rules</strong></button>
+    <button type="button" data-time="1" aria-pressed="false"><span>2017</span><strong>Writ petition</strong></button>
+    <button type="button" data-time="2" aria-pressed="false"><span>2 July 2026</span><strong>Appellate Division ruling</strong></button>
+    <button type="button" data-time="3" aria-pressed="false"><span>Next</span><strong>Recruitment expected</strong></button>
+  </div>
+  <article class="timeline-card"><span data-time-date>2013</span><h3 data-time-title>Recruitment rules set the route</h3><p data-time-text>Under the existing rules, 20 percent of headteacher posts are filled through direct recruitment and 80 percent through promotion from assistant teachers.</p></article>
+</section>
+
+<section class="ending">
+  <p class="eyebrow">The reporting</p><h2>The interactive is only a way into the evidence. The full story remains the record.</h2><details><summary>Read the full reported article</summary><div class="article-body">{body}</div></details><div class="end-links">{source_link}<a href="../">Standard portfolio article →</a></div><p class="disclosure">Interactive presentation built from figures and quotations in the published report. Calculated percentages and workload figures are labelled as derived values.</p>
+</section>
+</main><script src="{prefix}interactive-story.js?v={asset_version}" defer></script></body></html>'''
+
+
 def render_interactive_page(article, *, site_url, asset_version, social_image_path, cover_image, date_label, analytics=''):
     config=article.get('interactive') or {}
+    if config.get('template')=='teacher_shortage_immersive':
+        return _teacher_shortage_immersive(article,site_url=site_url,asset_version=asset_version,social_image_path=social_image_path,cover_image=cover_image,date_label=date_label,analytics=analytics)
     modules=[m for m in config.get('modules',[]) if isinstance(m,dict) and m.get('type') in RENDERERS]
     if not modules:return ''
     local_url=article['local_url']
