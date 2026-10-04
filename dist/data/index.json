@@ -1,6 +1,20 @@
 {
   "articles": [
     {
+      "id": "c886ff8698447164c92a",
+      "title": "Dead-end jobs, meagre pay for makers of nation-builders",
+      "excerpt": "Despite their pivotal role in shaping future generations, government primary schoolteachers remain among the lowest-paid staffers, a disparity that many educators say is reflected in the level of respect they receive.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-05T02:23:51+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/355949a9cf907ed20f0047e2.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/dead-end-jobs-meagre-pay-for-makers-of-nation-builders/",
+      "credit_type": "byline"
+    },
+    {
       "id": "deaff1c2-9e7a-46d8-bc07-c24a10b06980",
       "title": "I get Eid off. Do my journalist colleagues get the same for Puja?",
       "excerpt": "If Eid is already built into the newsroom calendar, why should colleagues celebrating Puja and other major festivals have to spend their earned leave?",
