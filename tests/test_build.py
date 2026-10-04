@@ -26,7 +26,7 @@ class BuildTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             base=Path(tmp); content=base/'content'; site=base/'site'; out=base/'dist'
             site.mkdir();content.mkdir();shutil.copytree(core.SITE/'assets',site/'assets');shutil.copytree(core.SITE/'admin',site/'admin')
-            for n in ('portfolio.js','portfolio.css'):shutil.copy2(core.SITE/n,site/n)
+            for n in ('portfolio.js','portfolio.css','interactive-story.css','interactive-story.js'):shutil.copy2(core.SITE/n,site/n)
             core.write(content/'settings.json',core.read(core.CONTENT/'settings.json'))
             cover=site/'assets/uploads/draft-only.webp';cover.parent.mkdir(exist_ok=True);shutil.copy2(site/'assets/identity/asset0.webp',cover)
             core.write(content/'photos.json',{'photos':[{
