@@ -1,6 +1,20 @@
 {
   "articles": [
     {
+      "id": "1e4a12acf147557a86c8",
+      "title": "Middle class SQUEEZED",
+      "excerpt": "Delwar Hossain, a 52-year-old pickup driver in Dhaka, spent about 40 minutes in a queue yesterday to buy 4kg of flour at a subsidised government truck sale for Tk 110.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-06T01:44:41+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/f13b1131b42aae3c8bb20a7b.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/middle-class-squeezed/",
+      "credit_type": "byline"
+    },
+    {
       "id": "493ccfbc7bcf92750b7a",
       "title": "Primary teachers’ pay edge over lowest grade govt job narrows in five decades",
       "excerpt": "Despite higher entry qualifications, their starting basic is now only 20% above the government’s lowest grade, compared with 69% in 1973",
