@@ -1,9 +1,26 @@
 {
   "articles": [
     {
+      "id": "108ac273cd10e0d07d71",
+      "title": "Can BNP protect journalists from its own rank and file?",
+      "excerpt": "During the Awami League’s three consecutive terms in office over a decade and a half, the then-opposition BNP demanded the right to speak, organise and criticise without being branded an enemy of the state.",
+      "category": "Opinion",
+      "stream": "opinion",
+      "date_published": "2026-10-06T08:00:04+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/85913c0390ef39aaa9ae05a7.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/can-bnp-protect-journalists-from-its-own-rank-and-file/",
+      "credit_type": "byline",
+      "beat": "politics-civic-life",
+      "beat_title": "Politics & civic life",
+      "series": []
+    },
+    {
       "id": "1e4a12acf147557a86c8",
-      "title": "Middle class SQUEEZED",
-      "excerpt": "Delwar Hossain, a 52-year-old pickup driver in Dhaka, spent about 40 minutes in a queue yesterday to buy 4kg of flour at a subsidised government truck sale for Tk 110.",
+      "title": "Middle class squeezed",
+      "excerpt": "A series of price hikes leaves many families with no wiggle room",
       "category": "News",
       "stream": "reporting",
       "date_published": "2026-10-06T01:44:41+06:00",
@@ -13,8 +30,8 @@
       "source_name": "The Daily Star",
       "local_url": "stories/middle-class-squeezed/",
       "credit_type": "byline",
-      "beat": "governance-public-institutions",
-      "beat_title": "Governance & public institutions",
+      "beat": "other",
+      "beat_title": "Other",
       "series": []
     },
     {
