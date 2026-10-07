@@ -141,26 +141,6 @@ def fetch(url, limit=5_000_000):
             if attempt>=1: raise
             time.sleep(1+attempt)
 
-def reader_fetch(url, limit=5_000_000):
-    """Fetch a public Daily Star page through Jina Reader when direct access is blocked."""
-    target=urlsplit(url)
-    if target.hostname not in ('www.thedailystar.net','thedailystar.net'):
-        raise ValueError('Reader fallback is restricted to The Daily Star.')
-    reader='https://r.jina.ai/'+url
-    public_url(reader)
-    req=Request(reader,headers={
-        'User-Agent':UA,
-        'Accept':'text/plain',
-        'X-Respond-With':'html',
-        'X-Retain-Links':'all',
-        'X-Retain-Images':'all',
-        'X-Cache-Tolerance':'300',
-    })
-    with build_opener(Redirects()).open(req,timeout=45) as response:
-        data=response.read(limit+1)
-        if len(data)>limit:raise ValueError('Reader response exceeds the import size limit.')
-        return data,'text/html',url
-
 def date(value):
     value=clean(value)
     if not value: return ''
