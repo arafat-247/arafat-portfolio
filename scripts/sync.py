@@ -37,31 +37,44 @@ def discover(url):
         raise ValueError('Author page is not HTML.')
     return article_links(data,final,scoped=True)
 
+def xml_article_links(source):
+    text=source.decode('utf-8',errors='replace')
+    result=[]
+    for value in re.findall(r'<loc>\s*([^<]+?)\s*</loc>',text,re.I):
+        link=canonical(html.unescape(value.strip()))
+        path=urlsplit(link).path.rstrip('/')
+        tail=path.rsplit('-',1)[-1]
+        if urlsplit(link).hostname=='www.thedailystar.net' and tail.isdigit() and len(tail)>=5:
+            if link not in result:result.append(link)
+    return result
+
 def fallback_discover():
     """Nominate recent official Daily Star URLs when the author page lags or is blocked.
 
-    Candidate URLs are not trusted as authorship evidence. Extraction still
-    requires Arafat Rahaman to appear in the article's own byline metadata.
+    The Google News sitemap is the preferred fallback because The Daily Star
+    advertises it for automated discovery in robots.txt. Candidate URLs are
+    still verified against each article's own byline before publication.
     """
-    seeds=[
-        'https://www.thedailystar.net/search?search='+quote(NAME),
-        'https://www.thedailystar.net/news/education',
-        'https://www.thedailystar.net/news/crime-justice',
-        'https://www.thedailystar.net/news/bangladesh',
-        'https://www.thedailystar.net/opinion',
-    ]
     result=[]; errors=[]
-    for seed in seeds:
+    try:
+        data,typ,final=fetch('https://www.thedailystar.net/googlenews.xml')
+        for link in xml_article_links(data):
+            if link not in result:result.append(link)
+    except (HTTPError,URLError,ValueError,OSError) as exc:
+        errors.append('Google News sitemap: '+str(exc)[:160])
+
+    if not result:
         try:
-            data,typ,final=fetch(seed)
-            if typ not in ('text/html','application/xhtml+xml'):continue
-            for link in article_links(data,final):
-                if link not in result:result.append(link)
+            data,typ,final=fetch('https://muckrack.com/arafat-rahaman')
+            if typ in ('text/html','application/xhtml+xml'):
+                for link in article_links(data,final):
+                    if link not in result:result.append(link)
         except (HTTPError,URLError,ValueError,OSError) as exc:
-            errors.append(str(exc)[:180])
+            errors.append('Muck Rack: '+str(exc)[:160])
+
     if not result and errors:
         raise ValueError('Fallback discovery failed: '+'; '.join(errors[:3]))
-    return result[:120]
+    return result[:160]
 
 def store_article(item, old=None):
     # Do not replace a complete saved article with a likely paywall/error extract.
