@@ -75,6 +75,7 @@ def run(args):
             if status.get('status')=='author_unverified':
                 status.pop('last_checked',None);status['status']='discovered';status['error']=''
     discovery_failed=False
+    fallback_ok=False
     try:
         pages=list(range(args.pages)) if args.full else list(range(3))
         # Incremental backfill continues across runs instead of assuming 12 pages is a complete archive.
@@ -113,10 +114,10 @@ def run(args):
             entry=sources.setdefault(u,{'discovered_at':now()})
             entry['fallback_candidate']=True
             if u not in fresh:fresh.append(u)
-        if fallback:
-            state['last_fallback_discovery_success']=now()
-            state['fallback_candidates']=len(fallback)
-            if discovery_failed:state['degraded_discovery']=True
+        fallback_ok=True
+        state['last_fallback_discovery_success']=now()
+        state['fallback_candidates']=len(fallback)
+        state['degraded_discovery']=discovery_failed
     except (HTTPError,URLError,ValueError,OSError) as exc:
         errors.append('Fallback discovery: '+str(exc)[:220])
     def due(u):
@@ -170,7 +171,8 @@ def run(args):
                 store_article(item,old);status.update(status='saved',last_success=now(),failures=0,error='',article_id=item['id'],title=item['title']);saved+=1
             write(CONTENT/'sync-state.json',state)
     state.update(last_completed=now(),saved_this_run=saved,known_sources=len(sources),pending=sum(not x.get('last_success') and x.get('status') not in ('author_unverified','unsupported') for x in sources.values()),unsupported=sum(x.get('status')=='unsupported' for x in sources.values()),errors=errors[:30])
-    state['refresh_ok']=not discovery_failed or bool(state.get('last_fallback_discovery_success'))
+    state['refresh_ok']=not discovery_failed or fallback_ok
+    if not discovery_failed:state['degraded_discovery']=False
     write(CONTENT/'sync-state.json',state)
     print(f'Saved {saved}; known URLs {len(sources)}; pending {state["pending"]}. Existing articles were not removed.')
     if errors: print('Warnings:', '\n'.join(errors[:5]))
