@@ -84,7 +84,7 @@ def canonical(url):
     from urllib.parse import parse_qsl, urlencode
     query = urlencode([(k,v) for k,v in parse_qsl(p.query) if not k.lower().startswith('utm_') and k not in ('fbclid','gclid')])
     host = (p.hostname or '').lower()
-    if host == 'thedailystar.net': host = 'www.thedailystar.net'
+    if host in ('thedailystar.net','online92.thedailystar.net'): host = 'www.thedailystar.net'
     return urlunsplit((p.scheme.lower(), host, p.path or '/', query, ''))
 
 def public_url(url):
@@ -96,7 +96,7 @@ def public_url(url):
     # Fixed trusted publisher hosts can use the environment's configured HTTPS
     # proxy, which may resolve names remotely. Arbitrary pasted hosts must pass
     # local public-address checks; redirects are checked with the same rules.
-    if p.hostname.lower() in {'www.thedailystar.net','thedailystar.net','tds-images.thedailystar.net'}:
+    if p.hostname.lower() in {'www.thedailystar.net','thedailystar.net','online92.thedailystar.net','tds-images.thedailystar.net'}:
         return url
     answers = socket.getaddrinfo(p.hostname,443,type=socket.SOCK_STREAM)
     if not answers or any(not ipaddress.ip_address(a[4][0]).is_global for a in answers):
