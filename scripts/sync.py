@@ -31,37 +31,50 @@ def article_links(source,base,scoped=False):
                 if link not in result:result.append(link)
     return result
 
+def mirror_url(url):
+    p=urlsplit(url)
+    if p.hostname not in ('www.thedailystar.net','thedailystar.net'):return url
+    return p._replace(netloc='online92.thedailystar.net').geturl()
+
+def fetch_daily_star(url,limit=5_000_000):
+    try:return fetch(url,limit)
+    except HTTPError as exc:
+        if exc.code not in (403,429):raise
+        return fetch(mirror_url(url),limit)
+
 def discover(url):
-    data,typ,final=fetch(url)
+    data,typ,final=fetch_daily_star(url)
     if typ not in ('text/html','application/xhtml+xml'):
         raise ValueError('Author page is not HTML.')
-    return article_links(data,final,scoped=True)
+    try:return article_links(data,final,scoped=True)
+    except ValueError:
+        # Mirror pages do not always retain the same author-card wrapper.
+        if urlsplit(final).hostname=='online92.thedailystar.net':
+            return article_links(data,final,scoped=False)
+        raise
 
 def fallback_discover():
-    """Nominate recent official Daily Star URLs when the author page lags or is blocked.
+    """Discover recent work through The Daily Star's alternate public host.
 
-    Candidate URLs are not trusted as authorship evidence. Extraction still
-    requires Arafat Rahaman to appear in the article's own byline metadata.
+    URLs are canonicalised back to www.thedailystar.net and still require
+    article-level author verification before publication.
     """
     seeds=[
-        'https://www.thedailystar.net/search?search='+quote(NAME),
-        'https://www.thedailystar.net/news/education',
-        'https://www.thedailystar.net/news/crime-justice',
-        'https://www.thedailystar.net/news/bangladesh',
-        'https://www.thedailystar.net/opinion',
+        'https://online92.thedailystar.net/author/arafat-rahaman?page='+str(page)
+        for page in range(0,6)
     ]
     result=[]; errors=[]
     for seed in seeds:
         try:
             data,typ,final=fetch(seed)
             if typ not in ('text/html','application/xhtml+xml'):continue
-            for link in article_links(data,final):
+            for link in article_links(data,final,scoped=False):
                 if link not in result:result.append(link)
         except (HTTPError,URLError,ValueError,OSError) as exc:
             errors.append(str(exc)[:180])
     if not result and errors:
         raise ValueError('Fallback discovery failed: '+'; '.join(errors[:3]))
-    return result[:120]
+    return result[:160]
 
 def store_article(item, old=None):
     # Do not replace a complete saved article with a likely paywall/error extract.
@@ -167,7 +180,7 @@ def run(args):
     def extract(u):
         status=sources[u];old=read(CONTENT/'articles'/f'{identity(u)}.json');request=requests_by_url.get(u)
         try:
-            data,typ,final=fetch(u)
+            data,typ,final=fetch_daily_star(u)
             if typ not in ('text/html','application/xhtml+xml'): raise ValueError('URL is not an HTML article.')
             source=data.decode('utf-8',errors='replace')
             item=article(source,u,manual=bool(request),author_listing=bool(status.get('author_listing')))
