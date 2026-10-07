@@ -62,8 +62,14 @@ def fallback_discover():
     article-level author verification before publication.
     """
     seeds=[
-        'https://online92.thedailystar.net/author/arafat-rahaman?page='+str(page)
-        for page in range(0,6)
+        *[
+            'https://online92.thedailystar.net/author/arafat-rahaman?page='+str(page)
+            for page in range(0,6)
+        ],
+        'https://online92.thedailystar.net/news/education',
+        'https://online92.thedailystar.net/news/crime-justice',
+        'https://online92.thedailystar.net/news/bangladesh',
+        'https://online92.thedailystar.net/opinion',
     ]
     result=[]; errors=[]
     for seed in seeds:
