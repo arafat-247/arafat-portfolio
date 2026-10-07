@@ -37,10 +37,12 @@ def mirror_url(url):
     return p._replace(netloc='online92.thedailystar.net').geturl()
 
 def fetch_daily_star(url,limit=5_000_000):
-    try:return fetch(url,limit)
-    except HTTPError as exc:
-        if exc.code not in (403,429):raise
-        return fetch(mirror_url(url),limit)
+    mirror=mirror_url(url)
+    if mirror!=url:
+        try:return fetch(mirror,limit)
+        except (HTTPError,URLError):
+            return fetch(url,limit)
+    return fetch(url,limit)
 
 def discover(url):
     data,typ,final=fetch_daily_star(url)
