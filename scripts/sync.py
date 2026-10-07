@@ -32,7 +32,11 @@ def article_links(source,base,scoped=False):
     return result
 
 def discover(url):
-    data,typ,final=fetch(url)
+    try:
+        data,typ,final=fetch(url)
+    except HTTPError as exc:
+        if exc.code not in (403,429):raise
+        data,typ,final=reader_fetch(url)
     if typ not in ('text/html','application/xhtml+xml'):
         raise ValueError('Author page is not HTML.')
     return article_links(data,final,scoped=True)
@@ -64,13 +68,18 @@ def fallback_discover():
         errors.append('Google News sitemap: '+str(exc)[:160])
 
     if not result:
-        try:
-            data,typ,final=fetch('https://muckrack.com/arafat-rahaman')
-            if typ in ('text/html','application/xhtml+xml'):
+        for seed in (
+            'https://www.thedailystar.net/news/education',
+            'https://www.thedailystar.net/news/crime-justice',
+            'https://www.thedailystar.net/news/bangladesh',
+            'https://www.thedailystar.net/opinion',
+        ):
+            try:
+                data,typ,final=reader_fetch(seed)
                 for link in article_links(data,final):
                     if link not in result:result.append(link)
-        except (HTTPError,URLError,ValueError,OSError) as exc:
-            errors.append('Muck Rack: '+str(exc)[:160])
+            except (HTTPError,URLError,ValueError,OSError) as exc:
+                errors.append('Reader '+urlsplit(seed).path+': '+str(exc)[:140])
 
     if not result and errors:
         raise ValueError('Fallback discovery failed: '+'; '.join(errors[:3]))
@@ -180,7 +189,11 @@ def run(args):
     def extract(u):
         status=sources[u];old=read(CONTENT/'articles'/f'{identity(u)}.json');request=requests_by_url.get(u)
         try:
-            data,typ,final=fetch(u)
+            try:
+                data,typ,final=fetch(u)
+            except HTTPError as exc:
+                if exc.code not in (403,429):raise
+                data,typ,final=reader_fetch(u)
             if typ not in ('text/html','application/xhtml+xml'): raise ValueError('URL is not an HTML article.')
             source=data.decode('utf-8',errors='replace')
             item=article(source,u,manual=bool(request),author_listing=bool(status.get('author_listing')))
