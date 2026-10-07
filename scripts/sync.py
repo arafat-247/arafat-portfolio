@@ -108,7 +108,7 @@ def run(args):
     # Records carried over from V15 were originally discovered through the
     # configured author listing, before that provenance flag was stored.
     for u,status in sources.items():
-        if u not in requests_by_url and status.get('discovered_at') and urlsplit(u).hostname in ('www.thedailystar.net','thedailystar.net'):
+        if u not in requests_by_url and not status.get('fallback_candidate') and status.get('discovered_at') and urlsplit(u).hostname in ('www.thedailystar.net','thedailystar.net'):
             status['author_listing']=True
             if status.get('status')=='author_unverified':
                 status.pop('last_checked',None);status['status']='discovered';status['error']=''
