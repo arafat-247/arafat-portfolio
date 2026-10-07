@@ -3,7 +3,7 @@ import argparse, hashlib, json, re, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import urljoin, urlsplit, quote
 from core import *
 
 def is_due(status,is_fresh=False,retry_failed=False,current=None):
@@ -16,21 +16,53 @@ def is_due(status,is_fresh=False,retry_failed=False,current=None):
     if status.get('status')=='failed': return age>min(86400,1200*2**min(status.get('failures',0),6))
     return age>(900 if is_fresh else 7*86400)
 
-def discover(url):
-    data,typ,final=fetch(url)
-    if typ not in ('text/html','application/xhtml+xml'): raise ValueError('Author page is not HTML.')
-    doc=Document(data.decode('utf-8',errors='replace')); result=[]
-    scopes=[n for n in doc.nodes('article') if 'article-author' in n.attrs.get('class','').split()]
-    if not scopes: raise ValueError('Author listing structure changed; discovery paused instead of scanning unrelated site links.')
-    # Every story card is a separate article-author block. V15 accidentally
-    # walked only the first card, which is why just one story appeared.
+def article_links(source,base,scoped=False):
+    doc=Document(source.decode('utf-8',errors='replace')); result=[]
+    scopes=[n for n in doc.nodes('article') if 'article-author' in n.attrs.get('class','').split()] if scoped else [doc.root]
+    if scoped and not scopes:
+        raise ValueError('Author listing structure changed; discovery paused instead of scanning unrelated site links.')
     for scope in scopes:
         for n in scope.walk():
             if n.tag!='a':continue
-            link=canonical(urljoin(url,n.attrs.get('href','')))
-            if urlsplit(link).hostname=='www.thedailystar.net' and re.search(r'-\d{5,}/?$',urlsplit(link).path):
-                if link not in result: result.append(link)
+            link=canonical(urljoin(base,n.attrs.get('href','')))
+            path=urlsplit(link).path.rstrip('/')
+            tail=path.rsplit('-',1)[-1]
+            if urlsplit(link).hostname=='www.thedailystar.net' and tail.isdigit() and len(tail)>=5:
+                if link not in result:result.append(link)
     return result
+
+def discover(url):
+    data,typ,final=fetch(url)
+    if typ not in ('text/html','application/xhtml+xml'):
+        raise ValueError('Author page is not HTML.')
+    return article_links(data,final,scoped=True)
+
+def fallback_discover():
+    """Nominate recent official Daily Star URLs when the author page lags or is blocked.
+
+    Candidate URLs are not trusted as authorship evidence. Extraction still
+    requires Arafat Rahaman to appear in the article's own byline metadata.
+    """
+    seeds=[
+        'https://www.thedailystar.net/',
+        'https://www.thedailystar.net/news/bangladesh',
+        'https://www.thedailystar.net/news/education',
+        'https://www.thedailystar.net/news/crime-justice',
+        'https://www.thedailystar.net/opinion',
+        'https://www.thedailystar.net/search?search='+quote(NAME),
+    ]
+    result=[]; errors=[]
+    for seed in seeds:
+        try:
+            data,typ,final=fetch(seed)
+            if typ not in ('text/html','application/xhtml+xml'):continue
+            for link in article_links(data,final):
+                if link not in result:result.append(link)
+        except (HTTPError,URLError,ValueError,OSError) as exc:
+            errors.append(str(exc)[:180])
+    if not result and errors:
+        raise ValueError('Fallback discovery failed: '+'; '.join(errors[:3]))
+    return result[:120]
 
 def store_article(item, old=None):
     # Do not replace a complete saved article with a likely paywall/error extract.
@@ -76,10 +108,12 @@ def run(args):
     # Records carried over from V15 were originally discovered through the
     # configured author listing, before that provenance flag was stored.
     for u,status in sources.items():
-        if u not in requests_by_url and status.get('discovered_at') and urlsplit(u).hostname in ('www.thedailystar.net','thedailystar.net'):
+        if u not in requests_by_url and not status.get('fallback_candidate') and status.get('discovered_at') and urlsplit(u).hostname in ('www.thedailystar.net','thedailystar.net'):
             status['author_listing']=True
             if status.get('status')=='author_unverified':
                 status.pop('last_checked',None);status['status']='discovered';status['error']=''
+    discovery_failed=False
+    fallback_ok=False
     try:
         pages=list(range(args.pages)) if args.full else list(range(3))
         # Incremental backfill continues across runs instead of assuming 12 pages is a complete archive.
@@ -107,7 +141,23 @@ def run(args):
                 if page<3: fresh.append(u)
             time.sleep(args.delay)
         state['last_discovery_success']=now()
-    except (HTTPError,URLError,ValueError,OSError) as exc: errors.append('Discovery: '+str(exc)[:220])
+    except (HTTPError,URLError,ValueError,OSError) as exc:
+        discovery_failed=True
+        errors.append('Discovery: '+str(exc)[:220])
+
+    # The author page can lag behind publication or be blocked. Fallback
+    # candidates are recent official Daily Star URLs, never authorship proof.
+    try:
+        fallback=fallback_discover()
+        for u in fallback:
+            entry=sources.setdefault(u,{'discovered_at':now()})
+            entry['fallback_candidate']=True
+            if u not in fresh:fresh.append(u)
+        fallback_ok=True
+        state['last_fallback_discovery_success']=now()
+        state['fallback_candidates']=len(fallback)
+    except (HTTPError,URLError,ValueError,OSError) as exc:
+        errors.append('Fallback discovery: '+str(exc)[:220])
     def due(u):
         return is_due(sources[u],u in fresh,bool(getattr(args,'retry_failed',False)))
     pending=[u for u in sources if not sources[u].get('last_success') and due(u)]
@@ -122,6 +172,8 @@ def run(args):
             if typ not in ('text/html','application/xhtml+xml'): raise ValueError('URL is not an HTML article.')
             source=data.decode('utf-8',errors='replace')
             item=article(source,u,manual=bool(request),author_listing=bool(status.get('author_listing')))
+            if status.get('fallback_candidate') and not request and not item.get('verified_author'):
+                raise ValueError('Fallback candidate does not carry Arafat Rahaman byline.')
             item['resolved_source_url']=final
             source_doc=Document(source)
             image=source_doc.meta('og:image') or source_doc.meta('og:image:url') or source_doc.meta('twitter:image') or source_doc.meta('twitter:image:src')
@@ -152,11 +204,15 @@ def run(args):
             try:item,old,error=future.result()
             except Exception as exc:item,old,error=None,None,str(exc)[:260]
             if error:
-                status.update(status='failed',error=error,failures=status.get('failures',0)+1);errors.append(error)
+                rejected_fallback=status.get('fallback_candidate') and 'Author not verified' in error
+                status.update(status='author_unverified' if rejected_fallback else 'failed',error=error,failures=status.get('failures',0)+1)
+                if not rejected_fallback:errors.append(error)
             else:
                 store_article(item,old);status.update(status='saved',last_success=now(),failures=0,error='',article_id=item['id'],title=item['title']);saved+=1
             write(CONTENT/'sync-state.json',state)
     state.update(last_completed=now(),saved_this_run=saved,known_sources=len(sources),pending=sum(not x.get('last_success') and x.get('status') not in ('author_unverified','unsupported') for x in sources.values()),unsupported=sum(x.get('status')=='unsupported' for x in sources.values()),errors=errors[:30])
+    state['degraded_discovery']=discovery_failed
+    state['refresh_ok']=(not discovery_failed) or fallback_ok
     write(CONTENT/'sync-state.json',state)
     print(f'Saved {saved}; known URLs {len(sources)}; pending {state["pending"]}. Existing articles were not removed.')
     if errors: print('Warnings:', '\n'.join(errors[:5]))

@@ -408,7 +408,7 @@ def build():
     b.page('404.html','Page not found','<section class="page"><h1>Page not found</h1><p>This address may have changed.</p><a href="'+esc(b.base)+'/">Return to the portfolio</a></section>')
     write(OUT/'data/site.json',{'publishing':c.get('publishing',{}),'site_url':b.base})
     state=read(CONTENT/'sync-state.json',{})
-    write(OUT/'data/sync.json',{k:state.get(k) for k in ('last_completed','last_discovery_success','saved_this_run','known_sources','pending')})
+    write(OUT/'data/sync.json',{k:state.get(k) for k in ('last_completed','last_discovery_success','last_fallback_discovery_success','saved_this_run','known_sources','pending','refresh_ok','degraded_discovery','fallback_candidates','errors')})
     def sitemap_url(path):
         route='' if path=='index.html' else (path[:-10] if path.endswith('/index.html') else path)
         return b.base+'/'+route

@@ -51,7 +51,6 @@ jobs:
       - name: Test content safety and archive preservation
         run: python -m unittest discover -s tests -p 'test_*.py'
       - name: Refresh sources when requested
-        if: github.event_name != 'push'
         env:
           EVENT_NAME: ${{ github.event_name }}
           EVENT_SCHEDULE: ${{ github.event.schedule }}
