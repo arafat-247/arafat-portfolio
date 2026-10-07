@@ -14,7 +14,7 @@ SITE = ROOT / 'site'
 OUT = ROOT / 'dist'
 NAME = 'Arafat Rahaman'
 AUTHOR = 'https://www.thedailystar.net/author/arafat-rahaman'
-UA = 'Mozilla/5.0 (compatible; ArafatPortfolio/17.2; +https://arafatrahaman.com/contact/)'
+UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
 
 def now(): return datetime.now(timezone.utc).isoformat()
 def read(path, default=None):
