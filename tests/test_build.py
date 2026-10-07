@@ -41,7 +41,7 @@ class BuildTests(unittest.TestCase):
             with patch('sync.CONTENT',root),patch('sync.discover',side_effect=HTTPError(u,403,'Forbidden',None,None)),patch('sync.fallback_discover',return_value=[u]),patch('sync.fetch',return_value=(source,'text/html',u)),contextlib.redirect_stdout(io.StringIO()):
                 sync.run(SimpleNamespace(full=True,pages=1,limit=5,delay=0,workers=1,retry_failed=False))
             state=core.read(root/'sync-state.json')
-            self.assertEqual(state['sources'][u]['status'],'failed')
+            self.assertEqual(state['sources'][u]['status'],'author_unverified')
             self.assertIn('Author not verified',state['sources'][u]['error'])
             self.assertFalse((root/'articles'/f'{core.identity(u)}.json').exists())
 
