@@ -42,7 +42,7 @@ class BuildTests(unittest.TestCase):
                 sync.run(SimpleNamespace(full=True,pages=1,limit=5,delay=0,workers=1,retry_failed=False))
             state=core.read(root/'sync-state.json')
             self.assertEqual(state['sources'][u]['status'],'failed')
-            self.assertIn('does not carry Arafat Rahaman byline',state['sources'][u]['error'])
+            self.assertIn('Author not verified',state['sources'][u]['error'])
             self.assertFalse((root/'articles'/f'{core.identity(u)}.json').exists())
 
     def test_drafts_and_attribution(self):
