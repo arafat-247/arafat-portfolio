@@ -4,6 +4,7 @@ from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin, urlsplit, urlunsplit
 from urllib.request import Request, build_opener, HTTPRedirectHandler
 
@@ -13,7 +14,7 @@ SITE = ROOT / 'site'
 OUT = ROOT / 'dist'
 NAME = 'Arafat Rahaman'
 AUTHOR = 'https://www.thedailystar.net/author/arafat-rahaman'
-UA = 'ArafatPortfolio/17.1 (+https://arafatrahaman.com/contact/)'
+UA = 'Mozilla/5.0 (compatible; ArafatPortfolio/17.2; +https://arafatrahaman.com/contact/)'
 
 def now(): return datetime.now(timezone.utc).isoformat()
 def read(path, default=None):
@@ -107,13 +108,38 @@ class Redirects(HTTPRedirectHandler):
         public_url(newurl)
         return super().redirect_request(req,fp,code,msg,headers,newurl)
 
+TRANSIENT_HTTP={403,408,425,429,500,502,503,504}
+
+def _retry_delay(exc,attempt):
+    value=''
+    try:value=(exc.headers or {}).get('Retry-After','')
+    except Exception:pass
+    try:seconds=float(value)
+    except (TypeError,ValueError):seconds=2**attempt
+    return max(1,min(seconds,12))
+
 def fetch(url, limit=5_000_000):
     public_url(url)
-    req = Request(url,headers={'User-Agent':UA,'Accept':'text/html,application/xhtml+xml,image/*;q=0.5'})
-    with build_opener(Redirects()).open(req,timeout=25) as response:
-        data = response.read(limit+1)
-        if len(data)>limit: raise ValueError('Response exceeds the import size limit.')
-        return data, response.headers.get_content_type(), response.geturl()
+    headers={
+        'User-Agent':UA,
+        'Accept':'text/html,application/xhtml+xml,image/*;q=0.5',
+        'Accept-Language':'en-GB,en;q=0.9',
+        'Cache-Control':'no-cache',
+    }
+    attempts=3
+    for attempt in range(attempts):
+        req=Request(url,headers=headers)
+        try:
+            with build_opener(Redirects()).open(req,timeout=25) as response:
+                data=response.read(limit+1)
+                if len(data)>limit: raise ValueError('Response exceeds the import size limit.')
+                return data,response.headers.get_content_type(),response.geturl()
+        except HTTPError as exc:
+            if exc.code not in TRANSIENT_HTTP or attempt>=attempts-1: raise
+            time.sleep(_retry_delay(exc,attempt))
+        except URLError:
+            if attempt>=1: raise
+            time.sleep(1+attempt)
 
 def date(value):
     value=clean(value)
