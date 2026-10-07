@@ -22,6 +22,29 @@ class BuildTests(unittest.TestCase):
                 'https://www.thedailystar.net/news/first-12345',
                 'https://www.thedailystar.net/news/second-67890'])
 
+    def test_fallback_discovery_collects_official_story_links(self):
+        source=b'''<main>
+        <a href="/news/crime-justice/news/ru-keeps-failing-stop-campus-violence-4292566">Story</a>
+        <a href="https://example.com/not-daily-star-12345">Other</a>
+        </main>'''
+        with patch('sync.fetch',return_value=(source,'text/html','https://www.thedailystar.net/news/crime-justice')):
+            with patch.object(sync,'NAME','Arafat Rahaman'):
+                links=sync.fallback_discover()
+        self.assertIn('https://www.thedailystar.net/news/crime-justice/news/ru-keeps-failing-stop-campus-violence-4292566',links)
+        self.assertTrue(all('thedailystar.net' in u for u in links))
+
+    def test_fallback_candidate_requires_verified_byline(self):
+        source=('''<script type="application/ld+json">{"@type":"NewsArticle","headline":"Another reporter story","author":{"name":"Someone Else"},"datePublished":"2026-10-07T08:00:00+06:00","articleBody":"''' + ('Reporting text. '*40) + '''","mainEntityOfPage":"https://www.thedailystar.net/news/example-4299999"}</script>''').encode()
+        u='https://www.thedailystar.net/news/example-4299999'
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            with patch('sync.CONTENT',root),patch('sync.discover',side_effect=HTTPError(u,403,'Forbidden',None,None)),patch('sync.fallback_discover',return_value=[u]),patch('sync.fetch',return_value=(source,'text/html',u)),contextlib.redirect_stdout(io.StringIO()):
+                sync.run(SimpleNamespace(full=True,pages=1,limit=5,delay=0,workers=1,retry_failed=False))
+            state=core.read(root/'sync-state.json')
+            self.assertEqual(state['sources'][u]['status'],'failed')
+            self.assertIn('does not carry Arafat Rahaman byline',state['sources'][u]['error'])
+            self.assertFalse((root/'articles'/f'{core.identity(u)}.json').exists())
+
     def test_drafts_and_attribution(self):
         with tempfile.TemporaryDirectory() as tmp:
             base=Path(tmp); content=base/'content'; site=base/'site'; out=base/'dist'
