@@ -1,5 +1,5 @@
 {
-  "last_completed": "2026-10-07T05:44:18.023924+00:00",
+  "last_completed": "2026-10-07T05:51:19.941211+00:00",
   "last_discovery_success": "2026-10-06T09:45:40.938670+00:00",
   "last_fallback_discovery_success": null,
   "saved_this_run": 0,
@@ -10,6 +10,6 @@
   "fallback_candidates": null,
   "errors": [
     "Discovery: HTTP Error 403: Forbidden",
-    "Fallback discovery: Fallback discovery failed: Google News sitemap: HTTP Error 403: Forbidden; Muck Rack: HTTP Error 403: Forbidden"
+    "Fallback discovery: Fallback discovery failed: HTTP Error 403: Forbidden; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden"
   ]
 }
