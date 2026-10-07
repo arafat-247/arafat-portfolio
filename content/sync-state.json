@@ -3395,15 +3395,18 @@
       "title": "Can BNP protect journalists from its own rank and file?"
     }
   },
-  "archive_cursor": 57,
-  "last_attempt": "2026-10-07T00:46:49.679296+00:00",
+  "archive_cursor": 60,
+  "last_attempt": "2026-10-07T05:34:32.037949+00:00",
   "last_discovery_success": "2026-10-06T09:45:40.938670+00:00",
-  "last_completed": "2026-10-07T00:46:49.814904+00:00",
+  "last_completed": "2026-10-07T05:34:59.608707+00:00",
   "saved_this_run": 0,
   "known_sources": 311,
   "pending": 0,
   "errors": [
-    "Discovery: HTTP Error 403: Forbidden"
+    "Discovery: HTTP Error 403: Forbidden",
+    "Fallback discovery: Fallback discovery failed: HTTP Error 403: Forbidden; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden"
   ],
-  "unsupported": 3
+  "unsupported": 3,
+  "degraded_discovery": true,
+  "refresh_ok": false
 }
