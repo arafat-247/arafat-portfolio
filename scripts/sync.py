@@ -14,7 +14,7 @@ def is_due(status,is_fresh=False,retry_failed=False,current=None):
     age=((current or datetime.now(timezone.utc))-datetime.fromisoformat(last)).total_seconds()
     if status.get('status')=='author_unverified': return age>7*86400
     if status.get('status')=='failed': return age>min(86400,1200*2**min(status.get('failures',0),6))
-    return age>(900 if is_fresh else 7*86400)
+    return age>((6*3600) if is_fresh else 7*86400)
 
 def article_links(source,base,scoped=False):
     doc=Document(source.decode('utf-8',errors='replace')); result=[]
@@ -44,12 +44,11 @@ def fallback_discover():
     requires Arafat Rahaman to appear in the article's own byline metadata.
     """
     seeds=[
-        'https://www.thedailystar.net/',
-        'https://www.thedailystar.net/news/bangladesh',
+        'https://www.thedailystar.net/search?search='+quote(NAME),
         'https://www.thedailystar.net/news/education',
         'https://www.thedailystar.net/news/crime-justice',
+        'https://www.thedailystar.net/news/bangladesh',
         'https://www.thedailystar.net/opinion',
-        'https://www.thedailystar.net/search?search='+quote(NAME),
     ]
     result=[]; errors=[]
     for seed in seeds:
@@ -115,12 +114,12 @@ def run(args):
     discovery_failed=False
     fallback_ok=False
     try:
-        pages=list(range(args.pages)) if args.full else list(range(3))
+        pages=list(range(args.pages)) if args.full else [0]
         # Incremental backfill continues across runs instead of assuming 12 pages is a complete archive.
         if not args.full:
             cursor=max(3,int(state.get('archive_cursor',3)))
-            pages+=list(range(cursor,min(cursor+3,args.pages)))
-            state['archive_cursor']=3 if cursor+3>=args.pages else cursor+3
+            pages+=list(range(cursor,min(cursor+1,args.pages)))
+            state['archive_cursor']=3 if cursor+1>=args.pages else cursor+1
         previous=set()
         for page in pages:
             found=discover(AUTHOR if page==0 else AUTHOR+'?page='+str(page))
