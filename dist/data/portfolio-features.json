@@ -1,6 +1,25 @@
 {
   "articles": [
     {
+      "id": "b5a59a00115f8b165578",
+      "title": "RU keeps failing to stop campus violence",
+      "excerpt": "Rajshahi University authorities have repeatedly failed to protect students and journalists from violence on campus since August 2024, even with proctorial officials or teachers present.",
+      "category": "Rights & Justice",
+      "stream": "reporting",
+      "date_published": "2026-10-07T03:18:17+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/8cf7bedcff7f796724a662c7.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/ru-keeps-failing-to-stop-campus-violence/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "universities-campus-governance"
+      ]
+    },
+    {
       "id": "108ac273cd10e0d07d71",
       "title": "Can BNP protect journalists from its own rank and file?",
       "excerpt": "During the Awami League’s three consecutive terms in office over a decade and a half, the then-opposition BNP demanded the right to speak, organise and criticise without being branded an enemy of the state.",
