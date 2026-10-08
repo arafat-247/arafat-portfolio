@@ -1,6 +1,25 @@
 {
   "articles": [
     {
+      "id": "77f2d6ad1fec34535f22",
+      "title": "School textbooks to get new content on history",
+      "excerpt": "School textbooks will be revised for the 2027 academic year, with new content on the Liberation War, post-independence political history and the July Uprising.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-08T02:18:53+06:00",
+      "date_modified": "",
+      "cover_image": "",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/school-textbooks-to-get-new-content-on-history/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
+    },
+    {
       "id": "b5a59a00115f8b165578",
       "title": "RU keeps failing to stop campus violence",
       "excerpt": "Rajshahi University authorities have repeatedly failed to protect students and journalists from violence on campus since August 2024, even with proctorial officials or teachers present.",
