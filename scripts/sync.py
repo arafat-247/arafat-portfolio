@@ -115,6 +115,27 @@ def archive_image(item):
     if not target.exists(): target.write_bytes(data)
     item['cover_image']='assets/imported/'+name
 
+def author_page_schedule(state, full=False, pages=180):
+    """Rotate through the archive, without treating repeated pages as the end.
+
+    Recent pages are checked on every run. Historical pages advance even if a
+    publisher page is empty, duplicated or temporarily inaccessible.
+    """
+    maximum=max(1,int(pages))
+    recent=list(range(min(3,maximum)))
+    if maximum<=3:
+        return recent
+    span=maximum-3
+    try:
+        cursor=int(state.get('archive_cursor',3))
+    except (TypeError,ValueError):
+        cursor=3
+    start=3+(cursor-3)%span
+    batch=min(span,36 if full else 6)
+    historical=[3+((start-3+i)%span) for i in range(batch)]
+    state['archive_cursor']=3+((start-3+batch)%span)
+    return recent+historical
+
 def run(args):
     state=read(CONTENT/'sync-state.json',{'sources':{},'archive_cursor':0})
     state['last_attempt']=now(); sources=state['sources']; errors=[]; fresh=[]
@@ -132,38 +153,60 @@ def run(args):
             status['author_listing']=True
             if status.get('status')=='author_unverified':
                 status.pop('last_checked',None);status['status']='discovered';status['error']=''
-    discovery_failed=False
     fallback_ok=False
-    try:
-        pages=list(range(args.pages)) if args.full else [0]
-        # Incremental backfill continues across runs instead of assuming 12 pages is a complete archive.
-        if not args.full:
-            cursor=max(3,int(state.get('archive_cursor',3)))
-            pages+=list(range(cursor,min(cursor+1,args.pages)))
-            state['archive_cursor']=3 if cursor+1>=args.pages else cursor+1
-        previous=set()
-        for page in pages:
+    # Publisher pagination is irregular: the same batch, or an empty batch,
+    # can appear before older pages containing previously unseen articles.
+    # A successful run is not evidence that the complete archive was found.
+    pages=author_page_schedule(state,args.full,args.pages)
+    state.pop('listing_complete',None)
+    previously_confirmed={u for u,entry in sources.items() if entry.get('author_listing')}
+    seen_this_run=set()
+    successful_pages=0
+    unavailable_pages=0
+    empty_pages=0
+    repeated_pages=0
+    newly_confirmed=0
+    for page in pages:
+        try:
             found=discover(AUTHOR if page==0 else AUTHOR+'?page='+str(page))
-            if not found:
-                state['listing_complete']=True
-                state['archive_cursor']=3
-                break
-            unique=set(found)-previous
-            if not unique and args.full:
-                errors.append('Author pagination repeated earlier results; discovery stopped. This is not proof of archive completeness.')
-                break
-            previous.update(found)
-            for u in found:
-                entry=sources.setdefault(u,{'discovered_at':now()})
-                entry['author_listing']=True
-                if entry.get('status')=='author_unverified':
-                    entry.pop('last_checked',None);entry['status']='discovered';entry['error']=''
-                if page<3: fresh.append(u)
+        except (HTTPError,URLError,ValueError,OSError) as exc:
+            unavailable_pages+=1
+            if len(errors)<15:
+                errors.append(f'Author listing page {page}: {str(exc)[:180]}')
+            continue
+        successful_pages+=1
+        if not found:
+            empty_pages+=1
+        elif not (set(found)-seen_this_run):
+            repeated_pages+=1
+        seen_this_run.update(found)
+        for u in found:
+            if u not in previously_confirmed:
+                newly_confirmed+=1
+                previously_confirmed.add(u)
+            entry=sources.setdefault(u,{'discovered_at':now()})
+            entry['author_listing']=True
+            if entry.get('status')=='author_unverified':
+                entry.pop('last_checked',None)
+                entry['status']='discovered'
+                entry['error']=''
+            if page<3:
+                fresh.append(u)
+        if args.delay:
             time.sleep(args.delay)
+    discovery_failed=successful_pages==0
+    if discovery_failed:
+        errors.append('Author listing unavailable on every checked page; checking other public discovery sources.')
+    state.update(
+        last_author_pages_checked=len(pages),
+        last_author_pages_successful=successful_pages,
+        last_author_pages_unavailable=unavailable_pages,
+        last_author_pages_empty=empty_pages,
+        last_author_pages_repeated=repeated_pages,
+        last_author_new_links=newly_confirmed,
+    )
+    if successful_pages:
         state['last_discovery_success']=now()
-    except (HTTPError,URLError,ValueError,OSError) as exc:
-        discovery_failed=True
-        errors.append('Discovery: '+str(exc)[:220])
 
     # The author page can lag behind publication or be blocked. Fallback
     # candidates are recent official Daily Star URLs, never authorship proof.
