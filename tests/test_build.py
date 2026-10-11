@@ -22,6 +22,31 @@ class BuildTests(unittest.TestCase):
                 'https://www.thedailystar.net/news/first-12345',
                 'https://www.thedailystar.net/news/second-67890'])
 
+    def test_archive_pages_rotate_and_ignore_false_completion(self):
+        state={'archive_cursor':3,'listing_complete':True}
+        first=sync.author_page_schedule(state,False,12)
+        second=sync.author_page_schedule(state,False,12)
+        self.assertEqual(first,[0,1,2,3,4,5,6,7,8])
+        self.assertEqual(second,[0,1,2,9,10,11,3,4,5])
+        self.assertEqual(state['archive_cursor'],6)
+
+    def test_empty_or_repeated_page_does_not_stop_scan(self):
+        url='https://www.thedailystar.net/news/example-4299999'
+        source=('''<script type="application/ld+json">{"@type":"NewsArticle","headline":"An independently checked report","author":{"name":"Arafat Rahaman"},"datePublished":"2026-10-10T08:00:00+06:00","articleBody":"''' + ('Verified reporting text. '*30) + '''"}</script>''').encode()
+        def discover_page(page):
+            if 'page=4' in page:return [url]
+            if 'page=3' in page:return []
+            return []
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            with patch('sync.CONTENT',root),patch('sync.discover',side_effect=discover_page),patch('sync.fallback_discover',return_value=[]),patch('sync.fetch_daily_star',return_value=(source,'text/html',url)),patch('sync.archive_image'),contextlib.redirect_stdout(io.StringIO()):
+                sync.run(SimpleNamespace(full=False,pages=10,limit=5,delay=0,workers=1,retry_failed=False))
+            state=core.read(root/'sync-state.json')
+            self.assertTrue(state['sources'][url]['author_listing'])
+            self.assertEqual(state['sources'][url]['status'],'saved')
+            self.assertGreater(state['last_author_pages_empty'],0)
+            self.assertNotIn('listing_complete',state)
+
     def test_fallback_discovery_collects_official_story_links(self):
         source=b'''<main>
         <a href="/news/crime-justice/news/ru-keeps-failing-stop-campus-violence-4292566">Story</a>
