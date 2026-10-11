@@ -5589,21 +5589,101 @@
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
       "failures": 1
+    },
+    "https://www.thedailystar.net/news/bangladesh/rights/news/why-must-the-girl-change-her-route-4295941": {
+      "discovered_at": "2026-10-11T13:28:42.751684+00:00",
+      "author_listing": true,
+      "fallback_candidate": true,
+      "last_checked": "2026-10-11T13:30:24.383716+00:00",
+      "status": "saved",
+      "last_success": "2026-10-11T13:30:27.904839+00:00",
+      "failures": 0,
+      "error": "",
+      "article_id": "d8e19630cabfdf5ce511",
+      "title": "Why must the girl change her route?"
+    },
+    "https://www.thedailystar.net/news/crime-justice/news/bnp-leader-accused-leading-crowd-besiege-police-station-thakurgaon-4296046": {
+      "discovered_at": "2026-10-11T13:30:24.380248+00:00",
+      "fallback_candidate": true,
+      "last_checked": "2026-10-11T13:30:24.383722+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
+    },
+    "https://www.thedailystar.net/news/crime-justice/news/ayas-3-others-remanded-over-attempt-deface-tagore-graffiti-4296041": {
+      "discovered_at": "2026-10-11T13:30:24.380251+00:00",
+      "fallback_candidate": true,
+      "last_checked": "2026-10-11T13:30:24.383725+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
+    },
+    "https://www.thedailystar.net/news/crime-justice/news/10-accused-bogura-over-santal-youths-alleged-killing-after-theft-claim-4296011": {
+      "discovered_at": "2026-10-11T13:30:24.380254+00:00",
+      "fallback_candidate": true,
+      "last_checked": "2026-10-11T13:30:24.383726+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
+    },
+    "https://www.thedailystar.net/news/crime-justice/news/palak-says-war-prosecution-accuses-defence-delaying-july-uprising-case-4295931": {
+      "discovered_at": "2026-10-11T13:30:24.380257+00:00",
+      "fallback_candidate": true,
+      "last_checked": "2026-10-11T13:30:24.383728+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
+    },
+    "https://www.thedailystar.net/news/crime-justice/news/ex-dmp-chief-former-al-mp-indicted-over-killing-mugdho-10-others-4295901": {
+      "discovered_at": "2026-10-11T13:30:24.380260+00:00",
+      "fallback_candidate": true,
+      "last_checked": "2026-10-11T13:30:24.383730+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
+    },
+    "https://www.thedailystar.net/news/education/news/ugc-chairman-elected-chairperson-the-governing-board-south-asian-university-4296076": {
+      "discovered_at": "2026-10-11T13:30:24.380311+00:00",
+      "fallback_candidate": true,
+      "last_checked": "2026-10-11T13:30:24.383731+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
+    },
+    "https://www.thedailystar.net/opinion/views/news/strengthening-consumer-protection-must-go-beyond-mobile-court-raids-4296026": {
+      "discovered_at": "2026-10-11T13:30:24.380437+00:00",
+      "fallback_candidate": true,
+      "last_checked": "2026-10-11T13:30:24.383733+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
+    },
+    "https://www.thedailystar.net/opinion/editorial/news/why-cant-the-state-keep-girls-safe-4296036": {
+      "discovered_at": "2026-10-11T13:30:24.380466+00:00",
+      "fallback_candidate": true,
+      "last_checked": "2026-10-11T13:30:24.383734+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
     }
   },
-  "archive_cursor": 81,
-  "last_attempt": "2026-10-11T09:18:55.738390+00:00",
-  "last_discovery_success": "2026-10-11T09:19:38.465835+00:00",
-  "last_completed": "2026-10-11T09:20:12.671883+00:00",
-  "saved_this_run": 17,
-  "known_sources": 575,
+  "archive_cursor": 117,
+  "last_attempt": "2026-10-11T13:28:40.885794+00:00",
+  "last_discovery_success": "2026-10-11T13:29:56.461778+00:00",
+  "last_completed": "2026-10-11T13:30:33.926140+00:00",
+  "saved_this_run": 1,
+  "known_sources": 584,
   "pending": 0,
-  "errors": [
-    "Author pagination repeated earlier results; discovery stopped. This is not proof of archive completeness."
-  ],
+  "errors": [],
   "unsupported": 3,
   "degraded_discovery": false,
   "refresh_ok": true,
-  "last_fallback_discovery_success": "2026-10-11T09:19:57.704201+00:00",
-  "fallback_candidates": 160
+  "last_fallback_discovery_success": "2026-10-11T13:30:24.380724+00:00",
+  "fallback_candidates": 160,
+  "last_author_pages_checked": 39,
+  "last_author_pages_successful": 39,
+  "last_author_pages_unavailable": 0,
+  "last_author_pages_empty": 0,
+  "last_author_pages_repeated": 36,
+  "last_author_new_links": 1
 }

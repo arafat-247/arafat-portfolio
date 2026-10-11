@@ -1,6 +1,23 @@
 {
   "articles": [
     {
+      "id": "d8e19630cabfdf5ce511",
+      "title": "Why must the girl change her route?",
+      "excerpt": "From harassment and threats to retaliation against families who speak up, the burden of safety continues to fall on girls while perpetrators often face little immediate consequence",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-11T15:33:06+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/1f4de49a5ddeabd2b9cca2a5.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/why-must-the-girl-change-her-route/",
+      "credit_type": "byline",
+      "beat": "media-journalism",
+      "beat_title": "Media & journalism",
+      "series": []
+    },
+    {
       "id": "e5420c5af2374795bfd8",
       "title": "Secondary schools: Vacant posts hurting children, taxing teachers",
       "excerpt": "Persistent shortages of teachers have been disrupting classroom learning at secondary schools across the country, forcing many institutions to overburden teachers of key subjects including mathematics, English and ICT, and reduce the frequency of practical classes.",
