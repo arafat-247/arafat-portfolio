@@ -31,18 +31,23 @@ def article_links(source,base,scoped=False):
                 if link not in result:result.append(link)
     return result
 
-def mirror_url(url):
+def mirror_url(url, host='online92.thedailystar.net'):
     p=urlsplit(url)
     if p.hostname not in ('www.thedailystar.net','thedailystar.net'):return url
-    return p._replace(netloc='online92.thedailystar.net').geturl()
+    return p._replace(netloc=host).geturl()
 
 def fetch_daily_star(url,limit=5_000_000):
-    mirror=mirror_url(url)
-    if mirror!=url:
-        try:return fetch(mirror,limit)
+    # Distinct official frontend hosts do not always publish or respond together.
+    # Keep the canonical URL as the last resort and verify authorship separately.
+    candidates=list(dict.fromkeys((
+        mirror_url(url),
+        mirror_url(url,'online91.thedailystar.net'),
+        url,
+    )))
+    for index,candidate in enumerate(candidates):
+        try:return fetch(candidate,limit)
         except (HTTPError,URLError):
-            return fetch(url,limit)
-    return fetch(url,limit)
+            if index==len(candidates)-1:raise
 
 def discover(url):
     data,typ,final=fetch_daily_star(url)
@@ -62,9 +67,17 @@ def fallback_discover():
     article-level author verification before publication.
     """
     seeds=[
-        'https://online92.thedailystar.net/news/crime-justice',
+        # Campus and Rights stories can appear before the author's listing updates.
+        # Both publisher frontends are used because their caches can differ.
+        'https://online91.thedailystar.net/campus',
+        'https://online92.thedailystar.net/campus',
+        'https://online92.thedailystar.net/news/bangladesh/rights',
+        'https://online91.thedailystar.net/news/bangladesh/rights',
+        'https://online92.thedailystar.net/news/bangladesh/education',
         'https://online92.thedailystar.net/news/education',
+        'https://online92.thedailystar.net/news/crime-justice',
         'https://online92.thedailystar.net/news/bangladesh',
+        'https://online92.thedailystar.net/opinion/views',
         'https://online92.thedailystar.net/opinion',
         *[
             'https://online92.thedailystar.net/author/arafat-rahaman?page='+str(page)
@@ -82,7 +95,7 @@ def fallback_discover():
             errors.append(str(exc)[:180])
     if not result and errors:
         raise ValueError('Fallback discovery failed: '+'; '.join(errors[:3]))
-    return result[:160]
+    return result[:240]
 
 def store_article(item, old=None):
     # Do not replace a complete saved article with a likely paywall/error extract.
