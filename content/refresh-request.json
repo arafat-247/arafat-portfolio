@@ -1,5 +1,5 @@
 {
-  "requested_at": "2026-10-11T14:00:00Z",
+  "requested_at": "2026-10-12T16:00:00Z",
   "deep_scan": true,
-  "reason": "Rescan author archive after pagination fix; verify article 4295941"
+  "reason": "Catch new Campus analysis and re-check Daily Star sources after two-front-end fallback repair; preserve existing articles."
 }
