@@ -80,6 +80,39 @@ class ContentTests(unittest.TestCase):
         current=core.datetime.fromisoformat('2026-09-08T05:00:00+00:00')
         self.assertFalse(sync.is_due(status,current=current))
         self.assertTrue(sync.is_due(status,retry_failed=True,current=current))
+    def test_secondary_daily_star_frontend_canonicalisation(self):
+        url='https://online91.thedailystar.net/campus/news/example-4297026'
+        self.assertEqual(core.canonical(url),'https://www.thedailystar.net/campus/news/example-4297026')
+        self.assertEqual(core.identity(url),core.identity('https://www.thedailystar.net/campus/news/example-4297026'))
+        self.assertEqual(core.public_url(url),url)
+    def test_fallback_discovers_campus_article_before_author_page_updates(self):
+        original='https://www.thedailystar.net/campus/news/cuet-deserves-answers-not-another-power-struggle-over-the-vcs-office-4297026'
+        seen=[]
+        def fake_fetch(url,*args):
+            seen.append(url)
+            if url=='https://online91.thedailystar.net/campus':
+                page='<html><article><a href="/campus/news/cuet-deserves-answers-not-another-power-struggle-over-the-vcs-office-4297026">Arafat Rahaman</a></article></html>'
+                return page.encode(),'text/html',url
+            return b'<html></html>','text/html',url
+        with patch('sync.fetch',side_effect=fake_fetch):
+            found=sync.fallback_discover()
+        self.assertIn(original,found)
+        self.assertIn('https://online91.thedailystar.net/campus',seen)
+    def test_daily_star_article_falls_back_to_secondary_frontend(self):
+        from urllib.error import HTTPError
+        requested='https://www.thedailystar.net/campus/news/example-4297026'
+        attempts=[]
+        def fake_fetch(url,*args):
+            attempts.append(url)
+            if 'online92.thedailystar.net' in url:
+                raise HTTPError(url,404,'not found',None,None)
+            return b'<html>Article</html>','text/html',url
+        with patch('sync.fetch',side_effect=fake_fetch):
+            data,kind,final=sync.fetch_daily_star(requested)
+        self.assertEqual(data,b'<html>Article</html>')
+        self.assertEqual(kind,'text/html')
+        self.assertIn('online91.thedailystar.net',final)
+        self.assertEqual(len(attempts),2)
     def test_paywall(self):
         source=sample().replace('"@type": "NewsArticle"','"@type": "NewsArticle", "isAccessibleForFree": false')
         with self.assertRaises(ValueError):core.article(source,'https://example.com/news/story-12345')
