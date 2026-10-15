@@ -4569,34 +4569,34 @@
     "https://www.thedailystar.net/news/politics/news/bnp-leader-held-forcing-rmu-vc-resign-4293411": {
       "discovered_at": "2026-10-08T00:12:54.709412+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-08T00:12:54.710822+00:00",
+      "last_checked": "2026-10-15T02:55:10.709441+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/diplomacy/news/trivedi-meets-modi-talks-about-tariques-possible-visit-4293396": {
       "discovered_at": "2026-10-08T00:12:54.709414+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-08T00:12:54.710823+00:00",
+      "last_checked": "2026-10-15T02:55:10.709453+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/cancer-queues-long-families-stretched-4293371": {
       "discovered_at": "2026-10-08T00:12:54.709417+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-08T00:12:54.710824+00:00",
+      "last_checked": "2026-10-15T02:55:10.709456+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/15yr-nct-deal-dp-world-be-signed-today-4293376": {
       "discovered_at": "2026-10-08T00:12:54.709419+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-08T00:12:54.710826+00:00",
+      "last_checked": "2026-10-15T02:55:10.709458+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/opinion/views/news/crackdowns-alone-cannot-rein-teen-gangs-long-4293276": {
       "discovered_at": "2026-10-08T06:06:18.761449+00:00",
@@ -6923,11 +6923,11 @@
       "failures": 1
     }
   },
-  "archive_cursor": 174,
-  "last_attempt": "2026-10-14T23:55:15.965085+00:00",
-  "last_discovery_success": "2026-10-14T23:55:46.169831+00:00",
-  "last_completed": "2026-10-14T23:56:39.458895+00:00",
-  "saved_this_run": 33,
+  "archive_cursor": 3,
+  "last_attempt": "2026-10-15T02:54:31.722386+00:00",
+  "last_discovery_success": "2026-10-15T02:54:59.133860+00:00",
+  "last_completed": "2026-10-15T02:55:13.668194+00:00",
+  "saved_this_run": 0,
   "known_sources": 740,
   "pending": 0,
   "errors": [
