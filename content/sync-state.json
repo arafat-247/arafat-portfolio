@@ -567,9 +567,9 @@
     "https://www.thedailystar.net/opinion/views/news/selective-amnesia-price-new-bangladesh-4068486": {
       "discovered_at": "2026-09-06T04:56:47.491457+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-16T06:19:07.408844+00:00",
+      "last_checked": "2026-10-16T19:05:38.050192+00:00",
       "status": "saved",
-      "last_success": "2026-10-16T06:19:19.748050+00:00",
+      "last_success": "2026-10-16T19:05:42.594840+00:00",
       "failures": 0,
       "error": "",
       "article_id": "d1815a69ef8934de0751",
@@ -579,9 +579,9 @@
     "https://www.thedailystar.net/supplements/human-rights-day-2025/news/put-rights-issues-heart-polls-pledges-4054731": {
       "discovered_at": "2026-09-06T04:56:47.491458+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-16T06:19:07.408845+00:00",
+      "last_checked": "2026-10-16T19:05:38.050195+00:00",
       "status": "saved",
-      "last_success": "2026-10-16T06:19:19.525093+00:00",
+      "last_success": "2026-10-16T19:05:42.339787+00:00",
       "failures": 0,
       "error": "",
       "article_id": "f946d492f9cd648a1d00",
@@ -591,9 +591,9 @@
     "https://www.thedailystar.net/supplements/human-rights-day-2025/news/only-political-will-can-break-cycle-violence-4054736": {
       "discovered_at": "2026-09-06T04:57:04.185983+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-16T06:19:07.408847+00:00",
+      "last_checked": "2026-10-16T19:05:38.050197+00:00",
       "status": "saved",
-      "last_success": "2026-10-16T06:19:21.596606+00:00",
+      "last_success": "2026-10-16T19:05:41.707330+00:00",
       "failures": 0,
       "error": "",
       "article_id": "939e7a19331fc8fc5d4c",
@@ -603,9 +603,9 @@
     "https://www.thedailystar.net/opinion/views/news/theres-no-neutral-observer-digital-violence-4049931": {
       "discovered_at": "2026-09-06T04:57:04.185984+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-16T06:19:07.408848+00:00",
+      "last_checked": "2026-10-16T19:05:38.050198+00:00",
       "status": "saved",
-      "last_success": "2026-10-16T06:19:21.614229+00:00",
+      "last_success": "2026-10-16T19:05:45.918817+00:00",
       "failures": 0,
       "error": "",
       "article_id": "f659997994e96cbefc99",
@@ -615,9 +615,9 @@
     "https://www.thedailystar.net/opinion/news/have-you-seen-my-babies-4049861": {
       "discovered_at": "2026-09-06T04:57:04.185985+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-16T06:19:07.408849+00:00",
+      "last_checked": "2026-10-16T19:05:38.050200+00:00",
       "status": "saved",
-      "last_success": "2026-10-16T06:19:24.369489+00:00",
+      "last_success": "2026-10-16T19:05:46.742770+00:00",
       "failures": 0,
       "error": "",
       "article_id": "c5562344967a9f154821",
@@ -627,9 +627,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/we-need-climate-solution-built-people-not-projects-4042226": {
       "discovered_at": "2026-09-06T04:57:04.185986+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-16T06:19:07.408850+00:00",
+      "last_checked": "2026-10-16T19:05:38.050201+00:00",
       "status": "saved",
-      "last_success": "2026-10-16T06:19:24.034180+00:00",
+      "last_success": "2026-10-16T19:05:46.856563+00:00",
       "failures": 0,
       "error": "",
       "article_id": "24f8139c8c1fe9ca41a2",
@@ -6921,14 +6921,25 @@
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
       "failures": 1
+    },
+    "https://www.thedailystar.net/weekend-read/news/durga-puja-the-joy-coming-home-4300376": {
+      "discovered_at": "2026-10-16T19:04:58.630781+00:00",
+      "author_listing": true,
+      "last_checked": "2026-10-16T19:05:38.050179+00:00",
+      "status": "saved",
+      "last_success": "2026-10-16T19:05:42.801296+00:00",
+      "failures": 0,
+      "error": "",
+      "article_id": "5548be2014e299c9f494",
+      "title": "Durga Puja: The joy of coming home"
     }
   },
-  "archive_cursor": 129,
-  "last_attempt": "2026-10-16T15:38:53.274834+00:00",
-  "last_discovery_success": "2026-10-16T15:39:24.972738+00:00",
-  "last_completed": "2026-10-16T15:40:56.007026+00:00",
-  "saved_this_run": 60,
-  "known_sources": 740,
+  "archive_cursor": 135,
+  "last_attempt": "2026-10-16T19:04:54.703672+00:00",
+  "last_discovery_success": "2026-10-16T19:05:25.981834+00:00",
+  "last_completed": "2026-10-16T19:05:46.862119+00:00",
+  "saved_this_run": 7,
+  "known_sources": 741,
   "pending": 0,
   "errors": [
     "Fallback discovery: Fallback discovery failed: HTTP Error 401: Unauthorized; HTTP Error 401: Unauthorized; HTTP Error 401: Unauthorized"
@@ -6943,5 +6954,5 @@
   "last_author_pages_unavailable": 0,
   "last_author_pages_empty": 0,
   "last_author_pages_repeated": 6,
-  "last_author_new_links": 0
+  "last_author_new_links": 1
 }
