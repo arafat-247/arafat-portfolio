@@ -6945,11 +6945,11 @@
       "title": "Give SSC students who failed a second chance, but fix the learning gaps too"
     }
   },
-  "archive_cursor": 114,
-  "last_attempt": "2026-10-18T17:23:45.259284+00:00",
-  "last_discovery_success": "2026-10-18T17:24:16.620514+00:00",
-  "last_completed": "2026-10-18T17:24:48.711439+00:00",
-  "saved_this_run": 16,
+  "archive_cursor": 120,
+  "last_attempt": "2026-10-18T19:36:00.640971+00:00",
+  "last_discovery_success": "2026-10-18T19:36:30.176562+00:00",
+  "last_completed": "2026-10-18T19:36:43.324865+00:00",
+  "saved_this_run": 0,
   "known_sources": 742,
   "pending": 0,
   "errors": [
