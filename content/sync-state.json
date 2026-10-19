@@ -5801,50 +5801,50 @@
     "https://www.thedailystar.net/news/bangladesh/news/govt-decides-relocate-secretariat-agargaon-4296561": {
       "discovered_at": "2026-10-12T00:33:28.574496+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-12T00:33:28.577993+00:00",
+      "last_checked": "2026-10-19T02:00:10.399009+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/bwsa-protests-cancellation-womens-football-match-4296551": {
       "discovered_at": "2026-10-12T00:33:28.574499+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-12T00:33:28.577995+00:00",
+      "last_checked": "2026-10-19T02:00:10.399021+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/rooppur-unit-1-begins-nuclear-fission-reaction-4296546": {
       "discovered_at": "2026-10-12T00:33:28.574503+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-12T00:33:28.577996+00:00",
+      "last_checked": "2026-10-19T02:00:10.399023+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/2-more-push-attempts-foiled-4296541": {
       "discovered_at": "2026-10-12T00:33:28.574506+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-12T00:33:28.577998+00:00",
+      "last_checked": "2026-10-19T02:00:10.399026+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/beware-coverts-and-fascists-aligning-4296536": {
       "discovered_at": "2026-10-12T00:33:28.574509+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-12T00:33:28.577999+00:00",
+      "last_checked": "2026-10-19T02:00:10.399027+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/four-placed-remand-over-defacing-tagore-mural-4296521": {
       "discovered_at": "2026-10-12T00:33:28.574512+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-12T00:33:28.578001+00:00",
+      "last_checked": "2026-10-19T02:00:10.399029+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/crime-justice/news/40-injured-villagers-clash-over-football-match-pabna-4296681": {
       "discovered_at": "2026-10-12T07:22:40.314097+00:00",
@@ -6945,11 +6945,11 @@
       "title": "Give SSC students who failed a second chance, but fix the learning gaps too"
     }
   },
-  "archive_cursor": 132,
-  "last_attempt": "2026-10-18T23:45:25.184271+00:00",
-  "last_discovery_success": "2026-10-18T23:45:56.772247+00:00",
-  "last_completed": "2026-10-18T23:46:31.170941+00:00",
-  "saved_this_run": 21,
+  "archive_cursor": 138,
+  "last_attempt": "2026-10-19T01:59:25.908156+00:00",
+  "last_discovery_success": "2026-10-19T01:59:57.506761+00:00",
+  "last_completed": "2026-10-19T02:00:18.694711+00:00",
+  "saved_this_run": 0,
   "known_sources": 742,
   "pending": 0,
   "errors": [
