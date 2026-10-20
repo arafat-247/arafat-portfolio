@@ -1,8 +1,8 @@
 {
-  "last_completed": "2026-10-19T23:56:49.964858+00:00",
-  "last_discovery_success": "2026-10-19T23:55:42.360643+00:00",
+  "last_completed": "2026-10-20T03:08:18.573009+00:00",
+  "last_discovery_success": "2026-10-20T03:07:01.073321+00:00",
   "last_fallback_discovery_success": "2026-10-14T08:03:45.004845+00:00",
-  "saved_this_run": 32,
+  "saved_this_run": 60,
   "known_sources": 742,
   "pending": 0,
   "refresh_ok": true,
