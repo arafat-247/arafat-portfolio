@@ -1,27 +1,14 @@
 {
-  "last_completed": "2026-10-20T21:39:45.240867+00:00",
-  "last_discovery_success": "2026-10-20T21:38:27.672799+00:00",
+  "last_completed": "2026-10-21T00:14:20.103666+00:00",
+  "last_discovery_success": "2026-10-21T00:13:01.562477+00:00",
   "last_fallback_discovery_success": "2026-10-14T08:03:45.004845+00:00",
-  "saved_this_run": 33,
+  "saved_this_run": 46,
   "known_sources": 742,
   "pending": 0,
   "refresh_ok": true,
   "degraded_discovery": false,
   "fallback_candidates": 240,
   "errors": [
-    "Fallback discovery: Fallback discovery failed: HTTP Error 401: Unauthorized; HTTP Error 401: Unauthorized; HTTP Error 401: Unauthorized",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error",
-    "HTTP Error 500: Internal Server Error"
+    "Fallback discovery: Fallback discovery failed: HTTP Error 401: Unauthorized; HTTP Error 401: Unauthorized; HTTP Error 401: Unauthorized"
   ]
 }
