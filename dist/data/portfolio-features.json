@@ -1,6 +1,23 @@
 {
   "articles": [
     {
+      "id": "71f20d69-cf7e-4d55-8e58-68de74849b81",
+      "title": "The PM must be protected. But who protects the ordinary citizen?",
+      "excerpt": "A journalist and a shopkeeper reported threats before they were killed. Their cases demand answers from the police.",
+      "category": "Commentary",
+      "stream": "thoughts",
+      "date_published": "2026-10-22T00:00:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/uploads/5171af30-8edb-46f6-b96f-a9930fed5244.webp",
+      "cover_alt": "",
+      "source_name": "",
+      "local_url": "thoughts/the-pm-must-be-protected-but-who-protects-the-ordinary-citizen/",
+      "credit_type": "byline",
+      "beat": "media-journalism",
+      "beat_title": "Media & journalism",
+      "series": []
+    },
+    {
       "id": "b8b676dd8f69ae866fd3",
       "title": "Give SSC students who failed a second chance, but fix the learning gaps too",
       "excerpt": "Last week, Education Minister ANM Ehsanul Hoque Milon announced that SSC examinees who failed two subjects could retake those exams within 15 days of the results.",
