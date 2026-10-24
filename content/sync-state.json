@@ -3272,9 +3272,9 @@
     },
     "https://www.thedailystar.net/news/education/news/govt-align-bangla-english-medium-curricula-bobby-hajjaj-4270856": {
       "discovered_at": "2026-09-12T10:46:48.840912+00:00",
-      "last_checked": "2026-10-17T18:47:06.083062+00:00",
+      "last_checked": "2026-10-24T19:53:56.081768+00:00",
       "status": "saved",
-      "last_success": "2026-10-17T18:47:11.658916+00:00",
+      "last_success": "2026-10-24T19:54:00.398568+00:00",
       "failures": 0,
       "error": "",
       "article_id": "28a237ee201114b0c61e",
@@ -3282,9 +3282,9 @@
     },
     "https://www.thedailystar.net/news/bangladesh/news/draft-law-may-enable-repression-surveillance-tib-4270656": {
       "discovered_at": "2026-09-12T10:46:48.840914+00:00",
-      "last_checked": "2026-10-17T18:47:06.083075+00:00",
+      "last_checked": "2026-10-24T19:53:56.081780+00:00",
       "status": "saved",
-      "last_success": "2026-10-17T18:47:10.396251+00:00",
+      "last_success": "2026-10-24T19:54:01.011538+00:00",
       "failures": 0,
       "error": "",
       "article_id": "0ed348dc90dd4f6d40ef",
@@ -3292,9 +3292,9 @@
     },
     "https://www.thedailystar.net/news/education/news/js-committee-calls-probe-corruption-allegations-national-university-education-bodies-4269591": {
       "discovered_at": "2026-09-12T10:46:48.840916+00:00",
-      "last_checked": "2026-10-17T18:47:06.083078+00:00",
+      "last_checked": "2026-10-24T19:53:56.081782+00:00",
       "status": "saved",
-      "last_success": "2026-10-17T18:47:11.169666+00:00",
+      "last_success": "2026-10-24T19:54:00.497688+00:00",
       "failures": 0,
       "error": "",
       "article_id": "5d01786dae4749916203",
@@ -3302,9 +3302,9 @@
     },
     "https://www.thedailystar.net/news/education/news/dshe-directs-schools-colleges-arrange-15-sports-21-co-curricular-activities-4269536": {
       "discovered_at": "2026-09-12T10:46:48.840917+00:00",
-      "last_checked": "2026-10-17T18:47:06.083080+00:00",
+      "last_checked": "2026-10-24T19:53:56.081784+00:00",
       "status": "saved",
-      "last_success": "2026-10-17T18:47:11.204115+00:00",
+      "last_success": "2026-10-24T19:54:00.431130+00:00",
       "failures": 0,
       "error": "",
       "article_id": "18288dbd1e0636c343e7",
@@ -3312,9 +3312,9 @@
     },
     "https://www.thedailystar.net/news/education/news/4585-students-who-failed-ssc-now-pass-after-rescrutiny-4269371": {
       "discovered_at": "2026-09-12T10:46:48.840919+00:00",
-      "last_checked": "2026-10-17T18:47:06.083081+00:00",
+      "last_checked": "2026-10-24T19:53:56.081785+00:00",
       "status": "saved",
-      "last_success": "2026-10-17T18:47:15.780420+00:00",
+      "last_success": "2026-10-24T19:54:05.582284+00:00",
       "failures": 0,
       "error": "",
       "article_id": "a23e96dc9bf3544c0a1b",
@@ -3333,13 +3333,13 @@
     },
     "https://www.thedailystar.net/news/education/news/primary-school-teacher-transfers-suspended-ahead-14384-new-recruits-4266976": {
       "discovered_at": "2026-09-12T12:36:05.341978+00:00",
-      "last_checked": "2026-10-17T18:47:06.083083+00:00",
+      "last_checked": "2026-10-24T19:53:56.081786+00:00",
       "status": "saved",
       "error": "",
       "failures": 0,
       "article_id": "44424aa1f37759f03838",
       "title": "Primary school teacher transfers suspended ahead of 14,384 new recruits",
-      "last_success": "2026-10-17T18:47:16.107262+00:00"
+      "last_success": "2026-10-24T19:54:05.374931+00:00"
     },
     "https://www.thedailystar.net/news/bangladesh/education/news/madrasa-education-needs-reform-equal-support-4271346": {
       "discovered_at": "2026-09-13T07:48:41.058333+00:00",
@@ -5293,34 +5293,34 @@
     "https://www.thedailystar.net/news/crime-justice/news/man-arrested-over-alleged-rape-woman-jashore-4295461": {
       "discovered_at": "2026-10-10T18:37:19.575456+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T18:47:06.083085+00:00",
+      "last_checked": "2026-10-24T19:53:56.081787+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/news/education/news/keep-life-saving-medicines-affordable-all-says-ugc-chairman-4295296": {
       "discovered_at": "2026-10-10T18:37:19.575508+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T18:47:06.083086+00:00",
+      "last_checked": "2026-10-24T19:53:56.081788+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/news/bangladesh/rights/news/shaathi-foundation-holds-mother-daughter-dialogue-girls-rights-4295306": {
       "discovered_at": "2026-10-10T18:37:19.575558+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T18:47:06.083088+00:00",
+      "last_checked": "2026-10-24T19:53:56.081789+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/news/bangladesh/obituary/news/veteran-journalist-amir-khasru-passes-away-4295271": {
       "discovered_at": "2026-10-10T18:37:19.575561+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T18:47:06.083089+00:00",
+      "last_checked": "2026-10-24T19:53:56.081790+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/news/crime-justice/news/cng-driver-confesses-rape-murder-schoolgirl-4295571": {
       "discovered_at": "2026-10-10T22:33:27.534909+00:00",
@@ -6956,11 +6956,11 @@
       "title": "Govt plans Tk 21,900cr digital makeover for schools"
     }
   },
-  "archive_cursor": 15,
-  "last_attempt": "2026-10-24T17:41:45.155728+00:00",
-  "last_discovery_success": "2026-10-24T17:42:16.121654+00:00",
-  "last_completed": "2026-10-24T17:42:41.709283+00:00",
-  "saved_this_run": 7,
+  "archive_cursor": 21,
+  "last_attempt": "2026-10-24T19:53:17.094767+00:00",
+  "last_discovery_success": "2026-10-24T19:53:44.081067+00:00",
+  "last_completed": "2026-10-24T19:54:07.149127+00:00",
+  "saved_this_run": 6,
   "known_sources": 743,
   "pending": 0,
   "errors": [
@@ -6975,6 +6975,6 @@
   "last_author_pages_successful": 9,
   "last_author_pages_unavailable": 0,
   "last_author_pages_empty": 0,
-  "last_author_pages_repeated": 0,
+  "last_author_pages_repeated": 6,
   "last_author_new_links": 0
 }
