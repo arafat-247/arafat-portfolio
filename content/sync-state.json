@@ -531,9 +531,9 @@
     "https://www.thedailystar.net/news/news/party-new-hope-looks-old-guard-4067706": {
       "discovered_at": "2026-09-06T04:56:47.491453+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-24T07:38:39.488336+00:00",
+      "last_checked": "2026-10-24T17:42:28.262071+00:00",
       "status": "saved",
-      "last_success": "2026-10-24T07:39:04.517196+00:00",
+      "last_success": "2026-10-24T17:42:32.590353+00:00",
       "failures": 0,
       "error": "",
       "article_id": "1b853c517009d9d51dc2",
@@ -543,9 +543,9 @@
     "https://www.thedailystar.net/news/bangladesh/education/news/education-2025-year-strikes-setbacks-and-disruptions-4066821": {
       "discovered_at": "2026-09-06T04:56:47.491454+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-24T07:38:39.488337+00:00",
+      "last_checked": "2026-10-24T17:42:28.262085+00:00",
       "status": "saved",
-      "last_success": "2026-10-24T07:39:07.334673+00:00",
+      "last_success": "2026-10-24T17:42:33.023267+00:00",
       "failures": 0,
       "error": "",
       "article_id": "493998fff8a0bd0b750f",
@@ -555,9 +555,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/dipus-ashes-dhaka-mymensingh-highway-are-gone-stain-our-souls-remains-4065561": {
       "discovered_at": "2026-09-06T04:56:47.491456+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-24T07:38:39.488338+00:00",
+      "last_checked": "2026-10-24T17:42:28.262097+00:00",
       "status": "saved",
-      "last_success": "2026-10-24T07:39:08.739285+00:00",
+      "last_success": "2026-10-24T17:42:33.003897+00:00",
       "failures": 0,
       "error": "",
       "article_id": "53c2271a471437925f2e",
@@ -567,9 +567,9 @@
     "https://www.thedailystar.net/opinion/views/news/selective-amnesia-price-new-bangladesh-4068486": {
       "discovered_at": "2026-09-06T04:56:47.491457+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-24T07:38:39.488339+00:00",
+      "last_checked": "2026-10-24T17:42:28.262099+00:00",
       "status": "saved",
-      "last_success": "2026-10-24T07:39:09.961345+00:00",
+      "last_success": "2026-10-24T17:42:33.064458+00:00",
       "failures": 0,
       "error": "",
       "article_id": "d1815a69ef8934de0751",
@@ -579,9 +579,9 @@
     "https://www.thedailystar.net/supplements/human-rights-day-2025/news/put-rights-issues-heart-polls-pledges-4054731": {
       "discovered_at": "2026-09-06T04:56:47.491458+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-24T07:38:39.488340+00:00",
+      "last_checked": "2026-10-24T17:42:28.262102+00:00",
       "status": "saved",
-      "last_success": "2026-10-24T07:39:11.365569+00:00",
+      "last_success": "2026-10-24T17:42:37.352537+00:00",
       "failures": 0,
       "error": "",
       "article_id": "f946d492f9cd648a1d00",
@@ -591,9 +591,9 @@
     "https://www.thedailystar.net/supplements/human-rights-day-2025/news/only-political-will-can-break-cycle-violence-4054736": {
       "discovered_at": "2026-09-06T04:57:04.185983+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-24T07:38:39.488341+00:00",
+      "last_checked": "2026-10-24T17:42:28.262101+00:00",
       "status": "saved",
-      "last_success": "2026-10-24T07:39:11.696347+00:00",
+      "last_success": "2026-10-24T17:42:36.435045+00:00",
       "failures": 0,
       "error": "",
       "article_id": "939e7a19331fc8fc5d4c",
@@ -603,9 +603,9 @@
     "https://www.thedailystar.net/opinion/views/news/theres-no-neutral-observer-digital-violence-4049931": {
       "discovered_at": "2026-09-06T04:57:04.185984+00:00",
       "author_listing": true,
-      "last_checked": "2026-10-24T07:38:39.488342+00:00",
+      "last_checked": "2026-10-24T17:42:28.262103+00:00",
       "status": "saved",
-      "last_success": "2026-10-24T07:39:13.025130+00:00",
+      "last_success": "2026-10-24T17:42:37.714926+00:00",
       "failures": 0,
       "error": "",
       "article_id": "f659997994e96cbefc99",
@@ -5237,58 +5237,58 @@
     "https://www.thedailystar.net/news/crime-justice/news/santal-youth-allegedly-beaten-death-over-theft-accusation-bogura-4295141": {
       "discovered_at": "2026-10-10T13:43:28.667952+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T16:26:22.960201+00:00",
+      "last_checked": "2026-10-24T17:42:28.262104+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/news/crime-justice/news/2-arrested-over-nid-fraud-involving-rohingyas-netrokona-4295101": {
       "discovered_at": "2026-10-10T13:43:28.667955+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T16:26:22.960202+00:00",
+      "last_checked": "2026-10-24T17:42:28.262106+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/news/crime-justice/news/fertiliser-trader-beaten-death-allegedly-over-land-dispute-jamalpur-4295091": {
       "discovered_at": "2026-10-10T13:43:28.667957+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T16:26:22.960203+00:00",
+      "last_checked": "2026-10-24T17:42:28.262107+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/news/crime-justice/news/former-khulshi-oc-abdur-rahim-transferred-khulna-days-after-ctg-mayors-criticism-4295056": {
       "discovered_at": "2026-10-10T13:43:28.667960+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T16:26:22.960204+00:00",
+      "last_checked": "2026-10-24T17:42:28.262108+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/news/crime-justice/news/state-dialogue-forum-leader-detained-trying-erase-tagore-graffiti-near-4295046": {
       "discovered_at": "2026-10-10T13:43:28.667962+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T16:26:22.960204+00:00",
+      "last_checked": "2026-10-24T17:42:28.262110+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/opinion/views/news/we-must-prevent-overreliance-ai-chatbots-emotional-support-4295096": {
       "discovered_at": "2026-10-10T13:43:28.668103+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T16:26:22.960205+00:00",
+      "last_checked": "2026-10-24T17:42:28.262111+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/opinion/editorial/news/address-the-shortage-secondary-school-teachers-urgently-4295106": {
       "discovered_at": "2026-10-10T13:43:28.668125+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-10-17T16:26:22.960206+00:00",
+      "last_checked": "2026-10-24T17:42:28.262112+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 2
+      "failures": 3
     },
     "https://www.thedailystar.net/news/crime-justice/news/man-arrested-over-alleged-rape-woman-jashore-4295461": {
       "discovered_at": "2026-10-10T18:37:19.575456+00:00",
@@ -6956,11 +6956,11 @@
       "title": "Govt plans Tk 21,900cr digital makeover for schools"
     }
   },
-  "archive_cursor": 9,
-  "last_attempt": "2026-10-24T14:49:06.968799+00:00",
-  "last_discovery_success": "2026-10-24T14:49:38.321597+00:00",
-  "last_completed": "2026-10-24T14:50:50.754983+00:00",
-  "saved_this_run": 60,
+  "archive_cursor": 15,
+  "last_attempt": "2026-10-24T17:41:45.155728+00:00",
+  "last_discovery_success": "2026-10-24T17:42:16.121654+00:00",
+  "last_completed": "2026-10-24T17:42:41.709283+00:00",
+  "saved_this_run": 7,
   "known_sources": 743,
   "pending": 0,
   "errors": [
