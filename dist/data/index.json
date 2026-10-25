@@ -1,6 +1,20 @@
 {
   "articles": [
     {
+      "id": "5770ba9b03ea548d53f5",
+      "title": "Schools up, pupils down",
+      "excerpt": "Bangladesh has more secondary schools than it did seven years ago, but far fewer students in them.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-26T01:57:27+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/9345ee4d5e9342a5607e5ca3.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/schools-up-pupils-down/",
+      "credit_type": "byline"
+    },
+    {
       "id": "4b7f5a04c1f9d304e9c3",
       "title": "Who protects families when they report child sexual abuse?",
       "excerpt": "A Tongi father says he has received death threats after reporting his seven-year-old daughter's alleged abuse at a madrasa. The police response could matter far beyond this one case",
