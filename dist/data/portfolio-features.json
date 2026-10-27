@@ -18,6 +18,42 @@
       "series": []
     },
     {
+      "id": "03574cbbd4f1b8bcfddd",
+      "title": "DU BCL president poses with ballot paper with vote for boat",
+      "excerpt": "The Bangladesh Chhatra League president of Dhaka University unit today posted a photo of himself holding a ballot paper displaying his vote on his social media account",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/3c687c254512860d336812fd.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/du-bcl-president-poses-with-ballot-paper-with-vote-for-boat/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "universities-campus-governance"
+      ]
+    },
+    {
+      "id": "09b344394d807160c5f7",
+      "title": "Dhaka’s educational heritage",
+      "excerpt": "In 400-year-old Dhaka, a few educational institutes have stood the test of time. These century-old schools have played a significant role in shaping the education and culture of the city and beyond and have produced notable individuals who have left their mark on the national and world stages.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/9d1da28cb9da3cdd282e6b7b.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/dhaka-s-educational-heritage/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": []
+    },
+    {
       "id": "0a685b812475f0772f5e",
       "title": "Textbooks for class-4 to 9: ‘Exaggerated’ historical info to be struck off",
       "excerpt": "The government has decided to remove any “exaggerated” historical information or “unnecessary” glorification of any individuals from textbooks for the upcoming academic year, officials of the National Curriculum and Textbook Board (NCTB) have said.",
@@ -80,7 +116,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/f6836072d7856603e194bd92.jpg",
+      "cover_image": "assets/imported/256f60cd9ef2b45a974756d9.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/half-the-children-can-t-read-comprehend/",
@@ -122,6 +158,25 @@
       "beat": "education",
       "beat_title": "Education",
       "series": []
+    },
+    {
+      "id": "2c126254f6e2a857bf71",
+      "title": "HSC pass rate, GPA-5 dip",
+      "excerpt": "The pass rate in this year's HSC examinations has dropped to 75.90 percent from last year's 84.31, while the number of students with a GPA-5 has halved from last year's 1,59,755",
+      "category": "Education",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/330d7a3cdff5cfb4276bab67.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/hsc-pass-rate-gpa-5-dip/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
     },
     {
       "id": "1722336c577bebdfedce",
@@ -184,7 +239,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/760811e720bed79e8b300c75.jpg",
+      "cover_image": "assets/imported/a132aaea9d8403b70f6ae63b.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/govt-plans-tk-21-900cr-digital-makeover-for-schools/",
@@ -446,6 +501,25 @@
       "series": []
     },
     {
+      "id": "32c91fed518dd89a64e8",
+      "title": "UGC member urges teachers to ensure 80pc turnout in polls",
+      "excerpt": "University Grants Commission Member Professor Sazzad Hossain yesterday urged university teachers to work towards bringing “at least 80 percent voters” to polling stations for the 12th national election.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/72a6497c959ec5083c3fe111.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/ugc-member-urges-teachers-to-ensure-80pc-turnout-in-polls/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "universities-campus-governance"
+      ]
+    },
+    {
       "id": "33116160838d6e5ce89a",
       "title": "Safety, freedom and job on young voters’ mind",
       "excerpt": "Young voters want citizens’ safety and security at core of their election manifestos, with special focus on safeguarding freedom of expression and protecting rights of minority communities",
@@ -591,7 +665,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/d83929f2d3b097d7febce853.jpg",
+      "cover_image": "assets/imported/fcca305fa7c25bfeccc0b922.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/teacher-shortages-strain-government-primary-schools/",
@@ -600,6 +674,25 @@
       "beat_title": "Education",
       "series": [
         "teacher-shortages-recruitment"
+      ]
+    },
+    {
+      "id": "41381b962c2cf9b080e1",
+      "title": "Academic activities in peril",
+      "excerpt": "Academic activities at Bangabandhu Sheikh Mujibur Rahman Science and Technology University in Gopalganj are being severely hampered due to a shortage of basic infrastructure and teachers.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/aa25b4e6b62a217b8d33ea2d.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/academic-activities-in-peril/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "universities-campus-governance"
       ]
     },
     {
@@ -751,6 +844,25 @@
       ]
     },
     {
+      "id": "478d8977b93ae7634c78",
+      "title": "Technical edu board outperforms others",
+      "excerpt": "While an overall decline in the pass rate and number of GPA-5 holders marked this year’s Higher Secondary Certificate and equivalent examinations, the Technical Education Board has emerged as the top-performing board.",
+      "category": "Education",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/42273e33e97a0878bace2fcf.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/technical-edu-board-outperforms-others/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
+    },
+    {
       "id": "49177c7fb8abf62f569d",
       "title": "NCP eyes bigger role after bagging 6 seats in debut",
       "excerpt": "Amid doubts over its political future and alliance choices, the youth-led National Citizen Party (NCP) has made an eye-catching debut, winning six seats in its first parliamentary election.",
@@ -775,7 +887,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/033d78bac549a525a3ffadfc.png",
+      "cover_image": "assets/imported/41f3c510aa813ff2b6b5b06f.png",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/primary-teachers-pay-edge-over-lowest-grade-govt-job-narrows-in-five/",
@@ -792,7 +904,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/1b0abd837a82fbea5cf9fd28.png",
+      "cover_image": "assets/imported/54bc675554dd013a7b780229.png",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/who-protects-families-when-they-report-child-sexual-abuse/",
@@ -881,7 +993,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/d659cae7374adca6950da506.png",
+      "cover_image": "assets/imported/673ab432648cd61dfca6061b.png",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/what-could-he-have-stolen-that-was-worth-his-life/",
@@ -889,6 +1001,25 @@
       "beat": "other",
       "beat_title": "Other",
       "series": []
+    },
+    {
+      "id": "50ce1bf7ba0f4f188e33",
+      "title": "SSC & Equivalent Exams: Pass rate hits 13-year low",
+      "excerpt": "The success rate in this year’s SSC and equivalent exams has hit a 13-year low mainly due to poor performances in mathematics and bad results in Sylhet board due to floods in that region, officials said.",
+      "category": "Education",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/ca19407be797c0f5e6609ee7.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/ssc-equivalent-exams-pass-rate-hits-13-year-low/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
     },
     {
       "id": "510ba83b2b9f9fd7cbb8",
@@ -1255,7 +1386,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/360709480c39f0d634c1fffb.jpg",
+      "cover_image": "assets/imported/02cc48668c1b811eeb565c12.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/reform-missteps-behind-ssc-result-swings-experts/",
@@ -1274,7 +1405,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/ab6b37054ee92cb9bb677a56.png",
+      "cover_image": "assets/imported/8ede386f31bc79bc90e64a8b.png",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/school-textbooks-to-get-new-content-on-history/",
@@ -1284,6 +1415,23 @@
       "series": [
         "curriculum-textbooks-assessment"
       ]
+    },
+    {
+      "id": "7836c012ff91e87ca550",
+      "title": "Govt move to check prices falls flat",
+      "excerpt": "The commerce ministry’s price cap on onions, potatoes, and eggs barely made an impact on the runaway prices as shopkeepers in the capital have not complied with the order.",
+      "category": "Health",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/9cdc8b3bda51260c23497e12.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/govt-move-to-check-prices-falls-flat/",
+      "credit_type": "byline",
+      "beat": "governance-public-institutions",
+      "beat_title": "Governance & public institutions",
+      "series": []
     },
     {
       "id": "789ce35dcf7e9304c576",
@@ -1501,7 +1649,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/86d9a260c8c6f37d384e7d9c.jpg",
+      "cover_image": "assets/imported/66ad8a870663c8cf2bef4d0f.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/why-girls-continue-to-outpace-boys-in-ssc-results/",
@@ -1573,13 +1721,30 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/3032d0d40138b5c16cfca944.jpg",
+      "cover_image": "assets/imported/2a906bf6c12096dedf00ed58.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/honouring-a-trailblazer/",
       "credit_type": "byline",
       "beat": "education",
       "beat_title": "Education",
+      "series": []
+    },
+    {
+      "id": "89c90d1e957cbf81f333",
+      "title": "19 women triumph with higher turnout",
+      "excerpt": "Nineteen women candidates emerged victorious in the 12th parliamentary election. Ten of them were incumbents.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/ccb51491ccf6da0675954a2c.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/19-women-triumph-with-higher-turnout/",
+      "credit_type": "byline",
+      "beat": "politics-civic-life",
+      "beat_title": "Politics & civic life",
       "series": []
     },
     {
@@ -1643,7 +1808,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/8c7ea687de2b2d506f09657c.jpg",
+      "cover_image": "assets/imported/1d3958b4f365f936f1cecec1.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/dakhil-pass-rate-lowest-in-23-years/",
@@ -1743,6 +1908,25 @@
       "series": []
     },
     {
+      "id": "9ed3472fb150c6e4d26c",
+      "title": "‘BCL men’ enter polling booths in DU centre with food for agents",
+      "excerpt": "A vehicle carrying supporters of ruling Awami League candidate Bahuddin Nasim stopped in front of the polling centre at the Dhaka University Annex Building around 8:40am",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/6eac3182f7de14ad468c02bb.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/bcl-men-enter-polling-booths-in-du-centre-with-food-for-agents/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "universities-campus-governance"
+      ]
+    },
+    {
       "id": "9fc6521fd77c6d8f1305",
       "title": "2 UAP teachers terminated amid student protests",
       "excerpt": "The University of Asia Pacific (UAP), which announced an indefinite closure on Monday, remained shut yesterday amid ongoing student protests over a controversial Facebook post, the subsequent termination of two faculty members, and demands for the vice-chancellor’s removal.",
@@ -1817,6 +2001,23 @@
       "series": []
     },
     {
+      "id": "a65fd5364bba43924ce1",
+      "title": "Three-day blockade: Low turnout at schools",
+      "excerpt": "Student attendance was significantly lower in most educational institutions in Dhaka on the first day of the three-day blockade called by BNP and Jamaat.",
+      "category": "Politics",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/7769b029f1161796daf35f37.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/three-day-blockade-low-turnout-at-schools/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": []
+    },
+    {
       "id": "a79dc707aa7e7b732826",
       "title": "Govt issues draft ordinances for broadcast, media commissions",
       "excerpt": "The information and broadcasting ministry yesterday published drafts of ordinances of the national media and broadcast commissions and sought opinions by Saturday.",
@@ -1850,6 +2051,25 @@
       "beat_title": "Governance & public institutions",
       "series": [
         "universities-campus-governance"
+      ]
+    },
+    {
+      "id": "a8bce049faba079e8bd7",
+      "title": "Pass rate, GPA-5 lowest in 5 years",
+      "excerpt": "The pass rate in this year’s Dakhil examinations under the Madrasa Education Board is 74.70 percent, which is the lowest in the past five years.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/pass-rate-gpa-5-lowest-in-5-years/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
       ]
     },
     {
@@ -1923,6 +2143,23 @@
       "series": [
         "curriculum-textbooks-assessment"
       ]
+    },
+    {
+      "id": "b04ee30ececdb439f29d",
+      "title": "Empowering mothers in Gaibandha",
+      "excerpt": "Munmun Akhter, a 23-year-old mother from Dhonaruha village in Gaibandha’s Saghata upazila, regularly recites poems and sings to her infant daughter to ensure her cognitive development and enhance her imagination.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/1fadf12b3cb8849d3a7b4fed.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/empowering-mothers-in-gaibandha/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
     },
     {
       "id": "b0bc9a1e2ccf31e548ad",
@@ -2090,6 +2327,40 @@
       ]
     },
     {
+      "id": "bbe8258b6512624de9d4",
+      "title": "‘We’re left with no choice’",
+      "excerpt": "Hundreds of secondary school teachers have been protesting in front of Jatiya Press Club for the past two weeks, demanding nationalisation of secondary educational institutions.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/98404125858ee2abce8ed17d.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/we-re-left-with-no-choice/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": []
+    },
+    {
+      "id": "bc7ba7fce2dc9f2ae33e",
+      "title": "Ballot Stuffing Attempt: 2 Star reporters cornered for bearing witness",
+      "excerpt": "Around 1:50pm, a group of youths were seen forming an orderly queue to enter the polling centre in Segunbagicha High School under Dhaka-8 constituency to cast their votes.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/e9de1118a07f578dff8b4d4a.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/ballot-stuffing-attempt-2-star-reporters-cornered-for-bearing-witness/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": []
+    },
+    {
       "id": "be689bc65320945a6719",
       "title": "Love resides here",
       "excerpt": "There was something special in the air yesterday.",
@@ -2201,7 +2472,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/355949a9cf907ed20f0047e2.jpg",
+      "cover_image": "assets/imported/bc223a0bcabb8216bd1983c6.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/dead-end-jobs-meagre-pay-for-makers-of-nation-builders/",
@@ -2225,6 +2496,23 @@
       "credit_type": "byline",
       "beat": "education",
       "beat_title": "Education",
+      "series": []
+    },
+    {
+      "id": "f6ca7804b0accd371bb3",
+      "title": "Memes: More than just a laugh",
+      "excerpt": "Memes, often dismissed as mere humour, can be powerful tools for depicting social and political issues with satire",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/5e6f16dbeb917c7241f70922.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/memes-more-than-just-a-laugh/",
+      "credit_type": "byline",
+      "beat": "politics-civic-life",
+      "beat_title": "Politics & civic life",
       "series": []
     },
     {
@@ -2281,6 +2569,23 @@
       "series": [
         "curriculum-textbooks-assessment"
       ]
+    },
+    {
+      "id": "d002905c5744ff57a9f7",
+      "title": "AL activists, police take over some BNP sit-ins",
+      "excerpt": "Law enforcers were seen confiscating the tables, chairs and microphones that BNP was supposed to use in the sit in",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-27T00:10:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/09676cae66c7b491a6ba510b.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/al-activists-police-take-over-some-bnp-sit-ins/",
+      "credit_type": "byline",
+      "beat": "politics-civic-life",
+      "beat_title": "Politics & civic life",
+      "series": []
     },
     {
       "id": "d1c0ae74b5a59ed143ea",
@@ -2577,7 +2882,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/036b843683e762c085bea4c3.jpg",
+      "cover_image": "assets/imported/169a3774180789c369a945c5.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/secondary-schools-vacant-posts-hurting-children-taxing-teachers/",
@@ -2776,7 +3081,7 @@
       "stream": "reporting",
       "date_published": "2026-10-27T00:10:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/06ddb2ab186bf48b4e67496b.jpg",
+      "cover_image": "assets/imported/ed1adbeeea88c8fdf0c6aa6d.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/bewildering-convictions/",
@@ -2918,7 +3223,7 @@
       "stream": "reporting",
       "date_published": "2026-10-17T00:09:19+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/ec443a69648456de05c6ffa6.jpg",
+      "cover_image": "assets/imported/f05cfb103793191a1900b230.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/durga-puja-the-joy-of-coming-home/",
@@ -3323,7 +3628,7 @@
       "stream": "reporting",
       "date_published": "2026-09-04T00:00:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/a2422db2d1c756ba7ece4236.jpg",
+      "cover_image": "assets/imported/f48aa91c65130422c0f75c64.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/3-public-universities-vcs-greetings-to-bnp-leaders-raise-ethical-questions/",
@@ -3342,7 +3647,7 @@
       "stream": "thoughts",
       "date_published": "2026-07-17T00:00:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/d1f3a08c33456591b186a598.jpg",
+      "cover_image": "assets/imported/866b31167489fabbeb095ce9.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/when-calling-messi-goat-is-no-longer-enough/",
@@ -4026,311 +4331,6 @@
       "credit_type": "byline",
       "beat": "other",
       "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "89c90d1e957cbf81f333",
-      "title": "19 women triumph with higher turnout",
-      "excerpt": "Nineteen women candidates emerged victorious in the 12th parliamentary election. Ten of them were incumbents.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2024-01-10T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/ccb51491ccf6da0675954a2c.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/19-women-triumph-with-higher-turnout/",
-      "credit_type": "byline",
-      "beat": "politics-civic-life",
-      "beat_title": "Politics & civic life",
-      "series": []
-    },
-    {
-      "id": "bc7ba7fce2dc9f2ae33e",
-      "title": "Ballot Stuffing Attempt: 2 Star reporters cornered for bearing witness",
-      "excerpt": "Around 1:50pm, a group of youths were seen forming an orderly queue to enter the polling centre in Segunbagicha High School under Dhaka-8 constituency to cast their votes.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2024-01-08T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/e9de1118a07f578dff8b4d4a.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/ballot-stuffing-attempt-2-star-reporters-cornered-for-bearing-witness/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": []
-    },
-    {
-      "id": "03574cbbd4f1b8bcfddd",
-      "title": "DU BCL president poses with ballot paper with vote for boat",
-      "excerpt": "The Bangladesh Chhatra League president of Dhaka University unit today posted a photo of himself holding a ballot paper displaying his vote on his social media account",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2024-01-07T10:57:32+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/3c687c254512860d336812fd.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/du-bcl-president-poses-with-ballot-paper-with-vote-for-boat/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "universities-campus-governance"
-      ]
-    },
-    {
-      "id": "9ed3472fb150c6e4d26c",
-      "title": "‘BCL men’ enter polling booths in DU centre with food for agents",
-      "excerpt": "A vehicle carrying supporters of ruling Awami League candidate Bahuddin Nasim stopped in front of the polling centre at the Dhaka University Annex Building around 8:40am",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2024-01-07T09:48:48+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/6eac3182f7de14ad468c02bb.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/bcl-men-enter-polling-booths-in-du-centre-with-food-for-agents/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "universities-campus-governance"
-      ]
-    },
-    {
-      "id": "f6ca7804b0accd371bb3",
-      "title": "Memes: More than just a laugh",
-      "excerpt": "Memes, often dismissed as mere humour, can be powerful tools for depicting social and political issues with satire",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-12-19T22:50:35+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/5e6f16dbeb917c7241f70922.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/memes-more-than-just-a-laugh/",
-      "credit_type": "byline",
-      "beat": "politics-civic-life",
-      "beat_title": "Politics & civic life",
-      "series": []
-    },
-    {
-      "id": "478d8977b93ae7634c78",
-      "title": "Technical edu board outperforms others",
-      "excerpt": "While an overall decline in the pass rate and number of GPA-5 holders marked this year’s Higher Secondary Certificate and equivalent examinations, the Technical Education Board has emerged as the top-performing board.",
-      "category": "Education",
-      "stream": "reporting",
-      "date_published": "2023-11-27T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/42273e33e97a0878bace2fcf.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/technical-edu-board-outperforms-others/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
-    },
-    {
-      "id": "2c126254f6e2a857bf71",
-      "title": "HSC pass rate, GPA-5 dip",
-      "excerpt": "The pass rate in this year's HSC examinations has dropped to 75.90 percent from last year's 84.31, while the number of students with a GPA-5 has halved from last year's 1,59,755",
-      "category": "Education",
-      "stream": "reporting",
-      "date_published": "2023-11-26T22:42:48+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/330d7a3cdff5cfb4276bab67.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/hsc-pass-rate-gpa-5-dip/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
-    },
-    {
-      "id": "32c91fed518dd89a64e8",
-      "title": "UGC member urges teachers to ensure 80pc turnout in polls",
-      "excerpt": "University Grants Commission Member Professor Sazzad Hossain yesterday urged university teachers to work towards bringing “at least 80 percent voters” to polling stations for the 12th national election.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-11-12T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/6d1e8b8f2264d28969dbe31d.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/ugc-member-urges-teachers-to-ensure-80pc-turnout-in-polls/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "universities-campus-governance"
-      ]
-    },
-    {
-      "id": "a65fd5364bba43924ce1",
-      "title": "Three-day blockade: Low turnout at schools",
-      "excerpt": "Student attendance was significantly lower in most educational institutions in Dhaka on the first day of the three-day blockade called by BNP and Jamaat.",
-      "category": "Politics",
-      "stream": "reporting",
-      "date_published": "2023-11-01T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/7769b029f1161796daf35f37.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/three-day-blockade-low-turnout-at-schools/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": []
-    },
-    {
-      "id": "b04ee30ececdb439f29d",
-      "title": "Empowering mothers in Gaibandha",
-      "excerpt": "Munmun Akhter, a 23-year-old mother from Dhonaruha village in Gaibandha’s Saghata upazila, regularly recites poems and sings to her infant daughter to ensure her cognitive development and enhance her imagination.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-10-01T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/1fadf12b3cb8849d3a7b4fed.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/empowering-mothers-in-gaibandha/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "7836c012ff91e87ca550",
-      "title": "Govt move to check prices falls flat",
-      "excerpt": "The commerce ministry’s price cap on onions, potatoes, and eggs barely made an impact on the runaway prices as shopkeepers in the capital have not complied with the order.",
-      "category": "Health",
-      "stream": "reporting",
-      "date_published": "2023-09-16T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/9cdc8b3bda51260c23497e12.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/govt-move-to-check-prices-falls-flat/",
-      "credit_type": "byline",
-      "beat": "governance-public-institutions",
-      "beat_title": "Governance & public institutions",
-      "series": []
-    },
-    {
-      "id": "09b344394d807160c5f7",
-      "title": "Dhaka’s educational heritage",
-      "excerpt": "In 400-year-old Dhaka, a few educational institutes have stood the test of time. These century-old schools have played a significant role in shaping the education and culture of the city and beyond and have produced notable individuals who have left their mark on the national and world stages.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-09-09T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/9d1da28cb9da3cdd282e6b7b.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/dhaka-s-educational-heritage/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": []
-    },
-    {
-      "id": "41381b962c2cf9b080e1",
-      "title": "Academic activities in peril",
-      "excerpt": "Academic activities at Bangabandhu Sheikh Mujibur Rahman Science and Technology University in Gopalganj are being severely hampered due to a shortage of basic infrastructure and teachers.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-08-28T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/aa25b4e6b62a217b8d33ea2d.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/academic-activities-in-peril/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "universities-campus-governance"
-      ]
-    },
-    {
-      "id": "d002905c5744ff57a9f7",
-      "title": "AL activists, police take over some BNP sit-ins",
-      "excerpt": "Law enforcers were seen confiscating the tables, chairs and microphones that BNP was supposed to use in the sit in",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-07-29T20:31:38+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/09676cae66c7b491a6ba510b.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/al-activists-police-take-over-some-bnp-sit-ins/",
-      "credit_type": "byline",
-      "beat": "politics-civic-life",
-      "beat_title": "Politics & civic life",
-      "series": []
-    },
-    {
-      "id": "50ce1bf7ba0f4f188e33",
-      "title": "SSC & Equivalent Exams: Pass rate hits 13-year low",
-      "excerpt": "The success rate in this year’s SSC and equivalent exams has hit a 13-year low mainly due to poor performances in mathematics and bad results in Sylhet board due to floods in that region, officials said.",
-      "category": "Education",
-      "stream": "reporting",
-      "date_published": "2023-07-29T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/2a160c03c7c2dacf4998825a.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/ssc-equivalent-exams-pass-rate-hits-13-year-low/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
-    },
-    {
-      "id": "a8bce049faba079e8bd7",
-      "title": "Pass rate, GPA-5 lowest in 5 years",
-      "excerpt": "The pass rate in this year’s Dakhil examinations under the Madrasa Education Board is 74.70 percent, which is the lowest in the past five years.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-07-29T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/pass-rate-gpa-5-lowest-in-5-years/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
-    },
-    {
-      "id": "bbe8258b6512624de9d4",
-      "title": "‘We’re left with no choice’",
-      "excerpt": "Hundreds of secondary school teachers have been protesting in front of Jatiya Press Club for the past two weeks, demanding nationalisation of secondary educational institutions.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-07-24T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/98404125858ee2abce8ed17d.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/we-re-left-with-no-choice/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
       "series": []
     },
     {
