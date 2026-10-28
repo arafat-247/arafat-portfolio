@@ -82,7 +82,7 @@ public final class DeviceService extends AccessibilityService {
     private AccessibilityNodeInfo root() throws Exception {
         active();
         for(AccessibilityWindowInfo w:getWindows()) {
-            if(w.getType()!=AccessibilityWindowInfo.TYPE_APPLICATION || !w.isActive()) continue;
+            if(w.getType()!=AccessibilityWindowInfo.TYPE_APPLICATION || (!w.isFocused() && !w.isActive())) continue;
             AccessibilityNodeInfo r=w.getRoot(); if(r==null) continue;
             String pkg=String.valueOf(r.getPackageName());
             if(!allowedPackage(pkg) || !selected.contains(pkg)) { r.recycle(); throw new IOException("The foreground app is not selected. Open an allowed app manually or use launch_app."); }

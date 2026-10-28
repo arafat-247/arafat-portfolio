@@ -49,9 +49,7 @@ jobs:
           profile: pixel_7
           working-directory: android
           disable-animations: true
-          script: |
-            gradle --no-daemon connectedDebugAndroidTest
-            adb pull /sdcard/Android/data/com.arafat.assistant/files app/build/reports/device-screens
+          script: bash check_device.sh
       - name: Package checked APK
         run: |
           mkdir -p android/release

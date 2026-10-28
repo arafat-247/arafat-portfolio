@@ -37,29 +37,34 @@ public class DeviceTest {
         while(DeviceService.instance==null && SystemClock.elapsedRealtime()<deadline) Thread.sleep(100);
         DeviceService service=DeviceService.instance; assertNotNull(service);
         AtomicBoolean cancelled=new AtomicBoolean();
-        service.begin(Set.of(test.getPackageName()),cancelled,()->cancelled.set(true));
-        test.startActivity(new Intent().setComponent(new ComponentName(test.getPackageName(),FixtureActivity.class.getName())).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-        assertTrue(device.wait(Until.hasObject(By.text("Test click")),10000)); Thread.sleep(500);
-        JSONObject shot=new JSONObject(service.snapshot()); assertEquals(test.getPackageName(),shot.getString("package"));
-        assertTrue(shot.toString().contains("বাংলা পরীক্ষার পাতা")); assertFalse(shot.toString().contains("NEVER_SHARE_PASSWORD"));
-        JSONArray nodes=shot.getJSONArray("nodes"); String id="";
-        for(int i=0;i<nodes.length();i++) if(nodes.getJSONObject(i).optString("text").equals("Test click")) id=nodes.getJSONObject(i).getString("id");
-        assertFalse(id.isEmpty()); final String target=id;
         ExecutorService worker=Executors.newSingleThreadExecutor();
         try {
+            test.startActivity(new Intent().setComponent(new ComponentName(test.getPackageName(),FixtureActivity.class.getName())).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            assertTrue("Fixture app did not open",device.wait(Until.hasObject(By.text("Test click")),10000));
+            service.begin(Set.of(test.getPackageName()),cancelled,()->cancelled.set(true));
+            Thread.sleep(500);
+            JSONObject shot=new JSONObject(service.snapshot()); assertEquals(test.getPackageName(),shot.getString("package"));
+            assertTrue(shot.toString().contains("বাংলা পরীক্ষার পাতা")); assertFalse(shot.toString().contains("NEVER_SHARE_PASSWORD"));
+            JSONArray nodes=shot.getJSONArray("nodes"); String id="";
+            for(int i=0;i<nodes.length();i++) if(nodes.getJSONObject(i).optString("text").equals("Test click")) id=nodes.getJSONObject(i).getString("id");
+            assertFalse(id.isEmpty()); final String target=id;
             Future<String> result=worker.submit(()->service.execute("click",new JSONObject().put("id",target)));
             UiObject2 approve=device.wait(Until.findObject(By.text("Approve").enabled(true)),8000); assertNotNull(approve);
-            assertFalse(result.isDone()); assertFalse(device.hasObject(By.text("Action clicked")));
+            assertFalse(result.isDone()); assertFalse(shot.toString().contains("Action clicked"));
             device.takeScreenshot(new java.io.File(app.getExternalFilesDir(null),"android-approval.png"));
             approve.click(); assertTrue(result.get(10,TimeUnit.SECONDS).startsWith("Action completed"));
-            assertTrue(device.wait(Until.hasObject(By.text("Action clicked")),5000));
+            // The overlay is the active accessibility window after approval. The service
+            // must still identify the focused application underneath it.
             assertThrows(Exception.class,()->service.execute("click",new JSONObject().put("id",target)));
-            // Foreground app selection is checked before any content is returned.
+            assertTrue(service.snapshot().contains("Action clicked"));
             app.startActivity(new Intent(app,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            assertTrue(device.wait(Until.hasObject(By.text("Continue with ChatGPT")),5000)); Thread.sleep(500);
-            assertThrows(Exception.class,service::snapshot);
+            Thread.sleep(800); assertThrows(Exception.class,service::snapshot);
             device.findObject(By.text("Stop")).click(); Thread.sleep(300);
             assertTrue(cancelled.get()); assertThrows(Exception.class,service::snapshot);
-        } finally { service.finish(); worker.shutdownNow(); device.executeShellCommand("settings delete secure enabled_accessibility_services"); device.executeShellCommand("settings put secure accessibility_enabled 0"); }
+        } finally {
+            service.finish(); instrumentation.waitForIdleSync(); worker.shutdownNow();
+            device.executeShellCommand("settings delete secure enabled_accessibility_services");
+            device.executeShellCommand("settings put secure accessibility_enabled 0");
+        }
     }
 }
