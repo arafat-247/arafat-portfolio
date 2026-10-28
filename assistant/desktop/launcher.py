@@ -6,7 +6,7 @@ from pathlib import Path
 import sys
 import tempfile
 import traceback
-from runtime import external_program_environment, stop_playwright
+from runtime import external_program_environment, single_instance, stop_playwright
 
 
 def configure_browser():
@@ -31,6 +31,24 @@ def smoke_test(report_path):
         import pywinauto
         from keyring.backends.Windows import WinVaultKeyring
         result["checks"].append("Windows, microphone and credential modules import")
+        phase("import local speech and sign-in modules")
+        import faster_whisper
+        import ctranslate2
+        import onnxruntime
+        import jwt
+        import win32crypt
+        # Exercise real bundled cryptography and Windows protected storage.
+        from cryptography.hazmat.primitives.asymmetric import rsa
+        key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+        encoded = jwt.encode({"test": "বাংলা"}, key, algorithm="RS256")
+        assert jwt.decode(encoded, key.public_key(), algorithms=["RS256"])["test"] == "বাংলা"
+        from chatgpt_auth import ProtectedStore
+        with tempfile.TemporaryDirectory(prefix="assistant-auth-check-") as folder:
+            store = ProtectedStore(Path(folder))
+            store.save({"test": "local-only"})
+            assert store.load() == {"test": "local-only"}
+            store.delete()
+        result["checks"].append("Local speech imports, signed-token verification and Windows protected storage work")
         phase("start browser driver")
         from playwright.sync_api import sync_playwright
         with external_program_environment():
@@ -90,7 +108,13 @@ def main():
         return smoke_test(sys.argv[2])
     try:
         from app import main as run_application
-        run_application()
+        import settings
+        with single_instance(settings.data_directory()) as allowed:
+            if not allowed:
+                import ctypes
+                ctypes.windll.user32.MessageBoxW(None, "Arafat Assistant is already running. Close its other window before starting a second copy.", "Arafat Assistant", 0x40)
+                return 0
+            run_application()
         return 0
     except Exception:
         folder = Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "ArafatAssistant"

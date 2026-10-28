@@ -4,6 +4,41 @@ import io
 import threading
 import wave
 
+from core import check_cancel
+
+
+class LocalTranscriber:
+    """Use a multilingual CPU model. Audio never goes to a transcription API."""
+    def __init__(self, directory):
+        self.directory = directory
+        self.model = None
+
+    def transcribe(self, wav, languages, cancel, notify=lambda *args: None):
+        check_cancel(cancel)
+        if self.model is None:
+            notify("Status", "Preparing local speech model · first use downloads several hundred MB from Hugging Face")
+            try:
+                import os
+                os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
+                os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
+                from faster_whisper import WhisperModel
+                self.model = WhisperModel("small", device="cpu", compute_type="int8",
+                                          download_root=str(self.directory), cpu_threads=min(4, os.cpu_count() or 2))
+            except Exception:
+                raise RuntimeError("The local speech model could not be loaded or downloaded. Check internet access and free disk space; typed instructions still work.") from None
+        check_cancel(cancel)
+        notify("Status", "Transcribing on your computer · no recording is sent to OpenAI")
+        language = languages[0] if len(languages) == 1 else None
+        segments, _ = self.model.transcribe(io.BytesIO(wav), language=language, beam_size=3, vad_filter=True)
+        parts = []
+        for segment in segments:
+            check_cancel(cancel)
+            parts.append(segment.text)
+        text = "".join(parts).strip()
+        if not text:
+            raise ValueError("No speech was recognised. Try again or type your instruction.")
+        return text
+
 
 class Recorder:
     def __init__(self, seconds=60, sample_rate=16_000):

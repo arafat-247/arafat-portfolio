@@ -12,6 +12,32 @@ import subprocess
 _lock = threading.RLock()
 
 
+@contextmanager
+def single_instance(directory):
+    """Keep two copies from racing a rotating OAuth refresh token."""
+    if sys.platform != "win32":
+        yield True
+        return
+    import ctypes
+    import hashlib
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel.CreateMutexW.argtypes = [ctypes.c_void_p, ctypes.c_bool, ctypes.c_wchar_p]
+    kernel.CreateMutexW.restype = ctypes.c_void_p
+    kernel.ReleaseMutex.argtypes = [ctypes.c_void_p]
+    kernel.CloseHandle.argtypes = [ctypes.c_void_p]
+    name = "Local\\ArafatAssistant-" + hashlib.sha256(str(directory).casefold().encode()).hexdigest()[:32]
+    handle = kernel.CreateMutexW(None, True, name)
+    if not handle:
+        raise RuntimeError("Could not create the assistant's instance lock.")
+    owned = ctypes.get_last_error() != 183
+    try:
+        yield owned
+    finally:
+        if owned:
+            kernel.ReleaseMutex(handle)
+        kernel.CloseHandle(handle)
+
+
 def stop_playwright(playwright, grace_seconds=3.0):
     """Close the SDK; bound an unresponsive driver using its owned process handle.
 
