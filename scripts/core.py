@@ -211,6 +211,39 @@ def objects(value):
     elif isinstance(value,list):
         for item in value: yield from objects(item)
 
+OPINION_SOURCE_LABELS={'analysis','reaction'}
+
+def portfolio_stream(item):
+    """Publisher Analysis/Reaction labels always belong to Opinion & Analysis."""
+    return 'opinion' if clean(item.get('source_label')).casefold() in OPINION_SOURCE_LABELS else item.get('stream','reporting')
+
+def article_label(doc, section=''):
+    """Read the current story's headline label, excluding recommendations."""
+    for heading in doc.nodes('h1'):
+        node=heading.parent
+        while node and node.tag not in ('article','main','body','html',''):
+            marker=node.attrs.get('class','')
+            is_title_block=bool(re.search(r'block-field-blocknode[a-z]+title(?:\s|$)',marker))
+            is_header=node.tag=='header'
+            if is_title_block or is_header:
+                for child in node.walk():
+                    if child is node or child.tag not in ('span','p','a','div'): continue
+                    label=clean(child.text()).casefold()
+                    if label not in OPINION_SOURCE_LABELS: continue
+                    ancestor=child
+                    unrelated=False
+                    while ancestor is not node:
+                        if ancestor is None or ancestor.tag in ('aside','nav') or re.search(r'(^|[\s_-])(related|recommended|card)([\s_-]|$)',ancestor.attrs.get('class',''),re.I):
+                            unrelated=True;break
+                        ancestor=ancestor.parent
+                    if not unrelated: return label.title()
+                break
+            node=node.parent
+    # Some publisher templates expose the genre only in article metadata.
+    label=clean(section).casefold()
+    if label=='news analysis': label='analysis'
+    return label.title() if label in OPINION_SOURCE_LABELS else ''
+
 def article_dates(doc, ld, embedded, url):
     """Read dates belonging to this article, never dates on recommendation cards."""
     published=date(ld.get('datePublished') or doc.meta('article:published_time') or doc.meta('pubdate'))
@@ -324,7 +357,8 @@ def article(source,url,manual=False,author_listing=False):
     text=Document(body).root.text()
     if len(text)<180: raise ValueError('Too little article text found; extraction rejected and logged.')
     section=clean(ld.get('articleSection') or doc.meta('article:section') or 'News')
-    stream='opinion' if re.search(r'/opinion/|/views/|/analysis/|opinion|analysis',url+' '+section,re.I) else 'reporting'
+    source_label=article_label(doc,section)
+    stream='opinion' if source_label or re.search(r'/opinion/|/views/|/analysis/|/reaction/|opinion|analysis',url+' '+section,re.I) else 'reporting'
     published,modified,date_source=article_dates(doc,ld,embedded,url)
     if section=='News':
         for token,label in (('/education/','Education'),('/politics/','Politics'),('/crime-justice/','Rights & Justice'),('/environment/','Environment'),('/health/','Health'),('/business/','Economy'),('/opinion/','Opinion'),('/sports/','Sports')):
@@ -334,4 +368,4 @@ def article(source,url,manual=False,author_listing=False):
     if isinstance(image,dict): image=image.get('url','')
     publisher=ld.get('publisher',{})
     publisher=publisher.get('name','') if isinstance(publisher,dict) else str(publisher)
-    return {'id':identity(url),'title':title,'excerpt':clean(ld.get('description') or doc.meta('og:description') or doc.meta('description')),'source_url':canonical(url),'source_name':publisher or ('The Daily Star' if urlsplit(url).hostname in ('www.thedailystar.net','thedailystar.net') else urlsplit(url).hostname),'original_authors':authors,'verified_author':verified,'author_listing_verified':author_listing,'stream':stream,'category':section,'date_published':published,'date_modified':modified,'date_published_source':date_source,'body_html':body,'source_image':'','cover_image':'','word_count':len(text.split()),'fetched_at':now()}
+    return {'id':identity(url),'title':title,'excerpt':clean(ld.get('description') or doc.meta('og:description') or doc.meta('description')),'source_url':canonical(url),'source_name':publisher or ('The Daily Star' if urlsplit(url).hostname in ('www.thedailystar.net','thedailystar.net') else urlsplit(url).hostname),'original_authors':authors,'verified_author':verified,'author_listing_verified':author_listing,'stream':stream,'category':section,'source_label':source_label,'date_published':published,'date_modified':modified,'date_published_source':date_source,'body_html':body,'source_image':'','cover_image':'','word_count':len(text.split()),'fetched_at':now()}

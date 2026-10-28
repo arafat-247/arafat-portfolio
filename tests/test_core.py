@@ -59,6 +59,36 @@ class ContentTests(unittest.TestCase):
     def test_text_escape(self):
         self.assertNotIn('<script>',text_body('<script>alert(1)</script>'))
     def test_missing_date(self):self.assertEqual(core.article(sample(date=''),'https://example.com/news/story-12345')['date_published'],'')
+    def test_publisher_headline_labels_select_opinion(self):
+        for label in ('Analysis','Reaction','ANALYSIS','reaction'):
+            with self.subTest(label=label):
+                source=sample()+'<article><div class="node-content"><div class="block block-field-blocknodenewstitle"><span class="color-red">'+label+'</span><h1>Testing public accountability</h1></div></div></article>'
+                item=core.article(source,'https://example.com/news/story-12345')
+                self.assertEqual(item['stream'],'opinion')
+                self.assertEqual(item['source_label'],label.title())
+    def test_related_analysis_label_does_not_reclassify_reporting(self):
+        source=sample()+'<aside><span>Reaction</span></aside><article><div class="node-content"><div class="block-field-blocknodenewstitle"><aside><span>Analysis</span></aside><div class="related-card"><span>Reaction</span></div><h1>Testing public accountability</h1></div><p>Analysis and reaction to the announcement.</p></div></article>'
+        item=core.article(source,'https://example.com/news/story-12345')
+        self.assertEqual(item['stream'],'reporting')
+        self.assertEqual(item['source_label'],'')
+    def test_reaction_metadata_selects_opinion(self):
+        source=sample().replace('"@type": "NewsArticle"','"@type": "NewsArticle", "articleSection": "Reaction"')
+        self.assertEqual(core.article(source,'https://example.com/news/story-12345')['stream'],'opinion')
+    def test_reaction_in_headline_url_alone_is_not_a_genre_label(self):
+        self.assertEqual(core.article(sample(),'https://example.com/news/public-reaction-to-exams-12345')['stream'],'reporting')
+    def test_known_source_label_survives_refresh_and_manual_stream(self):
+        with tempfile.TemporaryDirectory() as d, patch('sync.CONTENT',Path(d)):
+            old=core.article(sample(),'https://example.com/news/story-12345')
+            old.update(source_label='Reaction',stream='opinion',status='published')
+            sync.store_article(old)
+            current=core.read(Path(d)/'articles'/f'{old["id"]}.json')
+            refreshed=core.article(sample(),'https://example.com/news/story-12345')
+            refreshed.update(stream='reporting',manual_import=True,status='published')
+            sync.store_article(refreshed,current)
+            saved=core.read(Path(d)/'articles'/f'{old["id"]}.json')
+            self.assertEqual(saved['source_label'],'Reaction')
+            self.assertEqual(saved['stream'],'opinion')
+            self.assertEqual(saved['local_url'],current['local_url'])
     def test_revision_and_short_extract(self):
         with tempfile.TemporaryDirectory() as d, patch('sync.CONTENT',Path(d)):
             a=core.article(sample(),'https://example.com/news/story-12345');a['status']='published';sync.store_article(a)

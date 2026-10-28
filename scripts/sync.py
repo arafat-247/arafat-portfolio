@@ -101,6 +101,9 @@ def store_article(item, old=None):
     # Do not replace a complete saved article with a likely paywall/error extract.
     if old and item['word_count'] < old.get('word_count',0)*0.55:
         raise ValueError('New extraction is substantially shorter. Existing archive preserved; review source manually.')
+    if not item.get('source_label') and old:
+        item['source_label']=old.get('source_label','')
+    item['stream']=portfolio_stream(item)
     item['local_url']=(old or {}).get('local_url','')
     item['legacy_urls']=(old or {}).get('legacy_urls',[])
     existing=[read(path,{}) for path in (CONTENT/'articles').glob('*.json') if path.stem!=item['id']]

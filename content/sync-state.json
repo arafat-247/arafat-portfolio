@@ -7020,6 +7020,17 @@
       "error": "",
       "article_id": "8f69af16d90af1e74d95",
       "title": "A digital trail to track learning gaps"
+    },
+    "https://www.thedailystar.net/news-analysis/news/citizen-regretted-her-vote-why-did-she-end-jail-4309761": {
+      "discovered_at": "2026-10-28T13:42:25.553458+00:00",
+      "author_listing": true,
+      "status": "saved",
+      "last_checked": "2026-10-28T13:42:25.553471+00:00",
+      "last_success": "2026-10-28T13:42:25.553474+00:00",
+      "failures": 0,
+      "error": "",
+      "article_id": "6d701b4e12b75f0f5b88",
+      "title": "A citizen regretted her vote. Why did she end up in jail?"
     }
   },
   "archive_cursor": 108,
@@ -7027,7 +7038,7 @@
   "last_discovery_success": "2026-10-28T09:01:48.027487+00:00",
   "last_completed": "2026-10-28T09:03:06.804123+00:00",
   "saved_this_run": 32,
-  "known_sources": 749,
+  "known_sources": 750,
   "pending": 0,
   "errors": [
     "Fallback discovery: Fallback discovery failed: HTTP Error 401: Unauthorized; HTTP Error 401: Unauthorized; HTTP Error 401: Unauthorized"

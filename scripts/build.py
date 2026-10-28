@@ -263,6 +263,7 @@ def build():
     b=Builder(); c=b.config; overrides=read(CONTENT/'overrides.json',{'articles':{}})['articles']; articles=[]
     for path in sorted((CONTENT/'articles').glob('*.json')):
         a=read(path,{}); a.update(overrides.get(a['id'],{}));
+        a['stream']=portfolio_stream(a)
         if a.get('status')=='published' and a.get('body_html') and date(a.get('date_published','')):articles.append(a)
     for a in read(CONTENT/'posts.json',{'posts':[]})['posts']:
         if a.get('status')!='published':continue

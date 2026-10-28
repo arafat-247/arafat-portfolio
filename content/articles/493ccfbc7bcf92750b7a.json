@@ -9,7 +9,7 @@
   ],
   "verified_author": true,
   "author_listing_verified": true,
-  "stream": "reporting",
+  "stream": "opinion",
   "category": "Education",
   "date_published": "2026-10-05T16:37:33+06:00",
   "date_modified": "2026-10-05T16:42:00+06:00",
@@ -25,5 +25,6 @@
   "first_archived_at": "2026-10-05T16:08:05.914069+00:00",
   "content_hash": "d990f048f8511f677c9dc50b9750728751026842986a068df7887c962ff68da2",
   "date_published_source": "article-published-label",
-  "date_verified_at": "2026-10-28T13:04:13.078525+00:00"
+  "date_verified_at": "2026-10-28T13:04:13.078525+00:00",
+  "source_label": "Analysis"
 }
