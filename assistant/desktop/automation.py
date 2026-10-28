@@ -12,6 +12,7 @@ import threading
 import uuid
 
 from core import Cancelled, Declined, TOOL_SCHEMAS, check_cancel, valid_url, write_note
+from runtime import external_program_environment
 
 
 class Tools:
@@ -54,7 +55,8 @@ class Tools:
         if self.context is None:
             from playwright.sync_api import sync_playwright
             if self.playwright is None:
-                self.playwright = sync_playwright().start()
+                with external_program_environment():
+                    self.playwright = sync_playwright().start()
             try:
                 self.context = self.playwright.chromium.launch_persistent_context(
                     str(self.profile), headless=False, accept_downloads=False,
@@ -237,7 +239,8 @@ class Tools:
         if not path.is_absolute() or path.suffix.lower() != ".exe" or not path.is_file():
             raise ValueError("The configured app must be an existing absolute .exe path. Update it in Settings.")
         self.review("Open Windows app", f"App: {alias}\nExecutable: {path}")
-        subprocess.Popen([str(path)], shell=False)
+        with external_program_environment():
+            subprocess.Popen([str(path)], shell=False)
         return "Launch requested. Use windows_list to find its window."
 
     def windows_list(self):

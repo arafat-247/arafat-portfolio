@@ -95,7 +95,7 @@ def main():
 
 
 def freeze(environment):
-    run(sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onedir", "--console", "--hide-console", "minimize-early",
+    run(sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onedir", "--windowed",
         "--name", NAME, "--distpath", ROOT / "dist", "--workpath", ROOT / "build",
         "--specpath", ROOT, "--collect-all", "playwright", "--collect-all", "sounddevice",
         "--collect-all", "pywinauto", "--collect-all", "comtypes",
