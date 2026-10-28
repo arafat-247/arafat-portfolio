@@ -1,6 +1,7 @@
-"""Build a portable x64 app on Windows, with its own Python and Chromium."""
+"""Build a portable x64 app on Windows; use installed Microsoft Edge."""
 from __future__ import annotations
 import hashlib
+import argparse
 import json
 import os
 from pathlib import Path
@@ -19,7 +20,7 @@ QUICK_START = """ARAFAT ASSISTANT — PORTABLE WINDOWS PREVIEW
 
 1. Extract the entire ZIP into a folder you can write to.
 2. Keep ArafatAssistant.exe and its _internal folder together.
-3. Open ArafatAssistant.exe. Python and Chromium are included.
+3. Open ArafatAssistant.exe. Python is included; Microsoft Edge must be installed.
 4. In Settings, enter your own OpenAI API key and save.
 5. Test a short typed instruction, then try Record voice.
 6. Review the transcript before selecting Run instruction.
@@ -58,34 +59,49 @@ def package_app(bundle: Path, output: Path) -> Path:
 def main():
     if sys.platform != "win32" or platform.architecture()[0] != "64bit":
         raise SystemExit("Build this package on 64-bit Windows with Python 3.12.")
-    browsers = ROOT / "browsers"
-    environment = dict(os.environ, PLAYWRIGHT_BROWSERS_PATH=str(browsers))
-    run(sys.executable, "-m", "playwright", "install", "chromium", env=environment)
-    run(sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v", env=environment)
-    run(sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onedir", "--windowed",
-        "--name", NAME, "--distpath", ROOT / "dist", "--workpath", ROOT / "build",
-        "--specpath", ROOT, "--collect-all", "playwright", "--collect-all", "sounddevice",
-        "--collect-all", "pywinauto", "--collect-all", "comtypes",
-        "--collect-submodules", "keyring.backends.Windows", "--hidden-import", "win32timezone",
-        "--hidden-import", "unittest.mock", "--add-data", str(browsers) + os.pathsep + "browser-binaries",
-        DESKTOP / "launcher.py", env=environment)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--stage", choices=["check", "freeze", "smoke", "package"])
+    stage = parser.parse_args().stage
+    environment = dict(os.environ, ARAFAT_BROWSER_CHANNEL="msedge")
+    if stage in (None, "check"):
+        run(sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v", env=environment)
+        if stage:
+            return
+    if stage in (None, "freeze"):
+        freeze(environment)
+        if stage:
+            return
     bundle = ROOT / "dist" / NAME
     report = bundle / "SMOKE_TEST.json"
-    # Capture a missing-dependency or frozen-driver failure before distributing.
-    run(bundle / f"{NAME}.exe", "--smoke-test", report, env=environment)
-    smoke = json.loads(report.read_text(encoding="utf-8"))
-    if not smoke.get("ok"):
-        raise SystemExit("Packaged application smoke test failed.")
+    if stage in (None, "smoke"):
+        run(bundle / f"{NAME}.exe", "--smoke-test", report, env=environment)
+        smoke = json.loads(report.read_text(encoding="utf-8"))
+        if not smoke.get("ok"):
+            raise SystemExit("Packaged application smoke test failed.")
+        if stage:
+            return
+    if not json.loads(report.read_text(encoding="utf-8")).get("ok"):
+        raise SystemExit("A passing packaged smoke test is required before packaging.")
     (bundle / "QUICK_START.txt").write_text(QUICK_START, encoding="utf-8")
     (bundle / "BUILD_INFO.json").write_text(json.dumps({
         "source_commit": os.environ.get("GITHUB_SHA", "local-build"),
         "python": platform.python_version(), "platform": platform.platform(),
         "build_kind": "unsigned Windows x64 portable preview", "smoke_test_passed": True,
-        "live_api_tested": False, "microphone_capture_tested": False,
-        "windows_app_actions_tested": False,
+        "browser": "installed Microsoft Edge", "live_api_tested": False,
+        "microphone_capture_tested": False, "windows_app_actions_tested": False,
     }, indent=2), encoding="utf-8")
     archive = package_app(bundle, OUTPUT)
     print(f"Created {archive}")
+
+
+def freeze(environment):
+    run(sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onedir", "--windowed",
+        "--name", NAME, "--distpath", ROOT / "dist", "--workpath", ROOT / "build",
+        "--specpath", ROOT, "--collect-all", "playwright", "--collect-all", "sounddevice",
+        "--collect-all", "pywinauto", "--collect-all", "comtypes",
+        "--collect-submodules", "keyring.backends.Windows", "--hidden-import", "win32timezone",
+        "--hidden-import", "unittest.mock",
+        DESKTOP / "launcher.py", env=environment)
 
 
 if __name__ == "__main__":

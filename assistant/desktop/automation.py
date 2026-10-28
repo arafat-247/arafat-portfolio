@@ -58,6 +58,7 @@ class Tools:
             try:
                 self.context = self.playwright.chromium.launch_persistent_context(
                     str(self.profile), headless=False, accept_downloads=False,
+                    channel="msedge" if os.environ.get("ARAFAT_BROWSER_CHANNEL") == "msedge" else None,
                     viewport={"width": 1200, "height": 820},
                     service_workers="block",
                 )
@@ -78,6 +79,8 @@ class Tools:
             except Exception:
                 self.playwright.stop()
                 self.playwright = None
+                if os.environ.get("ARAFAT_BROWSER_CHANNEL") == "msedge":
+                    raise RuntimeError("Could not start Microsoft Edge. Check that Edge is installed, and close any other copy of this assistant.") from None
                 raise RuntimeError("Could not start Chromium. Run setup.cmd again, and close any other copy of this assistant.") from None
         pages = [p for p in self.context.pages if not p.is_closed()]
         if self.page is None or self.page.is_closed():

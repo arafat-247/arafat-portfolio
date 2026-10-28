@@ -18,7 +18,7 @@ the build status and directs visitors to the workflow. It must not claim a runni
 assistant or pretend that a missing download is available.
 
 Extract the ZIP, keep the executable and `_internal` folder together, and open
-`ArafatAssistant.exe`. Python and Chromium are bundled. Enter an API key in Settings
+`ArafatAssistant.exe`. Python is bundled; Microsoft Edge must already be installed. Enter an API key in Settings
 and test typed instructions before recording. See the included `QUICK_START.txt`.
 
 ## Build and checks
@@ -30,9 +30,9 @@ python -m pip install -r assistant/requirements-build.txt
 python assistant/build_windows.py
 ```
 
-The build installs Chromium, runs the source tests, creates a PyInstaller one-folder
+The build checks the installed Microsoft Edge browser, runs the source tests, and creates a PyInstaller one-folder
 bundle, and runs the packaged executable's `--smoke-test` mode. That mode checks
-frozen imports, a local Bangla browser fixture, the actual Tk interface and clean
+frozen imports, a local Bangla fixture in Microsoft Edge, the actual Tk interface and clean
 shutdown. It makes no OpenAI requests and loads no saved API key. Only passing
 builds are packaged and released. PR builds retain artifacts but do not publish a
 release. No self-hosted runner is installed on the user's personal computer.

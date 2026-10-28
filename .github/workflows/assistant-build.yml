@@ -41,8 +41,15 @@ jobs:
           node-version: '22'
       - name: Check download release selection
         run: node --test assistant/test_download_page.mjs
-      - name: Test and build portable app with Chromium
-        run: python assistant/build_windows.py
+      - name: Check source against installed Microsoft Edge
+        run: python assistant/build_windows.py --stage check
+      - name: Build portable Windows executable
+        run: python assistant/build_windows.py --stage freeze
+      - name: Check the packaged browser and desktop interface
+        timeout-minutes: 3
+        run: python assistant/build_windows.py --stage smoke
+      - name: Package checked app and checksum
+        run: python assistant/build_windows.py --stage package
       - name: Retain packaged app and checksum
         uses: actions/upload-artifact@v4
         with:
@@ -78,7 +85,7 @@ jobs:
         shell: bash
         run: |
           cat > release-notes.txt <<'NOTES'
-          Portable Windows preview of Arafat Assistant, including Python and Chromium.
+          Portable Windows preview of Arafat Assistant, including Python. Microsoft Edge is required.
           Extract the ZIP, open ArafatAssistant.exe, and add your own API key in Settings.
           The packaged import, browser and desktop-interface smoke checks passed.
           Live API use, microphone capture and installed-app actions require local testing.

@@ -4,6 +4,7 @@ Run: python -m unittest discover -s tests -p test_browser.py -v
 If Chromium is not installed these checks are explicitly skipped.
 """
 from pathlib import Path
+import os
 import sys
 import tempfile
 import unittest
@@ -27,7 +28,7 @@ class BrowserTests(unittest.TestCase):
         try:
             from playwright.sync_api import sync_playwright
             cls.engine = sync_playwright().start()
-            cls.browser = cls.engine.chromium.launch(headless=True)
+            cls.browser = cls.engine.chromium.launch(headless=True, channel="msedge" if os.environ.get("ARAFAT_BROWSER_CHANNEL") == "msedge" else None)
         except Exception as exc:
             if getattr(cls, "engine", None):
                 cls.engine.stop()

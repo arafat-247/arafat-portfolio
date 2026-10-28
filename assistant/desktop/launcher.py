@@ -8,16 +8,9 @@ import tempfile
 import traceback
 
 
-def bundled_browser_directory():
-    if getattr(sys, "frozen", False):
-        return Path(sys._MEIPASS) / "browser-binaries"
-    return Path(__file__).resolve().parents[1] / "browsers"
-
-
 def configure_browser():
-    directory = bundled_browser_directory()
-    if directory.is_dir():
-        os.environ["PLAYWRIGHT_BROWSERS_PATH"] = str(directory)
+    if getattr(sys, "frozen", False):
+        os.environ["ARAFAT_BROWSER_CHANNEL"] = "msedge"
 
 
 def smoke_test(report_path):
@@ -32,7 +25,7 @@ def smoke_test(report_path):
         result["checks"].append("Windows, microphone and credential modules import")
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            browser = p.chromium.launch(headless=True, channel="msedge")
             page = browser.new_page()
             page.set_content('<html lang="bn"><body><input aria-label="নির্দেশ"><button>শুরু</button></body></html>')
             field = page.get_by_role("textbox", name="নির্দেশ")
@@ -40,7 +33,7 @@ def smoke_test(report_path):
             assert field.input_value() == "বাংলা পরীক্ষা"
             assert page.get_by_role("button", name="শুরু").count() == 1
             browser.close()
-        result["checks"].append("Bundled Chromium launches and handles Bangla input")
+        result["checks"].append("Installed Microsoft Edge launches and handles Bangla input")
         import tkinter as tk
         import app
         with tempfile.TemporaryDirectory(prefix="assistant-smoke-") as directory:

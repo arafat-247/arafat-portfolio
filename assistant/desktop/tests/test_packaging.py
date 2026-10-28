@@ -31,13 +31,10 @@ class PackagingTests(unittest.TestCase):
             digest=hashlib.sha256(archive.read_bytes()).hexdigest()
             self.assertTrue(archive.with_suffix('.zip.sha256').read_text().startswith(digest+'  '))
 
-    def test_packaged_app_uses_bundled_browser_location(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            folder=Path(tmp)
-            (folder/'browser-binaries').mkdir()
-            with patch.object(sys,'frozen',True,create=True),patch.object(sys,'_MEIPASS',str(folder),create=True),patch.dict(os.environ,clear=False):
-                launcher.configure_browser()
-                self.assertEqual(os.environ['PLAYWRIGHT_BROWSERS_PATH'],str(folder/'browser-binaries'))
+    def test_packaged_app_selects_installed_edge(self):
+        with patch.object(sys,'frozen',True,create=True),patch.dict(os.environ,clear=False):
+            launcher.configure_browser()
+            self.assertEqual(os.environ['ARAFAT_BROWSER_CHANNEL'],'msedge')
 
 
 if __name__ == '__main__':
