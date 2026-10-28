@@ -5,7 +5,7 @@ from pathlib import Path
 import threading
 from types import SimpleNamespace
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from runtime import stop_playwright
@@ -80,7 +80,8 @@ class ShutdownTests(unittest.TestCase):
             self.assertEqual(loop.run_until_complete(asyncio.wait_for(reader.read(),timeout=1)),b'')
         api=SimpleNamespace(stop=stop,_impl_obj=SimpleNamespace(_connection=connection))
         try:
-            self.assertTrue(stop_playwright(api,grace_seconds=0.02))
+            with patch('runtime.threading.Timer',side_effect=AssertionError('A real SDK loop must own its cleanup deadline')):
+                self.assertTrue(stop_playwright(api,grace_seconds=0.02))
             transport.close.assert_called_once()
             process.terminate.assert_not_called()
         finally:
