@@ -50,6 +50,13 @@ jobs:
         run: python assistant/build_windows.py --stage smoke
       - name: Package checked app and checksum
         run: python assistant/build_windows.py --stage package
+      - name: Report packaged startup check
+        if: always()
+        shell: pwsh
+        run: |
+          if (Test-Path 'assistant/dist/ArafatAssistant/SMOKE_TEST.json') {
+            Get-Content -Raw 'assistant/dist/ArafatAssistant/SMOKE_TEST.json'
+          }
       - name: Retain packaged app and checksum
         uses: actions/upload-artifact@v4
         with:
