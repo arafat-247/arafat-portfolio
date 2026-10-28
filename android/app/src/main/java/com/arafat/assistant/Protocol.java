@@ -24,6 +24,7 @@ public final class Protocol {
         for(Map.Entry<String,String> e:values.entrySet()) j.add(URLEncoder.encode(e.getKey(),"UTF-8")+"="+URLEncoder.encode(e.getValue(),"UTF-8"));
         return j.toString();
     }
+    public static final class Declined extends IOException { Declined() { super("Sign-in was declined. No connection was changed."); } }
     public static Map<String,String> callback(String target,String state,String existing) throws Exception {
         URI uri=new URI(target);
         if(target.length()>16000 || uri.isAbsolute() || !"/auth/callback".equals(uri.getPath())) throw new IOException("Invalid callback");
@@ -34,7 +35,7 @@ public final class Protocol {
             if(p.put(k,v)!=null) throw new IOException("Repeated callback parameter");
         }
         if(!MessageDigest.isEqual(state.getBytes(StandardCharsets.UTF_8),p.getOrDefault("state","").getBytes(StandardCharsets.UTF_8))) throw new IOException("Invalid sign-in state");
-        if(p.containsKey("error")) throw new IOException("Sign-in was declined. Try Continue with ChatGPT again.");
+        if(p.containsKey("error")) throw new Declined();
         String id=p.getOrDefault("client_id",existing);
         if(id==null || !id.matches("oaiapp_[A-Za-z0-9_-]{1,180}") || (existing!=null && !existing.equals(id)) || p.getOrDefault("code","").isEmpty()) throw new IOException("Incomplete or mismatched registration");
         p.put("client_id",id); return p;

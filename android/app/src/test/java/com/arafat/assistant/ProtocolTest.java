@@ -22,6 +22,7 @@ public class ProtocolTest {
             assertThrows(Exception.class,()->Protocol.callback(target,"s",null));
         }
         assertThrows(Exception.class,()->Protocol.callback("/auth/callback?state=s&code=c&client_id=oaiapp_other","s","oaiapp_test"));
+        assertThrows(Protocol.Declined.class,()->Protocol.callback("/auth/callback?state=s&error=access_denied","s",null));
     }
     @Test public void identitySignatureAndClaimsAreVerified() throws Exception {
         KeyPairGenerator gen=KeyPairGenerator.getInstance("RSA"); gen.initialize(2048); KeyPair pair=gen.generateKeyPair(); RSAPublicKey key=(RSAPublicKey)pair.getPublic();

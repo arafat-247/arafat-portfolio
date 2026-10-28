@@ -44,12 +44,13 @@ final class AuthSession {
                     BufferedReader in=new BufferedReader(new InputStreamReader(socket.getInputStream(),StandardCharsets.US_ASCII));
                     StringBuilder first=new StringBuilder(); int ch;
                     while(first.length()<17000 && (ch=in.read())!=-1 && ch!='\n') first.append((char)ch);
-                    boolean valid=false;
-                    try { String[] req=first.toString().trim().split(" "); if(req.length==3 && req[0].equals("GET")) { callback=Protocol.callback(req[1],state,client); valid=true; } } catch(IOException ignored) {}
-                    String message=valid?"Sign-in received. Return to Arafat Assistant to finish connecting.":"This sign-in callback could not be verified. Return to the original sign-in tab.";
+                    boolean valid=false; boolean declined=false;
+                    try { String[] req=first.toString().trim().split(" "); if(req.length==3 && req[0].equals("GET")) { callback=Protocol.callback(req[1],state,client); valid=true; } } catch(Protocol.Declined e) { declined=true; } catch(IOException ignored) {}
+                    String message=declined?"Sign-in declined. Return to Arafat Assistant.":valid?"Sign-in received. Return to Arafat Assistant to finish connecting.":"This sign-in callback could not be verified. Return to the original sign-in tab.";
                     byte[] body=message.getBytes(StandardCharsets.UTF_8);
                     String headers="HTTP/1.1 "+(valid?"200 OK":"400 Bad Request")+"\r\nContent-Type: text/plain; charset=utf-8\r\nCache-Control: no-store\r\nReferrer-Policy: no-referrer\r\nConnection: close\r\nContent-Length: "+body.length+"\r\n\r\n";
                     socket.getOutputStream().write(headers.getBytes(StandardCharsets.US_ASCII)); socket.getOutputStream().write(body);
+                    if(declined) throw new Protocol.Declined();
                 } catch(SocketTimeoutException ignored) {}
             }
             if(callback==null) throw new IOException("Sign-in timed out. Return to the app and try again.");
@@ -92,7 +93,7 @@ final class AuthSession {
         if(result.length()==0) throw new IOException("No models available for this account. Check eligibility and plan permission.");
         return result;
     }
-    synchronized boolean signOut() {
+    synchronized boolean signOut() throws Exception {
         boolean revoked=!record.has("refresh_token");
         try {
             String endpoint=Http.json(Protocol.ISSUER+"/.well-known/openid-configuration",null,null).getString("revocation_endpoint");

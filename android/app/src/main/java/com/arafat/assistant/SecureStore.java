@@ -34,5 +34,5 @@ final class SecureStore {
         String value=Base64.getEncoder().encodeToString(c.getIV())+":"+Base64.getEncoder().encodeToString(c.doFinal(record.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8)));
         if(!prefs.edit().putString("record",value).commit()) throw new java.io.IOException("Could not save the ChatGPT connection");
     }
-    synchronized void clear() { prefs.edit().remove("record").commit(); }
+    synchronized void clear() throws java.io.IOException { if(!prefs.edit().remove("record").commit()) throw new java.io.IOException("The local connection could not be removed. Please try again."); }
 }
