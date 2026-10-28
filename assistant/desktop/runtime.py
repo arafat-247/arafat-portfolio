@@ -45,16 +45,27 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
     The transport layout is checked against the pinned Playwright version.
     Termination uses the retained Popen handle, never a guessed process ID.
     """
+    try:
+        if getattr(playwright._impl_obj._connection._transport, "_arafat_threaded_driver", False):
+            playwright.stop()
+            return False
+    except AttributeError:
+        pass
     process = None
     process_transport = None
     loop = None
     sdk_process = None
+    owner_thread = threading.get_ident()
     try:
         connection = playwright._impl_obj._connection
         sdk_process = connection._transport._proc
         candidate_transport = sdk_process._transport
         process_transport = candidate_transport
         loop = getattr(connection, "_loop", None)
+        manager = getattr(playwright.stop, "__self__", None)
+        manager_loop = getattr(manager, "_loop", None)
+        if isinstance(manager_loop, asyncio.AbstractEventLoop):
+            loop = manager_loop
         candidate = candidate_transport._proc
         if isinstance(candidate, subprocess.Popen):
             process = candidate
@@ -93,10 +104,24 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
 
     def diagnostic(stage):
         if observe:
-            observe({"stage": stage, "owned_process_handle": process is not None,
+            value = {"stage": stage, "owned_process_handle": process is not None,
                      "owned_transport": process_transport is not None,
                      "loop_present": loop is not None,
-                     "process_returncode": process.poll() if process is not None else None})
+                     "process_returncode": process.poll() if process is not None else None}
+            if isinstance(loop, asyncio.AbstractEventLoop) and threading.get_ident() == owner_thread:
+                chains = []
+                for task in asyncio.all_tasks(loop):
+                    item, chain = task.get_coro(), []
+                    for _ in range(8):
+                        code = getattr(item, "cr_code", None)
+                        if code:
+                            chain.append(code.co_qualname)
+                        item = getattr(item, "cr_await", None)
+                        if item is None:
+                            break
+                    chains.append(chain)
+                value["pending_coroutines"] = chains
+            observe(value)
 
     diagnostic("before driver stop")
 
@@ -125,15 +150,25 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
                         close()
                     diagnostic("owned driver pipes closed")
                 try:
-                    loop.call_soon_threadsafe(finish_owned_pipes)
+                    if threading.get_ident() == owner_thread:
+                        finish_owned_pipes()
+                    else:
+                        loop.call_soon_threadsafe(finish_owned_pipes)
                     forced.set()
                 except RuntimeError:
                     pass
         diagnostic("owned driver cleanup requested")
 
-    timer = threading.Timer(grace_seconds, end_owned_driver)
-    timer.daemon = True
-    timer.start()
+    # Schedule on the actual SDK loop before entering its sync dispatcher. This
+    # gives Windows IOCP a finite poll deadline even if a cross-thread wakeup is
+    # lost after the child process exits.
+    thread_timer = not isinstance(loop, asyncio.AbstractEventLoop)
+    if thread_timer:
+        timer = threading.Timer(grace_seconds, end_owned_driver)
+        timer.daemon = True
+        timer.start()
+    else:
+        timer = loop.call_later(grace_seconds, end_owned_driver)
     try:
         playwright.stop()
     except Exception:
@@ -141,7 +176,8 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
         raise
     finally:
         timer.cancel()
-        timer.join(timeout=1)
+        if thread_timer:
+            timer.join(timeout=1)
         if original_communicate is not None:
             sdk_process.communicate = original_communicate
     return forced.is_set()

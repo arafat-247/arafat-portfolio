@@ -56,36 +56,48 @@ def smoke_test(report_path):
             assert store.load() == {"test": "local-only"}
             store.delete()
         result["checks"].append("Local speech imports, signed-token verification and Windows protected storage work")
-        phase("start browser driver")
-        from playwright.sync_api import sync_playwright
-        with external_program_environment():
-            p = sync_playwright().start()
+        def browser_probe():
             try:
-                phase("launch Microsoft Edge")
-                browser = p.chromium.launch(headless=True, channel="msedge", timeout=20_000)
-                phase("Microsoft Edge started")
-                page = browser.new_page()
-                page.set_default_timeout(5000)
-                phase("test page created")
-                page.set_content('<html lang="bn"><body><input aria-label="নির্দেশ"><button>শুরু</button></body></html>')
-                field = page.get_by_role("textbox", name="নির্দেশ")
-                field.fill("বাংলা পরীক্ষা")
-                assert field.input_value() == "বাংলা পরীক্ষা"
-                assert page.get_by_role("button", name="শুরু").count() == 1
-                phase("Bangla browser input verified")
-                browser.close()
-                phase("Microsoft Edge closed")
-            finally:
-                import faulthandler
-                trace = Path(str(report_path) + ".trace.txt").open("w", encoding="utf-8")
-                faulthandler.dump_traceback_later(15, repeat=True, file=trace)
-                try:
-                    result["driver_cleanup_forced"] = stop_playwright(p, observe=driver_observation)
-                finally:
-                    faulthandler.cancel_dump_traceback_later()
-                    trace.close()
-        phase("browser driver closed")
-        result["checks"].append("Installed Microsoft Edge launches and handles Bangla input")
+                phase("start browser driver")
+                from browser_driver import start_playwright
+                with external_program_environment():
+                    p = start_playwright()
+                    try:
+                        phase("launch Microsoft Edge")
+                        browser = p.chromium.launch(headless=True, channel="msedge", timeout=20_000)
+                        phase("Microsoft Edge started")
+                        page = browser.new_page()
+                        page.set_default_timeout(5000)
+                        phase("test page created")
+                        page.set_content('<html lang="bn"><body><input aria-label="নির্দেশ"><button>শুরু</button></body></html>')
+                        field = page.get_by_role("textbox", name="নির্দেশ")
+                        field.fill("বাংলা পরীক্ষা")
+                        assert field.input_value() == "বাংলা পরীক্ষা"
+                        assert page.get_by_role("button", name="শুরু").count() == 1
+                        phase("Bangla browser input verified")
+                        browser.close()
+                        phase("Microsoft Edge closed")
+                    finally:
+                        import faulthandler
+                        trace = Path(str(report_path) + ".trace.txt").open("w", encoding="utf-8")
+                        faulthandler.dump_traceback_later(15, repeat=True, file=trace)
+                        try:
+                            result["driver_cleanup_forced"] = stop_playwright(p, observe=driver_observation)
+                        finally:
+                            faulthandler.cancel_dump_traceback_later()
+                            trace.close()
+                phase("browser driver closed")
+                result["checks"].append("Installed Microsoft Edge launches and handles Bangla input")
+            except Exception:
+                result["browser_error"] = traceback.format_exc()
+
+        browser_worker = threading.Thread(target=browser_probe, name="assistant-browser-check", daemon=True)
+        browser_worker.start()
+        browser_worker.join(timeout=45)
+        if browser_worker.is_alive():
+            raise RuntimeError("The packaged browser worker did not close cleanly within 45 seconds.")
+        if result.get("browser_error"):
+            raise RuntimeError(result["browser_error"])
         phase("open desktop interface")
         import tkinter as tk
         import app
