@@ -23,6 +23,7 @@ public class DeviceTest {
         c.startActivity(new Intent(c,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         assertTrue(device.wait(Until.hasObject(By.text("Continue with ChatGPT")),10000));
         assertTrue(device.hasObject(By.text("Run instruction")) || device.findObject(new UiSelector().scrollable(true)).exists());
+        device.takeScreenshot(new java.io.File(c.getExternalFilesDir(null),"android-main.png"));
     }
     @Test public void selectedScreenApprovalAndStopAreEnforced() throws Exception {
         Context app=instrumentation.getTargetContext(),test=instrumentation.getContext();
@@ -45,6 +46,7 @@ public class DeviceTest {
             Future<String> result=worker.submit(()->service.execute("click",new JSONObject().put("id",target)));
             UiObject2 approve=device.wait(Until.findObject(By.text("Approve").enabled(true)),8000); assertNotNull(approve);
             assertFalse(result.isDone()); assertFalse(device.hasObject(By.text("Action clicked")));
+            device.takeScreenshot(new java.io.File(app.getExternalFilesDir(null),"android-approval.png"));
             approve.click(); assertTrue(result.get(10,TimeUnit.SECONDS).startsWith("Action completed"));
             assertTrue(device.wait(Until.hasObject(By.text("Action clicked")),5000));
             assertThrows(Exception.class,()->service.execute("click",new JSONObject().put("id",target)));

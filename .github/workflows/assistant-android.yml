@@ -2,10 +2,10 @@ name: Build Android assistant
 
 on:
   pull_request:
-    paths: ['android/**', '.github/workflows/assistant-android.yml']
+    paths: ['android/**', 'site/android/**', '.github/workflows/assistant-android.yml']
   push:
     branches: [main]
-    paths: ['android/**', '.github/workflows/assistant-android.yml']
+    paths: ['android/**', 'site/android/**', '.github/workflows/assistant-android.yml']
   workflow_dispatch:
 
 permissions:
@@ -27,6 +27,11 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check Android download selection
+        run: node --test android/test_download_page.mjs
       - name: Compile, test and lint Android preview
         working-directory: android
         run: gradle --no-daemon testDebugUnitTest lintDebug assembleDebug assembleDebugAndroidTest
@@ -44,7 +49,9 @@ jobs:
           profile: pixel_7
           working-directory: android
           disable-animations: true
-          script: gradle --no-daemon connectedDebugAndroidTest
+          script: |
+            gradle --no-daemon connectedDebugAndroidTest
+            adb pull /sdcard/Android/data/com.arafat.assistant/files app/build/reports/device-screens
       - name: Package checked APK
         run: |
           mkdir -p android/release
