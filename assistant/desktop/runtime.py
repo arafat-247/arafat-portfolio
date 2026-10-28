@@ -115,13 +115,14 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
             close = getattr(process_transport, "close", None)
             if close:
                 def finish_owned_pipes():
-                    close()
                     # On Windows a closed proactor transport can leave its
                     # StreamReader waiting despite the driver already exiting.
                     # Feed EOF only to that exited driver's retained readers.
                     exited = process is not None and process.poll() is not None
                     if exited and sdk_process is not None:
                         close_exited_driver_pipes()
+                    else:
+                        close()
                     diagnostic("owned driver pipes closed")
                 try:
                     loop.call_soon_threadsafe(finish_owned_pipes)
