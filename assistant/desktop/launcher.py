@@ -59,9 +59,9 @@ def smoke_test(report_path):
         def browser_probe():
             try:
                 phase("start browser driver")
-                from playwright.sync_api import sync_playwright
+                from browser_driver import start_playwright
                 with external_program_environment():
-                    p = sync_playwright().start()
+                    p = start_playwright()
                     try:
                         phase("launch Microsoft Edge")
                         browser = p.chromium.launch(headless=True, channel="msedge", timeout=20_000)

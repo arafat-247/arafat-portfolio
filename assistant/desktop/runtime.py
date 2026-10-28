@@ -45,6 +45,12 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
     The transport layout is checked against the pinned Playwright version.
     Termination uses the retained Popen handle, never a guessed process ID.
     """
+    try:
+        if getattr(playwright._impl_obj._connection._transport, "_arafat_threaded_driver", False):
+            playwright.stop()
+            return False
+    except AttributeError:
+        pass
     process = None
     process_transport = None
     loop = None

@@ -53,10 +53,10 @@ class Tools:
 
     def _browser(self):
         if self.context is None:
-            from playwright.sync_api import sync_playwright
+            from browser_driver import start_playwright
             if self.playwright is None:
                 with external_program_environment():
-                    self.playwright = sync_playwright().start()
+                    self.playwright = start_playwright()
             try:
                 self.context = self.playwright.chromium.launch_persistent_context(
                     str(self.profile), headless=False, accept_downloads=False,

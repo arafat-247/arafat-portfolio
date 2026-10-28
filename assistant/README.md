@@ -89,8 +89,12 @@ Stop applies between operations and cannot undo completed work.
 Build checks cover callback state and PKCE, real signed-token verification,
 permission enforcement, account isolation, token rotation, complete streamed
 responses, local transcription orchestration, browser controls and packaging.
-The packaged check verifies local speech imports, RSA verification, DPAPI
-storage, Edge with Bangla input, and the real Tk interface opening and closing.
+The pinned Playwright driver uses directly owned native process pipes and a
+reader thread, avoiding Windows asyncio subprocess-wait cleanup. Browser checks
+use the companion's worker-thread architecture. Protocol checks cover real SDK
+startup/shutdown, framed messages and Bangla text. The packaged check verifies
+local speech imports, RSA verification, DPAPI storage, Edge with Bangla input,
+and the real Tk interface opening and closing.
 It makes no OpenAI request and downloads no speech model. Live sign-in, actual
 speech recognition, microphone capture and individual app tasks require the
 user's local trial. A passing build does not establish live account eligibility.
