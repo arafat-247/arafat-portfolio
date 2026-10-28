@@ -61,6 +61,35 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
     except AttributeError:
         pass
     forced = threading.Event()
+    original_communicate = getattr(sdk_process, "communicate", None)
+
+    def close_exited_driver_pipes():
+        if process_transport is not None:
+            process_transport.close()
+        if sdk_process is not None:
+            for name in ("stdout", "stderr"):
+                reader = getattr(sdk_process, name, None)
+                if isinstance(reader, asyncio.StreamReader):
+                    reader.feed_eof()
+
+    if original_communicate is not None and process is not None:
+        async def bounded_communicate(*args, **kwargs):
+            # PipeTransport.run drains Process.communicate after request_stop.
+            # Windows can retain an unresolved pipe waiter after the driver
+            # exits. Its protocol output is no longer used during shutdown.
+            if process.poll() is not None:
+                close_exited_driver_pipes()
+                forced.set()
+                return None, None
+            try:
+                return await asyncio.wait_for(original_communicate(*args, **kwargs), timeout=grace_seconds)
+            except asyncio.TimeoutError:
+                if process.poll() is not None:
+                    close_exited_driver_pipes()
+                    forced.set()
+                    return None, None
+                raise
+        sdk_process.communicate = bounded_communicate
 
     def diagnostic(stage):
         if observe:
@@ -92,10 +121,7 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
                     # Feed EOF only to that exited driver's retained readers.
                     exited = process is not None and process.poll() is not None
                     if exited and sdk_process is not None:
-                        for name in ("stdout", "stderr"):
-                            reader = getattr(sdk_process, name, None)
-                            if isinstance(reader, asyncio.StreamReader):
-                                reader.feed_eof()
+                        close_exited_driver_pipes()
                     diagnostic("owned driver pipes closed")
                 try:
                     loop.call_soon_threadsafe(finish_owned_pipes)
@@ -115,6 +141,8 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
     finally:
         timer.cancel()
         timer.join(timeout=1)
+        if original_communicate is not None:
+            sdk_process.communicate = original_communicate
     return forced.is_set()
 
 

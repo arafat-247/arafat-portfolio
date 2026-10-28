@@ -18,14 +18,18 @@ def smoke_test(report_path):
     """Exercise frozen imports, Chromium, Unicode and the real app interface."""
     result = {"ok": False, "checks": [], "live_api_tested": False,
               "microphone_capture_tested": False, "windows_app_actions_tested": False}
+    import threading
+    report_lock = threading.RLock()
     def phase(name):
-        result["stage"] = name
-        Path(report_path).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+        with report_lock:
+            result["stage"] = name
+            Path(report_path).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
         if sys.stdout:
             print("Packaged check: " + name, flush=True)
     def driver_observation(value):
-        result["driver_diagnostic"] = value
-        phase(value["stage"])
+        with report_lock:
+            result["driver_diagnostic"] = value
+            phase(value["stage"])
     try:
         phase("import microphone module")
         import sounddevice

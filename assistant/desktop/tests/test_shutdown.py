@@ -86,6 +86,25 @@ class ShutdownTests(unittest.TestCase):
         finally:
             loop.close()
 
+    def test_exited_driver_does_not_wait_on_stale_communicate_pipe_waiters(self):
+        loop=asyncio.new_event_loop()
+        process=Mock(spec=subprocess.Popen)
+        process.poll.return_value=0
+        transport=SimpleNamespace(_proc=process,close=Mock())
+        async def communicate():
+            await asyncio.sleep(10)
+        sdk_process=SimpleNamespace(_transport=transport,stdout=None,stderr=None,communicate=communicate)
+        connection=SimpleNamespace(_transport=SimpleNamespace(_proc=sdk_process),_loop=loop)
+        def stop():
+            self.assertEqual(loop.run_until_complete(asyncio.wait_for(sdk_process.communicate(),timeout=1)),(None,None))
+        api=SimpleNamespace(stop=stop,_impl_obj=SimpleNamespace(_connection=connection))
+        try:
+            self.assertTrue(stop_playwright(api,grace_seconds=0.02))
+            self.assertIs(sdk_process.communicate,communicate)
+            process.terminate.assert_not_called()
+        finally:
+            loop.close()
+
 
 if __name__=='__main__':
     unittest.main()
