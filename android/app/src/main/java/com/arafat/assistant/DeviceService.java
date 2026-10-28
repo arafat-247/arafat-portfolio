@@ -57,7 +57,10 @@ public final class DeviceService extends AccessibilityService {
     private Button button(String text,Runnable run) { Button b=new Button(this); b.setText(text); b.setTextSize(12); b.setOnClickListener(v->run.run()); return b; }
     private void showPanel() {
         panel=new LinearLayout(this); panel.setOrientation(LinearLayout.VERTICAL); panel.setPadding(14,6,14,6); panel.setBackgroundColor(0xffe7f3ef); panel.setElevation(16);
-        status=new TextView(this); status.setTextColor(0xff102d25); status.setTextSize(14); status.setMaxLines(5); status.setText("Arafat Assistant · task running"); panel.addView(status);
+        status=new TextView(this); status.setTextColor(0xff102d25); status.setTextSize(14); status.setText("Arafat Assistant · task running"); ScrollView review=new ScrollView(this) {
+            @Override protected void onMeasure(int width,int height) { super.onMeasure(width,MeasureSpec.makeMeasureSpec(Math.round(150*getResources().getDisplayMetrics().density),MeasureSpec.AT_MOST)); }
+        };
+        review.setVerticalScrollBarEnabled(true); review.addView(status); panel.addView(review);
         LinearLayout row=new LinearLayout(this);
         approve=button("Approve",()->{ if(decision!=null) { accepted=true; decision.countDown(); } }); approve.setEnabled(false); row.addView(approve);
         row.addView(button("Stop",()->{ Runnable callback=onStop; stopTask(); if(callback!=null) callback.run(); }));

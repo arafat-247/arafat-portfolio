@@ -40,7 +40,7 @@ gradle testDebugUnitTest lintDebug assembleDebug assembleDebugAndroidTest
 gradle connectedDebugAndroidTest
 ```
 
-Tests cover PKCE, duplicate/state/client callback rejection, real RSA signature validation and identity checks, plan scopes, partial stream rejection, cancellation, supported request fields, tool namespaces and Unicode tool results. Emulator tests open the packaged UI, round-trip Keystore encryption, read a separate fixture app, exclude a password node, require a real Approve tap before a click, invalidate stale nodes, reject an unselected foreground app, and enforce Stop. The fixture exists only in the test APK and is not included in the download.
+Tests cover PKCE, duplicate/state/client callback rejection, real RSA signature validation and identity checks, plan scopes, partial stream rejection, cancellation, supported request fields, tool namespaces and Unicode tool results. Emulator tests open the packaged UI, round-trip Keystore encryption, read a separate fixture app, exclude a password node, require real Approve taps before clicks and Bangla text replacement, invalidate stale nodes, reject an unselected foreground app, and enforce Stop. The fixture exists only in the test APK and is not included in the download.
 
 Live ChatGPT sign-in/inference, real microphone dictation and arbitrary installed-app workflows are **not** tested by CI. They require a local trial. No account token or live paid request is used by the tests. All network origins in the AI/auth client are fixed official HTTPS origins.
 

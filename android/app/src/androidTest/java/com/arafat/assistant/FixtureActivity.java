@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.widget.*;
 public class FixtureActivity extends Activity {
     @Override public void onCreate(Bundle b) {
-        super.onCreate(b); LinearLayout layout=new LinearLayout(this); layout.setOrientation(LinearLayout.VERTICAL); layout.setPadding(24,(int)(220*getResources().getDisplayMetrics().density),24,24);
+        super.onCreate(b); LinearLayout layout=new LinearLayout(this); layout.setOrientation(LinearLayout.VERTICAL); layout.setPadding(24,(int)(330*getResources().getDisplayMetrics().density),24,24);
         TextView title=new TextView(this); title.setText("বাংলা পরীক্ষার পাতা"); layout.addView(title);
         EditText field=new EditText(this); field.setHint("Test input"); field.setContentDescription("Test input"); layout.addView(field);
         EditText password=new EditText(this); password.setInputType(129); password.setText("NEVER_SHARE_PASSWORD"); layout.addView(password);

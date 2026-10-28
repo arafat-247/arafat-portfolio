@@ -56,7 +56,17 @@ public class DeviceTest {
             // The overlay is the active accessibility window after approval. The service
             // must still identify the focused application underneath it.
             assertThrows(Exception.class,()->service.execute("click",new JSONObject().put("id",target)));
-            assertTrue(service.snapshot().contains("Action clicked"));
+            JSONObject changed=new JSONObject(service.snapshot());
+            assertTrue(changed.toString().contains("Action clicked"));
+            JSONArray fresh=changed.getJSONArray("nodes"); String field="";
+            for(int i=0;i<fresh.length();i++) if(fresh.getJSONObject(i).optBoolean("editable")) { field=fresh.getJSONObject(i).getString("id"); break; }
+            assertFalse(field.isEmpty()); final String editable=field;
+            String replacement="বাংলা লেখার পরীক্ষা সফল হয়েছে। ".repeat(12);
+            Future<String> typed=worker.submit(()->service.execute("type_text",new JSONObject().put("id",editable).put("text",replacement)));
+            UiObject2 allowText=device.wait(Until.findObject(By.text("Approve").enabled(true)),8000); assertNotNull(allowText); assertFalse(typed.isDone());
+            device.takeScreenshot(new java.io.File(app.getExternalFilesDir(null),"android-text-review.png"));
+            allowText.click(); assertTrue(typed.get(10,TimeUnit.SECONDS).startsWith("Action completed"));
+            assertTrue(service.snapshot().contains("বাংলা লেখার পরীক্ষা"));
             app.startActivity(new Intent(app,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             Thread.sleep(800); assertThrows(Exception.class,service::snapshot);
             device.findObject(By.text("Stop")).click(); Thread.sleep(300);
