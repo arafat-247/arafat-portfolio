@@ -1,0 +1,108 @@
+name: Build Android assistant
+
+on:
+  pull_request:
+    paths: ['android/**', 'site/android/**', '.github/workflows/assistant-android.yml']
+  push:
+    branches: [main]
+    paths: ['android/**', 'site/android/**', '.github/workflows/assistant-android.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+concurrency:
+  group: assistant-android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check Android download selection
+        run: node --test android/test_download_page.mjs
+      - name: Compile, test and lint Android preview
+        working-directory: android
+        run: gradle --no-daemon testDebugUnitTest lintDebug assembleDebug assembleDebugAndroidTest
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Check packaged interface, encrypted storage and approved app controls
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: default
+          profile: pixel_2
+          ram-size: 2048M
+          working-directory: android
+          disable-animations: true
+          script: bash check_device.sh
+      - name: Package checked APK
+        run: |
+          mkdir -p android/release
+          cp android/app/build/outputs/apk/debug/app-debug.apk android/release/ArafatAssistant-Android.apk
+          cp android/QUICK_START.txt android/release/QUICK_START-Android.txt
+          cd android/release
+          sha256sum ArafatAssistant-Android.apk > ArafatAssistant-Android.apk.sha256
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: ArafatAssistant-Android
+          path: android/release/*
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Android-check-reports
+          path: |
+            android/app/build/reports/
+            android/app/build/outputs/androidTest-results/
+          if-no-files-found: ignore
+
+  release:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: android
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ArafatAssistant-Android
+          path: release
+      - name: Publish checked Android preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ANDROID_COMMIT: ${{ github.sha }}
+          ANDROID_RUN: ${{ github.run_number }}
+        run: |
+          cat > notes.txt <<'NOTES'
+          Arafat Assistant personal Android preview, Android 8 or later.
+          Download ArafatAssistant-Android.apk, install it and open Continue with ChatGPT.
+          Eligible accounts can use their existing ChatGPT allowance. No API key or paid API fallback.
+          Voice uses the phone's speech service; support and offline availability depend on that provider.
+          App controls require manual Accessibility enablement, selected apps and consent per task. Each change requires approval.
+          Unit tests, lint and Android 15 emulator interface/storage/control checks passed before publication.
+          Live ChatGPT sign-in, your phone's speech service and individual apps still need a local trial.
+          This is a debug-signed personal testing build, not a Play Store release. A later preview may require uninstalling the old preview, which erases its local connection.
+          Keep Android and Play Protect protections enabled. See QUICK_START-Android.txt.
+          Source: https://github.com/arafat-247/arafat-portfolio/tree/main/android
+          NOTES
+          gh release create "assistant-android-v0.1.${ANDROID_RUN}" release/* \
+            --target "$ANDROID_COMMIT" --prerelease --latest=false \
+            --title "Arafat Assistant Android preview 0.1.${ANDROID_RUN}" --notes-file notes.txt

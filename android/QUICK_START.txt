@@ -1,0 +1,24 @@
+ARAFAT ASSISTANT — ANDROID PERSONAL PREVIEW
+
+1. Download ArafatAssistant-Android.apk from the portfolio's GitHub release.
+2. Open the downloaded APK. If Android requests it, allow this browser/file app to install this package. Keep Play Protect enabled. Revoke Install unknown apps permission afterwards if you do not need it.
+3. Open Arafat Assistant. Press Continue with ChatGPT. In your browser, sign in to your eligible personal Plus/Pro account and allow Use your ChatGPT plan. Return to the assistant after the browser confirms receipt. Sign-in is available only where OpenAI enables it for your account/workspace.
+4. Choose a model. If needed, tap Refresh models. Type: বাংলায় উত্তর দাও। Then press Run instruction. There is no API-key field and no automatic separately paid fallback.
+5. For voice, choose English, বাংলা or Phone language, then Dictate instruction. Your phone's recognition service handles audio and may use the internet, even if Prefer offline is selected. Review the transcript before Run. Missing voice service? Use the keyboard microphone or type.
+
+APP AND WEBSITE CONTROLS (OPTIONAL)
+- Read the disclosure beside Open Android Accessibility settings. Enable Arafat Assistant controls there yourself, only if you want app access. Android may restrict accessibility access for sideloaded apps. Review the package and Android's instructions before deciding whether to permit access.
+- Choose apps for this task. For websites, choose your browser.
+- Tick the task-specific sharing checkbox. Selected apps' visible accessible text is sent to OpenAI during the task. Do not select confidential apps. Password and explicitly marked sensitive nodes are excluded, but other private text may be visible.
+- Start with: Open my selected browser to https://example.com and tell me its heading.
+- Press Run. A floating panel appears. Review each proposed change and tap Approve to proceed. Move repositions the panel. Stop ends the task and app access. Return stops and brings the assistant back.
+- Logins, passwords, security settings, payment flows and permission screens are for you to handle manually. Some interfaces do not expose usable controls. There is no root, ADB, screenshot capture, arbitrary shell, background voice listener or automatic permission grant.
+- A task has at most 16 model turns. Each new Run starts a new AI task. Replies remain in memory while the app process runs; there is no imported ChatGPT history.
+
+TESTING AND UPDATES
+Android 8+; internet for ChatGPT; eligible plan allowance and app caps apply. Tested automated checks use Android 15 emulator. Physical phone sign-in, voice and individual installed apps require your local trial.
+This is a debug-signed preview APK, not a Play Store release. A future build may have a different test signature. If Android says it conflicts with an existing package, uninstall the old preview first, then install; this erases its local connection. Sign out first where possible. Never uninstall ChatGPT itself.
+No account credentials or microphone recordings are included in the build. OAuth credentials are encrypted with Android Keystore, excluded from backup. Sign out attempts remote revocation; if it cannot confirm it, disconnect this app in ChatGPT settings.
+
+Source and detailed guide:
+https://github.com/arafat-247/arafat-portfolio/tree/main/android
