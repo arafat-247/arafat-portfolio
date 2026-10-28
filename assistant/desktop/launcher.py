@@ -6,6 +6,7 @@ from pathlib import Path
 import sys
 import tempfile
 import traceback
+from runtime import external_program_environment
 
 
 def configure_browser():
@@ -30,17 +31,24 @@ def smoke_test(report_path):
         import pywinauto
         from keyring.backends.Windows import WinVaultKeyring
         result["checks"].append("Windows, microphone and credential modules import")
-        phase("launch Microsoft Edge")
+        phase("start browser driver")
         from playwright.sync_api import sync_playwright
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True, channel="msedge")
+        with external_program_environment(), sync_playwright() as p:
+            phase("launch Microsoft Edge")
+            browser = p.chromium.launch(headless=True, channel="msedge", timeout=20_000)
+            phase("Microsoft Edge started")
             page = browser.new_page()
+            page.set_default_timeout(5000)
+            phase("test page created")
             page.set_content('<html lang="bn"><body><input aria-label="নির্দেশ"><button>শুরু</button></body></html>')
             field = page.get_by_role("textbox", name="নির্দেশ")
             field.fill("বাংলা পরীক্ষা")
             assert field.input_value() == "বাংলা পরীক্ষা"
             assert page.get_by_role("button", name="শুরু").count() == 1
+            phase("Bangla browser input verified")
             browser.close()
+            phase("Microsoft Edge closed")
+        phase("browser driver closed")
         result["checks"].append("Installed Microsoft Edge launches and handles Bangla input")
         phase("open desktop interface")
         import tkinter as tk
@@ -95,4 +103,6 @@ def main():
 
 
 if __name__ == "__main__":
+    from multiprocessing import freeze_support
+    freeze_support()
     raise SystemExit(main())
