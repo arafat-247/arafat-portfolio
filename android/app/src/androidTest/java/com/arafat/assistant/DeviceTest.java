@@ -27,7 +27,7 @@ public class DeviceTest {
         c.startActivity(new Intent(c,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         assertTrue(device.wait(Until.hasObject(By.text("Continue with ChatGPT")),10000));
         assertTrue(device.hasObject(By.text("Run instruction")) || device.findObject(new UiSelector().scrollable(true)).exists());
-        device.takeScreenshot(new java.io.File(c.getExternalFilesDir(null),"android-main.png"));
+        device.executeShellCommand("screencap -p /sdcard/Download/arafat-main.png");
     }
     @Test public void selectedScreenApprovalAndStopAreEnforced() throws Exception {
         Context app=instrumentation.getTargetContext(),test=instrumentation.getContext();
@@ -40,7 +40,13 @@ public class DeviceTest {
         ExecutorService worker=Executors.newSingleThreadExecutor();
         try {
             test.startActivity(new Intent().setComponent(new ComponentName(test.getPackageName(),FixtureActivity.class.getName())).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            assertTrue("Fixture app did not open",device.wait(Until.hasObject(By.text("Test click")),10000));
+            boolean visible=device.wait(Until.hasObject(By.text("Test click")),10000);
+            device.executeShellCommand("screencap -p /sdcard/Download/arafat-fixture.png");
+            if(!visible) {
+                java.io.ByteArrayOutputStream dump=new java.io.ByteArrayOutputStream(); device.dumpWindowHierarchy(dump);
+                String xml=dump.toString("UTF-8"); for(int k=0;k<xml.length();k+=3500) android.util.Log.i("ArafatTestHierarchy",xml.substring(k,Math.min(k+3500,xml.length())));
+            }
+            assertTrue("Fixture app did not open",visible);
             service.begin(Set.of(test.getPackageName()),cancelled,()->cancelled.set(true));
             Thread.sleep(500);
             JSONObject shot=new JSONObject(service.snapshot()); assertEquals(test.getPackageName(),shot.getString("package"));
@@ -51,7 +57,7 @@ public class DeviceTest {
             Future<String> result=worker.submit(()->service.execute("click",new JSONObject().put("id",target)));
             UiObject2 approve=device.wait(Until.findObject(By.text("Approve").enabled(true)),8000); assertNotNull(approve);
             assertFalse(result.isDone()); assertFalse(shot.toString().contains("Action clicked"));
-            device.takeScreenshot(new java.io.File(app.getExternalFilesDir(null),"android-approval.png"));
+            device.executeShellCommand("screencap -p /sdcard/Download/arafat-approval.png");
             approve.click(); assertTrue(result.get(10,TimeUnit.SECONDS).startsWith("Action completed"));
             // The overlay is the active accessibility window after approval. The service
             // must still identify the focused application underneath it.
@@ -64,7 +70,7 @@ public class DeviceTest {
             String replacement="বাংলা লেখার পরীক্ষা সফল হয়েছে। ".repeat(12);
             Future<String> typed=worker.submit(()->service.execute("type_text",new JSONObject().put("id",editable).put("text",replacement)));
             UiObject2 allowText=device.wait(Until.findObject(By.text("Approve").enabled(true)),8000); assertNotNull(allowText); assertFalse(typed.isDone());
-            device.takeScreenshot(new java.io.File(app.getExternalFilesDir(null),"android-text-review.png"));
+            device.executeShellCommand("screencap -p /sdcard/Download/arafat-text-review.png");
             allowText.click(); assertTrue(typed.get(10,TimeUnit.SECONDS).startsWith("Action completed"));
             assertTrue(service.snapshot().contains("বাংলা লেখার পরীক্ষা"));
             app.startActivity(new Intent(app,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));

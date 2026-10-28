@@ -54,7 +54,7 @@ public final class DeviceService extends AccessibilityService {
         ui(()->{ stopTask(); selected=Set.copyOf(packages); cancelled=cancel; onStop=stop; showPanel(); return null; });
     }
     void update(String text) { main.post(()->{ if(status!=null && decision==null) status.setText(text); }); }
-    private Button button(String text,Runnable run) { Button b=new Button(this); b.setText(text); b.setTextSize(12); b.setOnClickListener(v->run.run()); return b; }
+    private Button button(String text,Runnable run) { Button b=new Button(this); b.setText(text); b.setAllCaps(false); b.setTextSize(12); b.setOnClickListener(v->run.run()); return b; }
     private void showPanel() {
         panel=new LinearLayout(this); panel.setOrientation(LinearLayout.VERTICAL); panel.setPadding(14,6,14,6); panel.setBackgroundColor(0xffe7f3ef); panel.setElevation(16);
         status=new TextView(this); status.setTextColor(0xff102d25); status.setTextSize(14); status.setText("Arafat Assistant · task running"); ScrollView review=new ScrollView(this) {

@@ -3,5 +3,5 @@
 set +e
 gradle --no-daemon connectedDebugAndroidTest
 check_status=$?
-adb pull /sdcard/Android/data/com.arafat.assistant/files app/build/reports/device-screens
+adb pull /sdcard/Download app/build/reports/device-screens
 exit "$check_status"
