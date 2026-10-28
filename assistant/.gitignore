@@ -1,0 +1,7 @@
+browsers/
+build/
+dist/
+release/
+*.spec
+__pycache__/
+desktop/.venv/

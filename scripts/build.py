@@ -260,6 +260,9 @@ def build():
         source=SITE/file
         if source.is_file():shutil.copy2(source,OUT/file)
     shutil.copytree(SITE/'admin',OUT/'admin')
+    assistant_site = SITE/'assistant'
+    if assistant_site.is_dir():
+        shutil.copytree(assistant_site, OUT/'assistant')
     b=Builder(); c=b.config; overrides=read(CONTENT/'overrides.json',{'articles':{}})['articles']; articles=[]
     for path in sorted((CONTENT/'articles').glob('*.json')):
         a=read(path,{}); a.update(overrides.get(a['id'],{}));
