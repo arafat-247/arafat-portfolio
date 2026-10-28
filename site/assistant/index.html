@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="Download and set up Arafat Assistant, a Windows companion for voice and text instructions.">
+  <meta name="theme-color" content="#0b2f2a">
+  <title>Arafat Assistant · Windows companion</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assistant.css">
+  <script src="assistant.mjs" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header shell">
+    <a class="brand" href="../"><span class="mark" aria-hidden="true">A</span><span>Arafat Rahaman<small>Personal tools</small></span></a>
+    <a class="back" href="../">Back to portfolio <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main" class="shell">
+    <section class="hero" aria-labelledby="title">
+      <div class="intro">
+        <p class="eyebrow">A WINDOWS COMPANION</p>
+        <h1 id="title">Your instructions.<br>Your computer.</h1>
+        <p class="standfirst">Arafat Assistant takes typed and recorded instructions, helps with websites and works with supported Windows app controls.</p>
+        <div class="languages" aria-label="Language options"><span>English</span><span lang="bn">বাংলা</span><span>Other model-supported languages</span></div>
+        <p class="intro-note">This page is the download hub. Run the companion on your Windows computer to give it a task.</p>
+      </div>
+      <aside class="download" aria-labelledby="download-title">
+        <div class="card-top"><span class="app-icon" aria-hidden="true">A<span>↗</span></span><span class="preview-label">PREVIEW BUILD</span></div>
+        <h2 id="download-title">Arafat Assistant</h2>
+        <p class="platform">Windows · 64-bit · Portable app</p>
+        <div class="build-state" role="status" aria-live="polite"><span class="state-dot" aria-hidden="true"></span><p id="build-status">Checking for a tested download…</p></div>
+        <a id="download-link" class="download-button" aria-disabled="true">Checking build <span aria-hidden="true">↓</span></a>
+        <p id="release-detail" class="release-detail">The download link becomes available after a Windows build passes its packaged checks.</p>
+        <div class="card-links"><a id="builds-link" href="https://github.com/arafat-247/arafat-portfolio/actions/workflows/assistant-build.yml" target="_blank" rel="noopener noreferrer">View builds ↗</a><a id="checksum-link" hidden>SHA-256 checksum ↗</a></div>
+        <p class="included">Python is included. Microsoft Edge must be installed. Internet and your own separately billed OpenAI API key are required.</p>
+      </aside>
+    </section>
+    <section class="setup" aria-labelledby="setup-title">
+      <div class="section-heading"><p class="eyebrow">FIRST USE</p><h2 id="setup-title">Three steps to a first task</h2></div>
+      <ol class="steps">
+        <li><span class="step-number" aria-hidden="true">01</span><h3>Download and extract</h3><p>Extract the whole ZIP. Keep <code>ArafatAssistant.exe</code> and its <code>_internal</code> folder together, then open the app.</p></li>
+        <li><span class="step-number" aria-hidden="true">02</span><h3>Connect in the app</h3><p>Open Settings and enter your own API key locally. Start with a typed instruction, then allow microphone access when testing voice.</p></li>
+        <li><span class="step-number" aria-hidden="true">03</span><h3>Give it one task</h3><p>Record or type your instruction. Check the transcript and review proposed website or app actions before allowing them.</p></li>
+      </ol>
+    </section>
+    <section class="task-area" aria-labelledby="try-title">
+      <div><p class="eyebrow">START SMALL</p><h2 id="try-title">A first instruction</h2><p>Try these inside the Windows app.</p></div>
+      <div class="examples"><p>Open https://example.com and tell me the page heading.</p><p lang="bn">বাংলায় উত্তর দাও: পরীক্ষাটি সফল হয়েছে।</p><p>Open calculator.</p></div>
+    </section>
+    <section class="notes" aria-labelledby="notes-title">
+      <h2 id="notes-title">What to expect</h2>
+      <div class="note-grid">
+        <div><h3>You review the actions</h3><p>Voice is recorded after you press the button. Transcripts can be edited before execution. Stop takes effect between operations.</p></div>
+        <div><h3>The work runs locally</h3><p>Your Windows companion handles the browser and supported app controls. A public portfolio page cannot operate your computer on its own.</p></div>
+        <div><h3>Cloud processing is involved</h3><p>Instructions, submitted recordings and selected website or app text go to OpenAI. Enter your API key only in the companion’s Settings.</p></div>
+        <div><h3>Local testing still matters</h3><p>Packaged checks cover imports, the browser and the desktop interface. Microphone capture, live AI responses and individual apps still need a trial on your computer.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="shell footer"><p>Arafat Assistant · Windows preview</p><a href="https://github.com/arafat-247/arafat-portfolio/tree/main/assistant" target="_blank" rel="noopener noreferrer">Source and documentation ↗</a></footer>
+</body>
+</html>

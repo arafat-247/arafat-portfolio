@@ -1,0 +1,2 @@
+-r desktop/requirements.txt
+pyinstaller>=6.11,<7

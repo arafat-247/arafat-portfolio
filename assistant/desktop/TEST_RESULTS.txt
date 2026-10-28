@@ -1,0 +1,26 @@
+ARAFAT ASSISTANT 0.1 — DEVELOPMENT CHECKS
+28 October 2026
+
+Environment: Linux, Python 3.12.14.
+
+Passed: 13 core tests.
+Skipped: the real-browser test class (Chromium unavailable).
+Python source compilation: passed.
+
+The core tests use simulated API responses. They verify the agent/tool loop,
+Bangla text preservation, transcription request format, transcript review before
+execution, bounded tasks, declined and cancelled actions, URL validation,
+secret-free settings JSON, and file creation without overwrite.
+
+Both Chromium and Chromium Headless Shell download attempts returned invalid
+archives. Real-browser execution was not verified here. The included browser
+tests can run after a successful Chromium installation on your computer.
+
+Not tested: Windows desktop GUI, Windows Credential Manager, microphone capture,
+Windows app controls, live OpenAI responses, live speech recognition, third-party
+websites, or a compiled Windows executable. No API calls were made and no costs
+were incurred through OpenAI during these checks.
+
+Run check.cmd after setup on Windows. Start with a simple task and review the
+proposed actions. This source package is an initial prototype, not a production
+reliability assessment.
