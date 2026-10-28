@@ -18,6 +18,23 @@
       "series": []
     },
     {
+      "id": "0fa24b2d6962506d9e2b",
+      "title": "Half the children can’t read, comprehend",
+      "excerpt": "As the government aims to raise the country’s literacy rate to between 86 and 90 percent by 2030, nearly half of children aged seven to 14 still fail to read and understand a simple story.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/f6836072d7856603e194bd92.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/half-the-children-can-t-read-comprehend/",
+      "credit_type": "byline",
+      "beat": "rights-social-justice",
+      "beat_title": "Rights & social justice",
+      "series": []
+    },
+    {
       "id": "105854a3a431e191c3d8",
       "title": "Braving scorching heat in the line of duty",
       "excerpt": "It was around 2:30pm on Tuesday.",
@@ -32,6 +49,23 @@
       "credit_type": "byline",
       "beat": "other",
       "beat_title": "Other",
+      "series": []
+    },
+    {
+      "id": "108ac273cd10e0d07d71",
+      "title": "Can BNP protect journalists from its own rank and file?",
+      "excerpt": "During the Awami League’s three consecutive terms in office over a decade and a half, the then-opposition BNP demanded the right to speak, organise and criticise without being branded an enemy of the state.",
+      "category": "Opinion",
+      "stream": "opinion",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/85913c0390ef39aaa9ae05a7.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/can-bnp-protect-journalists-from-its-own-rank-and-file/",
+      "credit_type": "byline",
+      "beat": "politics-civic-life",
+      "beat_title": "Politics & civic life",
       "series": []
     },
     {
@@ -51,6 +85,59 @@
       "beat_title": "Education",
       "series": [
         "universities-campus-governance"
+      ]
+    },
+    {
+      "id": "1e216598b1bbf4540586",
+      "title": "Govt plans Tk 21,900cr digital makeover for schools",
+      "excerpt": "According to proposals by the Directorate of Secondary and Higher Education (DSHE), the projects will cover half of the 20,767 secondary and higher secondary educational institutions and be implemented between January 2027 and December 2031.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/a132aaea9d8403b70f6ae63b.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/govt-plans-tk-21-900cr-digital-makeover-for-schools/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": []
+    },
+    {
+      "id": "1e4a12acf147557a86c8",
+      "title": "Middle class squeezed",
+      "excerpt": "A series of price hikes leaves many families with no wiggle room",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/f13b1131b42aae3c8bb20a7b.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/middle-class-squeezed/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
+    },
+    {
+      "id": "1e5213a093c35a5e37c5",
+      "title": "SSC pass rate hits 19-year low",
+      "excerpt": "This year’s SSC results painted a grim picture, with the pass rate across the nine general education boards hitting a 19-year low and GPA-5 achievers falling to their lowest level since 2020.",
+      "category": "Education",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/83a409fc00de672e5be59059.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/ssc-pass-rate-hits-19-year-low/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
       ]
     },
     {
@@ -105,6 +192,25 @@
       "series": []
     },
     {
+      "id": "254cef90f85c6a66af90",
+      "title": "SSC pass rate plunges to a 16-year low",
+      "excerpt": "The pass rate in this year’s Secondary School Certificate (SSC) examinations across all nine general education boards has dropped to 68.04 percent, the lowest in 16 years.",
+      "category": "Education",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/a42d2d64570ac8ef7c5f4c20.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/ssc-pass-rate-plunges-to-a-16-year-low/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
+    },
+    {
       "id": "2a5e039934d815310d4c",
       "title": "Govt asks pry schools to keep Zia, Khaleda, Tarique books",
       "excerpt": "All government primary schools have been asked to keep three books -- two on late president Ziaur Rahman, former prime minister Khaleda Zia, and one written by Prime Minister Tarique Rahman.",
@@ -136,6 +242,23 @@
       "credit_type": "byline",
       "beat": "education",
       "beat_title": "Education",
+      "series": []
+    },
+    {
+      "id": "31c71d3d8e063f4a22c1",
+      "title": "A good initiative, but still a long way to go",
+      "excerpt": "The instalment of CCTV cameras in city buses by the Ministry of Women and Children Affairs has generated a positive response among female commuters as well as bus staffers, as they believe the initiative has brought a change in the behavioural pattern of the overall commuters.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/d9e62b084452310f97103128.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/a-good-initiative-but-still-a-long-way-to-go/",
+      "credit_type": "byline",
+      "beat": "rights-social-justice",
+      "beat_title": "Rights & social justice",
       "series": []
     },
     {
@@ -190,6 +313,61 @@
       "series": []
     },
     {
+      "id": "40069ff0c986fe10eeb5",
+      "title": "Teacher shortages strain government primary schools",
+      "excerpt": "Government primary schools across Bangladesh are struggling to keep lessons on track as headteacher posts remain vacant in more than half of the institutions while thousands of assistant-teacher positions also remain unfilled, putting extra pressure on teachers and disrupting classes.",
+      "category": "Education",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/d83929f2d3b097d7febce853.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/teacher-shortages-strain-government-primary-schools/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "teacher-shortages-recruitment"
+      ]
+    },
+    {
+      "id": "4605c47ab86fe0fa0460",
+      "title": "Admission to class-1: Heavy loads on tender shoulders",
+      "excerpt": "The government’s move to reintroduce written admission tests for class-1 from the next academic year has sparked concern among parents, with many turning to coaching centres and private tutors to help their children prepare for the exams.",
+      "category": "Education",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/ef92f4ad504100572091d49b.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/admission-to-class-1-heavy-loads-on-tender-shoulders/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "universities-campus-governance"
+      ]
+    },
+    {
+      "id": "473746cb08f01c291166",
+      "title": "Satrasta-Tejgaon Road: Will it finally be free of congestion?",
+      "excerpt": "In its latest effort to free the capital’s Satrasta-Tejgaon road from congestion, Dhaka North City Corporation (DNCC) is setting up separate lanes for rickshaws by installing dividers.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/33139d6474bbe17116c311c3.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/satrasta-tejgaon-road-will-it-finally-be-free-of-congestion/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
+    },
+    {
       "id": "49177c7fb8abf62f569d",
       "title": "NCP eyes bigger role after bagging 6 seats in debut",
       "excerpt": "Amid doubts over its political future and alliance choices, the youth-led National Citizen Party (NCP) has made an eye-catching debut, winning six seats in its first parliamentary election.",
@@ -204,6 +382,57 @@
       "credit_type": "byline",
       "beat": "politics-civic-life",
       "beat_title": "Politics & civic life",
+      "series": []
+    },
+    {
+      "id": "493ccfbc7bcf92750b7a",
+      "title": "Primary teachers’ pay edge over lowest grade govt job narrows in five decades",
+      "excerpt": "Despite higher entry qualifications, their starting basic is now only 20% above the government’s lowest grade, compared with 69% in 1973",
+      "category": "Education",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/033d78bac549a525a3ffadfc.png",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/primary-teachers-pay-edge-over-lowest-grade-govt-job-narrows-in-five/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": []
+    },
+    {
+      "id": "4b7f5a04c1f9d304e9c3",
+      "title": "Who protects families when they report child sexual abuse?",
+      "excerpt": "A Tongi father says he has received death threats after reporting his seven-year-old daughter's alleged abuse at a madrasa. The police response could matter far beyond this one case",
+      "category": "Rights & Justice",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/1b0abd837a82fbea5cf9fd28.png",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/who-protects-families-when-they-report-child-sexual-abuse/",
+      "credit_type": "byline",
+      "beat": "rights-social-justice",
+      "beat_title": "Rights & social justice",
+      "series": []
+    },
+    {
+      "id": "4cb8e463fbbba5db4753",
+      "title": "Police and media have no right to shame detainees",
+      "excerpt": "A police outpost stood barely 30 yards from a house in Purbachal where “drug parties” had apparently been held for nearly a year.",
+      "category": "Opinion",
+      "stream": "opinion",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/02eceeab5911ca96552179b1.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/police-and-media-have-no-right-to-shame-detainees/",
+      "credit_type": "byline",
+      "beat": "media-journalism",
+      "beat_title": "Media & journalism",
       "series": []
     },
     {
@@ -243,6 +472,23 @@
       ]
     },
     {
+      "id": "50a2a69c69f8aa3965ce",
+      "title": "What could he have stolen that was worth his life?",
+      "excerpt": "The killing of Mohammad Faysal in Moheshkhali forces an uncomfortable question about those who attack, those who watch and the state that must prevent both",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/d659cae7374adca6950da506.png",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/what-could-he-have-stolen-that-was-worth-his-life/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
+    },
+    {
       "id": "52dd64ff15b0fbf51556",
       "title": "The tale of holiday sufferings",
       "excerpt": "Sixty-five-year-old Mohammad Siraj had to seek medical attention for severe abdominal pain and other physical illnesses on Sunday at Shaheed Suhrawardy Medical College.",
@@ -277,6 +523,23 @@
       "series": []
     },
     {
+      "id": "5770ba9b03ea548d53f5",
+      "title": "Schools up, pupils down",
+      "excerpt": "Bangladesh has more secondary schools than it did seven years ago, but far fewer students in them.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/43926b6ba46806386c9215c3.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/schools-up-pupils-down/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": []
+    },
+    {
       "id": "5e6ff82ffb7c3dc97e0f",
       "title": "Jalladkhana Killing Field: A haunting reminder of the tragic past",
       "excerpt": "It was just a regular water-pump house, but in 1971, the Pakistan army transformed into an embodiment of horror -- a mass killing field, where the officers killed and dumped countless bodies.",
@@ -292,6 +555,25 @@
       "beat": "other",
       "beat_title": "Other",
       "series": []
+    },
+    {
+      "id": "65528f66fc5a65f811dc",
+      "title": "NCTB textbooks: Never-ending cycle of controversies",
+      "excerpt": "The National Curriculum and Textbook Board has been stuck in the loop of controversies centring on school textbooks with academics and some NCTB officials blaming it on the negligence of writers and editors, insufficient training and lack of serious punishment for blunders.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/1f2175bd20ecd195bcbd3cdc.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/nctb-textbooks-never-ending-cycle-of-controversies/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
     },
     {
       "id": "66874c40c7d706000ea0",
@@ -310,6 +592,63 @@
       "beat_title": "Education",
       "series": [
         "universities-campus-governance"
+      ]
+    },
+    {
+      "id": "67107632b302b3dbb406",
+      "title": "CUET deserves answers, not another power struggle over the VC’s office",
+      "excerpt": "The confrontation raises deeper questions about university appointments, political influence and accountability",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/461fb55e748c948de07b1018.png",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/cuet-deserves-answers-not-another-power-struggle-over-the-vc-s-office/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "universities-campus-governance"
+      ]
+    },
+    {
+      "id": "683b7f3fb1f02105037b",
+      "title": "Study Abroad: students suffer as banks reluctant to open files",
+      "excerpt": "Mohammad Omar Faruque, 27, a graduate of Jahangirnagar University, was hoping to pursue his master’s in the United Kingdom.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/d93f76fd2397f47217682167.png",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/study-abroad-students-suffer-as-banks-reluctant-to-open-files/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "universities-campus-governance"
+      ]
+    },
+    {
+      "id": "69808da284e378524eb0",
+      "title": "Pry teacher recruitment: Selected, yet still waiting",
+      "excerpt": "Selected applicants have been waging protests since April for quick completion of the appointment process.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/2504ec0f5f0773de1df717b3.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/pry-teacher-recruitment-selected-yet-still-waiting/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "teacher-shortages-recruitment"
       ]
     },
     {
@@ -349,6 +688,23 @@
       ]
     },
     {
+      "id": "744b061ba119c2d84cbc",
+      "title": "Radio Silence: Bangladesh Betar’s external service inoperative for three years",
+      "excerpt": "The external service of Bangladesh Betar has remained disconnected from the rest of the world for over three years due to a mechanical fault, depriving a vast diaspora of foreign listeners.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/effc6d84d5c93634be2f70e9.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/radio-silence-bangladesh-betar-s-external-service-inoperative-for-three/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
+    },
+    {
       "id": "7480a6f6e7f432cd073b",
       "title": "When mobile journalism crosses the line into public shaming",
       "excerpt": "Journalism is meant to hold power to account, and mobile journalism, using smartphones for reporting and storytelling, should have ideally taken that mission to new heights.",
@@ -364,6 +720,44 @@
       "beat": "media-journalism",
       "beat_title": "Media & journalism",
       "series": []
+    },
+    {
+      "id": "75f6261ed8aba04af297",
+      "title": "Reform missteps behind SSC result swings: experts",
+      "excerpt": "Since the late 1980s, Bangladesh’s SSC pass rate has seen major fluctuations, reflecting not only student performance but also suggesting the influence of political realities, exam reforms, marking practices, and education policies.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/360709480c39f0d634c1fffb.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/reform-missteps-behind-ssc-result-swings-experts/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
+    },
+    {
+      "id": "77f2d6ad1fec34535f22",
+      "title": "School textbooks to get new content on history",
+      "excerpt": "School textbooks will be revised for the 2027 academic year, with new content on the Liberation War, post-independence political history and the July Uprising.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/ab6b37054ee92cb9bb677a56.png",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/school-textbooks-to-get-new-content-on-history/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
     },
     {
       "id": "783ca75fcc3d4f84bf65",
@@ -417,6 +811,42 @@
       "series": []
     },
     {
+      "id": "7e476e19cbab9eb7818e",
+      "title": "A village of crabs, in Dhaka!",
+      "excerpt": "It was early morning. The sun had not yet risen, and most of Dhaka was still sleeping.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/6efba50ff67b62cb78027acc.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/a-village-of-crabs-in-dhaka/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
+    },
+    {
+      "id": "8150d29e3b2f46ee7b91",
+      "title": "Why girls continue to outpace boys in SSC results",
+      "excerpt": "Differences in school attendance, child labour, stipend incentives and study routines are widening the performance gap between male and female students in the Secondary School Certificate (SSC) and equivalent examinations, according to educationists, teachers and candidates.",
+      "category": "Education",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/86d9a260c8c6f37d384e7d9c.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/why-girls-continue-to-outpace-boys-in-ssc-results/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
+    },
+    {
       "id": "8456e7f735e3d8c1b842",
       "title": "Pry students get books on first day of yr",
       "excerpt": "Primary schoolchildren across the country received full sets of new textbooks yesterday, but about a quarter of secondary-level textbooks did not reach the schools, leaving millions of students without complete sets on the first day of the academic year.",
@@ -434,6 +864,40 @@
       "series": [
         "curriculum-textbooks-assessment"
       ]
+    },
+    {
+      "id": "85d5792701ec5eaa8a25",
+      "title": "Honouring a trailblazer",
+      "excerpt": "More than five decades ago, Niloufer Manzur, a young teacher and mother of two, set out to establish a school that would provide children with a strong academic foundation while developing their conscience and sense of responsibility towards their country.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/3032d0d40138b5c16cfca944.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/honouring-a-trailblazer/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": []
+    },
+    {
+      "id": "88cabc444368f4ddea07",
+      "title": "Under the dirty water, there’s a ward",
+      "excerpt": "Some of the places remain under stagnant water for years, while some lack basic civic amenities, including proper roads or pure drinking water. None of these neighbourhoods has a single playground. Such are the states of the three wards in zone-9 of Dhaka North City Corporation.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/d27be2cb6cc4513428d19b85.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/under-the-dirty-water-there-s-a-ward/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
     },
     {
       "id": "8f69af16d90af1e74d95",
@@ -472,6 +936,42 @@
       "series": []
     },
     {
+      "id": "928418106ff159acfc8e",
+      "title": "‘I’ll pass this story to my children’",
+      "excerpt": "As the metro-rail train started its maiden journey yesterday afternoon, Swadhin Ahmed, a young man, had a wide smile on his face. In fact, it was a day of pride for Swadhin, who had been working for the metro-rail project for three years.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/1d6bf28510af30cf050124c5.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/i-ll-pass-this-story-to-my-children/",
+      "credit_type": "byline",
+      "beat": "rights-social-justice",
+      "beat_title": "Rights & social justice",
+      "series": []
+    },
+    {
+      "id": "939e921489d42c92d14f",
+      "title": "Dakhil pass rate lowest in 23 years",
+      "excerpt": "The Madrasah Education Board recorded its lowest pass rate in 23 years at 55.49 percent, while the Technical Education Board posted a 19-year low of 58.20 percent in this year’s SSC and equivalent examinations, according to education ministry data.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/8c7ea687de2b2d506f09657c.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/dakhil-pass-rate-lowest-in-23-years/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
+    },
+    {
       "id": "944fc8115a39be75263a",
       "title": "Cluster Admission Tests: 22 univs lag behind, have vacant seats",
       "excerpt": "Twenty-two public universities, who held cluster admission tests for the 2021-22 academic year, could not start classes on time due to lengthy migration of freshers.",
@@ -489,6 +989,26 @@
       "series": [
         "teacher-shortages-recruitment",
         "universities-campus-governance"
+      ]
+    },
+    {
+      "id": "98afbde149ce1272ce02",
+      "title": "Higher viva marks may undermine fairness in public recruitment",
+      "excerpt": "Last July, BNP leader Salahuddin Ahmed said his party wanted the viva marks of the Bangladesh Civil Service (BCS) examination reduced to 50 from 200 to limit scope for discrimination in Bangladesh Public Service Commission (BPSC) recruitment.",
+      "category": "Opinion",
+      "stream": "opinion",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/9114c972e5ec1f96d2c9157b.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/higher-viva-marks-may-undermine-fairness-in-public-recruitment/",
+      "credit_type": "byline",
+      "beat": "governance-public-institutions",
+      "beat_title": "Governance & public institutions",
+      "series": [
+        "curriculum-textbooks-assessment",
+        "public-recruitment-administration"
       ]
     },
     {
@@ -528,6 +1048,40 @@
       "series": []
     },
     {
+      "id": "af4fbc08671802826c82",
+      "title": "Watching planes their only entertainment",
+      "excerpt": "With a smiling face and curiosity in her eyes, six-year-old Anika stood beside a barbed wire fence and gazed up at the sky. Soon, an aeroplane took off with a loud roar.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/570feec3f6a20e2b3703f6a0.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/watching-planes-their-only-entertainment/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
+    },
+    {
+      "id": "b3507af3f59ad2b2302f",
+      "title": "A village of mosques",
+      "excerpt": "Beraid is a small place in terms of size, but it is huge in terms of popularity, thanks to a large number of ancient mosques.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/d9e6fa2b9ee25e5fb25650ac.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/a-village-of-mosques/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
+    },
+    {
       "id": "b48dbcc7102ceaf7e505",
       "title": "Draft guidelines signal new direction for primary curriculum",
       "excerpt": "The primary and mass education ministry has prepared draft guidelines for updating the primary curriculum, suggesting an approach that defines what children should know and the skills and competencies they should attain by the end of class-5.",
@@ -539,6 +1093,44 @@
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/draft-guidelines-signal-new-direction-for-primary-curriculum/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "curriculum-textbooks-assessment"
+      ]
+    },
+    {
+      "id": "b5a59a00115f8b165578",
+      "title": "RU keeps failing to stop campus violence",
+      "excerpt": "Rajshahi University authorities have repeatedly failed to protect students and journalists from violence on campus since August 2024, even with proctorial officials or teachers present.",
+      "category": "Rights & Justice",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/8cf7bedcff7f796724a662c7.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/ru-keeps-failing-to-stop-campus-violence/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "universities-campus-governance"
+      ]
+    },
+    {
+      "id": "b8b676dd8f69ae866fd3",
+      "title": "Give SSC students who failed a second chance, but fix the learning gaps too",
+      "excerpt": "Last week, Education Minister ANM Ehsanul Hoque Milon announced that SSC examinees who failed two subjects could retake those exams within 15 days of the results.",
+      "category": "Opinion",
+      "stream": "opinion",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/e170d93ae209dca079161839.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/give-ssc-students-who-failed-a-second-chance-but-fix-the-learning-gaps-too/",
       "credit_type": "byline",
       "beat": "education",
       "beat_title": "Education",
@@ -583,6 +1175,57 @@
       "series": []
     },
     {
+      "id": "c79aef02d31238dfa316",
+      "title": "Cultivating reading habits since 2001",
+      "excerpt": "At first glance, it looks like a simple tin-shed house. One will not even find any decent-looking furniture inside the room.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/c27a0b47ffd026266b9a02a8.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/cultivating-reading-habits-since-2001/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
+    },
+    {
+      "id": "c886ff8698447164c92a",
+      "title": "Dead-end jobs, meagre pay for makers of nation-builders",
+      "excerpt": "Despite their pivotal role in shaping future generations, government primary schoolteachers remain among the lowest-paid staffers, a disparity that many educators say is reflected in the level of respect they receive.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/355949a9cf907ed20f0047e2.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/dead-end-jobs-meagre-pay-for-makers-of-nation-builders/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": []
+    },
+    {
+      "id": "cbb9827714b0b07f55be",
+      "title": "Plight of DNCC wards 52, 53: Life seemed better under union parishad",
+      "excerpt": "In July 2017, Dhaka North City Corporation took 18 wards under its wing, which were previously under the union parishad system.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/a387b3268ed8b982bbcce514.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/plight-of-dncc-wards-52-53-life-seemed-better-under-union-parishad/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
+    },
+    {
       "id": "d1c1944673f394a34729",
       "title": "Limit SSC exams to 5 core subjects",
       "excerpt": "A government consultation committee has recommended limiting SSC exams to five core subjects -- Bangla, English, mathematics, science, and social science -- while keeping PSC and JSC exams in classes 5 and 8 scrapped.",
@@ -603,6 +1246,23 @@
       ]
     },
     {
+      "id": "d336cc224b0fc84df7ab",
+      "title": "Where basic amenities remain elusive",
+      "excerpt": "Residents of the newly-added wards in Dhaka North City Corporation expressed dissatisfaction after being denied civic amenities, claiming that life was far better when they were under the union parishad.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/0500e72d5f4c26eb522b1469.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/where-basic-amenities-remain-elusive/",
+      "credit_type": "byline",
+      "beat": "other",
+      "beat_title": "Other",
+      "series": []
+    },
+    {
       "id": "d80c1b0532d940ce0ffe",
       "title": "Can playing a historic speech justify repeated bail denials?",
       "excerpt": "About a month and a half has passed since the arrest and detention of leftist student leader Sheikh Tasnim Afroz Emi.",
@@ -617,6 +1277,23 @@
       "credit_type": "byline",
       "beat": "education",
       "beat_title": "Education",
+      "series": []
+    },
+    {
+      "id": "d8e19630cabfdf5ce511",
+      "title": "Why must the girl change her route?",
+      "excerpt": "From harassment and threats to retaliation against families who speak up, the burden of safety continues to fall on girls while perpetrators often face little immediate consequence",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/1f4de49a5ddeabd2b9cca2a5.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/why-must-the-girl-change-her-route/",
+      "credit_type": "byline",
+      "beat": "media-journalism",
+      "beat_title": "Media & journalism",
       "series": []
     },
     {
@@ -637,6 +1314,25 @@
       "series": []
     },
     {
+      "id": "e5420c5af2374795bfd8",
+      "title": "Secondary schools: Vacant posts hurting children, taxing teachers",
+      "excerpt": "Persistent shortages of teachers have been disrupting classroom learning at secondary schools across the country, forcing many institutions to overburden teachers of key subjects including mathematics, English and ICT, and reduce the frequency of practical classes.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/036b843683e762c085bea4c3.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/secondary-schools-vacant-posts-hurting-children-taxing-teachers/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": [
+        "teacher-shortages-recruitment"
+      ]
+    },
+    {
       "id": "ee348283231cb3348d69",
       "title": "Four teachers appointed against two vacant posts",
       "excerpt": "The authorities of Mawlana Bhasani Science and Technology University (MBSTU) in Tangail appointed four teachers against two vacant positions, ignoring the recruitment circular and recommendations of academic planning committees.",
@@ -655,6 +1351,40 @@
         "teacher-shortages-recruitment",
         "universities-campus-governance"
       ]
+    },
+    {
+      "id": "f053bdc98a50af3a6424",
+      "title": "Bewildering convictions",
+      "excerpt": "The jailing of 85 people following a raid on a senior police officer’s house in Purbachal last week has raised questions over the evidence behind their convictions and the circulation of their photographs and videos.",
+      "category": "Rights & Justice",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/06ddb2ab186bf48b4e67496b.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/bewildering-convictions/",
+      "credit_type": "byline",
+      "beat": "rights-social-justice",
+      "beat_title": "Rights & social justice",
+      "series": []
+    },
+    {
+      "id": "f101fb344ef72916c43f",
+      "title": "Health, education spending to reach 5% of GDP by 2031",
+      "excerpt": "Govt’s five-year plan sets targets for two key sectors",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-10-28T00:30:00+06:00",
+      "date_modified": "",
+      "cover_image": "assets/imported/2b6eff7b4e3d6cba9c0addaf.png",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/health-education-spending-to-reach-5-of-gdp-by-2031/",
+      "credit_type": "byline",
+      "beat": "education",
+      "beat_title": "Education",
+      "series": []
     },
     {
       "id": "f45c486fdf558bd640bb",
@@ -801,40 +1531,6 @@
       ]
     },
     {
-      "id": "0fa24b2d6962506d9e2b",
-      "title": "Half the children can’t read, comprehend",
-      "excerpt": "As the government aims to raise the country’s literacy rate to between 86 and 90 percent by 2030, nearly half of children aged seven to 14 still fail to read and understand a simple story.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/256f60cd9ef2b45a974756d9.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/half-the-children-can-t-read-comprehend/",
-      "credit_type": "byline",
-      "beat": "rights-social-justice",
-      "beat_title": "Rights & social justice",
-      "series": []
-    },
-    {
-      "id": "108ac273cd10e0d07d71",
-      "title": "Can BNP protect journalists from its own rank and file?",
-      "excerpt": "During the Awami League’s three consecutive terms in office over a decade and a half, the then-opposition BNP demanded the right to speak, organise and criticise without being branded an enemy of the state.",
-      "category": "Opinion",
-      "stream": "opinion",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/774ef106ed9cde9fc684997a.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/can-bnp-protect-journalists-from-its-own-rank-and-file/",
-      "credit_type": "byline",
-      "beat": "politics-civic-life",
-      "beat_title": "Politics & civic life",
-      "series": []
-    },
-    {
       "id": "112b654ca5365443db82",
       "title": "Alarming failures",
       "excerpt": "Fourteen students appeared in this year’s Secondary School Certificate exams from Ghagoa Girls High School in Gaibandha’s Sundarganj. However, none of them passed.",
@@ -922,59 +1618,6 @@
       "beat": "rights-social-justice",
       "beat_title": "Rights & social justice",
       "series": []
-    },
-    {
-      "id": "1e216598b1bbf4540586",
-      "title": "Govt plans Tk 21,900cr digital makeover for schools",
-      "excerpt": "According to proposals by the Directorate of Secondary and Higher Education (DSHE), the projects will cover half of the 20,767 secondary and higher secondary educational institutions and be implemented between January 2027 and December 2031.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/a132aaea9d8403b70f6ae63b.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/govt-plans-tk-21-900cr-digital-makeover-for-schools/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": []
-    },
-    {
-      "id": "1e4a12acf147557a86c8",
-      "title": "Middle class squeezed",
-      "excerpt": "A series of price hikes leaves many families with no wiggle room",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/3fe48fcc3827fb1ef2e14439.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/middle-class-squeezed/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "1e5213a093c35a5e37c5",
-      "title": "SSC pass rate hits 19-year low",
-      "excerpt": "This year’s SSC results painted a grim picture, with the pass rate across the nine general education boards hitting a 19-year low and GPA-5 achievers falling to their lowest level since 2020.",
-      "category": "Education",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/83a409fc00de672e5be59059.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/ssc-pass-rate-hits-19-year-low/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
     },
     {
       "id": "1ec58f080a87815ff00c",
@@ -1231,25 +1874,6 @@
       "series": []
     },
     {
-      "id": "40069ff0c986fe10eeb5",
-      "title": "Teacher shortages strain government primary schools",
-      "excerpt": "Government primary schools across Bangladesh are struggling to keep lessons on track as headteacher posts remain vacant in more than half of the institutions while thousands of assistant-teacher positions also remain unfilled, putting extra pressure on teachers and disrupting classes.",
-      "category": "Education",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/fcca305fa7c25bfeccc0b922.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/teacher-shortages-strain-government-primary-schools/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "teacher-shortages-recruitment"
-      ]
-    },
-    {
       "id": "41381b962c2cf9b080e1",
       "title": "Academic activities in peril",
       "excerpt": "Academic activities at Bangabandhu Sheikh Mujibur Rahman Science and Technology University in Gopalganj are being severely hampered due to a shortage of basic infrastructure and teachers.",
@@ -1379,25 +2003,6 @@
       ]
     },
     {
-      "id": "4605c47ab86fe0fa0460",
-      "title": "Admission to class-1: Heavy loads on tender shoulders",
-      "excerpt": "The government’s move to reintroduce written admission tests for class-1 from the next academic year has sparked concern among parents, with many turning to coaching centres and private tutors to help their children prepare for the exams.",
-      "category": "Education",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/ef92f4ad504100572091d49b.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/admission-to-class-1-heavy-loads-on-tender-shoulders/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "universities-campus-governance"
-      ]
-    },
-    {
       "id": "47510b59789fcb156c32",
       "title": "Set up waiting list system to recruit teachers",
       "excerpt": "The government’s advisory committee on primary education reform has proposed a new system for teacher recruitment.",
@@ -1436,57 +2041,6 @@
       ]
     },
     {
-      "id": "493ccfbc7bcf92750b7a",
-      "title": "Primary teachers’ pay edge over lowest grade govt job narrows in five decades",
-      "excerpt": "Despite higher entry qualifications, their starting basic is now only 20% above the government’s lowest grade, compared with 69% in 1973",
-      "category": "Education",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/41f3c510aa813ff2b6b5b06f.png",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/primary-teachers-pay-edge-over-lowest-grade-govt-job-narrows-in-five/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": []
-    },
-    {
-      "id": "4b7f5a04c1f9d304e9c3",
-      "title": "Who protects families when they report child sexual abuse?",
-      "excerpt": "A Tongi father says he has received death threats after reporting his seven-year-old daughter's alleged abuse at a madrasa. The police response could matter far beyond this one case",
-      "category": "Rights & Justice",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/54bc675554dd013a7b780229.png",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/who-protects-families-when-they-report-child-sexual-abuse/",
-      "credit_type": "byline",
-      "beat": "rights-social-justice",
-      "beat_title": "Rights & social justice",
-      "series": []
-    },
-    {
-      "id": "4cb8e463fbbba5db4753",
-      "title": "Police and media have no right to shame detainees",
-      "excerpt": "A police outpost stood barely 30 yards from a house in Purbachal where “drug parties” had apparently been held for nearly a year.",
-      "category": "Opinion",
-      "stream": "opinion",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/02eceeab5911ca96552179b1.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/police-and-media-have-no-right-to-shame-detainees/",
-      "credit_type": "byline",
-      "beat": "media-journalism",
-      "beat_title": "Media & journalism",
-      "series": []
-    },
-    {
       "id": "4d0b85be00e8ab566d7b",
       "title": "Removal of word ‘adivasi’: Indigenous group attacked at NCTB; 20 hurt",
       "excerpt": "At least 20 persons were injured yesterday in an attack on an indigenous group and its supporters protesting the removal of a graffiti from textbooks featuring the word “indigenous” (adivasi, in Bangla).",
@@ -1504,23 +2058,6 @@
       "series": [
         "curriculum-textbooks-assessment"
       ]
-    },
-    {
-      "id": "50a2a69c69f8aa3965ce",
-      "title": "What could he have stolen that was worth his life?",
-      "excerpt": "The killing of Mohammad Faysal in Moheshkhali forces an uncomfortable question about those who attack, those who watch and the state that must prevent both",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/673ab432648cd61dfca6061b.png",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/what-could-he-have-stolen-that-was-worth-his-life/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
     },
     {
       "id": "50ce1bf7ba0f4f188e33",
@@ -1613,23 +2150,6 @@
         "curriculum-textbooks-assessment",
         "public-recruitment-administration"
       ]
-    },
-    {
-      "id": "5770ba9b03ea548d53f5",
-      "title": "Schools up, pupils down",
-      "excerpt": "Bangladesh has more secondary schools than it did seven years ago, but far fewer students in them.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/95a7ce039d934e71460e777a.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/schools-up-pupils-down/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": []
     },
     {
       "id": "5cbd80df730710db3d9d",
@@ -1736,44 +2256,6 @@
       "series": []
     },
     {
-      "id": "67107632b302b3dbb406",
-      "title": "CUET deserves answers, not another power struggle over the VC’s office",
-      "excerpt": "The confrontation raises deeper questions about university appointments, political influence and accountability",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/461fb55e748c948de07b1018.png",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/cuet-deserves-answers-not-another-power-struggle-over-the-vc-s-office/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "universities-campus-governance"
-      ]
-    },
-    {
-      "id": "69808da284e378524eb0",
-      "title": "Pry teacher recruitment: Selected, yet still waiting",
-      "excerpt": "Selected applicants have been waging protests since April for quick completion of the appointment process.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/c1418d1dfe51fb0603d522c7.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/pry-teacher-recruitment-selected-yet-still-waiting/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "teacher-shortages-recruitment"
-      ]
-    },
-    {
       "id": "7226061d3098db8d7f3c",
       "title": "Metro sees huge crowd as book fair kicks off",
       "excerpt": "At the Dhaka University station, hundreds of passengers were seen waiting at packed platforms, hoping to board already overflowing trains",
@@ -1808,44 +2290,6 @@
       "beat": "other",
       "beat_title": "Other",
       "series": []
-    },
-    {
-      "id": "75f6261ed8aba04af297",
-      "title": "Reform missteps behind SSC result swings: experts",
-      "excerpt": "Since the late 1980s, Bangladesh’s SSC pass rate has seen major fluctuations, reflecting not only student performance but also suggesting the influence of political realities, exam reforms, marking practices, and education policies.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/02cc48668c1b811eeb565c12.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/reform-missteps-behind-ssc-result-swings-experts/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
-    },
-    {
-      "id": "77f2d6ad1fec34535f22",
-      "title": "School textbooks to get new content on history",
-      "excerpt": "School textbooks will be revised for the 2027 academic year, with new content on the Liberation War, post-independence political history and the July Uprising.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/8ede386f31bc79bc90e64a8b.png",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/school-textbooks-to-get-new-content-on-history/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
     },
     {
       "id": "7836c012ff91e87ca550",
@@ -2056,25 +2500,6 @@
       ]
     },
     {
-      "id": "8150d29e3b2f46ee7b91",
-      "title": "Why girls continue to outpace boys in SSC results",
-      "excerpt": "Differences in school attendance, child labour, stipend incentives and study routines are widening the performance gap between male and female students in the Secondary School Certificate (SSC) and equivalent examinations, according to educationists, teachers and candidates.",
-      "category": "Education",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/66ad8a870663c8cf2bef4d0f.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/why-girls-continue-to-outpace-boys-in-ssc-results/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
-    },
-    {
       "id": "8545ab51d54c52606dc6",
       "title": "Where love for books begins",
       "excerpt": "Eight-year-old Jamiul couldn’t contain his excitement, bouncing on his toes as he waited to enter the Suhrawardy Udyan section of the book fair. His father, Shafayet, held his hand tight, with a proud smile mirroring his son’s joy.",
@@ -2106,23 +2531,6 @@
       "credit_type": "byline",
       "beat": "politics-civic-life",
       "beat_title": "Politics & civic life",
-      "series": []
-    },
-    {
-      "id": "85d5792701ec5eaa8a25",
-      "title": "Honouring a trailblazer",
-      "excerpt": "More than five decades ago, Niloufer Manzur, a young teacher and mother of two, set out to establish a school that would provide children with a strong academic foundation while developing their conscience and sense of responsibility towards their country.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/2a906bf6c12096dedf00ed58.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/honouring-a-trailblazer/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
       "series": []
     },
     {
@@ -2177,25 +2585,6 @@
       "series": []
     },
     {
-      "id": "939e921489d42c92d14f",
-      "title": "Dakhil pass rate lowest in 23 years",
-      "excerpt": "The Madrasah Education Board recorded its lowest pass rate in 23 years at 55.49 percent, while the Technical Education Board posted a 19-year low of 58.20 percent in this year’s SSC and equivalent examinations, according to education ministry data.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/1d3958b4f365f936f1cecec1.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/dakhil-pass-rate-lowest-in-23-years/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
-    },
-    {
       "id": "957c24e365b46273ad64",
       "title": "Ekushey Boi Mela likely to get new venue",
       "excerpt": "Uncertainty looms over holding the next edition of Amar Ekushey Boi Mela at Suhrawardy Udyan, as the government has decided to take over the ground for construction of a “cultural zone” called Sonar Bangla Sangskritik Boloy.",
@@ -2228,26 +2617,6 @@
       "beat": "other",
       "beat_title": "Other",
       "series": []
-    },
-    {
-      "id": "98afbde149ce1272ce02",
-      "title": "Higher viva marks may undermine fairness in public recruitment",
-      "excerpt": "Last July, BNP leader Salahuddin Ahmed said his party wanted the viva marks of the Bangladesh Civil Service (BCS) examination reduced to 50 from 200 to limit scope for discrimination in Bangladesh Public Service Commission (BPSC) recruitment.",
-      "category": "Opinion",
-      "stream": "opinion",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/9114c972e5ec1f96d2c9157b.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/higher-viva-marks-may-undermine-fairness-in-public-recruitment/",
-      "credit_type": "byline",
-      "beat": "governance-public-institutions",
-      "beat_title": "Governance & public institutions",
-      "series": [
-        "curriculum-textbooks-assessment",
-        "public-recruitment-administration"
-      ]
     },
     {
       "id": "99f7411a7498aa46c115",
@@ -2519,25 +2888,6 @@
       "series": []
     },
     {
-      "id": "b5a59a00115f8b165578",
-      "title": "RU keeps failing to stop campus violence",
-      "excerpt": "Rajshahi University authorities have repeatedly failed to protect students and journalists from violence on campus since August 2024, even with proctorial officials or teachers present.",
-      "category": "Rights & Justice",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/1c19e0543714f8b6dc12b2ab.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/ru-keeps-failing-to-stop-campus-violence/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "universities-campus-governance"
-      ]
-    },
-    {
       "id": "b89b42481c65c23a9f28",
       "title": "Falgun fever captures Ekushey Boi Mela",
       "excerpt": "Excitement is in the air as Dhaka prepares for a unique triple celebration -- Saraswati Puja, Pahela Falgun and Valentine’s Day.",
@@ -2553,25 +2903,6 @@
       "beat": "other",
       "beat_title": "Other",
       "series": []
-    },
-    {
-      "id": "b8b676dd8f69ae866fd3",
-      "title": "Give SSC students who failed a second chance, but fix the learning gaps too",
-      "excerpt": "Last week, Education Minister ANM Ehsanul Hoque Milon announced that SSC examinees who failed two subjects could retake those exams within 15 days of the results.",
-      "category": "Opinion",
-      "stream": "opinion",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/e170d93ae209dca079161839.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/give-ssc-students-who-failed-a-second-chance-but-fix-the-learning-gaps-too/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
     },
     {
       "id": "b8ede188d4e442e6eb51",
@@ -2747,23 +3078,6 @@
       "credit_type": "byline",
       "beat": "rights-social-justice",
       "beat_title": "Rights & social justice",
-      "series": []
-    },
-    {
-      "id": "c886ff8698447164c92a",
-      "title": "Dead-end jobs, meagre pay for makers of nation-builders",
-      "excerpt": "Despite their pivotal role in shaping future generations, government primary schoolteachers remain among the lowest-paid staffers, a disparity that many educators say is reflected in the level of respect they receive.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/bc223a0bcabb8216bd1983c6.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/dead-end-jobs-meagre-pay-for-makers-of-nation-builders/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
       "series": []
     },
     {
@@ -2945,23 +3259,6 @@
       "series": []
     },
     {
-      "id": "d8e19630cabfdf5ce511",
-      "title": "Why must the girl change her route?",
-      "excerpt": "From harassment and threats to retaliation against families who speak up, the burden of safety continues to fall on girls while perpetrators often face little immediate consequence",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/1f4de49a5ddeabd2b9cca2a5.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/why-must-the-girl-change-her-route/",
-      "credit_type": "byline",
-      "beat": "media-journalism",
-      "beat_title": "Media & journalism",
-      "series": []
-    },
-    {
       "id": "dd1c19c35bc87359398d",
       "title": "Parents worried as schools reopen amid heat alert",
       "excerpt": "As primary and secondary schools, along with colleges, reopen today, parents are expressing concerns about the scorching heat and its potential impact on their children’s health.",
@@ -3120,25 +3417,6 @@
       "beat_title": "Education",
       "series": [
         "curriculum-textbooks-assessment"
-      ]
-    },
-    {
-      "id": "e5420c5af2374795bfd8",
-      "title": "Secondary schools: Vacant posts hurting children, taxing teachers",
-      "excerpt": "Persistent shortages of teachers have been disrupting classroom learning at secondary schools across the country, forcing many institutions to overburden teachers of key subjects including mathematics, English and ICT, and reduce the frequency of practical classes.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/169a3774180789c369a945c5.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/secondary-schools-vacant-posts-hurting-children-taxing-teachers/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "teacher-shortages-recruitment"
       ]
     },
     {
@@ -3322,40 +3600,6 @@
       "series": []
     },
     {
-      "id": "f053bdc98a50af3a6424",
-      "title": "Bewildering convictions",
-      "excerpt": "The jailing of 85 people following a raid on a senior police officer’s house in Purbachal last week has raised questions over the evidence behind their convictions and the circulation of their photographs and videos.",
-      "category": "Rights & Justice",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/ed1adbeeea88c8fdf0c6aa6d.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/bewildering-convictions/",
-      "credit_type": "byline",
-      "beat": "rights-social-justice",
-      "beat_title": "Rights & social justice",
-      "series": []
-    },
-    {
-      "id": "f101fb344ef72916c43f",
-      "title": "Health, education spending to reach 5% of GDP by 2031",
-      "excerpt": "Govt’s five-year plan sets targets for two key sectors",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2026-10-27T00:10:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/f2e71b7972731668c229b05a.png",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/health-education-spending-to-reach-5-of-gdp-by-2031/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": []
-    },
-    {
       "id": "f410ff92aa3a029a50e9",
       "title": "HSC pass rate drops, number of GPA-5 rises",
       "excerpt": "Though students did not have to sit for nearly half of the exams, the pass rate for this year’s Higher Secondary Certificate still saw a slight drop.",
@@ -3418,7 +3662,7 @@
       "stream": "reporting",
       "date_published": "2026-10-17T00:09:19+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/f05cfb103793191a1900b230.jpg",
+      "cover_image": "assets/imported/ec443a69648456de05c6ffa6.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/durga-puja-the-joy-of-coming-home/",
@@ -3823,7 +4067,7 @@
       "stream": "reporting",
       "date_published": "2026-09-04T00:00:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/f48aa91c65130422c0f75c64.jpg",
+      "cover_image": "assets/imported/a2422db2d1c756ba7ece4236.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/3-public-universities-vcs-greetings-to-bnp-leaders-raise-ethical-questions/",
@@ -3842,7 +4086,7 @@
       "stream": "thoughts",
       "date_published": "2026-07-17T00:00:00+06:00",
       "date_modified": "",
-      "cover_image": "assets/imported/866b31167489fabbeb095ce9.jpg",
+      "cover_image": "assets/imported/d1f3a08c33456591b186a598.jpg",
       "cover_alt": "",
       "source_name": "The Daily Star",
       "local_url": "stories/when-calling-messi-goat-is-no-longer-enough/",
@@ -4287,25 +4531,6 @@
       ]
     },
     {
-      "id": "254cef90f85c6a66af90",
-      "title": "SSC pass rate plunges to a 16-year low",
-      "excerpt": "The pass rate in this year’s Secondary School Certificate (SSC) examinations across all nine general education boards has dropped to 68.04 percent, the lowest in 16 years.",
-      "category": "Education",
-      "stream": "reporting",
-      "date_published": "2025-07-11T00:09:23+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/a42d2d64570ac8ef7c5f4c20.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/ssc-pass-rate-plunges-to-a-16-year-low/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
-    },
-    {
       "id": "a0e9777d4d00b11541d1",
       "title": "When did we stop being human in the pursuit of a headline?",
       "excerpt": "We have turned the victim's trauma into commodity in an insatiably frenzy for traction",
@@ -4529,57 +4754,6 @@
       "series": []
     },
     {
-      "id": "b3507af3f59ad2b2302f",
-      "title": "A village of mosques",
-      "excerpt": "Beraid is a small place in terms of size, but it is huge in terms of popularity, thanks to a large number of ancient mosques.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-02-18T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/d9e6fa2b9ee25e5fb25650ac.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/a-village-of-mosques/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "c79aef02d31238dfa316",
-      "title": "Cultivating reading habits since 2001",
-      "excerpt": "At first glance, it looks like a simple tin-shed house. One will not even find any decent-looking furniture inside the room.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-02-18T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/c27a0b47ffd026266b9a02a8.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/cultivating-reading-habits-since-2001/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "d336cc224b0fc84df7ab",
-      "title": "Where basic amenities remain elusive",
-      "excerpt": "Residents of the newly-added wards in Dhaka North City Corporation expressed dissatisfaction after being denied civic amenities, claiming that life was far better when they were under the union parishad.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-02-18T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/0500e72d5f4c26eb522b1469.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/where-basic-amenities-remain-elusive/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
       "id": "30613a4baf44f6df53cb",
       "title": "HSC pass rate falls",
       "excerpt": "The rate of success in the HSC examinations dropped to 84.31 percent last year from a record 95.57 percent in 2021.",
@@ -4596,180 +4770,6 @@
       "beat_title": "Education",
       "series": [
         "curriculum-textbooks-assessment"
-      ]
-    },
-    {
-      "id": "7e476e19cbab9eb7818e",
-      "title": "A village of crabs, in Dhaka!",
-      "excerpt": "It was early morning. The sun had not yet risen, and most of Dhaka was still sleeping.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-02-04T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/6efba50ff67b62cb78027acc.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/a-village-of-crabs-in-dhaka/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "af4fbc08671802826c82",
-      "title": "Watching planes their only entertainment",
-      "excerpt": "With a smiling face and curiosity in her eyes, six-year-old Anika stood beside a barbed wire fence and gazed up at the sky. Soon, an aeroplane took off with a loud roar.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-02-04T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/570feec3f6a20e2b3703f6a0.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/watching-planes-their-only-entertainment/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "cbb9827714b0b07f55be",
-      "title": "Plight of DNCC wards 52, 53: Life seemed better under union parishad",
-      "excerpt": "In July 2017, Dhaka North City Corporation took 18 wards under its wing, which were previously under the union parishad system.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-02-04T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/a387b3268ed8b982bbcce514.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/plight-of-dncc-wards-52-53-life-seemed-better-under-union-parishad/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "88cabc444368f4ddea07",
-      "title": "Under the dirty water, there’s a ward",
-      "excerpt": "Some of the places remain under stagnant water for years, while some lack basic civic amenities, including proper roads or pure drinking water. None of these neighbourhoods has a single playground. Such are the states of the three wards in zone-9 of Dhaka North City Corporation.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-01-24T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/e35bc47bb4b284bef88ab5fa.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/under-the-dirty-water-there-s-a-ward/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "65528f66fc5a65f811dc",
-      "title": "NCTB textbooks: Never-ending cycle of controversies",
-      "excerpt": "The National Curriculum and Textbook Board has been stuck in the loop of controversies centring on school textbooks with academics and some NCTB officials blaming it on the negligence of writers and editors, insufficient training and lack of serious punishment for blunders.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-01-19T07:20:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/1f2175bd20ecd195bcbd3cdc.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/nctb-textbooks-never-ending-cycle-of-controversies/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "curriculum-textbooks-assessment"
-      ]
-    },
-    {
-      "id": "744b061ba119c2d84cbc",
-      "title": "Radio Silence: Bangladesh Betar’s external service inoperative for three years",
-      "excerpt": "The external service of Bangladesh Betar has remained disconnected from the rest of the world for over three years due to a mechanical fault, depriving a vast diaspora of foreign listeners.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2023-01-15T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/effc6d84d5c93634be2f70e9.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/radio-silence-bangladesh-betar-s-external-service-inoperative-for-three/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "928418106ff159acfc8e",
-      "title": "‘I’ll pass this story to my children’",
-      "excerpt": "As the metro-rail train started its maiden journey yesterday afternoon, Swadhin Ahmed, a young man, had a wide smile on his face. In fact, it was a day of pride for Swadhin, who had been working for the metro-rail project for three years.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2022-12-29T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/0f54dff4a56d831aad176912.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/i-ll-pass-this-story-to-my-children/",
-      "credit_type": "byline",
-      "beat": "rights-social-justice",
-      "beat_title": "Rights & social justice",
-      "series": []
-    },
-    {
-      "id": "473746cb08f01c291166",
-      "title": "Satrasta-Tejgaon Road: Will it finally be free of congestion?",
-      "excerpt": "In its latest effort to free the capital’s Satrasta-Tejgaon road from congestion, Dhaka North City Corporation (DNCC) is setting up separate lanes for rickshaws by installing dividers.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2022-12-28T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/33139d6474bbe17116c311c3.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/satrasta-tejgaon-road-will-it-finally-be-free-of-congestion/",
-      "credit_type": "byline",
-      "beat": "other",
-      "beat_title": "Other",
-      "series": []
-    },
-    {
-      "id": "31c71d3d8e063f4a22c1",
-      "title": "A good initiative, but still a long way to go",
-      "excerpt": "The instalment of CCTV cameras in city buses by the Ministry of Women and Children Affairs has generated a positive response among female commuters as well as bus staffers, as they believe the initiative has brought a change in the behavioural pattern of the overall commuters.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2022-12-27T00:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/d9e62b084452310f97103128.jpg",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/a-good-initiative-but-still-a-long-way-to-go/",
-      "credit_type": "byline",
-      "beat": "rights-social-justice",
-      "beat_title": "Rights & social justice",
-      "series": []
-    },
-    {
-      "id": "683b7f3fb1f02105037b",
-      "title": "Study Abroad: students suffer as banks reluctant to open files",
-      "excerpt": "Mohammad Omar Faruque, 27, a graduate of Jahangirnagar University, was hoping to pursue his master’s in the United Kingdom.",
-      "category": "News",
-      "stream": "reporting",
-      "date_published": "2022-12-13T07:00:00+06:00",
-      "date_modified": "",
-      "cover_image": "assets/imported/d93f76fd2397f47217682167.png",
-      "cover_alt": "",
-      "source_name": "The Daily Star",
-      "local_url": "stories/study-abroad-students-suffer-as-banks-reluctant-to-open-files/",
-      "credit_type": "byline",
-      "beat": "education",
-      "beat_title": "Education",
-      "series": [
-        "universities-campus-governance"
       ]
     },
     {
