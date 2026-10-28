@@ -1,0 +1,61 @@
+import subprocess
+import sys
+from pathlib import Path
+import threading
+from types import SimpleNamespace
+import unittest
+from unittest.mock import Mock
+
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from runtime import stop_playwright
+
+
+def wrapper(process, stop):
+    return SimpleNamespace(stop=stop, _impl_obj=SimpleNamespace(_connection=SimpleNamespace(
+        _transport=SimpleNamespace(_proc=SimpleNamespace(_transport=SimpleNamespace(_proc=process))))))
+
+
+class ShutdownTests(unittest.TestCase):
+    def test_responsive_driver_is_not_terminated(self):
+        process=Mock(spec=subprocess.Popen)
+        process.poll.return_value=None
+        self.assertFalse(stop_playwright(wrapper(process,lambda:None),grace_seconds=0.5))
+        process.terminate.assert_not_called()
+
+    def test_stuck_driver_is_ended_using_its_owned_process_handle(self):
+        ended=threading.Event()
+        process=Mock(spec=subprocess.Popen)
+        process.poll.return_value=None
+        process.terminate.side_effect=ended.set
+        def stop():
+            if not ended.wait(2):
+                raise AssertionError('Driver shutdown was not bounded')
+        self.assertTrue(stop_playwright(wrapper(process,stop),grace_seconds=0.02))
+        process.terminate.assert_called_once_with()
+
+    def test_stop_error_still_cleans_up_owned_driver(self):
+        process=Mock(spec=subprocess.Popen)
+        process.poll.return_value=None
+        def stop():
+            raise RuntimeError('connection ended')
+        with self.assertRaisesRegex(RuntimeError,'connection ended'):
+            stop_playwright(wrapper(process,stop),grace_seconds=0.5)
+        process.terminate.assert_called_once_with()
+
+    def test_exited_driver_with_open_pipe_is_closed_on_its_loop(self):
+        ended=threading.Event()
+        process=Mock(spec=subprocess.Popen)
+        process.poll.return_value=0
+        def stop():
+            if not ended.wait(2):
+                raise AssertionError('The driver pipe was not closed')
+        api=wrapper(process,stop)
+        connection=api._impl_obj._connection
+        connection._transport._proc._transport.close=ended.set
+        connection._loop=SimpleNamespace(is_closed=lambda:False,call_soon_threadsafe=lambda fn:fn())
+        self.assertTrue(stop_playwright(api,grace_seconds=0.02))
+        process.terminate.assert_not_called()
+
+
+if __name__=='__main__':
+    unittest.main()
