@@ -13,6 +13,10 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DeviceTest {
+    static {
+        // UiAutomator otherwise suppresses the service we are trying to test.
+        Configurator.getInstance().setUiAutomationFlags(android.app.UiAutomation.FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES);
+    }
     private final Instrumentation instrumentation=InstrumentationRegistry.getInstrumentation();
     private final UiDevice device=UiDevice.getInstance(instrumentation);
     @Test public void packagedUiAndEncryptedStorage() throws Exception {
