@@ -1,0 +1,12 @@
+<resources>
+    <style name="AppTheme" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#146657</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#F3F7F5</item>
+        <item name="android:navigationBarColor">#F3F7F5</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+    <string name="service_description">On tasks you start, inspect visible text in apps you select and offer clicks, typing and scrolling for your approval. Selected screen text goes to OpenAI using your ChatGPT connection. Password and marked sensitive nodes are excluded. No screen monitoring while idle. Stop ends app access.</string>
+</resources>
