@@ -12,7 +12,7 @@ import threading
 import uuid
 
 from core import Cancelled, Declined, TOOL_SCHEMAS, check_cancel, valid_url, write_note
-from runtime import external_program_environment
+from runtime import external_program_environment, stop_playwright
 
 
 class Tools:
@@ -79,7 +79,7 @@ class Tools:
                     route.continue_()
                 self.context.route("**/*", route_handler)
             except Exception:
-                self.playwright.stop()
+                stop_playwright(self.playwright)
                 self.playwright = None
                 if os.environ.get("ARAFAT_BROWSER_CHANNEL") == "msedge":
                     raise RuntimeError("Could not start Microsoft Edge. Check that Edge is installed, and close any other copy of this assistant.") from None
@@ -368,7 +368,7 @@ class Tools:
             pass
         try:
             if self.playwright:
-                self.playwright.stop()
+                stop_playwright(self.playwright)
         except Exception:
             pass
         if self._com_initialised:
