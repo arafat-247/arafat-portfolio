@@ -8,6 +8,7 @@ import os
 import sys
 import threading
 import subprocess
+import asyncio
 
 _lock = threading.RLock()
 
@@ -47,9 +48,11 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
     process = None
     process_transport = None
     loop = None
+    sdk_process = None
     try:
         connection = playwright._impl_obj._connection
-        candidate_transport = connection._transport._proc._transport
+        sdk_process = connection._transport._proc
+        candidate_transport = sdk_process._transport
         process_transport = candidate_transport
         loop = getattr(connection, "_loop", None)
         candidate = candidate_transport._proc
@@ -82,8 +85,20 @@ def stop_playwright(playwright, grace_seconds=3.0, observe=None):
         if process_transport is not None and loop is not None and not loop.is_closed():
             close = getattr(process_transport, "close", None)
             if close:
+                def finish_owned_pipes():
+                    close()
+                    # On Windows a closed proactor transport can leave its
+                    # StreamReader waiting despite the driver already exiting.
+                    # Feed EOF only to that exited driver's retained readers.
+                    exited = process is not None and process.poll() is not None
+                    if exited and sdk_process is not None:
+                        for name in ("stdout", "stderr"):
+                            reader = getattr(sdk_process, name, None)
+                            if isinstance(reader, asyncio.StreamReader):
+                                reader.feed_eof()
+                    diagnostic("owned driver pipes closed")
                 try:
-                    loop.call_soon_threadsafe(close)
+                    loop.call_soon_threadsafe(finish_owned_pipes)
                     forced.set()
                 except RuntimeError:
                     pass
