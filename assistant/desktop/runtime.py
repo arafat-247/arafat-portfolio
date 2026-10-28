@@ -38,7 +38,7 @@ def single_instance(directory):
         kernel.CloseHandle(handle)
 
 
-def stop_playwright(playwright, grace_seconds=3.0):
+def stop_playwright(playwright, grace_seconds=3.0, observe=None):
     """Close the SDK; bound an unresponsive driver using its owned process handle.
 
     The transport layout is checked against the pinned Playwright version.
@@ -50,16 +50,26 @@ def stop_playwright(playwright, grace_seconds=3.0):
     try:
         connection = playwright._impl_obj._connection
         candidate_transport = connection._transport._proc._transport
+        process_transport = candidate_transport
+        loop = getattr(connection, "_loop", None)
         candidate = candidate_transport._proc
         if isinstance(candidate, subprocess.Popen):
             process = candidate
-            process_transport = candidate_transport
-            loop = getattr(connection, "_loop", None)
     except AttributeError:
         pass
     forced = threading.Event()
 
+    def diagnostic(stage):
+        if observe:
+            observe({"stage": stage, "owned_process_handle": process is not None,
+                     "owned_transport": process_transport is not None,
+                     "loop_present": loop is not None,
+                     "process_returncode": process.poll() if process is not None else None})
+
+    diagnostic("before driver stop")
+
     def end_owned_driver():
+        diagnostic("driver shutdown grace elapsed")
         if process is not None:
             try:
                 if process.poll() is None:
@@ -77,6 +87,7 @@ def stop_playwright(playwright, grace_seconds=3.0):
                     forced.set()
                 except RuntimeError:
                     pass
+        diagnostic("owned driver cleanup requested")
 
     timer = threading.Timer(grace_seconds, end_owned_driver)
     timer.daemon = True

@@ -56,6 +56,17 @@ class ShutdownTests(unittest.TestCase):
         self.assertTrue(stop_playwright(api,grace_seconds=0.02))
         process.terminate.assert_not_called()
 
+    def test_transport_is_closed_when_exited_process_handle_was_already_cleared(self):
+        ended=threading.Event()
+        def stop():
+            if not ended.wait(2):
+                raise AssertionError('The owned driver transport was not closed')
+        api=wrapper(None,stop)
+        connection=api._impl_obj._connection
+        connection._transport._proc._transport.close=ended.set
+        connection._loop=SimpleNamespace(is_closed=lambda:False,call_soon_threadsafe=lambda fn:fn())
+        self.assertTrue(stop_playwright(api,grace_seconds=0.02))
+
 
 if __name__=='__main__':
     unittest.main()

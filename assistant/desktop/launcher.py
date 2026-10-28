@@ -23,6 +23,9 @@ def smoke_test(report_path):
         Path(report_path).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
         if sys.stdout:
             print("Packaged check: " + name, flush=True)
+    def driver_observation(value):
+        result["driver_diagnostic"] = value
+        phase(value["stage"])
     try:
         phase("import microphone module")
         import sounddevice
@@ -69,7 +72,14 @@ def smoke_test(report_path):
                 browser.close()
                 phase("Microsoft Edge closed")
             finally:
-                result["driver_cleanup_forced"] = stop_playwright(p)
+                import faulthandler
+                trace = Path(str(report_path) + ".trace.txt").open("w", encoding="utf-8")
+                faulthandler.dump_traceback_later(15, repeat=True, file=trace)
+                try:
+                    result["driver_cleanup_forced"] = stop_playwright(p, observe=driver_observation)
+                finally:
+                    faulthandler.cancel_dump_traceback_later()
+                    trace.close()
         phase("browser driver closed")
         result["checks"].append("Installed Microsoft Edge launches and handles Bangla input")
         phase("open desktop interface")
