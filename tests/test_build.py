@@ -8,6 +8,24 @@ from types import SimpleNamespace
 from urllib.error import HTTPError
 
 class BuildTests(unittest.TestCase):
+    def test_source_labels_stay_in_opinion_after_editorial_overrides(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);content=root/'content';site=root/'site';out=root/'dist'
+            (site/'assets').mkdir(parents=True);(site/'admin').mkdir()
+            core.write(content/'settings.json',{'site_name':'Arafat Rahaman','site_url':'https://arafatrahaman.com'})
+            core.write(content/'overrides.json',{'articles':{'analysis-story':{'stream':'reporting'},'reaction-story':{'stream':'thoughts'}}})
+            for ident,label in (('analysis-story','Analysis'),('reaction-story','Reaction')):
+                core.write(content/'articles'/(ident+'.json'),{'id':ident,'title':label+' sample','status':'published','stream':'reporting','source_label':label,'category':'News','date_published':'2026-10-28T12:00:00+06:00','body_html':'<p>Verified publisher text.</p>','source_url':'https://example.com/'+ident,'original_authors':[core.NAME],'verified_author':True})
+            with patch.multiple(build,CONTENT=content,SITE=site,OUT=out),patch.object(build.SocialCardRenderer,'render',return_value=''),contextlib.redirect_stdout(io.StringIO()):
+                build.build()
+            records=core.read(out/'data/index.json')['articles']
+            self.assertEqual({a['stream'] for a in records},{'opinion'})
+            opinion=(out/'opinion/index.html').read_text()
+            reporting=(out/'reporting/index.html').read_text()
+            for title in ('Analysis sample','Reaction sample'):
+                self.assertIn(title,opinion)
+                self.assertNotIn(title,reporting)
+
     def test_credit_classification_respects_editorial_override(self):
         manual={'manual_import':True,'verified_author':False}
         self.assertEqual(build.credit_type(manual),'contribution')

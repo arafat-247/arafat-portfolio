@@ -9,7 +9,7 @@
   ],
   "verified_author": true,
   "author_listing_verified": true,
-  "stream": "reporting",
+  "stream": "opinion",
   "category": "Rights & Justice",
   "date_published": "2026-05-20T19:53:38+06:00",
   "date_modified": "2026-05-20T21:45:00+06:00",
@@ -27,5 +27,6 @@
   "first_archived_at": "2026-09-06T10:57:52.285306+00:00",
   "content_hash": "57637cd8f830ab9db6191a08c0b4367b9fe78808a932bbc34fff37ebe12bef1a",
   "date_published_source": "article-published-label",
-  "date_verified_at": "2026-10-28T13:04:13.247029+00:00"
+  "date_verified_at": "2026-10-28T13:04:13.247029+00:00",
+  "source_label": "Reaction"
 }

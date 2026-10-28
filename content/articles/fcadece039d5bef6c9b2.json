@@ -9,7 +9,7 @@
   ],
   "verified_author": true,
   "author_listing_verified": true,
-  "stream": "reporting",
+  "stream": "opinion",
   "category": "News",
   "date_published": "2025-02-02T13:24:35+06:00",
   "date_modified": "2025-02-02T16:38:00+06:00",
@@ -27,5 +27,6 @@
   "first_archived_at": "2026-09-06T10:58:59.897167+00:00",
   "content_hash": "a44b4cc6d81bc03e4a2967929ce9ff8b47bb18b0a76cc48af36b3c730db9fccf",
   "date_published_source": "article-published-label",
-  "date_verified_at": "2026-10-28T13:04:13.260716+00:00"
+  "date_verified_at": "2026-10-28T13:04:13.260716+00:00",
+  "source_label": "Reaction"
 }
