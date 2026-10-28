@@ -73,8 +73,28 @@ class ContentTests(unittest.TestCase):
         a=core.article(source,'https://example.com/a');self.assertTrue(a['date_published'].startswith('2026-08-08'));self.assertNotIn('Editor pick',a['body_html'])
     def test_daily_star_analytics_timestamp_fallback(self):
         source=sample(date='')+'<script type="application/json">'+json.dumps({'tds_ga_dimensions':{'NodeType':'news','NodeID':'4267561','created':'1788816753'}})+'</script>'
-        a=core.article(source,'https://example.com/news/story-12345')
+        a=core.article(source,'https://www.thedailystar.net/news/story-4267561')
         self.assertEqual(a['date_published'],'2026-09-08T03:32:33+06:00')
+    def test_recommendation_time_does_not_replace_publication_date(self):
+        source=sample(date='')+'<aside><time datetime="2026-10-28T00:30:00+06:00">Today</time></aside><article><div class="node-content"><span>Published : 8 September 2026</span><span>Updated : 9 September 2026, 13:36</span></div></article>'
+        a=core.article(source,'https://www.thedailystar.net/news/story-4267561')
+        self.assertEqual(a['date_published'],'2026-09-08T00:00:00+06:00')
+        self.assertEqual(a['date_modified'],'2026-09-09T13:36:00+06:00')
+    def test_unrelated_time_alone_is_not_a_publication_date(self):
+        source=sample(date='')+'<time datetime="2026-10-28T00:30:00+06:00">Today</time>'
+        self.assertEqual(core.article(source,'https://example.com/news/story-12345')['date_published'],'')
+    def test_analytics_must_belong_to_the_requested_article(self):
+        source=sample(date='')+'<script type="application/json">'+json.dumps({'related':{'NodeID':'9999999','created':'1793125800'},'tds_ga_dimensions':{'NodeType':'news','NodeID':'4267561','created':'1788816753'}})+'</script>'
+        a=core.article(source,'https://www.thedailystar.net/news/story-4267561')
+        self.assertEqual(a['date_published'],'2026-09-08T03:32:33+06:00')
+    def test_visible_date_wins_over_conflicting_metadata(self):
+        source=sample(date='2026-10-28T00:30:00+06:00')+'<article><div class="node-content"><span>Published : 8 September 2026</span></div></article>'
+        a=core.article(source,'https://www.thedailystar.net/news/story-4267561')
+        self.assertEqual(a['date_published'],'2026-09-08T00:00:00+06:00')
+    def test_related_card_inside_article_cannot_supply_date(self):
+        source=sample(date='')+'<article><div class="node-content"><div class="related-card"><span>Published : 28 October 2026</span></div><span>Published : 8 September 2026</span></div></article>'
+        a=core.article(source,'https://www.thedailystar.net/news/story-4267561')
+        self.assertEqual(a['date_published'],'2026-09-08T00:00:00+06:00')
     def test_manual_refresh_retries_failed_story_immediately(self):
         status={'status':'failed','failures':1,'last_checked':'2026-09-08T04:56:58+00:00'}
         current=core.datetime.fromisoformat('2026-09-08T05:00:00+00:00')

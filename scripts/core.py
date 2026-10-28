@@ -211,6 +211,71 @@ def objects(value):
     elif isinstance(value,list):
         for item in value: yield from objects(item)
 
+def article_dates(doc, ld, embedded, url):
+    """Read dates belonging to this article, never dates on recommendation cards."""
+    published=date(ld.get('datePublished') or doc.meta('article:published_time') or doc.meta('pubdate'))
+    modified=date(ld.get('dateModified') or doc.meta('article:modified_time'))
+    provenance='publication-metadata' if published else ''
+    scopes=[n for n in doc.root.walk() if 'node-content' in n.attrs.get('class','').split()]
+    if not scopes: scopes=doc.nodes('article')
+
+    def unrelated(n, scope):
+        while n is not scope:
+            if n.tag in ('aside','nav') or re.search(r'(^|[\s_-])(related|recommended|card)([\s_-]|$)',n.attrs.get('class',''),re.I):
+                return True
+            n=n.parent
+        return False
+
+    visible={}
+    for scope in scopes:
+        for n in scope.walk():
+            if unrelated(n,scope): continue
+            # The current publisher template explicitly labels these spans.
+            if n.tag in ('span','time'):
+                match=re.fullmatch(r'(Published|Updated)\s*:\s*(\d{1,2} [A-Za-z]+ \d{4})(?:,\s*(\d{1,2}:\d{2}))?',n.text(),re.I)
+                if match:
+                    value=date(match[2])
+                    if value and match[3]:
+                        hour,minute=map(int,match[3].split(':'))
+                        value=datetime.fromisoformat(value).replace(hour=hour,minute=minute).isoformat()
+                    if value: visible.setdefault(match[1].lower(),value)
+            if not published and n.attrs.get('itemprop')=='datePublished':
+                published=date(n.attrs.get('datetime') or n.attrs.get('content') or n.text())
+                if published: provenance='article-datePublished'
+
+    # Analytics is tied to the requested node. Other embedded stories cannot
+    # supply its timestamp, even when their script appears first.
+    node_id=urlsplit(url).path.rstrip('/').rsplit('-',1)[-1]
+    analytics=''
+    for data in embedded:
+        for obj in objects(data):
+            stamp=obj.get('created')
+            if str(obj.get('NodeID',''))!=node_id or not re.fullmatch(r'\d{9,12}',str(stamp or '')): continue
+            try:
+                analytics=datetime.fromtimestamp(int(stamp),timezone.utc).astimezone(timezone(timedelta(hours=6))).isoformat()
+            except (OverflowError,OSError,ValueError): continue
+            break
+        if analytics: break
+
+    if visible.get('published'):
+        calendar_date=visible['published'][:10]
+        # Retain exact publication time only when it agrees with the visible date.
+        published=next((value for value in (published,analytics) if value and datetime.fromisoformat(value).astimezone(timezone(timedelta(hours=6))).date().isoformat()==calendar_date),visible['published'])
+        provenance='article-published-label'
+    elif not published and analytics:
+        published=analytics
+        provenance='article-node-created'
+    if visible.get('updated'): modified=visible['updated']
+    if not published:
+        # Older Drupal templates have an unlabelled date inside node-content.
+        for scope in scopes:
+            for n in scope.walk():
+                if n.tag=='span' and not unrelated(n,scope) and re.fullmatch(r'\d{1,2} [A-Za-z]+ \d{4}',n.text()):
+                    published=date(n.text())
+                    if published: provenance='article-header-date';break
+            if published: break
+    return published,modified,provenance
+
 def article(source,url,manual=False,author_listing=False):
     doc=Document(source); candidates=[]; embedded=[]
     for n in doc.nodes('script'):
@@ -260,33 +325,7 @@ def article(source,url,manual=False,author_listing=False):
     if len(text)<180: raise ValueError('Too little article text found; extraction rejected and logged.')
     section=clean(ld.get('articleSection') or doc.meta('article:section') or 'News')
     stream='opinion' if re.search(r'/opinion/|/views/|/analysis/|opinion|analysis',url+' '+section,re.I) else 'reporting'
-    published=date(ld.get('datePublished') or doc.meta('article:published_time') or doc.meta('pubdate'))
-    modified=date(ld.get('dateModified') or doc.meta('article:modified_time'))
-    if not published:
-        for n in doc.root.walk():
-            if n.attrs.get('itemprop')=='datePublished' or n.tag=='time':
-                published=date(n.attrs.get('datetime') or n.attrs.get('content') or n.text())
-                if published:break
-    if not published:
-        # Drupal's current article header uses a plain span, not a time element.
-        scopes=[n for n in doc.root.walk() if 'node-content' in n.attrs.get('class','').split()]
-        if not scopes:scopes=doc.nodes('article')
-        for n in scopes:
-            for child in n.walk():
-                if child.tag=='span' and re.fullmatch(r'\d{1,2} [A-Za-z]+ \d{4}',child.text()):
-                    published=date(child.text())
-                    if published:break
-            if published:break
-    if not published:
-        # Some current Daily Star pages omit standard publication metadata but
-        # expose the exact Unix timestamp in Drupal's analytics settings.
-        for data in embedded:
-            for obj in objects(data):
-                stamp=obj.get('created') if obj.get('NodeType') or obj.get('NodeID') else None
-                if isinstance(stamp,str) and re.fullmatch(r'\d{9,12}',stamp):
-                    published=datetime.fromtimestamp(int(stamp),timezone.utc).astimezone(timezone(timedelta(hours=6))).isoformat()
-                    break
-            if published:break
+    published,modified,date_source=article_dates(doc,ld,embedded,url)
     if section=='News':
         for token,label in (('/education/','Education'),('/politics/','Politics'),('/crime-justice/','Rights & Justice'),('/environment/','Environment'),('/health/','Health'),('/business/','Economy'),('/opinion/','Opinion'),('/sports/','Sports')):
             if token in urlsplit(url).path:section=label;break
@@ -295,4 +334,4 @@ def article(source,url,manual=False,author_listing=False):
     if isinstance(image,dict): image=image.get('url','')
     publisher=ld.get('publisher',{})
     publisher=publisher.get('name','') if isinstance(publisher,dict) else str(publisher)
-    return {'id':identity(url),'title':title,'excerpt':clean(ld.get('description') or doc.meta('og:description') or doc.meta('description')),'source_url':canonical(url),'source_name':publisher or ('The Daily Star' if urlsplit(url).hostname in ('www.thedailystar.net','thedailystar.net') else urlsplit(url).hostname),'original_authors':authors,'verified_author':verified,'author_listing_verified':author_listing,'stream':stream,'category':section,'date_published':published,'date_modified':modified,'body_html':body,'source_image':'','cover_image':'','word_count':len(text.split()),'fetched_at':now()}
+    return {'id':identity(url),'title':title,'excerpt':clean(ld.get('description') or doc.meta('og:description') or doc.meta('description')),'source_url':canonical(url),'source_name':publisher or ('The Daily Star' if urlsplit(url).hostname in ('www.thedailystar.net','thedailystar.net') else urlsplit(url).hostname),'original_authors':authors,'verified_author':verified,'author_listing_verified':author_listing,'stream':stream,'category':section,'date_published':published,'date_modified':modified,'date_published_source':date_source,'body_html':body,'source_image':'','cover_image':'','word_count':len(text.split()),'fetched_at':now()}
