@@ -39,8 +39,8 @@ Source and build history: https://github.com/arafat-247/arafat-portfolio
 """
 
 
-def run(*arguments, cwd=DESKTOP, env=None):
-    subprocess.run([str(value) for value in arguments], cwd=cwd, env=env, check=True)
+def run(*arguments, cwd=DESKTOP, env=None, timeout=None):
+    subprocess.run([str(value) for value in arguments], cwd=cwd, env=env, check=True, timeout=timeout)
 
 
 def package_app(bundle: Path, output: Path) -> Path:
@@ -74,7 +74,7 @@ def main():
     bundle = ROOT / "dist" / NAME
     report = bundle / "SMOKE_TEST.json"
     if stage in (None, "smoke"):
-        run(bundle / f"{NAME}.exe", "--smoke-test", report, env=environment)
+        run(bundle / f"{NAME}.exe", "--smoke-test", report, env=environment, timeout=90)
         smoke = json.loads(report.read_text(encoding="utf-8"))
         if not smoke.get("ok"):
             raise SystemExit("Packaged application smoke test failed.")
@@ -95,7 +95,7 @@ def main():
 
 
 def freeze(environment):
-    run(sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onedir", "--windowed",
+    run(sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onedir", "--console", "--hide-console", "minimize-early",
         "--name", NAME, "--distpath", ROOT / "dist", "--workpath", ROOT / "build",
         "--specpath", ROOT, "--collect-all", "playwright", "--collect-all", "sounddevice",
         "--collect-all", "pywinauto", "--collect-all", "comtypes",

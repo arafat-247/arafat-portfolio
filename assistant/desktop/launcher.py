@@ -17,12 +17,20 @@ def smoke_test(report_path):
     """Exercise frozen imports, Chromium, Unicode and the real app interface."""
     result = {"ok": False, "checks": [], "live_api_tested": False,
               "microphone_capture_tested": False, "windows_app_actions_tested": False}
+    def phase(name):
+        result["stage"] = name
+        Path(report_path).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+        if sys.stdout:
+            print("Packaged check: " + name, flush=True)
     try:
+        phase("import microphone module")
         import sounddevice
+        phase("import Windows automation modules")
         import pythoncom
         import pywinauto
         from keyring.backends.Windows import WinVaultKeyring
         result["checks"].append("Windows, microphone and credential modules import")
+        phase("launch Microsoft Edge")
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True, channel="msedge")
@@ -34,6 +42,7 @@ def smoke_test(report_path):
             assert page.get_by_role("button", name="শুরু").count() == 1
             browser.close()
         result["checks"].append("Installed Microsoft Edge launches and handles Bangla input")
+        phase("open desktop interface")
         import tkinter as tk
         import app
         with tempfile.TemporaryDirectory(prefix="assistant-smoke-") as directory:
@@ -56,6 +65,7 @@ def smoke_test(report_path):
                     raise RuntimeError("The application did not close cleanly.")
         result["checks"].append("Desktop interface opens, accepts Bangla text and closes")
         result["ok"] = True
+        phase("complete")
     except Exception:
         result["error"] = traceback.format_exc()
     Path(report_path).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
