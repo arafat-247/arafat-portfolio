@@ -87,6 +87,7 @@ public final class DeviceService extends AccessibilityService {
         for(AccessibilityWindowInfo w:getWindows()) {
             if(w.getType()!=AccessibilityWindowInfo.TYPE_APPLICATION || (!w.isFocused() && !w.isActive())) continue;
             AccessibilityNodeInfo r=w.getRoot(); if(r==null) continue;
+            if(!r.refresh()) { r.recycle(); continue; }
             String pkg=String.valueOf(r.getPackageName());
             if(!allowedPackage(pkg) || !selected.contains(pkg)) { r.recycle(); throw new IOException("The foreground app is not selected. Open an allowed app manually or use launch_app."); }
             return r;
@@ -100,7 +101,7 @@ public final class DeviceService extends AccessibilityService {
         return n.getPackageName()+"|"+n.getClassName()+"|"+n.getViewIdResourceName()+"|"+text(n.getText(),400)+"|"+text(n.getContentDescription(),400)+"|"+b+"|"+n.isEnabled();
     }
     private void walk(AccessibilityNodeInfo n,int[] path,JSONArray nodes,int[] visited) throws Exception {
-        if(++visited[0]>500 || nodes.length()>=80 || path.length>25 || sensitive(n) || !n.isVisibleToUser()) return;
+        if(++visited[0]>500 || nodes.length()>=80 || path.length>25 || !n.refresh() || sensitive(n) || !n.isVisibleToUser()) return;
         String label=text(n.getText(),400),desc=text(n.getContentDescription(),200);
         if(!label.isEmpty() || !desc.isEmpty() || n.isClickable() || n.isEditable() || n.isScrollable()) {
             String id="s"+generation+"n"+(targets.size()+1); targets.put(id,new Target(path,fingerprint(n)));
@@ -130,6 +131,7 @@ public final class DeviceService extends AccessibilityService {
             if(sensitive(n)) { n.recycle(); throw new IOException("Sensitive controls are excluded."); }
             AccessibilityNodeInfo next=n.getChild(step); n.recycle(); n=next;
             if(n==null) throw new IOException("Screen changed. Read the screen again.");
+            if(!n.refresh()) { n.recycle(); throw new IOException("Control is no longer available. Read the screen again."); }
         }
         if(sensitive(n) || !n.isVisibleToUser() || !n.isEnabled() || !t.fingerprint.equals(fingerprint(n))) { n.recycle(); throw new IOException("Control changed. Read the screen again."); }
         return n;
