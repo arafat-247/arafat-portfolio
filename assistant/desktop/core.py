@@ -234,6 +234,10 @@ class Agent:
                 if calls_used > 24:
                     raise RuntimeError("Stopped at the 24-action limit. Review the activity log before continuing.")
                 name = call.get("name", "")
+                if call.get("namespace") not in (None, "assistant"):
+                    raise RuntimeError("The model requested an unsupported tool namespace. No action was run.")
+                if name.startswith("assistant."):
+                    name = name.removeprefix("assistant.")
                 self.log("Tool", name)
                 try:
                     args = json.loads(call.get("arguments", "{}"))

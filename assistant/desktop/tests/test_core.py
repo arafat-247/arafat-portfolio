@@ -167,10 +167,11 @@ class CoreTests(unittest.TestCase):
             app.jobs.put({"kind": "transcribe", "key": "dummy", "config": app.config,
                           "audio": b"test", "languages": ["bn"]})
             app.jobs.put({"kind": "shutdown"})
-            with patch("app.OpenAIClient") as client, patch("app.Agent") as agent:
-                client.return_value.transcribe.return_value = "নোটপ্যাড খোলো"
+            with patch("app.LocalTranscriber") as transcriber, patch("app.OpenAIClient") as client, patch("app.Agent") as agent:
+                transcriber.return_value.transcribe.return_value = "নোটপ্যাড খোলো"
                 app._work()
                 agent.assert_not_called()
+                client.assert_not_called()
             events = list(app.events.queue)
             self.assertIn(("transcript", "নোটপ্যাড খোলো"), events)
             self.assertIn(("done",), events)

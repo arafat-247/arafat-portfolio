@@ -57,6 +57,9 @@ jobs:
           if (Test-Path 'assistant/dist/ArafatAssistant/SMOKE_TEST.json') {
             Get-Content -Raw 'assistant/dist/ArafatAssistant/SMOKE_TEST.json'
           }
+          if (Test-Path 'assistant/dist/ArafatAssistant/SMOKE_TEST.json.trace.txt') {
+            Get-Content -Raw 'assistant/dist/ArafatAssistant/SMOKE_TEST.json.trace.txt'
+          }
       - name: Retain packaged app and checksum
         uses: actions/upload-artifact@v4
         with:
@@ -93,12 +96,16 @@ jobs:
         run: |
           cat > release-notes.txt <<'NOTES'
           Portable Windows preview of Arafat Assistant, including Python. Microsoft Edge is required.
-          Extract the ZIP, open ArafatAssistant.exe, and add your own API key in Settings.
+          Extract the ZIP, open ArafatAssistant.exe, and select Continue with ChatGPT.
+          Sign in with your eligible personal Plus / Pro account and allow Use your ChatGPT plan.
           The packaged import, browser and desktop-interface smoke checks passed.
-          Live API use, microphone capture and installed-app actions require local testing.
-          This unsigned preview uses separately billed API access. No API key is included.
+          Live ChatGPT sign-in, microphone capture, local speech recognition and installed-app actions require local testing.
+          ChatGPT mode uses your existing plan allowance, subject to eligibility and usage limits. No API key is needed in that mode.
+          Voice is transcribed locally after a first-use multilingual model download.
+          Optional API mode is billed separately and never used as an automatic fallback.
+          This is an unsigned preview; keep Windows security protections enabled.
           NOTES
-          gh release create "assistant-v0.2.${ASSISTANT_RUN}" release/* \
+          gh release create "assistant-v0.3.${ASSISTANT_RUN}" release/* \
             --target "$ASSISTANT_COMMIT" --prerelease --latest=false \
-            --title "Arafat Assistant Windows preview 0.2.${ASSISTANT_RUN}" \
+            --title "Arafat Assistant Windows preview 0.3.${ASSISTANT_RUN}" \
             --notes-file release-notes.txt

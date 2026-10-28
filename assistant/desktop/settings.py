@@ -29,7 +29,7 @@ def output_directory():
 
 def defaults():
     root = Path(os.environ.get("SystemRoot", r"C:\Windows")) / "System32"
-    return {"model": DEFAULT_MODEL, "transcription_model": DEFAULT_TRANSCRIBE_MODEL,
+    return {"auth_mode": "chatgpt", "plan_model": "", "plan_welcome_seen": False, "model": DEFAULT_MODEL, "transcription_model": DEFAULT_TRANSCRIBE_MODEL,
             "apps": {"notepad": str(root / "notepad.exe"),
                      "calculator": str(root / "calc.exe"),
                      "paint": str(root / "mspaint.exe")}}
@@ -43,9 +43,12 @@ def load_config(directory):
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict) or not isinstance(value.get("apps", {}), dict):
         raise ValueError("Invalid settings.json. Rename it and start again, or correct its app list.")
-    for key in ("model", "transcription_model"):
+    for key in ("model", "transcription_model", "plan_model"):
         if isinstance(value.get(key), str) and value[key].strip():
             base[key] = value[key].strip()
+    if value.get("auth_mode") in ("chatgpt", "api"):
+        base["auth_mode"] = value["auth_mode"]
+    base["plan_welcome_seen"] = value.get("plan_welcome_seen") is True
     if "apps" in value:
         if not all(isinstance(k, str) and isinstance(v, str) for k, v in value["apps"].items()):
             raise ValueError("App aliases and executable paths must be text.")
@@ -58,7 +61,7 @@ def save_config(directory, config):
     target = directory / "settings.json"
     temporary = directory / "settings.tmp"
     # Never persist the API key in this JSON file.
-    clean = {key: config[key] for key in ("model", "transcription_model", "apps")}
+    clean = {key: config[key] for key in ("auth_mode", "plan_model", "plan_welcome_seen", "model", "transcription_model", "apps")}
     temporary.write_text(json.dumps(clean, ensure_ascii=False, indent=2), encoding="utf-8")
     temporary.replace(target)
 

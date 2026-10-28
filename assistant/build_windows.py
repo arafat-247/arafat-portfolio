@@ -21,14 +21,22 @@ QUICK_START = """ARAFAT ASSISTANT — PORTABLE WINDOWS PREVIEW
 1. Extract the entire ZIP into a folder you can write to.
 2. Keep ArafatAssistant.exe and its _internal folder together.
 3. Open ArafatAssistant.exe. Python is included; Microsoft Edge must be installed.
-4. In Settings, enter your own OpenAI API key and save.
-5. Test a short typed instruction, then try Record voice.
-6. Review the transcript before selecting Run instruction.
-7. Enable Windows app access in the app for desktop tasks.
+4. Select Continue with ChatGPT. Sign in with your eligible personal Plus / Pro account.
+5. Allow Use your ChatGPT plan in the browser, then return to the app.
+6. Choose an available model and test a short typed instruction.
+7. Try Record voice. First use downloads a multilingual local speech model.
+8. Review the transcript before selecting Run instruction.
+9. Enable Windows app access in the app for desktop tasks.
 
-This is a preview build. It requires internet and separately billed API usage.
-Your instructions, submitted recordings and selected website/app text go to
-OpenAI. The portfolio website distributes the app; it does not control your PC.
+This is an unsigned preview. Windows SmartScreen may show More info / Run anyway.
+Only continue if you downloaded the app from the repository above and trust it.
+Keep Windows security protections enabled.
+ChatGPT mode uses your existing Plus / Pro plan allowance, subject to eligibility
+and usage limits. No API credit is required in that mode. Optional API mode is
+billed separately and must be selected explicitly; there is no automatic fallback.
+Speech is transcribed on your PC. First voice use downloads several hundred MB
+from Hugging Face. Instructions, reviewed transcripts and selected website/app
+text go to OpenAI. The portfolio distributes the app; it does not control your PC.
 Browser sign-ins happen manually in the assistant's own browser. Microphone
 capture, live model behaviour and your installed app controls need local tests.
 Stop takes effect between operations and cannot undo completed actions.
@@ -83,12 +91,14 @@ def main():
     if not json.loads(report.read_text(encoding="utf-8")).get("ok"):
         raise SystemExit("A passing packaged smoke test is required before packaging.")
     (bundle / "QUICK_START.txt").write_text(QUICK_START, encoding="utf-8")
+    shutil.copyfile(ROOT / "LICENSE", bundle / "LICENSE.txt")
     (bundle / "BUILD_INFO.json").write_text(json.dumps({
         "source_commit": os.environ.get("GITHUB_SHA", "local-build"),
         "python": platform.python_version(), "platform": platform.platform(),
         "build_kind": "unsigned Windows x64 portable preview", "smoke_test_passed": True,
         "browser": "installed Microsoft Edge", "live_api_tested": False,
         "microphone_capture_tested": False, "windows_app_actions_tested": False,
+        "chatgpt_live_sign_in_tested": False, "local_speech_model_tested": False,
     }, indent=2), encoding="utf-8")
     archive = package_app(bundle, OUTPUT)
     print(f"Created {archive}")
@@ -99,6 +109,9 @@ def freeze(environment):
         "--name", NAME, "--distpath", ROOT / "dist", "--workpath", ROOT / "build",
         "--specpath", ROOT, "--collect-all", "playwright", "--collect-all", "sounddevice",
         "--collect-all", "pywinauto", "--collect-all", "comtypes",
+        "--collect-all", "faster_whisper", "--collect-all", "ctranslate2",
+        "--collect-all", "av", "--collect-all", "onnxruntime", "--collect-all", "tokenizers",
+        "--collect-submodules", "jwt", "--copy-metadata", "faster-whisper",
         "--collect-submodules", "keyring.backends.Windows", "--hidden-import", "win32timezone",
         "--hidden-import", "unittest.mock",
         DESKTOP / "launcher.py", env=environment)
