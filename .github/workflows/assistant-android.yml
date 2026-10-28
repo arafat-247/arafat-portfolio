@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   android:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
@@ -45,8 +45,9 @@ jobs:
         with:
           api-level: 35
           arch: x86_64
-          target: google_apis
-          profile: pixel_7
+          target: default
+          profile: pixel_2
+          ram-size: 2048M
           working-directory: android
           disable-animations: true
           script: bash check_device.sh
