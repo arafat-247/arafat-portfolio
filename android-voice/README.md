@@ -10,6 +10,8 @@ This is a separate Gradle project. It shares only `AuthSession`, `Http`, `Protoc
 
 The AI receives no tools and has no action executor. Unexpected tool output rejects the entire reply. It cannot inspect screens, control apps, browse links, read files or import ChatGPT history. Users can paste text manually. Only completed replies enter in-memory history; at most eight complete exchanges are kept. New conversation, a model change or process loss clears context. An overlong conversation asks the user to start fresh. Stop cancels the pending request.
 
+On Android 17, the installed package also reports the platform-added `ACCESS_LOCAL_NETWORK` compatibility grant for apps targeting SDK 36 or lower with INTERNET. It is not declared or requested at runtime by this APK. The installed-package test accounts for this documented [split permission behaviour](https://developer.android.com/privacy-and-security/local-network-permission); the compiled-manifest check still permits only INTERNET.
+
 ## Connection and limits
 
 The shared client uses the official [open-source Sign in with ChatGPT flow](https://developers.openai.com/siwc/token-sharing-open-source). Account and workspace eligibility remain controlled by OpenAI. Requests use the selected account's current model catalog, the public Responses endpoint, `store:false` and `stream:true`; no API-key mode or paid API fallback is implemented. This does not guarantee that any particular ChatGPT account can connect. Tokens are encrypted with Android Keystore, excluded from backup and never printed by the app. No live user sign-in or inference request runs in CI.

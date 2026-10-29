@@ -20,7 +20,11 @@ public class VoiceDeviceTest {
         assertEquals("com.arafat.assistant.voice",c.getPackageName());
         PackageInfo info=c.getPackageManager().getPackageInfo(c.getPackageName(),PackageManager.GET_SERVICES|PackageManager.GET_RECEIVERS|PackageManager.GET_PROVIDERS|PackageManager.GET_PERMISSIONS);
         assertTrue(info.services==null || info.services.length==0); assertTrue(info.receivers==null || info.receivers.length==0); assertTrue(info.providers==null || info.providers.length==0);
-        assertArrayEquals(new String[]{"android.permission.INTERNET"},info.requestedPermissions);
+        Set<String> expected=new HashSet<>(Set.of("android.permission.INTERNET"));
+        // Android 17 splits INTERNET for apps targeting <37. This is platform-added,
+        // not a permission declared or requested by this APK. See Google's LNP guide.
+        if(android.os.Build.VERSION.SDK_INT>=37 && info.applicationInfo.targetSdkVersion<37) expected.add("android.permission.ACCESS_LOCAL_NETWORK");
+        assertEquals(expected,new HashSet<>(Arrays.asList(info.requestedPermissions)));
         SecureStore store=new SecureStore(c); store.save(new JSONObject().put("test_secret","local-only-value"));
         assertEquals("local-only-value",store.load().getString("test_secret"));
         assertFalse(c.getSharedPreferences("protected-chatgpt",0).getString("record","").contains("local-only-value")); store.clear();
