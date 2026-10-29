@@ -2,7 +2,7 @@ name: Check published Android APK installation
 
 on:
   pull_request:
-    paths: ['.github/workflows/android-install-check.yml']
+    paths: ['.github/workflows/android-install-check.yml', '.github/scripts/check_published_apk.sh']
   workflow_dispatch:
 
 permissions:
@@ -43,17 +43,11 @@ jobs:
           arch: x86_64
           target: google_apis
           profile: pixel_2
-          ram-size: 2048M
+          ram-size: 4096M
+          cores: 4
           disk-size: 8G
           disable-animations: true
-          script: |
-            adb shell df -h /data > install-check/storage-api-${{ matrix.api }}.txt
-            adb install --no-incremental install-check/ArafatAssistant-Android.apk
-            adb shell am start -W -n com.arafat.assistant/.MainActivity
-            adb shell pidof com.arafat.assistant
-            adb shell screencap -p /sdcard/Download/install-check.png
-            adb pull /sdcard/Download/install-check.png install-check/install-api-${{ matrix.api }}.png
-            adb shell dumpsys package com.arafat.assistant > install-check/package-api-${{ matrix.api }}.txt
+          script: bash .github/scripts/check_published_apk.sh "${{ matrix.api }}"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
