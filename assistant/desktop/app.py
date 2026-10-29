@@ -223,7 +223,7 @@ class Application:
         choices = [f"{name} · {detail}" for name, detail in STARTER_MODELS.items()]
         selection = ttk.Combobox(box, values=choices, state="readonly", width=65)
         selection.pack(fill="x")
-        selection.current(1)
+        selection.current(list(STARTER_MODELS).index(DEFAULT_LOCAL_MODEL))
         def prepare(download=False):
             model = list(STARTER_MODELS)[selection.current()] if download else None
             if model:
