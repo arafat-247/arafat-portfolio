@@ -1,0 +1,24 @@
+ARAFAT VOICE — VOICE AND TEXT ONLY
+
+Download ArafatVoice-Android.apk, not ArafatAssistant-Android.apk.
+This is a separate app: com.arafat.assistant.voice. It cannot operate other apps.
+
+1. Open the downloaded APK. Keep Google Play Protect enabled. If Android permits installation from your browser, install and open Arafat Voice.
+2. If Advanced Protection or Play Protect blocks installation, stop. Do not disable protections to install this preview. Send the exact warning for diagnosis. Removing sensitive access does not guarantee approval on your phone.
+3. Press Continue with ChatGPT. Sign in in the official browser page. Allow Use your ChatGPT plan if your account offers it. Existing plan eligibility and limits apply; this app has no API-key field or separately billed API fallback.
+4. Return to Arafat Voice. Tap Refresh models if needed, choose a model and type: বাংলায় উত্তর দাও। Press Send message.
+5. For dictation, choose English, বাংলা or Phone language. Tap Dictate message, speak, review the transcript, then Send message. Your phone's speech service supplies dictation; its languages and offline support vary. It may process audio online. Keyboard dictation is another option.
+6. Stop request cancels the pending reply. New conversation clears in-memory conversation context. Recent context is limited to eight completed exchanges; quitting or losing the app process clears it. Changing models also starts fresh context.
+
+CAPABILITIES
+- Typed or dictated text; text replies. No spoken replies or always-on listening.
+- No screen reading, accessibility service, app control, SMS access, notification access, web browsing or file access.
+- INTERNET is the only declared permission. Microphone input is handled by your chosen external speech service, not recorded by this app.
+- You can paste text yourself. Links are not fetched or read by the assistant.
+- Credentials are encrypted with Android Keystore and excluded from backup. Sign out removes local credentials and attempts remote revocation; check ChatGPT's app access settings if revocation is not confirmed.
+- This personal preview is debug-signed, outside Google Play. A future preview may need reinstalling if its test signing key changes; that erases this app's local connection. It is not necessary to uninstall ChatGPT or the other Arafat Assistant app.
+
+Automated checks do not prove Google Play Protect approval, account sign-in eligibility or dictation on your physical phone. Those require a local trial. Keep your phone's protection settings enabled.
+
+Guide and source:
+https://github.com/arafat-247/arafat-portfolio/tree/main/android-voice

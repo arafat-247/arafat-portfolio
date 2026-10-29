@@ -1,0 +1,4 @@
+<resources>
+    <item name="instruction" type="id"/>
+    <item name="reply_log" type="id"/>
+</resources>

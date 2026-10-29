@@ -1,0 +1,141 @@
+name: Build Arafat Voice Android
+
+on:
+  pull_request:
+    paths: ['android-voice/**', 'site/voice/**', '.github/workflows/assistant-voice.yml', 'android/app/src/main/java/com/arafat/assistant/AuthSession.java', 'android/app/src/main/java/com/arafat/assistant/Http.java', 'android/app/src/main/java/com/arafat/assistant/Protocol.java', 'android/app/src/main/java/com/arafat/assistant/SecureStore.java']
+  push:
+    branches: [main]
+    paths: ['android-voice/**', 'site/voice/**', '.github/workflows/assistant-voice.yml', 'android/app/src/main/java/com/arafat/assistant/AuthSession.java', 'android/app/src/main/java/com/arafat/assistant/Http.java', 'android/app/src/main/java/com/arafat/assistant/Protocol.java', 'android/app/src/main/java/com/arafat/assistant/SecureStore.java']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+concurrency:
+  group: assistant-voice-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check voice download selection
+        run: node --test android-voice/test_download_page.mjs
+      - name: Compile, test and lint voice-only app
+        run: gradle --no-daemon -p android-voice testDebugUnitTest lintDebug assembleDebug assembleDebugAndroidTest
+      - name: Inspect the delivered APK manifest and code
+        run: python3 android-voice/check_apk.py android-voice/app/build/outputs/apk/debug/app-debug.apk "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" > android-voice/apk-verification.txt
+      - name: Package APK and test application
+        run: |
+          mkdir -p apk
+          cp android-voice/app/build/outputs/apk/debug/app-debug.apk apk/ArafatVoice-Android.apk
+          cp android-voice/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk apk/voice-debug-androidTest.apk
+          cp android-voice/QUICK_START.txt apk/QUICK_START-ArafatVoice.txt
+          cp android-voice/apk-verification.txt apk/APK-VERIFICATION.txt
+          cd apk
+          sha256sum ArafatVoice-Android.apk > ArafatVoice-Android.apk.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Voice-APK-and-test
+          path: apk/*
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Voice-build-reports
+          path: android-voice/app/build/reports/
+          if-no-files-found: ignore
+
+  device:
+    needs: build
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        api: ['35', '37.0']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/download-artifact@v4
+        with:
+          name: Voice-APK-and-test
+          path: apk
+      - name: Install SDK tools with minor API version support
+        run: |
+          tools_dir="$RUNNER_TEMP/voice-sdk-tools"
+          mkdir -p "$tools_dir"
+          curl --fail --location --retry 2 --output "$tools_dir/tools.zip" https://dl.google.com/android/repository/commandlinetools-linux-16111833_latest.zip
+          echo "e025545c62a8e64c7559119566a569fb1dec5f60  $tools_dir/tools.zip" | sha1sum --check
+          unzip -q "$tools_dir/tools.zip" -d "$tools_dir"
+          mv "$ANDROID_HOME/cmdline-tools/latest" "$tools_dir/preinstalled-latest"
+          mv "$tools_dir/cmdline-tools" "$ANDROID_HOME/cmdline-tools/latest"
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Install ordinary APK and check voice-only interface
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          arch: x86_64
+          target: google_apis
+          profile: pixel_2
+          ram-size: 4096M
+          cores: 4
+          disk-size: 8G
+          emulator-options: -no-window -gpu software -no-snapshot -noaudio -no-boot-anim
+          pre-emulator-launch-script: test "$(sed -n 's/^target=//p' "$HOME/.android/avd/test.ini")" = "android-${{ matrix.api }}"
+          disable-animations: true
+          script: bash android-voice/check_device.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Voice-device-API-${{ matrix.api }}
+          path: device-reports/
+          if-no-files-found: ignore
+
+  release:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [build, device]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Voice-APK-and-test
+          path: apk
+      - name: Publish checked voice-only preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          VOICE_COMMIT: ${{ github.sha }}
+          VOICE_RUN: ${{ github.run_number }}
+        run: |
+          cat > notes.txt <<'NOTES'
+          Arafat Voice: a separate voice-dictation and text-only Android preview.
+          Download ArafatVoice-Android.apk. Package: com.arafat.assistant.voice.
+          No accessibility service, screen reading, app control, SMS or notification access. INTERNET is the only declared permission. Voice uses the phone's external speech service; replies are text only.
+          Connect an eligible ChatGPT account using Continue with ChatGPT. Existing account eligibility and plan limits apply. No API-key mode or paid API fallback.
+          Unit tests, lint, compiled manifest/DEX checks, ordinary installation and interface/storage/transcript checks on Android 15 and 17 passed before publication.
+          Live account sign-in, real dictation and Google Play Protect approval on a physical Pixel remain untested. Advanced Protection may still block non-Play downloads. Keep protections enabled; do not disable them to install this preview.
+          Debug-signed personal preview, not a Play Store release. Its test identity may change in a later preview.
+          Guide: https://github.com/arafat-247/arafat-portfolio/tree/main/android-voice
+          NOTES
+          gh release create "assistant-voice-v0.1.${VOICE_RUN}" apk/ArafatVoice-Android.apk apk/ArafatVoice-Android.apk.sha256 apk/QUICK_START-ArafatVoice.txt apk/APK-VERIFICATION.txt \
+            --target "$VOICE_COMMIT" --prerelease --latest=false --title "Arafat Voice Android preview 0.1.${VOICE_RUN}" --notes-file notes.txt
