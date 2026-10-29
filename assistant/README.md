@@ -11,8 +11,8 @@ the desktop companion on the user's PC.
    including when older saved preferences selected ChatGPT. Python is included.
 2. Open **Local setup**, select **Download Ollama**, and complete its official
    Windows installer. Return to the assistant afterwards.
-3. Choose **Standard / qwen3:4b** (about 2.5 GB download) or **Light / qwen3:1.7b**
-   (about 1.4 GB), then select **Download selected model**. Stop can interrupt a
+3. Start with **Light / qwen3:1.7b** (about 1.4 GB download), or choose **Standard / qwen3:4b**
+   (about 2.5 GB download), then select **Download selected model**. Stop can interrupt a
    download; retrying can resume it. Model download size is not total RAM needed.
 4. Select an installed **Task model** and run one short typed instruction.
    Try `Reply in Bangla and explain what you can do`, then `Open Notepad` with

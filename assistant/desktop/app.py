@@ -167,7 +167,7 @@ class Application:
             self.connection.set(("Using your ChatGPT plan · " if self.session.plan_enabled() else "ChatGPT plan not enabled · ") + self.session.account_label())
         else:
             self.connection.set("OpenAI API mode · billed separately")
-        usable = not self.busy and not self.closing
+        usable = not self.busy and not self.closing and not self.recording
         self.connect_button.configure(state="normal" if usable and plan else "disabled")
         self.usage_button.configure(state="normal" if usable and plan else "disabled")
         self.mode_box.configure(state="readonly" if usable else "disabled")
@@ -183,7 +183,7 @@ class Application:
             self.model_box.set("")
 
     def _choose_mode(self, event=None):
-        if self.busy or self.closing:
+        if self.busy or self.closing or self.recording:
             return
         self.config["auth_mode"] = MODES[self.mode_label.get()]
         settings.save_config(self.directory, self.config)
@@ -192,7 +192,7 @@ class Application:
         self.status.set("Local setup prepares a model; Check local models lists installed models." if self.config["auth_mode"] == "local" else "Connection mode changed")
 
     def check_local_models(self, download=None):
-        if self.busy or self.closing:
+        if self.busy or self.closing or self.recording:
             return
         self.config["auth_mode"] = "local"
         self.mode_label.set(next(label for label, mode in MODES.items() if mode == "local"))
@@ -238,7 +238,7 @@ class Application:
         ttk.Button(box, text="Close", command=dialog.destroy).pack(anchor="e", side="bottom")
 
     def connect_chatgpt(self, client_id=None, new_account=False):
-        if self.busy or self.closing:
+        if self.busy or self.closing or self.recording:
             return
         self.cancel.clear()
         self._set_busy(True)
@@ -523,6 +523,7 @@ class Application:
             self.log("Microphone", "Could not start recording. Check Windows microphone permissions and the default input device. " + str(exc))
             return
         self.recording = True
+        self._update_connection()
         self.record_button.configure(text="Stop recording")
         for item in (self.run_button, self.settings_button, self.new_button, self.windows_check):
             item.configure(state="disabled")

@@ -22,7 +22,7 @@ from runtime import external_program_environment
 
 PORT = 11435
 STARTER_MODELS = {"qwen3:1.7b": "Light · about 1.4 GB", "qwen3:4b": "Standard · about 2.5 GB"}
-DEFAULT_LOCAL_MODEL = "qwen3:4b"
+DEFAULT_LOCAL_MODEL = "qwen3:1.7b"
 DOWNLOAD_URL = "https://ollama.com/download/windows"
 
 
