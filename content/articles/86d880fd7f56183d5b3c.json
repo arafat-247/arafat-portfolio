@@ -11,13 +11,15 @@
   "author_listing_verified": true,
   "stream": "reporting",
   "category": "News",
+  "source_label": "",
   "date_published": "2018-12-01T00:00:00+06:00",
   "date_modified": "2018-12-02T05:53:00+06:00",
+  "date_published_source": "article-published-label",
   "body_html": "<p>A textbook-laden truck plunged into a roadside ditch in Tangail yesterday.</p><p>The truck was carrying at least 1,21,120 textbooks. Several thousand of those were damaged in water, police sources said quoting transport workers.</p><p>The truck fell in the ditch on Tangail-Mymensingh highway before entering Kalihati upazila parishad premises as the driver lost control over the steering, said Mosharaf Hossain, officer-in-charge of Kalihati Police Station.</p><p>On information, police recovered the textbooks with the help of labourers and brought those to the police station, the OC added.</p><p>Rokeya Khatun, upazila education officer of Kalihati, said she was informed about the accident but could not estimate the damage.</p>",
   "source_image": "https://www.thedailystar.net/sites/default/files/styles/social_share/public/feature/images/truck_plunged.jpg",
   "cover_image": "assets/imported/94178c08fc321f032ed72be9.jpg",
   "word_count": 105,
-  "fetched_at": "2026-10-22T19:28:33.002201+00:00",
+  "fetched_at": "2026-10-29T21:32:56.100989+00:00",
   "resolved_source_url": "https://www.thedailystar.net/backpage/news/textbook-laden-truck-plunged-tangail-1668076",
   "status": "published",
   "local_url": "stories/textbook-laden-truck-plunged-in-tangail/",
@@ -25,7 +27,5 @@
     "stories/86d880fd7f56183d5b3c-textbook-laden-truck-plunged-in-tangail/"
   ],
   "first_archived_at": "2026-09-06T12:45:51.729277+00:00",
-  "content_hash": "04d3486c4b0e34e5edc47592c6510af09e91cb510807c7f3a5bd7c44f09f7121",
-  "date_published_source": "article-published-label",
-  "date_verified_at": "2026-10-28T13:04:13.144424+00:00"
+  "content_hash": "04d3486c4b0e34e5edc47592c6510af09e91cb510807c7f3a5bd7c44f09f7121"
 }
