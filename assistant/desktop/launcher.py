@@ -110,6 +110,42 @@ def smoke_test(report_path):
                 root = tk.Tk()
                 application = app.Application(root)
                 root.update_idletasks()
+                root.update()
+                from PIL import ImageGrab
+                def capture(label):
+                    import time
+                    root.update()
+                    time.sleep(0.5)  # Let Windows finish its window-opening animation.
+                    root.update()
+                    ImageGrab.grab().save(str(report_path) + "." + label + ".png")
+                def visible(widget, window):
+                    assert widget.winfo_ismapped(), "A required control is not visible"
+                    top = widget.winfo_rooty()
+                    bottom = top + widget.winfo_height()
+                    assert window.winfo_rooty() <= top < bottom <= window.winfo_rooty() + window.winfo_height(), "A required control falls below its window"
+                    assert bottom < window.winfo_screenheight(), "A required control falls below the screen"
+                assert application.config["auth_mode"] == "local"
+                for control in (application.input, application.record_button, application.run_button, application.stop_button):
+                    visible(control, root)
+                capture("main")
+                application.show_local_setup()
+                root.update()
+                capture("local-setup")
+                for child in root.winfo_children():
+                    if isinstance(child, tk.Toplevel):
+                        child.destroy()
+                application.show_settings()
+                root.update()
+                for child in root.winfo_children():
+                    if isinstance(child, tk.Toplevel):
+                        for row in child.winfo_children():
+                            for control in row.winfo_children():
+                                if isinstance(control, app.ttk.Button) and control.cget("text") == "Save settings":
+                                    visible(control, child)
+                capture("settings")
+                for child in root.winfo_children():
+                    if isinstance(child, tk.Toplevel):
+                        child.destroy()
                 assert application.input.winfo_exists()
                 application.input.insert("1.0", "বাংলায় নির্দেশ")
                 assert application.input.get("1.0", "end").strip() == "বাংলায় নির্দেশ"
@@ -119,7 +155,7 @@ def smoke_test(report_path):
                 application.worker.join(timeout=2)
                 if application.worker.is_alive():
                     raise RuntimeError("The application did not close cleanly.")
-        result["checks"].append("Desktop interface opens, accepts Bangla text and closes")
+        result["checks"].append("Desktop interface defaults to local mode, keeps instruction/run/settings controls on screen, accepts Bangla text and closes")
         result["ok"] = True
         phase("complete")
     except Exception:
@@ -130,6 +166,8 @@ def smoke_test(report_path):
 
 def main():
     configure_browser()
+    if sys.argv[1:] == ["--local"]:
+        os.environ["ARAFAT_START_LOCAL"] = "1"
     if len(sys.argv) == 3 and sys.argv[1] == "--smoke-test":
         return smoke_test(sys.argv[2])
     try:

@@ -21,6 +21,43 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  local-model:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - model: 'qwen3:1.7b'
+            label: light
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install checked Ollama engine for CPU verification
+        env:
+          OLLAMA_ARCHIVE: ${{ runner.temp }}/ollama.tar.zst
+        run: |
+          curl -fL --retry 3 https://github.com/ollama/ollama/releases/download/v0.40.13/ollama-linux-amd64.tar.zst -o "$OLLAMA_ARCHIVE"
+          python - <<'PY'
+          import hashlib, os
+          with open(os.environ['OLLAMA_ARCHIVE'], 'rb') as stream:
+              actual = hashlib.file_digest(stream, 'sha256').hexdigest()
+          assert actual == 'c9490e0f520be21271d969e6703f012268b1d39f8b70dd58854e5bfef7a75bb6', actual
+          PY
+          mkdir -p "$RUNNER_TEMP/ollama"
+          tar --zstd -xf "$OLLAMA_ARCHIVE" -C "$RUNNER_TEMP/ollama"
+          echo "$RUNNER_TEMP/ollama/bin" >> "$GITHUB_PATH"
+      - name: Check real local model actions and Bangla replies
+        run: python assistant/desktop/live_local_check.py --model '${{ matrix.model }}' --report 'local-check-${{ matrix.label }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: local-model-${{ matrix.label }}
+          path: local-check-${{ matrix.label }}.json
+          if-no-files-found: error
+
   windows:
     runs-on: windows-2022
     timeout-minutes: 40
@@ -72,12 +109,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: assistant-smoke-report
-          path: assistant/dist/ArafatAssistant/SMOKE_TEST.json
+          path: assistant/dist/ArafatAssistant/SMOKE_TEST.json*
           if-no-files-found: ignore
 
   release:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: windows
+    needs: [windows, local-model]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -96,16 +133,20 @@ jobs:
         run: |
           cat > release-notes.txt <<'NOTES'
           Portable Windows preview of Arafat Assistant, including Python. Microsoft Edge is required.
-          Extract the ZIP, open ArafatAssistant.exe, and select Continue with ChatGPT.
-          Sign in with your eligible personal Plus / Pro account and allow Use your ChatGPT plan.
+          Extract the ZIP and open Start Local Assistant.cmd (or choose Local model in the main window).
+          Open Local setup, install Ollama once, and download the Light Qwen3 starter model.
+          Local mode uses a model on your PC: no OpenAI sign-in, subscription or API credit is required.
+          The assistant owns a loopback-only Ollama engine with cloud features disabled.
+          Existing browser, Windows app, note, voice-review and action-approval controls remain available.
           The packaged import, browser and desktop-interface smoke checks passed.
-          Live ChatGPT sign-in, microphone capture, local speech recognition and installed-app actions require local testing.
-          ChatGPT mode uses your existing plan allowance, subject to eligibility and usage limits. No API key is needed in that mode.
+          The Light starter passed real CPU model/tool/Bangla checks on Linux. Windows checks exercised actual Notepad read/fill controls.
+          Your PC's inference speed, microphone, speech recognition and individual apps still need local testing.
+          Optional ChatGPT mode remains subject to account/workspace eligibility. Its sign-in restriction is not changed by this update.
           Voice is transcribed locally after a first-use multilingual model download.
           Optional API mode is billed separately and never used as an automatic fallback.
           This is an unsigned preview; keep Windows security protections enabled.
           NOTES
-          gh release create "assistant-v0.3.${ASSISTANT_RUN}" release/* \
+          gh release create "assistant-v0.4.${ASSISTANT_RUN}" release/* \
             --target "$ASSISTANT_COMMIT" --prerelease --latest=false \
-            --title "Arafat Assistant Windows preview 0.3.${ASSISTANT_RUN}" \
+            --title "Arafat Assistant local Windows preview 0.4.${ASSISTANT_RUN}" \
             --notes-file release-notes.txt

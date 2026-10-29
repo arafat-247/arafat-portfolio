@@ -21,12 +21,20 @@ QUICK_START = """ARAFAT ASSISTANT — PORTABLE WINDOWS PREVIEW
 1. Extract the entire ZIP into a folder you can write to.
 2. Keep ArafatAssistant.exe and its _internal folder together.
 3. Open ArafatAssistant.exe. Python is included; Microsoft Edge must be installed.
-4. Select Continue with ChatGPT. Sign in with your eligible personal Plus / Pro account.
-5. Allow Use your ChatGPT plan in the browser, then return to the app.
-6. Choose an available model and test a short typed instruction.
-7. Try Record voice. First use downloads a multilingual local speech model.
-8. Review the transcript before selecting Run instruction.
-9. Enable Windows app access in the app for desktop tasks.
+4. Open Start Local Assistant.cmd to explicitly choose local mode, including on an older installation.
+5. Open Local setup. Select Download Ollama and finish its official Windows installer.
+6. Return to Local setup. Choose the Light starter (about 1.4 GB download),
+   then select Download selected model. The app starts its own local engine.
+7. Choose Task model and test a short typed instruction. No OpenAI sign-in or API credit is used.
+8. Try Record voice. First use downloads a multilingual local speech model.
+9. Review the transcript before selecting Run instruction.
+10. Enable Windows app access in the app for desktop tasks. Start with Open Notepad.
+
+Local mode uses a downloaded model on your PC with Ollama cloud features off.
+The Light starter passed live tool and Bangla checks. Small models can make mistakes.
+Model download size is not the total RAM needed. Speed and quality depend on
+your CPU, graphics hardware, memory and task. Begin with short tasks.
+First-time model downloads and websites need internet. Local inference does not.
 
 This is an unsigned preview. Windows SmartScreen may show More info / Run anyway.
 Only continue if you downloaded the app from the repository above and trust it.
@@ -36,7 +44,8 @@ and usage limits. No API credit is required in that mode. Optional API mode is
 billed separately and must be selected explicitly; there is no automatic fallback.
 Speech is transcribed on your PC. First voice use downloads several hundred MB
 from Hugging Face. Instructions, reviewed transcripts and selected website/app
-text go to OpenAI. The portfolio distributes the app; it does not control your PC.
+text stay on this PC in Local mode and go to OpenAI in ChatGPT/API modes.
+The portfolio distributes the app; it does not control your PC.
 Browser sign-ins happen manually in the assistant's own browser. Microphone
 capture, live model behaviour and your installed app controls need local tests.
 Stop takes effect between operations and cannot undo completed actions.
@@ -91,13 +100,16 @@ def main():
     if not json.loads(report.read_text(encoding="utf-8")).get("ok"):
         raise SystemExit("A passing packaged smoke test is required before packaging.")
     (bundle / "QUICK_START.txt").write_text(QUICK_START, encoding="utf-8")
+    (bundle / "Start Local Assistant.cmd").write_text('@echo off\r\nstart "" "%~dp0ArafatAssistant.exe" --local\r\n', encoding="ascii")
     shutil.copyfile(ROOT / "LICENSE", bundle / "LICENSE.txt")
     (bundle / "BUILD_INFO.json").write_text(json.dumps({
         "source_commit": os.environ.get("GITHUB_SHA", "local-build"),
         "python": platform.python_version(), "platform": platform.platform(),
         "build_kind": "unsigned Windows x64 portable preview", "smoke_test_passed": True,
         "browser": "installed Microsoft Edge", "live_api_tested": False,
-        "microphone_capture_tested": False, "windows_app_actions_tested": False,
+        "microphone_capture_tested": False, "windows_app_actions_tested": True,
+        "windows_app_fixture": "Disposable Notepad English/Bangla read/fill in source tests",
+        "local_protocol_tested": True, "local_model_engine": "Ollama, own loopback process, OLLAMA_NO_CLOUD=1",
         "chatgpt_live_sign_in_tested": False, "local_speech_model_tested": False,
     }, indent=2), encoding="utf-8")
     archive = package_app(bundle, OUTPUT)
