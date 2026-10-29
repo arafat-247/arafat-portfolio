@@ -11,8 +11,8 @@ the desktop companion on the user's PC.
    including when older saved preferences selected ChatGPT. Python is included.
 2. Open **Local setup**, select **Download Ollama**, and complete its official
    Windows installer. Return to the assistant afterwards.
-3. Start with **Light / qwen3:1.7b** (about 1.4 GB download), or choose **Standard / qwen3:4b**
-   (about 2.5 GB download), then select **Download selected model**. Stop can interrupt a
+3. Choose **Light / qwen3:1.7b** (about 1.4 GB download),
+   then select **Download selected model**. Stop can interrupt a
    download; retrying can resume it. Model download size is not total RAM needed.
 4. Select an installed **Task model** and run one short typed instruction.
    Try `Reply in Bangla and explain what you can do`, then `Open Notepad` with
@@ -29,8 +29,10 @@ It never falls back to another provider or billing mode. The local engine can
 run after downloads without internet; website tasks and initial model downloads
 still need internet. No account is required for these public downloaded models.
 
-CPU/GPU, memory and the chosen model determine speed. Light uses less memory;
-small models may follow instructions less reliably than larger models. Bangla,
+CPU/GPU, memory and the chosen model determine speed. Only the Light starter is
+covered by the live model checks. Larger installed models can be selected, but
+may exceed the five-minute response limit on a CPU. Small models may follow
+instructions less reliably than larger models. Bangla,
 voice accuracy and your particular apps need local trials. The model is limited
 to an 8K context with bounded page reads; use short tasks and start a new
 conversation when prompted. Voice remains push-to-talk, with a separate initial
@@ -38,7 +40,7 @@ speech-model download. The portfolio is not a remote-control server.
 
 Protocol: https://docs.ollama.com/api/chat
 Local/cloud distinction: https://docs.ollama.com/faq
-Model details: https://ollama.com/library/qwen3:4b
+Model details: https://ollama.com/library/qwen3:1.7b
 
 ## Use an existing ChatGPT Plus or Pro plan
 
@@ -136,8 +138,8 @@ It makes no OpenAI request and downloads no speech model. Live sign-in, actual
 speech recognition, microphone capture and individual app tasks require the
 user's local trial. A passing build does not establish live account eligibility.
 
-The 0.4 release additionally gates publication on real Qwen3 Light and Standard
-CPU inference on Linux: each must request an approved note tool, write the exact
+The 0.4 release additionally gates publication on real Qwen3 Light
+CPU inference on Linux: it must request an approved note tool, write the exact
 English/Bangla test text and return a Bangla reply. Windows tests launch a
 disposable Notepad and verify observed-control read/fill with English/Bangla.
 Loopback tests cover cancellation, malformed/incomplete responses, cloud model
@@ -157,7 +159,7 @@ python assistant/build_windows.py
 Source checks: `python -m unittest discover -s assistant/desktop/tests -v`.
 The Windows CI runs source checks, freezes the app, checks the packaged app,
 then creates the ZIP and SHA-256 checksum. Only a passing main-branch build
-publishes an `assistant-v0.3.*` preview release. Pull requests retain test
+publishes an `assistant-v0.4.*` preview release. Pull requests retain test
 artifacts and do not publish a release.
 
 ## References

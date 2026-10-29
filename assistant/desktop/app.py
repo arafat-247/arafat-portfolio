@@ -219,7 +219,7 @@ class Application:
             with external_program_environment():
                 webbrowser.open(DOWNLOAD_URL)
         ttk.Button(box, text="Download Ollama", command=download_ollama).pack(anchor="w")
-        ttk.Label(box, text="2. Choose a starter model. Light uses less memory; Standard may follow tasks better. The size shown is the download, not the total RAM required. Speed depends on your PC.", wraplength=650).pack(anchor="w", pady=(14, 6))
+        ttk.Label(box, text="2. Download the Light starter model. The size shown is the download, not the total RAM required. Speed and task quality depend on your PC; begin with one short instruction.", wraplength=650).pack(anchor="w", pady=(14, 6))
         choices = [f"{name} · {detail}" for name, detail in STARTER_MODELS.items()]
         selection = ttk.Combobox(box, values=choices, state="readonly", width=65)
         selection.pack(fill="x")

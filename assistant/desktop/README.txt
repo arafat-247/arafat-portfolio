@@ -3,7 +3,7 @@ ARAFAT ASSISTANT — LOCAL WINDOWS COMPANION
 For the portable release, open Start Local Assistant.cmd.
 In the main window, choose Local model and open Local setup.
 Install Ollama using Download Ollama, then return and download a starter model.
-Light (qwen3:1.7b) is about 1.4 GB. Standard (qwen3:4b) is about 2.5 GB.
+The Light starter (qwen3:1.7b) is about a 1.4 GB download.
 Download size is not total memory required. Speed depends on your PC.
 Choose Task model, type one short instruction and select Run instruction.
 For Notepad and other configured apps, enable Windows app access this session.

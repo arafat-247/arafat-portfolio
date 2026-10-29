@@ -30,8 +30,6 @@ jobs:
         include:
           - model: 'qwen3:1.7b'
             label: light
-          - model: 'qwen3:4b'
-            label: standard
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -136,12 +134,12 @@ jobs:
           cat > release-notes.txt <<'NOTES'
           Portable Windows preview of Arafat Assistant, including Python. Microsoft Edge is required.
           Extract the ZIP and open Start Local Assistant.cmd (or choose Local model in the main window).
-          Open Local setup, install Ollama once, and download the Light or Standard Qwen3 model.
+          Open Local setup, install Ollama once, and download the Light Qwen3 starter model.
           Local mode uses a model on your PC: no OpenAI sign-in, subscription or API credit is required.
           The assistant owns a loopback-only Ollama engine with cloud features disabled.
           Existing browser, Windows app, note, voice-review and action-approval controls remain available.
           The packaged import, browser and desktop-interface smoke checks passed.
-          Both starter models passed real CPU model/tool/Bangla checks on Linux. Windows checks exercised actual Notepad read/fill controls.
+          The Light starter passed real CPU model/tool/Bangla checks on Linux. Windows checks exercised actual Notepad read/fill controls.
           Your PC's inference speed, microphone, speech recognition and individual apps still need local testing.
           Optional ChatGPT mode remains subject to account/workspace eligibility. Its sign-in restriction is not changed by this update.
           Voice is transcribed locally after a first-use multilingual model download.

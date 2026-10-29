@@ -165,7 +165,7 @@ class LocalTests(unittest.TestCase):
     def test_discovery_filters_remote_models_and_download_has_explicit_starter_allowlist(self):
         transport = local.LocalTransport()
         self.assertEqual([row["slug"] for row in local.installed_models(transport)], ["qwen3:4b"])
-        local.pull_starter(transport, "qwen3:4b", lambda *args: None)
+        local.pull_starter(transport, "qwen3:1.7b", lambda *args: None)
         with self.assertRaises(ValueError):
             local.pull_starter(transport, "other:model", lambda *args: None)
 

@@ -23,7 +23,7 @@ QUICK_START = """ARAFAT ASSISTANT — PORTABLE WINDOWS PREVIEW
 3. Open ArafatAssistant.exe. Python is included; Microsoft Edge must be installed.
 4. Open Start Local Assistant.cmd to explicitly choose local mode, including on an older installation.
 5. Open Local setup. Select Download Ollama and finish its official Windows installer.
-6. Return to Local setup. Start with Light (about 1.4 GB), or Standard (about 2.5 GB),
+6. Return to Local setup. Choose the Light starter (about 1.4 GB download),
    then select Download selected model. The app starts its own local engine.
 7. Choose Task model and test a short typed instruction. No OpenAI sign-in or API credit is used.
 8. Try Record voice. First use downloads a multilingual local speech model.
@@ -31,7 +31,7 @@ QUICK_START = """ARAFAT ASSISTANT — PORTABLE WINDOWS PREVIEW
 10. Enable Windows app access in the app for desktop tasks. Start with Open Notepad.
 
 Local mode uses a downloaded model on your PC with Ollama cloud features off.
-The Light model uses less memory; Standard may follow instructions better.
+The Light starter passed live tool and Bangla checks. Small models can make mistakes.
 Model download size is not the total RAM needed. Speed and quality depend on
 your CPU, graphics hardware, memory and task. Begin with short tasks.
 First-time model downloads and websites need internet. Local inference does not.
