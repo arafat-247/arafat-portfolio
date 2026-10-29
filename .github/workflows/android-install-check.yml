@@ -1,0 +1,62 @@
+name: Check published Android APK installation
+
+on:
+  pull_request:
+    paths: ['.github/workflows/android-install-check.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+concurrency:
+  group: android-install-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  install:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [35, 36, 37]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Download the exact published APK and check its checksum
+        run: |
+          mkdir -p install-check
+          curl --fail --location --retry 2 --output install-check/ArafatAssistant-Android.apk https://github.com/arafat-247/arafat-portfolio/releases/download/assistant-android-v0.1.10/ArafatAssistant-Android.apk
+          cd install-check
+          echo 'c11130aa9a66eb5599da06e5b1d7d3cbd4d037dc842fe0987930e84f7da46889  ArafatAssistant-Android.apk' | sha256sum --check
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Check an ordinary install with no test-APK override
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          arch: x86_64
+          target: google_apis
+          profile: pixel_2
+          ram-size: 2048M
+          disable-animations: true
+          script: |
+            adb install --no-incremental install-check/ArafatAssistant-Android.apk
+            adb shell am start -W -n com.arafat.assistant/.MainActivity
+            adb shell pidof com.arafat.assistant
+            adb shell screencap -p /sdcard/Download/install-check.png
+            adb pull /sdcard/Download/install-check.png install-check/install-api-${{ matrix.api }}.png
+            adb shell dumpsys package com.arafat.assistant > install-check/package-api-${{ matrix.api }}.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Published-APK-install-API-${{ matrix.api }}
+          path: |
+            install-check/*.txt
+            install-check/*.png
+          if-no-files-found: ignore
