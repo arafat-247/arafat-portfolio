@@ -44,8 +44,10 @@ jobs:
           target: google_apis
           profile: pixel_2
           ram-size: 2048M
+          disk-size: 8G
           disable-animations: true
           script: |
+            adb shell df -h /data > install-check/storage-api-${{ matrix.api }}.txt
             adb install --no-incremental install-check/ArafatAssistant-Android.apk
             adb shell am start -W -n com.arafat.assistant/.MainActivity
             adb shell pidof com.arafat.assistant
