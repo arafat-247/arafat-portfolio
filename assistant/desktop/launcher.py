@@ -113,6 +113,9 @@ def smoke_test(report_path):
                 root.update()
                 from PIL import ImageGrab
                 def capture(label):
+                    import time
+                    root.update()
+                    time.sleep(0.5)  # Let Windows finish its window-opening animation.
                     root.update()
                     ImageGrab.grab().save(str(report_path) + "." + label + ".png")
                 def visible(widget, window):
