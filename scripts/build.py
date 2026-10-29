@@ -266,6 +266,9 @@ def build():
     android_site = SITE/'android'
     if android_site.is_dir():
         shutil.copytree(android_site, OUT/'android')
+    voice_site = SITE/'voice'
+    if voice_site.is_dir():
+        shutil.copytree(voice_site, OUT/'voice')
     b=Builder(); c=b.config; overrides=read(CONTENT/'overrides.json',{'articles':{}})['articles']; articles=[]
     for path in sorted((CONTENT/'articles').glob('*.json')):
         a=read(path,{}); a.update(overrides.get(a['id'],{}));
