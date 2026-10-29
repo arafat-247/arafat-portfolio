@@ -115,7 +115,15 @@ def smoke_test(report_path):
                 def capture(label):
                     root.update()
                     ImageGrab.grab().save(str(report_path) + "." + label + ".png")
+                def visible(widget, window):
+                    assert widget.winfo_ismapped(), "A required control is not visible"
+                    top = widget.winfo_rooty()
+                    bottom = top + widget.winfo_height()
+                    assert window.winfo_rooty() <= top < bottom <= window.winfo_rooty() + window.winfo_height(), "A required control falls below its window"
+                    assert bottom < window.winfo_screenheight(), "A required control falls below the screen"
                 assert application.config["auth_mode"] == "local"
+                for control in (application.input, application.record_button, application.run_button, application.stop_button):
+                    visible(control, root)
                 capture("main")
                 application.show_local_setup()
                 root.update()
@@ -125,6 +133,12 @@ def smoke_test(report_path):
                         child.destroy()
                 application.show_settings()
                 root.update()
+                for child in root.winfo_children():
+                    if isinstance(child, tk.Toplevel):
+                        for row in child.winfo_children():
+                            for control in row.winfo_children():
+                                if isinstance(control, app.ttk.Button) and control.cget("text") == "Save settings":
+                                    visible(control, child)
                 capture("settings")
                 for child in root.winfo_children():
                     if isinstance(child, tk.Toplevel):
@@ -138,7 +152,7 @@ def smoke_test(report_path):
                 application.worker.join(timeout=2)
                 if application.worker.is_alive():
                     raise RuntimeError("The application did not close cleanly.")
-        result["checks"].append("Desktop interface defaults to local mode, opens setup/settings, accepts Bangla text and closes")
+        result["checks"].append("Desktop interface defaults to local mode, keeps instruction/run/settings controls on screen, accepts Bangla text and closes")
         result["ok"] = True
         phase("complete")
     except Exception:

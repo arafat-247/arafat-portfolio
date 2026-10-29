@@ -39,8 +39,10 @@ class Application:
     def __init__(self, root):
         self.root = root
         self.root.title("Arafat Assistant · your Windows companion")
-        self.root.geometry("1000x800")
-        self.root.minsize(760, 640)
+        width = min(1000, self.root.winfo_screenwidth() - 40)
+        height = min(800, self.root.winfo_screenheight() - 80)
+        self.root.geometry(f"{width}x{height}+16+16")
+        self.root.minsize(min(760, width), min(640, height))
         self.directory = settings.data_directory()
         self.directory.mkdir(parents=True, exist_ok=True)
         self.config_problem = ""
@@ -133,7 +135,7 @@ class Application:
         self.windows_check = ttk.Checkbutton(controls, text="Allow Windows app access this session", variable=self.windows_access)
         self.windows_check.pack(side="left", padx=16)
         ttk.Label(frame, text="Activity and replies", font=("Segoe UI", 10, "bold")).pack(anchor="w")
-        self.chat = ScrolledText(frame, height=14, wrap="word", font=("Segoe UI", 11),
+        self.chat = ScrolledText(frame, height=1, wrap="word", font=("Segoe UI", 11),
                                  bg="white", fg="#15283f", relief="flat", padx=14, pady=12)
         self.chat.pack(fill="both", expand=True, pady=(5, 12))
         self.chat.configure(state="disabled")
@@ -588,9 +590,12 @@ class Application:
             return
         dialog = tk.Toplevel(self.root)
         dialog.title("Assistant settings")
-        dialog.geometry("740x810")
+        height = min(810, self.root.winfo_screenheight() - 100)
+        dialog.geometry(f"740x{height}+24+24")
         dialog.transient(self.root)
         dialog.grab_set()
+        row = ttk.Frame(dialog, padding=10)
+        row.pack(fill="x", side="bottom")
         canvas = tk.Canvas(dialog, bg="#eef2f7", highlightthickness=0)
         scroll = ttk.Scrollbar(dialog, orient="vertical", command=canvas.yview)
         scroll.pack(side="right", fill="y")
@@ -680,8 +685,6 @@ class Application:
             except Exception as exc:
                 messagebox.showerror("Check settings", str(exc), parent=dialog)
 
-        row = ttk.Frame(dialog, padding=10)
-        row.pack(fill="x", side="bottom")
         ttk.Button(row, text="Cancel", command=dialog.destroy).pack(side="left")
         ttk.Button(row, text="Save settings", style="Accent.TButton", command=save).pack(side="right")
 
