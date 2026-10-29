@@ -1,4 +1,11 @@
 plugins { id 'com.android.application' }
+def sharedAuthSources = layout.buildDirectory.dir('generated/shared-auth')
+def syncSharedAuth = tasks.register('syncVoiceSharedAuth', Sync) {
+    from('../../android/app/src/main/java') {
+        include '**/AuthSession.java', '**/Http.java', '**/Protocol.java', '**/SecureStore.java'
+    }
+    into sharedAuthSources
+}
 android {
     namespace 'com.arafat.assistant'
     compileSdk 35
@@ -11,14 +18,11 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     // Share only authentication and transport helpers. The control app is not a dependency.
-    sourceSets.main.java {
-        srcDirs 'src/main/java', '../../android/app/src/main/java'
-        include '**/AuthSession.java', '**/Http.java', '**/Protocol.java', '**/SecureStore.java',
-            '**/VoiceActivity.java', '**/VoiceState.java', '**/VoiceClient.java', '**/VoiceConversation.java'
-    }
+    sourceSets.main.java.srcDirs = ['src/main/java', sharedAuthSources]
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17; coreLibraryDesugaringEnabled true }
     lint { abortOnError true; disable 'HardcodedText', 'SetTextI18n', 'RtlHardcoded', 'Autofill', 'ObsoleteSdkInt', 'OldTargetApi' }
 }
+tasks.named('preBuild') { dependsOn syncSharedAuth }
 dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
     testImplementation 'junit:junit:4.13.2'

@@ -24,11 +24,10 @@ assert app.find('activity').get(ns+'name') == 'com.arafat.assistant.VoiceActivit
 with zipfile.ZipFile(apk) as archive:
     assert archive.testzip() is None
     dex = b''.join(archive.read(n) for n in archive.namelist() if n.endswith('.dex'))
-    for forbidden in (b'Lcom/arafat/assistant/DeviceService;', b'Lcom/arafat/assistant/Agent;', b'Lcom/arafat/assistant/PlanClient;'):
+    for forbidden in (b'Landroid/accessibilityservice/AccessibilityService;', b'Lcom/arafat/assistant/DeviceService;', b'Lcom/arafat/assistant/Agent;', b'Lcom/arafat/assistant/PlanClient;'):
         assert forbidden not in dex, f'Control dependency in voice APK: {forbidden}'
 defined = subprocess.check_output([analyser, 'dex', 'packages', '--defined-only', str(apk)], text=True)
 print(defined)
-# Desugaring may reference Android framework APIs that this app does not implement.
-# Check actual definitions as well as the no-service manifest and absent control code.
+# Record actual class definitions as well as the manifest and reference checks.
 assert not any(line.strip().endswith('android.accessibilityservice.AccessibilityService') for line in defined.splitlines())
 print('Voice APK verified: INTERNET only; no services or device-control classes.')

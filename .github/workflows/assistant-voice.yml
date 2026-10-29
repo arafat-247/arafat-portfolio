@@ -53,7 +53,9 @@ jobs:
         if: always()
         with:
           name: Voice-build-reports
-          path: android-voice/app/build/reports/
+          path: |
+            android-voice/app/build/reports/
+            android-voice/apk-verification.txt
           if-no-files-found: ignore
 
   device:
