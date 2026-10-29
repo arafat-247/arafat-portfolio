@@ -110,6 +110,25 @@ def smoke_test(report_path):
                 root = tk.Tk()
                 application = app.Application(root)
                 root.update_idletasks()
+                root.update()
+                from PIL import ImageGrab
+                def capture(label):
+                    root.update()
+                    ImageGrab.grab().save(str(report_path) + "." + label + ".png")
+                assert application.config["auth_mode"] == "local"
+                capture("main")
+                application.show_local_setup()
+                root.update()
+                capture("local-setup")
+                for child in root.winfo_children():
+                    if isinstance(child, tk.Toplevel):
+                        child.destroy()
+                application.show_settings()
+                root.update()
+                capture("settings")
+                for child in root.winfo_children():
+                    if isinstance(child, tk.Toplevel):
+                        child.destroy()
                 assert application.input.winfo_exists()
                 application.input.insert("1.0", "বাংলায় নির্দেশ")
                 assert application.input.get("1.0", "end").strip() == "বাংলায় নির্দেশ"
@@ -119,7 +138,7 @@ def smoke_test(report_path):
                 application.worker.join(timeout=2)
                 if application.worker.is_alive():
                     raise RuntimeError("The application did not close cleanly.")
-        result["checks"].append("Desktop interface opens, accepts Bangla text and closes")
+        result["checks"].append("Desktop interface defaults to local mode, opens setup/settings, accepts Bangla text and closes")
         result["ok"] = True
         phase("complete")
     except Exception:
@@ -130,6 +149,8 @@ def smoke_test(report_path):
 
 def main():
     configure_browser()
+    if sys.argv[1:] == ["--local"]:
+        os.environ["ARAFAT_START_LOCAL"] = "1"
     if len(sys.argv) == 3 and sys.argv[1] == "--smoke-test":
         return smoke_test(sys.argv[2])
     try:

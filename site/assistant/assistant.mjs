@@ -3,7 +3,7 @@ const DOWNLOAD_PREFIX = `https://github.com/${REPO}/releases/download/`;
 
 export function assistantRelease(releases) {
   if (!Array.isArray(releases)) return null;
-  const candidates = releases.filter(r => !r.draft && /^assistant-v0\.3\.\d+$/.test(r.tag_name || ''))
+  const candidates = releases.filter(r => !r.draft && /^assistant-v0\.(?:3|4)\.\d+$/.test(r.tag_name || ''))
     .sort((a,b) => String(b.published_at || '').localeCompare(String(a.published_at || '')));
   for (const release of candidates) {
     const asset = (release.assets || []).find(a => a.name === 'ArafatAssistant-Windows-x64.zip' && String(a.browser_download_url || '').startsWith(DOWNLOAD_PREFIX));

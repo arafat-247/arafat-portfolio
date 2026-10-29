@@ -30,3 +30,8 @@ test('the newest downloadable assistant build wins', () => {
   assert.equal(result.release.tag_name,'assistant-v0.3.2');
   assert.equal(result.checksum.name,'ArafatAssistant-Windows-x64.zip.sha256');
 });
+test('local-mode 0.4 builds qualify and take priority by publication date', () => {
+  const old=release('assistant-v0.3.20','2026-10-28',[asset()]);
+  const local=release('assistant-v0.4.22','2026-10-29',[asset()]);
+  assert.equal(assistantRelease([old,local]).release.tag_name,'assistant-v0.4.22');
+});

@@ -21,6 +21,7 @@ class Tools:
         self.approve, self.log = approve, log
         self.cancel = threading.Event()
         self.desktop_enabled = False
+        self.context_destination = "OpenAI"
         self.playwright = self.context = self.page = None
         self.browser_controls = {}
         self.window_controls = {}
@@ -278,7 +279,7 @@ class Tools:
         if window.process_id() == os.getpid() or not window.is_visible():
             raise ValueError("This window cannot be read.")
         title = window.window_text()
-        self.review("Read Windows app", f"Window: {title}\n\nAccessible text from this window will be sent to OpenAI to understand your task. Close private documents first if needed.")
+        self.review("Read Windows app", f"Window: {title}\n\nAccessible text from this window will be shared with {self.context_destination} to understand your task. Review the window before allowing it.")
         check_cancel(self.cancel)
         if window.window_text() != title or not window.is_visible():
             raise ValueError("The window changed during review. List windows and try again.")

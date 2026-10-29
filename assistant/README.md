@@ -4,9 +4,45 @@ A portable Windows companion for typed and recorded instructions, websites and
 supported Windows app controls. The portfolio is a download page; work runs in
 the desktop companion on the user's PC.
 
+## Local mode: no OpenAI sign-in or API credit
+
+1. Download the newest `assistant-v0.4.*` Windows preview. Extract the whole ZIP
+   and open **Start Local Assistant.cmd**. This explicitly selects Local mode,
+   including when older saved preferences selected ChatGPT. Python is included.
+2. Open **Local setup**, select **Download Ollama**, and complete its official
+   Windows installer. Return to the assistant afterwards.
+3. Choose **Standard / qwen3:4b** (about 2.5 GB download) or **Light / qwen3:1.7b**
+   (about 1.4 GB), then select **Download selected model**. Stop can interrupt a
+   download; retrying can resume it. Model download size is not total RAM needed.
+4. Select an installed **Task model** and run one short typed instruction.
+   Try `Reply in Bangla and explain what you can do`, then `Open Notepad` with
+   **Allow Windows app access this session** enabled. Review the approval.
+5. For websites, Microsoft Edge must be installed. Try
+   `Open https://example.com and tell me the heading`. The companion uses its
+   own visible browser and keeps its profile separate from your normal browser.
+
+The app starts and stops its own Ollama process on `127.0.0.1:11435`, with
+`OLLAMA_NO_CLOUD=1`. It does not modify a separate Ollama installation's server
+settings or send inference requests to OpenAI. It rejects remote/cloud models,
+models without tool support, incomplete generations and unsupported tool calls.
+It never falls back to another provider or billing mode. The local engine can
+run after downloads without internet; website tasks and initial model downloads
+still need internet. No account is required for these public downloaded models.
+
+CPU/GPU, memory and the chosen model determine speed. Light uses less memory;
+small models may follow instructions less reliably than larger models. Bangla,
+voice accuracy and your particular apps need local trials. The model is limited
+to an 8K context with bounded page reads; use short tasks and start a new
+conversation when prompted. Voice remains push-to-talk, with a separate initial
+speech-model download. The portfolio is not a remote-control server.
+
+Protocol: https://docs.ollama.com/api/chat
+Local/cloud distinction: https://docs.ollama.com/faq
+Model details: https://ollama.com/library/qwen3:4b
+
 ## Use an existing ChatGPT Plus or Pro plan
 
-1. Download the newest `assistant-v0.3.*` Windows preview from the repository's
+1. Download the newest Windows preview from the repository's
    Releases page or https://arafatrahaman.com/assistant/.
 2. Close the older assistant, extract the whole ZIP into a new folder, and open
    `ArafatAssistant.exe`. Keep `_internal` beside it. Python is included;
@@ -71,8 +107,9 @@ retains its registration for future sign-in. If remote revocation cannot be
 confirmed, the app says so; disconnect the app in ChatGPT Settings → Security
 and login → Sign in with ChatGPT. Run only one companion copy at a time.
 
-Instructions, reviewed transcripts and selected website/app text are sent to
-OpenAI when a task runs. Recordings remain local and are not written to disk by
+In Local mode, instructions, reviewed transcripts and selected website/app text
+are processed by the downloaded model on the PC. In ChatGPT/API modes, that
+context is sent to OpenAI. Recordings remain local and are not written to disk by
 the app. The browser stores its own profile and sign-ins locally. Passwords and
 website sign-ins are entered by the user. Proposed website/app changes require
 local approval. Notes are saved as new UTF-8 TXT files in
@@ -98,6 +135,15 @@ and the real Tk interface opening and closing.
 It makes no OpenAI request and downloads no speech model. Live sign-in, actual
 speech recognition, microphone capture and individual app tasks require the
 user's local trial. A passing build does not establish live account eligibility.
+
+The 0.4 release additionally gates publication on real Qwen3 Light and Standard
+CPU inference on Linux: each must request an approved note tool, write the exact
+English/Bangla test text and return a Bangla reply. Windows tests launch a
+disposable Notepad and verify observed-control read/fill with English/Bangla.
+Loopback tests cover cancellation, malformed/incomplete responses, cloud model
+rejection, action refusal and absence of OpenAI credentials or fallback calls.
+Packaged checks capture the main window, Local setup and settings for review.
+Linux model tests do not establish inference speed on the user's Windows PC.
 
 ## Build from source
 

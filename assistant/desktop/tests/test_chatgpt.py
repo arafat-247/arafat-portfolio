@@ -232,6 +232,7 @@ class ChatGPTTests(unittest.TestCase):
             app = Application.__new__(Application)
             app.directory = Path(folder)
             app.config = settings.defaults()
+            app.config["auth_mode"] = "chatgpt"
             app.config["plan_model"] = "discovered-model"
             app.session = Mock()
             app.jobs, app.events = queue.Queue(), queue.Queue()

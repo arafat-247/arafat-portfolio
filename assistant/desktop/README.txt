@@ -1,11 +1,24 @@
-ARAFAT ASSISTANT — CURRENT SETUP
+ARAFAT ASSISTANT — LOCAL WINDOWS COMPANION
 
-For the packaged Windows app and current Plus / Pro setup, read:
-https://github.com/arafat-247/arafat-portfolio/tree/main/assistant
+For the portable release, open Start Local Assistant.cmd.
+In the main window, choose Local model and open Local setup.
+Install Ollama using Download Ollama, then return and download a starter model.
+Light (qwen3:1.7b) is about 1.4 GB. Standard (qwen3:4b) is about 2.5 GB.
+Download size is not total memory required. Speed depends on your PC.
+Choose Task model, type one short instruction and select Run instruction.
+For Notepad and other configured apps, enable Windows app access this session.
+Review proposed actions before allowing them.
 
-ChatGPT mode uses Continue with ChatGPT and an eligible Plus / Pro plan.
-It does not require an API key. Optional API mode is billed separately.
-Speech is transcribed locally after a first-use speech-model download.
+No OpenAI account, subscription or API credit is used in Local mode.
+The assistant owns a loopback-only Ollama engine with cloud features off.
+Website tasks still need internet and use the assistant's separate Edge window.
+Voice is recorded only after pressing Record voice; review the transcript.
+First voice use downloads a separate multilingual speech model.
 
-For a source checkout, install requirements.txt with Python 3.12 on Windows,
-then run python launcher.py. Microsoft Edge must be installed.
+Optional ChatGPT mode remains subject to account/workspace eligibility.
+Optional API mode is billed separately and must be selected explicitly.
+The assistant never switches billing modes automatically.
+
+Source installation: setup.cmd, then start.cmd. Requires Python 3.11 or newer.
+The packaged app already includes Python; no source setup is needed for it.
+Documentation: https://github.com/arafat-247/arafat-portfolio/tree/main/assistant
