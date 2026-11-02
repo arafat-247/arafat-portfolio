@@ -1,6 +1,34 @@
 {
   "articles": [
     {
+      "id": "c22d60d8c47d588cab9d",
+      "title": "A death on the metro rail and the questions it leaves behind",
+      "excerpt": "A metro rail passenger's death raises questions about public compassion, invisible disabilities and responsibility when strangers need help.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-11-02T00:10:00+06:00",
+      "date_modified": "2026-11-02T00:10:00+06:00",
+      "cover_image": "assets/imported/2e5dc51e8049cc94c2c1e521.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/a-death-on-the-metro-rail-and-the-questions-it-leaves-behind/",
+      "credit_type": "byline"
+    },
+    {
+      "id": "83fea793fa8a2fc596c5",
+      "title": "Zero passes, twice in a row",
+      "excerpt": "At an institution in Narail, 35 candidates appeared in last year’s HSC examinations. None passed. This year, 43 candidates sat for the examinations. Again, not a single student passed.",
+      "category": "News",
+      "stream": "reporting",
+      "date_published": "2026-11-02T00:00:00+06:00",
+      "date_modified": "2026-11-02T07:45:00+06:00",
+      "cover_image": "assets/imported/3d6d0a4bdf03007da6583780.jpg",
+      "cover_alt": "",
+      "source_name": "The Daily Star",
+      "local_url": "stories/zero-passes-twice-in-a-row/",
+      "credit_type": "byline"
+    },
+    {
       "id": "b4f643ab08f4978e9d3a",
       "title": "Only half the students pass",
       "excerpt": "The pass rate in this year’s Higher Secondary Certificate (HSC) examination hit a 22-year low of 51.62 percent, down 5.5 percentage points year-on-year.",
