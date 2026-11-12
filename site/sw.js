@@ -1,4 +1,4 @@
-const VERSION='21.17.0';
+const VERSION='21.17.1';
 const STATIC='portfolio-static-'+VERSION;
 const PAGES='portfolio-pages-'+VERSION;
 const CORE=[

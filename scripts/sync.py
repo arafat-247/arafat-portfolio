@@ -3,7 +3,7 @@ import argparse, hashlib, json, re, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
-from urllib.parse import urljoin, urlsplit, quote
+from urllib.parse import urljoin, urlsplit, quote, parse_qs, urlencode
 from core import *
 
 def is_due(status,is_fresh=False,retry_failed=False,current=None):
@@ -15,6 +15,12 @@ def is_due(status,is_fresh=False,retry_failed=False,current=None):
     if status.get('status')=='author_unverified': return age>7*86400
     if status.get('status')=='failed': return age>min(86400,1200*2**min(status.get('failures',0),6))
     return age>((6*3600) if is_fresh else 7*86400)
+
+def pending_counts(sources, manual_urls=()):
+    waiting=[(url,state) for url,state in sources.items() if not state.get('last_success')
+             and state.get('status') not in ('author_unverified','unsupported')]
+    confirmed=sum(bool(state.get('author_listing') or url in manual_urls) for url,state in waiting)
+    return {'pending':confirmed,'pending_candidates':len(waiting)-confirmed}
 
 def article_links(source,base,scoped=False):
     doc=Document(source.decode('utf-8',errors='replace')); result=[]
@@ -36,71 +42,102 @@ def mirror_url(url, host='online92.thedailystar.net'):
     if p.hostname not in ('www.thedailystar.net','thedailystar.net'):return url
     return p._replace(netloc=host).geturl()
 
-def fetch_daily_star(url,limit=5_000_000):
-    # Distinct official frontend hosts do not always publish or respond together.
-    # Keep the canonical URL as the last resort and verify authorship separately.
+def fetch_daily_star(url,limit=5_000_000,accept=None):
+    # Prefer public canonical pages; alternate official hosts are fallbacks.
+    # Article-level authorship is verified separately from discovery.
     candidates=list(dict.fromkeys((
+        url,
         mirror_url(url),
         mirror_url(url,'online91.thedailystar.net'),
-        url,
     )))
     for index,candidate in enumerate(candidates):
-        try:return fetch(candidate,limit)
+        try:return fetch(candidate,limit,accept) if accept else fetch(candidate,limit)
         except (HTTPError,URLError):
             if index==len(candidates)-1:raise
 
-def discover(url):
-    data,typ,final=fetch_daily_star(url)
-    if typ not in ('text/html','application/xhtml+xml'):
-        raise ValueError('Author page is not HTML.')
-    try:return article_links(data,final,scoped=True)
-    except ValueError:
-        # Mirror pages do not always retain the same author-card wrapper.
-        if urlsplit(final).hostname=='online92.thedailystar.net':
-            return article_links(data,final,scoped=False)
-        raise
+def author_view(source):
+    """Read the public author view used by the publisher's Show more control."""
+    doc=Document(source.decode('utf-8',errors='replace'))
+    for script in doc.nodes('script'):
+        if script.attrs.get('data-drupal-selector')!='drupal-settings-json':continue
+        try:settings=json.loads(script.rawtext())
+        except (ValueError,TypeError):continue
+        node=settings.get('tds_ga_dimensions',{})
+        if node.get('NodeType')!='author':continue
+        for view in settings.get('views',{}).get('ajaxViews',{}).values():
+            if (view.get('view_name')=='category_show_more' and view.get('view_display_id')=='block_2'
+                and str(view.get('view_args'))==str(node.get('NodeID'))
+                and re.fullmatch(r'\d+',str(view.get('view_args','')))
+                and re.fullmatch(r'[a-f0-9]+',view.get('view_dom_id',''))):
+                return view
+    return None
+
+def discover(url, context=None):
+    context={} if context is None else context
+    page=int(parse_qs(urlsplit(url).query).get('page',['0'])[0])
+    view=context.get('author_view')
+    if page==0 or not view:
+        data,typ,final=fetch_daily_star(url)
+        if typ not in ('text/html','application/xhtml+xml'):
+            raise ValueError('Author page is not HTML.')
+        view=author_view(data)
+        if view:context['author_view']=view
+        if page==0 or not view:return article_links(data,final,scoped=True)
+    # Plain ?page=N responses currently repeat the first page. Retrieve the
+    # same public view fragment requested by the site's Show more control.
+    params={key:view[key] for key in ('view_name','view_display_id','view_args','view_path','view_dom_id','pager_element') if key in view}
+    params.update(page=page,_wrapper_format='drupal_ajax',_drupal_ajax=1)
+    endpoint=urljoin(AUTHOR,'/views/ajax')+'?'+urlencode(params)
+    data,typ,final=fetch_daily_star(endpoint,accept='application/json')
+    if typ in ('text/html','application/xhtml+xml'):
+        # Drupal can wrap AJAX JSON in a textarea for its iframe transport.
+        wrappers=Document(data.decode('utf-8',errors='replace')).nodes('textarea')
+        if len(wrappers)!=1:raise ValueError('Author pagination did not return JSON.')
+        data=wrappers[0].rawtext()
+    elif typ!='application/json':raise ValueError('Author pagination did not return JSON.')
+    commands=json.loads(data)
+    if not isinstance(commands,list):raise ValueError('Author pagination response changed.')
+    selector='.js-view-dom-id-'+view['view_dom_id']
+    fragments=[command.get('data','') for command in commands if isinstance(command,dict)
+               and command.get('command') in ('viewsShowMore','insert')
+               and command.get('selector')==selector and isinstance(command.get('data'),str)]
+    if not fragments:raise ValueError('Author pagination view could not be confirmed.')
+    return article_links(''.join(fragments).encode(),AUTHOR)
 
 def fallback_discover():
-    """Discover recent work through The Daily Star's alternate public host.
+    """Discover recent work through public Daily Star section listings.
 
     URLs are canonicalised back to www.thedailystar.net and still require
     article-level author verification before publication.
     """
-    seeds=[
-        # Campus and Rights stories can appear before the author's listing updates.
-        # Both publisher frontends are used because their caches can differ.
-        'https://online91.thedailystar.net/campus',
-        'https://online92.thedailystar.net/campus',
-        'https://online92.thedailystar.net/news/bangladesh/rights',
-        'https://online91.thedailystar.net/news/bangladesh/rights',
-        'https://online92.thedailystar.net/news/bangladesh/education',
-        'https://online92.thedailystar.net/news/education',
-        'https://online92.thedailystar.net/news/crime-justice',
-        'https://online92.thedailystar.net/news/bangladesh',
-        'https://online92.thedailystar.net/opinion/views',
-        'https://online92.thedailystar.net/opinion',
-        *[
-            'https://online92.thedailystar.net/author/arafat-rahaman?page='+str(page)
-            for page in range(0,6)
-        ],
-    ]
+    seeds=['https://www.thedailystar.net'+path for path in (
+        '/campus','/news/bangladesh/rights','/news/bangladesh/education',
+        '/news/education','/news/crime-justice','/news/bangladesh','/opinion/views','/opinion')]
     result=[]; errors=[]
-    for seed in seeds:
+    def listing(seed):
         try:
-            data,typ,final=fetch(seed)
-            if typ not in ('text/html','application/xhtml+xml'):continue
-            for link in article_links(data,final,scoped=False):
-                if link not in result:result.append(link)
+            data,typ,final=fetch_daily_star(seed)
+            if typ not in ('text/html','application/xhtml+xml'):raise ValueError('Section page is not HTML.')
+            doc=Document(data.decode('utf-8',errors='replace'))
+            views=[node for node in doc.root.walk() if 'view-content' in node.attrs.get('class','').split()]
+            scoped=''.join(node.render() for node in views).encode() if views else data
+            return article_links(scoped,final),None
         except (HTTPError,URLError,ValueError,OSError) as exc:
-            errors.append(str(exc)[:180])
-    if not result and errors:
-        raise ValueError('Fallback discovery failed: '+'; '.join(errors[:3]))
+            return [],str(exc)[:180]
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        for links,error in pool.map(listing,seeds):
+            if error:errors.append(error)
+            for link in links:
+                if link not in result:result.append(link)
+    if not result:raise ValueError('Fallback discovery failed: '+'; '.join(errors[:3] or ['No article links found.']))
     return result[:240]
 
 def store_article(item, old=None):
     # Do not replace a complete saved article with a likely paywall/error extract.
     if old and item['word_count'] < old.get('word_count',0)*0.55:
         raise ValueError('New extraction is substantially shorter. Existing archive preserved; review source manually.')
+    item['original_authors']=author_names(item.get('original_authors',[]))
+    item['verified_author']=has_author(item['original_authors'])
     if not item.get('source_label') and old:
         item['source_label']=old.get('source_label','')
     item['stream']=portfolio_stream(item)
@@ -182,9 +219,10 @@ def run(args):
     empty_pages=0
     repeated_pages=0
     newly_confirmed=0
+    discovery_context={}
     for page in pages:
         try:
-            found=discover(AUTHOR if page==0 else AUTHOR+'?page='+str(page))
+            found=discover(AUTHOR if page==0 else AUTHOR+'?page='+str(page),context=discovery_context)
         except (HTTPError,URLError,ValueError,OSError) as exc:
             unavailable_pages+=1
             if len(errors)<15:
@@ -251,7 +289,7 @@ def run(args):
             if typ not in ('text/html','application/xhtml+xml'): raise ValueError('URL is not an HTML article.')
             source=data.decode('utf-8',errors='replace')
             item=article(source,u,manual=bool(request),author_listing=bool(status.get('author_listing')))
-            if status.get('fallback_candidate') and not request and not item.get('verified_author'):
+            if status.get('fallback_candidate') and not status.get('author_listing') and not request and not item.get('verified_author'):
                 raise ValueError('Fallback candidate does not carry Arafat Rahaman byline.')
             item['resolved_source_url']=final
             source_doc=Document(source)
@@ -285,11 +323,11 @@ def run(args):
             if error:
                 rejected_fallback=status.get('fallback_candidate') and 'Author not verified' in error
                 status.update(status='author_unverified' if rejected_fallback else 'failed',error=error,failures=status.get('failures',0)+1)
-                if not rejected_fallback:errors.append(error)
+                if not rejected_fallback:errors.append(u+': '+error)
             else:
                 store_article(item,old);status.update(status='saved',last_success=now(),failures=0,error='',article_id=item['id'],title=item['title']);saved+=1
             write(CONTENT/'sync-state.json',state)
-    state.update(last_completed=now(),saved_this_run=saved,known_sources=len(sources),pending=sum(not x.get('last_success') and x.get('status') not in ('author_unverified','unsupported') for x in sources.values()),unsupported=sum(x.get('status')=='unsupported' for x in sources.values()),errors=errors[:30])
+    state.update(last_completed=now(),saved_this_run=saved,known_sources=len(sources),**pending_counts(sources,requests_by_url),unsupported=sum(x.get('status')=='unsupported' for x in sources.values()),errors=errors[:30])
     state['degraded_discovery']=discovery_failed
     state['refresh_ok']=(not discovery_failed) or fallback_ok
     write(CONTENT/'sync-state.json',state)

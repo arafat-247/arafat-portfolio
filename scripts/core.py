@@ -1,5 +1,5 @@
 """Small, dependency-free content and HTTP utilities."""
-import hashlib, html, ipaddress, json, re, socket, time
+import ast, hashlib, html, ipaddress, json, re, socket, time
 from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
@@ -118,11 +118,11 @@ def _retry_delay(exc,attempt):
     except (TypeError,ValueError):seconds=2**attempt
     return max(1,min(seconds,12))
 
-def fetch(url, limit=5_000_000):
+def fetch(url, limit=5_000_000, accept=None):
     public_url(url)
     headers={
         'User-Agent':UA,
-        'Accept':'text/html,application/xhtml+xml,image/*;q=0.5',
+        'Accept':accept or 'text/html,application/xhtml+xml,image/*;q=0.5',
         'Accept-Language':'en-GB,en;q=0.9',
         'Cache-Control':'no-cache',
     }
@@ -210,6 +210,26 @@ def objects(value):
         for item in value.values(): yield from objects(item)
     elif isinstance(value,list):
         for item in value: yield from objects(item)
+
+def author_names(value, depth=0):
+    """Flatten publisher author fields, including lists serialised as strings."""
+    if depth>8:return []
+    if isinstance(value,dict):return author_names(value.get('name',''),depth+1)
+    if isinstance(value,(list,tuple)):
+        return list(dict.fromkeys(name for item in value for name in author_names(item,depth+1)))
+    if not isinstance(value,str):return []
+    value=clean(value)
+    if value.startswith(('[','(')) and len(value)<=4000:
+        try:parsed=ast.literal_eval(value)
+        except (ValueError,SyntaxError,TypeError,RecursionError):parsed=None
+        if isinstance(parsed,(list,tuple)):return author_names(parsed,depth+1)
+    return [value] if value else []
+
+def has_author(value, name=NAME):
+    """Match a named reporter, rather than an author-list discovery flag."""
+    return any(name.casefold()==part.strip().casefold()
+               for author in author_names(value)
+               for part in re.split(r',|\s+and\s+|\s+&\s+',author,flags=re.I))
 
 OPINION_SOURCE_LABELS={'analysis','reaction'}
 
@@ -326,12 +346,11 @@ def article(source,url,manual=False,author_listing=False):
     ld=next((x for x in candidates if matches(x)), candidates[0] if len(candidates)==1 else {})
     title=clean(ld.get('headline') or doc.meta('og:title') or next((n.text() for n in doc.nodes('h1')),''))
     title=re.sub(r'\s*\|\s*The Daily Star\s*$','',title,flags=re.I)
-    names=ld.get('author',[]); names=names if isinstance(names,list) else [names]
-    authors=[clean(a.get('name','') if isinstance(a,dict) else a) for a in names]; authors=[x for x in authors if x]
+    authors=author_names(ld.get('author',[]))
     if not authors:
         authors=[n.text() for n in doc.root.walk() if n.attrs.get('rel')=='author' or re.search(r'(^|\s)(byline|author-name)(\s|$)',n.attrs.get('class',''))]
-        authors=[a for a in authors if a and len(a)<180]
-    verified=any(NAME.casefold()==a.casefold() or NAME.casefold() in [x.strip().casefold() for x in re.split(r',| and | & ',a)] for a in authors)
+        authors=author_names([a for a in authors if a and len(a)<180])
+    verified=has_author(authors)
     if not verified and not manual and not author_listing: raise ValueError('Author not verified; retained in the discovery log, not published.')
     if not title: raise ValueError('Article title could not be extracted.')
     if ld.get('isAccessibleForFree') in (False,'False','false'): raise ValueError('Source marks this article as restricted. Add authorised text manually.')
