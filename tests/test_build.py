@@ -31,6 +31,48 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(build.credit_type(manual),'contribution')
         self.assertEqual(build.credit_type({**manual,'credit_type_override':'author-page'}),'byline')
         self.assertEqual(build.credit_type({'verified_author':True}),'byline')
+        listed={'source_url':'https://example.com/a','author_listing_verified':True,'original_authors':['Star Online Report']}
+        self.assertEqual(build.credit_type(listed),'contribution')
+        self.assertEqual(build.credit_type({**listed,'credit_type_override':'author-page'}),'byline')
+        self.assertEqual(build.credit_type({**listed,'original_authors':["['Arafat Rahaman', 'Someone Else']"]}),'byline')
+
+    def test_build_repairs_legacy_byline_in_page_epaper_and_schema(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);content=root/'content';site=root/'site';out=root/'dist'
+            (site/'assets').mkdir(parents=True);(site/'admin').mkdir()
+            core.write(content/'settings.json',{'site_name':core.NAME,'site_url':'https://arafatrahaman.com'})
+            item={'id':'joint','title':'Joint reporting','status':'published','stream':'reporting','date_published':'2026-11-12','body_html':'<p>Preserved report.</p>','source_url':'https://example.com/a','original_authors':["['Mostafa Yousuf', 'Arafat Rahaman and Sajjad Hossain']"],'verified_author':False}
+            core.write(content/'articles/joint.json',item)
+            with patch.multiple(build,CONTENT=content,SITE=site,OUT=out),patch.object(build.SocialCardRenderer,'render',return_value=''),contextlib.redirect_stdout(io.StringIO()):build.build()
+            story=(out/'stories/joint-reporting/index.html').read_text()
+            self.assertIn('Mostafa Yousuf, Arafat Rahaman and Sajjad Hossain',story)
+            self.assertNotIn("['Mostafa",story)
+            self.assertNotIn('&#x27;Mostafa',story)
+            self.assertIn('/about/#person',story)
+            self.assertEqual(core.read(out/'data/index.json')['articles'][0]['credit_type'],'byline')
+
+    def test_show_more_pagination_uses_its_author_view_fragment(self):
+        view={'view_name':'category_show_more','view_display_id':'block_2','view_args':'1312375','view_path':'/node/1312375','view_dom_id':'abc123','pager_element':0}
+        settings={'tds_ga_dimensions':{'NodeType':'author','NodeID':'1312375'},'views':{'ajaxViews':{'one':view}}}
+        source=('<script data-drupal-selector="drupal-settings-json">'+json.dumps(settings)+'</script><article class="article-author"><a href="/news/recent-12345">Recent</a></article>').encode()
+        older='https://www.thedailystar.net/news/older-67890'
+        commands=[{'command':'viewsShowMore','selector':'.js-view-dom-id-abc123','data':'<a href="'+older+'">Older</a>'},{'command':'insert','selector':'.unrelated','data':'<a href="/news/unrelated-99999">Other</a>'}]
+        seen=[]
+        wrapped=False
+        def fetch_page(url,*args,**kwargs):
+            seen.append(url)
+            if '/views/ajax?' not in url:return source,'text/html',url
+            body=json.dumps(commands)
+            return (('<textarea>'+body+'</textarea>').encode(),'text/html',url) if wrapped else (body.encode(),'application/json',url)
+        for wrapped in (False,True):
+            with self.subTest(wrapped=wrapped):
+                context={};seen.clear()
+                with patch('sync.fetch_daily_star',side_effect=fetch_page):
+                    self.assertEqual(sync.discover(core.AUTHOR,context=context),['https://www.thedailystar.net/news/recent-12345'])
+                    self.assertEqual(sync.discover(core.AUTHOR+'?page=1',context=context),[older])
+                self.assertEqual(len(seen),2)
+                self.assertIn('page=1',seen[1])
+                self.assertIn('view_args=1312375',seen[1])
 
     def test_discovery_reads_every_author_card(self):
         source=b'''<article class="article-author"><a href="/news/first-12345">One</a></article>
@@ -51,7 +93,7 @@ class BuildTests(unittest.TestCase):
     def test_empty_or_repeated_page_does_not_stop_scan(self):
         url='https://www.thedailystar.net/news/example-4299999'
         source=('''<script type="application/ld+json">{"@type":"NewsArticle","headline":"An independently checked report","author":{"name":"Arafat Rahaman"},"datePublished":"2026-10-10T08:00:00+06:00","articleBody":"''' + ('Verified reporting text. '*30) + '''"}</script>''').encode()
-        def discover_page(page):
+        def discover_page(page,**kwargs):
             if 'page=4' in page:return [url]
             if 'page=3' in page:return []
             return []
@@ -87,6 +129,19 @@ class BuildTests(unittest.TestCase):
             self.assertEqual(state['sources'][u]['status'],'author_unverified')
             self.assertIn('Author not verified',state['sources'][u]['error'])
             self.assertFalse((root/'articles'/f'{core.identity(u)}.json').exists())
+
+    def test_author_listed_non_byline_contribution_survives_fallback_discovery(self):
+        u='https://www.thedailystar.net/news/example-4299999'
+        source=('''<script type="application/ld+json">{"@type":"NewsArticle","headline":"A contributed report","author":{"name":"Star Online Report"},"datePublished":"2026-11-12T08:00:00+06:00","articleBody":"''' + ('Preserved reporting text. '*30) + '''"}</script>''').encode()
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            with patch('sync.CONTENT',root),patch('sync.discover',return_value=[u]),patch('sync.fallback_discover',return_value=[u]),patch('sync.fetch_daily_star',return_value=(source,'text/html',u)),patch('sync.archive_image'),contextlib.redirect_stdout(io.StringIO()):
+                sync.run(SimpleNamespace(full=False,pages=1,limit=1,delay=0,workers=1,retry_failed=False))
+            state=core.read(root/'sync-state.json')
+            self.assertEqual(state['sources'][u]['status'],'saved')
+            saved=core.read(root/'articles'/f'{core.identity(u)}.json')
+            self.assertEqual(build.credit_type(saved),'contribution')
+            self.assertEqual(saved['original_authors'],['Star Online Report'])
 
     def test_drafts_and_attribution(self):
         with tempfile.TemporaryDirectory() as tmp:

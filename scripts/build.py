@@ -41,9 +41,10 @@ def credit_type(article):
     override=article.get('credit_type_override') or article.get('credit_type')
     if override=='author-page':return 'byline'
     if override=='contribution':return 'contribution'
-    if article.get('manual_import') and not (article.get('verified_author') or article.get('author_listing_verified')):
-        return 'contribution'
-    return 'byline'
+    authors=author_names(article.get('original_authors',[]))
+    if authors:return 'byline' if has_author(authors) else 'contribution'
+    if article.get('verified_author'):return 'byline'
+    return 'contribution' if article.get('source_url') or article.get('manual_import') else 'byline'
 
 def story_cover_asset(cover):
     """Create a smaller display copy for above-the-fold story artwork."""
@@ -212,7 +213,7 @@ class Builder:
                  f'<div class="storymain">{figure}<div class="bodycopy">{body}</div>{source}</div>{share_dialog}{epaper_dialog}</article>')
         profile_url=self.base+'/about/'
         authors=[]
-        for author in original:
+        for author in (part.strip() for name in original for part in re.split(r'\s+and\s+|\s+&\s+',name,flags=re.I)):
             item={'@type':'Person','name':author}
             if clean(author).casefold()==clean(self.config.get('site_name',NAME)).casefold():
                 item.update({'@id':profile_url+'#person','url':profile_url})
@@ -272,6 +273,8 @@ def build():
     b=Builder(); c=b.config; overrides=read(CONTENT/'overrides.json',{'articles':{}})['articles']; articles=[]
     for path in sorted((CONTENT/'articles').glob('*.json')):
         a=read(path,{}); a.update(overrides.get(a['id'],{}));
+        a['original_authors']=author_names(a.get('original_authors',[]))
+        if a['original_authors']:a['verified_author']=has_author(a['original_authors'])
         a['stream']=portfolio_stream(a)
         if a.get('status')=='published' and a.get('body_html') and date(a.get('date_published','')):articles.append(a)
     for a in read(CONTENT/'posts.json',{'posts':[]})['posts']:
@@ -418,7 +421,7 @@ def build():
     b.page('404.html','Page not found','<section class="page"><h1>Page not found</h1><p>This address may have changed.</p><a href="'+esc(b.base)+'/">Return to the portfolio</a></section>')
     write(OUT/'data/site.json',{'publishing':c.get('publishing',{}),'site_url':b.base})
     state=read(CONTENT/'sync-state.json',{})
-    write(OUT/'data/sync.json',{k:state.get(k) for k in ('last_completed','last_discovery_success','last_fallback_discovery_success','saved_this_run','known_sources','pending','refresh_ok','degraded_discovery','fallback_candidates','errors')})
+    write(OUT/'data/sync.json',{k:state.get(k) for k in ('last_completed','last_discovery_success','last_fallback_discovery_success','saved_this_run','known_sources','pending','pending_candidates','refresh_ok','degraded_discovery','fallback_candidates','errors')})
     def sitemap_url(path):
         route='' if path=='index.html' else (path[:-10] if path.endswith('/index.html') else path)
         return b.base+'/'+route

@@ -5,9 +5,10 @@
   "source_url": "https://www.thedailystar.net/news/bangladesh/accidents-fires/news/road-crash-tragedies-stalk-his-family-2953101",
   "source_name": "The Daily Star",
   "original_authors": [
-    "['Arafat Rahaman', 'Bulbul Ahmed and Anwar Ali']"
+    "Arafat Rahaman",
+    "Bulbul Ahmed and Anwar Ali"
   ],
-  "verified_author": false,
+  "verified_author": true,
   "author_listing_verified": true,
   "stream": "reporting",
   "category": "News",
@@ -27,5 +28,5 @@
     "stories/9cc826d0605eae2c386f-road-crash-tragedies-stalk-his-family/"
   ],
   "first_archived_at": "2026-09-06T12:27:24.335056+00:00",
-  "content_hash": "b3f606fd06e8518fc7c70803a5b102351392d5c6a7910c5606365a58f256e0ed"
+  "content_hash": "e9074a252a4c71f8cf9f9fc921c892c9df27b80a4571ee90b0b8114a88c3687d"
 }

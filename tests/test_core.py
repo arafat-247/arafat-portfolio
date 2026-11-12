@@ -31,6 +31,15 @@ class ContentTests(unittest.TestCase):
     def test_exact_author(self):
         a=core.article(sample(),'https://example.com/news/story-12345')
         self.assertTrue(a['verified_author']);self.assertTrue(a['date_published']);self.assertGreater(a['word_count'],50)
+    def test_unverified_discovery_candidates_are_not_confirmed_pending_articles(self):
+        counts=sync.pending_counts({'author':{'author_listing':True},'manual':{},'candidate':{},'rejected':{'status':'author_unverified'},'saved':{'last_success':'2026-11-12'}},{'manual'})
+        self.assertEqual(counts,{'pending':2,'pending_candidates':1})
+    def test_serialised_joint_byline_is_normalised_and_verified(self):
+        a=core.article(sample("['Mostafa Yousuf', 'Arafat Rahaman and Sajjad Hossain']"),'https://example.com/news/story-12345')
+        self.assertEqual(a['original_authors'],['Mostafa Yousuf','Arafat Rahaman and Sajjad Hossain'])
+        self.assertTrue(a['verified_author'])
+        self.assertEqual(core.author_names({'name':['Arafat Rahaman','Someone Else']}),['Arafat Rahaman','Someone Else'])
+        self.assertFalse(core.has_author(['Arafat Rahaman Junior']))
     def test_non_author_rejected(self):
         with self.assertRaises(ValueError):core.article(sample('Someone Else'),'https://example.com/news/story-12345')
     def test_author_listing_accepts_original_byline(self):
@@ -140,28 +149,28 @@ class ContentTests(unittest.TestCase):
         seen=[]
         def fake_fetch(url,*args):
             seen.append(url)
-            if url=='https://online91.thedailystar.net/campus':
+            if url=='https://www.thedailystar.net/campus':
                 page='<html><article><a href="/campus/news/cuet-deserves-answers-not-another-power-struggle-over-the-vcs-office-4297026">Arafat Rahaman</a></article></html>'
                 return page.encode(),'text/html',url
             return b'<html></html>','text/html',url
         with patch('sync.fetch',side_effect=fake_fetch):
             found=sync.fallback_discover()
         self.assertIn(original,found)
-        self.assertIn('https://online91.thedailystar.net/campus',seen)
+        self.assertIn('https://www.thedailystar.net/campus',seen)
     def test_daily_star_article_falls_back_to_secondary_frontend(self):
         from urllib.error import HTTPError
         requested='https://www.thedailystar.net/campus/news/example-4297026'
         attempts=[]
         def fake_fetch(url,*args):
             attempts.append(url)
-            if 'online92.thedailystar.net' in url:
+            if 'www.thedailystar.net' in url:
                 raise HTTPError(url,404,'not found',None,None)
             return b'<html>Article</html>','text/html',url
         with patch('sync.fetch',side_effect=fake_fetch):
             data,kind,final=sync.fetch_daily_star(requested)
         self.assertEqual(data,b'<html>Article</html>')
         self.assertEqual(kind,'text/html')
-        self.assertIn('online91.thedailystar.net',final)
+        self.assertIn('online92.thedailystar.net',final)
         self.assertEqual(len(attempts),2)
     def test_paywall(self):
         source=sample().replace('"@type": "NewsArticle"','"@type": "NewsArticle", "isAccessibleForFree": false')

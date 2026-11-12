@@ -5,9 +5,10 @@
   "source_url": "https://www.thedailystar.net/news/bangladesh/news/the-checkpoint-chronicle-continues-3191921",
   "source_name": "The Daily Star",
   "original_authors": [
-    "['Mostafa Yousuf', 'Arafat Rahaman and Sajjad Hossain']"
+    "Mostafa Yousuf",
+    "Arafat Rahaman and Sajjad Hossain"
   ],
-  "verified_author": false,
+  "verified_author": true,
   "author_listing_verified": true,
   "stream": "reporting",
   "category": "News",
@@ -27,5 +28,5 @@
     "stories/8954b7502453ffc0db94-the-checkpoint-chronicle-continues/"
   ],
   "first_archived_at": "2026-09-06T12:12:01.605128+00:00",
-  "content_hash": "992815b225303b4073e3591064d068c28414d1bc4c342f44026f5a7f4600f64e"
+  "content_hash": "86641ccacbbbd13fdb65acf3f1d0dd25f1544ccb03f72c0e5ec14e66f4495061"
 }

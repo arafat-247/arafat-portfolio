@@ -5,9 +5,10 @@
   "source_url": "https://www.thedailystar.net/news/bangladesh/news/al-activists-police-take-over-some-bnp-sit-ins-3381571",
   "source_name": "The Daily Star",
   "original_authors": [
-    "['Arafat Rahaman', 'Aklakur Rahman Akash and Sheikh Tajul Islam Taj']"
+    "Arafat Rahaman",
+    "Aklakur Rahman Akash and Sheikh Tajul Islam Taj"
   ],
-  "verified_author": false,
+  "verified_author": true,
   "author_listing_verified": true,
   "stream": "reporting",
   "category": "News",
@@ -27,5 +28,5 @@
     "stories/d002905c5744ff57a9f7-al-activists-police-take-over-some-bnp-sit-ins/"
   ],
   "first_archived_at": "2026-09-06T12:10:53.396578+00:00",
-  "content_hash": "daae550344166c04486714ca488d6c4c196797834d346a95220aae1e1179b1c8"
+  "content_hash": "e7a2fea508df122f87a3478092f210e902b2b873341a4e41da1ced921992c426"
 }
