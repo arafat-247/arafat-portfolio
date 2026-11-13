@@ -180,7 +180,7 @@ def footer_markup(settings: dict) -> str:
         </nav>
         <nav class="footergroup footerabout" aria-label="About">
           <strong class="footerlabel">About</strong>
-          <div class="footerlinks"><a href="/about/">About me</a><a href="/contact/">Contact</a><a href="/all-work/">Complete index</a></div>
+          <div class="footerlinks"><a href="/about/">About me</a><a href="/contact/">Contact</a><a href="/all-work/">Complete index</a><a href="/newsroom/">Reporting desk</a></div>
         </nav>
         <section class="footergroup footerconnect" aria-label="Connect">
           <strong class="footerlabel">Connect</strong>

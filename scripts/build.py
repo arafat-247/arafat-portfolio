@@ -270,6 +270,9 @@ def build():
     voice_site = SITE/'voice'
     if voice_site.is_dir():
         shutil.copytree(voice_site, OUT/'voice')
+    newsroom_site = SITE/'newsroom'
+    if newsroom_site.is_dir():
+        shutil.copytree(newsroom_site, OUT/'newsroom')
     b=Builder(); c=b.config; overrides=read(CONTENT/'overrides.json',{'articles':{}})['articles']; articles=[]
     for path in sorted((CONTENT/'articles').glob('*.json')):
         a=read(path,{}); a.update(overrides.get(a['id'],{}));
