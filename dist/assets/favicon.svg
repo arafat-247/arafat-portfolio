@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
-  <title id="title">Arafat Rahaman</title>
-  <desc id="desc">Ivory A monogram with a rust-red editorial mark on a deep green circle.</desc>
-  <circle cx="48" cy="48" r="45" fill="#173b35"/>
-  <circle cx="48" cy="48" r="41.5" fill="none" stroke="#eee9df" stroke-opacity=".18"/>
-  <path fill="#f8f5ee" fill-rule="evenodd" d="M25 70 42.5 25h11L71 70H59.5l-4-11H40l-4 11H25Zm18.4-21h8.7l-4.35-12.8L43.4 49Z"/>
-  <rect x="66" y="65" width="12" height="6" rx="3" fill="#b15b43"/>
-</svg>

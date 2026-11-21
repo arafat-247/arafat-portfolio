@@ -81,9 +81,8 @@ jobs:
           python scripts/redesign_story_pages.py
           mkdir -p dist/assets/imported
           cp -a site/assets/imported/. dist/assets/imported/
+          python scripts/finish_site.py
           python scripts/validate.py
-          python scripts/build_desktop_preview.py
-          python scripts/build_inner_preview.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
