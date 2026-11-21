@@ -213,7 +213,7 @@ def study_body(study: dict) -> str:
 def index_body(studies: list[dict]) -> str:
     cards = "".join(
         f'''<article class="casecard"><span class="casekicker">{esc(s.get('date_published',''))}</span><h2><a href="/case-studies/{esc(s['slug'])}/">{esc(s['title'])}</a></h2><p>{esc(s['description'])}</p><a class="textlink" href="/case-studies/{esc(s['slug'])}/">View reporting case study →</a></article>'''
-        for s in studies
+        for s in sorted(studies, key=lambda s: str(s.get("date_published", "")), reverse=True)
     )
     return f'''<section class="page"><header class="pageintro casehero"><div><span class="eyebrow">Selected work</span><h1>Reporting case studies</h1><p>Selected investigations and data-led reports, with notes on the reporting question, evidence and method behind the published story.</p></div></header><div class="casecards">{cards}</div></section>'''
 

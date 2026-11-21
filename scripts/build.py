@@ -261,18 +261,8 @@ def build():
         source=SITE/file
         if source.is_file():shutil.copy2(source,OUT/file)
     shutil.copytree(SITE/'admin',OUT/'admin')
-    assistant_site = SITE/'assistant'
-    if assistant_site.is_dir():
-        shutil.copytree(assistant_site, OUT/'assistant')
-    android_site = SITE/'android'
-    if android_site.is_dir():
-        shutil.copytree(android_site, OUT/'android')
-    voice_site = SITE/'voice'
-    if voice_site.is_dir():
-        shutil.copytree(voice_site, OUT/'voice')
-    newsroom_site = SITE/'newsroom'
-    if newsroom_site.is_dir():
-        shutil.copytree(newsroom_site, OUT/'newsroom')
+    # Companion-app and private desk pages (site/assistant, site/android, site/voice,
+    # site/newsroom) are intentionally not published with the public portfolio.
     b=Builder(); c=b.config; overrides=read(CONTENT/'overrides.json',{'articles':{}})['articles']; articles=[]
     for path in sorted((CONTENT/'articles').glob('*.json')):
         a=read(path,{}); a.update(overrides.get(a['id'],{}));
