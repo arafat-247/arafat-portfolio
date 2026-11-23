@@ -137,9 +137,9 @@
       "article_id": "5d7f4c97a6f6de5833aa",
       "title": "3 Public Universities: VCs’ greetings to BNP leaders raise ethical questions",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640629+00:00",
+      "last_checked": "2026-11-23T02:46:00.870829+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:14.156127+00:00",
+      "last_success": "2026-11-23T02:46:03.399430+00:00",
       "failures": 0,
       "error": "",
       "fallback_candidate": true
@@ -3170,9 +3170,9 @@
     },
     "https://www.thedailystar.net/news/bangladesh/news/culture-not-easy-its-political-well-artistic-4265761": {
       "discovered_at": "2026-09-06T12:27:00.834581+00:00",
-      "last_checked": "2026-11-16T00:19:36.085745+00:00",
+      "last_checked": "2026-11-23T02:46:00.870822+00:00",
       "status": "saved",
-      "last_success": "2026-11-16T00:19:39.374033+00:00",
+      "last_success": "2026-11-23T02:46:04.367963+00:00",
       "failures": 0,
       "error": "",
       "article_id": "50c0946db1b351f9cd98",
@@ -3461,9 +3461,9 @@
     "https://www.thedailystar.net/opinion/views/news/can-bnp-protect-journalists-its-own-rank-and-file-4291281": {
       "discovered_at": "2026-10-06T02:40:23.432000+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640666+00:00",
+      "last_checked": "2026-11-23T02:46:00.870877+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:36.025634+00:00",
+      "last_success": "2026-11-23T02:46:21.380040+00:00",
       "failures": 0,
       "error": "",
       "article_id": "108ac273cd10e0d07d71",
@@ -3474,9 +3474,9 @@
       "discovered_at": "2026-10-07T06:17:06.281456+00:00",
       "author_listing": true,
       "fallback_candidate": true,
-      "last_checked": "2026-11-22T16:45:10.640665+00:00",
+      "last_checked": "2026-11-23T02:46:00.870876+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:35.536783+00:00",
+      "last_success": "2026-11-23T02:46:21.211802+00:00",
       "failures": 0,
       "error": "",
       "article_id": "b5a59a00115f8b165578",
@@ -4558,9 +4558,9 @@
       "discovered_at": "2026-10-08T00:12:32.482201+00:00",
       "author_listing": true,
       "fallback_candidate": true,
-      "last_checked": "2026-11-22T16:45:10.640664+00:00",
+      "last_checked": "2026-11-23T02:46:00.870874+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:34.392640+00:00",
+      "last_success": "2026-11-23T02:46:19.594924+00:00",
       "failures": 0,
       "error": "",
       "article_id": "77f2d6ad1fec34535f22",
@@ -4850,9 +4850,9 @@
       "discovered_at": "2026-10-09T00:23:38.563600+00:00",
       "author_listing": true,
       "fallback_candidate": true,
-      "last_checked": "2026-11-22T16:45:10.640664+00:00",
+      "last_checked": "2026-11-23T02:46:00.870872+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:32.885533+00:00",
+      "last_success": "2026-11-23T02:46:19.797693+00:00",
       "failures": 0,
       "error": "",
       "article_id": "e5420c5af2374795bfd8",
@@ -5598,9 +5598,9 @@
       "discovered_at": "2026-10-11T13:28:42.751684+00:00",
       "author_listing": true,
       "fallback_candidate": true,
-      "last_checked": "2026-11-22T16:45:10.640663+00:00",
+      "last_checked": "2026-11-23T02:46:00.870871+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:33.643282+00:00",
+      "last_success": "2026-11-23T02:46:19.355993+00:00",
       "failures": 0,
       "error": "",
       "article_id": "d8e19630cabfdf5ce511",
@@ -5609,82 +5609,82 @@
     "https://www.thedailystar.net/news/crime-justice/news/bnp-leader-accused-leading-crowd-besiege-police-station-thakurgaon-4296046": {
       "discovered_at": "2026-10-11T13:30:24.380248+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085789+00:00",
+      "last_checked": "2026-11-23T02:46:00.870879+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 6
+      "failures": 7
     },
     "https://www.thedailystar.net/news/crime-justice/news/ayas-3-others-remanded-over-attempt-deface-tagore-graffiti-4296041": {
       "discovered_at": "2026-10-11T13:30:24.380251+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085790+00:00",
+      "last_checked": "2026-11-23T02:46:00.870881+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 6
+      "failures": 7
     },
     "https://www.thedailystar.net/news/crime-justice/news/10-accused-bogura-over-santal-youths-alleged-killing-after-theft-claim-4296011": {
       "discovered_at": "2026-10-11T13:30:24.380254+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085791+00:00",
+      "last_checked": "2026-11-23T02:46:00.870882+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 6
+      "failures": 7
     },
     "https://www.thedailystar.net/news/crime-justice/news/palak-says-war-prosecution-accuses-defence-delaying-july-uprising-case-4295931": {
       "discovered_at": "2026-10-11T13:30:24.380257+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085793+00:00",
+      "last_checked": "2026-11-23T02:46:00.870884+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 6
+      "failures": 7
     },
     "https://www.thedailystar.net/news/crime-justice/news/ex-dmp-chief-former-al-mp-indicted-over-killing-mugdho-10-others-4295901": {
       "discovered_at": "2026-10-11T13:30:24.380260+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085794+00:00",
+      "last_checked": "2026-11-23T02:46:00.870885+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 6
+      "failures": 7
     },
     "https://www.thedailystar.net/news/education/news/ugc-chairman-elected-chairperson-the-governing-board-south-asian-university-4296076": {
       "discovered_at": "2026-10-11T13:30:24.380311+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085795+00:00",
+      "last_checked": "2026-11-23T02:46:00.870887+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 6
+      "failures": 7
     },
     "https://www.thedailystar.net/opinion/views/news/strengthening-consumer-protection-must-go-beyond-mobile-court-raids-4296026": {
       "discovered_at": "2026-10-11T13:30:24.380437+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085796+00:00",
+      "last_checked": "2026-11-23T02:46:00.870892+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 6
+      "failures": 7
     },
     "https://www.thedailystar.net/opinion/editorial/news/why-cant-the-state-keep-girls-safe-4296036": {
       "discovered_at": "2026-10-11T13:30:24.380466+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085797+00:00",
+      "last_checked": "2026-11-23T02:46:00.870893+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 6
+      "failures": 7
     },
     "https://www.thedailystar.net/news/crime-justice/news/high-court-says-not-every-demand-money-husband-amounts-dowry-4296186": {
       "discovered_at": "2026-10-11T15:42:25.699019+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085798+00:00",
+      "last_checked": "2026-11-23T02:46:00.870895+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 6
+      "failures": 7
     },
     "https://www.thedailystar.net/news/education/news/ugc-led-panel-review-public-university-admission-english-medium-students-milon-4296191": {
       "discovered_at": "2026-10-11T15:42:25.699082+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085799+00:00",
+      "last_checked": "2026-11-23T02:46:00.870896+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 6
+      "failures": 7
     },
     "https://www.thedailystar.net/news/crime-justice/news/3-arrested-allegedly-demanding-tk-50-lakh-monthly-gulshan-society-4296476": {
       "discovered_at": "2026-10-11T20:18:19.752564+00:00",
@@ -5922,9 +5922,9 @@
       "discovered_at": "2026-10-12T16:09:35.333082+00:00",
       "author_listing": true,
       "fallback_candidate": true,
-      "last_checked": "2026-11-22T16:45:10.640662+00:00",
+      "last_checked": "2026-11-23T02:46:00.870869+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:32.699997+00:00",
+      "last_success": "2026-11-23T02:46:19.529424+00:00",
       "failures": 0,
       "error": "",
       "article_id": "67107632b302b3dbb406",
@@ -6925,9 +6925,9 @@
     "https://www.thedailystar.net/weekend-read/news/durga-puja-the-joy-coming-home-4300376": {
       "discovered_at": "2026-10-16T19:04:58.630781+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640661+00:00",
+      "last_checked": "2026-11-23T02:46:00.870868+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:32.986840+00:00",
+      "last_success": "2026-11-23T02:46:17.991939+00:00",
       "failures": 0,
       "error": "",
       "article_id": "5548be2014e299c9f494",
@@ -6936,9 +6936,9 @@
     "https://www.thedailystar.net/opinion/views/news/give-ssc-students-who-failed-second-chance-fix-the-learning-gaps-too-4301156": {
       "discovered_at": "2026-10-18T07:25:41.276257+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640660+00:00",
+      "last_checked": "2026-11-23T02:46:00.870866+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:30.200483+00:00",
+      "last_success": "2026-11-23T02:46:16.896499+00:00",
       "failures": 0,
       "error": "",
       "article_id": "b8b676dd8f69ae866fd3",
@@ -6947,9 +6947,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/govt-plans-tk-21900cr-digital-makeover-schools-4305456": {
       "discovered_at": "2026-10-23T15:59:11.018129+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640659+00:00",
+      "last_checked": "2026-11-23T02:46:00.870865+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:29.553927+00:00",
+      "last_success": "2026-11-23T02:46:17.451520+00:00",
       "failures": 0,
       "error": "",
       "article_id": "1e216598b1bbf4540586",
@@ -6958,9 +6958,9 @@
     "https://www.thedailystar.net/news/crime-justice/news/bewildering-convictions-4306696": {
       "discovered_at": "2026-10-24T22:06:04.679787+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640659+00:00",
+      "last_checked": "2026-11-23T02:46:00.870863+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:29.175345+00:00",
+      "last_success": "2026-11-23T02:46:15.668368+00:00",
       "failures": 0,
       "error": "",
       "article_id": "f053bdc98a50af3a6424",
@@ -6969,9 +6969,9 @@
     "https://www.thedailystar.net/opinion/views/news/police-and-media-have-no-right-shame-detainees-4306606": {
       "discovered_at": "2026-10-25T05:11:43.602856+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640658+00:00",
+      "last_checked": "2026-11-23T02:46:00.870862+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:30.172704+00:00",
+      "last_success": "2026-11-23T02:46:15.047737+00:00",
       "failures": 0,
       "error": "",
       "article_id": "4cb8e463fbbba5db4753",
@@ -6980,9 +6980,9 @@
     "https://www.thedailystar.net/news/crime-justice/news/who-protects-families-when-they-report-child-sexual-abuse-4307126": {
       "discovered_at": "2026-10-25T13:59:13.885333+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640657+00:00",
+      "last_checked": "2026-11-23T02:46:00.870860+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:27.422536+00:00",
+      "last_success": "2026-11-23T02:46:16.069050+00:00",
       "failures": 0,
       "error": "",
       "article_id": "4b7f5a04c1f9d304e9c3",
@@ -6991,9 +6991,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/schools-pupils-down-4307476": {
       "discovered_at": "2026-10-25T22:33:49.592360+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640656+00:00",
+      "last_checked": "2026-11-23T02:46:00.870859+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:27.200135+00:00",
+      "last_success": "2026-11-23T02:46:14.300612+00:00",
       "failures": 0,
       "error": "",
       "article_id": "5770ba9b03ea548d53f5",
@@ -7002,9 +7002,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/five-universities-student-unions-hog-headlines-wrong-reasons-4308396": {
       "discovered_at": "2026-10-26T21:50:52.317602+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640655+00:00",
+      "last_checked": "2026-11-23T02:46:00.870857+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:26.290910+00:00",
+      "last_success": "2026-11-23T02:46:13.035439+00:00",
       "failures": 0,
       "error": "",
       "article_id": "3ff1849a6f11de1fecae",
@@ -7013,9 +7013,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/digital-trail-track-learning-gaps-4308286": {
       "discovered_at": "2026-10-26T21:50:52.317622+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640654+00:00",
+      "last_checked": "2026-11-23T02:46:00.870856+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:23.991590+00:00",
+      "last_success": "2026-11-23T02:46:11.949558+00:00",
       "failures": 0,
       "error": "",
       "article_id": "8f69af16d90af1e74d95",
@@ -7025,8 +7025,8 @@
       "discovered_at": "2026-10-28T13:42:25.553458+00:00",
       "author_listing": true,
       "status": "saved",
-      "last_checked": "2026-11-22T16:45:10.640654+00:00",
-      "last_success": "2026-11-22T16:45:26.554085+00:00",
+      "last_checked": "2026-11-23T02:46:00.870854+00:00",
+      "last_success": "2026-11-23T02:46:12.658036+00:00",
       "failures": 0,
       "error": "",
       "article_id": "6d701b4e12b75f0f5b88",
@@ -7046,9 +7046,9 @@
     "https://www.thedailystar.net/news/education/news/hsc-pass-rate-hits-22-year-low-over-5-lakh-fail-4311876": {
       "discovered_at": "2026-10-31T08:54:01.370939+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640653+00:00",
+      "last_checked": "2026-11-23T02:46:00.870852+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:24.203350+00:00",
+      "last_success": "2026-11-23T02:46:12.779858+00:00",
       "failures": 0,
       "error": "",
       "article_id": "1e831214f242c8c2458f",
@@ -7058,9 +7058,9 @@
     "https://www.thedailystar.net/news/education/news/barishal-board-falls-hsc-top-bottom-three-years-4311926": {
       "discovered_at": "2026-10-31T15:20:26.523619+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640652+00:00",
+      "last_checked": "2026-11-23T02:46:00.870851+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:22.540481+00:00",
+      "last_success": "2026-11-23T02:46:10.734930+00:00",
       "failures": 0,
       "error": "",
       "article_id": "c2b8a4181c0d08967b27",
@@ -7070,9 +7070,9 @@
     "https://www.thedailystar.net/news/bangladesh/education/news/notre-dame-college-outdoes-five-education-boards-gpa-5-tally-4312126": {
       "discovered_at": "2026-10-31T19:30:26.382036+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640651+00:00",
+      "last_checked": "2026-11-23T02:46:00.870849+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:22.163299+00:00",
+      "last_success": "2026-11-23T02:46:10.513891+00:00",
       "failures": 0,
       "error": "",
       "article_id": "ad29a941248a80c61648",
@@ -7082,9 +7082,9 @@
     "https://www.thedailystar.net/news/education/news/only-half-the-students-pass-4312376": {
       "discovered_at": "2026-10-31T22:47:02.191983+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640649+00:00",
+      "last_checked": "2026-11-23T02:46:00.870846+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:20.277945+00:00",
+      "last_success": "2026-11-23T02:46:09.587263+00:00",
       "failures": 0,
       "error": "",
       "article_id": "b4f643ab08f4978e9d3a",
@@ -7094,9 +7094,9 @@
     "https://www.thedailystar.net/news/bangladesh/education/news/alim-technical-pass-rates-hit-2-decade-lows-4312446": {
       "discovered_at": "2026-10-31T22:47:02.191999+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640650+00:00",
+      "last_checked": "2026-11-23T02:46:00.870848+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:21.327643+00:00",
+      "last_success": "2026-11-23T02:46:10.347881+00:00",
       "failures": 0,
       "error": "",
       "article_id": "fa8f4e7a8f3e2f1c6366",
@@ -7106,9 +7106,9 @@
     "https://www.thedailystar.net/slow-reads/wisdom/news/death-the-metro-rail-and-the-questions-it-leaves-behind-4313146": {
       "discovered_at": "2026-11-02T02:31:32.024968+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640647+00:00",
+      "last_checked": "2026-11-23T02:46:00.870843+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:18.808098+00:00",
+      "last_success": "2026-11-23T02:46:08.216054+00:00",
       "failures": 0,
       "error": "",
       "article_id": "c22d60d8c47d588cab9d",
@@ -7117,9 +7117,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/zero-passes-twice-row-4313226": {
       "discovered_at": "2026-11-02T02:31:32.024987+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640648+00:00",
+      "last_checked": "2026-11-23T02:46:00.870845+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:19.134304+00:00",
+      "last_success": "2026-11-23T02:46:08.408827+00:00",
       "failures": 0,
       "error": "",
       "article_id": "83fea793fa8a2fc596c5",
@@ -7128,9 +7128,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/hsc-result-shock-deep-urban-rural-divide-laid-bare-4314171": {
       "discovered_at": "2026-11-03T01:56:20.229214+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640646+00:00",
+      "last_checked": "2026-11-23T02:46:00.870842+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:16.898931+00:00",
+      "last_success": "2026-11-23T02:46:08.015044+00:00",
       "failures": 0,
       "error": "",
       "article_id": "26f6393a89e8937b7ce9",
@@ -7139,9 +7139,9 @@
     "https://www.thedailystar.net/news/bangladesh/education/news/admission-schedule-medical-colleges-univs-mull-relief-hsc-retakers-4315036": {
       "discovered_at": "2026-11-03T22:18:54.250340+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640644+00:00",
+      "last_checked": "2026-11-23T02:46:00.870840+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:16.374384+00:00",
+      "last_success": "2026-11-23T02:46:06.094391+00:00",
       "failures": 0,
       "error": "",
       "article_id": "a068916fe31a02bcedaf",
@@ -7150,9 +7150,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/no-ai-guidelines-universities-4316876": {
       "discovered_at": "2026-11-06T00:16:19.801152+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640641+00:00",
+      "last_checked": "2026-11-23T02:46:00.870837+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:15.712894+00:00",
+      "last_success": "2026-11-23T02:46:06.361171+00:00",
       "failures": 0,
       "error": "",
       "article_id": "b30e8f2f4ac1141bf7b3",
@@ -7161,9 +7161,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/govt-aims-deliver-all-textbooks-nov-4316831": {
       "discovered_at": "2026-11-06T00:16:19.801168+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640643+00:00",
+      "last_checked": "2026-11-23T02:46:00.870839+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:22.754184+00:00",
+      "last_success": "2026-11-23T02:46:05.865021+00:00",
       "failures": 0,
       "error": "",
       "article_id": "e71f1b74a117418f15f6",
@@ -7172,9 +7172,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/ugc-drafting-rules-foreign-univ-campuses-here-4319731": {
       "discovered_at": "2026-11-09T20:14:12.889998+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640640+00:00",
+      "last_checked": "2026-11-23T02:46:00.870835+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:13.800095+00:00",
+      "last_success": "2026-11-23T02:46:05.662046+00:00",
       "failures": 0,
       "error": "",
       "article_id": "157d1ddeb1e018f94df0",
@@ -9159,98 +9159,98 @@
     "https://www.thedailystar.net/news/crime-justice/news/2-killed-after-being-pushed-moving-bus-rangpur-4324351": {
       "discovered_at": "2026-11-16T00:19:36.081094+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085801+00:00",
+      "last_checked": "2026-11-23T02:46:00.870898+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/crime-justice/news/6-bgb-platoons-deployed-gopalganj-maintain-law-and-order-4324311": {
       "discovered_at": "2026-11-16T00:19:36.081096+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085802+00:00",
+      "last_checked": "2026-11-23T02:46:00.870899+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/crime-justice/news/2-lands-jail-juvie-after-body-8-yr-old-madrasa-recovered-toilet-4324271": {
       "discovered_at": "2026-11-16T00:19:36.081099+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085803+00:00",
+      "last_checked": "2026-11-23T02:46:00.870901+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/crime-justice/news/bnp-jubo-dal-offices-attacked-gopalganjs-tungipara-4324191": {
       "discovered_at": "2026-11-16T00:19:36.081102+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085804+00:00",
+      "last_checked": "2026-11-23T02:46:00.870902+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/crime-justice/news/four-journos-sent-jail-tangail-extortion-case-4324141": {
       "discovered_at": "2026-11-16T00:19:36.081121+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085805+00:00",
+      "last_checked": "2026-11-23T02:46:00.870904+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/8-die-dengue-4324841": {
       "discovered_at": "2026-11-16T00:19:36.081148+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085807+00:00",
+      "last_checked": "2026-11-23T02:46:00.870905+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/eight-more-die-measles-symptoms-4324846": {
       "discovered_at": "2026-11-16T00:19:36.081151+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085808+00:00",
+      "last_checked": "2026-11-23T02:46:00.870907+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/dscc-plans-regular-eviction-drives-dhanmondi-4324851": {
       "discovered_at": "2026-11-16T00:19:36.081153+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085809+00:00",
+      "last_checked": "2026-11-23T02:46:00.870908+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/malaysia-bound-workers-leave-late-november-4324856": {
       "discovered_at": "2026-11-16T00:19:36.081156+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085810+00:00",
+      "last_checked": "2026-11-23T02:46:00.870910+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/law-and-order-situation-under-control-salahuddin-4324861": {
       "discovered_at": "2026-11-16T00:19:36.081159+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085811+00:00",
+      "last_checked": "2026-11-23T02:46:00.870911+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/19-year-old-killed-fire-korail-slum-4324866": {
       "discovered_at": "2026-11-16T00:19:36.081161+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085812+00:00",
+      "last_checked": "2026-11-23T02:46:00.870912+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/bangladesh/news/three-sued-over-rape-girl-netrokona-4324836": {
       "discovered_at": "2026-11-16T00:19:36.081167+00:00",
       "fallback_candidate": true,
-      "last_checked": "2026-11-16T00:19:36.085813+00:00",
+      "last_checked": "2026-11-23T02:46:00.870914+00:00",
       "status": "author_unverified",
       "error": "Author not verified; retained in the discovery log, not published.",
-      "failures": 1
+      "failures": 2
     },
     "https://www.thedailystar.net/news/crime-justice/news/turf-wars-among-9-gangs-turn-khulna-deadly-4324971": {
       "discovered_at": "2026-11-16T07:11:29.835002+00:00",
@@ -9663,9 +9663,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/second-chance-hsc-not-university-admission-4326636": {
       "discovered_at": "2026-11-17T17:51:38.682763+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640638+00:00",
+      "last_checked": "2026-11-23T02:46:00.870833+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:13.773517+00:00",
+      "last_success": "2026-11-23T02:46:03.356113+00:00",
       "failures": 0,
       "error": "",
       "article_id": "a27208ba072e355f5277",
@@ -9851,9 +9851,9 @@
     "https://www.thedailystar.net/news/bangladesh/news/student-union-polls-limbo-4326776": {
       "discovered_at": "2026-11-18T00:04:52.014156+00:00",
       "author_listing": true,
-      "last_checked": "2026-11-22T16:45:10.640636+00:00",
+      "last_checked": "2026-11-23T02:46:00.870831+00:00",
       "status": "saved",
-      "last_success": "2026-11-22T16:45:13.175960+00:00",
+      "last_success": "2026-11-23T02:46:03.453403+00:00",
       "failures": 0,
       "error": "",
       "article_id": "2eb50616689eddfcc984",
@@ -11605,27 +11605,51 @@
     },
     "https://www.thedailystar.net/news/bangladesh/news/probe-report-still-pending-no-arrests-made-4330706": {
       "discovered_at": "2026-11-22T22:11:43.339010+00:00",
-      "fallback_candidate": true
+      "fallback_candidate": true,
+      "last_checked": "2026-11-23T02:46:00.870915+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
     },
     "https://www.thedailystar.net/news/bangladesh/news/univs-must-align-courses-job-market-needs-4330726": {
       "discovered_at": "2026-11-22T22:11:43.339014+00:00",
-      "fallback_candidate": true
+      "fallback_candidate": true,
+      "last_checked": "2026-11-23T02:46:00.870917+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
     },
     "https://www.thedailystar.net/news/bangladesh/news/malraux-saw-our-struggle-one-freedom-and-dignity-4330731": {
       "discovered_at": "2026-11-22T22:11:43.339029+00:00",
-      "fallback_candidate": true
+      "fallback_candidate": true,
+      "last_checked": "2026-11-23T02:46:00.870919+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
     },
     "https://www.thedailystar.net/news/bangladesh/news/key-planners-ecb-housing-project-attack-still-large-4330746": {
       "discovered_at": "2026-11-22T22:11:43.339033+00:00",
-      "fallback_candidate": true
+      "fallback_candidate": true,
+      "last_checked": "2026-11-23T02:46:00.870921+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
     },
     "https://www.thedailystar.net/news/bangladesh/rights/news/dlab-demands-lawyers-protection-act-over-attacks-lawyers-4330451": {
       "discovered_at": "2026-11-22T22:11:43.339037+00:00",
-      "fallback_candidate": true
+      "fallback_candidate": true,
+      "last_checked": "2026-11-23T02:46:00.870922+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
     },
     "https://www.thedailystar.net/news/bangladesh/diplomacy/news/thailand-backs-bangladeshs-asean-rcep-bids-4330326": {
       "discovered_at": "2026-11-22T22:11:43.339041+00:00",
-      "fallback_candidate": true
+      "fallback_candidate": true,
+      "last_checked": "2026-11-23T02:46:00.870924+00:00",
+      "status": "author_unverified",
+      "error": "Author not verified; retained in the discovery log, not published.",
+      "failures": 1
     },
     "https://www.thedailystar.net/news/bangladesh/armed-forces/news/armed-forces-soldiers-starting-basic-salary-rises-138-tk-21400-4330281": {
       "discovered_at": "2026-11-22T22:11:43.339045+00:00",
@@ -11654,20 +11678,24 @@
     "https://www.thedailystar.net/news/bangladesh/news/50-rmg-factories-shut-amid-wage-protests-4330001": {
       "discovered_at": "2026-11-22T22:11:43.339082+00:00",
       "fallback_candidate": true
+    },
+    "https://www.thedailystar.net/opinion/views/the-third-view/news/how-we-never-stop-hurting-ourselves-4328461": {
+      "discovered_at": "2026-11-23T02:46:00.863277+00:00",
+      "fallback_candidate": true
     }
   },
-  "archive_cursor": 60,
-  "last_attempt": "2026-11-22T22:11:29.787581+00:00",
-  "last_discovery_success": "2026-11-22T22:11:41.005912+00:00",
-  "last_completed": "2026-11-22T22:12:11.884817+00:00",
-  "saved_this_run": 28,
-  "known_sources": 1328,
+  "archive_cursor": 66,
+  "last_attempt": "2026-11-23T02:45:46.889671+00:00",
+  "last_discovery_success": "2026-11-23T02:45:58.051696+00:00",
+  "last_completed": "2026-11-23T02:46:30.865338+00:00",
+  "saved_this_run": 32,
+  "known_sources": 1329,
   "pending": 0,
   "errors": [],
   "unsupported": 3,
   "degraded_discovery": false,
   "refresh_ok": true,
-  "last_fallback_discovery_success": "2026-11-22T22:11:43.339191+00:00",
+  "last_fallback_discovery_success": "2026-11-23T02:46:00.863345+00:00",
   "fallback_candidates": 142,
   "last_author_pages_checked": 9,
   "last_author_pages_successful": 9,
@@ -11675,5 +11703,5 @@
   "last_author_pages_empty": 6,
   "last_author_pages_repeated": 0,
   "last_author_new_links": 0,
-  "pending_candidates": 13
+  "pending_candidates": 8
 }
